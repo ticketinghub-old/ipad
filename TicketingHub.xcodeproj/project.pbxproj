@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D25F648176CF08000A60359 /* TXHDoorGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D25F647176CF08000A60359 /* TXHDoorGroupController.m */; };
+		4D4FBE2B176B5BB70023A0D1 /* TXHDoorTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4FBE2A176B5BB70023A0D1 /* TXHDoorTimeController.m */; };
+		4D68DA9D178AD5F600743227 /* TXHSalesMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D68DA9C178AD5F600743227 /* TXHSalesMainViewController.m */; };
+		4D68DAA0178AE3A100743227 /* TXHSalesOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D68DA9F178AE3A100743227 /* TXHSalesOptionsViewController.m */; };
+		4D68DAA3178AE62400743227 /* TXHSalesOptionsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D68DAA2178AE62400743227 /* TXHSalesOptionsCell.m */; };
+		4D68DAA6178AE9E300743227 /* TXHOptionsExtrasItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D68DAA5178AE9E300743227 /* TXHOptionsExtrasItem.m */; };
+		4D68DAA9178B096A00743227 /* BarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D68DAA8178B096A00743227 /* BarcodeViewController.m */; };
+		4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D68DAAA178B0A5400743227 /* AVFoundation.framework */; };
+		4D80B9A5178ABEA4002A71C8 /* LoginAuthorisation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D80B9A4178ABEA4002A71C8 /* LoginAuthorisation.m */; };
+		4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */; };
+		4DF3B5C11770AE6800D657AB /* TXHDatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5C01770AE6800D657AB /* TXHDatePickerController.m */; };
+		4DF3B5C41771ABE400D657AB /* RKMCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5C31771ABE400D657AB /* RKMCalendarView.m */; };
+		581560CD1765D38A005C20EA /* TXHFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 581560CA1765D38A005C20EA /* TXHFlowLayout.m */; };
+		581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 581560CC1765D38A005C20EA /* TXHDoorDateCell.m */; };
+		581560D11765DAB3005C20EA /* TXHDoorDateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581560D01765DAB3005C20EA /* TXHDoorDateController.m */; };
+		581560D41765E0DE005C20EA /* TXHTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 581560D31765E0DE005C20EA /* TXHTimeCell.m */; };
+		581560D71765E150005C20EA /* TXHGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 581560D61765E150005C20EA /* TXHGroupCell.m */; };
+		5860E8581762175B0046DFD3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5860E8571762175B0046DFD3 /* QuartzCore.framework */; };
+		5860E86117635E3E0046DFD3 /* bg_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5860E86017635E3E0046DFD3 /* bg_blue@2x.png */; };
 		58E4FB551760AE5500E328A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB541760AE5500E328A0 /* UIKit.framework */; };
 		58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB561760AE5500E328A0 /* Foundation.framework */; };
 		58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB581760AE5500E328A0 /* CoreGraphics.framework */; };
@@ -24,6 +43,8 @@
 		58E4FB7B1760AE5500E328A0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB5A1760AE5500E328A0 /* CoreData.framework */; };
 		58E4FB831760AE5500E328A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB811760AE5500E328A0 /* InfoPlist.strings */; };
 		58E4FB861760AE5500E328A0 /* TicketingHubTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB851760AE5500E328A0 /* TicketingHubTests.m */; };
+		58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB911760AEF300E328A0 /* Storyboard.storyboard */; };
+		58E4FB9F1761CFEC00E328A0 /* TXHMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +58,44 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D25F644176CE58A00A60359 /* TXHCommonNames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHCommonNames.h; sourceTree = "<group>"; };
+		4D25F646176CF08000A60359 /* TXHDoorGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorGroupController.h; sourceTree = "<group>"; };
+		4D25F647176CF08000A60359 /* TXHDoorGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorGroupController.m; sourceTree = "<group>"; };
+		4D4FBE29176B5BB70023A0D1 /* TXHDoorTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorTimeController.h; sourceTree = "<group>"; };
+		4D4FBE2A176B5BB70023A0D1 /* TXHDoorTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorTimeController.m; sourceTree = "<group>"; };
+		4D68DA9B178AD5F600743227 /* TXHSalesMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesMainViewController.h; sourceTree = "<group>"; };
+		4D68DA9C178AD5F600743227 /* TXHSalesMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesMainViewController.m; sourceTree = "<group>"; };
+		4D68DA9E178AE3A100743227 /* TXHSalesOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesOptionsViewController.h; sourceTree = "<group>"; };
+		4D68DA9F178AE3A100743227 /* TXHSalesOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesOptionsViewController.m; sourceTree = "<group>"; };
+		4D68DAA1178AE62400743227 /* TXHSalesOptionsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesOptionsCell.h; sourceTree = "<group>"; };
+		4D68DAA2178AE62400743227 /* TXHSalesOptionsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesOptionsCell.m; sourceTree = "<group>"; };
+		4D68DAA4178AE9E300743227 /* TXHOptionsExtrasItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHOptionsExtrasItem.h; sourceTree = "<group>"; };
+		4D68DAA5178AE9E300743227 /* TXHOptionsExtrasItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOptionsExtrasItem.m; sourceTree = "<group>"; };
+		4D68DAA7178B096A00743227 /* BarcodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeViewController.h; sourceTree = "<group>"; };
+		4D68DAA8178B096A00743227 /* BarcodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeViewController.m; sourceTree = "<group>"; };
+		4D68DAAA178B0A5400743227 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4D80B9A3178ABEA4002A71C8 /* LoginAuthorisation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAuthorisation.h; sourceTree = "<group>"; };
+		4D80B9A4178ABEA4002A71C8 /* LoginAuthorisation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAuthorisation.m; sourceTree = "<group>"; };
+		4DF3B5BC177082FF00D657AB /* TXHDoorMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorMainController.h; sourceTree = "<group>"; };
+		4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorMainController.m; sourceTree = "<group>"; };
+		4DF3B5BF1770AE6800D657AB /* TXHDatePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDatePickerController.h; sourceTree = "<group>"; };
+		4DF3B5C01770AE6800D657AB /* TXHDatePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDatePickerController.m; sourceTree = "<group>"; };
+		4DF3B5C21771ABE400D657AB /* RKMCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKMCalendarView.h; sourceTree = "<group>"; };
+		4DF3B5C31771ABE400D657AB /* RKMCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKMCalendarView.m; sourceTree = "<group>"; };
+		581560C91765D38A005C20EA /* TXHFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHFlowLayout.h; sourceTree = "<group>"; };
+		581560CA1765D38A005C20EA /* TXHFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHFlowLayout.m; sourceTree = "<group>"; };
+		581560CB1765D38A005C20EA /* TXHDoorDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorDateCell.h; sourceTree = "<group>"; };
+		581560CC1765D38A005C20EA /* TXHDoorDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorDateCell.m; sourceTree = "<group>"; };
+		581560CF1765DAB3005C20EA /* TXHDoorDateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorDateController.h; sourceTree = "<group>"; };
+		581560D01765DAB3005C20EA /* TXHDoorDateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorDateController.m; sourceTree = "<group>"; };
+		581560D21765E0DE005C20EA /* TXHTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTimeCell.h; sourceTree = "<group>"; };
+		581560D31765E0DE005C20EA /* TXHTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTimeCell.m; sourceTree = "<group>"; };
+		581560D51765E150005C20EA /* TXHGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHGroupCell.h; sourceTree = "<group>"; };
+		581560D61765E150005C20EA /* TXHGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHGroupCell.m; sourceTree = "<group>"; };
+		5860E8571762175B0046DFD3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5860E85A17633C990046DFD3 /* bg_cork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_cork.png; sourceTree = "<group>"; };
+		5860E85B17633C990046DFD3 /* bg_cork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_cork@2x.png"; sourceTree = "<group>"; };
+		5860E86017635E3E0046DFD3 /* bg_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_blue@2x.png"; sourceTree = "<group>"; };
 		58E4FB511760AE5500E328A0 /* TicketingHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicketingHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E4FB541760AE5500E328A0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		58E4FB561760AE5500E328A0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -58,6 +117,9 @@
 		58E4FB821760AE5500E328A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58E4FB841760AE5500E328A0 /* TicketingHubTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketingHubTests.h; sourceTree = "<group>"; };
 		58E4FB851760AE5500E328A0 /* TicketingHubTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketingHubTests.m; sourceTree = "<group>"; };
+		58E4FB911760AEF300E328A0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		58E4FB9D1761CFEC00E328A0 /* TXHMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMainViewController.h; sourceTree = "<group>"; };
+		58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +127,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */,
+				5860E8581762175B0046DFD3 /* QuartzCore.framework in Frameworks */,
 				58E4FB551760AE5500E328A0 /* UIKit.framework in Frameworks */,
 				58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */,
 				58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */,
@@ -86,9 +150,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D25F643176CE54000A60359 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4DF3B5C21771ABE400D657AB /* RKMCalendarView.h */,
+				4DF3B5C31771ABE400D657AB /* RKMCalendarView.m */,
+				4D25F644176CE58A00A60359 /* TXHCommonNames.h */,
+				4D68DAA4178AE9E300743227 /* TXHOptionsExtrasItem.h */,
+				4D68DAA5178AE9E300743227 /* TXHOptionsExtrasItem.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		5860E85917633C990046DFD3 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				5860E86017635E3E0046DFD3 /* bg_blue@2x.png */,
+				5860E85A17633C990046DFD3 /* bg_cork.png */,
+				5860E85B17633C990046DFD3 /* bg_cork@2x.png */,
+			);
+			name = Assets;
+			path = TicketingHub/Assets;
+			sourceTree = "<group>";
+		};
 		58E4FB481760AE5500E328A0 = {
 			isa = PBXGroup;
 			children = (
+				5860E85917633C990046DFD3 /* Assets */,
+				58E4FB971760D3C800E328A0 /* Classes */,
+				58E4FB901760AECF00E328A0 /* UI */,
 				58E4FB5C1760AE5500E328A0 /* TicketingHub */,
 				58E4FB7E1760AE5500E328A0 /* TicketingHubTests */,
 				58E4FB531760AE5500E328A0 /* Frameworks */,
@@ -108,6 +198,8 @@
 		58E4FB531760AE5500E328A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D68DAAA178B0A5400743227 /* AVFoundation.framework */,
+				5860E8571762175B0046DFD3 /* QuartzCore.framework */,
 				58E4FB541760AE5500E328A0 /* UIKit.framework */,
 				58E4FB561760AE5500E328A0 /* Foundation.framework */,
 				58E4FB581760AE5500E328A0 /* CoreGraphics.framework */,
@@ -159,6 +251,94 @@
 				58E4FB811760AE5500E328A0 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		58E4FB901760AECF00E328A0 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				58E4FB911760AEF300E328A0 /* Storyboard.storyboard */,
+			);
+			name = UI;
+			path = TicketingHub/UI;
+			sourceTree = "<group>";
+		};
+		58E4FB971760D3C800E328A0 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4D25F643176CE54000A60359 /* Common */,
+				58E4FB981760D3C800E328A0 /* Dashboard */,
+				58E4FB991760D3C800E328A0 /* Door */,
+				58E4FB9A1760D3C800E328A0 /* Flow */,
+				58E4FB9B1760D3C800E328A0 /* Login */,
+				58E4FB9C1760D3C800E328A0 /* Sales */,
+			);
+			name = Classes;
+			path = TicketingHub/Classes;
+			sourceTree = "<group>";
+		};
+		58E4FB981760D3C800E328A0 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		58E4FB991760D3C800E328A0 /* Door */ = {
+			isa = PBXGroup;
+			children = (
+				581560C91765D38A005C20EA /* TXHFlowLayout.h */,
+				581560CA1765D38A005C20EA /* TXHFlowLayout.m */,
+				581560CB1765D38A005C20EA /* TXHDoorDateCell.h */,
+				581560CC1765D38A005C20EA /* TXHDoorDateCell.m */,
+				581560CF1765DAB3005C20EA /* TXHDoorDateController.h */,
+				581560D01765DAB3005C20EA /* TXHDoorDateController.m */,
+				581560D21765E0DE005C20EA /* TXHTimeCell.h */,
+				581560D31765E0DE005C20EA /* TXHTimeCell.m */,
+				581560D51765E150005C20EA /* TXHGroupCell.h */,
+				581560D61765E150005C20EA /* TXHGroupCell.m */,
+				4D4FBE29176B5BB70023A0D1 /* TXHDoorTimeController.h */,
+				4D4FBE2A176B5BB70023A0D1 /* TXHDoorTimeController.m */,
+				4D25F646176CF08000A60359 /* TXHDoorGroupController.h */,
+				4D25F647176CF08000A60359 /* TXHDoorGroupController.m */,
+				4DF3B5BC177082FF00D657AB /* TXHDoorMainController.h */,
+				4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */,
+				4DF3B5BF1770AE6800D657AB /* TXHDatePickerController.h */,
+				4DF3B5C01770AE6800D657AB /* TXHDatePickerController.m */,
+				4D68DAA7178B096A00743227 /* BarcodeViewController.h */,
+				4D68DAA8178B096A00743227 /* BarcodeViewController.m */,
+			);
+			path = Door;
+			sourceTree = "<group>";
+		};
+		58E4FB9A1760D3C800E328A0 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				58E4FB9D1761CFEC00E328A0 /* TXHMainViewController.h */,
+				58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		58E4FB9B1760D3C800E328A0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4D80B9A3178ABEA4002A71C8 /* LoginAuthorisation.h */,
+				4D80B9A4178ABEA4002A71C8 /* LoginAuthorisation.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		58E4FB9C1760D3C800E328A0 /* Sales */ = {
+			isa = PBXGroup;
+			children = (
+				4D68DA9B178AD5F600743227 /* TXHSalesMainViewController.h */,
+				4D68DA9C178AD5F600743227 /* TXHSalesMainViewController.m */,
+				4D68DA9E178AE3A100743227 /* TXHSalesOptionsViewController.h */,
+				4D68DA9F178AE3A100743227 /* TXHSalesOptionsViewController.m */,
+				4D68DAA1178AE62400743227 /* TXHSalesOptionsCell.h */,
+				4D68DAA2178AE62400743227 /* TXHSalesOptionsCell.m */,
+			);
+			path = Sales;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +417,8 @@
 				58E4FB691760AE5500E328A0 /* Default.png in Resources */,
 				58E4FB6B1760AE5500E328A0 /* Default@2x.png in Resources */,
 				58E4FB6D1760AE5500E328A0 /* Default-568h@2x.png in Resources */,
+				58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */,
+				5860E86117635E3E0046DFD3 /* bg_blue@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +456,23 @@
 				58E4FB631760AE5500E328A0 /* main.m in Sources */,
 				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
 				58E4FB701760AE5500E328A0 /* TicketingHub.xcdatamodeld in Sources */,
+				58E4FB9F1761CFEC00E328A0 /* TXHMainViewController.m in Sources */,
+				4D68DAA3178AE62400743227 /* TXHSalesOptionsCell.m in Sources */,
+				581560CD1765D38A005C20EA /* TXHFlowLayout.m in Sources */,
+				4D4FBE2B176B5BB70023A0D1 /* TXHDoorTimeController.m in Sources */,
+				4D68DAA6178AE9E300743227 /* TXHOptionsExtrasItem.m in Sources */,
+				4D25F648176CF08000A60359 /* TXHDoorGroupController.m in Sources */,
+				4D68DA9D178AD5F600743227 /* TXHSalesMainViewController.m in Sources */,
+				581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */,
+				581560D11765DAB3005C20EA /* TXHDoorDateController.m in Sources */,
+				581560D41765E0DE005C20EA /* TXHTimeCell.m in Sources */,
+				4D68DAA9178B096A00743227 /* BarcodeViewController.m in Sources */,
+				581560D71765E150005C20EA /* TXHGroupCell.m in Sources */,
+				4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */,
+				4D80B9A5178ABEA4002A71C8 /* LoginAuthorisation.m in Sources */,
+				4DF3B5C11770AE6800D657AB /* TXHDatePickerController.m in Sources */,
+				4DF3B5C41771ABE400D657AB /* RKMCalendarView.m in Sources */,
+				4D68DAA0178AE3A100743227 /* TXHSalesOptionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +522,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
@@ -337,10 +537,16 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_SHADOW = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -355,6 +561,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
@@ -362,10 +569,16 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_SHADOW = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -376,10 +589,13 @@
 		58E4FB8A1760AE5500E328A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mark Brindle (LTUJF8Y5V2)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "543D6DE1-27F3-4C7C-ACC8-1E4727024053";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -387,10 +603,13 @@
 		58E4FB8B1760AE5500E328A0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mark Brindle (LTUJF8Y5V2)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "543D6DE1-27F3-4C7C-ACC8-1E4727024053";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -448,6 +667,7 @@
 				58E4FB8B1760AE5500E328A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		58E4FB8C1760AE5500E328A0 /* Build configuration list for PBXNativeTarget "TicketingHubTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +676,7 @@
 				58E4FB8E1760AE5500E328A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
