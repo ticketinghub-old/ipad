@@ -16,6 +16,7 @@
  */
 
 #import "LoginAuthorisation.h"
+#import "TXHCommonNames.h"
 
 @interface LoginAuthorisation () <NSURLConnectionDelegate>
 
@@ -37,7 +38,9 @@
 
 @implementation LoginAuthorisation
 
-@synthesize identityToken = _identityToken;
++ (NSString *)apiEndPoint {
+  return @"https://api.ticketingHub.com";
+}
 
 - (id)init {
 //  NSLog(@"%s", __FUNCTION__);
@@ -61,26 +64,15 @@
   
   self.ticketingHubAuthorisation  = @"https://auth.ticketingHub.com";
   self.ticketingHubRedirect       = @"http://auth.ticketingHub.com/test_oauth2";
-  self.ticketingHubManagement     = @"https://api.ticketingHub.com";       // @"http://management.staging.ticketingHub.com";
-  self.ticketingHubData           = @"https://data.ticketingHub.com";             // @"http://data.staging.ticketingHub.com";
   
-  self.clientId                 = @"rmwz93ixi5kos7t0b4gb1x59emyfstx";         // @"frlidd0bwgrr2qx6hlsica3vwjea1pf";
   
-  self.username                 = @"";
-}
-
-- (NSUUID *)identityToken {
-//  NSLog(@"%s", __FUNCTION__);
-  if (_identityToken == nil) {
-    _identityToken = [[UIDevice currentDevice] identifierForVendor];
-  }
-  return _identityToken;
-}
-
-- (void)validateUser:(NSString *)user withPassword:(NSString *)password {
-//  NSLog(@"%s", __FUNCTION__);
-  self.username = user;
-  [self fetchAccessTokenFor:password];
+  self.ticketingHubAPI            = @"https://api.ticketingHub.com";
+  
+  self.clientId                   = @"rmwz93ixi5kos7t0b4gb1x59emyfstx";
+  self.username                   = @"";
+  
+  // Fixed for prototyping purposes 
+  _accessToken = @"-AhfMlNIR7_UQpYvMP4Yfw";
 }
 
 - (NSString *)encodeToPercentEscapeString:(NSString *)string {
@@ -91,63 +83,9 @@
                                                                                kCFStringEncodingUTF8));
 }
 
-- (void)fetchAccessTokenFor:(NSString *)password {
-//  NSLog(@"%s", __FUNCTION__);
-  self.mode = AUTH_MODE_LOGIN;
-  NSURL *url = [NSURL URLWithString:[self.ticketingHubAuthorisation stringByAppendingPathComponent:@"get_oauth2_token"]];
-  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                                         cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                     timeoutInterval:60.0];
-  
-  [request setHTTPMethod:@"POST"];
-  NSString *postString = [NSString stringWithFormat:@"user[email]=%@&user[password]=%@&response_type=token&client_id=%@&device_id=%@&redirect_uri=%@",
-                          [self encodeToPercentEscapeString:self.username],
-                          [self encodeToPercentEscapeString:password],
-                          [self.clientId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                          [self.identityToken.UUIDString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                          [self.ticketingHubRedirect stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-  
-//  NSLog(@"%s - %@", __FUNCTION__, postString);
-  
-  [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-  
-  self.connection= [[NSURLConnection alloc] initWithRequest:request delegate:self];
-  if (self.connection) {
-    // Create NSMutable data to hold received data
-    self.receivedData = [NSMutableData data];
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-  }
-}
-
-- (void)verifyToken:(NSString *)token {
-  self.mode = AUTH_MODE_VERIFY;
+- (void):(NSString *)token {
   NSString *urlString = [NSString stringWithFormat:@"%@?oauth_token=%@",
                          [self.ticketingHubAuthorisation stringByAppendingPathComponent:@"test_oauth2"],
-                         token];
-  
-//  NSLog(@"%s - mode:%@ request:%@", __FUNCTION__, self.mode, urlString);
-  
-  NSURL *url = [NSURL URLWithString:urlString];
-  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                                         cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                     timeoutInterval:60.0];
-  
-  [request setHTTPMethod:@"GET"];
-  
-  self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-  if (self.connection) {
-    // Create NSMutable data to hold received data
-    self.receivedData = [NSMutableData data];
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-  }
-}
-
-- (void)verifyMixPanel:(NSString *)token {
-//  NSLog(@"%s", __FUNCTION__);
-  self.mode = AUTH_MODE_MIXPANEL;
-  
-  NSString *urlString = [NSString stringWithFormat:@"%@/?oauth_token=%@",
-                         [self.ticketingHubManagement stringByAppendingPathComponent:@"user"],
                          token];
   
 //  NSLog(@"%s - mode:%@ request:%@", __FUNCTION__, self.mode, urlString);
@@ -217,39 +155,11 @@
     }
     authenticationObject[@"mode"] = self.mode;
     authenticationObject[@"status"] = @(self.statusCode);
-//    NSLog(@"%s - got results: %@", __FUNCTION__, authenticationObject.description);
-    if ((self.statusCode / 100) == 2) {
-      if ([self.mode isEqualToString:AUTH_MODE_LOGIN]) {
-        NSDictionary *tokens = authenticationObject[@"data"];
-        self.accessToken  = tokens[@"access_token"];
-        self.refreshToken = tokens[@"refresh_token"];
-        authenticationString = @"com.ticketingHub.authentication.getToken";
-      } else if ([self.mode isEqualToString:AUTH_MODE_MIXPANEL]) {
-        if ([resultsData isKindOfClass:[NSDictionary class]]) {
-          authenticationObject = resultsData;
-        }
-        authenticationString = @"com.ticketingHub.authentication.verifyMixPanel";
-      } else {
-        // Verify token
-        if ([resultsData isKindOfClass:[NSDictionary class]]) {
-          authenticationObject[@"data"] = resultsData;
-        } else if ([resultsData isKindOfClass:[NSString class]]) {
-          authenticationObject[@"dataString"] = resultsData;
-        }
-        authenticationString = @"com.ticketingHub.authentication.verifyToken";
-      }
-    } else {
-      // Handle the error
-      authenticationString = @"com.ticketingHub.authentication.authenticationError";
-    }
   }
-  
   [self cleanup];
   
   NSDictionary *payload = @{@"payload": authenticationObject};
 
-//  NSLog(@"%s - %@ - payload %@", __FUNCTION__, authenticationString, payload.description);
-  
   [[NSNotificationCenter defaultCenter] postNotificationName:authenticationString object:payload];
 }
 

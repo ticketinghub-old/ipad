@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D0E5131178C0BBC009436AC /* TXHDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E5130178C0BBC009436AC /* TXHDataDownloader.m */; };
 		4D25F648176CF08000A60359 /* TXHDoorGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D25F647176CF08000A60359 /* TXHDoorGroupController.m */; };
 		4D4FBE2B176B5BB70023A0D1 /* TXHDoorTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4FBE2A176B5BB70023A0D1 /* TXHDoorTimeController.m */; };
 		4D68DA9D178AD5F600743227 /* TXHSalesMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D68DA9C178AD5F600743227 /* TXHSalesMainViewController.m */; };
@@ -16,6 +17,9 @@
 		4D68DAA9178B096A00743227 /* BarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D68DAA8178B096A00743227 /* BarcodeViewController.m */; };
 		4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D68DAAA178B0A5400743227 /* AVFoundation.framework */; };
 		4D80B9A5178ABEA4002A71C8 /* LoginAuthorisation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D80B9A4178ABEA4002A71C8 /* LoginAuthorisation.m */; };
+		4DA05FAB178C2430005161E6 /* TXHVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FAA178C2430005161E6 /* TXHVenue.m */; };
+		4DA05FAE178C30E6005161E6 /* TXHVenueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FAD178C30E6005161E6 /* TXHVenueCell.m */; };
+		4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */; };
 		4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */; };
 		4DF3B5C11770AE6800D657AB /* TXHDatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5C01770AE6800D657AB /* TXHDatePickerController.m */; };
 		4DF3B5C41771ABE400D657AB /* RKMCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5C31771ABE400D657AB /* RKMCalendarView.m */; };
@@ -58,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D0E512F178C0BBC009436AC /* TXHDataDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDataDownloader.h; sourceTree = "<group>"; };
+		4D0E5130178C0BBC009436AC /* TXHDataDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDataDownloader.m; sourceTree = "<group>"; };
 		4D25F644176CE58A00A60359 /* TXHCommonNames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHCommonNames.h; sourceTree = "<group>"; };
 		4D25F646176CF08000A60359 /* TXHDoorGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorGroupController.h; sourceTree = "<group>"; };
 		4D25F647176CF08000A60359 /* TXHDoorGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorGroupController.m; sourceTree = "<group>"; };
@@ -76,6 +82,12 @@
 		4D68DAAA178B0A5400743227 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4D80B9A3178ABEA4002A71C8 /* LoginAuthorisation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAuthorisation.h; sourceTree = "<group>"; };
 		4D80B9A4178ABEA4002A71C8 /* LoginAuthorisation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAuthorisation.m; sourceTree = "<group>"; };
+		4DA05FA9178C2430005161E6 /* TXHVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVenue.h; sourceTree = "<group>"; };
+		4DA05FAA178C2430005161E6 /* TXHVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVenue.m; sourceTree = "<group>"; };
+		4DA05FAC178C30E6005161E6 /* TXHVenueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVenueCell.h; sourceTree = "<group>"; };
+		4DA05FAD178C30E6005161E6 /* TXHVenueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVenueCell.m; sourceTree = "<group>"; };
+		4DA05FAF178C367F005161E6 /* TXHServerAccessManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHServerAccessManager.h; sourceTree = "<group>"; };
+		4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHServerAccessManager.m; sourceTree = "<group>"; };
 		4DF3B5BC177082FF00D657AB /* TXHDoorMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorMainController.h; sourceTree = "<group>"; };
 		4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorMainController.m; sourceTree = "<group>"; };
 		4DF3B5BF1770AE6800D657AB /* TXHDatePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDatePickerController.h; sourceTree = "<group>"; };
@@ -158,6 +170,8 @@
 				4D25F644176CE58A00A60359 /* TXHCommonNames.h */,
 				4D68DAA4178AE9E300743227 /* TXHOptionsExtrasItem.h */,
 				4D68DAA5178AE9E300743227 /* TXHOptionsExtrasItem.m */,
+				4D0E512F178C0BBC009436AC /* TXHDataDownloader.h */,
+				4D0E5130178C0BBC009436AC /* TXHDataDownloader.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -266,21 +280,17 @@
 			isa = PBXGroup;
 			children = (
 				4D25F643176CE54000A60359 /* Common */,
-				58E4FB981760D3C800E328A0 /* Dashboard */,
 				58E4FB991760D3C800E328A0 /* Door */,
-				58E4FB9A1760D3C800E328A0 /* Flow */,
+				58E4FB9A1760D3C800E328A0 /* FirstScreen */,
 				58E4FB9B1760D3C800E328A0 /* Login */,
 				58E4FB9C1760D3C800E328A0 /* Sales */,
+				4DA05FA9178C2430005161E6 /* TXHVenue.h */,
+				4DA05FAA178C2430005161E6 /* TXHVenue.m */,
+				4DA05FAF178C367F005161E6 /* TXHServerAccessManager.h */,
+				4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */,
 			);
 			name = Classes;
 			path = TicketingHub/Classes;
-			sourceTree = "<group>";
-		};
-		58E4FB981760D3C800E328A0 /* Dashboard */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Dashboard;
 			sourceTree = "<group>";
 		};
 		58E4FB991760D3C800E328A0 /* Door */ = {
@@ -310,13 +320,15 @@
 			path = Door;
 			sourceTree = "<group>";
 		};
-		58E4FB9A1760D3C800E328A0 /* Flow */ = {
+		58E4FB9A1760D3C800E328A0 /* FirstScreen */ = {
 			isa = PBXGroup;
 			children = (
 				58E4FB9D1761CFEC00E328A0 /* TXHMainViewController.h */,
 				58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */,
+				4DA05FAC178C30E6005161E6 /* TXHVenueCell.h */,
+				4DA05FAD178C30E6005161E6 /* TXHVenueCell.m */,
 			);
-			path = Flow;
+			path = FirstScreen;
 			sourceTree = "<group>";
 		};
 		58E4FB9B1760D3C800E328A0 /* Login */ = {
@@ -456,16 +468,20 @@
 				58E4FB631760AE5500E328A0 /* main.m in Sources */,
 				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
 				58E4FB701760AE5500E328A0 /* TicketingHub.xcdatamodeld in Sources */,
+				4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */,
 				58E4FB9F1761CFEC00E328A0 /* TXHMainViewController.m in Sources */,
+				4D0E5131178C0BBC009436AC /* TXHDataDownloader.m in Sources */,
 				4D68DAA3178AE62400743227 /* TXHSalesOptionsCell.m in Sources */,
 				581560CD1765D38A005C20EA /* TXHFlowLayout.m in Sources */,
 				4D4FBE2B176B5BB70023A0D1 /* TXHDoorTimeController.m in Sources */,
 				4D68DAA6178AE9E300743227 /* TXHOptionsExtrasItem.m in Sources */,
 				4D25F648176CF08000A60359 /* TXHDoorGroupController.m in Sources */,
 				4D68DA9D178AD5F600743227 /* TXHSalesMainViewController.m in Sources */,
+				4DA05FAE178C30E6005161E6 /* TXHVenueCell.m in Sources */,
 				581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */,
 				581560D11765DAB3005C20EA /* TXHDoorDateController.m in Sources */,
 				581560D41765E0DE005C20EA /* TXHTimeCell.m in Sources */,
+				4DA05FAB178C2430005161E6 /* TXHVenue.m in Sources */,
 				4D68DAA9178B096A00743227 /* BarcodeViewController.m in Sources */,
 				581560D71765E150005C20EA /* TXHGroupCell.m in Sources */,
 				4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */,
