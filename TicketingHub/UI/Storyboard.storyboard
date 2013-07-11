@@ -176,7 +176,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhj-Za-1cP">
-                                <rect key="frame" x="38" y="433" width="692" height="158"/>
+                                <rect key="frame" x="38" y="383" width="692" height="158"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KyY-cN-iiY">
@@ -232,11 +232,10 @@
                         <color key="backgroundColor" red="0.36358598100344985" green="0.58270386485009662" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="IDO-Tg-YFO" firstAttribute="top" secondItem="Qhu-dC-Fvf" secondAttribute="top" constant="20" symbolic="YES" id="Apc-y3-frd"/>
-                            <constraint firstItem="IDO-Tg-YFO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Qhu-dC-Fvf" secondAttribute="top" constant="20" id="VoQ-92-Owi"/>
-                            <constraint firstAttribute="centerY" secondItem="lhj-Za-1cP" secondAttribute="centerY" id="Zrb-az-s0G"/>
                             <constraint firstItem="lhj-Za-1cP" firstAttribute="leading" secondItem="Qhu-dC-Fvf" secondAttribute="leading" constant="38" id="g7Y-t0-c1A"/>
-                            <constraint firstItem="lhj-Za-1cP" firstAttribute="centerX" secondItem="IDO-Tg-YFO" secondAttribute="centerX" id="hNg-WL-zzF"/>
+                            <constraint firstAttribute="centerY" secondItem="lhj-Za-1cP" secondAttribute="centerY" constant="50" id="pVJ-EF-YRD"/>
                             <constraint firstAttribute="centerX" secondItem="IDO-Tg-YFO" secondAttribute="centerX" id="tf3-cb-YgO"/>
+                            <constraint firstAttribute="centerX" secondItem="lhj-Za-1cP" secondAttribute="centerX" id="wDI-PJ-CYZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1Gc-Ww-6qP"/>
@@ -263,41 +262,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="266" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vYL-1t-XRn">
-                                <rect key="frame" x="0.0" y="955" width="266" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWl-ug-4Uk">
-                                        <rect key="frame" x="108" y="0.0" width="51" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Logout">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="logout:" destination="UZq-wc-4TA" eventType="touchUpInside" id="k2p-tE-jKa"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="TWl-ug-4Uk" secondAttribute="centerX" id="3Ew-2C-kYv"/>
-                                    <constraint firstAttribute="centerX" secondItem="TWl-ug-4Uk" secondAttribute="centerX" id="4EC-kb-YvP"/>
-                                    <constraint firstItem="TWl-ug-4Uk" firstAttribute="centerX" secondItem="vYL-1t-XRn" secondAttribute="centerX" id="I4h-0p-frR"/>
-                                    <constraint firstItem="TWl-ug-4Uk" firstAttribute="top" secondItem="vYL-1t-XRn" secondAttribute="top" id="sVC-wt-EWp"/>
-                                    <constraint firstAttribute="centerY" secondItem="TWl-ug-4Uk" secondAttribute="centerY" id="ve0-ju-Pg6"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="suw-Sn-fju">
-                                <rect key="frame" x="0.0" y="0.0" width="266" height="952"/>
+                                <rect key="frame" x="0.0" y="0.0" width="266" height="980"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="952" id="6aF-TE-nve"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="980" id="BYa-qw-GSM"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" textLabel="ww5-fY-QW6" style="IBUITableViewCellStyleDefault" id="jGl-gd-nHr">
@@ -323,18 +293,45 @@
                                     <outlet property="delegate" destination="UZq-wc-4TA" id="K5c-Qg-TbG"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vYL-1t-XRn">
+                                <rect key="frame" x="0.0" y="980" width="266" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWl-ug-4Uk">
+                                        <rect key="frame" x="108" y="0.0" width="51" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logout:" destination="UZq-wc-4TA" eventType="touchUpInside" id="k2p-tE-jKa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="TWl-ug-4Uk" firstAttribute="bottom" secondItem="vYL-1t-XRn" secondAttribute="bottom" id="dGl-x4-q2r"/>
+                                    <constraint firstAttribute="centerY" secondItem="TWl-ug-4Uk" secondAttribute="centerY" id="nDc-HZ-w5Y"/>
+                                    <constraint firstAttribute="centerX" secondItem="TWl-ug-4Uk" secondAttribute="centerX" id="nLe-9V-Htj"/>
+                                    <constraint firstAttribute="height" constant="44" id="xjC-ta-wIZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="suw-Sn-fju" firstAttribute="leading" secondItem="Tu6-K8-Nzc" secondAttribute="leading" id="EP4-mN-UJZ"/>
-                            <constraint firstItem="vYL-1t-XRn" firstAttribute="trailing" secondItem="Tu6-K8-Nzc" secondAttribute="trailing" id="F0y-o4-v1t"/>
-                            <constraint firstItem="vYL-1t-XRn" firstAttribute="bottom" secondItem="Tu6-K8-Nzc" secondAttribute="bottom" constant="-25" id="R2Y-Vc-eu3"/>
-                            <constraint firstItem="suw-Sn-fju" firstAttribute="top" secondItem="Tu6-K8-Nzc" secondAttribute="top" id="SzO-cp-qkV"/>
-                            <constraint firstItem="vYL-1t-XRn" firstAttribute="leading" secondItem="suw-Sn-fju" secondAttribute="leading" id="Ya7-yJ-IWq"/>
-                            <constraint firstItem="hcn-rF-iNJ" firstAttribute="top" secondItem="vYL-1t-XRn" secondAttribute="bottom" constant="25" id="dJ4-Ry-6jG"/>
-                            <constraint firstItem="vYL-1t-XRn" firstAttribute="top" secondItem="suw-Sn-fju" secondAttribute="bottom" constant="3" id="eE9-3W-vlQ"/>
-                            <constraint firstItem="vYL-1t-XRn" firstAttribute="trailing" secondItem="suw-Sn-fju" secondAttribute="trailing" id="mXa-Yw-MWS"/>
-                            <constraint firstItem="vYL-1t-XRn" firstAttribute="bottom" secondItem="Tu6-K8-Nzc" secondAttribute="bottom" constant="-25" id="tbd-cV-OfX"/>
+                            <constraint firstItem="hcn-rF-iNJ" firstAttribute="top" secondItem="vYL-1t-XRn" secondAttribute="bottom" id="4Wu-sb-Nww"/>
+                            <constraint firstItem="suw-Sn-fju" firstAttribute="top" secondItem="Tu6-K8-Nzc" secondAttribute="top" id="5Bd-1A-YBf"/>
+                            <constraint firstItem="suw-Sn-fju" firstAttribute="trailing" secondItem="Tu6-K8-Nzc" secondAttribute="trailing" id="8zP-gS-Opi"/>
+                            <constraint firstItem="suw-Sn-fju" firstAttribute="leading" secondItem="vYL-1t-XRn" secondAttribute="leading" id="dXI-pX-fPq"/>
+                            <constraint firstItem="vYL-1t-XRn" firstAttribute="bottom" secondItem="Tu6-K8-Nzc" secondAttribute="bottom" id="f7y-nN-Rxh"/>
+                            <constraint firstItem="vYL-1t-XRn" firstAttribute="leading" secondItem="Tu6-K8-Nzc" secondAttribute="leading" id="pcp-Y5-YEX"/>
+                            <constraint firstItem="vYL-1t-XRn" firstAttribute="trailing" secondItem="suw-Sn-fju" secondAttribute="trailing" id="rAJ-mZ-RGp"/>
+                            <constraint firstItem="vYL-1t-XRn" firstAttribute="top" secondItem="suw-Sn-fju" secondAttribute="bottom" id="tLj-ne-GKC"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>

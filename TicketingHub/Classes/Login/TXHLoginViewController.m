@@ -77,7 +77,12 @@
   [defaults setObject:self.userField.text forKey:LAST_USER];
   [defaults synchronize];
   
-  [[TXHServerAccessManager sharedInstance] getVenuesWithCompletionHandler:^(NSArray *venues){[self gotVenues:venues];} errorHandler:^(id reason){[self loginFailed:reason];}];
+  // We successfully logged in, so get a list of venues for this user
+  [[TXHServerAccessManager sharedInstance] getVenuesWithCompletionHandler:^(NSArray *venues){
+    NSLog(@"get venues:");
+    [self gotVenues:venues];
+  }
+                                                             errorHandler:^(id reason){[self loginFailed:reason];}];
 }
 
 - (void)gotVenues:(NSArray *)venues {
@@ -90,7 +95,8 @@
 }
 
 - (void)loginFailed:(id)reason {
-
+  NSError *error = reason;
+  NSLog(@"ERROR:%@", error.userInfo.description);
 }
 
 - (IBAction)editingChanged:(id)sender {

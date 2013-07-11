@@ -159,6 +159,7 @@
                               };
   downloader.completionHandler = ^(id data){
     NSDictionary *dict = data;
+    NSLog(@"getTokens:%@", dict.description);
     NSDictionary *payload = dict[@"payload"];
     NSDictionary *tokens = payload[@"data"];
     /*

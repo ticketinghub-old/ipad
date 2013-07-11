@@ -53,7 +53,7 @@
     }
   } else {
     NSError *error = nil;
-    NSData *payload = [NSJSONSerialization dataWithJSONObject:self.httpPOSTBody options:0 error:&error];
+    NSData *payload = [NSJSONSerialization dataWithJSONObject:self.httpPOSTBody options:NSJSONWritingPrettyPrinted error:&error];
     if (error) {
       NSLog(@"JSON parsing error with:%@", self.httpPOSTBody.description);
     }
@@ -74,8 +74,6 @@
   NSHTTPURLResponse *httpResponse;
   self.receivedData.length = 0;
   
-#pragma unused(connection)
-  
   assert(connection == self.connection);
   
   httpResponse = (NSHTTPURLResponse *) response;
@@ -88,6 +86,8 @@
     if (self.statusCode != 403) {
       self.errorString = httpResponse.allHeaderFields[@"Status"];
     }
+  } else {
+    NSLog(@"status:%@", httpResponse.allHeaderFields[@"Status"]);
   }
 }
 
@@ -98,12 +98,13 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 #pragma unused (connection)
+  NSLog(@"%s - data length:%d", __FUNCTION__, self.receivedData.length);
   NSMutableDictionary *dataPackage = [NSMutableDictionary dictionary];
   
   if (self.receivedData.length > 0) {
     id resultsData = [NSJSONSerialization
                       JSONObjectWithData:self.receivedData
-                      options:0
+                      options:NSJSONReadingMutableContainers
                       error:nil];
     if (([resultsData isKindOfClass:[NSDictionary class]]) || ([resultsData isKindOfClass:[NSArray class]])) {
       dataPackage[@"data"] = resultsData;
@@ -125,6 +126,7 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 #pragma unused (connection)
+  NSLog(@"%s - AN ERROR OCCURRED:%@", __FUNCTION__, error.userInfo.description);
   self.dataError = [error copy];
   [self cleanup];
   if (self.errorHandler) {

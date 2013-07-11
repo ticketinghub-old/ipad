@@ -112,8 +112,6 @@
   NSHTTPURLResponse *httpResponse;
   self.receivedData.length = 0;
 
-#pragma unused(connection)
-
   assert(connection == self.connection);
   
   httpResponse = (NSHTTPURLResponse *) response;
