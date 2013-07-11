@@ -14,8 +14,8 @@
 
 + (TXHServerAccessManager *)sharedInstance;
 
-- (void)getVenuesForAccessToken;
+- (void)getVenuesWithCompletionHandler:(void(^)(NSArray *))completion errorHandler:(void(^)(id))error;
 
-- (void)generateAccessTokenFor:(NSString *)user password:(NSString *)password;
+- (void)generateAccessTokenFor:(NSString *)user password:(NSString *)password completion:(void(^)())completion error:(void(^)(id))error;
 
 @end

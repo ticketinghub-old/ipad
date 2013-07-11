@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 
 #define VENUE_ID                      @"id"
-#define VENUE_BUSINESS_NAME           @"business_name"
+#define VENUE_BUSINESS_NAME           @"name"
 #define ADDRESS_STREET_1              @"street_1"
 #define ADDRESS_STREET_2              @"street_2"
 #define ADDRESS_CITY                  @"city"
 #define ADDRESS_REGION                @"region"
-#define ADDRESS_POSTAL_CODE           @"postal_code"
+#define ADDRESS_POSTAL_CODE           @"postcode"
 #define ADDRESS_COUNTRY               @"country"
 #define VENUE_LATITUDE                @"latitude"
 #define VENUE_LONGITUDE               @"longitude"
@@ -23,6 +23,7 @@
 #define VENUE_WEBSITE                 @"website"
 #define VENUE_EMAIL                   @"email"
 #define VENUE_TELEPHONE               @"telephone"
+#define VENUE_ESTABLISHMENT_TYPE      @"establishment_type"
 #define VENUE_STRIPE_PUBLISHABLE_KEY  @"stripe_publishable_key"
 
 
@@ -38,7 +39,7 @@
 "street_2",
 "city",
 "region",
-"postal_code",
+"postcode",
 "country",
 */
 
@@ -51,6 +52,8 @@
 @property (strong, nonatomic)   NSURL         *website;
 @property (strong, nonatomic)   NSString      *email;
 @property (strong, nonatomic)   NSString      *telephone;
+
+@property (strong, nonatomic)   NSString      *establishment_type;
 
 @property (strong, nonatomic)   NSString      *stripePublishableKey;
 

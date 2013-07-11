@@ -86,12 +86,12 @@
     [self.venuesList removeAllObjects];
   } else {
     // Login
-    // Get the venues list
-    [[TXHServerAccessManager sharedInstance] getVenuesForAccessToken];
+    [self generateToken];
   }
   
   [self.loginButton setTitle:self.isUserLoggedIn ? @"Logout" : @"Login" forState:UIControlStateNormal];
 }
+
 
 
 #pragma mark - TableView Datasource & Delegate methods
@@ -113,17 +113,44 @@
   return cell;
 }
 
-#pragma mark - Temporary code to generate tokens
-
-- (IBAction)generateToken:(id)sender {
-#pragma unused (sender)
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Generate Token"
-                                                  message:@"Enter Username & password"
+- (void)generateToken {
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login"
+                                                  message:@"Please enter your username & password"
                                                  delegate:self
                                         cancelButtonTitle:@"Cancel"
-                                        otherButtonTitles:@"Generate", nil];
+                                        otherButtonTitles:@"Login", nil];
   alert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
   [alert show];
+}
+
+- (void)getVenues {
+  [[TXHServerAccessManager sharedInstance] getVenuesWithCompletionHandler:^(NSArray *venues){
+    [self buildVenues:venues];
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [self.venuesTable reloadData];
+    });
+  }
+                                                             errorHandler:^(id reason){
+                                                               NSError *err = reason;
+                                                               NSLog(@"error: %@", err.description);
+                                                             }];
+}
+
+- (void)buildVenues:(NSArray *)venues {
+  [self.venuesList removeAllObjects];
+  for (NSDictionary *venueData in venues) {
+    TXHVenue *venue = [[TXHVenue alloc] initWithData:venueData];
+    if (venue != nil) {
+      [self.venuesList addObject:venue];
+    }
+  }
+}
+
+#pragma mark - AlertView Delegate Methods
+
+- (void)willPresentAlertView:(UIAlertView *)alertView {
+  UITextField *userField = [alertView textFieldAtIndex:0];
+  userField.text = @"mark_brindle@me.com";
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
@@ -132,7 +159,16 @@
     // Generate the token
     UITextField *userField = [alertView textFieldAtIndex:0];
     UITextField *passwordField = [alertView textFieldAtIndex:1];
-    [[TXHServerAccessManager sharedInstance] generateAccessTokenFor:userField.text password:passwordField.text];
+    [[TXHServerAccessManager sharedInstance] generateAccessTokenFor:userField.text
+                                                           password:passwordField.text
+                                                         completion: ^() {
+                                                           [self getVenues];
+                                                         }
+                                                              error:^(id reason) {
+                                                                NSError *err = reason;
+                                                                NSLog(@"error: %@", err.description);
+                                                              }];
   }
 }
+
 @end

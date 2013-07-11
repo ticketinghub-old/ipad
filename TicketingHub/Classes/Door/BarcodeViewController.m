@@ -69,6 +69,8 @@
 }
 
 - (void) captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)faces fromConnection:(AVCaptureConnection *)connection {
+#pragma unused (captureOutput)
+#pragma unused (connection)
   for (AVMetadataMachineReadableCodeObject *object in faces) {
     NSLog(@"Found barcode: %@: %@", object.type, object.stringValue);
   }

@@ -105,7 +105,7 @@
                       JSONObjectWithData:self.receivedData
                       options:0
                       error:nil];
-    if ([resultsData isKindOfClass:[NSDictionary class]]) {
+    if (([resultsData isKindOfClass:[NSDictionary class]]) || ([resultsData isKindOfClass:[NSArray class]])) {
       dataPackage[@"data"] = resultsData;
     } else {
       NSString *resultString = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];

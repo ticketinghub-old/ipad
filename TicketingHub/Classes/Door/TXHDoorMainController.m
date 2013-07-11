@@ -31,12 +31,17 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueSelected:) name:@"venueSelected" object:nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -57,6 +62,10 @@
   // When there's a model - update it & let the model handle notifications
   NSDate *now = [NSDate date];
   [[NSNotificationCenter defaultCenter] postNotificationName:doorDateSelected object:now];
+}
+
+- (void)venueSelected:(NSNotification *)notification {
+  [[NSNotificationCenter defaultCenter] postNotificationName:TOGGLE_MENU object:nil];
 }
 
 @end

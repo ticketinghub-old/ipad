@@ -20,9 +20,13 @@
 		4DA05FAB178C2430005161E6 /* TXHVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FAA178C2430005161E6 /* TXHVenue.m */; };
 		4DA05FAE178C30E6005161E6 /* TXHVenueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FAD178C30E6005161E6 /* TXHVenueCell.m */; };
 		4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */; };
+		4DA05FB4178D803A005161E6 /* TXHMainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB3178D7F8E005161E6 /* TXHMainTabViewController.m */; };
+		4DA05FB8178D8DAC005161E6 /* TXHMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB7178D8DAC005161E6 /* TXHMenuViewController.m */; };
+		4DA05FBB178D8F31005161E6 /* TXHMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FBA178D8F31005161E6 /* TXHMenuController.m */; };
 		4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */; };
 		4DF3B5C11770AE6800D657AB /* TXHDatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5C01770AE6800D657AB /* TXHDatePickerController.m */; };
 		4DF3B5C41771ABE400D657AB /* RKMCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5C31771ABE400D657AB /* RKMCalendarView.m */; };
+		4DFB1009178DB693006923F7 /* TXHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFB1008178DB693006923F7 /* TXHLoginViewController.m */; };
 		581560CD1765D38A005C20EA /* TXHFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 581560CA1765D38A005C20EA /* TXHFlowLayout.m */; };
 		581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 581560CC1765D38A005C20EA /* TXHDoorDateCell.m */; };
 		581560D11765DAB3005C20EA /* TXHDoorDateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581560D01765DAB3005C20EA /* TXHDoorDateController.m */; };
@@ -88,12 +92,20 @@
 		4DA05FAD178C30E6005161E6 /* TXHVenueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVenueCell.m; sourceTree = "<group>"; };
 		4DA05FAF178C367F005161E6 /* TXHServerAccessManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHServerAccessManager.h; sourceTree = "<group>"; };
 		4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHServerAccessManager.m; sourceTree = "<group>"; };
+		4DA05FB2178D7F8E005161E6 /* TXHMainTabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHMainTabViewController.h; sourceTree = "<group>"; };
+		4DA05FB3178D7F8E005161E6 /* TXHMainTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TXHMainTabViewController.m; sourceTree = "<group>"; };
+		4DA05FB6178D8DAC005161E6 /* TXHMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMenuViewController.h; sourceTree = "<group>"; };
+		4DA05FB7178D8DAC005161E6 /* TXHMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMenuViewController.m; sourceTree = "<group>"; };
+		4DA05FB9178D8F31005161E6 /* TXHMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMenuController.h; sourceTree = "<group>"; };
+		4DA05FBA178D8F31005161E6 /* TXHMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMenuController.m; sourceTree = "<group>"; };
 		4DF3B5BC177082FF00D657AB /* TXHDoorMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorMainController.h; sourceTree = "<group>"; };
 		4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorMainController.m; sourceTree = "<group>"; };
 		4DF3B5BF1770AE6800D657AB /* TXHDatePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDatePickerController.h; sourceTree = "<group>"; };
 		4DF3B5C01770AE6800D657AB /* TXHDatePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDatePickerController.m; sourceTree = "<group>"; };
 		4DF3B5C21771ABE400D657AB /* RKMCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKMCalendarView.h; sourceTree = "<group>"; };
 		4DF3B5C31771ABE400D657AB /* RKMCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKMCalendarView.m; sourceTree = "<group>"; };
+		4DFB1007178DB693006923F7 /* TXHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHLoginViewController.h; sourceTree = "<group>"; };
+		4DFB1008178DB693006923F7 /* TXHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHLoginViewController.m; sourceTree = "<group>"; };
 		581560C91765D38A005C20EA /* TXHFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHFlowLayout.h; sourceTree = "<group>"; };
 		581560CA1765D38A005C20EA /* TXHFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHFlowLayout.m; sourceTree = "<group>"; };
 		581560CB1765D38A005C20EA /* TXHDoorDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorDateCell.h; sourceTree = "<group>"; };
@@ -174,6 +186,17 @@
 				4D0E5130178C0BBC009436AC /* TXHDataDownloader.m */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		4DA05FB5178D8D85005161E6 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				4DA05FB6178D8DAC005161E6 /* TXHMenuViewController.h */,
+				4DA05FB7178D8DAC005161E6 /* TXHMenuViewController.m */,
+				4DA05FB9178D8F31005161E6 /* TXHMenuController.h */,
+				4DA05FBA178D8F31005161E6 /* TXHMenuController.m */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		5860E85917633C990046DFD3 /* Assets */ = {
@@ -279,6 +302,7 @@
 		58E4FB971760D3C800E328A0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4DA05FB5178D8D85005161E6 /* Menu */,
 				4D25F643176CE54000A60359 /* Common */,
 				58E4FB991760D3C800E328A0 /* Door */,
 				58E4FB9A1760D3C800E328A0 /* FirstScreen */,
@@ -327,6 +351,8 @@
 				58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */,
 				4DA05FAC178C30E6005161E6 /* TXHVenueCell.h */,
 				4DA05FAD178C30E6005161E6 /* TXHVenueCell.m */,
+				4DA05FB2178D7F8E005161E6 /* TXHMainTabViewController.h */,
+				4DA05FB3178D7F8E005161E6 /* TXHMainTabViewController.m */,
 			);
 			path = FirstScreen;
 			sourceTree = "<group>";
@@ -336,6 +362,8 @@
 			children = (
 				4D80B9A3178ABEA4002A71C8 /* LoginAuthorisation.h */,
 				4D80B9A4178ABEA4002A71C8 /* LoginAuthorisation.m */,
+				4DFB1007178DB693006923F7 /* TXHLoginViewController.h */,
+				4DFB1008178DB693006923F7 /* TXHLoginViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -477,18 +505,22 @@
 				4D68DAA6178AE9E300743227 /* TXHOptionsExtrasItem.m in Sources */,
 				4D25F648176CF08000A60359 /* TXHDoorGroupController.m in Sources */,
 				4D68DA9D178AD5F600743227 /* TXHSalesMainViewController.m in Sources */,
+				4DA05FB8178D8DAC005161E6 /* TXHMenuViewController.m in Sources */,
 				4DA05FAE178C30E6005161E6 /* TXHVenueCell.m in Sources */,
 				581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */,
 				581560D11765DAB3005C20EA /* TXHDoorDateController.m in Sources */,
+				4DA05FBB178D8F31005161E6 /* TXHMenuController.m in Sources */,
 				581560D41765E0DE005C20EA /* TXHTimeCell.m in Sources */,
 				4DA05FAB178C2430005161E6 /* TXHVenue.m in Sources */,
 				4D68DAA9178B096A00743227 /* BarcodeViewController.m in Sources */,
 				581560D71765E150005C20EA /* TXHGroupCell.m in Sources */,
 				4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */,
+				4DA05FB4178D803A005161E6 /* TXHMainTabViewController.m in Sources */,
 				4D80B9A5178ABEA4002A71C8 /* LoginAuthorisation.m in Sources */,
 				4DF3B5C11770AE6800D657AB /* TXHDatePickerController.m in Sources */,
 				4DF3B5C41771ABE400D657AB /* RKMCalendarView.m in Sources */,
 				4D68DAA0178AE3A100743227 /* TXHSalesOptionsViewController.m in Sources */,
+				4DFB1009178DB693006923F7 /* TXHLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +644,11 @@
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "543D6DE1-27F3-4C7C-ACC8-1E4727024053";
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Wno-auto-import",
+					"-Wno-objc-missing-property-synthesis",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -626,6 +663,11 @@
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "543D6DE1-27F3-4C7C-ACC8-1E4727024053";
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Wno-auto-import",
+					"-Wno-objc-missing-property-synthesis",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
