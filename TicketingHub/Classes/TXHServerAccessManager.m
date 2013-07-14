@@ -10,7 +10,8 @@
 #import "TXHDataDownloader.h"
 #import "TXHVenue.h"
 
-#define TICKETINGHUB_API @"https://api.ticketingHub.com"
+#define TICKETINGHUB_AUTH @"https://api.ticketinghub.com/oauth"
+#define TICKETINGHUB_API  @"https://api.ticketingHub.com"
 
 @interface TXHServerAccessManager ()
 
@@ -151,11 +152,13 @@
 - (void)generateAccessTokenFor:(NSString *)user password:(NSString *)password completion:(void (^)())completion error:(void (^)(id))error {
   TXHDataDownloader *downloader = [[TXHDataDownloader alloc] initWithOwner:self];
   downloader.methodType = @"POST";
-  downloader.urlString = [NSString stringWithFormat:@"%@/tokens", TICKETINGHUB_API];
+  downloader.urlString = [NSString stringWithFormat:@"%@/token", TICKETINGHUB_AUTH];
   downloader.httpPOSTBody = @{
-                              @"grant_type" : @"password",
-                              @"username" : user,
-                              @"password" : password
+                              @"grant_type"     : @"password",
+                              @"username"       : user,
+                              @"password"       : password,
+                              @"client_id"      : @"ca99032b750f829630d8c9272bb9d3d6696b10f5bddfc34e4b7610eb772d28e7",
+                              @"client_secret"  : @"f9ce1f4e1c74cc38707e15c0a4286975898fbaaf81e6ec900c71b8f4af62d09d",
                               };
   downloader.completionHandler = ^(id data){
     NSDictionary *dict = data;
@@ -163,12 +166,12 @@
     NSDictionary *payload = dict[@"payload"];
     NSDictionary *tokens = payload[@"data"];
     /*
-     On success (i.e. status=200, we should get back payload data containing
+     On success (i.e. status=200, we should get back payload data containing parameters as follows
      {
-     "access_token": "flydy1m16chf2Zj47Emdtw",
-     "refresh_token": "aBaoEyxiYhFccmPQgQpB_qbFUfdG_P3gfwscTV71jLs",
-     "expires_in": 3600,
-     "token_type": "bearer"
+     "access_token" = "flydy1m16chf2Zj47Emdtw";
+     "expires_in" = 3600;
+     "refresh_token" = "aBaoEyxiYhFccmPQgQpB_qbFUfdG_P3gfwscTV71jLs";
+     "token_type" = "bearer";
      }
      */
     self.accessToken = tokens[@"access_token"];

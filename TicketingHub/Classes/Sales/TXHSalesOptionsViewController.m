@@ -10,6 +10,8 @@
 #import "TXHSalesOptionsCell.h"
 #import "TXHOptionsExtrasItem.h"
 
+#define TIER_SECTION 0
+
 @interface TXHSalesOptionsViewController ()
 
 @property (strong, nonatomic) NSMutableArray *options;
@@ -70,6 +72,16 @@
   
   // Return the number of rows in the section.
   return self.options.count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+#pragma unused (tableView)
+  switch (section) {
+    case TIER_SECTION:
+      return NSLocalizedString(@"Ticket tier type", @"Ticket tier type");
+    default:
+      return nil;
+  }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

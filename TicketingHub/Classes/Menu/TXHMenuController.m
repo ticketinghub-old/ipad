@@ -59,6 +59,18 @@
   return venueCount;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+#pragma unused (tableView)
+#pragma unused (section)
+  return 64.0f;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+#pragma unused (tableView)
+#pragma unused (section)
+  return NSLocalizedString(@"VENUES", @"Venues");
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   static NSString *CellIdentifier = @"cellID";

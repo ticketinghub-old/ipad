@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4471.1" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mja-t1-MrX">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
+        <deployment version="1792" defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3697.3"/>
     </dependencies>
     <scenes>
@@ -96,6 +96,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="266" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="266" id="97v-Qr-hc4"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="UZq-wc-4TA" kind="embed" id="csm-sF-m76"/>
                                 </connections>
@@ -104,6 +107,9 @@
                                 <rect key="frame" x="266" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="768" id="Luo-LN-xQb"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="mAK-Hy-xwL" kind="embed" id="s0H-Bp-rku"/>
                                 </connections>
@@ -111,14 +117,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Wmp-vt-FSg" firstAttribute="top" secondItem="KSo-1q-BaS" secondAttribute="top" id="13k-8k-OcF"/>
-                            <constraint firstItem="Wmp-vt-FSg" firstAttribute="top" secondItem="eyX-1C-JWw" secondAttribute="top" id="6Mj-G8-Idt"/>
-                            <constraint firstAttribute="trailing" secondItem="KSo-1q-BaS" secondAttribute="trailing" constant="-266" id="8mw-Ub-nWX"/>
-                            <constraint firstItem="Wmp-vt-FSg" firstAttribute="bottom" secondItem="eyX-1C-JWw" secondAttribute="bottom" id="Ejz-RE-TtS"/>
-                            <constraint firstItem="KSo-1q-BaS" firstAttribute="bottom" secondItem="Wmp-vt-FSg" secondAttribute="bottom" id="Rvy-KZ-2dc"/>
-                            <constraint firstItem="KSo-1q-BaS" firstAttribute="leading" secondItem="Wmp-vt-FSg" secondAttribute="trailing" id="f9A-6c-u3e"/>
-                            <constraint firstItem="Wmp-vt-FSg" firstAttribute="leading" secondItem="eyX-1C-JWw" secondAttribute="leading" id="pxT-qY-wMp"/>
-                            <constraint firstItem="KSo-1q-BaS" firstAttribute="leading" secondItem="eyX-1C-JWw" secondAttribute="leading" constant="266" id="uBT-hy-ifJ"/>
+                            <constraint firstItem="2bN-Cv-9m0" firstAttribute="top" secondItem="KSo-1q-BaS" secondAttribute="bottom" id="90g-kF-mnj"/>
+                            <constraint firstItem="2bN-Cv-9m0" firstAttribute="top" secondItem="Wmp-vt-FSg" secondAttribute="bottom" id="ASu-Ir-ckG"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KSo-1q-BaS" secondAttribute="trailing" constant="-266" id="LWW-sN-Tzj"/>
+                            <constraint firstItem="Wmp-vt-FSg" firstAttribute="leading" secondItem="eyX-1C-JWw" secondAttribute="leading" id="X83-0Q-40g"/>
+                            <constraint firstItem="KSo-1q-BaS" firstAttribute="top" secondItem="eyX-1C-JWw" secondAttribute="top" id="kdO-eH-S3O"/>
+                            <constraint firstItem="Wmp-vt-FSg" firstAttribute="top" secondItem="eyX-1C-JWw" secondAttribute="top" id="vgq-bc-Wbc"/>
+                            <constraint firstItem="KSo-1q-BaS" firstAttribute="leading" secondItem="Wmp-vt-FSg" secondAttribute="trailing" id="wYj-YW-5d6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Sgb-FM-yxy">
@@ -263,11 +268,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="suw-Sn-fju">
-                                <rect key="frame" x="0.0" y="0.0" width="266" height="980"/>
+                                <rect key="frame" x="0.0" y="0.0" width="266" height="968"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="980" id="BYa-qw-GSM"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="969" id="BYa-qw-GSM"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" textLabel="ww5-fY-QW6" style="IBUITableViewCellStyleDefault" id="jGl-gd-nHr">
@@ -294,11 +299,11 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vYL-1t-XRn">
-                                <rect key="frame" x="0.0" y="980" width="266" height="44"/>
+                                <rect key="frame" x="0.0" y="968" width="266" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWl-ug-4Uk">
-                                        <rect key="frame" x="108" y="0.0" width="51" height="44"/>
+                                        <rect key="frame" x="108" y="0.0" width="51" height="56"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Logout">
@@ -315,10 +320,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="TWl-ug-4Uk" secondAttribute="centerY" id="7qB-Da-TJF"/>
                                     <constraint firstItem="TWl-ug-4Uk" firstAttribute="bottom" secondItem="vYL-1t-XRn" secondAttribute="bottom" id="dGl-x4-q2r"/>
                                     <constraint firstAttribute="centerY" secondItem="TWl-ug-4Uk" secondAttribute="centerY" id="nDc-HZ-w5Y"/>
                                     <constraint firstAttribute="centerX" secondItem="TWl-ug-4Uk" secondAttribute="centerX" id="nLe-9V-Htj"/>
-                                    <constraint firstAttribute="height" constant="44" id="xjC-ta-wIZ"/>
+                                    <constraint firstAttribute="height" constant="56" id="xjC-ta-wIZ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -327,6 +333,7 @@
                             <constraint firstItem="hcn-rF-iNJ" firstAttribute="top" secondItem="vYL-1t-XRn" secondAttribute="bottom" id="4Wu-sb-Nww"/>
                             <constraint firstItem="suw-Sn-fju" firstAttribute="top" secondItem="Tu6-K8-Nzc" secondAttribute="top" id="5Bd-1A-YBf"/>
                             <constraint firstItem="suw-Sn-fju" firstAttribute="trailing" secondItem="Tu6-K8-Nzc" secondAttribute="trailing" id="8zP-gS-Opi"/>
+                            <constraint firstItem="vYL-1t-XRn" firstAttribute="top" secondItem="suw-Sn-fju" secondAttribute="bottom" id="GCV-mA-MND"/>
                             <constraint firstItem="suw-Sn-fju" firstAttribute="leading" secondItem="vYL-1t-XRn" secondAttribute="leading" id="dXI-pX-fPq"/>
                             <constraint firstItem="vYL-1t-XRn" firstAttribute="bottom" secondItem="Tu6-K8-Nzc" secondAttribute="bottom" id="f7y-nN-Rxh"/>
                             <constraint firstItem="vYL-1t-XRn" firstAttribute="leading" secondItem="Tu6-K8-Nzc" secondAttribute="leading" id="pcp-Y5-YEX"/>

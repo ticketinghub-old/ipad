@@ -82,6 +82,9 @@
   
   self.statusCode = [httpResponse statusCode];
   if ((httpResponse.statusCode / 100) != 2) {
+    if (self.statusCode == 401) {
+      // Attempt to refresh the token - if it still returns a 401 then go back to login screen.
+    }
     // We got an error - if it's a 403 we should receive data; otherwise trigger a response error
     if (self.statusCode != 403) {
       self.errorString = httpResponse.allHeaderFields[@"Status"];
