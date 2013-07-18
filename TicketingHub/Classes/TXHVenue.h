@@ -8,24 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#define VENUE_ID                      @"id"
-#define VENUE_BUSINESS_NAME           @"name"
-#define ADDRESS_STREET_1              @"street_1"
-#define ADDRESS_STREET_2              @"street_2"
-#define ADDRESS_CITY                  @"city"
-#define ADDRESS_REGION                @"region"
-#define ADDRESS_POSTAL_CODE           @"postcode"
-#define ADDRESS_COUNTRY               @"country"
-#define VENUE_LATITUDE                @"latitude"
-#define VENUE_LONGITUDE               @"longitude"
-#define VENUE_CURRENCY                @"currency"
-#define VENUE_TIME_ZONE               @"time_zone"
-#define VENUE_WEBSITE                 @"website"
-#define VENUE_EMAIL                   @"email"
-#define VENUE_TELEPHONE               @"telephone"
-#define VENUE_ESTABLISHMENT_TYPE      @"establishment_type"
-#define VENUE_STRIPE_PUBLISHABLE_KEY  @"stripe_publishable_key"
-
+@class TXHSeason;
+@class TXHVariation;
 
 @interface TXHVenue : NSObject
 
@@ -33,15 +17,10 @@
 
 @property (strong, nonatomic)   NSString      *businessName;
 
+// A contract can be suspended (or inactive) in which case selecting the venue results in an error
+@property (strong, nonatomic)   NSDictionary  *contract;
+
 @property (strong, nonatomic)   NSDictionary  *address;
-/*
-"street_1",
-"street_2",
-"city",
-"region",
-"postcode",
-"country",
-*/
 
 @property (strong, nonatomic)   NSNumber      *latitude;
 @property (strong, nonatomic)   NSNumber      *longitude;
@@ -53,10 +32,16 @@
 @property (strong, nonatomic)   NSString      *email;
 @property (strong, nonatomic)   NSString      *telephone;
 
-@property (strong, nonatomic)   NSString      *establishment_type;
+@property (strong, nonatomic)   NSString      *establishmentType;
 
 @property (strong, nonatomic)   NSString      *stripePublishableKey;
 
+@property (readonly, nonatomic) TXHSeason     *currentSeason;
+@property (readonly, nonatomic) TXHVariation  *currentVariation;
+
 - (id)initWithData:(NSDictionary *)data;
+
+- (void)addSeasonData:(NSArray *)seasonData;
+- (void)addVariationData:(NSArray *)variationData;
 
 @end

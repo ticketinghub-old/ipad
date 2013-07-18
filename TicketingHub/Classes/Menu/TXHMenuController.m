@@ -7,6 +7,7 @@
 //
 
 #import "TXHMenuController.h"
+#import "TXHCommonNames.h"
 #import "TXHServerAccessManager.h"
 #import "TXHVenue.h"
 
@@ -17,7 +18,6 @@
 @end
 
 @implementation TXHMenuController
-
 
 - (void)viewDidLoad
 {
@@ -85,7 +85,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma unused (tableView)
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"venueSelected" object:[self.venues objectAtIndex:indexPath.row]];
+  TXHVenue *venue = [self.venues objectAtIndex:indexPath.row];
+  [[NSNotificationCenter defaultCenter] postNotificationName:VENUE_SELECTED object:venue];
 }
 
 /*

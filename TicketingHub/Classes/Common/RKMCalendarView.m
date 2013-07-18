@@ -42,7 +42,9 @@
     selectedDateImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"firework.png"]];
     [self addSubview:selectedDateImageView];
     dayLabel = [[UILabel alloc] initWithFrame:frame];
-    [dayLabel setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
+    UIViewAutoresizing resizing = UIViewAutoresizingFlexibleWidth;
+    resizing = resizing | UIViewAutoresizingFlexibleHeight;
+    [dayLabel setAutoresizingMask:resizing];
     [dayLabel setTextAlignment:NSTextAlignmentCenter];
     [dayLabel setAdjustsFontSizeToFitWidth:YES];
     [dayLabel setBackgroundColor:[UIColor lightGrayColor]];

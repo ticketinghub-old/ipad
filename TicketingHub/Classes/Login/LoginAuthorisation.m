@@ -69,10 +69,7 @@
   self.ticketingHubAPI            = @"https://api.ticketingHub.com";
   
   self.clientId                   = @"rmwz93ixi5kos7t0b4gb1x59emyfstx";
-  self.username                   = @"";
-  
-  // Fixed for prototyping purposes 
-  _accessToken = @"-AhfMlNIR7_UQpYvMP4Yfw";
+  self.username                   = @"";  
 }
 
 - (NSString *)encodeToPercentEscapeString:(NSString *)string {

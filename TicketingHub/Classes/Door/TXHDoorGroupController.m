@@ -78,7 +78,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#pragma unused (tableView, section)
+#pragma unused (tableView)
   // Return the number of rows in the section.
   if (self.timeSpan.length > 0) {
     return section + 2;

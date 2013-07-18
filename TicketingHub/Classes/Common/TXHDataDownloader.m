@@ -119,6 +119,7 @@
   }
 
   NSDictionary *payload = @{@"payload": dataPackage};
+  NSLog(@"payload:%@", payload.description);
   
   [self cleanup];
 

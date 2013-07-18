@@ -31,7 +31,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueSelected:) name:@"venueSelected" object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueSelected:) name:VENUE_UPDATED object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,7 +65,8 @@
 }
 
 - (void)venueSelected:(NSNotification *)notification {
-  [[NSNotificationCenter defaultCenter] postNotificationName:TOGGLE_MENU object:nil];
+#pragma unused (notification)
+//  [[NSNotificationCenter defaultCenter] postNotificationName:TOGGLE_MENU object:nil];
 }
 
 @end

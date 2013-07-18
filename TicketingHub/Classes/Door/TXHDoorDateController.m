@@ -73,7 +73,8 @@
   for (int i = 0; i < 14; i++) {
      interval = i * 24 * 60 * 60;
     NSDate *cellDate = [NSDate dateWithTimeIntervalSinceNow:interval];
-    NSDateComponents *comps = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:cellDate];
+    NSUInteger unitComponents = NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit;
+    NSDateComponents *comps = [[NSCalendar currentCalendar] components:unitComponents fromDate:cellDate];
     [self.dates addObject:[[NSCalendar currentCalendar] dateFromComponents:comps]];
   }
 }

@@ -17,7 +17,14 @@
 // A key for the last user who logged in; stored in NSUserDefaults
 #define LAST_USER @"lastUser"
 
-// Name for notifications between TXHMainTabViewController menu button and TXHMenuViewController
-#define TOGGLE_MENU      @"toggleMenu"
+// Name for notifications dispatched by TXHMenuViewController
+#define TOGGLE_MENU     @"toggleMenu"
+#define VENUE_SELECTED  @"venueSelected"
+
+// Names for notifications dispatched by TXHServerAccessManager
+#define VENUE_UPDATED @"venueUpdated"
+
+// Names for notifications dispatched by TXHSalesCalendarController
+#define TIMESLOT_SELECTED @"timeslotSelected"
 
 #endif

@@ -8,14 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
+@class TXHVenue;
+@class TXHTimeSlot;
+
 @interface TXHServerAccessManager : NSObject
 
-@property (strong, nonatomic) NSArray *venues;
+@property (readonly, nonatomic) TXHVenue  *currentVenue;
+@property (strong, nonatomic)   NSArray   *venues;
 
 + (TXHServerAccessManager *)sharedInstance;
 
+- (void)generateAccessTokenFor:(NSString *)user password:(NSString *)password completion:(void(^)())completion error:(void(^)(id))error;
+
 - (void)getVenuesWithCompletionHandler:(void(^)(NSArray *))completion errorHandler:(void(^)(id))error;
 
-- (void)generateAccessTokenFor:(NSString *)user password:(NSString *)password completion:(void(^)())completion error:(void(^)(id))error;
+- (NSArray *)timeSlotsFor:(NSDate *)date;
+
+- (void)getTicketOptionsForTimeSlot:(TXHTimeSlot *)timeslot completionHandler:(void(^)(NSArray *))completion errorHandler:(void(^)(id))error;
+
 
 @end

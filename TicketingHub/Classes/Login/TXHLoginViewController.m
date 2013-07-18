@@ -10,6 +10,10 @@
 #import "TXHCommonNames.h"
 #import "TXHServerAccessManager.h"
 
+@interface UIAlertView (myView)
+
+@end
+
 @interface TXHLoginViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *userField;
@@ -86,12 +90,19 @@
 }
 
 - (void)gotVenues:(NSArray *)venues {
-#pragma unused (venues)
-  UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
-  UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
-  UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-  [window setRootViewController:navController];
-  [window makeKeyAndVisible];
+  // If there are no venues, display a message to the user and do not leave the login page
+  if (venues.count == 0) {
+    // Warn user that they cannot proceed
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Venues" message:@"You do not have access to any venues." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [alert setaccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tickethub"]]];
+    [alert show];
+  } else {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
+    UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    [window setRootViewController:navController];
+    [window makeKeyAndVisible];
+  }
 }
 
 - (void)loginFailed:(id)reason {

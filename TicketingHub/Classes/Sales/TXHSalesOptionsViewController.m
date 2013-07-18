@@ -7,8 +7,11 @@
 //
 
 #import "TXHSalesOptionsViewController.h"
+#import "TXHCommonNames.h"
+#import "TXHServerAccessManager.h"
 #import "TXHSalesOptionsCell.h"
 #import "TXHOptionsExtrasItem.h"
+#import "TXHTimeSlot.h"
 
 #define TIER_SECTION 0
 
@@ -48,6 +51,8 @@
     item.currencyCode = @"EUR";
     [self.options addObject:item];
   }
+  
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeslotSelected:) name:TIMESLOT_SELECTED object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -145,5 +150,12 @@
 }
 
  */
+
+#pragma mark - Notifications
+
+- (void)timeslotSelected:(NSNotification *)notification {
+  TXHTimeSlot *timeSlot = notification.object;
+//  [[TXHServerAccessManager sharedInstance] getTicketOptionsFor:timeSlot];
+}
 
 @end
