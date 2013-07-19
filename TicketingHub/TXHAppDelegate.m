@@ -7,6 +7,8 @@
 //
 
 #import "TXHAppDelegate.h"
+#import "TXHLoginViewController.h"
+#import "TXHMenuViewController.h"
 
 @implementation TXHAppDelegate
 
@@ -16,7 +18,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-#pragma unused (application, launchOptions)
+#pragma unused (launchOptions)
+  
+  // We want a light status bar style as the launch screen and nav bars are dark
+  application.statusBarStyle = UIStatusBarStyleLightContent;
+  
   return YES;
 }
 

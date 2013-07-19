@@ -8,17 +8,17 @@
 
 #import "TXHTicketDetails.h"
 
-#define TICKETTYPE_DATE         @"date"
-#define TICKETTYPE_TIME         @"time"
-#define TICKETTYPE_DURATION     @"duration"
-#define TICKETTYPE_LIMIT        @"limit"
-#define TICKETTYPE_TIERS        @"tiers"
-#define TICKETTYPE_ID           @"id"
-#define TICKETTYPE_NAME         @"name"
-#define TICKETTYPE_DESCRIPTION  @"description"
-#define TICKETTYPE_COMMMISSION  @"commission"
-#define TICKETTYPE_PRICE        @"price"
-#define TICKETTYPE_SIZE         @"size"
+static NSString* const TICKETTYPE_DATE =        @"date";
+static NSString* const TICKETTYPE_TIME =        @"time";
+static NSString* const TICKETTYPE_DURATION =    @"duration";
+static NSString* const TICKETTYPE_LIMIT =       @"limit";
+static NSString* const TICKETTYPE_TIERS =       @"tiers";
+static NSString* const TICKETTYPE_ID =          @"id";
+static NSString* const TICKETTYPE_NAME =        @"name";
+static NSString* const TICKETTYPE_DESCRIPTION = @"description";
+static NSString* const TICKETTYPE_COMMMISSION = @"commission";
+static NSString* const TICKETTYPE_PRICE =       @"price";
+static NSString* const TICKETTYPE_SIZE =        @"size";
 
 @implementation TXHTicketDetails
 

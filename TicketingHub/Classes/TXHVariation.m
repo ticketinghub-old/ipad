@@ -8,12 +8,13 @@
 
 #import "TXHVariation.h"
 
-#define VARIATION_DATE      @"date"
-#define VARIATION_REFERENCE @"reference"
-#define VARIATION_OPTIONS   @"options"
-#define VARIATION_TIME      @"time"
-#define VARIATION_DURATION  @"duration"
-#define VARIATION_TITLE     @"title"
+
+static NSString* const VARIATION_DATE =       @"date";
+static NSString* const VARIATION_REFERENCE =  @"reference";
+static NSString* const VARIATION_OPTIONS =    @"options";
+static NSString* const VARIATION_TIME =       @"time";
+static NSString* const VARIATION_DURATION =   @"duration";
+static NSString* const VARIATION_TITLE =      @"title";
 
 @implementation TXHVariationOption
 

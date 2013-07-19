@@ -9,11 +9,11 @@
 #import "TXHSeason.h"
 #import "TXHTimeFormatter.h"
 
-#define SEASON_START    @"starts_on"
-#define SEASON_END      @"ends_on"
-#define SEASON_OPTIONS  @"options"
-#define SEASON_WEEK_DAY @"wday"
-#define SEASON_TIME     @"time"
+static NSString* const SEASON_START =     @"starts_on";
+static NSString* const SEASON_END =       @"ends_on";
+static NSString* const SEASON_OPTIONS =   @"options";
+static NSString* const SEASON_WEEK_DAY =  @"wday";
+static NSString* const SEASON_TIME =      @"time";
 
 @implementation TXHSeasonOption
 

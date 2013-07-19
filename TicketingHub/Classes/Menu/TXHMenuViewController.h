@@ -13,6 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIView *menuContainer;
 @property (weak, nonatomic) IBOutlet UIView *tabContainer;
 
-@property (readwrite, nonatomic) CGFloat menuWidth;
+- (IBAction)mySegueHandler:(UIStoryboardSegue *)sender;
 
 @end

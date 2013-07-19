@@ -13,23 +13,23 @@
 #import "TXHSeason.h"
 #import "TXHVariation.h"
 
-#define VENUE_ID                      @"id"
-#define VENUE_BUSINESS_NAME           @"name"
-#define ADDRESS_STREET_1              @"street_1"
-#define ADDRESS_STREET_2              @"street_2"
-#define ADDRESS_CITY                  @"city"
-#define ADDRESS_REGION                @"region"
-#define ADDRESS_POSTAL_CODE           @"postcode"
-#define ADDRESS_COUNTRY               @"country"
-#define VENUE_LATITUDE                @"latitude"
-#define VENUE_LONGITUDE               @"longitude"
-#define VENUE_CURRENCY                @"currency"
-#define VENUE_TIME_ZONE               @"time_zone"
-#define VENUE_WEBSITE                 @"website"
-#define VENUE_EMAIL                   @"email"
-#define VENUE_TELEPHONE               @"telephone"
-#define VENUE_ESTABLISHMENT_TYPE      @"establishment_type"
-#define VENUE_STRIPE_PUBLISHABLE_KEY  @"stripe_publishable_key"
+static NSString* const  VENUE_ID =                      @"id";
+static NSString* const  VENUE_BUSINESS_NAME =           @"name";
+static NSString* const  ADDRESS_STREET_1 =              @"street_1";
+static NSString* const  ADDRESS_STREET_2 =              @"street_2";
+static NSString* const  ADDRESS_CITY =                  @"city";
+static NSString* const  ADDRESS_REGION =                @"region";
+static NSString* const  ADDRESS_POSTAL_CODE =           @"postcode";
+static NSString* const  ADDRESS_COUNTRY =               @"country";
+static NSString* const  VENUE_LATITUDE =                @"latitude";
+static NSString* const  VENUE_LONGITUDE =               @"longitude";
+static NSString* const  VENUE_CURRENCY =                @"currency";
+static NSString* const  VENUE_TIME_ZONE =               @"time_zone";
+static NSString* const  VENUE_WEBSITE =                 @"website";
+static NSString* const  VENUE_EMAIL =                   @"email";
+static NSString* const  VENUE_TELEPHONE =               @"telephone";
+static NSString* const  VENUE_ESTABLISHMENT_TYPE =      @"establishment_type";
+static NSString* const  VENUE_STRIPE_PUBLISHABLE_KEY =  @"stripe_publishable_key";
 
 @interface TXHVenue ()
 

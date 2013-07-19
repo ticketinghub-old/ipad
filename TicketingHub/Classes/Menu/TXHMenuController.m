@@ -13,6 +13,7 @@
 
 @interface TXHMenuController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) UIView *headerView;
 @property (strong, nonatomic) NSArray *venues;
 
 @end
@@ -33,7 +34,9 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   self.venues = [TXHServerAccessManager sharedInstance].venues;
+  [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -62,13 +65,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 #pragma unused (tableView)
 #pragma unused (section)
-  return 64.0f;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-#pragma unused (tableView)
-#pragma unused (section)
-  return NSLocalizedString(@"VENUES", @"Venues");
+  return 44.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -81,6 +78,33 @@
   cell.textLabel.text = venue.businessName;
 
   return cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+#pragma unused (section)
+  if (self.headerView == nil) {
+    CGRect frame = tableView.bounds;
+    frame.size.height = 44.0f;
+    self.headerView = [[UIView alloc] initWithFrame:frame];
+    self.headerView.backgroundColor = [UIColor colorWithRed:1.0f / 255.0f green:46.0f / 255.0f blue:67.0f / 255.0f alpha:1.0f];
+    NSString *titleString = @"Venues";
+    NSDictionary *attributesDict = @{NSFontAttributeName: [UIFont systemFontOfSize:24.0f]};
+    NSAttributedString *attributedTitleString = [[NSAttributedString alloc] initWithString:titleString attributes:attributesDict];
+    CGSize titleSize = [attributedTitleString size];
+    
+    CGRect titleLabelFrame = CGRectZero;
+    titleLabelFrame.origin.x = 17.50f;
+    titleLabelFrame.origin.y = (self.headerView.bounds.size.height - titleSize.height) / 2.0f;
+    titleLabelFrame.size = titleSize;
+    
+    UILabel *title = [[UILabel alloc] initWithFrame:titleLabelFrame];
+    title.backgroundColor = [UIColor colorWithRed:1.0f / 255.0f green:46.0f / 255.0f blue:67.0f / 255.0f alpha:1.0f];
+    title.textColor = [UIColor whiteColor];
+    title.font = [UIFont systemFontOfSize:24.0f];
+    title.text = titleString;
+    [self.headerView addSubview:title];
+  }
+  return self.headerView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -142,11 +166,7 @@
 
 - (IBAction)logout:(id)sender {
 #pragma unused (sender)
-  UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
-  UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"LoginController"];
-  UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-  [window setRootViewController:navController];
-  [window makeKeyAndVisible];
+  [[NSNotificationCenter defaultCenter] postNotificationName:MENU_LOGOUT object:nil];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "TXHLoginViewController.h"
 #import "TXHCommonNames.h"
 #import "TXHServerAccessManager.h"
+#import "TXHMenuViewController.h"
 
 @interface UIAlertView (myView)
 
@@ -16,9 +17,12 @@
 
 @interface TXHLoginViewController () <UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaceToLogo;
+
 @property (weak, nonatomic) IBOutlet UITextField *userField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIImageView *email;
 
 @property (strong, nonatomic) NSString *lastUser;
 
@@ -47,6 +51,17 @@
   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
   // Grab the last user
   self.lastUser = [defaults objectForKey:LAST_USER];
+  
+  // Set the status bar style to be light since we have a dark background
+  [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+  
+  // Register for keyboard notifications, so that we can reposition the entry fields to keep them visible
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
@@ -58,12 +73,23 @@
   }
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)didEndOnExit:(id)sender {
+  [self login:sender];
+}
+
+- (IBAction)editingDidEnd:(id)sender {
+}
 
 - (IBAction)login:(id)sender {
 #pragma unused (sender)
@@ -97,11 +123,14 @@
 //    [alert setaccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tickethub"]]];
     [alert show];
   } else {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
-    UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    [window setRootViewController:navController];
-    [window makeKeyAndVisible];
+//    [self performSegueWithIdentifier:@"loginUnwindSegue" sender:self];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
+//    UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
+//    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+//    [window setRootViewController:navController];
+//    [window makeKeyAndVisible];
   }
 }
 
@@ -113,6 +142,26 @@
 - (IBAction)editingChanged:(id)sender {
 #pragma unused (sender)
   self.loginButton.enabled = ((self.userField.text.length > 0) && (self.passwordField.text.length > 0));
+}
+
+#pragma mark - Notifications
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+  NSDictionary *keyboardAnimationDetail = [notification userInfo];
+  UIViewAnimationOptions curve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+  NSTimeInterval duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+  [UIView animateWithDuration:duration delay:0.0f options:curve animations:^{
+    self.verticalSpaceToLogo.constant = 40.0f;
+    [self.view layoutIfNeeded];
+  } completion:nil];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+#pragma unused (notification)
+  [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+    self.verticalSpaceToLogo.constant = 184.0f;
+    [self.view layoutIfNeeded];
+  } completion:nil];
 }
 
 @end

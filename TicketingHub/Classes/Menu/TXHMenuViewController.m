@@ -8,11 +8,15 @@
 
 #import "TXHMenuViewController.h"
 #import "TXHCommonNames.h"
+#import "TXHLoginViewController.h"
+#import "TXHMenuController.h"
 
 @interface TXHMenuViewController ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftHandSpace;
 @property (strong, nonatomic) UITapGestureRecognizer  *tapRecogniser;
+
+@property (assign, nonatomic) BOOL  loggedIn;
 
 @end
 
@@ -27,13 +31,27 @@
   return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+  self = [super initWithCoder:aDecoder];
+  if (self) {
+    [self setup];
+  }
+  return self;
+}
+
+- (void)setup {
+  [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout:) name:MENU_LOGOUT object:nil];
+}
+
 - (void)viewDidLoad
 {
   [super viewDidLoad];
 	// Do any additional setup after loading the view.
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMenu:) name:TOGGLE_MENU object:nil];
   self.tapRecogniser = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-  self.leftHandSpace.constant = -240.0f;
+  self.leftHandSpace.constant = -self.menuContainer.bounds.size.width;
+  [self performSegueWithIdentifier:@"modalLogin" sender:self];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -43,6 +61,12 @@
     [self.view layoutIfNeeded];
   } completion:nil];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+}
+
 
 - (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -58,22 +82,12 @@
 #pragma unused (sender)
   [UIView animateWithDuration:1.0f animations:^{
     if (self.leftHandSpace.constant == 0.0f) {
-      self.leftHandSpace.constant = -240.0f;
+      self.leftHandSpace.constant = -self.menuContainer.bounds.size.width;
     } else {
       self.leftHandSpace.constant = 0.0f;
     }
     [self.view layoutIfNeeded];
   }];
-//  [UIView beginAnimations:nil context:nil];
-//  [UIView setAnimationDuration:0.75];
-//  if (self.leftHandSpace.constant == 0.0f) {
-//    self.leftHandSpace.constant = -240.0f;
-////    [self expandMenu];
-//  } else {
-//    self.leftHandSpace.constant = 0.0f;
-////    [self collapseMenu];
-//  }
-//  [UIView commitAnimations];
 }
 
 - (void)tap:(UITapGestureRecognizer *)recogniser {
@@ -81,22 +95,27 @@
   [self toggleMenu:nil];
 }
 
-- (void)expandMenu {
-  CGRect boundingRect = self.menuContainer.bounds;
-  boundingRect.size.width = 240.0f;
-  self.menuContainer.frame = boundingRect;
-  boundingRect = self.tabContainer.frame;
-  boundingRect.origin.x = self.menuContainer.bounds.size.width;
-  self.tabContainer.frame = boundingRect;
+- (IBAction)mySegueHandler:(UIStoryboardSegue *)sender {
+  // Do some interesting stuff
+  TXHLoginViewController *controller = sender.sourceViewController;
+  [controller dismissViewControllerAnimated:YES completion:nil];
+  [UIView animateWithDuration:0.5
+                   animations:^{
+                     
+                     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
+                   }
+                   completion:^(BOOL finished){
+                     self.loggedIn = finished;
+                   }];
+  [self.navigationController popViewControllerAnimated:NO];
 }
 
-- (void)collapseMenu {
-  CGRect boundingRect = self.menuContainer.bounds;
-  boundingRect.size.width = 0.0f;
-  self.menuContainer.frame = boundingRect;
-  boundingRect = self.tabContainer.frame;
-  boundingRect.origin.x = 0.0f;
-  self.tabContainer.frame = boundingRect;
+#pragma mark - Notifications
+
+- (void)logout:(NSNotification *)notification {
+#pragma unused (notification)
+  self.loggedIn = YES;
+  [self performSegueWithIdentifier:@"reLogin" sender:self];
 }
 
 @end

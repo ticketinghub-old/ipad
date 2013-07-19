@@ -9,20 +9,30 @@
 /* Begin PBXBuildFile section */
 		4D0E5131178C0BBC009436AC /* TXHDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E5130178C0BBC009436AC /* TXHDataDownloader.m */; };
 		4D25F648176CF08000A60359 /* TXHDoorGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D25F647176CF08000A60359 /* TXHDoorGroupController.m */; };
+		4D307DB41796F61C00822645 /* TXHTimeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D307DB31796F61C00822645 /* TXHTimeFormatter.m */; };
+		4D307DB71796F9FC00822645 /* TXHTicketDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D307DB61796F9FC00822645 /* TXHTicketDetails.m */; };
 		4D4FBE2B176B5BB70023A0D1 /* TXHDoorTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4FBE2A176B5BB70023A0D1 /* TXHDoorTimeController.m */; };
+		4D586DE11797E51E00E40534 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D586DE01797E51E00E40534 /* Images.xcassets */; };
+		4D5DC4C01793BF5000626BA8 /* Calendar_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D5DC4BF1793BF5000626BA8 /* Calendar_iPad.storyboard */; };
 		4D68DA9D178AD5F600743227 /* TXHSalesMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D68DA9C178AD5F600743227 /* TXHSalesMainViewController.m */; };
 		4D68DAA0178AE3A100743227 /* TXHSalesOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D68DA9F178AE3A100743227 /* TXHSalesOptionsViewController.m */; };
 		4D68DAA3178AE62400743227 /* TXHSalesOptionsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D68DAA2178AE62400743227 /* TXHSalesOptionsCell.m */; };
 		4D68DAA6178AE9E300743227 /* TXHOptionsExtrasItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D68DAA5178AE9E300743227 /* TXHOptionsExtrasItem.m */; };
 		4D68DAA9178B096A00743227 /* BarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D68DAA8178B096A00743227 /* BarcodeViewController.m */; };
 		4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D68DAAA178B0A5400743227 /* AVFoundation.framework */; };
+		4D7C9DAA179401C100A225EC /* TXHSalesCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C9DA9179401C100A225EC /* TXHSalesCalendarViewController.m */; };
 		4D80B9A5178ABEA4002A71C8 /* LoginAuthorisation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D80B9A4178ABEA4002A71C8 /* LoginAuthorisation.m */; };
+		4D859FF2179453EA000B2FCC /* TXHSeason.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D89278817944B61004892FD /* TXHSeason.m */; };
+		4D859FF517945E4D000B2FCC /* TXHVariation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D859FF417945E4D000B2FCC /* TXHVariation.m */; };
+		4D859FF817953FA1000B2FCC /* TXHTimeSlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D859FF717953FA1000B2FCC /* TXHTimeSlot.m */; };
+		4D89278617943C01004892FD /* MOVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D89278517943C01004892FD /* MOVenue.m */; };
 		4DA05FAB178C2430005161E6 /* TXHVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FAA178C2430005161E6 /* TXHVenue.m */; };
 		4DA05FAE178C30E6005161E6 /* TXHVenueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FAD178C30E6005161E6 /* TXHVenueCell.m */; };
 		4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */; };
 		4DA05FB4178D803A005161E6 /* TXHMainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB3178D7F8E005161E6 /* TXHMainTabViewController.m */; };
 		4DA05FB8178D8DAC005161E6 /* TXHMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB7178D8DAC005161E6 /* TXHMenuViewController.m */; };
 		4DA05FBB178D8F31005161E6 /* TXHMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FBA178D8F31005161E6 /* TXHMenuController.m */; };
+		4DD2264717982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD2264617982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.m */; };
 		4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */; };
 		4DF3B5C11770AE6800D657AB /* TXHDatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5C01770AE6800D657AB /* TXHDatePickerController.m */; };
 		4DF3B5C41771ABE400D657AB /* RKMCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5C31771ABE400D657AB /* RKMCalendarView.m */; };
@@ -71,8 +81,15 @@
 		4D25F644176CE58A00A60359 /* TXHCommonNames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHCommonNames.h; sourceTree = "<group>"; };
 		4D25F646176CF08000A60359 /* TXHDoorGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorGroupController.h; sourceTree = "<group>"; };
 		4D25F647176CF08000A60359 /* TXHDoorGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorGroupController.m; sourceTree = "<group>"; };
+		4D307DB21796F61C00822645 /* TXHTimeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTimeFormatter.h; sourceTree = "<group>"; };
+		4D307DB31796F61C00822645 /* TXHTimeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTimeFormatter.m; sourceTree = "<group>"; };
+		4D307DB51796F9FC00822645 /* TXHTicketDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketDetails.h; sourceTree = "<group>"; };
+		4D307DB61796F9FC00822645 /* TXHTicketDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketDetails.m; sourceTree = "<group>"; };
 		4D4FBE29176B5BB70023A0D1 /* TXHDoorTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorTimeController.h; sourceTree = "<group>"; };
 		4D4FBE2A176B5BB70023A0D1 /* TXHDoorTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorTimeController.m; sourceTree = "<group>"; };
+		4D586DDF1797E2BF00E40534 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		4D586DE01797E51E00E40534 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4D5DC4BF1793BF5000626BA8 /* Calendar_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar_iPad.storyboard; sourceTree = "<group>"; };
 		4D68DA9B178AD5F600743227 /* TXHSalesMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesMainViewController.h; sourceTree = "<group>"; };
 		4D68DA9C178AD5F600743227 /* TXHSalesMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesMainViewController.m; sourceTree = "<group>"; };
 		4D68DA9E178AE3A100743227 /* TXHSalesOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesOptionsViewController.h; sourceTree = "<group>"; };
@@ -84,8 +101,20 @@
 		4D68DAA7178B096A00743227 /* BarcodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeViewController.h; sourceTree = "<group>"; };
 		4D68DAA8178B096A00743227 /* BarcodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeViewController.m; sourceTree = "<group>"; };
 		4D68DAAA178B0A5400743227 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4D7A06D31795B2E90008041D /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		4D7C9DA8179401C100A225EC /* TXHSalesCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesCalendarViewController.h; sourceTree = "<group>"; };
+		4D7C9DA9179401C100A225EC /* TXHSalesCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesCalendarViewController.m; sourceTree = "<group>"; };
 		4D80B9A3178ABEA4002A71C8 /* LoginAuthorisation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAuthorisation.h; sourceTree = "<group>"; };
 		4D80B9A4178ABEA4002A71C8 /* LoginAuthorisation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAuthorisation.m; sourceTree = "<group>"; };
+		4D859FF317945E4D000B2FCC /* TXHVariation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVariation.h; sourceTree = "<group>"; };
+		4D859FF417945E4D000B2FCC /* TXHVariation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVariation.m; sourceTree = "<group>"; };
+		4D859FF617953FA1000B2FCC /* TXHTimeSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTimeSlot.h; sourceTree = "<group>"; };
+		4D859FF717953FA1000B2FCC /* TXHTimeSlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTimeSlot.m; sourceTree = "<group>"; };
+		4D859FF91795A999000B2FCC /* tickethub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tickethub.png; sourceTree = "<group>"; };
+		4D89278417943C01004892FD /* MOVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOVenue.h; sourceTree = "<group>"; };
+		4D89278517943C01004892FD /* MOVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOVenue.m; sourceTree = "<group>"; };
+		4D89278717944B61004892FD /* TXHSeason.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHSeason.h; sourceTree = "<group>"; };
+		4D89278817944B61004892FD /* TXHSeason.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TXHSeason.m; sourceTree = "<group>"; };
 		4DA05FA9178C2430005161E6 /* TXHVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVenue.h; sourceTree = "<group>"; };
 		4DA05FAA178C2430005161E6 /* TXHVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVenue.m; sourceTree = "<group>"; };
 		4DA05FAC178C30E6005161E6 /* TXHVenueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVenueCell.h; sourceTree = "<group>"; };
@@ -98,6 +127,8 @@
 		4DA05FB7178D8DAC005161E6 /* TXHMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMenuViewController.m; sourceTree = "<group>"; };
 		4DA05FB9178D8F31005161E6 /* TXHMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMenuController.h; sourceTree = "<group>"; };
 		4DA05FBA178D8F31005161E6 /* TXHMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMenuController.m; sourceTree = "<group>"; };
+		4DD2264517982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHUnwindSegueWithHorizontalTransition.h; sourceTree = "<group>"; };
+		4DD2264617982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUnwindSegueWithHorizontalTransition.m; sourceTree = "<group>"; };
 		4DF3B5BC177082FF00D657AB /* TXHDoorMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorMainController.h; sourceTree = "<group>"; };
 		4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorMainController.m; sourceTree = "<group>"; };
 		4DF3B5BF1770AE6800D657AB /* TXHDatePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDatePickerController.h; sourceTree = "<group>"; };
@@ -117,8 +148,6 @@
 		581560D51765E150005C20EA /* TXHGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHGroupCell.h; sourceTree = "<group>"; };
 		581560D61765E150005C20EA /* TXHGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHGroupCell.m; sourceTree = "<group>"; };
 		5860E8571762175B0046DFD3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		5860E85A17633C990046DFD3 /* bg_cork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_cork.png; sourceTree = "<group>"; };
-		5860E85B17633C990046DFD3 /* bg_cork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_cork@2x.png"; sourceTree = "<group>"; };
 		5860E86017635E3E0046DFD3 /* bg_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_blue@2x.png"; sourceTree = "<group>"; };
 		58E4FB511760AE5500E328A0 /* TicketingHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicketingHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E4FB541760AE5500E328A0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -184,8 +213,19 @@
 				4D68DAA5178AE9E300743227 /* TXHOptionsExtrasItem.m */,
 				4D0E512F178C0BBC009436AC /* TXHDataDownloader.h */,
 				4D0E5130178C0BBC009436AC /* TXHDataDownloader.m */,
+				4D307DB21796F61C00822645 /* TXHTimeFormatter.h */,
+				4D307DB31796F61C00822645 /* TXHTimeFormatter.m */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		4D89278017941CF0004892FD /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4D89278417943C01004892FD /* MOVenue.h */,
+				4D89278517943C01004892FD /* MOVenue.m */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		4DA05FB5178D8D85005161E6 /* Menu */ = {
@@ -199,12 +239,20 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		4DD3041917934B1B00546AD3 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		5860E85917633C990046DFD3 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				4D586DDF1797E2BF00E40534 /* Default-Landscape~ipad.png */,
+				4D7A06D31795B2E90008041D /* Default-Landscape@2x~ipad.png */,
+				4D859FF91795A999000B2FCC /* tickethub.png */,
 				5860E86017635E3E0046DFD3 /* bg_blue@2x.png */,
-				5860E85A17633C990046DFD3 /* bg_cork.png */,
-				5860E85B17633C990046DFD3 /* bg_cork@2x.png */,
 			);
 			name = Assets;
 			path = TicketingHub/Assets;
@@ -252,6 +300,7 @@
 				58E4FB651760AE5500E328A0 /* TXHAppDelegate.h */,
 				58E4FB661760AE5500E328A0 /* TXHAppDelegate.m */,
 				58E4FB6E1760AE5500E328A0 /* TicketingHub.xcdatamodeld */,
+				4D586DE01797E51E00E40534 /* Images.xcassets */,
 				58E4FB5D1760AE5500E328A0 /* Supporting Files */,
 			);
 			path = TicketingHub;
@@ -294,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				58E4FB911760AEF300E328A0 /* Storyboard.storyboard */,
+				4D5DC4BF1793BF5000626BA8 /* Calendar_iPad.storyboard */,
 			);
 			name = UI;
 			path = TicketingHub/UI;
@@ -302,6 +352,8 @@
 		58E4FB971760D3C800E328A0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4D89278017941CF0004892FD /* CoreData */,
+				4DD3041917934B1B00546AD3 /* Calendar */,
 				4DA05FB5178D8D85005161E6 /* Menu */,
 				4D25F643176CE54000A60359 /* Common */,
 				58E4FB991760D3C800E328A0 /* Door */,
@@ -312,6 +364,14 @@
 				4DA05FAA178C2430005161E6 /* TXHVenue.m */,
 				4DA05FAF178C367F005161E6 /* TXHServerAccessManager.h */,
 				4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */,
+				4D89278717944B61004892FD /* TXHSeason.h */,
+				4D89278817944B61004892FD /* TXHSeason.m */,
+				4D859FF317945E4D000B2FCC /* TXHVariation.h */,
+				4D859FF417945E4D000B2FCC /* TXHVariation.m */,
+				4D859FF617953FA1000B2FCC /* TXHTimeSlot.h */,
+				4D859FF717953FA1000B2FCC /* TXHTimeSlot.m */,
+				4D307DB51796F9FC00822645 /* TXHTicketDetails.h */,
+				4D307DB61796F9FC00822645 /* TXHTicketDetails.m */,
 			);
 			name = Classes;
 			path = TicketingHub/Classes;
@@ -364,6 +424,8 @@
 				4D80B9A4178ABEA4002A71C8 /* LoginAuthorisation.m */,
 				4DFB1007178DB693006923F7 /* TXHLoginViewController.h */,
 				4DFB1008178DB693006923F7 /* TXHLoginViewController.m */,
+				4DD2264517982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.h */,
+				4DD2264617982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -377,6 +439,8 @@
 				4D68DA9F178AE3A100743227 /* TXHSalesOptionsViewController.m */,
 				4D68DAA1178AE62400743227 /* TXHSalesOptionsCell.h */,
 				4D68DAA2178AE62400743227 /* TXHSalesOptionsCell.m */,
+				4D7C9DA8179401C100A225EC /* TXHSalesCalendarViewController.h */,
+				4D7C9DA9179401C100A225EC /* TXHSalesCalendarViewController.m */,
 			);
 			path = Sales;
 			sourceTree = "<group>";
@@ -455,10 +519,12 @@
 			files = (
 				58E4FB611760AE5500E328A0 /* InfoPlist.strings in Resources */,
 				58E4FB691760AE5500E328A0 /* Default.png in Resources */,
+				4D586DE11797E51E00E40534 /* Images.xcassets in Resources */,
 				58E4FB6B1760AE5500E328A0 /* Default@2x.png in Resources */,
 				58E4FB6D1760AE5500E328A0 /* Default-568h@2x.png in Resources */,
 				58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */,
 				5860E86117635E3E0046DFD3 /* bg_blue@2x.png in Resources */,
+				4D5DC4C01793BF5000626BA8 /* Calendar_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,8 +565,12 @@
 				4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */,
 				58E4FB9F1761CFEC00E328A0 /* TXHMainViewController.m in Sources */,
 				4D0E5131178C0BBC009436AC /* TXHDataDownloader.m in Sources */,
+				4D7C9DAA179401C100A225EC /* TXHSalesCalendarViewController.m in Sources */,
+				4D89278617943C01004892FD /* MOVenue.m in Sources */,
 				4D68DAA3178AE62400743227 /* TXHSalesOptionsCell.m in Sources */,
 				581560CD1765D38A005C20EA /* TXHFlowLayout.m in Sources */,
+				4D307DB71796F9FC00822645 /* TXHTicketDetails.m in Sources */,
+				4D859FF517945E4D000B2FCC /* TXHVariation.m in Sources */,
 				4D4FBE2B176B5BB70023A0D1 /* TXHDoorTimeController.m in Sources */,
 				4D68DAA6178AE9E300743227 /* TXHOptionsExtrasItem.m in Sources */,
 				4D25F648176CF08000A60359 /* TXHDoorGroupController.m in Sources */,
@@ -509,7 +579,9 @@
 				4DA05FAE178C30E6005161E6 /* TXHVenueCell.m in Sources */,
 				581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */,
 				581560D11765DAB3005C20EA /* TXHDoorDateController.m in Sources */,
+				4D859FF817953FA1000B2FCC /* TXHTimeSlot.m in Sources */,
 				4DA05FBB178D8F31005161E6 /* TXHMenuController.m in Sources */,
+				4DD2264717982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.m in Sources */,
 				581560D41765E0DE005C20EA /* TXHTimeCell.m in Sources */,
 				4DA05FAB178C2430005161E6 /* TXHVenue.m in Sources */,
 				4D68DAA9178B096A00743227 /* BarcodeViewController.m in Sources */,
@@ -521,6 +593,8 @@
 				4DF3B5C41771ABE400D657AB /* RKMCalendarView.m in Sources */,
 				4D68DAA0178AE3A100743227 /* TXHSalesOptionsViewController.m in Sources */,
 				4DFB1009178DB693006923F7 /* TXHLoginViewController.m in Sources */,
+				4D307DB41796F61C00822645 /* TXHTimeFormatter.m in Sources */,
+				4D859FF2179453EA000B2FCC /* TXHSeason.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,6 +712,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Mark Brindle (LTUJF8Y5V2)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
@@ -649,6 +724,7 @@
 					"-Weverything",
 					"-Wno-auto-import",
 					"-Wno-objc-missing-property-synthesis",
+					"-Wno-pointer-arith",
 				);
 				WRAPPER_EXTENSION = app;
 			};
@@ -658,6 +734,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Mark Brindle (LTUJF8Y5V2)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
@@ -669,6 +746,7 @@
 					"-Weverything",
 					"-Wno-auto-import",
 					"-Wno-objc-missing-property-synthesis",
+					"-Wno-pointer-arith",
 				);
 				WRAPPER_EXTENSION = app;
 			};

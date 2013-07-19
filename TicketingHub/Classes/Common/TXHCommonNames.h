@@ -19,6 +19,7 @@
 
 // Name for notifications dispatched by TXHMenuViewController
 #define TOGGLE_MENU     @"toggleMenu"
+#define MENU_LOGOUT     @"menuLogout"
 #define VENUE_SELECTED  @"venueSelected"
 
 // Names for notifications dispatched by TXHServerAccessManager
