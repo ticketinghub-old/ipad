@@ -52,7 +52,7 @@
     [self.options addObject:item];
   }
   
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeslotSelected:) name:TIMESLOT_SELECTED object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeslotSelected:) name:NOTIFICATION_TIMESLOT_SELECTED object:nil];
 }
 
 - (void)didReceiveMemoryWarning

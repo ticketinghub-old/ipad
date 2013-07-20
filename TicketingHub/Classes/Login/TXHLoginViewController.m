@@ -10,6 +10,7 @@
 #import "TXHCommonNames.h"
 #import "TXHServerAccessManager.h"
 #import "TXHMenuViewController.h"
+#import "UIView+TXHAnimationConversions.h"
 
 @interface UIAlertView (myView)
 
@@ -84,13 +85,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)didEndOnExit:(id)sender {
-  [self login:sender];
-}
-
-- (IBAction)editingDidEnd:(id)sender {
-}
-
 - (IBAction)login:(id)sender {
 #pragma unused (sender)
   self.loginButton.enabled = NO;
@@ -123,14 +117,9 @@
 //    [alert setaccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tickethub"]]];
     [alert show];
   } else {
-//    [self performSegueWithIdentifier:@"loginUnwindSegue" sender:self];
+    // Notify any interested parties that the username has been set
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MENU_LOGIN object:self.userField.text];
     [self dismissViewControllerAnimated:YES completion:nil];
-    
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
-//    UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
-//    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-//    [window setRootViewController:navController];
-//    [window makeKeyAndVisible];
   }
 }
 
@@ -148,17 +137,23 @@
 
 - (void)keyboardWillShow:(NSNotification *)notification {
   NSDictionary *keyboardAnimationDetail = [notification userInfo];
-  UIViewAnimationOptions curve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-  NSTimeInterval duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-  [UIView animateWithDuration:duration delay:0.0f options:curve animations:^{
+  UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+  UIViewAnimationOptions options = [UIView animationOptionsFromAnimationCurve:animationCurve];
+  CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+  
+  [UIView animateWithDuration:duration delay:0.0 options:options animations:^{
     self.verticalSpaceToLogo.constant = 40.0f;
     [self.view layoutIfNeeded];
   } completion:nil];
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
-#pragma unused (notification)
-  [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+  NSDictionary *keyboardAnimationDetail = [notification userInfo];
+  UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+  UIViewAnimationOptions options = [UIView animationOptionsFromAnimationCurve:animationCurve];
+  CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+  
+  [UIView animateWithDuration:duration delay:0.0 options:options animations:^{
     self.verticalSpaceToLogo.constant = 184.0f;
     [self.view layoutIfNeeded];
   } completion:nil];

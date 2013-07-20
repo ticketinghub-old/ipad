@@ -73,7 +73,7 @@
 }
 
 - (void)registerForNotifications {
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueSelected:) name:VENUE_SELECTED object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueSelected:) name:NOTIFICATION_VENUE_SELECTED object:nil];
 
   // Register for standard notifications when application enters foreground / background; or is terminated
   [[NSNotificationCenter defaultCenter] addObserver:self
@@ -246,7 +246,7 @@
     } else {
       // An error occurred
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:VENUE_UPDATED object:self.currentVenue];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_VENUE_UPDATED object:self.currentVenue];
   };
   downloader.errorHandler = ^(id reason){
     NSLog(@"Error retrieving variations:%@", ((NSError *)reason).description);

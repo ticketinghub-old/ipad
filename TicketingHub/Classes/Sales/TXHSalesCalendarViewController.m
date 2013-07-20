@@ -43,7 +43,7 @@
 }
 
 - (void)setup {
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueUpdated:) name:VENUE_UPDATED object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueUpdated:) name:NOTIFICATION_VENUE_UPDATED object:nil];
   self.timeSlots = [NSMutableArray array];
 }
 
@@ -99,7 +99,7 @@
 #pragma unused (tableView)
   // Selecting a cell identified a timeslot, we need to tell the world about it
   id timeSlot = [self.timeSlots objectAtIndex:indexPath.row];
-  [[NSNotificationCenter defaultCenter] postNotificationName:TIMESLOT_SELECTED object:timeSlot];
+  [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TIMESLOT_SELECTED object:timeSlot];
 }
 
 - (void)getTimeSlots {
@@ -146,7 +146,7 @@
   // If the currently selected date is outside of the bounds of the current season adjust accordingly
   
   [self getTimeSlots];
-  [[NSNotificationCenter defaultCenter] postNotificationName:TOGGLE_MENU object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TOGGLE_MENU object:nil];
 }
 
 @end

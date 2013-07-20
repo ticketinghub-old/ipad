@@ -10,9 +10,6 @@
 
 @interface TXHMenuViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIView *menuContainer;
-@property (weak, nonatomic) IBOutlet UIView *tabContainer;
-
-- (IBAction)mySegueHandler:(UIStoryboardSegue *)sender;
+//- (IBAction)mySegueHandler:(UIStoryboardSegue *)sender;
 
 @end

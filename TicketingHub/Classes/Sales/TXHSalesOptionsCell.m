@@ -11,7 +11,7 @@
 
 @interface TXHSalesOptionsCell ()
 
-@property (weak, nonatomic) IBOutlet UILabel *description;
+@property (weak, nonatomic) IBOutlet UILabel *optionDescription;
 @property (weak, nonatomic) IBOutlet UITextField *quantity;
 @property (weak, nonatomic) IBOutlet UILabel *price;
 @property (weak, nonatomic) IBOutlet UIStepper *stepper;
@@ -38,7 +38,7 @@
 
 - (void)setOptionItem:(TXHOptionsExtrasItem *)optionItem {
   _optionItem = optionItem;
-  self.description.text = _optionItem.description;
+  self.optionDescription.text = _optionItem.description;
   self.quantity.text = _optionItem.quantity.stringValue;
   self.price.text = _optionItem.formattedPrice;
 }

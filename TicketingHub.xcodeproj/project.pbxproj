@@ -27,12 +27,12 @@
 		4D859FF817953FA1000B2FCC /* TXHTimeSlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D859FF717953FA1000B2FCC /* TXHTimeSlot.m */; };
 		4D89278617943C01004892FD /* MOVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D89278517943C01004892FD /* MOVenue.m */; };
 		4DA05FAB178C2430005161E6 /* TXHVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FAA178C2430005161E6 /* TXHVenue.m */; };
-		4DA05FAE178C30E6005161E6 /* TXHVenueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FAD178C30E6005161E6 /* TXHVenueCell.m */; };
 		4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */; };
-		4DA05FB4178D803A005161E6 /* TXHMainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB3178D7F8E005161E6 /* TXHMainTabViewController.m */; };
 		4DA05FB8178D8DAC005161E6 /* TXHMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB7178D8DAC005161E6 /* TXHMenuViewController.m */; };
 		4DA05FBB178D8F31005161E6 /* TXHMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FBA178D8F31005161E6 /* TXHMenuController.m */; };
 		4DD2264717982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD2264617982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.m */; };
+		4DE21FDD1799738C004D50F0 /* UIView+TXHAnimationConversions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE21FDC1799738C004D50F0 /* UIView+TXHAnimationConversions.m */; };
+		4DE21FE017999233004D50F0 /* TXHMainNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE21FDF17999233004D50F0 /* TXHMainNavigationBar.m */; };
 		4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */; };
 		4DF3B5C11770AE6800D657AB /* TXHDatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5C01770AE6800D657AB /* TXHDatePickerController.m */; };
 		4DF3B5C41771ABE400D657AB /* RKMCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5C31771ABE400D657AB /* RKMCalendarView.m */; };
@@ -117,18 +117,18 @@
 		4D89278817944B61004892FD /* TXHSeason.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TXHSeason.m; sourceTree = "<group>"; };
 		4DA05FA9178C2430005161E6 /* TXHVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVenue.h; sourceTree = "<group>"; };
 		4DA05FAA178C2430005161E6 /* TXHVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVenue.m; sourceTree = "<group>"; };
-		4DA05FAC178C30E6005161E6 /* TXHVenueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVenueCell.h; sourceTree = "<group>"; };
-		4DA05FAD178C30E6005161E6 /* TXHVenueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVenueCell.m; sourceTree = "<group>"; };
 		4DA05FAF178C367F005161E6 /* TXHServerAccessManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHServerAccessManager.h; sourceTree = "<group>"; };
 		4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHServerAccessManager.m; sourceTree = "<group>"; };
-		4DA05FB2178D7F8E005161E6 /* TXHMainTabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHMainTabViewController.h; sourceTree = "<group>"; };
-		4DA05FB3178D7F8E005161E6 /* TXHMainTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TXHMainTabViewController.m; sourceTree = "<group>"; };
 		4DA05FB6178D8DAC005161E6 /* TXHMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMenuViewController.h; sourceTree = "<group>"; };
 		4DA05FB7178D8DAC005161E6 /* TXHMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMenuViewController.m; sourceTree = "<group>"; };
 		4DA05FB9178D8F31005161E6 /* TXHMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMenuController.h; sourceTree = "<group>"; };
 		4DA05FBA178D8F31005161E6 /* TXHMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMenuController.m; sourceTree = "<group>"; };
 		4DD2264517982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHUnwindSegueWithHorizontalTransition.h; sourceTree = "<group>"; };
 		4DD2264617982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUnwindSegueWithHorizontalTransition.m; sourceTree = "<group>"; };
+		4DE21FDB1799738C004D50F0 /* UIView+TXHAnimationConversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TXHAnimationConversions.h"; sourceTree = "<group>"; };
+		4DE21FDC1799738C004D50F0 /* UIView+TXHAnimationConversions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TXHAnimationConversions.m"; sourceTree = "<group>"; };
+		4DE21FDE17999233004D50F0 /* TXHMainNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMainNavigationBar.h; sourceTree = "<group>"; };
+		4DE21FDF17999233004D50F0 /* TXHMainNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMainNavigationBar.m; sourceTree = "<group>"; };
 		4DF3B5BC177082FF00D657AB /* TXHDoorMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorMainController.h; sourceTree = "<group>"; };
 		4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorMainController.m; sourceTree = "<group>"; };
 		4DF3B5BF1770AE6800D657AB /* TXHDatePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDatePickerController.h; sourceTree = "<group>"; };
@@ -215,6 +215,8 @@
 				4D0E5130178C0BBC009436AC /* TXHDataDownloader.m */,
 				4D307DB21796F61C00822645 /* TXHTimeFormatter.h */,
 				4D307DB31796F61C00822645 /* TXHTimeFormatter.m */,
+				4DE21FDB1799738C004D50F0 /* UIView+TXHAnimationConversions.h */,
+				4DE21FDC1799738C004D50F0 /* UIView+TXHAnimationConversions.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -357,7 +359,7 @@
 				4DA05FB5178D8D85005161E6 /* Menu */,
 				4D25F643176CE54000A60359 /* Common */,
 				58E4FB991760D3C800E328A0 /* Door */,
-				58E4FB9A1760D3C800E328A0 /* FirstScreen */,
+				58E4FB9A1760D3C800E328A0 /* MainScreen */,
 				58E4FB9B1760D3C800E328A0 /* Login */,
 				58E4FB9C1760D3C800E328A0 /* Sales */,
 				4DA05FA9178C2430005161E6 /* TXHVenue.h */,
@@ -404,17 +406,15 @@
 			path = Door;
 			sourceTree = "<group>";
 		};
-		58E4FB9A1760D3C800E328A0 /* FirstScreen */ = {
+		58E4FB9A1760D3C800E328A0 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
 				58E4FB9D1761CFEC00E328A0 /* TXHMainViewController.h */,
 				58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */,
-				4DA05FAC178C30E6005161E6 /* TXHVenueCell.h */,
-				4DA05FAD178C30E6005161E6 /* TXHVenueCell.m */,
-				4DA05FB2178D7F8E005161E6 /* TXHMainTabViewController.h */,
-				4DA05FB3178D7F8E005161E6 /* TXHMainTabViewController.m */,
+				4DE21FDE17999233004D50F0 /* TXHMainNavigationBar.h */,
+				4DE21FDF17999233004D50F0 /* TXHMainNavigationBar.m */,
 			);
-			path = FirstScreen;
+			path = MainScreen;
 			sourceTree = "<group>";
 		};
 		58E4FB9B1760D3C800E328A0 /* Login */ = {
@@ -576,10 +576,11 @@
 				4D25F648176CF08000A60359 /* TXHDoorGroupController.m in Sources */,
 				4D68DA9D178AD5F600743227 /* TXHSalesMainViewController.m in Sources */,
 				4DA05FB8178D8DAC005161E6 /* TXHMenuViewController.m in Sources */,
-				4DA05FAE178C30E6005161E6 /* TXHVenueCell.m in Sources */,
 				581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */,
 				581560D11765DAB3005C20EA /* TXHDoorDateController.m in Sources */,
+				4DE21FE017999233004D50F0 /* TXHMainNavigationBar.m in Sources */,
 				4D859FF817953FA1000B2FCC /* TXHTimeSlot.m in Sources */,
+				4DE21FDD1799738C004D50F0 /* UIView+TXHAnimationConversions.m in Sources */,
 				4DA05FBB178D8F31005161E6 /* TXHMenuController.m in Sources */,
 				4DD2264717982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.m in Sources */,
 				581560D41765E0DE005C20EA /* TXHTimeCell.m in Sources */,
@@ -587,7 +588,6 @@
 				4D68DAA9178B096A00743227 /* BarcodeViewController.m in Sources */,
 				581560D71765E150005C20EA /* TXHGroupCell.m in Sources */,
 				4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */,
-				4DA05FB4178D803A005161E6 /* TXHMainTabViewController.m in Sources */,
 				4D80B9A5178ABEA4002A71C8 /* LoginAuthorisation.m in Sources */,
 				4DF3B5C11770AE6800D657AB /* TXHDatePickerController.m in Sources */,
 				4DF3B5C41771ABE400D657AB /* RKMCalendarView.m in Sources */,
