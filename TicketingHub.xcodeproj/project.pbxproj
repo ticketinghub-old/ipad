@@ -32,7 +32,6 @@
 		4DA05FBB178D8F31005161E6 /* TXHMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FBA178D8F31005161E6 /* TXHMenuController.m */; };
 		4DD2264717982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD2264617982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.m */; };
 		4DE21FDD1799738C004D50F0 /* UIView+TXHAnimationConversions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE21FDC1799738C004D50F0 /* UIView+TXHAnimationConversions.m */; };
-		4DE21FE017999233004D50F0 /* TXHMainNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE21FDF17999233004D50F0 /* TXHMainNavigationBar.m */; };
 		4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */; };
 		4DF3B5C11770AE6800D657AB /* TXHDatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5C01770AE6800D657AB /* TXHDatePickerController.m */; };
 		4DF3B5C41771ABE400D657AB /* RKMCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5C31771ABE400D657AB /* RKMCalendarView.m */; };
@@ -127,8 +126,6 @@
 		4DD2264617982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUnwindSegueWithHorizontalTransition.m; sourceTree = "<group>"; };
 		4DE21FDB1799738C004D50F0 /* UIView+TXHAnimationConversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TXHAnimationConversions.h"; sourceTree = "<group>"; };
 		4DE21FDC1799738C004D50F0 /* UIView+TXHAnimationConversions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TXHAnimationConversions.m"; sourceTree = "<group>"; };
-		4DE21FDE17999233004D50F0 /* TXHMainNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMainNavigationBar.h; sourceTree = "<group>"; };
-		4DE21FDF17999233004D50F0 /* TXHMainNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMainNavigationBar.m; sourceTree = "<group>"; };
 		4DF3B5BC177082FF00D657AB /* TXHDoorMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorMainController.h; sourceTree = "<group>"; };
 		4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorMainController.m; sourceTree = "<group>"; };
 		4DF3B5BF1770AE6800D657AB /* TXHDatePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDatePickerController.h; sourceTree = "<group>"; };
@@ -411,8 +408,6 @@
 			children = (
 				58E4FB9D1761CFEC00E328A0 /* TXHMainViewController.h */,
 				58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */,
-				4DE21FDE17999233004D50F0 /* TXHMainNavigationBar.h */,
-				4DE21FDF17999233004D50F0 /* TXHMainNavigationBar.m */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -578,7 +573,6 @@
 				4DA05FB8178D8DAC005161E6 /* TXHMenuViewController.m in Sources */,
 				581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */,
 				581560D11765DAB3005C20EA /* TXHDoorDateController.m in Sources */,
-				4DE21FE017999233004D50F0 /* TXHMainNavigationBar.m in Sources */,
 				4D859FF817953FA1000B2FCC /* TXHTimeSlot.m in Sources */,
 				4DE21FDD1799738C004D50F0 /* UIView+TXHAnimationConversions.m in Sources */,
 				4DA05FBB178D8F31005161E6 /* TXHMenuController.m in Sources */,
