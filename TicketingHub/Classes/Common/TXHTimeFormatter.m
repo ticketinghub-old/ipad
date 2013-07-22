@@ -28,7 +28,7 @@
   NSDateComponents *conversionInfo = [sysCalendar components:unitFlags
                                                     fromDate:date1
                                                       toDate:date2
-                                                     options:options];
+                                                     options:NSCalendarWrapComponents];
   
   NSString *result;
   

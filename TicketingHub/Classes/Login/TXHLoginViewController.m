@@ -143,7 +143,7 @@
 - (void)keyboardWillShow:(NSNotification *)notification {
   NSDictionary *keyboardAnimationDetail = [notification userInfo];
   UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-  UIViewAnimationOptions options = [UIView animationOptionsFromAnimationCurve:animationCurve];
+  UIViewAnimationOptions options = [UIView txhAnimationOptionsFromAnimationCurve:animationCurve];
   CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
   
   [UIView animateWithDuration:duration delay:0.0 options:options animations:^{
@@ -155,7 +155,7 @@
 - (void)keyboardWillHide:(NSNotification *)notification {
   NSDictionary *keyboardAnimationDetail = [notification userInfo];
   UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-  UIViewAnimationOptions options = [UIView animationOptionsFromAnimationCurve:animationCurve];
+  UIViewAnimationOptions options = [UIView txhAnimationOptionsFromAnimationCurve:animationCurve];
   CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
   
   [UIView animateWithDuration:duration delay:0.0 options:options animations:^{
