@@ -10,6 +10,6 @@
 
 @interface UIView (TXHAnimationConversions)
 
-+ (UIViewAnimationOptions)animationOptionsFromAnimationCurve:(UIViewAnimationCurve)curve;
++ (UIViewAnimationOptions)txhAnimationOptionsFromAnimationCurve:(UIViewAnimationCurve)curve;
 
 @end

@@ -10,7 +10,7 @@
 
 @implementation UIView (TXHAnimationConversions)
 
-+ (UIViewAnimationOptions)animationOptionsFromAnimationCurve:(UIViewAnimationCurve)curve {
++ (UIViewAnimationOptions)txhAnimationOptionsFromAnimationCurve:(UIViewAnimationCurve)curve {
   switch (curve) {
     case UIViewAnimationCurveEaseInOut:
       return UIViewAnimationOptionCurveEaseInOut;
