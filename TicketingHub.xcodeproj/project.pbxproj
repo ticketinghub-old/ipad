@@ -28,7 +28,6 @@
 		4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */; };
 		4DA05FB8178D8DAC005161E6 /* TXHMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB7178D8DAC005161E6 /* TXHMenuViewController.m */; };
 		4DA05FBB178D8F31005161E6 /* TXHMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FBA178D8F31005161E6 /* TXHMenuController.m */; };
-		4DD2264717982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD2264617982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.m */; };
 		4DE21FDD1799738C004D50F0 /* UIView+TXHAnimationConversions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE21FDC1799738C004D50F0 /* UIView+TXHAnimationConversions.m */; };
 		4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */; };
 		4DF9F95E179D50E90040FC5D /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F92E179D50E90040FC5D /* Customer.m */; };
@@ -55,6 +54,9 @@
 		4DF9F973179D50E90040FC5D /* _Variation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F959179D50E90040FC5D /* _Variation.m */; };
 		4DF9F974179D50E90040FC5D /* _VariationOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F95B179D50E90040FC5D /* _VariationOption.m */; };
 		4DF9F975179D50E90040FC5D /* _Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F95D179D50E90040FC5D /* _Venue.m */; };
+		4DF9F978179D5B4E0040FC5D /* TXHTransitionSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F977179D5B4E0040FC5D /* TXHTransitionSegue.m */; };
+		4DF9F97B179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F97A179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m */; };
+		4DF9F97E179D62970040FC5D /* TXHEmbeddingSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F97D179D62970040FC5D /* TXHEmbeddingSegue.m */; };
 		4DFB1009178DB693006923F7 /* TXHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFB1008178DB693006923F7 /* TXHLoginViewController.m */; };
 		581560CD1765D38A005C20EA /* TXHFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 581560CA1765D38A005C20EA /* TXHFlowLayout.m */; };
 		581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 581560CC1765D38A005C20EA /* TXHDoorDateCell.m */; };
@@ -137,8 +139,6 @@
 		4DA05FB7178D8DAC005161E6 /* TXHMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMenuViewController.m; sourceTree = "<group>"; };
 		4DA05FB9178D8F31005161E6 /* TXHMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMenuController.h; sourceTree = "<group>"; };
 		4DA05FBA178D8F31005161E6 /* TXHMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMenuController.m; sourceTree = "<group>"; };
-		4DD2264517982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHUnwindSegueWithHorizontalTransition.h; sourceTree = "<group>"; };
-		4DD2264617982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUnwindSegueWithHorizontalTransition.m; sourceTree = "<group>"; };
 		4DE21FDB1799738C004D50F0 /* UIView+TXHAnimationConversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TXHAnimationConversions.h"; sourceTree = "<group>"; };
 		4DE21FDC1799738C004D50F0 /* UIView+TXHAnimationConversions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TXHAnimationConversions.m"; sourceTree = "<group>"; };
 		4DF3B5BC177082FF00D657AB /* TXHDoorMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorMainController.h; sourceTree = "<group>"; };
@@ -191,6 +191,12 @@
 		4DF9F95B179D50E90040FC5D /* _VariationOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _VariationOption.m; sourceTree = "<group>"; };
 		4DF9F95C179D50E90040FC5D /* _Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Venue.h; sourceTree = "<group>"; };
 		4DF9F95D179D50E90040FC5D /* _Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Venue.m; sourceTree = "<group>"; };
+		4DF9F976179D5B4E0040FC5D /* TXHTransitionSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTransitionSegue.h; sourceTree = "<group>"; };
+		4DF9F977179D5B4E0040FC5D /* TXHTransitionSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTransitionSegue.m; sourceTree = "<group>"; };
+		4DF9F979179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMainScreenPlaceholderViewController.h; sourceTree = "<group>"; };
+		4DF9F97A179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMainScreenPlaceholderViewController.m; sourceTree = "<group>"; };
+		4DF9F97C179D62970040FC5D /* TXHEmbeddingSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHEmbeddingSegue.h; sourceTree = "<group>"; };
+		4DF9F97D179D62970040FC5D /* TXHEmbeddingSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHEmbeddingSegue.m; sourceTree = "<group>"; };
 		4DFB1007178DB693006923F7 /* TXHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHLoginViewController.h; sourceTree = "<group>"; };
 		4DFB1008178DB693006923F7 /* TXHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHLoginViewController.m; sourceTree = "<group>"; };
 		581560C91765D38A005C20EA /* TXHFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHFlowLayout.h; sourceTree = "<group>"; };
@@ -515,6 +521,12 @@
 			children = (
 				58E4FB9D1761CFEC00E328A0 /* TXHMainViewController.h */,
 				58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */,
+				4DF9F976179D5B4E0040FC5D /* TXHTransitionSegue.h */,
+				4DF9F977179D5B4E0040FC5D /* TXHTransitionSegue.m */,
+				4DF9F979179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.h */,
+				4DF9F97A179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m */,
+				4DF9F97C179D62970040FC5D /* TXHEmbeddingSegue.h */,
+				4DF9F97D179D62970040FC5D /* TXHEmbeddingSegue.m */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -526,8 +538,6 @@
 				4D80B9A4178ABEA4002A71C8 /* LoginAuthorisation.m */,
 				4DFB1007178DB693006923F7 /* TXHLoginViewController.h */,
 				4DFB1008178DB693006923F7 /* TXHLoginViewController.m */,
-				4DD2264517982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.h */,
-				4DD2264617982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -668,10 +678,12 @@
 				58E4FB701760AE5500E328A0 /* TicketingHub.xcdatamodeld in Sources */,
 				4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */,
 				58E4FB9F1761CFEC00E328A0 /* TXHMainViewController.m in Sources */,
+				4DF9F97B179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m in Sources */,
 				4D0E5131178C0BBC009436AC /* TXHDataDownloader.m in Sources */,
 				4DF9F973179D50E90040FC5D /* _Variation.m in Sources */,
 				4DF9F96F179D50E90040FC5D /* _Ticket.m in Sources */,
 				4D7C9DAA179401C100A225EC /* TXHSalesCalendarViewController.m in Sources */,
+				4DF9F97E179D62970040FC5D /* TXHEmbeddingSegue.m in Sources */,
 				4DF9F96A179D50E90040FC5D /* _Customer.m in Sources */,
 				4D68DAA3178AE62400743227 /* TXHSalesOptionsCell.m in Sources */,
 				581560CD1765D38A005C20EA /* TXHFlowLayout.m in Sources */,
@@ -688,6 +700,7 @@
 				4DF9F963179D50E90040FC5D /* Ticket.m in Sources */,
 				4DF9F960179D50E90040FC5D /* Role.m in Sources */,
 				581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */,
+				4DF9F978179D5B4E0040FC5D /* TXHTransitionSegue.m in Sources */,
 				4DF9F972179D50E90040FC5D /* _Tier.m in Sources */,
 				581560D11765DAB3005C20EA /* TXHDoorDateController.m in Sources */,
 				4DF9F95E179D50E90040FC5D /* Customer.m in Sources */,
@@ -698,7 +711,6 @@
 				4DF9F964179D50E90040FC5D /* TicketMaster.m in Sources */,
 				4DF9F967179D50E90040FC5D /* Variation.m in Sources */,
 				4DA05FBB178D8F31005161E6 /* TXHMenuController.m in Sources */,
-				4DD2264717982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.m in Sources */,
 				581560D41765E0DE005C20EA /* TXHTimeCell.m in Sources */,
 				4DA05FAB178C2430005161E6 /* TXHVenue.m in Sources */,
 				4DF9F95F179D50E90040FC5D /* Permission.m in Sources */,
