@@ -35,6 +35,30 @@
 		4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */; };
 		4DF3B5C11770AE6800D657AB /* TXHDatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5C01770AE6800D657AB /* TXHDatePickerController.m */; };
 		4DF3B5C41771ABE400D657AB /* RKMCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5C31771ABE400D657AB /* RKMCalendarView.m */; };
+		4DF9F95E179D50E90040FC5D /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F92E179D50E90040FC5D /* Customer.m */; };
+		4DF9F95F179D50E90040FC5D /* Permission.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F930179D50E90040FC5D /* Permission.m */; };
+		4DF9F960179D50E90040FC5D /* Role.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F932179D50E90040FC5D /* Role.m */; };
+		4DF9F961179D50E90040FC5D /* Season.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F934179D50E90040FC5D /* Season.m */; };
+		4DF9F962179D50E90040FC5D /* SeasonOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F936179D50E90040FC5D /* SeasonOption.m */; };
+		4DF9F963179D50E90040FC5D /* Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F938179D50E90040FC5D /* Ticket.m */; };
+		4DF9F964179D50E90040FC5D /* TicketMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F93A179D50E90040FC5D /* TicketMaster.m */; };
+		4DF9F965179D50E90040FC5D /* TicketType.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F93C179D50E90040FC5D /* TicketType.m */; };
+		4DF9F966179D50E90040FC5D /* Tier.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F93E179D50E90040FC5D /* Tier.m */; };
+		4DF9F967179D50E90040FC5D /* Variation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F940179D50E90040FC5D /* Variation.m */; };
+		4DF9F968179D50E90040FC5D /* VariationOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F942179D50E90040FC5D /* VariationOption.m */; };
+		4DF9F969179D50E90040FC5D /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F944179D50E90040FC5D /* Venue.m */; };
+		4DF9F96A179D50E90040FC5D /* _Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F947179D50E90040FC5D /* _Customer.m */; };
+		4DF9F96B179D50E90040FC5D /* _Permission.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F949179D50E90040FC5D /* _Permission.m */; };
+		4DF9F96C179D50E90040FC5D /* _Role.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F94B179D50E90040FC5D /* _Role.m */; };
+		4DF9F96D179D50E90040FC5D /* _Season.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F94D179D50E90040FC5D /* _Season.m */; };
+		4DF9F96E179D50E90040FC5D /* _SeasonOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F94F179D50E90040FC5D /* _SeasonOption.m */; };
+		4DF9F96F179D50E90040FC5D /* _Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F951179D50E90040FC5D /* _Ticket.m */; };
+		4DF9F970179D50E90040FC5D /* _TicketMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F953179D50E90040FC5D /* _TicketMaster.m */; };
+		4DF9F971179D50E90040FC5D /* _TicketType.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F955179D50E90040FC5D /* _TicketType.m */; };
+		4DF9F972179D50E90040FC5D /* _Tier.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F957179D50E90040FC5D /* _Tier.m */; };
+		4DF9F973179D50E90040FC5D /* _Variation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F959179D50E90040FC5D /* _Variation.m */; };
+		4DF9F974179D50E90040FC5D /* _VariationOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F95B179D50E90040FC5D /* _VariationOption.m */; };
+		4DF9F975179D50E90040FC5D /* _Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F95D179D50E90040FC5D /* _Venue.m */; };
 		4DFB1009178DB693006923F7 /* TXHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFB1008178DB693006923F7 /* TXHLoginViewController.m */; };
 		581560CD1765D38A005C20EA /* TXHFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 581560CA1765D38A005C20EA /* TXHFlowLayout.m */; };
 		581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 581560CC1765D38A005C20EA /* TXHDoorDateCell.m */; };
@@ -132,6 +156,54 @@
 		4DF3B5C01770AE6800D657AB /* TXHDatePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDatePickerController.m; sourceTree = "<group>"; };
 		4DF3B5C21771ABE400D657AB /* RKMCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKMCalendarView.h; sourceTree = "<group>"; };
 		4DF3B5C31771ABE400D657AB /* RKMCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKMCalendarView.m; sourceTree = "<group>"; };
+		4DF9F92D179D50E90040FC5D /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customer.h; sourceTree = "<group>"; };
+		4DF9F92E179D50E90040FC5D /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer.m; sourceTree = "<group>"; };
+		4DF9F92F179D50E90040FC5D /* Permission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Permission.h; sourceTree = "<group>"; };
+		4DF9F930179D50E90040FC5D /* Permission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Permission.m; sourceTree = "<group>"; };
+		4DF9F931179D50E90040FC5D /* Role.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Role.h; sourceTree = "<group>"; };
+		4DF9F932179D50E90040FC5D /* Role.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Role.m; sourceTree = "<group>"; };
+		4DF9F933179D50E90040FC5D /* Season.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Season.h; sourceTree = "<group>"; };
+		4DF9F934179D50E90040FC5D /* Season.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Season.m; sourceTree = "<group>"; };
+		4DF9F935179D50E90040FC5D /* SeasonOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonOption.h; sourceTree = "<group>"; };
+		4DF9F936179D50E90040FC5D /* SeasonOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonOption.m; sourceTree = "<group>"; };
+		4DF9F937179D50E90040FC5D /* Ticket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ticket.h; sourceTree = "<group>"; };
+		4DF9F938179D50E90040FC5D /* Ticket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ticket.m; sourceTree = "<group>"; };
+		4DF9F939179D50E90040FC5D /* TicketMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketMaster.h; sourceTree = "<group>"; };
+		4DF9F93A179D50E90040FC5D /* TicketMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketMaster.m; sourceTree = "<group>"; };
+		4DF9F93B179D50E90040FC5D /* TicketType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketType.h; sourceTree = "<group>"; };
+		4DF9F93C179D50E90040FC5D /* TicketType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketType.m; sourceTree = "<group>"; };
+		4DF9F93D179D50E90040FC5D /* Tier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tier.h; sourceTree = "<group>"; };
+		4DF9F93E179D50E90040FC5D /* Tier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tier.m; sourceTree = "<group>"; };
+		4DF9F93F179D50E90040FC5D /* Variation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Variation.h; sourceTree = "<group>"; };
+		4DF9F940179D50E90040FC5D /* Variation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Variation.m; sourceTree = "<group>"; };
+		4DF9F941179D50E90040FC5D /* VariationOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariationOption.h; sourceTree = "<group>"; };
+		4DF9F942179D50E90040FC5D /* VariationOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariationOption.m; sourceTree = "<group>"; };
+		4DF9F943179D50E90040FC5D /* Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
+		4DF9F944179D50E90040FC5D /* Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
+		4DF9F946179D50E90040FC5D /* _Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Customer.h; sourceTree = "<group>"; };
+		4DF9F947179D50E90040FC5D /* _Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Customer.m; sourceTree = "<group>"; };
+		4DF9F948179D50E90040FC5D /* _Permission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Permission.h; sourceTree = "<group>"; };
+		4DF9F949179D50E90040FC5D /* _Permission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Permission.m; sourceTree = "<group>"; };
+		4DF9F94A179D50E90040FC5D /* _Role.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Role.h; sourceTree = "<group>"; };
+		4DF9F94B179D50E90040FC5D /* _Role.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Role.m; sourceTree = "<group>"; };
+		4DF9F94C179D50E90040FC5D /* _Season.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Season.h; sourceTree = "<group>"; };
+		4DF9F94D179D50E90040FC5D /* _Season.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Season.m; sourceTree = "<group>"; };
+		4DF9F94E179D50E90040FC5D /* _SeasonOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _SeasonOption.h; sourceTree = "<group>"; };
+		4DF9F94F179D50E90040FC5D /* _SeasonOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _SeasonOption.m; sourceTree = "<group>"; };
+		4DF9F950179D50E90040FC5D /* _Ticket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Ticket.h; sourceTree = "<group>"; };
+		4DF9F951179D50E90040FC5D /* _Ticket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Ticket.m; sourceTree = "<group>"; };
+		4DF9F952179D50E90040FC5D /* _TicketMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TicketMaster.h; sourceTree = "<group>"; };
+		4DF9F953179D50E90040FC5D /* _TicketMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TicketMaster.m; sourceTree = "<group>"; };
+		4DF9F954179D50E90040FC5D /* _TicketType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TicketType.h; sourceTree = "<group>"; };
+		4DF9F955179D50E90040FC5D /* _TicketType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TicketType.m; sourceTree = "<group>"; };
+		4DF9F956179D50E90040FC5D /* _Tier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Tier.h; sourceTree = "<group>"; };
+		4DF9F957179D50E90040FC5D /* _Tier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Tier.m; sourceTree = "<group>"; };
+		4DF9F958179D50E90040FC5D /* _Variation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Variation.h; sourceTree = "<group>"; };
+		4DF9F959179D50E90040FC5D /* _Variation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Variation.m; sourceTree = "<group>"; };
+		4DF9F95A179D50E90040FC5D /* _VariationOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _VariationOption.h; sourceTree = "<group>"; };
+		4DF9F95B179D50E90040FC5D /* _VariationOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _VariationOption.m; sourceTree = "<group>"; };
+		4DF9F95C179D50E90040FC5D /* _Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Venue.h; sourceTree = "<group>"; };
+		4DF9F95D179D50E90040FC5D /* _Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Venue.m; sourceTree = "<group>"; };
 		4DFB1007178DB693006923F7 /* TXHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHLoginViewController.h; sourceTree = "<group>"; };
 		4DFB1008178DB693006923F7 /* TXHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHLoginViewController.m; sourceTree = "<group>"; };
 		581560C91765D38A005C20EA /* TXHFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHFlowLayout.h; sourceTree = "<group>"; };
@@ -245,6 +317,79 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
+		4DF9F92B179D50C10040FC5D /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				4DF9F92C179D50E90040FC5D /* Human */,
+				4DF9F945179D50E90040FC5D /* Machine */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		4DF9F92C179D50E90040FC5D /* Human */ = {
+			isa = PBXGroup;
+			children = (
+				4DF9F92D179D50E90040FC5D /* Customer.h */,
+				4DF9F92E179D50E90040FC5D /* Customer.m */,
+				4DF9F92F179D50E90040FC5D /* Permission.h */,
+				4DF9F930179D50E90040FC5D /* Permission.m */,
+				4DF9F931179D50E90040FC5D /* Role.h */,
+				4DF9F932179D50E90040FC5D /* Role.m */,
+				4DF9F933179D50E90040FC5D /* Season.h */,
+				4DF9F934179D50E90040FC5D /* Season.m */,
+				4DF9F935179D50E90040FC5D /* SeasonOption.h */,
+				4DF9F936179D50E90040FC5D /* SeasonOption.m */,
+				4DF9F937179D50E90040FC5D /* Ticket.h */,
+				4DF9F938179D50E90040FC5D /* Ticket.m */,
+				4DF9F939179D50E90040FC5D /* TicketMaster.h */,
+				4DF9F93A179D50E90040FC5D /* TicketMaster.m */,
+				4DF9F93B179D50E90040FC5D /* TicketType.h */,
+				4DF9F93C179D50E90040FC5D /* TicketType.m */,
+				4DF9F93D179D50E90040FC5D /* Tier.h */,
+				4DF9F93E179D50E90040FC5D /* Tier.m */,
+				4DF9F93F179D50E90040FC5D /* Variation.h */,
+				4DF9F940179D50E90040FC5D /* Variation.m */,
+				4DF9F941179D50E90040FC5D /* VariationOption.h */,
+				4DF9F942179D50E90040FC5D /* VariationOption.m */,
+				4DF9F943179D50E90040FC5D /* Venue.h */,
+				4DF9F944179D50E90040FC5D /* Venue.m */,
+			);
+			name = Human;
+			path = TicketingHub/Human;
+			sourceTree = "<group>";
+		};
+		4DF9F945179D50E90040FC5D /* Machine */ = {
+			isa = PBXGroup;
+			children = (
+				4DF9F946179D50E90040FC5D /* _Customer.h */,
+				4DF9F947179D50E90040FC5D /* _Customer.m */,
+				4DF9F948179D50E90040FC5D /* _Permission.h */,
+				4DF9F949179D50E90040FC5D /* _Permission.m */,
+				4DF9F94A179D50E90040FC5D /* _Role.h */,
+				4DF9F94B179D50E90040FC5D /* _Role.m */,
+				4DF9F94C179D50E90040FC5D /* _Season.h */,
+				4DF9F94D179D50E90040FC5D /* _Season.m */,
+				4DF9F94E179D50E90040FC5D /* _SeasonOption.h */,
+				4DF9F94F179D50E90040FC5D /* _SeasonOption.m */,
+				4DF9F950179D50E90040FC5D /* _Ticket.h */,
+				4DF9F951179D50E90040FC5D /* _Ticket.m */,
+				4DF9F952179D50E90040FC5D /* _TicketMaster.h */,
+				4DF9F953179D50E90040FC5D /* _TicketMaster.m */,
+				4DF9F954179D50E90040FC5D /* _TicketType.h */,
+				4DF9F955179D50E90040FC5D /* _TicketType.m */,
+				4DF9F956179D50E90040FC5D /* _Tier.h */,
+				4DF9F957179D50E90040FC5D /* _Tier.m */,
+				4DF9F958179D50E90040FC5D /* _Variation.h */,
+				4DF9F959179D50E90040FC5D /* _Variation.m */,
+				4DF9F95A179D50E90040FC5D /* _VariationOption.h */,
+				4DF9F95B179D50E90040FC5D /* _VariationOption.m */,
+				4DF9F95C179D50E90040FC5D /* _Venue.h */,
+				4DF9F95D179D50E90040FC5D /* _Venue.m */,
+			);
+			name = Machine;
+			path = TicketingHub/Machine;
+			sourceTree = "<group>";
+		};
 		5860E85917633C990046DFD3 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +405,7 @@
 		58E4FB481760AE5500E328A0 = {
 			isa = PBXGroup;
 			children = (
+				4DF9F92B179D50C10040FC5D /* Core Data */,
 				5860E85917633C990046DFD3 /* Assets */,
 				58E4FB971760D3C800E328A0 /* Classes */,
 				58E4FB901760AECF00E328A0 /* UI */,
@@ -555,39 +701,63 @@
 			buildActionMask = 2147483647;
 			files = (
 				58E4FB631760AE5500E328A0 /* main.m in Sources */,
+				4DF9F96C179D50E90040FC5D /* _Role.m in Sources */,
 				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
+				4DF9F96E179D50E90040FC5D /* _SeasonOption.m in Sources */,
+				4DF9F96B179D50E90040FC5D /* _Permission.m in Sources */,
+				4DF9F96D179D50E90040FC5D /* _Season.m in Sources */,
 				58E4FB701760AE5500E328A0 /* TicketingHub.xcdatamodeld in Sources */,
 				4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */,
 				58E4FB9F1761CFEC00E328A0 /* TXHMainViewController.m in Sources */,
 				4D0E5131178C0BBC009436AC /* TXHDataDownloader.m in Sources */,
+				4DF9F973179D50E90040FC5D /* _Variation.m in Sources */,
+				4DF9F96F179D50E90040FC5D /* _Ticket.m in Sources */,
 				4D7C9DAA179401C100A225EC /* TXHSalesCalendarViewController.m in Sources */,
+				4DF9F96A179D50E90040FC5D /* _Customer.m in Sources */,
 				4D89278617943C01004892FD /* MOVenue.m in Sources */,
 				4D68DAA3178AE62400743227 /* TXHSalesOptionsCell.m in Sources */,
 				581560CD1765D38A005C20EA /* TXHFlowLayout.m in Sources */,
 				4D307DB71796F9FC00822645 /* TXHTicketDetails.m in Sources */,
 				4D859FF517945E4D000B2FCC /* TXHVariation.m in Sources */,
 				4D4FBE2B176B5BB70023A0D1 /* TXHDoorTimeController.m in Sources */,
+				4DF9F970179D50E90040FC5D /* _TicketMaster.m in Sources */,
 				4D68DAA6178AE9E300743227 /* TXHOptionsExtrasItem.m in Sources */,
+				4DF9F965179D50E90040FC5D /* TicketType.m in Sources */,
 				4D25F648176CF08000A60359 /* TXHDoorGroupController.m in Sources */,
+				4DF9F961179D50E90040FC5D /* Season.m in Sources */,
 				4D68DA9D178AD5F600743227 /* TXHSalesMainViewController.m in Sources */,
 				4DA05FB8178D8DAC005161E6 /* TXHMenuViewController.m in Sources */,
+				4DF9F963179D50E90040FC5D /* Ticket.m in Sources */,
+				4DF9F960179D50E90040FC5D /* Role.m in Sources */,
 				581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */,
+				4DF9F972179D50E90040FC5D /* _Tier.m in Sources */,
 				581560D11765DAB3005C20EA /* TXHDoorDateController.m in Sources */,
+				4DF9F95E179D50E90040FC5D /* Customer.m in Sources */,
 				4D859FF817953FA1000B2FCC /* TXHTimeSlot.m in Sources */,
+				4DF9F969179D50E90040FC5D /* Venue.m in Sources */,
+				4DF9F971179D50E90040FC5D /* _TicketType.m in Sources */,
 				4DE21FDD1799738C004D50F0 /* UIView+TXHAnimationConversions.m in Sources */,
+				4DF9F964179D50E90040FC5D /* TicketMaster.m in Sources */,
+				4DF9F967179D50E90040FC5D /* Variation.m in Sources */,
 				4DA05FBB178D8F31005161E6 /* TXHMenuController.m in Sources */,
 				4DD2264717982DBD00B4B97E /* TXHUnwindSegueWithHorizontalTransition.m in Sources */,
 				581560D41765E0DE005C20EA /* TXHTimeCell.m in Sources */,
 				4DA05FAB178C2430005161E6 /* TXHVenue.m in Sources */,
+				4DF9F95F179D50E90040FC5D /* Permission.m in Sources */,
+				4DF9F974179D50E90040FC5D /* _VariationOption.m in Sources */,
 				4D68DAA9178B096A00743227 /* BarcodeViewController.m in Sources */,
 				581560D71765E150005C20EA /* TXHGroupCell.m in Sources */,
 				4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */,
 				4D80B9A5178ABEA4002A71C8 /* LoginAuthorisation.m in Sources */,
 				4DF3B5C11770AE6800D657AB /* TXHDatePickerController.m in Sources */,
+				4DF9F966179D50E90040FC5D /* Tier.m in Sources */,
 				4DF3B5C41771ABE400D657AB /* RKMCalendarView.m in Sources */,
+				4DF9F968179D50E90040FC5D /* VariationOption.m in Sources */,
+				4DF9F962179D50E90040FC5D /* SeasonOption.m in Sources */,
 				4D68DAA0178AE3A100743227 /* TXHSalesOptionsViewController.m in Sources */,
 				4DFB1009178DB693006923F7 /* TXHLoginViewController.m in Sources */,
 				4D307DB41796F61C00822645 /* TXHTimeFormatter.m in Sources */,
+				4DF9F975179D50E90040FC5D /* _Venue.m in Sources */,
 				4D859FF2179453EA000B2FCC /* TXHSeason.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
