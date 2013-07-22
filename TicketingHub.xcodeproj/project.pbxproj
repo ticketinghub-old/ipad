@@ -715,7 +715,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "543D6DE1-27F3-4C7C-ACC8-1E4727024053";
 				WARNING_CFLAGS = (
-					"-Weverything",
 					"-Wno-auto-import",
 					"-Wno-objc-missing-property-synthesis",
 					"-Wno-pointer-arith",
@@ -737,7 +736,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "543D6DE1-27F3-4C7C-ACC8-1E4727024053";
 				WARNING_CFLAGS = (
-					"-Weverything",
 					"-Wno-auto-import",
 					"-Wno-objc-missing-property-synthesis",
 					"-Wno-pointer-arith",
