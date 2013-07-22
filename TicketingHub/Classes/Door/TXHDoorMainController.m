@@ -8,7 +8,6 @@
 
 #import "TXHDoorMainController.h"
 #import "TXHDoorDateController.h"
-#import "TXHDatePickerController.h"
 #import "TXHCommonNames.h"
 
 @interface TXHDoorMainController () <UIPickerViewDelegate>
@@ -48,11 +47,6 @@
 #pragma unused (sender)
   if ([segue.identifier isEqualToString:@"doorDateSegue"]) {
     self.doorDateController = segue.destinationViewController;
-    return;
-  }
-  if ([segue.identifier isEqualToString:@"doorSearchSegue"]) {
-    TXHDatePickerController *dpc = segue.destinationViewController;
-    dpc.availableDates = self.doorDateController.eventDates;
     return;
   }
 }

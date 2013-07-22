@@ -9,7 +9,6 @@
 #import "TXHVenue.h"
 #import "TXHAppDelegate.h"
 #import "TXHServerAccessManager.h"
-#import "MOVenue.h"
 #import "TXHSeason.h"
 #import "TXHVariation.h"
 
