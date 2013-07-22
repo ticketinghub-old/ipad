@@ -61,6 +61,11 @@
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+  NSLog(@"Asking for it!");
+  return UIStatusBarStyleLightContent;
+}
+
 - (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -76,7 +81,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (void)didReceiveMemoryWarning

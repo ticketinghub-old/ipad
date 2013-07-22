@@ -21,7 +21,7 @@
 #pragma unused (launchOptions)
   
   // We want a light status bar style as the launch screen and nav bars are dark
-  application.statusBarStyle = UIStatusBarStyleLightContent;
+  [application setStatusBarStyle:UIStatusBarStyleLightContent];
   
   [[UINavigationBar appearance] setBackgroundColor:[UIColor colorWithRed:1.0f / 255.0f green:46.0f / 255.0f blue:67.0f / 255.0f alpha:1.0f]];
   
