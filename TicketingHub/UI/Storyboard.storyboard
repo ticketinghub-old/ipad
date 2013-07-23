@@ -272,6 +272,60 @@
             </objects>
             <point key="canvasLocation" x="433" y="1209"/>
         </scene>
+        <!--Date Selector View Controller-->
+        <scene sceneID="DpJ-Ct-eVJ">
+            <objects>
+                <viewController modalPresentationStyle="formSheet" id="MV3-Nl-t0D" customClass="TXHDateSelectorViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3pU-c6-jpe"/>
+                        <viewControllerLayoutGuide type="bottom" id="uFg-bL-p6X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" horizontalHuggingPriority="241" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="216" id="7rR-Ki-b2q">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="FCd-54-3dq">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.30196078430000001" green="0.52549019610000003" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <date key="date" timeIntervalSinceReferenceDate="396199300.86056501">
+                                    <!--2013-07-22 15:21:40 +0000-->
+                                </date>
+                                <timeZone key="timeZone" name="America/Los_Angeles">
+                                    <data key="data">
+VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
+y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
+5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
+8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
+AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
+DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
+HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
+KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
+OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
+Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
+VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
+Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
+cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
+f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
+</data>
+                                </timeZone>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="216"/>
+                    <connections>
+                        <outlet property="datePicker" destination="FCd-54-3dq" id="V0e-DB-z2S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L7e-Pd-Pa7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2725" y="-257"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="VBG-zP-iW6">
             <objects>
@@ -313,6 +367,9 @@
                         <segue destination="QtI-DJ-k8N" kind="custom" identifier="Flip To Placeholder" customClass="TXHTransitionSegue" id="utj-0e-oIi"/>
                         <segue destination="ujA-tL-iJr" kind="custom" identifier="Flip to Salesman" customClass="TXHTransitionSegue" id="mqZ-G7-ySZ"/>
                         <segue destination="XVE-h0-EKS" kind="custom" identifier="Flip to Doorman" customClass="TXHTransitionSegue" id="iUg-Pq-Kvt"/>
+                        <segue destination="MV3-Nl-t0D" kind="popover" identifier="Select Date From Popover" id="R3y-Zu-Ii9">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9no-gQ-7hV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -371,7 +428,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h5Q-bb-tfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2931" y="661"/>
+            <point key="canvasLocation" x="3377" y="695"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="94T-lx-FQK">
@@ -399,7 +456,7 @@
                     </items>
                 </navigationBar>
             </objects>
-            <point key="canvasLocation" x="2931" y="1633"/>
+            <point key="canvasLocation" x="3377" y="1593"/>
         </scene>
         <!--Navigation Controller - Initial View Controller-->
         <scene sceneID="Hya-Q2-JH9">
@@ -447,7 +504,7 @@
                     </items>
                 </navigationBar>
             </objects>
-            <point key="canvasLocation" x="2931" y="2521"/>
+            <point key="canvasLocation" x="3377" y="2521"/>
         </scene>
     </scenes>
     <resources>

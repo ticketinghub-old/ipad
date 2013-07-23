@@ -11,6 +11,7 @@
 #import "TXHVenue.h"
 #import "TXHEmbeddingSegue.h"
 #import "TXHTransitionSegue.h"
+#import "TXHDateSelectorViewController.h"
 
 // UIAlertViewDelegate is ONLY FOR TESTING purposes & may be removed
 @interface TXHMainViewController ()
@@ -20,6 +21,8 @@
 @property (strong, nonatomic) TXHVenue *venue;
 @property (strong, nonatomic) UIBarButtonItem *dateButton;
 @property (strong, nonatomic) UIBarButtonItem *timeButton;
+@property (strong, nonatomic) TXHDateSelectorViewController *dateViewController;
+@property (strong, nonatomic) UIPopoverController *datePopover;
 
 @property (assign, nonatomic) BOOL dateSelected;
 
@@ -50,7 +53,7 @@
     self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:24.0f],
                                                                     NSForegroundColorAttributeName: [UIColor whiteColor]};
     
-    NSString *titleString = @"21st Oct 2013";
+    NSString *titleString = @"<Date>";
     UIFont *font = [UIFont systemFontOfSize:15.0f];
     NSDictionary *attributesDict = @{NSFontAttributeName : font};
     NSAttributedString *attributedTitleString = [[NSAttributedString alloc] initWithString:titleString attributes:attributesDict];
@@ -69,7 +72,7 @@
     
     self.dateButton = [[UIBarButtonItem alloc] initWithCustomView:dateBtn];
     
-    titleString = @"13:00";
+    titleString = @"<Time>";
     NSAttributedString *attributedTimeString = [[NSAttributedString alloc] initWithString:titleString attributes:attributesDict];
     CGSize timeSize = [attributedTimeString size];
     UIButton *timeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -114,6 +117,14 @@
 -(void)selectDate:(id)sender {
 #pragma unused (sender)
     self.dateSelected = YES;
+    if (self.dateViewController == nil) {
+        self.dateViewController = [[TXHDateSelectorViewController alloc] init];
+    }
+//    if (self.datePopover == nil) {
+//        self.datePopover = [[UIPopoverController alloc] initWithContentViewController:self.dateViewController];
+//    }
+//    //Set popover configurations
+    [self.dateViewController presentPopoverFromBarButtonItem:self.dateButton];
     [self updateControlsForUserInteraction];
 }
 

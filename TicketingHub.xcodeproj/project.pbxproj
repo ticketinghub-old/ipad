@@ -57,6 +57,7 @@
 		4DF9F978179D5B4E0040FC5D /* TXHTransitionSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F977179D5B4E0040FC5D /* TXHTransitionSegue.m */; };
 		4DF9F97B179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F97A179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m */; };
 		4DF9F97E179D62970040FC5D /* TXHEmbeddingSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F97D179D62970040FC5D /* TXHEmbeddingSegue.m */; };
+		4DF9F984179DC2850040FC5D /* TXHDateSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F983179DC2850040FC5D /* TXHDateSelectorViewController.m */; };
 		4DFB1009178DB693006923F7 /* TXHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFB1008178DB693006923F7 /* TXHLoginViewController.m */; };
 		581560CD1765D38A005C20EA /* TXHFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 581560CA1765D38A005C20EA /* TXHFlowLayout.m */; };
 		581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 581560CC1765D38A005C20EA /* TXHDoorDateCell.m */; };
@@ -197,6 +198,8 @@
 		4DF9F97A179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMainScreenPlaceholderViewController.m; sourceTree = "<group>"; };
 		4DF9F97C179D62970040FC5D /* TXHEmbeddingSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHEmbeddingSegue.h; sourceTree = "<group>"; };
 		4DF9F97D179D62970040FC5D /* TXHEmbeddingSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHEmbeddingSegue.m; sourceTree = "<group>"; };
+		4DF9F982179DC2850040FC5D /* TXHDateSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDateSelectorViewController.h; sourceTree = "<group>"; };
+		4DF9F983179DC2850040FC5D /* TXHDateSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDateSelectorViewController.m; sourceTree = "<group>"; };
 		4DFB1007178DB693006923F7 /* TXHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHLoginViewController.h; sourceTree = "<group>"; };
 		4DFB1008178DB693006923F7 /* TXHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHLoginViewController.m; sourceTree = "<group>"; };
 		581560C91765D38A005C20EA /* TXHFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHFlowLayout.h; sourceTree = "<group>"; };
@@ -527,6 +530,8 @@
 				4DF9F97A179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m */,
 				4DF9F97C179D62970040FC5D /* TXHEmbeddingSegue.h */,
 				4DF9F97D179D62970040FC5D /* TXHEmbeddingSegue.m */,
+				4DF9F982179DC2850040FC5D /* TXHDateSelectorViewController.h */,
+				4DF9F983179DC2850040FC5D /* TXHDateSelectorViewController.m */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -715,6 +720,7 @@
 				4DA05FAB178C2430005161E6 /* TXHVenue.m in Sources */,
 				4DF9F95F179D50E90040FC5D /* Permission.m in Sources */,
 				4DF9F974179D50E90040FC5D /* _VariationOption.m in Sources */,
+				4DF9F984179DC2850040FC5D /* TXHDateSelectorViewController.m in Sources */,
 				4D68DAA9178B096A00743227 /* BarcodeViewController.m in Sources */,
 				581560D71765E150005C20EA /* TXHGroupCell.m in Sources */,
 				4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */,
