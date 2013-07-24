@@ -27,8 +27,8 @@
 @property (strong, nonatomic) UIButton                          *timeBtn;
 @property (strong, nonatomic) UIBarButtonItem                   *timeButton;
 @property (strong, nonatomic) TXHDateSelectorViewController     *dateViewController;
+
 @property (strong, nonatomic) UIPopoverController               *datePopover;
-@property (strong, nonatomic) TXHTimeslotSelectorViewController *timeViewController;
 @property (strong, nonatomic) UIPopoverController               *timePopover;
 
 @property (strong, nonatomic) NSDate                            *selectedDate;
@@ -90,6 +90,7 @@
     [self.timeBtn addTarget:self action:@selector(selectTime:) forControlEvents:UIControlEventTouchUpInside];
     frame.size = timeSize;
     self.timeBtn.frame = CGRectInset(frame, -5, -5);
+    self.timeBtn.titleLabel.font = font;
     self.timeBtn.tintColor = [UIColor whiteColor];
     [self.timeBtn setTitle:titleString forState:UIControlStateNormal];
     
@@ -143,23 +144,6 @@
 
 -(void)selectTime:(id)sender {
 #pragma unused (sender)
-//    if (self.timeViewController == nil) {
-//        self.timeViewController = [[TXHTimeslotSelectorViewController alloc] init];
-//        self.timeViewController.delegate = self;
-//    }
-//    // Get time slots for this date
-//    NSArray *timeSlots = [[TXHServerAccessManager sharedInstance] timeSlotsFor:self.selectedDate];
-//    
-//    [self.timeViewController setTimeSlots:timeSlots];
-//    [self.timeViewController presentPopoverFromBarButtonItem:self.timeButton];
-//    self.navigationItem.prompt = nil;
-//    [self.view layoutIfNeeded];
-
-//    if (self.timeViewController == nil) {
-//        self.timeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Time Selector Popover"];
-//        self.timeViewController.delegate = self;
-//    }
-
     TXHTimeslotSelectorViewController *timeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Time Selector Popover"];
     timeViewController.delegate = self;
     [timeViewController setTimeSlots:[[TXHServerAccessManager sharedInstance] timeSlotsFor:self.selectedDate]];
@@ -244,7 +228,7 @@
     }
     NSDate *dateAndTime = [self.selectedDate dateByAddingTimeInterval:self.selectedTime];
     [self.timeBtn setTitle:[timeFormatter stringFromDate:dateAndTime] forState:UIControlStateNormal];
-
+    [self.timeBtn sizeToFit];
     [self.timePopover dismissPopoverAnimated:YES];
     [self updateControlsForUserInteraction];
 }
@@ -278,7 +262,9 @@
             dateFormatter.dateStyle = NSDateFormatterMediumStyle;
             dateFormatter.timeStyle = NSDateFormatterNoStyle;
         }
-        [self.dateBtn setTitle:[dateFormatter stringFromDate:startDate] forState:UIControlStateNormal];
+        NSString *dateString = [dateFormatter stringFromDate:startDate];
+        [self.dateBtn setTitle:dateString forState:UIControlStateNormal];
+        [self.dateBtn sizeToFit];
     }
     self.selectedDate = nil;
     [self updateControlsForUserInteraction];
