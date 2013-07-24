@@ -275,13 +275,13 @@
         <!--Date Selector View Controller-->
         <scene sceneID="DpJ-Ct-eVJ">
             <objects>
-                <viewController modalPresentationStyle="formSheet" id="MV3-Nl-t0D" customClass="TXHDateSelectorViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Date Selector Popover" modalPresentationStyle="formSheet" id="MV3-Nl-t0D" customClass="TXHDateSelectorViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3pU-c6-jpe"/>
                         <viewControllerLayoutGuide type="bottom" id="uFg-bL-p6X"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" horizontalHuggingPriority="241" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="216" id="7rR-Ki-b2q">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
+                    <view key="view" contentMode="scaleToFill" horizontalHuggingPriority="241" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="270" id="7rR-Ki-b2q">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="FCd-54-3dq">
@@ -330,7 +330,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="320" height="270"/>
                     <connections>
@@ -340,7 +339,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L7e-Pd-Pa7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2728" y="71"/>
+            <point key="canvasLocation" x="2567" y="-256"/>
         </scene>
         <!--Timeslot Selector View Controller-->
         <scene sceneID="fRV-N2-66j">
@@ -365,40 +364,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <outlet property="delegate" destination="Zi7-Bl-5ym" id="wS1-lr-vHl"/>
                         </connections>
                     </tableView>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="480"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n9r-0U-SRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1776" y="-34"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="tHN-aP-1Rc">
-            <objects>
-                <tableViewController id="gxh-9d-eU1" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fJ9-bF-Nry">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellID" id="C6y-hw-RoH">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C6y-hw-RoH" id="DL9-7W-sV1">
-                                    <rect key="frame" x="0.0" y="0.0" width="322" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="gxh-9d-eU1" id="zcz-vP-K48"/>
-                            <outlet property="delegate" destination="gxh-9d-eU1" id="kcJ-77-dL0"/>
-                        </connections>
-                    </tableView>
-                    <value key="contentSizeForViewInPopover" type="size" width="320" height="480"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GvC-gZ-dYD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3201" y="71"/>
+            <point key="canvasLocation" x="1671" y="-256"/>
         </scene>
         <!--Main View Controller - tickethub.io-->
         <scene sceneID="VBG-zP-iW6">
@@ -441,12 +411,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <segue destination="QtI-DJ-k8N" kind="custom" identifier="Flip To Placeholder" customClass="TXHTransitionSegue" id="utj-0e-oIi"/>
                         <segue destination="ujA-tL-iJr" kind="custom" identifier="Flip to Salesman" customClass="TXHTransitionSegue" id="mqZ-G7-ySZ"/>
                         <segue destination="XVE-h0-EKS" kind="custom" identifier="Flip to Doorman" customClass="TXHTransitionSegue" id="iUg-Pq-Kvt"/>
-                        <segue destination="MV3-Nl-t0D" kind="popover" identifier="Select Date From Popover" id="R3y-Zu-Ii9">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
-                        <segue destination="gxh-9d-eU1" kind="popover" identifier="Select Time From Popover" id="qqn-aB-fjO">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9no-gQ-7hV" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -15,14 +15,6 @@
 // A delegate that will receive date selection
 @property (weak, nonatomic) id <TXHDateSelectorViewDelegate> delegate;
 
-- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view;
-
-- (void)presentPopoverFromBarButtonItem:(UIBarButtonItem *)item;
-
-- (BOOL)isPopoverVisible;
-
-- (void)dismissPopover;
-
 // Constrain the date picker to a range of dates from which one may be selected.
 // Each element contains a dictionary with start & end keys
 - (void)constrainToDateRanges:(NSArray *)ranges;

@@ -26,7 +26,6 @@
 @property (strong, nonatomic) UIBarButtonItem                   *dateButton;
 @property (strong, nonatomic) UIButton                          *timeBtn;
 @property (strong, nonatomic) UIBarButtonItem                   *timeButton;
-@property (strong, nonatomic) TXHDateSelectorViewController     *dateViewController;
 
 @property (strong, nonatomic) UIPopoverController               *datePopover;
 @property (strong, nonatomic) UIPopoverController               *timePopover;
@@ -121,38 +120,54 @@
 
 - (IBAction)toggleMenu:(id)sender {
 #pragma unused (sender)
+    [self dismissVisiblePopover];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TOGGLE_MENU object:nil];
+}
+
+- (void)dismissVisiblePopover {
+    // Whenever a control receives focus we want to dismiss a visible popover
+    if (self.datePopover.isPopoverVisible) {
+        [self.datePopover dismissPopoverAnimated:YES];
+    }
+    if (self.timePopover.isPopoverVisible) {
+        [self.timePopover dismissPopoverAnimated:YES];
+    }
 }
 
 -(void)selectDate:(id)sender {
 #pragma unused (sender)
-    if (self.dateViewController == nil) {
-        self.dateViewController = [[TXHDateSelectorViewController alloc] init];
-        self.dateViewController.delegate = self;
-    }
+    [self dismissVisiblePopover];
+
     // Build start/end ranges from all the seasons available for this venue
     NSMutableArray *ranges = [NSMutableArray array];
     for (TXHSeason *season in self.venue.allSeasons) {
         // Add a range for each season
         [ranges addObject:@{@"start": season.startsOn, @"end": season.endsOn}];
     }
-    [self.dateViewController constrainToDateRanges:ranges];
-    [self.dateViewController presentPopoverFromBarButtonItem:self.dateButton];
-    self.navigationItem.prompt = @"Please select a time slot";
+    TXHDateSelectorViewController *dateViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Date Selector Popover"];
+    dateViewController.delegate = self;
+    [dateViewController constrainToDateRanges:ranges];
+    
+    self.datePopover = [[UIPopoverController alloc] initWithContentViewController:dateViewController];
+    [self.datePopover presentPopoverFromBarButtonItem:self.dateButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     [self.view layoutIfNeeded];
 }
 
 -(void)selectTime:(id)sender {
 #pragma unused (sender)
+    [self dismissVisiblePopover];
     TXHTimeslotSelectorViewController *timeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Time Selector Popover"];
     timeViewController.delegate = self;
     [timeViewController setTimeSlots:[[TXHServerAccessManager sharedInstance] timeSlotsFor:self.selectedDate]];
     self.timePopover = [[UIPopoverController alloc] initWithContentViewController:timeViewController];
     [self.timePopover presentPopoverFromBarButtonItem:self.timeButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    self.navigationItem.prompt = nil;
+    [self.view layoutIfNeeded];
 }
 
 - (IBAction)selectMode:(id)sender {
 #pragma unused (sender)
+    [self dismissVisiblePopover];
     if (self.modeSelector.selectedSegmentIndex == 1) {
         [self performSegueWithIdentifier:@"Flip to Doorman" sender:self];
     } else {
@@ -197,6 +212,7 @@
 #pragma mark - TXHDateSelectorViewController delegate methods
 
 - (void)dateSelectorViewController:(TXHDateSelectorViewController *)controller didSelectDate:(NSDate *)date {
+#pragma unused (controller)
     self.selectedDate = date;
     
     // Having selected a date; we now need to select a timeslot; so reset the time selected flag
@@ -210,7 +226,7 @@
         dateFormatter.timeStyle = NSDateFormatterNoStyle;
     }
     [self.dateBtn setTitle:[dateFormatter stringFromDate:self.selectedDate] forState:UIControlStateNormal];
-    [controller dismissPopover];
+    [self.datePopover dismissPopoverAnimated:YES];
     [self updateControlsForUserInteraction];
 }
 
@@ -248,6 +264,7 @@
             self.navigationItem.prompt = NSLocalizedString(@"There are no dates for this venue", @"There are no dates for this venue");
             return;
         }
+        self.navigationItem.prompt = nil;
         
         // Update our date picker barbutton control
         // Choose today, or the start of the season if it's later than today.

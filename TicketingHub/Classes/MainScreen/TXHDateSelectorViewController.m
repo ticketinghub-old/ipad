@@ -12,14 +12,11 @@
 
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
 
-@property (strong, nonatomic) UIPopoverController *popoverController;
 @property (strong, nonatomic) IBOutlet UIButton *selectButton;
 
 @end
 
 @implementation TXHDateSelectorViewController
-
-@synthesize popoverController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,46 +39,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        self.datePicker = [[UIDatePicker alloc] init];
-        [self.view addSubview:self.datePicker];
-        [self.datePicker setDatePickerMode:UIDatePickerModeDate];
-        self.selectButton = [[UIButton alloc] initWithFrame:CGRectMake(123.0f, 220.0f, 74.0f, 44.0f)];
-        [self.selectButton setTitle:NSLocalizedString(@"Select", @"Select") forState:UIControlStateNormal];
-        [self.selectButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        [self.selectButton addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:self.selectButton];
-        self.popoverController = [[UIPopoverController alloc] initWithContentViewController:self];
-    }
-    return self;
-}
-
+//- (id)init
+//{
+//    self = [super init];
+//    if (self) {
+//        self.datePicker = [[UIDatePicker alloc] init];
+//        [self.view addSubview:self.datePicker];
+//        [self.datePicker setDatePickerMode:UIDatePickerModeDate];
+//        self.selectButton = [[UIButton alloc] initWithFrame:CGRectMake(123.0f, 220.0f, 74.0f, 44.0f)];
+//        [self.selectButton setTitle:NSLocalizedString(@"Select", @"Select") forState:UIControlStateNormal];
+//        [self.selectButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+//        [self.selectButton addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventTouchUpInside];
+//        [self.view addSubview:self.selectButton];
+//        self.popoverController = [[UIPopoverController alloc] initWithContentViewController:self];
+//    }
+//    return self;
+//}
+//
 - (CGSize)contentSizeForViewInPopover
 {
     return CGSizeMake(self.datePicker.bounds.size.width, self.datePicker.bounds.size.height + 54.0f);
-}
-
-- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view
-{
-    [self.popoverController presentPopoverFromRect:rect inView:view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-}
-
-- (void)presentPopoverFromBarButtonItem:(UIBarButtonItem *)item
-{
-    [self.popoverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-}
-
-- (BOOL)isPopoverVisible
-{
-    return self.popoverController.isPopoverVisible;
-}
-
-- (void)dismissPopover
-{
-    [self.popoverController dismissPopoverAnimated:YES];
 }
 
 - (void)constrainToDateRanges:(NSArray *)ranges {
