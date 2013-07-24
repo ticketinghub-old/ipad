@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @property (strong, nonatomic) UIPopoverController *popoverController;
+@property (strong, nonatomic) IBOutlet UIButton *selectButton;
 
 @end
 
@@ -48,6 +49,11 @@
         self.datePicker = [[UIDatePicker alloc] init];
         [self.view addSubview:self.datePicker];
         [self.datePicker setDatePickerMode:UIDatePickerModeDate];
+        self.selectButton = [[UIButton alloc] initWithFrame:CGRectMake(123.0f, 220.0f, 74.0f, 44.0f)];
+        [self.selectButton setTitle:NSLocalizedString(@"Select", @"Select") forState:UIControlStateNormal];
+        [self.selectButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [self.selectButton addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:self.selectButton];
         self.popoverController = [[UIPopoverController alloc] initWithContentViewController:self];
     }
     return self;
@@ -55,17 +61,17 @@
 
 - (CGSize)contentSizeForViewInPopover
 {
-    return self.datePicker.bounds.size;
+    return CGSizeMake(self.datePicker.bounds.size.width, self.datePicker.bounds.size.height + 54.0f);
 }
 
 - (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view
 {
-    [self.popoverController presentPopoverFromRect:rect inView:view permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+    [self.popoverController presentPopoverFromRect:rect inView:view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (void)presentPopoverFromBarButtonItem:(UIBarButtonItem *)item
 {
-    [self.popoverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    [self.popoverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (BOOL)isPopoverVisible
@@ -77,4 +83,14 @@
 {
     [self.popoverController dismissPopoverAnimated:YES];
 }
+
+- (void)constrainToDateRanges:(NSArray *)ranges {
+    
+}
+
+- (IBAction)selectDate:(id)sender {
+#pragma unused (sender)
+    [self.delegate dateSelectorViewController:self didSelectDate:self.datePicker.date];
+}
+
 @end

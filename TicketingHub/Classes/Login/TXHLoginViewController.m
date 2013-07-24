@@ -62,7 +62,6 @@
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-  NSLog(@"Asking for it!");
   return UIStatusBarStyleLightContent;
 }
 

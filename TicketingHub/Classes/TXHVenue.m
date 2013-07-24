@@ -140,6 +140,10 @@ static NSString* const  VENUE_STRIPE_PUBLISHABLE_KEY =  @"stripe_publishable_key
   }
 }
 
+- (NSArray *)allSeasons {
+    return self.seasons;
+}
+
 - (TXHSeason *)currentSeason {
   if (self.seasons.count == 0) {
     return nil;

@@ -7,24 +7,33 @@
 //
 
 #import "TXHMainViewController.h"
+#import "TXHServerAccessManager.h"
 #import "TXHCommonNames.h"
-#import "TXHVenue.h"
 #import "TXHEmbeddingSegue.h"
 #import "TXHTransitionSegue.h"
 #import "TXHDateSelectorViewController.h"
+#import "TXHTimeslotSelectorViewController.h"
+#import "TXHVenue.h"
+#import "TXHSeason.h"
+#import "TXHTimeSlot.h"
 
-// UIAlertViewDelegate is ONLY FOR TESTING purposes & may be removed
-@interface TXHMainViewController ()
+@interface TXHMainViewController () <TXHDateSelectorViewDelegate, TXHTimeSlotSelectorDelegate>
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelector;
+@property (weak, nonatomic) IBOutlet UISegmentedControl         *modeSelector;
 
-@property (strong, nonatomic) TXHVenue *venue;
-@property (strong, nonatomic) UIBarButtonItem *dateButton;
-@property (strong, nonatomic) UIBarButtonItem *timeButton;
-@property (strong, nonatomic) TXHDateSelectorViewController *dateViewController;
-@property (strong, nonatomic) UIPopoverController *datePopover;
+@property (strong, nonatomic) TXHVenue                          *venue;
+@property (strong, nonatomic) UIButton                          *dateBtn;
+@property (strong, nonatomic) UIBarButtonItem                   *dateButton;
+@property (strong, nonatomic) UIButton                          *timeBtn;
+@property (strong, nonatomic) UIBarButtonItem                   *timeButton;
+@property (strong, nonatomic) TXHDateSelectorViewController     *dateViewController;
+@property (strong, nonatomic) UIPopoverController               *datePopover;
+@property (strong, nonatomic) TXHTimeslotSelectorViewController *timeViewController;
+@property (strong, nonatomic) UIPopoverController               *timePopover;
 
-@property (assign, nonatomic) BOOL dateSelected;
+@property (strong, nonatomic) NSDate                            *selectedDate;
+@property (assign, nonatomic) NSTimeInterval                    selectedTime;
+@property (assign, nonatomic) BOOL                              timeSelected;
 
 @end
 
@@ -48,7 +57,7 @@
 }
 
 - (void)setup {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueSelected:) name:NOTIFICATION_VENUE_SELECTED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueUpdated:) name:NOTIFICATION_VENUE_UPDATED object:nil];
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:1.0f / 255.0f green:46.0f / 255.0f blue:67.0f / 255.0f alpha:1.0f]];
     self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:24.0f],
                                                                     NSForegroundColorAttributeName: [UIColor whiteColor]};
@@ -59,32 +68,32 @@
     NSAttributedString *attributedTitleString = [[NSAttributedString alloc] initWithString:titleString attributes:attributesDict];
     CGSize titleSize = [attributedTitleString size];
     //  UIImage *buttonBackgroundImage = [[UIImage imageNamed:@"ButtonBackground"] resizableImageWithCapInsets:UIEdgeInsetsMake(1.0, 1.0, 1.0, 1.0)];
-    UIButton *dateBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.dateBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     CGRect frame = CGRectZero;
     frame.size = titleSize;
-    dateBtn.frame = CGRectInset(frame, -5, -5);
+    self.dateBtn.frame = CGRectInset(frame, -5, -5);
     //  [dateBtn setImage:buttonBackgroundImage forState:UIControlStateNormal];
     //  [dateBtn setImage:buttonBackgroundImage forState:UIControlStateSelected];
-    [dateBtn addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventTouchUpInside];
-    dateBtn.titleLabel.font = font;
-    [dateBtn setTitle:titleString forState:UIControlStateNormal];
-    dateBtn.tintColor = [UIColor whiteColor];
+    [self.dateBtn addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventTouchUpInside];
+    self.dateBtn.titleLabel.font = font;
+    [self.dateBtn setTitle:titleString forState:UIControlStateNormal];
+    self.dateBtn.tintColor = [UIColor whiteColor];
     
-    self.dateButton = [[UIBarButtonItem alloc] initWithCustomView:dateBtn];
+    self.dateButton = [[UIBarButtonItem alloc] initWithCustomView:self.dateBtn];
     
     titleString = @"<Time>";
     NSAttributedString *attributedTimeString = [[NSAttributedString alloc] initWithString:titleString attributes:attributesDict];
     CGSize timeSize = [attributedTimeString size];
-    UIButton *timeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.timeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     //  [timeBtn setImage:buttonBackgroundImage forState:UIControlStateNormal];
     //  [timeBtn setImage:buttonBackgroundImage forState:UIControlStateSelected];
-    [timeBtn addTarget:self action:@selector(selectTime:) forControlEvents:UIControlEventTouchUpInside];
+    [self.timeBtn addTarget:self action:@selector(selectTime:) forControlEvents:UIControlEventTouchUpInside];
     frame.size = timeSize;
-    timeBtn.frame = CGRectInset(frame, -5, -5);
-    timeBtn.tintColor = [UIColor whiteColor];
-    [timeBtn setTitle:titleString forState:UIControlStateNormal];
+    self.timeBtn.frame = CGRectInset(frame, -5, -5);
+    self.timeBtn.tintColor = [UIColor whiteColor];
+    [self.timeBtn setTitle:titleString forState:UIControlStateNormal];
     
-    self.timeButton = [[UIBarButtonItem alloc] initWithCustomView:timeBtn];
+    self.timeButton = [[UIBarButtonItem alloc] initWithCustomView:self.timeBtn];
     [self.navigationItem setLeftBarButtonItems:@[self.navigationItem.leftBarButtonItem, self.dateButton, self.timeButton]];
 }
 
@@ -116,21 +125,46 @@
 
 -(void)selectDate:(id)sender {
 #pragma unused (sender)
-    self.dateSelected = YES;
     if (self.dateViewController == nil) {
         self.dateViewController = [[TXHDateSelectorViewController alloc] init];
+        self.dateViewController.delegate = self;
     }
-//    if (self.datePopover == nil) {
-//        self.datePopover = [[UIPopoverController alloc] initWithContentViewController:self.dateViewController];
-//    }
-//    //Set popover configurations
+    // Build start/end ranges from all the seasons available for this venue
+    NSMutableArray *ranges = [NSMutableArray array];
+    for (TXHSeason *season in self.venue.allSeasons) {
+        // Add a range for each season
+        [ranges addObject:@{@"start": season.startsOn, @"end": season.endsOn}];
+    }
+    [self.dateViewController constrainToDateRanges:ranges];
     [self.dateViewController presentPopoverFromBarButtonItem:self.dateButton];
-    [self updateControlsForUserInteraction];
+    self.navigationItem.prompt = @"Please select a time slot";
+    [self.view layoutIfNeeded];
 }
 
 -(void)selectTime:(id)sender {
 #pragma unused (sender)
-    NSLog(@"Time selected");
+//    if (self.timeViewController == nil) {
+//        self.timeViewController = [[TXHTimeslotSelectorViewController alloc] init];
+//        self.timeViewController.delegate = self;
+//    }
+//    // Get time slots for this date
+//    NSArray *timeSlots = [[TXHServerAccessManager sharedInstance] timeSlotsFor:self.selectedDate];
+//    
+//    [self.timeViewController setTimeSlots:timeSlots];
+//    [self.timeViewController presentPopoverFromBarButtonItem:self.timeButton];
+//    self.navigationItem.prompt = nil;
+//    [self.view layoutIfNeeded];
+
+//    if (self.timeViewController == nil) {
+//        self.timeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Time Selector Popover"];
+//        self.timeViewController.delegate = self;
+//    }
+
+    TXHTimeslotSelectorViewController *timeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Time Selector Popover"];
+    timeViewController.delegate = self;
+    [timeViewController setTimeSlots:[[TXHServerAccessManager sharedInstance] timeSlotsFor:self.selectedDate]];
+    self.timePopover = [[UIPopoverController alloc] initWithContentViewController:timeViewController];
+    [self.timePopover presentPopoverFromBarButtonItem:self.timeButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (IBAction)selectMode:(id)sender {
@@ -172,19 +206,81 @@
     BOOL enabled = (self.venue != nil);
     self.modeSelector.userInteractionEnabled = enabled;
     self.dateButton.enabled = enabled;
-    self.timeButton.enabled = (enabled && self.dateSelected);
+    self.timeButton.enabled = (enabled && (self.selectedDate != nil));
 }
 
 
+#pragma mark - TXHDateSelectorViewController delegate methods
+
+- (void)dateSelectorViewController:(TXHDateSelectorViewController *)controller didSelectDate:(NSDate *)date {
+    self.selectedDate = date;
+    
+    // Having selected a date; we now need to select a timeslot; so reset the time selected flag
+    self.timeSelected = NO;
+    
+    // Update the date picker barbutton control
+    static NSDateFormatter *dateFormatter = nil;
+    if (dateFormatter == nil) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+        dateFormatter.timeStyle = NSDateFormatterNoStyle;
+    }
+    [self.dateBtn setTitle:[dateFormatter stringFromDate:self.selectedDate] forState:UIControlStateNormal];
+    [controller dismissPopover];
+    [self updateControlsForUserInteraction];
+}
+
+- (void)timeSlotSelectorViewController:(TXHTimeslotSelectorViewController *)controller didSelectTime:(NSTimeInterval)time {
+#pragma unused (controller)
+    self.selectedTime = time;
+    self.timeSelected = YES;
+    
+    // Update the time barbutton control
+    static NSDateFormatter *timeFormatter = nil;
+    if (timeFormatter == nil) {
+        timeFormatter = [[NSDateFormatter alloc] init];
+        timeFormatter.dateStyle = NSDateFormatterNoStyle;
+        timeFormatter.timeStyle = NSDateFormatterMediumStyle;
+    }
+    NSDate *dateAndTime = [self.selectedDate dateByAddingTimeInterval:self.selectedTime];
+    [self.timeBtn setTitle:[timeFormatter stringFromDate:dateAndTime] forState:UIControlStateNormal];
+
+    [self.timePopover dismissPopoverAnimated:YES];
+    [self updateControlsForUserInteraction];
+}
+
 #pragma mark - Notifications
 
-- (void)venueSelected:(NSNotification *)notification {
+- (void)venueUpdated:(NSNotification *)notification {
     // Check for venue details then close menu if appropriate
     self.venue = [notification object];
     if (self.venue != nil) {
+        // Display the selected venue in the navigation bar
         self.title = self.venue.businessName;
+        
+        // Get the current season for this venue if there is one
+        TXHSeason *season = self.venue.currentSeason;
+        if (season == nil) {
+            self.navigationItem.prompt = NSLocalizedString(@"There are no dates for this venue", @"There are no dates for this venue");
+            return;
+        }
+        
+        // Update our date picker barbutton control
+        // Choose today, or the start of the season if it's later than today.
+        NSDate *startDate = [NSDate date];
+        NSDate *seasonStart = season.startsOn;
+        if ([startDate compare:seasonStart] == NSOrderedAscending) {
+            startDate = seasonStart;
+        }
+        static NSDateFormatter *dateFormatter = nil;
+        if (dateFormatter == nil) {
+            dateFormatter = [[NSDateFormatter alloc] init];
+            dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+            dateFormatter.timeStyle = NSDateFormatterNoStyle;
+        }
+        [self.dateBtn setTitle:[dateFormatter stringFromDate:startDate] forState:UIControlStateNormal];
     }
-    self.dateSelected = NO;
+    self.selectedDate = nil;
     [self updateControlsForUserInteraction];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TOGGLE_MENU object:nil];
 }
