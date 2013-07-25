@@ -41,6 +41,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setTimeSlots:(NSArray *)timeSlots {
+    _timeSlots = timeSlots;
+    [self.tableView reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -78,7 +83,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma unused (tableView)
     TXHTimeSlot *timeSlot = self.timeSlots[indexPath.row];
-    [self.delegate timeSlotSelectorViewController:self didSelectTime:timeSlot.timeSlotStart];
+    [self.delegate timeSlotSelectorViewController:self didSelectTime:@(timeSlot.timeSlotStart)];
 }
 
 #pragma mark - Popover methods

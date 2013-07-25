@@ -19,7 +19,6 @@
 		4D68DAA6178AE9E300743227 /* TXHOptionsExtrasItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D68DAA5178AE9E300743227 /* TXHOptionsExtrasItem.m */; };
 		4D68DAA9178B096A00743227 /* BarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D68DAA8178B096A00743227 /* BarcodeViewController.m */; };
 		4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D68DAAA178B0A5400743227 /* AVFoundation.framework */; };
-		4D7A47A0179EE19E00F966C6 /* TXHTimeSlotSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7A479E179EE19E00F966C6 /* TXHTimeSlotSelector.xib */; };
 		4D7C9DAA179401C100A225EC /* TXHSalesCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C9DA9179401C100A225EC /* TXHSalesCalendarViewController.m */; };
 		4D80B9A5178ABEA4002A71C8 /* LoginAuthorisation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D80B9A4178ABEA4002A71C8 /* LoginAuthorisation.m */; };
 		4D859FF2179453EA000B2FCC /* TXHSeason.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D89278817944B61004892FD /* TXHSeason.m */; };
@@ -29,6 +28,10 @@
 		4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */; };
 		4DA05FB8178D8DAC005161E6 /* TXHMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB7178D8DAC005161E6 /* TXHMenuViewController.m */; };
 		4DA05FBB178D8F31005161E6 /* TXHMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FBA178D8F31005161E6 /* TXHMenuController.m */; };
+		4DA0980217A17AE6001D5794 /* TXHSalesTicketsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0980117A17AE6001D5794 /* TXHSalesTicketsViewController.m */; };
+		4DA0980517A17B3E001D5794 /* TXHInformationPaneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0980417A17B3E001D5794 /* TXHInformationPaneViewController.m */; };
+		4DB23D6E17A169D8002B7B11 /* Salesman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */; };
+		4DB23D7117A17093002B7B11 /* TXHSalesWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB23D7017A17093002B7B11 /* TXHSalesWizardViewController.m */; };
 		4DC95F26179EA654004E035D /* TXHTimeslotSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC95F25179EA654004E035D /* TXHTimeslotSelectorViewController.m */; };
 		4DE21FDD1799738C004D50F0 /* UIView+TXHAnimationConversions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE21FDC1799738C004D50F0 /* UIView+TXHAnimationConversions.m */; };
 		4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */; };
@@ -124,7 +127,6 @@
 		4D68DAA8178B096A00743227 /* BarcodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeViewController.m; sourceTree = "<group>"; };
 		4D68DAAA178B0A5400743227 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4D7A06D31795B2E90008041D /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
-		4D7A479E179EE19E00F966C6 /* TXHTimeSlotSelector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TXHTimeSlotSelector.xib; sourceTree = "<group>"; };
 		4D7C9DA8179401C100A225EC /* TXHSalesCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesCalendarViewController.h; sourceTree = "<group>"; };
 		4D7C9DA9179401C100A225EC /* TXHSalesCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesCalendarViewController.m; sourceTree = "<group>"; };
 		4D80B9A3178ABEA4002A71C8 /* LoginAuthorisation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAuthorisation.h; sourceTree = "<group>"; };
@@ -143,6 +145,13 @@
 		4DA05FB7178D8DAC005161E6 /* TXHMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMenuViewController.m; sourceTree = "<group>"; };
 		4DA05FB9178D8F31005161E6 /* TXHMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMenuController.h; sourceTree = "<group>"; };
 		4DA05FBA178D8F31005161E6 /* TXHMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMenuController.m; sourceTree = "<group>"; };
+		4DA0980017A17AE6001D5794 /* TXHSalesTicketsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesTicketsViewController.h; sourceTree = "<group>"; };
+		4DA0980117A17AE6001D5794 /* TXHSalesTicketsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesTicketsViewController.m; sourceTree = "<group>"; };
+		4DA0980317A17B3E001D5794 /* TXHInformationPaneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHInformationPaneViewController.h; sourceTree = "<group>"; };
+		4DA0980417A17B3E001D5794 /* TXHInformationPaneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHInformationPaneViewController.m; sourceTree = "<group>"; };
+		4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Salesman.storyboard; sourceTree = "<group>"; };
+		4DB23D6F17A17093002B7B11 /* TXHSalesWizardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesWizardViewController.h; sourceTree = "<group>"; };
+		4DB23D7017A17093002B7B11 /* TXHSalesWizardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesWizardViewController.m; sourceTree = "<group>"; };
 		4DC95F24179EA654004E035D /* TXHTimeslotSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTimeslotSelectorViewController.h; sourceTree = "<group>"; };
 		4DC95F25179EA654004E035D /* TXHTimeslotSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTimeslotSelectorViewController.m; sourceTree = "<group>"; };
 		4DE21FDB1799738C004D50F0 /* UIView+TXHAnimationConversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TXHAnimationConversions.h"; sourceTree = "<group>"; };
@@ -468,7 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				58E4FB911760AEF300E328A0 /* Storyboard.storyboard */,
-				4D7A479E179EE19E00F966C6 /* TXHTimeSlotSelector.xib */,
+				4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */,
 			);
 			name = UI;
 			path = TicketingHub/UI;
@@ -566,6 +575,12 @@
 				4D68DAA2178AE62400743227 /* TXHSalesOptionsCell.m */,
 				4D7C9DA8179401C100A225EC /* TXHSalesCalendarViewController.h */,
 				4D7C9DA9179401C100A225EC /* TXHSalesCalendarViewController.m */,
+				4DB23D6F17A17093002B7B11 /* TXHSalesWizardViewController.h */,
+				4DB23D7017A17093002B7B11 /* TXHSalesWizardViewController.m */,
+				4DA0980017A17AE6001D5794 /* TXHSalesTicketsViewController.h */,
+				4DA0980117A17AE6001D5794 /* TXHSalesTicketsViewController.m */,
+				4DA0980317A17B3E001D5794 /* TXHInformationPaneViewController.h */,
+				4DA0980417A17B3E001D5794 /* TXHInformationPaneViewController.m */,
 			);
 			path = Sales;
 			sourceTree = "<group>";
@@ -648,7 +663,7 @@
 				58E4FB6B1760AE5500E328A0 /* Default@2x.png in Resources */,
 				58E4FB6D1760AE5500E328A0 /* Default-568h@2x.png in Resources */,
 				58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */,
-				4D7A47A0179EE19E00F966C6 /* TXHTimeSlotSelector.xib in Resources */,
+				4DB23D6E17A169D8002B7B11 /* Salesman.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,6 +698,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DA0980217A17AE6001D5794 /* TXHSalesTicketsViewController.m in Sources */,
 				58E4FB631760AE5500E328A0 /* main.m in Sources */,
 				4DF9F96C179D50E90040FC5D /* _Role.m in Sources */,
 				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
@@ -721,6 +737,7 @@
 				4D859FF817953FA1000B2FCC /* TXHTimeSlot.m in Sources */,
 				4DF9F969179D50E90040FC5D /* Venue.m in Sources */,
 				4DF9F971179D50E90040FC5D /* _TicketType.m in Sources */,
+				4DA0980517A17B3E001D5794 /* TXHInformationPaneViewController.m in Sources */,
 				4DE21FDD1799738C004D50F0 /* UIView+TXHAnimationConversions.m in Sources */,
 				4DF9F964179D50E90040FC5D /* TicketMaster.m in Sources */,
 				4DF9F967179D50E90040FC5D /* Variation.m in Sources */,
@@ -740,6 +757,7 @@
 				4D68DAA0178AE3A100743227 /* TXHSalesOptionsViewController.m in Sources */,
 				4DFB1009178DB693006923F7 /* TXHLoginViewController.m in Sources */,
 				4D307DB41796F61C00822645 /* TXHTimeFormatter.m in Sources */,
+				4DB23D7117A17093002B7B11 /* TXHSalesWizardViewController.m in Sources */,
 				4DF9F975179D50E90040FC5D /* _Venue.m in Sources */,
 				4D859FF2179453EA000B2FCC /* TXHSeason.m in Sources */,
 				4DC95F26179EA654004E035D /* TXHTimeslotSelectorViewController.m in Sources */,

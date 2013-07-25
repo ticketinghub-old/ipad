@@ -62,7 +62,7 @@
 - (id)init {
   self = [super init];
   if (self) {
-    self.accessToken = @"Gop3U0x4lkqDdiPaiVqWVw";
+//    self.accessToken = @"Gop3U0x4lkqDdiPaiVqWVw";
     [self registerForNotifications];
   }
   return self;
@@ -88,6 +88,13 @@
                                            selector:@selector(willTerminate:)
                                                name:UIApplicationWillTerminateNotification
                                              object:nil];
+}
+
+- (NSMutableDictionary *)timeSlots {
+    if (_timeSlots == nil) {
+        _timeSlots = [NSMutableDictionary dictionary];
+    }
+    return _timeSlots;
 }
 
 - (void)generateAccessTokenFor:(NSString *)user password:(NSString *)password completion:(void (^)())completion error:(void (^)(id))error {
@@ -276,8 +283,6 @@
   NSDate *referenceDate = [[NSCalendar currentCalendar] dateFromComponents:components];
   NSInteger weekDay = [components weekday];
   
-  NSComparisonResult result;
-  
   // Go for a variation first
   TXHVariation *variation = self.currentVenue.currentVariation;
   if (variation != nil) {
@@ -295,27 +300,20 @@
   
   // Go through the current season options if there are no variations
   if (newTimeSlots.count == 0) {
-    TXHSeason *season  = self.currentVenue.currentSeason;
-    // Is the reference after the start of this season
-    result = [referenceDate compare:season.startsOn];
-    if (result != NSOrderedAscending) {
-      // Is the reference date before the end of this season
-      result = [referenceDate compare:season.endsOn];
-      if (result != NSOrderedDescending) {
-        // Reference date is in this season
-        for (TXHSeasonOption *option in season.options) {
-          // Is the reference date on the right day of the week
-          if (weekDay == option.weekDay) {
-            // We have timeslots for this date
-            TXHTimeSlot *oneTimeSlot = [[TXHTimeSlot alloc] init];
-            oneTimeSlot.date = referenceDate;
-            oneTimeSlot.timeSlotStart = option.time;
-            oneTimeSlot.title = option.title;
-            [newTimeSlots addObject:oneTimeSlot];
+    TXHSeason *season  = [self.currentVenue seasonFor:referenceDate];
+      if (season != nil) {
+          for (TXHSeasonOption *option in season.options) {
+              // Is the reference date on the right day of the week
+              if (weekDay == option.weekDay) {
+                  // We have timeslots for this date
+                  TXHTimeSlot *oneTimeSlot = [[TXHTimeSlot alloc] init];
+                  oneTimeSlot.date = referenceDate;
+                  oneTimeSlot.timeSlotStart = option.time;
+                  oneTimeSlot.title = option.title;
+                  [newTimeSlots addObject:oneTimeSlot];
+              }
           }
-        }
       }
-    }
   }
 
   self.timeSlots[components] = newTimeSlots;

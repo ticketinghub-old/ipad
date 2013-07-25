@@ -46,4 +46,6 @@
 - (void)addSeasonData:(NSArray *)seasonData;
 - (void)addVariationData:(NSArray *)variationData;
 
+- (TXHSeason *)seasonFor:(NSDate *)date;
+
 @end

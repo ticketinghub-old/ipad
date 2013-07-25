@@ -21,6 +21,6 @@
 
 @protocol TXHTimeSlotSelectorDelegate <NSObject>
 
-- (void)timeSlotSelectorViewController:(TXHTimeslotSelectorViewController *)controller didSelectTime:(NSTimeInterval)time;
+- (void)timeSlotSelectorViewController:(TXHTimeslotSelectorViewController *)controller didSelectTime:(NSNumber *)time;
 
 @end

@@ -107,7 +107,6 @@
   
   // We successfully logged in, so get a list of venues for this user
   [[TXHServerAccessManager sharedInstance] getVenuesWithCompletionHandler:^(NSArray *venues){
-    NSLog(@"get venues:");
     [self gotVenues:venues];
   }
                                                              errorHandler:^(id reason){[self loginFailed:reason];}];

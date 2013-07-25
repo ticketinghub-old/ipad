@@ -147,10 +147,11 @@
     TXHDateSelectorViewController *dateViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Date Selector Popover"];
     dateViewController.delegate = self;
     [dateViewController constrainToDateRanges:ranges];
+
+    [self.view layoutIfNeeded];
     
     self.datePopover = [[UIPopoverController alloc] initWithContentViewController:dateViewController];
     [self.datePopover presentPopoverFromBarButtonItem:self.dateButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    [self.view layoutIfNeeded];
 }
 
 -(void)selectTime:(id)sender {
@@ -230,9 +231,9 @@
     [self updateControlsForUserInteraction];
 }
 
-- (void)timeSlotSelectorViewController:(TXHTimeslotSelectorViewController *)controller didSelectTime:(NSTimeInterval)time {
+- (void)timeSlotSelectorViewController:(TXHTimeslotSelectorViewController *)controller didSelectTime:(NSNumber *)time {
 #pragma unused (controller)
-    self.selectedTime = time;
+    self.selectedTime = [time doubleValue];
     self.timeSelected = YES;
     
     // Update the time barbutton control
@@ -253,22 +254,22 @@
 
 - (void)venueUpdated:(NSNotification *)notification {
     // Check for venue details then close menu if appropriate
+    NSDate *startDate = [NSDate date];
     self.venue = [notification object];
     if (self.venue != nil) {
         // Display the selected venue in the navigation bar
         self.title = self.venue.businessName;
         
-        // Get the current season for this venue if there is one
-        TXHSeason *season = self.venue.currentSeason;
+        // Get the first season for this venue if there is one
+        TXHSeason *season = [self.venue.allSeasons firstObject];
         if (season == nil) {
             self.navigationItem.prompt = NSLocalizedString(@"There are no dates for this venue", @"There are no dates for this venue");
             return;
         }
         self.navigationItem.prompt = nil;
         
-        // Update our date picker barbutton control
+        // Update our date picker barbutton control to show the date
         // Choose today, or the start of the season if it's later than today.
-        NSDate *startDate = [NSDate date];
         NSDate *seasonStart = season.startsOn;
         if ([startDate compare:seasonStart] == NSOrderedAscending) {
             startDate = seasonStart;
@@ -283,7 +284,7 @@
         [self.dateBtn setTitle:dateString forState:UIControlStateNormal];
         [self.dateBtn sizeToFit];
     }
-    self.selectedDate = nil;
+    self.selectedDate = startDate;
     [self updateControlsForUserInteraction];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TOGGLE_MENU object:nil];
 }
