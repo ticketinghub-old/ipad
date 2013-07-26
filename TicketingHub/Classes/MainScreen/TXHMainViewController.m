@@ -104,7 +104,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self performSegueWithIdentifier:@"Embed Placeholder" sender:self];
+    [self selectMode:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -170,9 +170,18 @@
 #pragma unused (sender)
     [self dismissVisiblePopover];
     if (self.modeSelector.selectedSegmentIndex == 1) {
-        [self performSegueWithIdentifier:@"Flip to Doorman" sender:self];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Doorman" bundle:nil];
+        
+        UIViewController *destinationController = [storyboard instantiateInitialViewController];
+        
+        //        destinationController.containerNavigationItem = self.navigationItem;
+        
+        TXHEmbeddingSegue *segue = [[TXHEmbeddingSegue alloc] initWithIdentifier:@"Doorman"
+                                                                          source:self destination:destinationController];
+        segue.containerView = self.view;
+        
+        [segue perform];
     } else {
-//        [self performSegueWithIdentifier:@"Flip to Salesman" sender:self];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Salesman" bundle:nil];
         
         UIViewController *destinationController = [storyboard instantiateInitialViewController];
@@ -189,28 +198,19 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 #pragma unused (sender)
-//    if ([segue isMemberOfClass:[TXHEmbeddingSegue class]])
-//    {
-//        TXHEmbeddingSegue *embeddingSegue = (TXHEmbeddingSegue *) segue;
+//    if ([segue isMemberOfClass:[TXHTransitionSegue class]]) {
+//        TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
 //        
-//        embeddingSegue.containerView = self.view;
-//        
-//        return;
+//        transitionSegue.containerView = self.view;
+//
+//        if ([segue.identifier isEqualToString:@"Flip To Salesman"]) {
+//            transitionSegue.animationOptions = UIViewAnimationOptionTransitionCurlDown;
+//        }
+//        else
+//        {
+//            transitionSegue.animationOptions = UIViewAnimationOptionTransitionCurlUp;
+//        }
 //    }
-    
-    if ([segue isMemberOfClass:[TXHTransitionSegue class]]) {
-        TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
-        
-        transitionSegue.containerView = self.view;
-
-        if ([segue.identifier isEqualToString:@"Flip To Salesman"]) {
-            transitionSegue.animationOptions = UIViewAnimationOptionTransitionCurlDown;
-        }
-        else
-        {
-            transitionSegue.animationOptions = UIViewAnimationOptionTransitionCurlUp;
-        }
-    }
 }
 
 - (void)updateControlsForUserInteraction {

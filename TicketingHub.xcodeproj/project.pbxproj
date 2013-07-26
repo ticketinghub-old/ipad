@@ -24,6 +24,7 @@
 		4D859FF2179453EA000B2FCC /* TXHSeason.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D89278817944B61004892FD /* TXHSeason.m */; };
 		4D859FF517945E4D000B2FCC /* TXHVariation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D859FF417945E4D000B2FCC /* TXHVariation.m */; };
 		4D859FF817953FA1000B2FCC /* TXHTimeSlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D859FF717953FA1000B2FCC /* TXHTimeSlot.m */; };
+		4D8FCCB617A28A8C008B4227 /* Doorman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */; };
 		4DA05FAB178C2430005161E6 /* TXHVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FAA178C2430005161E6 /* TXHVenue.m */; };
 		4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */; };
 		4DA05FB8178D8DAC005161E6 /* TXHMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB7178D8DAC005161E6 /* TXHMenuViewController.m */; };
@@ -137,6 +138,7 @@
 		4D859FF717953FA1000B2FCC /* TXHTimeSlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTimeSlot.m; sourceTree = "<group>"; };
 		4D89278717944B61004892FD /* TXHSeason.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHSeason.h; sourceTree = "<group>"; };
 		4D89278817944B61004892FD /* TXHSeason.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TXHSeason.m; sourceTree = "<group>"; };
+		4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Doorman.storyboard; sourceTree = "<group>"; };
 		4DA05FA9178C2430005161E6 /* TXHVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVenue.h; sourceTree = "<group>"; };
 		4DA05FAA178C2430005161E6 /* TXHVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVenue.m; sourceTree = "<group>"; };
 		4DA05FAF178C367F005161E6 /* TXHServerAccessManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHServerAccessManager.h; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 			children = (
 				58E4FB911760AEF300E328A0 /* Storyboard.storyboard */,
 				4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */,
+				4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */,
 			);
 			name = UI;
 			path = TicketingHub/UI;
@@ -658,6 +661,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58E4FB611760AE5500E328A0 /* InfoPlist.strings in Resources */,
+				4D8FCCB617A28A8C008B4227 /* Doorman.storyboard in Resources */,
 				58E4FB691760AE5500E328A0 /* Default.png in Resources */,
 				4D586DE11797E51E00E40534 /* Images.xcassets in Resources */,
 				58E4FB6B1760AE5500E328A0 /* Default@2x.png in Resources */,
