@@ -172,20 +172,31 @@
     if (self.modeSelector.selectedSegmentIndex == 1) {
         [self performSegueWithIdentifier:@"Flip to Doorman" sender:self];
     } else {
-        [self performSegueWithIdentifier:@"Flip to Salesman" sender:self];
+//        [self performSegueWithIdentifier:@"Flip to Salesman" sender:self];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Salesman" bundle:nil];
+        
+        UIViewController *destinationController = [storyboard instantiateInitialViewController];
+        
+//        destinationController.containerNavigationItem = self.navigationItem;
+        
+        TXHEmbeddingSegue *segue = [[TXHEmbeddingSegue alloc] initWithIdentifier:@"Salesman"
+                                                                                source:self destination:destinationController];
+        segue.containerView = self.view;
+        
+        [segue perform];
     }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 #pragma unused (sender)
-    if ([segue isMemberOfClass:[TXHEmbeddingSegue class]])
-    {
-        TXHEmbeddingSegue *embeddingSegue = (TXHEmbeddingSegue *) segue;
-        
-        embeddingSegue.containerView = self.view;
-        
-        return;
-    }
+//    if ([segue isMemberOfClass:[TXHEmbeddingSegue class]])
+//    {
+//        TXHEmbeddingSegue *embeddingSegue = (TXHEmbeddingSegue *) segue;
+//        
+//        embeddingSegue.containerView = self.view;
+//        
+//        return;
+//    }
     
     if ([segue isMemberOfClass:[TXHTransitionSegue class]]) {
         TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
