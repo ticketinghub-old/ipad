@@ -13,12 +13,30 @@
 
 @interface TXHMenuController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIButton *logout;
+
 @property (strong, nonatomic) UIView *headerView;
 @property (strong, nonatomic) NSArray *venues;
 
 @end
 
 @implementation TXHMenuController
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+  self = [super initWithCoder:aDecoder];
+  if (self) {
+    [self setup];
+  }
+  return self;
+}
+
+- (void)setup {
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(menuLogin:) name:NOTIFICATION_MENU_LOGIN object:nil];
+}
+
+- (void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)viewDidLoad
 {
@@ -88,7 +106,8 @@
     self.headerView = [[UIView alloc] initWithFrame:frame];
     self.headerView.backgroundColor = [UIColor colorWithRed:1.0f / 255.0f green:46.0f / 255.0f blue:67.0f / 255.0f alpha:1.0f];
     NSString *titleString = @"Venues";
-    NSDictionary *attributesDict = @{NSFontAttributeName: [UIFont systemFontOfSize:24.0f]};
+    UIFont *font = [UIFont systemFontOfSize:34.0f];
+    NSDictionary *attributesDict = @{NSFontAttributeName : font};
     NSAttributedString *attributedTitleString = [[NSAttributedString alloc] initWithString:titleString attributes:attributesDict];
     CGSize titleSize = [attributedTitleString size];
     
@@ -100,7 +119,7 @@
     UILabel *title = [[UILabel alloc] initWithFrame:titleLabelFrame];
     title.backgroundColor = [UIColor colorWithRed:1.0f / 255.0f green:46.0f / 255.0f blue:67.0f / 255.0f alpha:1.0f];
     title.textColor = [UIColor whiteColor];
-    title.font = [UIFont systemFontOfSize:24.0f];
+    title.font = font;
     title.text = titleString;
     [self.headerView addSubview:title];
   }
@@ -110,7 +129,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma unused (tableView)
   TXHVenue *venue = [self.venues objectAtIndex:indexPath.row];
-  [[NSNotificationCenter defaultCenter] postNotificationName:VENUE_SELECTED object:venue];
+  [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_VENUE_SELECTED object:venue];
 }
 
 /*
@@ -166,7 +185,17 @@
 
 - (IBAction)logout:(id)sender {
 #pragma unused (sender)
-  [[NSNotificationCenter defaultCenter] postNotificationName:MENU_LOGOUT object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MENU_LOGOUT object:nil];
+  self.logout.titleLabel.text = NSLocalizedString(@"Logout", @"Logout the current user");
+}
+
+#pragma mark - Notifications
+
+- (void)menuLogin:(NSNotification *)notification {
+  // Logged in user will be supplied as a string in the notification object
+  NSString *user = notification.object;
+  
+  [self.logout setTitle:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Logout", @"Logout the current user"), user] forState:UIControlStateNormal];
 }
 
 @end

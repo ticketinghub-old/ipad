@@ -14,6 +14,9 @@
 @interface TXHMenuViewController ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftHandSpace;
+@property (weak, nonatomic) IBOutlet UIView *menuContainer;
+@property (weak, nonatomic) IBOutlet UIView *tabContainer;
+
 @property (strong, nonatomic) UITapGestureRecognizer  *tapRecogniser;
 
 @property (assign, nonatomic) BOOL  loggedIn;
@@ -40,15 +43,21 @@
 }
 
 - (void)setup {
-  [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout:) name:MENU_LOGOUT object:nil];
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+  [self.navigationController.navigationBar setBackgroundColor:[UIColor colorWithRed:1.0f / 255.0f green:46.0f / 255.0f blue:67.0f / 255.0f alpha:1.0f]];
+  
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout:) name:NOTIFICATION_MENU_LOGOUT object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMenu:) name:NOTIFICATION_TOGGLE_MENU object:nil];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+  return UIStatusBarStyleLightContent;
 }
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
 	// Do any additional setup after loading the view.
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMenu:) name:TOGGLE_MENU object:nil];
   self.tapRecogniser = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
   self.leftHandSpace.constant = -self.menuContainer.bounds.size.width;
   [self performSegueWithIdentifier:@"modalLogin" sender:self];
@@ -56,7 +65,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
-  [UIView animateWithDuration:0.75f delay:0.15f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+  [UIView animateWithDuration:0.4f delay:0.15f options:UIViewAnimationOptionCurveEaseInOut animations:^{
     self.leftHandSpace.constant = 0.0f;
     [self.view layoutIfNeeded];
   } completion:nil];
@@ -80,7 +89,7 @@
 
 - (IBAction)toggleMenu:(id)sender {
 #pragma unused (sender)
-  [UIView animateWithDuration:1.0f animations:^{
+  [UIView animateWithDuration:0.40f animations:^{
     if (self.leftHandSpace.constant == 0.0f) {
       self.leftHandSpace.constant = -self.menuContainer.bounds.size.width;
     } else {
@@ -95,20 +104,20 @@
   [self toggleMenu:nil];
 }
 
-- (IBAction)mySegueHandler:(UIStoryboardSegue *)sender {
-  // Do some interesting stuff
-  TXHLoginViewController *controller = sender.sourceViewController;
-  [controller dismissViewControllerAnimated:YES completion:nil];
-  [UIView animateWithDuration:0.5
-                   animations:^{
-                     
-                     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
-                   }
-                   completion:^(BOOL finished){
-                     self.loggedIn = finished;
-                   }];
-  [self.navigationController popViewControllerAnimated:NO];
-}
+//- (IBAction)mySegueHandler:(UIStoryboardSegue *)sender {
+//  // Do some interesting stuff
+//  TXHLoginViewController *controller = sender.sourceViewController;
+//  [controller dismissViewControllerAnimated:YES completion:nil];
+//  [UIView animateWithDuration:0.5
+//                   animations:^{
+//                     
+//                     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
+//                   }
+//                   completion:^(BOOL finished){
+//                     self.loggedIn = finished;
+//                   }];
+//  [self.navigationController popViewControllerAnimated:NO];
+//}
 
 #pragma mark - Notifications
 

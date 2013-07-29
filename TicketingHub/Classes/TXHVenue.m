@@ -9,7 +9,6 @@
 #import "TXHVenue.h"
 #import "TXHAppDelegate.h"
 #import "TXHServerAccessManager.h"
-#import "MOVenue.h"
 #import "TXHSeason.h"
 #import "TXHVariation.h"
 
@@ -141,6 +140,10 @@ static NSString* const  VENUE_STRIPE_PUBLISHABLE_KEY =  @"stripe_publishable_key
   }
 }
 
+- (NSArray *)allSeasons {
+    return self.seasons;
+}
+
 - (TXHSeason *)currentSeason {
   if (self.seasons.count == 0) {
     return nil;
@@ -155,19 +158,7 @@ static NSString* const  VENUE_STRIPE_PUBLISHABLE_KEY =  @"stripe_publishable_key
   // Build a comparison date beginning at the start of the supplied day
   NSDate *referenceDate = [[NSCalendar currentCalendar] dateFromComponents:components];
 
-  for (TXHSeason *season in self.seasons) {
-    // Is the reference after the start of this season
-    NSComparisonResult result = [referenceDate compare:season.startsOn];
-    if (result != NSOrderedAscending) {
-      // Is the reference date before the end of this season
-      result = [referenceDate compare:season.endsOn];
-      if (result != NSOrderedDescending) {
-        // Reference date is in this season
-        return season;
-      }
-    }
-  }
-  return nil;
+  return [self seasonFor:referenceDate];
 }
 
 - (TXHVariation *)currentVariation {
@@ -217,6 +208,22 @@ static NSString* const  VENUE_STRIPE_PUBLISHABLE_KEY =  @"stripe_publishable_key
       [self.variations addObject:variation];
     }
   }
+}
+
+- (TXHSeason *)seasonFor:(NSDate *)date {
+    for (TXHSeason *season in self.seasons) {
+        // Is the date after the start of this season
+        NSComparisonResult result = [date compare:season.startsOn];
+        if (result != NSOrderedAscending) {
+            // Is the date before the end of this season
+            result = [date compare:season.endsOn];
+            if (result != NSOrderedDescending) {
+                // Reference date is in this season
+                return season;
+            }
+        }
+    }
+    return nil;
 }
 
 @end

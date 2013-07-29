@@ -43,7 +43,6 @@
 }
 
 - (id)init {
-//  NSLog(@"%s", __FUNCTION__);
   self = [super init];
   if (self) {
     [self setup];
@@ -52,7 +51,6 @@
 }
 
 - (void)setup {
-//  NSLog(@"%s", __FUNCTION__);
   
   /*
    New info:-

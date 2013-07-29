@@ -36,6 +36,8 @@
 
 @property (strong, nonatomic)   NSString      *stripePublishableKey;
 
+@property (readonly, nonatomic) NSArray       *allSeasons;
+
 @property (readonly, nonatomic) TXHSeason     *currentSeason;
 @property (readonly, nonatomic) TXHVariation  *currentVariation;
 
@@ -43,5 +45,7 @@
 
 - (void)addSeasonData:(NSArray *)seasonData;
 - (void)addVariationData:(NSArray *)variationData;
+
+- (TXHSeason *)seasonFor:(NSDate *)date;
 
 @end

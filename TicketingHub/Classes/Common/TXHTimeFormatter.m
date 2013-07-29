@@ -24,10 +24,11 @@
                             NSHourCalendarUnit    |
                             NSDayCalendarUnit);
   
+  NSCalendarOptions options = 0u;
   NSDateComponents *conversionInfo = [sysCalendar components:unitFlags
                                                     fromDate:date1
                                                       toDate:date2
-                                                     options:0];
+                                                     options:NSCalendarWrapComponents];
   
   NSString *result;
   

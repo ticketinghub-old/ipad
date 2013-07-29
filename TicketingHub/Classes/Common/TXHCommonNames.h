@@ -18,14 +18,15 @@
 #define LAST_USER @"lastUser"
 
 // Name for notifications dispatched by TXHMenuViewController
-#define TOGGLE_MENU     @"toggleMenu"
-#define MENU_LOGOUT     @"menuLogout"
-#define VENUE_SELECTED  @"venueSelected"
+static NSString* const NOTIFICATION_TOGGLE_MENU =       @"notificationToggleMenu";
+static NSString* const NOTIFICATION_MENU_LOGOUT =       @"notificationMenuLogout";
+static NSString* const NOTIFICATION_VENUE_SELECTED =    @"notificationVenueSelected";
+static NSString* const NOTIFICATION_MENU_LOGIN =        @"notificationMenuLogin";
 
 // Names for notifications dispatched by TXHServerAccessManager
-#define VENUE_UPDATED @"venueUpdated"
+static NSString* const NOTIFICATION_VENUE_UPDATED =     @"notificationVenueUpdated";
 
 // Names for notifications dispatched by TXHSalesCalendarController
-#define TIMESLOT_SELECTED @"timeslotSelected"
+static NSString* const NOTIFICATION_TIMESLOT_SELECTED = @"notificationTimeslotSelected";
 
 #endif
