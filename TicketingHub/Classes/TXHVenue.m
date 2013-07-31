@@ -7,37 +7,41 @@
 //
 
 #import "TXHVenue.h"
+
 #import "TXHAppDelegate.h"
-#import "TXHServerAccessManager.h"
 #import "TXHSeason.h"
+#import "TXHServerAccessManager.h"
+#import "TXHTicketDetail.h"
 #import "TXHVariation.h"
 
-static NSString* const  VENUE_ID =                      @"id";
-static NSString* const  VENUE_BUSINESS_NAME =           @"name";
-static NSString* const  ADDRESS_STREET_1 =              @"street_1";
-static NSString* const  ADDRESS_STREET_2 =              @"street_2";
-static NSString* const  ADDRESS_CITY =                  @"city";
-static NSString* const  ADDRESS_REGION =                @"region";
-static NSString* const  ADDRESS_POSTAL_CODE =           @"postcode";
-static NSString* const  ADDRESS_COUNTRY =               @"country";
-static NSString* const  VENUE_LATITUDE =                @"latitude";
-static NSString* const  VENUE_LONGITUDE =               @"longitude";
-static NSString* const  VENUE_CURRENCY =                @"currency";
-static NSString* const  VENUE_TIME_ZONE =               @"time_zone";
-static NSString* const  VENUE_WEBSITE =                 @"website";
-static NSString* const  VENUE_EMAIL =                   @"email";
-static NSString* const  VENUE_TELEPHONE =               @"telephone";
-static NSString* const  VENUE_ESTABLISHMENT_TYPE =      @"establishment_type";
-static NSString* const  VENUE_STRIPE_PUBLISHABLE_KEY =  @"stripe_publishable_key";
+static NSString* const  venueID =                   @"id";
+static NSString* const  venueBusinessName =         @"name";
+static NSString* const  addressStreet1 =            @"street_1";
+static NSString* const  addressStreet2 =            @"street_2";
+static NSString* const  addressCity =               @"city";
+static NSString* const  addressRegion =             @"region";
+static NSString* const  addressPostCode =           @"postcode";
+static NSString* const  addressCountry =            @"country";
+static NSString* const  venueLatitude =             @"latitude";
+static NSString* const  venueLongitude =            @"longitude";
+static NSString* const  venueCurrency =             @"currency";
+static NSString* const  venueTimeZone =             @"time_zone";
+static NSString* const  venueWebsite =              @"website";
+static NSString* const  venueEmail =                @"email";
+static NSString* const  venueTelephone =            @"telephone";
+static NSString* const  venueEstablishmentType =    @"establishment_type";
+static NSString* const  venueStripePublishableKey = @"stripe_publishable_key";
 
 @interface TXHVenue ()
 
 // Redefine as editable
-@property (strong, nonatomic) NSNumber        *venueID;
+@property (strong, nonatomic) NSNumber          *venueID;
 
 // Redefine as mutable
-@property (strong, nonatomic) NSMutableArray  *seasons;
-@property (strong, nonatomic) NSMutableArray  *variations;
+@property (strong, nonatomic) NSMutableArray    *seasons;
+@property (strong, nonatomic) NSMutableArray    *variations;
+
+@property (strong, nonatomic) TXHTicketDetail   *ticketDetail;
 
 @end
 
@@ -52,58 +56,58 @@ static NSString* const  VENUE_STRIPE_PUBLISHABLE_KEY =  @"stripe_publishable_key
 }
 
 - (void)setupWithData:(NSDictionary *)data {
-  id temp = data[VENUE_ID];
+  id temp = data[venueID];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
     self.venueID = temp;
   }
 
-  temp = data[VENUE_BUSINESS_NAME];
+  temp = data[venueBusinessName];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
     self.businessName = temp;
   }
   NSMutableDictionary *address = [NSMutableDictionary dictionary];
-  temp = data[ADDRESS_STREET_1];
+  temp = data[addressStreet1];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    address[ADDRESS_STREET_1] = temp;
+    address[addressStreet1] = temp;
   }
-  temp = data[ADDRESS_STREET_2];
+  temp = data[addressStreet2];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    address[ADDRESS_STREET_2] = temp;
+    address[addressStreet2] = temp;
   }
-  temp = data[ADDRESS_CITY];
+  temp = data[addressCity];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    address[ADDRESS_CITY] = temp;
+    address[addressCity] = temp;
   }
-  temp = data[ADDRESS_REGION];
+  temp = data[addressRegion];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    address[ADDRESS_REGION] = temp;
+    address[addressRegion] = temp;
   }
-  temp = data[ADDRESS_POSTAL_CODE];
+  temp = data[addressPostCode];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    address[ADDRESS_POSTAL_CODE] = temp;
+    address[addressPostCode] = temp;
   }
-  temp = data[ADDRESS_COUNTRY];
+  temp = data[addressCountry];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    address[ADDRESS_COUNTRY] = temp;
+    address[addressCountry] = temp;
   }
   self.address = address;
   
-  temp = data[VENUE_LATITUDE];
+  temp = data[venueLatitude];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
     self.latitude = temp;
   }
   
-  temp = data[VENUE_LONGITUDE];
+  temp = data[venueLongitude];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
     self.longitude = temp;
   }
   
-  temp = data[VENUE_CURRENCY];
+  temp = data[venueCurrency];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
     self.currency = temp;
   }
   
-  temp = data[VENUE_TIME_ZONE];
+  temp = data[venueTimeZone];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
     NSTimeZone *zone =[NSTimeZone timeZoneWithName:temp];
     if (zone != nil) {
@@ -111,30 +115,30 @@ static NSString* const  VENUE_STRIPE_PUBLISHABLE_KEY =  @"stripe_publishable_key
     }
   }
   
-  temp = data[VENUE_WEBSITE];
+  temp = data[venueWebsite];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    NSURL *webURL = [NSURL URLWithString:data[VENUE_WEBSITE]];
+    NSURL *webURL = [NSURL URLWithString:data[venueWebsite]];
     if (webURL != nil) {
       self.website = webURL;
     }
   }
   
-  temp = data[VENUE_EMAIL];
+  temp = data[venueEmail];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    self.email = data[VENUE_EMAIL];
+    self.email = data[venueEmail];
   }
   
-  temp = data[VENUE_TELEPHONE];
+  temp = data[venueTelephone];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
     self.telephone = temp;
   }
   
-  temp = data[VENUE_ESTABLISHMENT_TYPE];
+  temp = data[venueEstablishmentType];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
     self.establishmentType = temp;
   }
   
-  temp = data[VENUE_STRIPE_PUBLISHABLE_KEY];
+  temp = data[venueStripePublishableKey];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
     self.stripePublishableKey = temp;
   }
@@ -224,6 +228,10 @@ static NSString* const  VENUE_STRIPE_PUBLISHABLE_KEY =  @"stripe_publishable_key
         }
     }
     return nil;
+}
+
+- (void)addTicket:(TXHTicketDetail *)ticket {
+    _ticketDetail = ticket;
 }
 
 @end

@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIImageView *email;
+@property (weak, nonatomic) IBOutlet UIImageView *passwordIcon;
 
 @property (strong, nonatomic) NSString *lastUser;
 
@@ -76,11 +77,22 @@
   if (self.lastUser.length > 0) {
     self.userField.text = self.lastUser;
   }
+    
+    self.email.image = [[UIImage imageNamed:@"mail"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.email.tintColor = [UIColor colorWithRed:77.0f / 255.0f
+                                           green:134.0f / 255.0f
+                                            blue:180.0f / 255.0f
+                                           alpha:1.0f];
+    
+    self.passwordIcon.image = [[UIImage imageNamed:@"right-arrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.passwordIcon.tintColor = [UIColor colorWithRed:28.0f / 255.0f
+                                                  green:60.0f / 255.0f
+                                                   blue:54.0f / 255.0f
+                                                  alpha:1.0f];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (void)didReceiveMemoryWarning
@@ -142,6 +154,8 @@
   NSDictionary *keyboardAnimationDetail = [notification userInfo];
   UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
   UIViewAnimationOptions options = [UIView txhAnimationOptionsFromAnimationCurve:animationCurve];
+    // Beta 4 had issues with the animation options, so fixed at the moment
+    options = UIViewAnimationOptionCurveEaseInOut;
   CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
   
   [UIView animateWithDuration:duration delay:0.0 options:options animations:^{
@@ -154,6 +168,8 @@
   NSDictionary *keyboardAnimationDetail = [notification userInfo];
   UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
   UIViewAnimationOptions options = [UIView txhAnimationOptionsFromAnimationCurve:animationCurve];
+    // Beta 4 had issues with the animation options, so fixed at the moment
+    options = UIViewAnimationOptionCurveEaseInOut;
   CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
   
   [UIView animateWithDuration:duration delay:0.0 options:options animations:^{

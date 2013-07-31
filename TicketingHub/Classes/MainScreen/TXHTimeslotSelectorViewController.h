@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class TXHTimeSlot;
+
 @protocol TXHTimeSlotSelectorDelegate;
 
 @interface TXHTimeslotSelectorViewController : UITableViewController
@@ -21,6 +23,6 @@
 
 @protocol TXHTimeSlotSelectorDelegate <NSObject>
 
-- (void)timeSlotSelectorViewController:(TXHTimeslotSelectorViewController *)controller didSelectTime:(NSNumber *)time;
+- (void)timeSlotSelectorViewController:(TXHTimeslotSelectorViewController *)controller didSelectTime:(TXHTimeSlot *)time;
 
 @end

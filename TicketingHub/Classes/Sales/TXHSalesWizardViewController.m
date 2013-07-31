@@ -101,14 +101,14 @@
 #pragma mark - Table view delegate
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+#pragma unused (tableView)
     // The first cell, which contains date / time, cannot be selected
     if (indexPath.row == 0) {
         return nil;
     }
     
     // If the previous stage has been completed we can select this cell
-    if (self.currentStageInProgress < indexPath.row - 1) {
+    if (self.currentStageInProgress < indexPath.row - 2) {
         return nil;
     }
     
@@ -179,6 +179,15 @@
     if (self.currentStageInProgress < stage) {
         self.currentStageInProgress = stage;
     }
+    
+    // Inform delegate of selection
+    if ([self.delegate respondsToSelector:@selector(wizard:didChooseOption:)]) {
+        [self.delegate performSelector:@selector(wizard:didChooseOption:) withObject:self withObject:@(stage)];
+    }
+}
+
+- (void)moveToNextStep {
+    [self configureWizardForStage:self.currentStageInProgress + 1];
 }
 
 @end
