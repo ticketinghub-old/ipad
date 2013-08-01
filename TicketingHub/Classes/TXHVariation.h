@@ -18,9 +18,9 @@
 
 @interface TXHVariation : NSObject
 
-@property (assign, nonatomic) NSDate    *date;
+@property (strong, nonatomic) NSDate    *date;
 @property (strong, nonatomic) NSString  *reference;
-@property (assign, nonatomic) NSArray   *options;
+@property (strong, nonatomic) NSArray   *options;
 
 - (id)initWithData:(NSDictionary *)data;
 
