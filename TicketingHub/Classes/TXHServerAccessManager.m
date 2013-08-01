@@ -411,12 +411,23 @@
 }
 
 - (NSString *)formatCurrencyValue:(NSNumber *)value {
-    static NSNumberFormatter *formatter = nil;
-    if (formatter == nil) {
-        formatter = [[NSNumberFormatter alloc] init];
-        formatter.numberStyle = NSNumberFormatterCurrencyStyle;
-        formatter.currencyCode = self.currentVenue.currency;
+    // get the current language for the user - will need to adopt kiosk language in due course
+    NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    NSLocale *locale;
+    NSString *localeIdentifier = [NSString stringWithFormat:@"%@_%@", language, [self.currentVenue.country uppercaseString]];
+    NSUInteger index = [[NSLocale availableLocaleIdentifiers] indexOfObject:localeIdentifier];
+    if (index == NSNotFound) {
+        locale = [NSLocale currentLocale];
+    } else {
+        locale = [NSLocale localeWithLocaleIdentifier:localeIdentifier];
     }
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.currencyCode = self.currentVenue.currency;
+    if (locale) {
+        formatter.locale = locale;
+    }
+    formatter.numberStyle = NSNumberFormatterCurrencyStyle;
+    
     return [formatter stringFromNumber:value];
 }
 

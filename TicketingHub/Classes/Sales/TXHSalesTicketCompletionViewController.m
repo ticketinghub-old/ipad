@@ -8,9 +8,12 @@
 
 #import "TXHSalesTicketCompletionViewController.h"
 
-@interface TXHSalesTicketCompletionViewController ()
+@interface TXHSalesTicketCompletionViewController () <UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UITextField *coupon;
 @property (weak, nonatomic) IBOutlet UIButton *continueButton;
+
+@property (assign, nonatomic) BOOL editingCoupon;
 
 @end
 
@@ -45,6 +48,28 @@
 #pragma unused (sender)
     if ([self.delegate respondsToSelector:@selector(continueFromStep:)]) {
         [self.delegate performSelector:@selector(continueFromStep:) withObject:@(1)];
+    }
+}
+
+#pragma mark - UITextField delegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+#pragma unused (textField)
+    
+    // Set a flag used when the keyboard appears whilst editing the coupon
+    self.editingCoupon = YES;
+    if ([self.delegate respondsToSelector:@selector(increaseHeight)]) {
+        [self.delegate performSelector:@selector(increaseHeight)];
+    }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+#pragma unused (textField)
+
+    // Clear the flag used when the keyboard appears whilst editing the coupon
+    self.editingCoupon = NO;
+    if ([self.delegate respondsToSelector:@selector(decreaseHeight)]) {
+        [self.delegate performSelector:@selector(decreaseHeight)];
     }
 }
 

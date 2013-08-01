@@ -21,7 +21,7 @@ static NSString* const  addressStreet2 =            @"street_2";
 static NSString* const  addressCity =               @"city";
 static NSString* const  addressRegion =             @"region";
 static NSString* const  addressPostCode =           @"postcode";
-static NSString* const  addressCountry =            @"country";
+static NSString* const  venueCountry =              @"country";
 static NSString* const  venueLatitude =             @"latitude";
 static NSString* const  venueLongitude =            @"longitude";
 static NSString* const  venueCurrency =             @"currency";
@@ -48,100 +48,101 @@ static NSString* const  venueStripePublishableKey = @"stripe_publishable_key";
 @implementation TXHVenue
 
 - (id)initWithData:(NSDictionary *)data {
-  self = [super init];
-  if (self) {
-    [self setupWithData:data];
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        [self setupWithData:data];
+    }
+    return self;
 }
 
 - (void)setupWithData:(NSDictionary *)data {
-  id temp = data[venueID];
-  if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    self.venueID = temp;
-  }
-
-  temp = data[venueBusinessName];
-  if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    self.businessName = temp;
-  }
-  NSMutableDictionary *address = [NSMutableDictionary dictionary];
-  temp = data[addressStreet1];
-  if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    address[addressStreet1] = temp;
-  }
-  temp = data[addressStreet2];
-  if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    address[addressStreet2] = temp;
-  }
-  temp = data[addressCity];
-  if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    address[addressCity] = temp;
-  }
-  temp = data[addressRegion];
-  if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    address[addressRegion] = temp;
-  }
-  temp = data[addressPostCode];
-  if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    address[addressPostCode] = temp;
-  }
-  temp = data[addressCountry];
-  if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    address[addressCountry] = temp;
-  }
-  self.address = address;
-  
-  temp = data[venueLatitude];
-  if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    self.latitude = temp;
-  }
-  
-  temp = data[venueLongitude];
-  if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    self.longitude = temp;
-  }
-  
-  temp = data[venueCurrency];
-  if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    self.currency = temp;
-  }
-  
-  temp = data[venueTimeZone];
-  if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    NSTimeZone *zone =[NSTimeZone timeZoneWithName:temp];
-    if (zone != nil) {
-      self.timeZone = zone;
+    id temp = data[venueID];
+    if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
+        self.venueID = temp;
     }
-  }
-  
-  temp = data[venueWebsite];
-  if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    NSURL *webURL = [NSURL URLWithString:data[venueWebsite]];
-    if (webURL != nil) {
-      self.website = webURL;
+    
+    temp = data[venueBusinessName];
+    if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
+        self.businessName = temp;
     }
-  }
-  
-  temp = data[venueEmail];
-  if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    self.email = data[venueEmail];
-  }
-  
-  temp = data[venueTelephone];
-  if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    self.telephone = temp;
-  }
-  
-  temp = data[venueEstablishmentType];
-  if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    self.establishmentType = temp;
-  }
-  
-  temp = data[venueStripePublishableKey];
-  if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    self.stripePublishableKey = temp;
-  }
+    NSMutableDictionary *address = [NSMutableDictionary dictionary];
+    temp = data[addressStreet1];
+    if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
+        address[addressStreet1] = temp;
+    }
+    temp = data[addressStreet2];
+    if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
+        address[addressStreet2] = temp;
+    }
+    temp = data[addressCity];
+    if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
+        address[addressCity] = temp;
+    }
+    temp = data[addressRegion];
+    if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
+        address[addressRegion] = temp;
+    }
+    temp = data[addressPostCode];
+    if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
+        address[addressPostCode] = temp;
+    }
+    self.address = address;
+    
+    temp = data[venueLatitude];
+    if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
+        self.latitude = temp;
+    }
+    
+    temp = data[venueLongitude];
+    if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
+        self.longitude = temp;
+    }
+    
+    temp = data[venueCountry];
+    if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
+        self.country = temp;
+    }
+    
+    temp = data[venueCurrency];
+    if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
+        self.currency = temp;
+    }
+    
+    temp = data[venueTimeZone];
+    if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
+        NSTimeZone *zone =[NSTimeZone timeZoneWithName:temp];
+        if (zone != nil) {
+            self.timeZone = zone;
+        }
+    }
+    
+    temp = data[venueWebsite];
+    if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
+        NSURL *webURL = [NSURL URLWithString:data[venueWebsite]];
+        if (webURL != nil) {
+            self.website = webURL;
+        }
+    }
+    
+    temp = data[venueEmail];
+    if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
+        self.email = data[venueEmail];
+    }
+    
+    temp = data[venueTelephone];
+    if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
+        self.telephone = temp;
+    }
+    
+    temp = data[venueEstablishmentType];
+    if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
+        self.establishmentType = temp;
+    }
+    
+    temp = data[venueStripePublishableKey];
+    if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
+        self.stripePublishableKey = temp;
+    }
 }
 
 - (NSArray *)allSeasons {
@@ -149,69 +150,69 @@ static NSString* const  venueStripePublishableKey = @"stripe_publishable_key";
 }
 
 - (TXHSeason *)currentSeason {
-  if (self.seasons.count == 0) {
-    return nil;
-  }
-  
-  NSUInteger calendarUnits = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
-  NSDateComponents *components = [[NSCalendar currentCalendar] components:calendarUnits fromDate:[NSDate date]];
-  components.hour = 0.0f;
-  components.minute = 0.0f;
-  components.second = 0.0f;
-  
-  // Build a comparison date beginning at the start of the supplied day
-  NSDate *referenceDate = [[NSCalendar currentCalendar] dateFromComponents:components];
-
-  return [self seasonFor:referenceDate];
+    if (self.seasons.count == 0) {
+        return nil;
+    }
+    
+    NSUInteger calendarUnits = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:calendarUnits fromDate:[NSDate date]];
+    components.hour = 0.0f;
+    components.minute = 0.0f;
+    components.second = 0.0f;
+    
+    // Build a comparison date beginning at the start of the supplied day
+    NSDate *referenceDate = [[NSCalendar currentCalendar] dateFromComponents:components];
+    
+    return [self seasonFor:referenceDate];
 }
 
 - (TXHVariation *)currentVariation {
-  if (self.variations.count == 0) {
-    return nil;
-  }
-  
-  NSUInteger calendarUnits = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
-  NSDateComponents *components = [[NSCalendar currentCalendar] components:calendarUnits fromDate:[NSDate date]];
-  components.hour = 0.0f;
-  components.minute = 0.0f;
-  components.second = 0.0f;
-  
-  // Build a comparison date beginning at the start of the supplied day
-  NSDate *referenceDate = [[NSCalendar currentCalendar] dateFromComponents:components];
-
-  for (TXHVariation *variation in self.variations) {
-    // Is the reference date for this variation
-    NSComparisonResult result = [referenceDate compare:variation.date];
-    if (result == NSOrderedSame) {
-      return variation;
+    if (self.variations.count == 0) {
+        return nil;
     }
-  }
-  return nil;
+    
+    NSUInteger calendarUnits = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:calendarUnits fromDate:[NSDate date]];
+    components.hour = 0.0f;
+    components.minute = 0.0f;
+    components.second = 0.0f;
+    
+    // Build a comparison date beginning at the start of the supplied day
+    NSDate *referenceDate = [[NSCalendar currentCalendar] dateFromComponents:components];
+    
+    for (TXHVariation *variation in self.variations) {
+        // Is the reference date for this variation
+        NSComparisonResult result = [referenceDate compare:variation.date];
+        if (result == NSOrderedSame) {
+            return variation;
+        }
+    }
+    return nil;
 }
 
 - (void)addSeasonData:(NSArray *)seasonData {
-  if (self.seasons == nil) {
-    self.seasons = [NSMutableArray array];
-  }
-  [self.seasons removeAllObjects];
-  for (NSDictionary *oneSeason in seasonData) {
-    TXHSeason *season = [[TXHSeason alloc] initWithData:oneSeason forTimeZone:self.timeZone];
-    if (season != nil) {
-      [self.seasons addObject:season];
+    if (self.seasons == nil) {
+        self.seasons = [NSMutableArray array];
     }
-  }
+    [self.seasons removeAllObjects];
+    for (NSDictionary *oneSeason in seasonData) {
+        TXHSeason *season = [[TXHSeason alloc] initWithData:oneSeason forTimeZone:self.timeZone];
+        if (season != nil) {
+            [self.seasons addObject:season];
+        }
+    }
 }
 
 - (void)addVariationData:(NSArray *)variationData {
-  if (self.variations == nil) {
-    self.variations = [NSMutableArray array];
-  }
-  for (NSDictionary *oneVariation in variationData) {
-    TXHVariation *variation = [[TXHVariation alloc] initWithData:oneVariation];
-    if (variation != nil) {
-      [self.variations addObject:variation];
+    if (self.variations == nil) {
+        self.variations = [NSMutableArray array];
     }
-  }
+    for (NSDictionary *oneVariation in variationData) {
+        TXHVariation *variation = [[TXHVariation alloc] initWithData:oneVariation];
+        if (variation != nil) {
+            [self.variations addObject:variation];
+        }
+    }
 }
 
 - (TXHSeason *)seasonFor:(NSDate *)date {

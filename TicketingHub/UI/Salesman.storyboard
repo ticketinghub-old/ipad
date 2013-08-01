@@ -408,7 +408,7 @@
                             <containerView contentMode="scaleToFill" horizontalCompressionResistancePriority="300" verticalCompressionResistancePriority="300" translatesAutoresizingMaskIntoConstraints="NO" id="bkC-R8-z2H">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="588"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="T0G-a3-rT4" kind="embed" identifier="TXHSalesTicketTiersViewController" id="IMG-HL-MSm"/>
                                 </connections>
@@ -416,7 +416,7 @@
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HnH-jI-uXa">
                                 <rect key="frame" x="0.0" y="588" width="1024" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="fLY-eM-kBt"/>
                                 </constraints>
@@ -438,6 +438,9 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="completionHeightConstraint" destination="fLY-eM-kBt" id="a3o-lJ-qge"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="USd-S9-Kh2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -502,7 +505,7 @@
                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             <connections>
                                                 <action selector="quantityChanged:" destination="7qP-mI-xwg" eventType="valueChanged" id="CnI-tf-j3l"/>
-                                                <outlet property="delegate" destination="7qP-mI-xwg" id="Wmq-vC-TDG"/>
+                                                <outlet property="delegate" destination="T0G-a3-rT4" id="GQV-KE-azx"/>
                                             </connections>
                                         </textField>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" editable="NO" text="&lt;Description>" translatesAutoresizingMaskIntoConstraints="NO" id="VqF-sq-M4H">
@@ -726,7 +729,6 @@
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Qf2-dg-W1t">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="468"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
@@ -776,6 +778,9 @@
                                 <color key="backgroundColor" red="0.91372549020000005" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="GVV-CO-GQB" id="cFj-kZ-J9E"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coupon Code" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYn-Zy-GLM">
                                 <rect key="frame" x="731" y="24" width="108" height="21"/>
@@ -800,6 +805,7 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="continueButton" destination="n6F-gw-7HX" id="vey-hy-32C"/>
+                        <outlet property="coupon" destination="KQC-bV-xdb" id="yWx-Kf-t6a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Buo-AJ-qB7" userLabel="First Responder" sceneMemberID="firstResponder"/>

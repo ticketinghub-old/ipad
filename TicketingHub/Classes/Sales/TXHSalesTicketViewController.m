@@ -16,6 +16,9 @@
 @property (weak, nonatomic) TXHSalesTicketTiersViewController       *tiersController;
 @property (weak, nonatomic) TXHSalesTicketCompletionViewController  *completionController;
 
+// Height constraint 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *completionHeightConstraint;
+
 // Keep a running total of the
 @property (strong, nonatomic) NSMutableDictionary                   *tierQuantities;
 
@@ -82,6 +85,21 @@
     if ([self.delegate respondsToSelector:@selector(continueFromStep:)]) {
         [self.delegate performSelector:@selector(continueFromStep:) withObject:step];
     }
+}
+
+
+- (void)increaseHeight {
+    [UIView animateWithDuration:0.36f delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.completionHeightConstraint.constant += 352.0f;
+        [self.view layoutIfNeeded];
+    } completion:nil];
+}
+
+- (void)decreaseHeight {
+    [UIView animateWithDuration:0.36f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.completionHeightConstraint.constant -= 352.0f;
+        [self.view layoutIfNeeded];
+    } completion:nil];
 }
 
 @end

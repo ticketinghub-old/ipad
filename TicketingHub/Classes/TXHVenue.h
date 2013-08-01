@@ -26,6 +26,7 @@
 @property (strong, nonatomic)   NSNumber            *latitude;
 @property (strong, nonatomic)   NSNumber            *longitude;
 
+@property (strong, nonatomic)   NSString            *country;
 @property (strong, nonatomic)   NSString            *currency;
 @property (strong, nonatomic)   NSTimeZone          *timeZone;
 

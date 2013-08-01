@@ -11,7 +11,7 @@
 #import "TXHServerAccessManager.h"
 #import "TXHTicketTier.h"
 
-@interface TXHSalesTicketTierCell () <UITextFieldDelegate>
+@interface TXHSalesTicketTierCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *tierName;
 @property (weak, nonatomic) IBOutlet UITextView *tierDescription;

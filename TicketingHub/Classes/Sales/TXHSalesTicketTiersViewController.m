@@ -118,4 +118,22 @@
     };
 }
 
+- (void) textFieldDidBeginEditing:(UITextField *)textField {
+    
+    UITableViewCell *cell = nil;
+    UIView *parentView = textField.superview;
+    while (parentView != nil) {
+        if ([parentView isKindOfClass:[UITableViewCell class]]) {
+            cell = (UITableViewCell *)parentView;
+            break;
+        }
+        parentView = parentView.superview;
+    }
+    if (cell != nil) {
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell]
+                              atScrollPosition:UITableViewScrollPositionMiddle
+                                      animated:YES];
+    }
+}
+
 @end
