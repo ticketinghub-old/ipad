@@ -410,6 +410,16 @@
     }
 }
 
+- (NSString *)formatCurrencyValue:(NSNumber *)value {
+    static NSNumberFormatter *formatter = nil;
+    if (formatter == nil) {
+        formatter = [[NSNumberFormatter alloc] init];
+        formatter.numberStyle = NSNumberFormatterCurrencyStyle;
+        formatter.currencyCode = self.currentVenue.currency;
+    }
+    return [formatter stringFromNumber:value];
+}
+
 #pragma mark - Notifications
 
 //

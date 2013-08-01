@@ -199,7 +199,7 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-#pragma unused (sender)
+#pragma unused (segue, sender)
 //    if ([segue isMemberOfClass:[TXHTransitionSegue class]]) {
 //        TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
 //        
@@ -263,6 +263,7 @@
     [self updateControlsForUserInteraction];
     [[TXHServerAccessManager sharedInstance] getTicketOptionsForTimeSlot:time
                                                        completionHandler:^(TXHTicketDetail *detail){
+#pragma unused (detail)
                                                        }
                                                             errorHandler:^(id reason){
                                                                 NSLog(@"ticket detail error: %@", reason);

@@ -8,6 +8,7 @@
 
 #import "TXHSalesTicketTierCell.h"
 
+#import "TXHServerAccessManager.h"
 #import "TXHTicketTier.h"
 
 @interface TXHSalesTicketTierCell () <UITextFieldDelegate>
@@ -47,7 +48,8 @@
 - (void)configureTierDetails {
     self.tierName.text = self.tier.tierName;
     self.tierDescription.text = self.tier.tierDescription;
-    self.price.text = [self.tier.price stringValue];
+    // Currency is specified by the venue
+    self.price.text = [[TXHServerAccessManager sharedInstance] formatCurrencyValue:self.tier.price];
     self.stepper.maximumValue = self.tier.limit.doubleValue;
 }
 

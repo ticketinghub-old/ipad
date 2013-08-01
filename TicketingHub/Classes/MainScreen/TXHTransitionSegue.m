@@ -83,6 +83,7 @@
                                           animations:nil
                                           completion:^(BOOL finished)
    {
+#pragma unused (finished)
      [viewControllerToReplace removeFromParentViewController];
      
      [destinationViewController didMoveToParentViewController:sourceViewController];
