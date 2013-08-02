@@ -12,7 +12,7 @@
 #import "TXHSalesWizardDetailsViewController.h"
 #import "TXHSalesWizardViewController.h"
 
-@interface TXHSalesMainViewController ()
+@interface TXHSalesMainViewController () <TXHSalesWizardDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *steps;
 @property (weak, nonatomic) IBOutlet UIView *details;

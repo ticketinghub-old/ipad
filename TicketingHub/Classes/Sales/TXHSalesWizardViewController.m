@@ -182,9 +182,7 @@
     }
     
     // Inform delegate of selection
-    if ([self.delegate respondsToSelector:@selector(wizard:didChooseOption:)]) {
-        [self.delegate performSelector:@selector(wizard:didChooseOption:) withObject:self withObject:@(stage)];
-    }
+    [self.delegate wizard:self didChooseOption:@(stage)];
 }
 
 - (void)moveToNextStep {
