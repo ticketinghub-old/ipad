@@ -189,4 +189,9 @@
     [self configureWizardForStage:self.currentStageInProgress + 1];
 }
 
+- (void)orderExpired {
+    self.currentStageInProgress = 0;
+    [self configureWizardForStage:self.currentStageInProgress + 1];
+}
+
 @end

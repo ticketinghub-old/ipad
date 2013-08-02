@@ -46,9 +46,11 @@
 
 - (IBAction)continueAction:(id)sender {
 #pragma unused (sender)
-    if ([self.delegate respondsToSelector:@selector(continueFromStep:)]) {
-        [self.delegate performSelector:@selector(continueFromStep:) withObject:@(1)];
-    }
+    [[UIApplication sharedApplication] sendAction:@selector(completeWizardStep) to:nil from:self forEvent:nil];
+    
+//    if ([self.delegate respondsToSelector:@selector(continueFromStep:)]) {
+//        [self.delegate performSelector:@selector(continueFromStep:) withObject:@(1)];
+//    }
 }
 
 #pragma mark - UITextField delegate

@@ -75,7 +75,7 @@
     }
 }
 
-- (void)wizard:(id)wizard didChooseOption:(NSNumber *)option {
+- (void)wizard:(id <TXHSalesWizardDelegate>)wizard didChooseOption:(NSNumber *)option {
     if ([wizard isKindOfClass:[TXHSalesWizardViewController class]] == YES) {
         [self.wizardDetails performSegueWithIdentifier:[NSString stringWithFormat:@"Transition To Step%d", option.integerValue] sender:option];
     }
@@ -85,7 +85,17 @@
 }
 
 - (void)continueFromStep:(NSNumber *)step {
-    [self wizard:self.wizardDetails didChooseOption:step];
+    // We want to progress to the next step
+    [self wizard:self.wizardSteps didChooseOption:step];
+}
+
+- (void)completeWizardStep {
+    [self.wizardSteps moveToNextStep];
+}
+
+- (void)orderExpiredWithSender:(id)sender {
+#pragma unused (sender)
+    [self.wizardSteps orderExpired];
 }
 
 @end

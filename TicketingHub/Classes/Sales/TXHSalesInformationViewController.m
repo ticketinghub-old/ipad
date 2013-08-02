@@ -8,6 +8,8 @@
 
 #import "TXHSalesInformationViewController.h"
 
+#import "TXHSalesTimerViewController.h"
+
 @interface TXHSalesInformationViewController ()
 
 // Height constraint
@@ -30,6 +32,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.timerView.stepTitle = NSLocalizedString(@"Customer Details", @"Customer Details");
+    [self.timerView hideCountdownTimer:NO];
 }
 
 - (void)didReceiveMemoryWarning

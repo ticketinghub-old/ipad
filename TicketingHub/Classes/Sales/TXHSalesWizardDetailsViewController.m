@@ -50,6 +50,7 @@
 #pragma unused (sender)
     if ([segue.identifier isEqualToString:@"TXHSalesTimerViewController"]) {
         self.timeController = segue.destinationViewController;
+        self.timeController.duration = 20.0f;
     }
     
     if ([segue.identifier isEqualToString:@"Embed InformationPane"])
@@ -67,8 +68,14 @@
         transitionSegue.containerView = self.detailView;
         
         if ([segue.identifier isEqualToString:@"Transition To Step1"]) {
-            TXHSalesTicketViewController *salesTicketController = transitionSegue.destinationViewController;
-            salesTicketController.delegate = self.delegate;
+            TXHSalesWizardDetailsBaseViewController *controller = transitionSegue.destinationViewController;
+            controller.delegate = self.delegate;
+            controller.timerView = self.timeController;
+        }
+        if ([segue.identifier isEqualToString:@"Transition To Step2"]) {
+            TXHSalesWizardDetailsBaseViewController *controller = transitionSegue.destinationViewController;
+            controller.delegate = self.delegate;
+            controller.timerView = self.timeController;
         }
 //        else
 //        {

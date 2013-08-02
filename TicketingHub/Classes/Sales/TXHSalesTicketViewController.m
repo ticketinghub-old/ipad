@@ -8,8 +8,9 @@
 
 #import "TXHSalesTicketViewController.h"
 
-#import "TXHSalesTicketTiersViewController.h"
 #import "TXHSalesTicketCompletionViewController.h"
+#import "TXHSalesTicketTiersViewController.h"
+#import "TXHSalesTimerViewController.h"
 
 @interface TXHSalesTicketViewController ()
 
@@ -39,6 +40,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    // Set up the timer view to reflect our details
+    self.timerView.stepTitle = NSLocalizedString(@"Select your tickets", @"Select your tickets");
+    [self.timerView hideCountdownTimer:YES];
 }
 
 - (void)didReceiveMemoryWarning

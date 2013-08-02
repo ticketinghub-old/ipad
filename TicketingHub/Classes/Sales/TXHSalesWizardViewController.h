@@ -15,6 +15,7 @@
 @property (strong, nonatomic) id <TXHSalesWizardDelegate> delegate;
 
 - (void)moveToNextStep;
+- (void)orderExpired;
 
 @end
 

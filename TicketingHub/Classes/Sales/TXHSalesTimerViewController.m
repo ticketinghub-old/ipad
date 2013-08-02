@@ -8,6 +8,7 @@
 
 #import "TXHSalesTimerViewController.h"
 
+#import "TXHSalesTimerViewController.h"
 #import "TXHTimeFormatter.h"
 
 @interface TXHSalesTimerViewController ()
@@ -56,6 +57,11 @@
     return @{ @"StartDate" : [NSDate date]};
 }
 
+- (void)setStepTitle:(NSString *)stepTitle {
+    _stepTitle = stepTitle;
+    self.stepDescription.text = stepTitle;
+}
+
 - (void)hideCountdownTimer:(BOOL)hidden {
     self.timerImage.hidden = hidden;
     self.timeDisplay.hidden = hidden;
@@ -90,26 +96,23 @@
 
 - (void)timerFireMethod:(NSTimer *)theTimer {
     NSDate *startDate = [[theTimer userInfo] objectForKey:@"StartDate"];
-    NSLog(@"Timer started on %@", startDate);
     
     // Determine elapsed interval since the timer started
-    NSTimeInterval elapsed = [startDate timeIntervalSinceNow];
+    NSTimeInterval elapsed = -[startDate timeIntervalSinceNow];
     
     // Determine how long there is to go
     NSTimeInterval timeLeft = self.duration - elapsed;
     
-    // If the timer has expired then hide it
+    // If the timer has expired then notify whoever is concerned
     if (timeLeft < 0) {
-        [self hideCountdownTimer:YES];
+        [[UIApplication sharedApplication] sendAction:@selector(orderExpiredWithSender:) to:nil from:self forEvent:nil];
         return;
     }
     
-    double percentageRemaining = (100.0f * timeLeft) / self.duration;
-    
-    // If we have < 10% of the duration left turn indicator red
-    if (percentageRemaining < 10.0f) {
+    // If we have < 5 seconds of the duration left turn indicator red
+    if (timeLeft < 5.0f) {
         self.timerImage.tintColor = [UIColor redColor];
-    } else if (percentageRemaining < 50.0f) {
+    } else if (timeLeft < 10.0f) {
         self.timerImage.tintColor = [UIColor orangeColor];
     } else {
         self.timerImage.tintColor = [UIColor greenColor];

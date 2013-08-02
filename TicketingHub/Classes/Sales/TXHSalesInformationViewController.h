@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TXHSalesInformationViewController : UIViewController
+#import "TXHSalesWizardDetailsBaseViewController.h"
+
+@interface TXHSalesInformationViewController : TXHSalesWizardDetailsBaseViewController
 
 @end
