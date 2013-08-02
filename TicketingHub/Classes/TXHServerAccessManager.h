@@ -10,6 +10,7 @@
 
 @class TXHVenue;
 @class TXHTimeSlot;
+@class TXHTicketDetail;
 
 @interface TXHServerAccessManager : NSObject
 
@@ -24,7 +25,8 @@
 
 - (NSArray *)timeSlotsFor:(NSDate *)date;
 
-- (void)getTicketOptionsForTimeSlot:(TXHTimeSlot *)timeslot completionHandler:(void(^)(NSArray *))completion errorHandler:(void(^)(id))error;
+- (void)getTicketOptionsForTimeSlot:(TXHTimeSlot *)timeslot completionHandler:(void(^)(TXHTicketDetail *))completion errorHandler:(void(^)(id))error;
 
+- (NSString *)formatCurrencyValue:(NSNumber *)value;
 
 @end

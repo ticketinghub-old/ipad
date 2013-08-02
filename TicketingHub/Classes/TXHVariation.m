@@ -50,23 +50,38 @@ static NSString* const VARIATION_TITLE =      @"title";
    }
    */
   
-  id temp = data[VARIATION_DATE];
-  if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    self.date = temp;
-  }
+    static NSDateFormatter *formatter = nil;
+    if (formatter == nil) {
+        formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyy-MM-dd";
+    }
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSUInteger calendarUnits = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSDateComponents *components;
+    
+    id temp = data[VARIATION_DATE];
+    if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
+        NSDate *givenDate = [formatter dateFromString:temp];
+        components = [calendar components:calendarUnits fromDate:givenDate];
+        // Ensure there is no time component to this date
+        components.hour = 0;
+        components.minute = 0;
+        components.second = 0.0;
+        
+        self.date = [calendar dateFromComponents:components];
+    }
   
   temp = data[VARIATION_REFERENCE];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
-    self.reference = temp;
+      self.reference = temp;
   }
   
   temp = data[VARIATION_OPTIONS];
   if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
     NSArray *optionsArray = temp;
     NSMutableArray *newOptions = [NSMutableArray array];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSUInteger unit = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
-    NSDateComponents *components = [calendar components:unit fromDate:[NSDate date]];
+    components = [calendar components:calendarUnits fromDate:[NSDate date]];
     NSDate *startOfDay = [calendar dateFromComponents:components];
     for (NSDictionary *oneOption in optionsArray) {
       TXHVariationOption *variationOption = [[TXHVariationOption alloc] init];

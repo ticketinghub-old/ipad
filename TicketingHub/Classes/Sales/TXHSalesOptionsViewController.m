@@ -52,7 +52,7 @@
     [self.options addObject:item];
   }
   
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeslotSelected:) name:NOTIFICATION_TIMESLOT_SELECTED object:nil];
+//  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeslotSelected:) name:NOTIFICATION_TIMESLOT_SELECTED object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -153,9 +153,9 @@
 
 #pragma mark - Notifications
 
-- (void)timeslotSelected:(NSNotification *)notification {
-  TXHTimeSlot *timeSlot = notification.object;
-//  [[TXHServerAccessManager sharedInstance] getTicketOptionsFor:timeSlot];
-}
+//- (void)timeslotSelected:(NSNotification *)notification {
+//  TXHTimeSlot *timeSlot = notification.object;
+////  [[TXHServerAccessManager sharedInstance] getTicketOptionsFor:timeSlot];
+//}
 
 @end

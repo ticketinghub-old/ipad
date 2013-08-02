@@ -83,7 +83,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma unused (tableView)
     TXHTimeSlot *timeSlot = self.timeSlots[indexPath.row];
-    [self.delegate timeSlotSelectorViewController:self didSelectTime:@(timeSlot.timeSlotStart)];
+    [self.delegate timeSlotSelectorViewController:self didSelectTime:timeSlot];
 }
 
 #pragma mark - Popover methods

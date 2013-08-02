@@ -16,6 +16,8 @@
 #import "TXHVenue.h"
 #import "TXHSeason.h"
 #import "TXHTimeSlot.h"
+#import "TXHTicketDetail.h"
+#import "TXHTicketTier.h"
 
 @interface TXHMainViewController () <TXHDateSelectorViewDelegate, TXHTimeSlotSelectorDelegate>
 
@@ -185,7 +187,7 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Salesman" bundle:nil];
         
         UIViewController *destinationController = [storyboard instantiateInitialViewController];
-        
+
 //        destinationController.containerNavigationItem = self.navigationItem;
         
         TXHEmbeddingSegue *segue = [[TXHEmbeddingSegue alloc] initWithIdentifier:@"Salesman"
@@ -197,7 +199,7 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-#pragma unused (sender)
+#pragma unused (segue, sender)
 //    if ([segue isMemberOfClass:[TXHTransitionSegue class]]) {
 //        TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
 //        
@@ -242,9 +244,9 @@
     [self updateControlsForUserInteraction];
 }
 
-- (void)timeSlotSelectorViewController:(TXHTimeslotSelectorViewController *)controller didSelectTime:(NSNumber *)time {
+- (void)timeSlotSelectorViewController:(TXHTimeslotSelectorViewController *)controller didSelectTime:(TXHTimeSlot *)time {
 #pragma unused (controller)
-    self.selectedTime = [time doubleValue];
+    self.selectedTime = time.timeSlotStart;
     self.timeSelected = YES;
     
     // Update the time barbutton control
@@ -259,6 +261,13 @@
     [self.timeBtn sizeToFit];
     [self.timePopover dismissPopoverAnimated:YES];
     [self updateControlsForUserInteraction];
+    [[TXHServerAccessManager sharedInstance] getTicketOptionsForTimeSlot:time
+                                                       completionHandler:^(TXHTicketDetail *detail){
+#pragma unused (detail)
+                                                       }
+                                                            errorHandler:^(id reason){
+                                                                NSLog(@"ticket detail error: %@", reason);
+                                                            }];
 }
 
 #pragma mark - Notifications

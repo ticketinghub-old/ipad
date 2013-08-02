@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TXHTicketDetails : NSObject
+@interface TXHTicketDetail : NSObject
 
 @property (strong, nonatomic) NSDate          *date;
 @property (assign, nonatomic) NSTimeInterval  time;

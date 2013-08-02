@@ -101,14 +101,14 @@
 #pragma mark - Table view delegate
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+#pragma unused (tableView)
     // The first cell, which contains date / time, cannot be selected
     if (indexPath.row == 0) {
         return nil;
     }
     
     // If the previous stage has been completed we can select this cell
-    if (self.currentStageInProgress < indexPath.row - 1) {
+    if (self.currentStageInProgress < indexPath.row - 2) {
         return nil;
     }
     
@@ -126,6 +126,7 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+#pragma unused (segue, sender)
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
@@ -179,6 +180,15 @@
     if (self.currentStageInProgress < stage) {
         self.currentStageInProgress = stage;
     }
+    
+    // Inform delegate of selection
+    if ([self.delegate respondsToSelector:@selector(wizard:didChooseOption:)]) {
+        [self.delegate performSelector:@selector(wizard:didChooseOption:) withObject:self withObject:@(stage)];
+    }
+}
+
+- (void)moveToNextStep {
+    [self configureWizardForStage:self.currentStageInProgress + 1];
 }
 
 @end
