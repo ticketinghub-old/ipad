@@ -880,6 +880,9 @@
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S0h-CN-fTI">
                                 <rect key="frame" x="847" y="69" width="157" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="157" id="zDV-uR-Ato"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Continue order">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -888,33 +891,10 @@
                                     <action selector="continueAction:" destination="cKo-74-DRp" eventType="touchUpInside" id="DGr-aM-Qs9"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pkQ-ZC-kDp">
-                                <rect key="frame" x="847" y="20" width="157" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.91372549020000005" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="cKo-74-DRp" id="HQY-1c-9RH"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coupon Code" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEI-05-a3x">
-                                <rect key="frame" x="731" y="24" width="108" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="pkQ-ZC-kDp" firstAttribute="leading" secondItem="hEI-05-a3x" secondAttribute="trailing" constant="8" id="88S-wU-Ore"/>
                             <constraint firstAttribute="trailing" secondItem="S0h-CN-fTI" secondAttribute="trailing" constant="20" id="WAe-pn-Sk3"/>
-                            <constraint firstItem="S0h-CN-fTI" firstAttribute="top" secondItem="pkQ-ZC-kDp" secondAttribute="bottom" constant="19" id="Woi-Ql-5VX"/>
-                            <constraint firstItem="hEI-05-a3x" firstAttribute="top" secondItem="Tgn-mj-JvY" secondAttribute="top" constant="24" id="fLQ-yu-TAp"/>
-                            <constraint firstItem="pkQ-ZC-kDp" firstAttribute="top" secondItem="Tgn-mj-JvY" secondAttribute="top" constant="20" symbolic="YES" id="jLC-Oy-NQh"/>
-                            <constraint firstAttribute="trailing" secondItem="hEI-05-a3x" secondAttribute="trailing" constant="185" id="knM-Gf-0wX"/>
-                            <constraint firstAttribute="trailing" secondItem="pkQ-ZC-kDp" secondAttribute="trailing" constant="20" id="yN8-NS-tFO"/>
-                            <constraint firstItem="pkQ-ZC-kDp" firstAttribute="leading" secondItem="S0h-CN-fTI" secondAttribute="leading" id="yy5-oa-aTG"/>
+                            <constraint firstItem="S0h-CN-fTI" firstAttribute="top" secondItem="iyc-cd-XHB" secondAttribute="bottom" constant="69" id="hSI-g7-Cnd"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
