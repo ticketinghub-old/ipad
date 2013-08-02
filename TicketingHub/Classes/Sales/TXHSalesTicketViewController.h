@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TXHSalesTicketViewController : UIViewController
+#import "TXHSalesWizardDetailsBaseViewController.h"
 
-@property (strong, nonatomic) id delegate;
+@interface TXHSalesTicketViewController : TXHSalesWizardDetailsBaseViewController
 
 - (void)continueFromStep:(NSNumber *)step;
 

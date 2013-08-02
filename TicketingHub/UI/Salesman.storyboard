@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4488.1" systemVersion="13A524d" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="yRh-Nh-MFw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4488.1" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="yRh-Nh-MFw">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3715.3"/>
     </dependencies>
@@ -54,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMN-iG-JPu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="164" y="-1352"/>
+            <point key="canvasLocation" x="-380" y="-1380"/>
         </scene>
         <!--Sales Wizard View Controller-->
         <scene sceneID="tJR-NP-ZHx">
@@ -372,7 +372,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GoJ-Ob-adv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1192" y="-128"/>
+            <point key="canvasLocation" x="648" y="-156"/>
         </scene>
         <!--Information Pane View Controller-->
         <scene sceneID="hW3-P4-037">
@@ -729,11 +729,39 @@
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Qf2-dg-W1t">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="468"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1w-F9-Pcn">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="120"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="J0J-a3-kXt"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="G0c-Vm-fHx" kind="embed" identifier="TXHSalesTimerViewController" id="g49-s4-2hz"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4t-5d-W0V">
+                                <rect key="frame" x="0.0" y="120" width="1024" height="348"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="nzH-Ql-c90" firstAttribute="top" secondItem="p4t-5d-W0V" secondAttribute="bottom" id="BcO-LQ-J5t"/>
+                            <constraint firstItem="p4t-5d-W0V" firstAttribute="leading" secondItem="Qf2-dg-W1t" secondAttribute="leading" id="OIm-Ja-XL8"/>
+                            <constraint firstItem="p4t-5d-W0V" firstAttribute="top" secondItem="e1w-F9-Pcn" secondAttribute="bottom" id="UoT-LO-XI7"/>
+                            <constraint firstItem="e1w-F9-Pcn" firstAttribute="top" secondItem="05c-h3-M3P" secondAttribute="bottom" id="cmQ-lO-vcK"/>
+                            <constraint firstAttribute="trailing" secondItem="p4t-5d-W0V" secondAttribute="trailing" id="hVK-Aa-yw8"/>
+                            <constraint firstItem="e1w-F9-Pcn" firstAttribute="leading" secondItem="Qf2-dg-W1t" secondAttribute="leading" id="uFH-Pu-C2d"/>
+                            <constraint firstAttribute="trailing" secondItem="e1w-F9-Pcn" secondAttribute="trailing" id="wV6-Jz-HZj"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="detailView" destination="p4t-5d-W0V" id="pfG-bY-3vf"/>
                         <segue destination="rAq-kR-Atb" kind="custom" identifier="Embed InformationPane" customClass="TXHEmbeddingSegue" id="8mU-1V-3tw"/>
                         <segue destination="rAq-kR-Atb" kind="custom" identifier="Transition To Step0" customClass="TXHTransitionSegue" id="W4M-jV-LTq"/>
                         <segue destination="I8Z-1w-Cz9" kind="custom" identifier="Transition To Step3" customClass="TXHTransitionSegue" id="UcV-Ub-Ntp"/>
@@ -741,13 +769,13 @@
                         <segue destination="AMY-wT-Xeo" kind="custom" identifier="Transition To Step5" customClass="TXHTransitionSegue" id="Rui-KW-YaW"/>
                         <segue destination="8RN-Pr-hoD" kind="custom" identifier="Transition To Step7" customClass="TXHTransitionSegue" id="bu0-Lv-cgD"/>
                         <segue destination="tay-QP-yle" kind="custom" identifier="Transition To Step6" customClass="TXHTransitionSegue" id="trl-Rp-AuE"/>
-                        <segue destination="Qqi-49-E1z" kind="custom" identifier="Transition To Step1" customClass="TXHTransitionSegue" id="UM7-7I-7NH"/>
                         <segue destination="1bG-fn-6Ex" kind="custom" identifier="Transition To Step2" customClass="TXHTransitionSegue" id="wLm-Sz-Ldg"/>
+                        <segue destination="Qqi-49-E1z" kind="custom" identifier="Transition To Step1" customClass="TXHTransitionSegue" id="Cyc-aH-gIi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RIi-dF-Kmr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1794" y="-128"/>
+            <point key="canvasLocation" x="1211" y="-156"/>
         </scene>
         <!--Sales Ticket Completion View Controller-->
         <scene sceneID="aeq-Fz-kGg">
@@ -904,6 +932,62 @@
             </objects>
             <point key="canvasLocation" x="4539" y="1188"/>
         </scene>
+        <!--Sales Timer View Controller-->
+        <scene sceneID="5Ia-FO-LRu">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="G0c-Vm-fHx" customClass="TXHSalesTimerViewController" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="l6J-uU-4bz">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="120"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyCircle" translatesAutoresizingMaskIntoConstraints="NO" id="HzM-cX-KaE">
+                                <rect key="frame" x="859" y="40" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="fYd-JY-xaf"/>
+                                    <constraint firstAttribute="width" constant="40" id="qZy-qf-xYi"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:16" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywz-fz-auU">
+                                <rect key="frame" x="907" y="42" width="97" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="DSr-R2-yce"/>
+                                    <constraint firstAttribute="width" constant="97" id="ouh-MK-R8e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.070588235289999995" green="0.25490196079999999" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;Step Description>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLs-5a-gKP">
+                                <rect key="frame" x="20" y="38" width="309" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ywz-fz-auU" firstAttribute="top" secondItem="l6J-uU-4bz" secondAttribute="top" constant="42" id="6m8-nE-k4n"/>
+                            <constraint firstAttribute="bottom" secondItem="HzM-cX-KaE" secondAttribute="bottom" constant="40" id="8nq-P9-WKE"/>
+                            <constraint firstItem="ywz-fz-auU" firstAttribute="leading" secondItem="HzM-cX-KaE" secondAttribute="trailing" constant="8" id="Fd9-fi-HRd"/>
+                            <constraint firstItem="HzM-cX-KaE" firstAttribute="top" secondItem="l6J-uU-4bz" secondAttribute="top" constant="40" id="IFd-8a-fQh"/>
+                            <constraint firstAttribute="trailing" secondItem="ywz-fz-auU" secondAttribute="trailing" constant="20" id="QT3-yC-QXh"/>
+                            <constraint firstAttribute="bottom" secondItem="ywz-fz-auU" secondAttribute="bottom" constant="42" id="RDh-Bg-VcB"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <toolbarItems/>
+                    <connections>
+                        <outlet property="stepDescription" destination="XLs-5a-gKP" id="K5Q-7d-Nar"/>
+                        <outlet property="timeDisplay" destination="ywz-fz-auU" id="Kns-Lf-bTh"/>
+                        <outlet property="timerImage" destination="HzM-cX-KaE" id="adt-EO-QTZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SSc-tg-v0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3202" y="-1692"/>
+        </scene>
     </scenes>
     <resources>
         <image name="EmptyCircle" width="43" height="43"/>
@@ -914,6 +998,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8mU-1V-3tw"/>
+        <segue reference="W4M-jV-LTq"/>
     </inferredMetricsTieBreakers>
 </document>

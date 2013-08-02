@@ -11,9 +11,14 @@
 #import "TXHEmbeddingSegue.h"
 #import "TXHSalesInformationViewController.h"
 #import "TXHSalesTicketViewController.h"
+#import "TXHSalesTimerViewController.h"
 #import "TXHTransitionSegue.h"
 
 @interface TXHSalesWizardDetailsViewController ()
+
+@property (weak, nonatomic) IBOutlet UIView *detailView;
+
+@property (strong, nonatomic) TXHSalesTimerViewController *timeController;
 
 @end
 
@@ -43,11 +48,15 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 #pragma unused (sender)
+    if ([segue.identifier isEqualToString:@"TXHSalesTimerViewController"]) {
+        self.timeController = segue.destinationViewController;
+    }
+    
     if ([segue.identifier isEqualToString:@"Embed InformationPane"])
     {
         TXHEmbeddingSegue *embeddingSegue = (TXHEmbeddingSegue *)segue;
         
-        embeddingSegue.containerView = self.view;
+        embeddingSegue.containerView = self.detailView;
         
         return;
     }
@@ -55,7 +64,7 @@
     if ([segue isMemberOfClass:[TXHTransitionSegue class]]) {
         TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
         
-        transitionSegue.containerView = self.view;
+        transitionSegue.containerView = self.detailView;
         
         if ([segue.identifier isEqualToString:@"Transition To Step1"]) {
             TXHSalesTicketViewController *salesTicketController = transitionSegue.destinationViewController;
