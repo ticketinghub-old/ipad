@@ -9,6 +9,7 @@
 #import "TXHSalesWizardDetailsViewController.h"
 
 #import "TXHEmbeddingSegue.h"
+#import "TXHSalesInformationViewController.h"
 #import "TXHSalesTicketViewController.h"
 #import "TXHTransitionSegue.h"
 
