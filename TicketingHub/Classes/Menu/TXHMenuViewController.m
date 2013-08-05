@@ -43,9 +43,6 @@
 }
 
 - (void)setup {
-  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-  [self.navigationController.navigationBar setBackgroundColor:[UIColor colorWithRed:1.0f / 255.0f green:46.0f / 255.0f blue:67.0f / 255.0f alpha:1.0f]];
-  
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout:) name:NOTIFICATION_MENU_LOGOUT object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMenu:) name:NOTIFICATION_TOGGLE_MENU object:nil];
 }

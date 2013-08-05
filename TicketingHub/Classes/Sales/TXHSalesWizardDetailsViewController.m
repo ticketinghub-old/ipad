@@ -17,6 +17,7 @@
 @interface TXHSalesWizardDetailsViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *detailView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *timerViewVerticalConstraint;
 
 @property (strong, nonatomic) TXHSalesTimerViewController *timeController;
 
@@ -77,11 +78,16 @@
             controller.delegate = self.delegate;
             controller.timerView = self.timeController;
         }
-//        else
-//        {
-//            transitionSegue.animationOptions = UIViewAnimationOptionTransitionCurlUp;
-//        }
     }
+}
+
+- (void)updateTimerContainerHeight:(id)sender {
+    // The timer container needs to respond to changes in height based on whether a payment selection control is visible or not
+    TXHSalesTimerViewController *controller = sender;
+    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.timerViewVerticalConstraint.constant = controller.newVerticalHeight;
+        [self.view layoutIfNeeded];
+    } completion:controller.animationHandler];
 }
 
 @end

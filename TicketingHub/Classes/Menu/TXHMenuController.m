@@ -7,60 +7,76 @@
 //
 
 #import "TXHMenuController.h"
+
 #import "TXHCommonNames.h"
+#import "TXHMenuTableView.h"
 #import "TXHServerAccessManager.h"
 #import "TXHVenue.h"
 
 @interface TXHMenuController () <UITableViewDataSource, UITableViewDelegate>
 
+// A reference to the tableview
+@property (weak, nonatomic) IBOutlet TXHMenuTableView *tv;
+
+@property (weak, nonatomic) IBOutlet UIView *logoutView;
 @property (weak, nonatomic) IBOutlet UIButton *logout;
 
 @property (strong, nonatomic) UIView *headerView;
 @property (strong, nonatomic) NSArray *venues;
+
+@property (strong, nonatomic) UIImage *shadowImage;
 
 @end
 
 @implementation TXHMenuController
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-  self = [super initWithCoder:aDecoder];
-  if (self) {
-    [self setup];
-  }
-  return self;
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setup];
+    }
+    return self;
 }
 
 - (void)setup {
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(menuLogin:) name:NOTIFICATION_MENU_LOGIN object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(menuLogin:) name:NOTIFICATION_MENU_LOGIN object:nil];
 }
 
 - (void)dealloc {
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
-  
-  // Uncomment the following line to preserve selection between presentations.
-  // self.clearsSelectionOnViewWillAppear = NO;
-  
-  // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-  // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [super viewDidLoad];
+    
+    UIColor *backgroundColor = [UIColor colorWithRed:16.0f / 255.0f
+                                               green:46.0f / 255.0f
+                                                blue:66.0f / 255.0f
+                                               alpha:1.0f];
+    
+    // Set top & bottom colours for the menu tableView (includes side shadow effect)
+    self.tv.backgroundColor = backgroundColor;
+    self.tv.topColor = backgroundColor;
+    self.tv.bottomColor = backgroundColor;
+    
+    // Create a shadow to apply on the right hand side of the header view
+    self.shadowImage = [[UIImage imageNamed:@"shadow"] resizableImageWithCapInsets:UIEdgeInsetsMake(1.0f, 0.0f, 0.0f, 0.0f) resizingMode:UIImageResizingModeTile];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
-  self.venues = [TXHServerAccessManager sharedInstance].venues;
-  [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [super viewWillAppear:animated];
+    self.venues = [TXHServerAccessManager sharedInstance].venues;
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 
 - (void)didReceiveMemoryWarning
 {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
+
 
 #pragma mark - Table view data source
 
@@ -75,61 +91,71 @@
 {
 #pragma unused (tableView)
 #pragma unused (section)
-  // Return the number of rows in the section.
-  NSUInteger venueCount = [TXHServerAccessManager sharedInstance].venues.count;
-  return venueCount;
+    // Return the number of rows in the section.
+    NSUInteger venueCount = [TXHServerAccessManager sharedInstance].venues.count;
+    return venueCount;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 #pragma unused (tableView)
 #pragma unused (section)
-  return 44.0f;
+    return 64.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  static NSString *CellIdentifier = @"cellID";
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-  
-  // Configure the cell...
-  TXHVenue *venue = [self.venues objectAtIndex:indexPath.row];
-  cell.textLabel.text = venue.businessName;
-
-  return cell;
+    static NSString *CellIdentifier = @"cellID";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    // Configure the cell...
+    
+    TXHVenue *venue = [self.venues objectAtIndex:indexPath.row];
+    cell.textLabel.text = venue.businessName;
+    
+    return cell;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 #pragma unused (section)
-  if (self.headerView == nil) {
-    CGRect frame = tableView.bounds;
-    frame.size.height = 44.0f;
-    self.headerView = [[UIView alloc] initWithFrame:frame];
-    self.headerView.backgroundColor = [UIColor colorWithRed:1.0f / 255.0f green:46.0f / 255.0f blue:67.0f / 255.0f alpha:1.0f];
-    NSString *titleString = @"Venues";
-    UIFont *font = [UIFont systemFontOfSize:34.0f];
-    NSDictionary *attributesDict = @{NSFontAttributeName : font};
-    NSAttributedString *attributedTitleString = [[NSAttributedString alloc] initWithString:titleString attributes:attributesDict];
-    CGSize titleSize = [attributedTitleString size];
-    
-    CGRect titleLabelFrame = CGRectZero;
-    titleLabelFrame.origin.x = 17.50f;
-    titleLabelFrame.origin.y = (self.headerView.bounds.size.height - titleSize.height) / 2.0f;
-    titleLabelFrame.size = titleSize;
-    
-    UILabel *title = [[UILabel alloc] initWithFrame:titleLabelFrame];
-    title.backgroundColor = [UIColor colorWithRed:1.0f / 255.0f green:46.0f / 255.0f blue:67.0f / 255.0f alpha:1.0f];
-    title.textColor = [UIColor whiteColor];
-    title.font = font;
-    title.text = titleString;
-    [self.headerView addSubview:title];
-  }
-  return self.headerView;
+    if (self.headerView == nil) {
+        CGRect frame = tableView.bounds;
+        frame.size.height = 64.0f;
+        self.headerView = [[UIView alloc] initWithFrame:frame];
+        self.headerView.backgroundColor = self.tv.backgroundColor;
+        NSString *titleString = @"Venues";
+        UIFont *font = [UIFont systemFontOfSize:34.0f];
+        NSDictionary *attributesDict = @{NSFontAttributeName : font};
+        NSAttributedString *attributedTitleString = [[NSAttributedString alloc] initWithString:titleString attributes:attributesDict];
+        CGSize titleSize = [attributedTitleString size];
+        
+        CGRect titleLabelFrame = CGRectZero;
+        titleLabelFrame.origin.x = 17.50f;
+        titleLabelFrame.origin.y = self.headerView.bounds.size.height - titleSize.height;
+        titleLabelFrame.size = titleSize;
+        
+        UILabel *title = [[UILabel alloc] initWithFrame:titleLabelFrame];
+        title.backgroundColor = self.tv.backgroundColor;
+        title.textColor = [UIColor whiteColor];
+        title.font = font;
+        title.text = titleString;
+        [self.headerView addSubview:title];
+        
+        // Add a shadow on the right hand side
+        UIImageView *shadowView = [[UIImageView alloc] initWithImage:self.shadowImage];
+        CGRect shadowFrame = shadowView.bounds;
+        shadowFrame.origin.x = frame.size.width - shadowFrame.size.width;
+        shadowFrame.origin.y = 0.0f;
+        shadowFrame.size.height = frame.size.height;
+        shadowView.frame = shadowFrame;
+        [self.headerView addSubview:shadowView];
+    }
+    return self.headerView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma unused (tableView)
-  TXHVenue *venue = [self.venues objectAtIndex:indexPath.row];
-  [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_VENUE_SELECTED object:venue];
+    TXHVenue *venue = [self.venues objectAtIndex:indexPath.row];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_VENUE_SELECTED object:venue];
 }
 
 /*
@@ -185,17 +211,17 @@
 
 - (IBAction)logout:(id)sender {
 #pragma unused (sender)
-  [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MENU_LOGOUT object:nil];
-  self.logout.titleLabel.text = NSLocalizedString(@"Logout", @"Logout the current user");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MENU_LOGOUT object:nil];
+    self.logout.titleLabel.text = NSLocalizedString(@"Logout", @"Logout the current user");
 }
 
 #pragma mark - Notifications
 
 - (void)menuLogin:(NSNotification *)notification {
-  // Logged in user will be supplied as a string in the notification object
-  NSString *user = notification.object;
-  
-  [self.logout setTitle:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Logout", @"Logout the current user"), user] forState:UIControlStateNormal];
+    // Logged in user will be supplied as a string in the notification object
+    NSString *user = notification.object;
+    
+    [self.logout setTitle:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Logout", @"Logout the current user"), user] forState:UIControlStateNormal];
 }
 
 @end

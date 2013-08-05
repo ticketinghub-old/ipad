@@ -59,7 +59,10 @@
 
 - (void)setup {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueUpdated:) name:NOTIFICATION_VENUE_UPDATED object:nil];
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:1.0f / 255.0f green:46.0f / 255.0f blue:67.0f / 255.0f alpha:1.0f]];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:38.0f / 255.0f
+                                                                             green:65.0f / 255.0f
+                                                                              blue:87.0f / 255.0f
+                                                                             alpha:1.0f]];
     self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:24.0f],
                                                                     NSForegroundColorAttributeName: [UIColor whiteColor]};
     
@@ -106,7 +109,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self selectMode:nil];
+
+    // Display a placeholder
+    [self performSegueWithIdentifier:@"Embed Placeholder" sender:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

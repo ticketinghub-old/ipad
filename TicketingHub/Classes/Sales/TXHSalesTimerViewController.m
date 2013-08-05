@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *stepDescription;
 @property (weak, nonatomic) IBOutlet UIImageView *timerImage;
 @property (weak, nonatomic) IBOutlet UILabel *timeDisplay;
+@property (weak, nonatomic) IBOutlet UIView *dividingLine;
 
 @property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) NSDictionary *userInfo;
@@ -44,6 +45,17 @@
     // Set the image to be a template image
     self.timerImage.image = [[UIImage imageNamed:@"EmptyCircle"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     self.timerImage.tintColor = [UIColor greenColor];
+    self.dividingLine.backgroundColor = [UIColor colorWithRed:200.0f /255.0f
+                                                        green:200.0f / 255.0f
+                                                         blue:200.0f / 255.0f
+                                                        alpha:1.0f];
+    
+    // Set the initial height for the view
+    self.newVerticalHeight = 102.0f;
+
+    // Initially the timer and payment selection are hidden
+    [self hideCountdownTimer:YES];
+    [self hidePaymentSelection:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,6 +83,26 @@
     } else {
         [self createTimer];
     }
+}
+
+- (void)hidePaymentSelection:(BOOL)hidden {
+    __block typeof(self) bself = self;
+    
+    if (hidden) {
+        self.animationHandler = nil;
+        self.paymentSelection.hidden = YES;
+        self.newVerticalHeight = 102.0f;
+    } else {
+        self.animationHandler = ^(BOOL finished) {
+            if (finished) {
+                NSLog(@"finished");
+            }
+            bself.paymentSelection.hidden = NO;
+        };
+        self.newVerticalHeight = 131.0f;
+    }
+    
+    [[UIApplication sharedApplication] sendAction:@selector(updateTimerContainerHeight:) to:nil from:self forEvent:nil];
 }
 
 - (void)createTimer {

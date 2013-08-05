@@ -48,6 +48,7 @@
     // Set up the timer view to reflect our details
     self.timerView.stepTitle = NSLocalizedString(@"Select your tickets", @"Select your tickets");
     [self.timerView hideCountdownTimer:YES];
+    [self.timerView hidePaymentSelection:YES];
 }
 
 - (void)didReceiveMemoryWarning

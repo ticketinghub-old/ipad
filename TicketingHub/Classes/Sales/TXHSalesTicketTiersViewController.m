@@ -62,30 +62,6 @@
     return 1;
 }
 
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-#pragma unused (section)
-    UIView* customView = [[UIView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, tableView.bounds.size.width, 100.0f)];
-//    customView.backgroundColor = [UIColor clearColor];
-    
-    UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 0.0f, tableView.bounds.size.width - 20.0f, 100.0f)];
-    headerLabel.textColor = [UIColor colorWithRed:19.0f / 255.0f
-                                            green:58.0f / 255.0f
-                                             blue:81.0f / 255.0f
-                                            alpha:1.0f];
-    headerLabel.font = [UIFont systemFontOfSize:35];
-    headerLabel.text = NSLocalizedString(@"Select your tickets", @"Select your tickets");
-    
-    [customView addSubview:headerLabel];
-    
-    // Add a dviding 'line' along the bottom of this view
-    UIView *dividingline = [[UIView alloc] initWithFrame:CGRectMake(14.0f, 99.0f, tableView.bounds.size.width - 14.0f, 1.0f)];
-    dividingline.backgroundColor = tableView.separatorColor;
-    [customView addSubview:dividingline];
-    
-    return customView;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #pragma unused (tableView ,section)

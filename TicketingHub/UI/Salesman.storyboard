@@ -731,18 +731,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1w-F9-Pcn">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="120"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="131"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="J0J-a3-kXt"/>
+                                    <constraint firstAttribute="height" constant="131" id="XK4-x3-zoR"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="G0c-Vm-fHx" kind="embed" identifier="TXHSalesTimerViewController" id="g49-s4-2hz"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4t-5d-W0V">
-                                <rect key="frame" x="0.0" y="120" width="1024" height="348"/>
+                                <rect key="frame" x="0.0" y="131" width="1024" height="337"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -762,6 +762,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="detailView" destination="p4t-5d-W0V" id="pfG-bY-3vf"/>
+                        <outlet property="timerViewVerticalConstraint" destination="XK4-x3-zoR" id="M0Q-Hn-kOf"/>
                         <segue destination="rAq-kR-Atb" kind="custom" identifier="Embed InformationPane" customClass="TXHEmbeddingSegue" id="8mU-1V-3tw"/>
                         <segue destination="rAq-kR-Atb" kind="custom" identifier="Transition To Step0" customClass="TXHTransitionSegue" id="W4M-jV-LTq"/>
                         <segue destination="I8Z-1w-Cz9" kind="custom" identifier="Transition To Step3" customClass="TXHTransitionSegue" id="UcV-Ub-Ntp"/>
@@ -936,20 +937,24 @@
         <scene sceneID="5Ia-FO-LRu">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="G0c-Vm-fHx" customClass="TXHSalesTimerViewController" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="l6J-uU-4bz">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="120"/>
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ia2-IL-I07"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zns-4h-dC4"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" horizontalCompressionResistancePriority="494" verticalCompressionResistancePriority="494" id="l6J-uU-4bz">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="131"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyCircle" translatesAutoresizingMaskIntoConstraints="NO" id="HzM-cX-KaE">
-                                <rect key="frame" x="859" y="40" width="40" height="40"/>
+                                <rect key="frame" x="859" y="46" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="fYd-JY-xaf"/>
                                     <constraint firstAttribute="width" constant="40" id="qZy-qf-xYi"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:16" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywz-fz-auU">
-                                <rect key="frame" x="907" y="42" width="97" height="36"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09:16" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywz-fz-auU">
+                                <rect key="frame" x="907" y="48" width="97" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="DSr-R2-yce"/>
@@ -959,26 +964,51 @@
                                 <color key="textColor" red="0.070588235289999995" green="0.25490196079999999" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;Step Description>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLs-5a-gKP">
-                                <rect key="frame" x="20" y="38" width="309" height="43"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Step Description>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLs-5a-gKP">
+                                <rect key="frame" x="20" y="38" width="299" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" red="0.074509803920000006" green="0.2274509804" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LWh-Yx-3bf">
+                                <rect key="frame" x="14" y="130" width="1010" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="oRo-O7-xdO"/>
+                                </constraints>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Y2h-wD-b4I">
+                                <rect key="frame" x="320" y="90" width="384" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Credit / Debit Card"/>
+                                    <segment title="By Cash"/>
+                                    <segment title="Credit"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ywz-fz-auU" firstAttribute="top" secondItem="l6J-uU-4bz" secondAttribute="top" constant="42" id="6m8-nE-k4n"/>
-                            <constraint firstAttribute="bottom" secondItem="HzM-cX-KaE" secondAttribute="bottom" constant="40" id="8nq-P9-WKE"/>
+                            <constraint firstAttribute="centerX" secondItem="Y2h-wD-b4I" secondAttribute="centerX" id="0JL-v1-WSy"/>
+                            <constraint firstAttribute="trailing" secondItem="LWh-Yx-3bf" secondAttribute="trailing" id="3gG-A3-HV9"/>
+                            <constraint firstItem="XLs-5a-gKP" firstAttribute="leading" secondItem="l6J-uU-4bz" secondAttribute="leading" constant="20" symbolic="YES" id="7BU-Bz-lc7"/>
+                            <constraint firstItem="Zns-4h-dC4" firstAttribute="top" secondItem="LWh-Yx-3bf" secondAttribute="bottom" id="Ae8-LQ-BtS"/>
                             <constraint firstItem="ywz-fz-auU" firstAttribute="leading" secondItem="HzM-cX-KaE" secondAttribute="trailing" constant="8" id="Fd9-fi-HRd"/>
-                            <constraint firstItem="HzM-cX-KaE" firstAttribute="top" secondItem="l6J-uU-4bz" secondAttribute="top" constant="40" id="IFd-8a-fQh"/>
+                            <constraint firstItem="XLs-5a-gKP" firstAttribute="top" secondItem="ia2-IL-I07" secondAttribute="bottom" constant="38" id="Jgb-LC-2UH"/>
+                            <constraint firstItem="LWh-Yx-3bf" firstAttribute="leading" secondItem="l6J-uU-4bz" secondAttribute="leading" constant="14" id="Ouz-24-ImP"/>
                             <constraint firstAttribute="trailing" secondItem="ywz-fz-auU" secondAttribute="trailing" constant="20" id="QT3-yC-QXh"/>
-                            <constraint firstAttribute="bottom" secondItem="ywz-fz-auU" secondAttribute="bottom" constant="42" id="RDh-Bg-VcB"/>
+                            <constraint firstAttribute="centerY" secondItem="HzM-cX-KaE" secondAttribute="centerY" id="Ur4-N6-n9Y"/>
+                            <constraint firstAttribute="centerY" secondItem="ywz-fz-auU" secondAttribute="centerY" id="hfU-uJ-W53"/>
+                            <constraint firstItem="Y2h-wD-b4I" firstAttribute="top" secondItem="ia2-IL-I07" secondAttribute="bottom" constant="90" id="tRf-25-LBp"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
                     <connections>
+                        <outlet property="dividingLine" destination="LWh-Yx-3bf" id="vWl-lq-odX"/>
+                        <outlet property="paymentSelection" destination="Y2h-wD-b4I" id="E9J-CI-And"/>
                         <outlet property="stepDescription" destination="XLs-5a-gKP" id="K5Q-7d-Nar"/>
                         <outlet property="timeDisplay" destination="ywz-fz-auU" id="Kns-Lf-bTh"/>
                         <outlet property="timerImage" destination="HzM-cX-KaE" id="adt-EO-QTZ"/>
@@ -998,6 +1028,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="W4M-jV-LTq"/>
+        <segue reference="8mU-1V-3tw"/>
     </inferredMetricsTieBreakers>
 </document>
