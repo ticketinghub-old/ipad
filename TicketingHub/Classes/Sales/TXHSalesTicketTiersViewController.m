@@ -8,19 +8,29 @@
 
 #import "TXHSalesTicketTiersViewController.h"
 
+#import "TXHSalesContentProtocol.h"
 #import "TXHSalesTicketTierCell.h"
 #import "TXHServerAccessManager.h"
 #import "TXHTicketDetail.h"
 #import "TXHTicketTier.h"
 #import "TXHVenue.h"
 
-@interface TXHSalesTicketTiersViewController ()
+@interface TXHSalesTicketTiersViewController () <UITextFieldDelegate, TXHSalesContentProtocol>
 
 @property (strong, nonatomic) TXHVenue *venue;
+
+// A reference to the timer view controller
+@property (strong, nonatomic) TXHSalesTimerViewController *timerViewController;
+
+// A reference to the completion view controller
+@property (strong, nonatomic) TXHSalesCompletionViewController *completionViewController;
 
 @end
 
 @implementation TXHSalesTicketTiersViewController
+
+@synthesize timerViewController = _timerViewController;
+@synthesize completionViewController = _completionViewController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -45,12 +55,33 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.venue = [TXHServerAccessManager sharedInstance].currentVenue;
+    
+    [self configureTimerViewController];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (TXHSalesTimerViewController *)timerViewController {
+    return _timerViewController;
+}
+
+- (void)setTimerViewController:(TXHSalesTimerViewController *)timerViewController {
+    _timerViewController = timerViewController;
+    [self configureTimerViewController];
+}
+
+- (void)configureTimerViewController {
+    // Set up the timer view to reflect our details
+    if (self.timerViewController) {
+        self.timerViewController.stepTitle = NSLocalizedString(@"Select your tickets", @"Select your tickets");
+        [self.timerViewController hideCountdownTimer:YES];
+        [self.timerViewController hidePaymentSelection:YES];
+    }
 }
 
 #pragma mark - Table view data source
@@ -88,28 +119,10 @@
     TXHTicketTier *tier = self.venue.ticketDetail.tiers[indexPath.row];
     cell.tier = tier;
     cell.quantityChangedHandler = ^(NSDictionary *quantity) {
-        if ([self.delegate respondsToSelector:@selector(quantityChanged:)]) {
-            [self.delegate performSelector:@selector(quantityChanged:) withObject:quantity];
-        }
+//        if ([self.delegate respondsToSelector:@selector(quantityChanged:)]) {
+//            [self.delegate performSelector:@selector(quantityChanged:) withObject:quantity];
+//        }
     };
-}
-
-- (void) textFieldDidBeginEditing:(UITextField *)textField {
-    
-    UITableViewCell *cell = nil;
-    UIView *parentView = textField.superview;
-    while (parentView != nil) {
-        if ([parentView isKindOfClass:[UITableViewCell class]]) {
-            cell = (UITableViewCell *)parentView;
-            break;
-        }
-        parentView = parentView.superview;
-    }
-    if (cell != nil) {
-        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell]
-                              atScrollPosition:UITableViewScrollPositionMiddle
-                                      animated:YES];
-    }
 }
 
 @end

@@ -1,20 +1,16 @@
 //
-//  TXHSalesInformationViewController.m
+//  TXHSalesInformationDetailsViewController.m
 //  TicketingHub
 //
-//  Created by Mark on 02/08/2013.
+//  Created by Mark on 05/08/2013.
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import "TXHSalesInformationViewController.h"
+#import "TXHSalesInformationDetailsViewController.h"
 
 #import "TXHSalesContentProtocol.h"
-#import "TXHSalesTimerViewController.h"
 
-@interface TXHSalesInformationViewController () <TXHSalesContentProtocol>
-
-// Height constraint
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *completionHeightConstraint;
+@interface TXHSalesInformationDetailsViewController () <TXHSalesContentProtocol>
 
 // A reference to the timer view controller
 @property (retain, nonatomic) TXHSalesTimerViewController *timerViewController;
@@ -24,10 +20,7 @@
 
 @end
 
-@implementation TXHSalesInformationViewController
-
-@synthesize timerViewController = _timerViewController;
-@synthesize completionViewController = _completionViewController;
+@implementation TXHSalesInformationDetailsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,8 +50,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)transition:(id)sender {
-    
+#pragma mark - Collection View Datasource & Delegate methods
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+#pragma unused (collectionView, section)
+    return 0;
 }
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    return cell;
+}
+
 
 @end

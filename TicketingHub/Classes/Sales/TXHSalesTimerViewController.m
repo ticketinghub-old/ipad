@@ -86,7 +86,7 @@
 }
 
 - (void)hidePaymentSelection:(BOOL)hidden {
-    __block typeof(self) bself = self;
+    __block typeof(self) blockSelf = self;
     
     if (hidden) {
         self.animationHandler = nil;
@@ -94,10 +94,8 @@
         self.newVerticalHeight = 102.0f;
     } else {
         self.animationHandler = ^(BOOL finished) {
-            if (finished) {
-                NSLog(@"finished");
-            }
-            bself.paymentSelection.hidden = NO;
+#pragma unused (finished)
+            blockSelf.paymentSelection.hidden = NO;
         };
         self.newVerticalHeight = 131.0f;
     }

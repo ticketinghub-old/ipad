@@ -1,18 +1,18 @@
 //
-//  TXHInformationPaneViewController.m
+//  TXHSalesInformationCompletionViewController.m
 //  TicketingHub
 //
 //  Created by Mark on 25/07/2013.
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import "TXHInformationPaneViewController.h"
+#import "TXHSalesInformationCompletionViewController.h"
 
-@interface TXHInformationPaneViewController ()
+@interface TXHSalesInformationCompletionViewController ()
 
 @end
 
-@implementation TXHInformationPaneViewController
+@implementation TXHSalesInformationCompletionViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

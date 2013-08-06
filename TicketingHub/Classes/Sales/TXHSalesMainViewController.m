@@ -12,7 +12,7 @@
 #import "TXHSalesWizardDetailsViewController.h"
 #import "TXHSalesWizardViewController.h"
 
-@interface TXHSalesMainViewController () <TXHSalesWizardDelegate>
+@interface TXHSalesMainViewController () // <TXHSalesWizardDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *steps;
 @property (weak, nonatomic) IBOutlet UIView *details;
@@ -60,7 +60,7 @@
     // If this segue is embedding one of the containers give it ourself as a delegate
     if ([segue.identifier isEqualToString:@"Embed Steps"]) {
         self.wizardSteps = segue.destinationViewController;
-        self.wizardSteps.delegate = self;
+//        self.wizardSteps.delegate = self;
         return;
     }
     if ([segue.identifier isEqualToString:@"Embed Details"]) {
@@ -75,18 +75,27 @@
     }
 }
 
-- (void)wizard:(id <TXHSalesWizardDelegate>)wizard didChooseOption:(NSNumber *)option {
-    if ([wizard isKindOfClass:[TXHSalesWizardViewController class]] == YES) {
-        [self.wizardDetails performSegueWithIdentifier:[NSString stringWithFormat:@"Transition To Step%d", option.integerValue] sender:option];
+//- (void)wizard:(id <TXHSalesWizardDelegate>)wizard didChooseOption:(NSNumber *)option {
+//    if ([wizard isKindOfClass:[TXHSalesWizardViewController class]] == YES) {
+//        [self.wizardDetails performSegueWithIdentifier:[NSString stringWithFormat:@"Transition To Step%d", option.integerValue] sender:option];
+//    }
+//    if ([wizard isKindOfClass:[TXHSalesWizardDetailsViewController class]] == YES) {
+//        [self.wizardSteps moveToNextStep];
+//    }
+//}
+
+- (void)didChangeOption:(id)sender {
+    if ([sender isKindOfClass:[TXHSalesWizardViewController class]] == YES) {
+        [self.wizardDetails transition:sender];
     }
-    if ([wizard isKindOfClass:[TXHSalesWizardDetailsViewController class]] == YES) {
+    if ([sender isKindOfClass:[TXHSalesWizardDetailsViewController class]] == YES) {
         [self.wizardSteps moveToNextStep];
     }
 }
 
 - (void)continueFromStep:(NSNumber *)step {
     // We want to progress to the next step
-    [self wizard:self.wizardSteps didChooseOption:step];
+//    [self wizard:self.wizardSteps didChooseOption:step];
 }
 
 - (void)completeWizardStep {

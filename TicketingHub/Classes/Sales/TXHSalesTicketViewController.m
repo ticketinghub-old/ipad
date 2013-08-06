@@ -8,9 +8,9 @@
 
 #import "TXHSalesTicketViewController.h"
 
+#import "TXHSalesContentProtocol.h"
 #import "TXHSalesTicketCompletionViewController.h"
 #import "TXHSalesTicketTiersViewController.h"
-#import "TXHSalesTimerViewController.h"
 
 @interface TXHSalesTicketViewController ()
 
@@ -46,9 +46,9 @@
     [super viewWillAppear:animated];
     
     // Set up the timer view to reflect our details
-    self.timerView.stepTitle = NSLocalizedString(@"Select your tickets", @"Select your tickets");
-    [self.timerView hideCountdownTimer:YES];
-    [self.timerView hidePaymentSelection:YES];
+//    self.timerViewController.stepTitle = NSLocalizedString(@"Select your tickets", @"Select your tickets");
+//    [self.timerViewController hideCountdownTimer:YES];
+//    [self.timerViewController hidePaymentSelection:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,11 +68,11 @@
 #pragma unused (sender)
     if ([segue.identifier isEqualToString:@"TXHSalesTicketTiersViewController"]) {
         self.tiersController = segue.destinationViewController;
-        self.tiersController.delegate = self;
+//        self.tiersController.delegate = self;
     }
     if ([segue.identifier isEqualToString:@"TXHSalesTicketCompletionViewController"]) {
         self.completionController = segue.destinationViewController;
-        self.completionController.delegate = self;
+//        self.completionController.delegate = self;
     }
 }
 
@@ -92,9 +92,9 @@
 
 - (void)continueFromStep:(NSNumber *)step {
     // Pass up the chain - we don't need to do anything here
-    if ([self.delegate respondsToSelector:@selector(continueFromStep:)]) {
-        [self.delegate performSelector:@selector(continueFromStep:) withObject:step];
-    }
+//    if ([self.delegate respondsToSelector:@selector(continueFromStep:)]) {
+//        [self.delegate performSelector:@selector(continueFromStep:) withObject:step];
+//    }
 }
 
 

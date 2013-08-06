@@ -1,14 +1,14 @@
 //
-//  TXHSalesTicketCompletionViewController.m
+//  TXHSalesCompletionViewController.m
 //  TicketingHub
 //
-//  Created by Mark on 31/07/2013.
+//  Created by Mark on 05/08/2013.
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import "TXHSalesTicketCompletionViewController.h"
+#import "TXHSalesCompletionViewController.h"
 
-@interface TXHSalesTicketCompletionViewController () <UITextFieldDelegate>
+@interface TXHSalesCompletionViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *coupon;
 @property (weak, nonatomic) IBOutlet UIButton *continueButton;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation TXHSalesTicketCompletionViewController
+@implementation TXHSalesCompletionViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,26 +49,34 @@
     [[UIApplication sharedApplication] sendAction:@selector(completeWizardStep) to:nil from:self forEvent:nil];
 }
 
+- (void)hideCoupon:(BOOL)hidden {
+    __block typeof(self) blockSelf = self;
+    
+    if (hidden) {
+        self.animationHandler = nil;
+        self.coupon.hidden = YES;
+        self.newVerticalHeight = 102.0f;
+    } else {
+        self.animationHandler = ^(BOOL finished) {
+#pragma unused (finished)
+            blockSelf.coupon.hidden = NO;
+        };
+        self.newVerticalHeight = 131.0f;
+    }
+    
+    [[UIApplication sharedApplication] sendAction:@selector(updateCompletionContainerHeight:) to:nil from:self forEvent:nil];
+}
+
 #pragma mark - UITextField delegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
 #pragma unused (textField)
-    
-    // Set a flag used when the keyboard appears whilst editing the coupon
-    self.editingCoupon = YES;
-    if ([self.delegate respondsToSelector:@selector(increaseHeight)]) {
-        [self.delegate performSelector:@selector(increaseHeight)];
-    }
+    [[UIApplication sharedApplication] sendAction:@selector(increaseCompletionContainerHeight:) to:nil from:self forEvent:nil];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
 #pragma unused (textField)
-
-    // Clear the flag used when the keyboard appears whilst editing the coupon
-    self.editingCoupon = NO;
-    if ([self.delegate respondsToSelector:@selector(decreaseHeight)]) {
-        [self.delegate performSelector:@selector(decreaseHeight)];
-    }
+    [[UIApplication sharedApplication] sendAction:@selector(decreaseCompletionContainerHeight:) to:nil from:self forEvent:nil];
 }
 
 @end

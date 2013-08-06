@@ -10,8 +10,6 @@
 
 @interface TXHSalesWizardViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *dateAndTime;
-
 // Static cell components for step 1 - Tickets
 @property (weak, nonatomic) IBOutlet UITableViewCell    *ticketsCell;
 @property (weak, nonatomic) IBOutlet UIImageView        *ticketsCellbutton;
@@ -79,8 +77,34 @@
     [super viewDidLoad];
 
     
-    // Set the date & time message for the chosen language - needs to work with an app language in kiosk mode, not the device language
-    self.dateAndTime.text = NSLocalizedString(@"Please select date and time from the menu above.", @"Select Date and Time");
+    // Set cell text for the chosen language - needs to work with an app language in kiosk mode, not the device language
+    
+    // Tickets
+    self.ticketsCellTitle.text = NSLocalizedString(@"Tickets", @"Tickets");
+    self.ticketsCellDescription.text = NSLocalizedString(@"Select Type & Quantity", @"Select Type & Quantity");
+    
+    // Information
+    self.informationCellTitle.text = NSLocalizedString(@"Information", @"Information");
+    self.informationCellDescription.text = NSLocalizedString(@"Customer details", @"Customer details");
+    
+    // Upgrades
+    self.upgradesCellTitle.text = NSLocalizedString(@"Upgrades", @"Upgrades");
+    self.upgradesCellDescription.text = NSLocalizedString(@"Add ticket extras", @"Add ticket extras");
+    
+    // Products
+    self.productsCellTitle.text = NSLocalizedString(@"Products", @"Products");
+    self.productsCellDescription.text = NSLocalizedString(@"Optional extras", @"Optional extras");
+    
+    // Summary
+    self.summaryCellTitle.text = NSLocalizedString(@"Summary", @"Summary");
+    self.summaryCellDescription.text = NSLocalizedString(@"Review the order", @"Review the order");
+    
+    // Payment
+    self.paymentCellTitle.text = NSLocalizedString(@"Payment", @"Payment");
+    self.paymentCellDescription.text = NSLocalizedString(@"By card, cash or credit", @"By card, cash or credit");
+    
+    // Completed
+    self.completedCellTitle.text = NSLocalizedString(@"Completed", @"Completed");
     
     // grab the button images
     self.notStarted = [UIImage imageNamed:@"EmptyCircle"];
@@ -102,13 +126,8 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma unused (tableView)
-    // The first cell, which contains date / time, cannot be selected
-    if (indexPath.row == 0) {
-        return nil;
-    }
-    
     // If the previous stage has been completed we can select this cell
-    if (self.currentStageInProgress < indexPath.row - 2) {
+    if (self.currentStageInProgress < indexPath.row - 1) {
         return nil;
     }
     
@@ -118,7 +137,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma unused (tableView)
-    [self configureWizardForStage:indexPath.row];
+    _step = indexPath.row + 1;
+    [self configureWizardForStage:(self.step)];
 }
 
 #pragma mark - Navigation
@@ -181,8 +201,8 @@
         self.currentStageInProgress = stage;
     }
     
-    // Inform delegate of selection
-    [self.delegate wizard:self didChooseOption:@(stage)];
+    // Send an action to inform whomever is interested of a selection
+    [[UIApplication sharedApplication] sendAction:@selector(didChangeOption:) to:nil from:self forEvent:nil];
 }
 
 - (void)moveToNextStep {

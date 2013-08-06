@@ -9,22 +9,16 @@
 #import "TXHMenuController.h"
 
 #import "TXHCommonNames.h"
-#import "TXHMenuTableView.h"
 #import "TXHServerAccessManager.h"
 #import "TXHVenue.h"
 
 @interface TXHMenuController () <UITableViewDataSource, UITableViewDelegate>
-
-// A reference to the tableview
-@property (weak, nonatomic) IBOutlet TXHMenuTableView *tv;
 
 @property (weak, nonatomic) IBOutlet UIView *logoutView;
 @property (weak, nonatomic) IBOutlet UIButton *logout;
 
 @property (strong, nonatomic) UIView *headerView;
 @property (strong, nonatomic) NSArray *venues;
-
-@property (strong, nonatomic) UIImage *shadowImage;
 
 @end
 
@@ -55,13 +49,7 @@
                                                 blue:66.0f / 255.0f
                                                alpha:1.0f];
     
-    // Set top & bottom colours for the menu tableView (includes side shadow effect)
-    self.tv.backgroundColor = backgroundColor;
-    self.tv.topColor = backgroundColor;
-    self.tv.bottomColor = backgroundColor;
-    
-    // Create a shadow to apply on the right hand side of the header view
-    self.shadowImage = [[UIImage imageNamed:@"shadow"] resizableImageWithCapInsets:UIEdgeInsetsMake(1.0f, 0.0f, 0.0f, 0.0f) resizingMode:UIImageResizingModeTile];
+    self.view.backgroundColor = backgroundColor;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -121,7 +109,7 @@
         CGRect frame = tableView.bounds;
         frame.size.height = 64.0f;
         self.headerView = [[UIView alloc] initWithFrame:frame];
-        self.headerView.backgroundColor = self.tv.backgroundColor;
+        self.headerView.backgroundColor = self.view.backgroundColor;
         NSString *titleString = @"Venues";
         UIFont *font = [UIFont systemFontOfSize:34.0f];
         NSDictionary *attributesDict = @{NSFontAttributeName : font};
@@ -134,20 +122,11 @@
         titleLabelFrame.size = titleSize;
         
         UILabel *title = [[UILabel alloc] initWithFrame:titleLabelFrame];
-        title.backgroundColor = self.tv.backgroundColor;
+        title.backgroundColor = self.headerView.backgroundColor;
         title.textColor = [UIColor whiteColor];
         title.font = font;
         title.text = titleString;
         [self.headerView addSubview:title];
-        
-        // Add a shadow on the right hand side
-        UIImageView *shadowView = [[UIImageView alloc] initWithImage:self.shadowImage];
-        CGRect shadowFrame = shadowView.bounds;
-        shadowFrame.origin.x = frame.size.width - shadowFrame.size.width;
-        shadowFrame.origin.y = 0.0f;
-        shadowFrame.size.height = frame.size.height;
-        shadowView.frame = shadowFrame;
-        [self.headerView addSubview:shadowView];
     }
     return self.headerView;
 }

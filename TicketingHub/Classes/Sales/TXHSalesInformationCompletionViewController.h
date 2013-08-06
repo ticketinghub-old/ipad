@@ -1,5 +1,5 @@
 //
-//  TXHInformationPaneViewController.h
+//  TXHSalesInformationCompletionViewController.h
 //  TicketingHub
 //
 //  Created by Mark on 25/07/2013.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TXHInformationPaneViewController : UIViewController
+@interface TXHSalesInformationCompletionViewController : UIViewController
 
 @end

@@ -1,5 +1,5 @@
 //
-//  TXHMenuCell.h
+//  TXHSalesContentsViewController.h
 //  TicketingHub
 //
 //  Created by Mark on 05/08/2013.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TXHMenuCell : UITableViewCell
+@interface TXHSalesContentsViewController : UIViewController
 
 @end

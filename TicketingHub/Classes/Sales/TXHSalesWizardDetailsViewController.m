@@ -8,18 +8,18 @@
 
 #import "TXHSalesWizardDetailsViewController.h"
 
-#import "TXHEmbeddingSegue.h"
-#import "TXHSalesInformationViewController.h"
-#import "TXHSalesTicketViewController.h"
+#import "TXHSalesContentProtocol.h"
+#import "TXHSalesCompletionViewController.h"
 #import "TXHSalesTimerViewController.h"
-#import "TXHTransitionSegue.h"
 
 @interface TXHSalesWizardDetailsViewController ()
 
-@property (weak, nonatomic) IBOutlet UIView *detailView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *timerViewVerticalConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *completionViewVerticalConstraint;
 
 @property (strong, nonatomic) TXHSalesTimerViewController *timeController;
+@property (strong, nonatomic) id <TXHSalesContentProtocol> stepContentController;
+@property (strong, nonatomic) TXHSalesCompletionViewController *stepCompletionController;
 
 @end
 
@@ -37,8 +37,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    [self performSegueWithIdentifier:@"Embed InformationPane" sender:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,38 +45,52 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)didMoveToParentViewController:(UIViewController *)parent {
+    [super didMoveToParentViewController:parent];
+    [self resetFrame];
+}
+
+- (void)resetFrame {
+    CGRect frame = self.view.frame;
+    frame.size.height -= 40.0f;
+    self.view.frame = frame;
+}
+
+- (void)setTimeController:(TXHSalesTimerViewController *)timeController {
+    _timeController = timeController;
+    [self updateContentController];
+}
+
+- (void)setStepContentController:(id <TXHSalesContentProtocol>)stepContentController {
+    _stepContentController = stepContentController;
+    [self updateContentController];
+}
+
+- (void)setStepCompletionController:(TXHSalesCompletionViewController *)stepCompletionController {
+    _stepCompletionController = stepCompletionController;
+    [self updateContentController];
+}
+
+- (void)updateContentController {
+    if (self.timeController && self.stepContentController && self.stepCompletionController) {
+        [self.stepContentController setTimerViewController:self.timeController];
+        [self.stepContentController setCompletionViewController:self.stepCompletionController];
+    }
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 #pragma unused (sender)
     if ([segue.identifier isEqualToString:@"TXHSalesTimerViewController"]) {
         self.timeController = segue.destinationViewController;
-        self.timeController.duration = 20.0f;
+    } else if ([segue.identifier isEqualToString:@"TXHSalesContentsViewController"]) {
+        self.stepContentController = segue.destinationViewController;
+    } else if ([segue.identifier isEqualToString:@"TXHSalesCompletionViewController"]) {
+        self.stepCompletionController = segue.destinationViewController;
     }
-    
-    if ([segue.identifier isEqualToString:@"Embed InformationPane"])
-    {
-        TXHEmbeddingSegue *embeddingSegue = (TXHEmbeddingSegue *)segue;
-        
-        embeddingSegue.containerView = self.detailView;
-        
-        return;
-    }
-    
-    if ([segue isMemberOfClass:[TXHTransitionSegue class]]) {
-        TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
-        
-        transitionSegue.containerView = self.detailView;
-        
-        if ([segue.identifier isEqualToString:@"Transition To Step1"]) {
-            TXHSalesWizardDetailsBaseViewController *controller = transitionSegue.destinationViewController;
-            controller.delegate = self.delegate;
-            controller.timerView = self.timeController;
-        }
-        if ([segue.identifier isEqualToString:@"Transition To Step2"]) {
-            TXHSalesWizardDetailsBaseViewController *controller = transitionSegue.destinationViewController;
-            controller.delegate = self.delegate;
-            controller.timerView = self.timeController;
-        }
-    }
+}
+
+- (void)transition:(id)sender {
+    [self.stepContentController transition:sender];
 }
 
 - (void)updateTimerContainerHeight:(id)sender {
@@ -88,6 +100,33 @@
         self.timerViewVerticalConstraint.constant = controller.newVerticalHeight;
         [self.view layoutIfNeeded];
     } completion:controller.animationHandler];
+}
+
+- (void)updateCompletionContainerHeight:(id)sender {
+    // The completion container needs to respond to changes in height based on whether a coupon selection control is visible or not
+    TXHSalesCompletionViewController *controller = sender;
+    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.completionViewVerticalConstraint.constant = controller.newVerticalHeight;
+        [self.view layoutIfNeeded];
+    } completion:controller.animationHandler];
+}
+
+// This action method is sent when the coupon text field gets focus - the container height is increased to keep the coupon field in view above the keyboard
+- (void)increaseCompletionContainerHeight:(id)sender {
+#pragma unused (sender)
+    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.completionViewVerticalConstraint.constant += 354.0f;
+        [self.view layoutIfNeeded];
+    } completion:nil];
+}
+
+// Finished editing the coupon field, so shrink the completion container back to it's original height
+- (void)decreaseCompletionContainerHeight:(id)sender {
+#pragma unused (sender)
+    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.completionViewVerticalConstraint.constant -= 354.0f;
+        [self.view layoutIfNeeded];
+    } completion:nil];
 }
 
 @end

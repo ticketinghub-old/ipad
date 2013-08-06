@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class TXHVenue;
-
 @interface TXHSalesTicketTiersViewController : UITableViewController
-
-@property (weak, nonatomic) id delegate;
 
 @end

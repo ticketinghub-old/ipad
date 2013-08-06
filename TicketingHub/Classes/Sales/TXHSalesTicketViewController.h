@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "TXHSalesWizardDetailsBaseViewController.h"
-
-@interface TXHSalesTicketViewController : TXHSalesWizardDetailsBaseViewController
+@interface TXHSalesTicketViewController : UIViewController
 
 - (void)continueFromStep:(NSNumber *)step;
 
