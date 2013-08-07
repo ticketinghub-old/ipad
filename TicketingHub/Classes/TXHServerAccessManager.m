@@ -6,18 +6,33 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import "TXHServerAccessManager.h"
 #import "TXHCommonNames.h"
-#import "TXHTimeFormatter.h"
 #import "TXHDataDownloader.h"
-#import "TXHVenue.h"
 #import "TXHSeason.h"
-#import "TXHVariation.h"
-#import "TXHTimeSlot.h"
+#import "TXHServerAccessManager.h"
 #import "TXHTicketDetail.h"
+#import "TXHTimeFormatter.h"
+#import "TXHTimeSlot.h"
+#import "TXHVariation.h"
+#import "TXHVenue.h"
+#import "TXHTicketingHubClient.h"
+
+static NSString * const kClientId = @"ca99032b750f829630d8c9272bb9d3d6696b10f5bddfc34e4b7610eb772d28e7";
+static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fbaaf81e6ec900c71b8f4af62d09d";
 
 #define TICKETINGHUB_AUTH @"https://api.ticketinghub.com/oauth"
 #define TICKETINGHUB_API  @"https://api.ticketingHub.com"
+
+// This is a temporary hack to alloc access to the internal properties of the network client, can be removed once it is handling all network requests
+@interface TXHTicketingHubClient (TemporaryExposure)
+
+- (NSString *)token;
+- (NSString *)refreshToken;
+- (NSString *)clientId;
+- (NSString *)clientSecret;
+
+@end
+
 
 @interface TXHServerAccessManager ()
 
@@ -29,41 +44,38 @@
 // Dictionary of timeslots available on specific dates.  Once calculated, timeslots are cached for later use.
 @property (strong, nonatomic) NSMutableDictionary  *timeSlots;
 
+// The singleton instance of the api client, which also handles the networking stack.
+@property (strong, readonly, nonatomic) TXHTicketingHubClient *ticktetingHubClient;
+
 @end
 
 @implementation TXHServerAccessManager
 
-#pragma mark - Singleton implementation
+#pragma mark - Set up and tear down
 
 + (TXHServerAccessManager *)sharedInstance {
     static TXHServerAccessManager *instance;
-    
+
     static dispatch_once_t onceToken;
-    
-    dispatch_once(&onceToken,
-                  ^{
-                      instance = [[super allocWithZone:nil] init];
-                  });
-    
+
+    dispatch_once(&onceToken, ^{
+        instance = [[self alloc] init];
+    });
+
     return instance;
 }
 
-+ (id)allocWithZone:(NSZone *)zone {
-#pragma unused(zone)
-    return [self sharedInstance];
-}
-
-- (id)copyWithZone: (NSZone *)zone {
-#pragma unused(zone)
-    return self;
-}
-
 - (id)init {
-    self = [super init];
-    if (self) {
-        //    self.accessToken = @"Gop3U0x4lkqDdiPaiVqWVw";
-        [self registerForNotifications];
+    if (!(self = [super init])) {
+        return nil; // Bail!
     }
+
+    [self registerForNotifications];
+    _ticktetingHubClient = [TXHTicketingHubClient sharedClient];
+
+    // Let the client, by way of AFNetworking, show and hide the activity indicator.
+    _ticktetingHubClient.showActivityIndicatorAutomatically = YES;
+
     return self;
 }
 
@@ -73,20 +85,6 @@
 
 - (void)registerForNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueSelected:) name:NOTIFICATION_VENUE_SELECTED object:nil];
-    
-    // Register for standard notifications when application enters foreground / background; or is terminated
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(willEnterForeground:)
-                                                 name:UIApplicationWillEnterForegroundNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(willResignActive:)
-                                                 name:UIApplicationWillResignActiveNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(willTerminate:)
-                                                 name:UIApplicationWillTerminateNotification
-                                               object:nil];
 }
 
 - (NSMutableDictionary *)timeSlots {
@@ -97,37 +95,50 @@
 }
 
 - (void)generateAccessTokenFor:(NSString *)user password:(NSString *)password completion:(void (^)())completion error:(void (^)(id))error {
-    TXHDataDownloader *downloader = [[TXHDataDownloader alloc] initWithOwner:self];
-    downloader.methodType = @"POST";
-    downloader.urlString = [NSString stringWithFormat:@"%@/token", TICKETINGHUB_AUTH];
-    downloader.httpPOSTBody = @{
-                                @"grant_type"     : @"password",
-                                @"username"       : user,
-                                @"password"       : password,
-                                @"client_id"      : @"ca99032b750f829630d8c9272bb9d3d6696b10f5bddfc34e4b7610eb772d28e7",
-                                @"client_secret"  : @"f9ce1f4e1c74cc38707e15c0a4286975898fbaaf81e6ec900c71b8f4af62d09d",
-                                };
-    downloader.completionHandler = ^(id data){
-        NSDictionary *dict = data;
-        NSLog(@"getTokens:%@", dict.description);
-        NSDictionary *payload = dict[@"payload"];
-        NSDictionary *tokens = payload[@"data"];
-        /*
-         On success (i.e. status=200, we should get back payload data containing parameters as follows
-         {
-         "access_token" = "flydy1m16chf2Zj47Emdtw";
-         "expires_in" = 3600;
-         "refresh_token" = "aBaoEyxiYhFccmPQgQpB_qbFUfdG_P3gfwscTV71jLs";
-         "token_type" = "bearer";
-         }
-         */
-        self.accessToken = tokens[@"access_token"];
-        self.refreshToken = tokens[@"refresh_token"];
-        completion();
-    };
-    downloader.errorHandler = error;
-    downloader.token = self.accessToken;
-    [downloader execute];
+    [self.ticktetingHubClient configureWithUsername:user password:password clientId:kClientId clientSecret:kClientSecret success:^(NSURLRequest *request, NSHTTPURLResponse *response) {
+        self.accessToken = [self.ticktetingHubClient token];
+        self.refreshToken = [self.ticktetingHubClient refreshToken];
+
+        if (completion) {
+            completion();
+        }
+
+    } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"Error getting token: %@", error);
+    }];
+
+
+//    TXHDataDownloader *downloader = [[TXHDataDownloader alloc] initWithOwner:self];
+//    downloader.methodType = @"POST";
+//    downloader.urlString = [NSString stringWithFormat:@"%@/token", TICKETINGHUB_AUTH];
+//    downloader.httpPOSTBody = @{
+//                                @"grant_type"     : @"password",
+//                                @"username"       : user,
+//                                @"password"       : password,
+//                                @"client_id"      : @"ca99032b750f829630d8c9272bb9d3d6696b10f5bddfc34e4b7610eb772d28e7",
+//                                @"client_secret"  : @"f9ce1f4e1c74cc38707e15c0a4286975898fbaaf81e6ec900c71b8f4af62d09d",
+//                                };
+//    downloader.completionHandler = ^(id data){
+//        NSDictionary *dict = data;
+//        NSLog(@"getTokens:%@", dict.description);
+//        NSDictionary *payload = dict[@"payload"];
+//        NSDictionary *tokens = payload[@"data"];
+//        /*
+//         On success (i.e. status=200, we should get back payload data containing parameters as follows
+//         {
+//         "access_token" = "flydy1m16chf2Zj47Emdtw";
+//         "expires_in" = 3600;
+//         "refresh_token" = "aBaoEyxiYhFccmPQgQpB_qbFUfdG_P3gfwscTV71jLs";
+//         "token_type" = "bearer";
+//         }
+//         */
+//        self.accessToken = tokens[@"access_token"];
+//        self.refreshToken = tokens[@"refresh_token"];
+//        completion();
+//    };
+//    downloader.errorHandler = error;
+//    downloader.token = self.accessToken;
+//    [downloader execute];
 }
 
 - (void)getVenuesWithCompletionHandler:(void (^)(NSArray *))completion errorHandler:(void (^)(id))error {
@@ -173,9 +184,9 @@
          "stripe_publishable_key": "pk_live_g4RfHyJIdBz7Bs2efWP9dHlW"
          }
          ]
-         
+
          otherwise we will get back a status of 401 with the following
-         
+
          payload =     {
          data =         {
          error = "token_expired";
@@ -183,9 +194,9 @@
          };
          status = 401;
          };
-         
+
          OR we have a genuine error
-         
+
          */
     };
     downloader.errorHandler = error;
@@ -268,20 +279,20 @@
     components.hour = 0.0f;
     components.minute = 0.0f;
     components.second = 0.0f;
-    
+
     // See if there are any timeslots already for this date
     NSArray *existingTimeSlots = self.timeSlots[components];
     if (existingTimeSlots != nil) {
         return existingTimeSlots;
     }
-    
+
     // We haven't calculated times as yet for this date, so build them now and add to the list
     NSMutableArray *newTimeSlots = [NSMutableArray array];
-    
+
     // Build a comparison date beginning at the start of the supplied day
     NSDate *referenceDate = [[NSCalendar currentCalendar] dateFromComponents:components];
     NSInteger weekDay = [components weekday];
-    
+
     // Go for a variation first
     TXHVariation *variation = self.currentVenue.currentVariation;
     if (variation != nil) {
@@ -296,7 +307,7 @@
             [newTimeSlots addObject:oneTimeSlot];
         }
     }
-    
+
     // Go through the current season options if there are no variations
     if (newTimeSlots.count == 0) {
         TXHSeason *season  = [self.currentVenue seasonFor:referenceDate];
@@ -314,7 +325,7 @@
             }
         }
     }
-    
+
     self.timeSlots[components] = newTimeSlots;
     return newTimeSlots;
 }
@@ -374,9 +385,9 @@
          "stripe_publishable_key": "pk_live_g4RfHyJIdBz7Bs2efWP9dHlW"
          }
          ]
-         
+
          otherwise we will get back a status of 401 with the following
-         
+
          payload =     {
          data =         {
          error = "token_expired";
@@ -384,9 +395,9 @@
          };
          status = 401;
          };
-         
+
          OR we have a genuine error
-         
+
          */
     };
     downloader.errorHandler = error;
@@ -427,7 +438,7 @@
         formatter.locale = locale;
     }
     formatter.numberStyle = NSNumberFormatterCurrencyStyle;
-    
+
     return [formatter stringFromNumber:value];
 }
 
@@ -442,22 +453,9 @@
     self.currentVenue = venue;
     // Clear down any details relating to a previously selected venue
     [self cleanupMenu];
-    
+
     // Get the current availability for this venue
     [self getAvailabilityForVenue:venue];
 }
-
-- (void)willEnterForeground:(NSNotification *)notification {
-#pragma unused (notification)
-}
-
-- (void)willResignActive:(NSNotification *)notification {
-#pragma unused (notification)
-}
-
-- (void)willTerminate:(NSNotification *)notification {
-#pragma unused (notification)
-}
-
 
 @end
