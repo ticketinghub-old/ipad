@@ -9,9 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "TXHSalesTimerViewController.h"
-
-//@class TXHSalesTimerViewController;
-@class TXHSalesCompletionViewController;
+#import "TXHSalesCompletionViewController.h"
 
 @protocol TXHSalesContentProtocol <NSObject>
 

@@ -120,6 +120,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSUInteger)step {
+    return self.currentStageInProgress;
+}
+
 #pragma mark - Table view data source
 
 #pragma mark - Table view delegate
@@ -137,8 +141,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma unused (tableView)
-    _step = indexPath.row + 1;
-    [self configureWizardForStage:(self.step)];
+    self.currentStageInProgress = indexPath.row + 1;
+    [self configureWizardForStage:(self.currentStageInProgress)];
 }
 
 #pragma mark - Navigation

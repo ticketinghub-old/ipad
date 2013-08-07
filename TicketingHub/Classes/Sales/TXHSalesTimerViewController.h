@@ -25,10 +25,16 @@
 // animationHandlerBlock - conforms to animation completion block
 @property (copy) void (^animationHandler)(BOOL finished);
 
+// Reset view presentation, hiding all supplementary controls
+- (void)resetPresentationAnimated:(BOOL)animated;
+
 // Hide or show a countdown timer
 - (void)hideCountdownTimer:(BOOL)hidden;
 
+// Stop and also hide the countdown timer
+- (void)stopCountdownTimer;
+
 // Hide or show a payment selection
-- (void)hidePaymentSelection:(BOOL)hidden;
+- (void)hidePaymentSelection:(BOOL)hidden animated:(BOOL)animated;
 
 @end

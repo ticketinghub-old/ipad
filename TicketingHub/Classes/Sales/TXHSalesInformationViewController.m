@@ -48,7 +48,7 @@
     [super viewWillAppear:animated];
     self.timerViewController.stepTitle = NSLocalizedString(@"Customer Details", @"Customer Details");
     [self.timerViewController hideCountdownTimer:NO];
-    [self.timerViewController hidePaymentSelection:NO];
+    [self.timerViewController hidePaymentSelection:NO animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

@@ -38,6 +38,8 @@
 		4DA05FBB178D8F31005161E6 /* TXHMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FBA178D8F31005161E6 /* TXHMenuController.m */; };
 		4DA0980217A17AE6001D5794 /* TXHSalesTicketTiersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0980117A17AE6001D5794 /* TXHSalesTicketTiersViewController.m */; };
 		4DA0980517A17B3E001D5794 /* TXHSalesInformationCompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0980417A17B3E001D5794 /* TXHSalesInformationCompletionViewController.m */; };
+		4DA8D5E617B24DEF002C6707 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DA8D5E317B24DEF002C6707 /* fishhook.c */; };
+		4DA8D5E717B24DEF002C6707 /* QuietAssertMacros.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DA8D5E517B24DEF002C6707 /* QuietAssertMacros.c */; };
 		4DB23D6E17A169D8002B7B11 /* Salesman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */; };
 		4DB23D7117A17093002B7B11 /* TXHSalesWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB23D7017A17093002B7B11 /* TXHSalesWizardViewController.m */; };
 		4DC31A5617A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC31A5517A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m */; };
@@ -176,6 +178,9 @@
 		4DA0980317A17B3E001D5794 /* TXHSalesInformationCompletionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesInformationCompletionViewController.h; sourceTree = "<group>"; };
 		4DA0980417A17B3E001D5794 /* TXHSalesInformationCompletionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesInformationCompletionViewController.m; sourceTree = "<group>"; };
 		4DA43C5D17B138EA00C77453 /* TXHSalesContentProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesContentProtocol.h; sourceTree = "<group>"; };
+		4DA8D5E317B24DEF002C6707 /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
+		4DA8D5E417B24DEF002C6707 /* fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
+		4DA8D5E517B24DEF002C6707 /* QuietAssertMacros.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = QuietAssertMacros.c; sourceTree = "<group>"; };
 		4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Salesman.storyboard; sourceTree = "<group>"; };
 		4DB23D6F17A17093002B7B11 /* TXHSalesWizardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesWizardViewController.h; sourceTree = "<group>"; };
 		4DB23D7017A17093002B7B11 /* TXHSalesWizardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesWizardViewController.m; sourceTree = "<group>"; };
@@ -341,6 +346,17 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		4DA8D5E217B24DEF002C6707 /* Xcode Beta Fixes */ = {
+			isa = PBXGroup;
+			children = (
+				4DA8D5E317B24DEF002C6707 /* fishhook.c */,
+				4DA8D5E417B24DEF002C6707 /* fishhook.h */,
+				4DA8D5E517B24DEF002C6707 /* QuietAssertMacros.c */,
+			);
+			name = "Xcode Beta Fixes";
+			path = "TicketingHub/Xcode Beta Fixes";
+			sourceTree = "<group>";
+		};
 		4DF9F92B179D50C10040FC5D /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,6 +443,7 @@
 		58E4FB481760AE5500E328A0 = {
 			isa = PBXGroup;
 			children = (
+				4DA8D5E217B24DEF002C6707 /* Xcode Beta Fixes */,
 				4DF9F92B179D50C10040FC5D /* Core Data */,
 				5860E85917633C990046DFD3 /* Assets */,
 				58E4FB971760D3C800E328A0 /* Classes */,
@@ -618,14 +635,14 @@
 				4D3C72BA17B011EA008FACDC /* TXHSalesCompletionViewController.m */,
 				4DA0980017A17AE6001D5794 /* TXHSalesTicketTiersViewController.h */,
 				4DA0980117A17AE6001D5794 /* TXHSalesTicketTiersViewController.m */,
+				4D1A0C2A17A8F84400960906 /* TXHSalesTicketTierCell.h */,
+				4D1A0C2B17A8F84400960906 /* TXHSalesTicketTierCell.m */,
 				4D94B7A217AFFB9100943A9F /* TXHSalesInformationDetailsViewController.h */,
 				4D94B7A317AFFB9100943A9F /* TXHSalesInformationDetailsViewController.m */,
 				4DF2A49817A95793000AB600 /* TXHSalesTicketViewController.h */,
 				4DF2A49917A95793000AB600 /* TXHSalesTicketViewController.m */,
 				4DF2A49B17A95857000AB600 /* TXHSalesTicketCompletionViewController.h */,
 				4DF2A49C17A95857000AB600 /* TXHSalesTicketCompletionViewController.m */,
-				4D1A0C2A17A8F84400960906 /* TXHSalesTicketTierCell.h */,
-				4D1A0C2B17A8F84400960906 /* TXHSalesTicketTierCell.m */,
 				4D94B79117ABAE0200943A9F /* TXHSalesInformationViewController.h */,
 				4D94B79217ABAE0200943A9F /* TXHSalesInformationViewController.m */,
 				4DA0980317A17B3E001D5794 /* TXHSalesInformationCompletionViewController.h */,
@@ -786,6 +803,7 @@
 				4D68DA9D178AD5F600743227 /* TXHSalesMainViewController.m in Sources */,
 				4DA05FB8178D8DAC005161E6 /* TXHMenuViewController.m in Sources */,
 				4DF9F963179D50E90040FC5D /* Ticket.m in Sources */,
+				4DA8D5E717B24DEF002C6707 /* QuietAssertMacros.c in Sources */,
 				4DF9F960179D50E90040FC5D /* Role.m in Sources */,
 				581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */,
 				4DF9F978179D5B4E0040FC5D /* TXHTransitionSegue.m in Sources */,
@@ -794,6 +812,7 @@
 				581560D11765DAB3005C20EA /* TXHDoorDateController.m in Sources */,
 				4DF9F95E179D50E90040FC5D /* Customer.m in Sources */,
 				4D859FF817953FA1000B2FCC /* TXHTimeSlot.m in Sources */,
+				4DA8D5E617B24DEF002C6707 /* fishhook.c in Sources */,
 				4DF9F969179D50E90040FC5D /* Venue.m in Sources */,
 				4DF9F971179D50E90040FC5D /* _TicketType.m in Sources */,
 				4DF2A49D17A95857000AB600 /* TXHSalesTicketCompletionViewController.m in Sources */,

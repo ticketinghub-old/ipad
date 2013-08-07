@@ -54,8 +54,7 @@
     self.newVerticalHeight = 102.0f;
 
     // Initially the timer and payment selection are hidden
-    [self hideCountdownTimer:YES];
-    [self hidePaymentSelection:YES];
+    [self resetPresentationAnimated:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,26 +77,38 @@
     self.timerImage.hidden = hidden;
     self.timeDisplay.hidden = hidden;
     
-    if (hidden) {
-        [self removeTimer];
-    } else {
-        [self createTimer];
+    // If we are showing the timer, create one if needed
+    if (hidden == NO) {
+        if (self.timer == nil) {
+            [self createTimer];
+        }
     }
 }
 
-- (void)hidePaymentSelection:(BOOL)hidden {
+- (void)stopCountdownTimer {
+    [self removeTimer];
+    [self hideCountdownTimer:YES];
+}
+
+
+- (void)resetPresentationAnimated:(BOOL)animated {
+    [self hideCountdownTimer:YES];
+    [self hidePaymentSelection:YES animated:animated];
+}
+
+- (void)hidePaymentSelection:(BOOL)hidden animated:(BOOL)animated {
     __block typeof(self) blockSelf = self;
     
-    if (hidden) {
-        self.animationHandler = nil;
-        self.paymentSelection.hidden = YES;
-        self.newVerticalHeight = 102.0f;
-    } else {
+    self.newVerticalHeight = hidden ? 102.0f : 131.0f;
+
+    if (animated) {
         self.animationHandler = ^(BOOL finished) {
 #pragma unused (finished)
-            blockSelf.paymentSelection.hidden = NO;
+            blockSelf.paymentSelection.hidden = hidden;
         };
-        self.newVerticalHeight = 131.0f;
+    } else {
+        self.animationHandler = nil;
+        self.paymentSelection.hidden = hidden;
     }
     
     [[UIApplication sharedApplication] sendAction:@selector(updateTimerContainerHeight:) to:nil from:self forEvent:nil];
@@ -132,22 +143,35 @@
     
     // Determine how long there is to go
     NSTimeInterval timeLeft = self.duration - elapsed;
-    
+
     // If the timer has expired then notify whoever is concerned
     if (timeLeft < 0) {
         [[UIApplication sharedApplication] sendAction:@selector(orderExpiredWithSender:) to:nil from:self forEvent:nil];
         return;
     }
     
+    UIColor *tintColor;
     // If we have < 5 seconds of the duration left turn indicator red
     if (timeLeft < 5.0f) {
-        self.timerImage.tintColor = [UIColor redColor];
+        tintColor = [UIColor redColor];
     } else if (timeLeft < 10.0f) {
-        self.timerImage.tintColor = [UIColor orangeColor];
+        // Calculate a tint colour going from orange to red
+        CGFloat factor = timeLeft / 10.0f;
+        CGFloat redComponent = 1.0f;
+        CGFloat greenComponent = 0.50f * factor;
+        tintColor = [UIColor colorWithRed:redComponent green:greenComponent blue:0.0f alpha:1.0f];
     } else {
-        self.timerImage.tintColor = [UIColor greenColor];
+        // Calculate a tint colour going from green to orange
+        CGFloat factor = (MAX(0.0f, (timeLeft - 10.0f)) / (self.duration - 10.0f));
+        CGFloat redComponent = (1.0f - factor);
+        CGFloat greenComponent = (1.0f - (0.50f * (1 - factor)));
+        tintColor = [UIColor colorWithRed:redComponent green:greenComponent blue:0.0f alpha:1.0f];
     }
     
+    self.timerImage.tintColor = tintColor;
+    if (timeLeft < 10.0f) {
+        self.timeDisplay.textColor = tintColor;
+    }
     self.timeDisplay.text = [TXHTimeFormatter stringFromTimeInterval:timeLeft];
 }
 

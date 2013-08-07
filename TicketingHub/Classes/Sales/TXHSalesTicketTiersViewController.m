@@ -19,6 +19,9 @@
 
 @property (strong, nonatomic) TXHVenue *venue;
 
+// Keep a running total of the quantity of tickets keyed by tier
+@property (strong, nonatomic) NSMutableDictionary *tierQuantities;
+
 // A reference to the timer view controller
 @property (strong, nonatomic) TXHSalesTimerViewController *timerViewController;
 
@@ -66,6 +69,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSMutableDictionary *)tierQuantities {
+    if (_tierQuantities == nil) {
+        _tierQuantities = [NSMutableDictionary dictionary];
+    }
+    return _tierQuantities;
+}
+
 - (TXHSalesTimerViewController *)timerViewController {
     return _timerViewController;
 }
@@ -75,13 +85,26 @@
     [self configureTimerViewController];
 }
 
+- (TXHSalesCompletionViewController *)completionViewController {
+    return _completionViewController;
+}
+
+- (void)setCompletionViewController:(TXHSalesCompletionViewController *)completionViewController {
+    _completionViewController = completionViewController;
+    [self configureCompletionViewController];
+}
+
 - (void)configureTimerViewController {
     // Set up the timer view to reflect our details
     if (self.timerViewController) {
+        [self.timerViewController stopCountdownTimer];
+        [self.timerViewController resetPresentationAnimated:NO];
         self.timerViewController.stepTitle = NSLocalizedString(@"Select your tickets", @"Select your tickets");
-        [self.timerViewController hideCountdownTimer:YES];
-        [self.timerViewController hidePaymentSelection:YES];
     }
+}
+
+- (void)configureCompletionViewController {
+    // Set up the completion view controller to reflect ticket tier details
 }
 
 #pragma mark - Table view data source
@@ -119,9 +142,15 @@
     TXHTicketTier *tier = self.venue.ticketDetail.tiers[indexPath.row];
     cell.tier = tier;
     cell.quantityChangedHandler = ^(NSDictionary *quantity) {
-//        if ([self.delegate respondsToSelector:@selector(quantityChanged:)]) {
-//            [self.delegate performSelector:@selector(quantityChanged:) withObject:quantity];
-//        }
+        // Add this quantity to our dictionary
+        [self.tierQuantities addEntriesFromDictionary:quantity];
+        
+        // To continue past this stage the quantity of tickets selected must be more than zero
+        NSUInteger total = 0;
+        for (NSNumber *tierQuantity in [self.tierQuantities allValues]) {
+            total += tierQuantity.integerValue;
+        }
+        self.completionViewController.canCompleteStep = (total > 0);
     };
 }
 

@@ -40,8 +40,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)updateTicketCount:(NSInteger)total {
-    self.continueButton.enabled = (total > 0);
+- (void)setCanCompleteStep:(BOOL)canCompleteStep {
+    _canCompleteStep = canCompleteStep;
+    self.continueButton.enabled = canCompleteStep;
 }
 
 - (IBAction)continueAction:(id)sender {

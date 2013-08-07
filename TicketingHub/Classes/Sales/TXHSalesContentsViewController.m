@@ -57,6 +57,7 @@
 - (TXHSalesTimerViewController *)timerViewController {
     return _timerViewController;
 }
+
 - (void)setTimerViewController:(TXHSalesTimerViewController *)timerViewController {
     _timerViewController = timerViewController;
     if (self.contentViewController) {
@@ -67,6 +68,7 @@
 - (TXHSalesCompletionViewController *)completionViewController {
     return _completionViewController;
 }
+
 - (void)setCompletionViewController:(TXHSalesCompletionViewController *)completionViewController {
     _completionViewController = completionViewController;
     if (self.contentViewController) {

@@ -39,9 +39,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.timerViewController resetPresentationAnimated:NO];
     self.timerViewController.stepTitle = NSLocalizedString(@"Customer Details", @"Customer Details");
+    self.timerViewController.duration = 25.0f;
     [self.timerViewController hideCountdownTimer:NO];
-    [self.timerViewController hidePaymentSelection:NO];
 }
 
 - (void)didReceiveMemoryWarning
