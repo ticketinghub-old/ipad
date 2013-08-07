@@ -48,6 +48,7 @@
 - (void)configureTierDetails {
     self.tierName.text = self.tier.tierName;
     self.tierDescription.text = self.tier.tierDescription;
+    self.quantity.keyboardType = UIKeyboardTypeNumberPad;
     // Currency is specified by the venue
     self.price.text = [[TXHServerAccessManager sharedInstance] formatCurrencyValue:self.tier.price];
     self.stepper.maximumValue = self.tier.limit.doubleValue;
@@ -60,12 +61,10 @@
 }
 
 #pragma mark - Quantity Value Changed action
-
 - (IBAction)quantityChanged:(id)sender {
 #pragma unused (sender)
     // Validate the quantity entered & update the stepper to reflect this new quantity
-    NSUInteger oldQuantity = [self.quantity.text integerValue];
-    NSUInteger quantity = oldQuantity;
+    NSUInteger quantity = [self.quantity.text integerValue];
     if (quantity < self.stepper.minimumValue) {
         quantity = self.stepper.minimumValue;
     }
@@ -73,10 +72,8 @@
         quantity = self.stepper.maximumValue;
     }
     self.stepper.value = quantity;
-    if (quantity != oldQuantity) {
-        self.quantity.text = [NSString stringWithFormat:@"%d", quantity];
-        [self quantityDidChange];
-    }
+    self.quantity.text = [NSString stringWithFormat:@"%d", quantity];
+    [self quantityDidChange];
 }
 
 
@@ -84,7 +81,7 @@
 
 - (IBAction)stepChanged:(id)sender {
     UIStepper *stepper = sender;
-    self.quantity.text = [NSString stringWithFormat:@"%.0f", stepper.value];
+    [self.quantity setText:[NSString stringWithFormat:@"%.0f", stepper.value]];
     [self quantityDidChange];
 }
 

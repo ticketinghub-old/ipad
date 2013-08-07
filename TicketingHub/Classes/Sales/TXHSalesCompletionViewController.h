@@ -22,4 +22,7 @@
 // animationHandlerBlock - conforms to animation completion block
 @property (copy) void (^animationHandler)(BOOL finished);
 
+// This block will be called when a user indicates that they want to continue to the next step
+@property (copy) void (^completionBlock)(void);
+
 @end

@@ -8,6 +8,8 @@
 
 #import "TXHSalesWizardViewController.h"
 
+#import "TXHSalesContentProtocol.h"
+
 @interface TXHSalesWizardViewController ()
 
 // Static cell components for step 1 - Tickets
@@ -209,7 +211,12 @@
     [[UIApplication sharedApplication] sendAction:@selector(didChangeOption:) to:nil from:self forEvent:nil];
 }
 
-- (void)moveToNextStep {
+- (void)moveToNextStep:(id)sender {
+    // Perform any completion processing
+    TXHSalesCompletionViewController *completionController = sender;
+    if ([completionController completionBlock] != nil) {
+        completionController.completionBlock();
+    }
     [self configureWizardForStage:self.currentStageInProgress + 1];
 }
 

@@ -12,7 +12,7 @@
 
 @property (readonly, nonatomic) NSUInteger step;
 
-- (void)moveToNextStep;
+- (void)moveToNextStep:(id)sender;
 - (void)orderExpired;
 
 @end

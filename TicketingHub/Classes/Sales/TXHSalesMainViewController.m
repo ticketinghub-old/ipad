@@ -89,7 +89,7 @@
         [self.wizardDetails transition:sender];
     }
     if ([sender isKindOfClass:[TXHSalesWizardDetailsViewController class]] == YES) {
-        [self.wizardSteps moveToNextStep];
+        [self.wizardSteps moveToNextStep:sender];
     }
 }
 
@@ -98,8 +98,8 @@
 //    [self wizard:self.wizardSteps didChooseOption:step];
 }
 
-- (void)completeWizardStep {
-    [self.wizardSteps moveToNextStep];
+- (void)completeWizardStep:(id)sender {
+    [self.wizardSteps moveToNextStep:sender];
 }
 
 - (void)orderExpiredWithSender:(id)sender {

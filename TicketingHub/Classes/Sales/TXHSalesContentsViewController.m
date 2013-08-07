@@ -31,6 +31,7 @@
 @synthesize timerViewController = _timerViewController;
 @synthesize completionViewController = _completionViewController;
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -74,6 +75,14 @@
     if (self.contentViewController) {
         [self.contentViewController setCompletionViewController:completionViewController];
     }
+}
+
+- (void (^)(void))completionBlock {
+    return self.contentViewController.completionBlock;
+}
+
+- (void)setCompletionBlock:(void (^)(void))completionBlock {
+    [self.contentViewController setCompletionBlock:completionBlock];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -47,7 +47,7 @@
 
 - (IBAction)continueAction:(id)sender {
 #pragma unused (sender)
-    [[UIApplication sharedApplication] sendAction:@selector(completeWizardStep) to:nil from:self forEvent:nil];
+    [[UIApplication sharedApplication] sendAction:@selector(completeWizardStep:) to:nil from:self forEvent:nil];
 }
 
 - (void)hideCoupon:(BOOL)hidden {

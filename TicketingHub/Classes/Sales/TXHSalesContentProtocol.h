@@ -19,6 +19,10 @@
 - (TXHSalesCompletionViewController *)completionViewController;
 - (void)setCompletionViewController:(TXHSalesCompletionViewController *)completionViewController;
 
+// When a user elects to continue from a step in the wizard, this completion block will perform appropriate processing for that step
+- (void (^)(void))completionBlock;
+- (void)setCompletionBlock:(void (^)(void))completionBlock;
+
 @optional
 
 - (void)transition:(id)sender;
