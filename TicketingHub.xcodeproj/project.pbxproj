@@ -100,6 +100,26 @@
 		58E4FB861760AE5500E328A0 /* TicketingHubTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB851760AE5500E328A0 /* TicketingHubTests.m */; };
 		58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB911760AEF300E328A0 /* Storyboard.storyboard */; };
 		58E4FB9F1761CFEC00E328A0 /* TXHMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */; };
+		EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */; };
+		EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */; };
+		EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC4017B272F700F226BC /* Security.framework */; };
+		EEB4FD4917B277D800F226BC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EEB4FD2417B277D800F226BC /* .gitignore */; };
+		EEB4FD4A17B277D800F226BC /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD2617B277D800F226BC /* AFHTTPClient.m */; };
+		EEB4FD4B17B277D800F226BC /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD2817B277D800F226BC /* AFHTTPRequestOperation.m */; };
+		EEB4FD4C17B277D800F226BC /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD2A17B277D800F226BC /* AFImageRequestOperation.m */; };
+		EEB4FD4D17B277D800F226BC /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD2C17B277D800F226BC /* AFJSONRequestOperation.m */; };
+		EEB4FD4E17B277D800F226BC /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD2E17B277D800F226BC /* AFNetworkActivityIndicatorManager.m */; };
+		EEB4FD4F17B277D800F226BC /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD3117B277D800F226BC /* AFPropertyListRequestOperation.m */; };
+		EEB4FD5017B277D800F226BC /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD3317B277D800F226BC /* AFURLConnectionOperation.m */; };
+		EEB4FD5117B277D800F226BC /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD3517B277D800F226BC /* AFXMLRequestOperation.m */; };
+		EEB4FD5217B277D800F226BC /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = EEB4FD3617B277D800F226BC /* LICENSE */; };
+		EEB4FD5317B277D800F226BC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EEB4FD3717B277D800F226BC /* README.md */; };
+		EEB4FD5417B277D800F226BC /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD3917B277D800F226BC /* UIImageView+AFNetworking.m */; };
+		EEB4FD5517B277D800F226BC /* NSDictionary+JCSKeyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD3C17B277D800F226BC /* NSDictionary+JCSKeyMapping.m */; };
+		EEB4FD5617B277D800F226BC /* _TXHNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD3F17B277D800F226BC /* _TXHNetworkClient.m */; };
+		EEB4FD5717B277D800F226BC /* _TXHNetworkOAuthClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD4117B277D800F226BC /* _TXHNetworkOAuthClient.m */; };
+		EEB4FD5917B277D800F226BC /* TXHTicketingHubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD4417B277D800F226BC /* TXHTicketingHubClient.m */; };
+		EEB4FD5A17B277D800F226BC /* TXHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD4617B277D800F226BC /* TXHUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -284,6 +304,41 @@
 		58E4FB911760AEF300E328A0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		58E4FB9D1761CFEC00E328A0 /* TXHMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMainViewController.h; sourceTree = "<group>"; };
 		58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMainViewController.m; sourceTree = "<group>"; };
+		EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EEB4FC4017B272F700F226BC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		EEB4FD2417B277D800F226BC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		EEB4FD2517B277D800F226BC /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		EEB4FD2617B277D800F226BC /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
+		EEB4FD2717B277D800F226BC /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		EEB4FD2817B277D800F226BC /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		EEB4FD2917B277D800F226BC /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
+		EEB4FD2A17B277D800F226BC /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
+		EEB4FD2B17B277D800F226BC /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		EEB4FD2C17B277D800F226BC /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		EEB4FD2D17B277D800F226BC /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		EEB4FD2E17B277D800F226BC /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		EEB4FD2F17B277D800F226BC /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		EEB4FD3017B277D800F226BC /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		EEB4FD3117B277D800F226BC /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		EEB4FD3217B277D800F226BC /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		EEB4FD3317B277D800F226BC /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		EEB4FD3417B277D800F226BC /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		EEB4FD3517B277D800F226BC /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		EEB4FD3617B277D800F226BC /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		EEB4FD3717B277D800F226BC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		EEB4FD3817B277D800F226BC /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		EEB4FD3917B277D800F226BC /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		EEB4FD3B17B277D800F226BC /* NSDictionary+JCSKeyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JCSKeyMapping.h"; sourceTree = "<group>"; };
+		EEB4FD3C17B277D800F226BC /* NSDictionary+JCSKeyMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JCSKeyMapping.m"; sourceTree = "<group>"; };
+		EEB4FD3E17B277D800F226BC /* _TXHNetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHNetworkClient.h; sourceTree = "<group>"; };
+		EEB4FD3F17B277D800F226BC /* _TXHNetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHNetworkClient.m; sourceTree = "<group>"; };
+		EEB4FD4017B277D800F226BC /* _TXHNetworkOAuthClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHNetworkOAuthClient.h; sourceTree = "<group>"; };
+		EEB4FD4117B277D800F226BC /* _TXHNetworkOAuthClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHNetworkOAuthClient.m; sourceTree = "<group>"; };
+		EEB4FD4317B277D800F226BC /* TXHTicketingHubClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketingHubClient.h; sourceTree = "<group>"; };
+		EEB4FD4417B277D800F226BC /* TXHTicketingHubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubClient.m; sourceTree = "<group>"; };
+		EEB4FD4517B277D800F226BC /* TXHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHUser.h; sourceTree = "<group>"; };
+		EEB4FD4617B277D800F226BC /* TXHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +346,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */,
+				EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */,
+				EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */,
 				4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */,
 				5860E8581762175B0046DFD3 /* QuartzCore.framework in Frameworks */,
 				58E4FB551760AE5500E328A0 /* UIKit.framework in Frameworks */,
@@ -430,6 +488,7 @@
 				4DF9F92B179D50C10040FC5D /* Core Data */,
 				5860E85917633C990046DFD3 /* Assets */,
 				58E4FB971760D3C800E328A0 /* Classes */,
+				EEB4FD2017B277D800F226BC /* ios-api */,
 				58E4FB901760AECF00E328A0 /* UI */,
 				58E4FB5C1760AE5500E328A0 /* TicketingHub */,
 				58E4FB7E1760AE5500E328A0 /* TicketingHubTests */,
@@ -451,12 +510,15 @@
 			isa = PBXGroup;
 			children = (
 				4D68DAAA178B0A5400743227 /* AVFoundation.framework */,
-				5860E8571762175B0046DFD3 /* QuartzCore.framework */,
-				58E4FB541760AE5500E328A0 /* UIKit.framework */,
-				58E4FB561760AE5500E328A0 /* Foundation.framework */,
-				58E4FB581760AE5500E328A0 /* CoreGraphics.framework */,
 				58E4FB5A1760AE5500E328A0 /* CoreData.framework */,
+				58E4FB581760AE5500E328A0 /* CoreGraphics.framework */,
+				58E4FB561760AE5500E328A0 /* Foundation.framework */,
+				EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */,
+				5860E8571762175B0046DFD3 /* QuartzCore.framework */,
+				EEB4FC4017B272F700F226BC /* Security.framework */,
 				58E4FB771760AE5500E328A0 /* SenTestingKit.framework */,
+				EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */,
+				58E4FB541760AE5500E328A0 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -640,6 +702,70 @@
 			path = Sales;
 			sourceTree = "<group>";
 		};
+		EEB4FD2017B277D800F226BC /* ios-api */ = {
+			isa = PBXGroup;
+			children = (
+				EEB4FD4317B277D800F226BC /* TXHTicketingHubClient.h */,
+				EEB4FD4417B277D800F226BC /* TXHTicketingHubClient.m */,
+				EEB4FD4517B277D800F226BC /* TXHUser.h */,
+				EEB4FD4617B277D800F226BC /* TXHUser.m */,
+				EEB4FD2317B277D800F226BC /* AFNetworking */,
+				EEB4FD3A17B277D800F226BC /* NSDictionary+JCSKeyMapping */,
+				EEB4FD3D17B277D800F226BC /* Private */,
+			);
+			name = "ios-api";
+			path = "Externals/ios-api";
+			sourceTree = "<group>";
+		};
+		EEB4FD2317B277D800F226BC /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				EEB4FD2417B277D800F226BC /* .gitignore */,
+				EEB4FD2517B277D800F226BC /* AFHTTPClient.h */,
+				EEB4FD2617B277D800F226BC /* AFHTTPClient.m */,
+				EEB4FD2717B277D800F226BC /* AFHTTPRequestOperation.h */,
+				EEB4FD2817B277D800F226BC /* AFHTTPRequestOperation.m */,
+				EEB4FD2917B277D800F226BC /* AFImageRequestOperation.h */,
+				EEB4FD2A17B277D800F226BC /* AFImageRequestOperation.m */,
+				EEB4FD2B17B277D800F226BC /* AFJSONRequestOperation.h */,
+				EEB4FD2C17B277D800F226BC /* AFJSONRequestOperation.m */,
+				EEB4FD2D17B277D800F226BC /* AFNetworkActivityIndicatorManager.h */,
+				EEB4FD2E17B277D800F226BC /* AFNetworkActivityIndicatorManager.m */,
+				EEB4FD2F17B277D800F226BC /* AFNetworking.h */,
+				EEB4FD3017B277D800F226BC /* AFPropertyListRequestOperation.h */,
+				EEB4FD3117B277D800F226BC /* AFPropertyListRequestOperation.m */,
+				EEB4FD3217B277D800F226BC /* AFURLConnectionOperation.h */,
+				EEB4FD3317B277D800F226BC /* AFURLConnectionOperation.m */,
+				EEB4FD3417B277D800F226BC /* AFXMLRequestOperation.h */,
+				EEB4FD3517B277D800F226BC /* AFXMLRequestOperation.m */,
+				EEB4FD3617B277D800F226BC /* LICENSE */,
+				EEB4FD3717B277D800F226BC /* README.md */,
+				EEB4FD3817B277D800F226BC /* UIImageView+AFNetworking.h */,
+				EEB4FD3917B277D800F226BC /* UIImageView+AFNetworking.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		EEB4FD3A17B277D800F226BC /* NSDictionary+JCSKeyMapping */ = {
+			isa = PBXGroup;
+			children = (
+				EEB4FD3B17B277D800F226BC /* NSDictionary+JCSKeyMapping.h */,
+				EEB4FD3C17B277D800F226BC /* NSDictionary+JCSKeyMapping.m */,
+			);
+			path = "NSDictionary+JCSKeyMapping";
+			sourceTree = "<group>";
+		};
+		EEB4FD3D17B277D800F226BC /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				EEB4FD3E17B277D800F226BC /* _TXHNetworkClient.h */,
+				EEB4FD3F17B277D800F226BC /* _TXHNetworkClient.m */,
+				EEB4FD4017B277D800F226BC /* _TXHNetworkOAuthClient.h */,
+				EEB4FD4117B277D800F226BC /* _TXHNetworkOAuthClient.m */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -715,7 +841,10 @@
 				58E4FB611760AE5500E328A0 /* InfoPlist.strings in Resources */,
 				4D8FCCB617A28A8C008B4227 /* Doorman.storyboard in Resources */,
 				58E4FB691760AE5500E328A0 /* Default.png in Resources */,
+				EEB4FD5317B277D800F226BC /* README.md in Resources */,
+				EEB4FD4917B277D800F226BC /* .gitignore in Resources */,
 				4D586DE11797E51E00E40534 /* Images.xcassets in Resources */,
+				EEB4FD5217B277D800F226BC /* LICENSE in Resources */,
 				58E4FB6B1760AE5500E328A0 /* Default@2x.png in Resources */,
 				58E4FB6D1760AE5500E328A0 /* Default-568h@2x.png in Resources */,
 				58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */,
@@ -754,12 +883,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEB4FD5717B277D800F226BC /* _TXHNetworkOAuthClient.m in Sources */,
+				EEB4FD4C17B277D800F226BC /* AFImageRequestOperation.m in Sources */,
 				4DA0980217A17AE6001D5794 /* TXHSalesTicketTiersViewController.m in Sources */,
 				58E4FB631760AE5500E328A0 /* main.m in Sources */,
 				4DF9F96C179D50E90040FC5D /* _Role.m in Sources */,
 				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
 				4DF9F96E179D50E90040FC5D /* _SeasonOption.m in Sources */,
 				4DF9F96B179D50E90040FC5D /* _Permission.m in Sources */,
+				EEB4FD5917B277D800F226BC /* TXHTicketingHubClient.m in Sources */,
 				4DF9F96D179D50E90040FC5D /* _Season.m in Sources */,
 				58E4FB701760AE5500E328A0 /* TicketingHub.xcdatamodeld in Sources */,
 				4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */,
@@ -787,22 +919,26 @@
 				4DA05FB8178D8DAC005161E6 /* TXHMenuViewController.m in Sources */,
 				4DF9F963179D50E90040FC5D /* Ticket.m in Sources */,
 				4DF9F960179D50E90040FC5D /* Role.m in Sources */,
+				EEB4FD4A17B277D800F226BC /* AFHTTPClient.m in Sources */,
 				581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */,
 				4DF9F978179D5B4E0040FC5D /* TXHTransitionSegue.m in Sources */,
 				4DF9F972179D50E90040FC5D /* _Tier.m in Sources */,
 				4DC31A5617A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m in Sources */,
 				581560D11765DAB3005C20EA /* TXHDoorDateController.m in Sources */,
 				4DF9F95E179D50E90040FC5D /* Customer.m in Sources */,
+				EEB4FD4F17B277D800F226BC /* AFPropertyListRequestOperation.m in Sources */,
 				4D859FF817953FA1000B2FCC /* TXHTimeSlot.m in Sources */,
 				4DF9F969179D50E90040FC5D /* Venue.m in Sources */,
 				4DF9F971179D50E90040FC5D /* _TicketType.m in Sources */,
 				4DF2A49D17A95857000AB600 /* TXHSalesTicketCompletionViewController.m in Sources */,
+				EEB4FD5617B277D800F226BC /* _TXHNetworkClient.m in Sources */,
 				4DA0980517A17B3E001D5794 /* TXHSalesInformationCompletionViewController.m in Sources */,
 				4D1A0C2C17A8F84400960906 /* TXHSalesTicketTierCell.m in Sources */,
 				4DE21FDD1799738C004D50F0 /* UIView+TXHAnimationConversions.m in Sources */,
 				4DF9F964179D50E90040FC5D /* TicketMaster.m in Sources */,
 				4DF9F967179D50E90040FC5D /* Variation.m in Sources */,
 				4DA05FBB178D8F31005161E6 /* TXHMenuController.m in Sources */,
+				EEB4FD5A17B277D800F226BC /* TXHUser.m in Sources */,
 				581560D41765E0DE005C20EA /* TXHTimeCell.m in Sources */,
 				4DA05FAB178C2430005161E6 /* TXHVenue.m in Sources */,
 				4DF9F95F179D50E90040FC5D /* Permission.m in Sources */,
@@ -815,9 +951,13 @@
 				4D3C72BE17B014ED008FACDC /* TXHSalesContentsViewController.m in Sources */,
 				4D80B9A5178ABEA4002A71C8 /* LoginAuthorisation.m in Sources */,
 				4DF9F966179D50E90040FC5D /* Tier.m in Sources */,
+				EEB4FD5117B277D800F226BC /* AFXMLRequestOperation.m in Sources */,
+				EEB4FD5017B277D800F226BC /* AFURLConnectionOperation.m in Sources */,
 				4DF9F968179D50E90040FC5D /* VariationOption.m in Sources */,
+				EEB4FD5417B277D800F226BC /* UIImageView+AFNetworking.m in Sources */,
 				4DF9F962179D50E90040FC5D /* SeasonOption.m in Sources */,
 				4D68DAA0178AE3A100743227 /* TXHSalesOptionsViewController.m in Sources */,
+				EEB4FD4D17B277D800F226BC /* AFJSONRequestOperation.m in Sources */,
 				4DFB1009178DB693006923F7 /* TXHLoginViewController.m in Sources */,
 				4D307DB41796F61C00822645 /* TXHTimeFormatter.m in Sources */,
 				4D94B79317ABAE0200943A9F /* TXHSalesInformationViewController.m in Sources */,
@@ -825,8 +965,11 @@
 				4DB23D7117A17093002B7B11 /* TXHSalesWizardViewController.m in Sources */,
 				4DF9F975179D50E90040FC5D /* _Venue.m in Sources */,
 				4DF2A49A17A95793000AB600 /* TXHSalesTicketViewController.m in Sources */,
+				EEB4FD4E17B277D800F226BC /* AFNetworkActivityIndicatorManager.m in Sources */,
+				EEB4FD4B17B277D800F226BC /* AFHTTPRequestOperation.m in Sources */,
 				4D859FF2179453EA000B2FCC /* TXHSeason.m in Sources */,
 				4DC95F26179EA654004E035D /* TXHTimeslotSelectorViewController.m in Sources */,
+				EEB4FD5517B277D800F226BC /* NSDictionary+JCSKeyMapping.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -947,11 +1090,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/abizer/dev/ios/client/TicketingHub/Externals/ios-api/TicketingHub-iosTests/Expecta",
+					"/Users/abizer/dev/ios/client/TicketingHub/Externals/ios-api/TicketingHub-iosTests/Specta",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = (
@@ -968,11 +1117,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/abizer/dev/ios/client/TicketingHub/Externals/ios-api/TicketingHub-iosTests/Expecta",
+					"/Users/abizer/dev/ios/client/TicketingHub/Externals/ios-api/TicketingHub-iosTests/Specta",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = (
