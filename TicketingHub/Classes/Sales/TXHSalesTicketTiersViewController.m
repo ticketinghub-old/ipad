@@ -150,7 +150,9 @@
 {
 #pragma unused (tableView ,section)
     // Return the number of rows in the section.
-    return self.venue.ticketDetail.tiers.count;
+#warning - AN turned this off!
+//    return self.venue.ticketDetail.tiers.count;
+    return 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -169,8 +171,10 @@
 }
 
 - (void)configureCell:(TXHSalesTicketTierCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    TXHTicketTier *tier = self.venue.ticketDetail.tiers[indexPath.row];
-    cell.tier = tier;
+#warning - AN turned this off!
+//    TXHTicketTier *tier = self.venue.ticketDetail.tiers[indexPath.row];
+    cell.tier = nil;
+    // - nil'ed this
     cell.quantityChangedHandler = ^(NSDictionary *quantity) {
         // Add this quantity to our dictionary
         [self.tierQuantities addEntriesFromDictionary:quantity];

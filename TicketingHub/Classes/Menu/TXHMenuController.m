@@ -98,8 +98,10 @@
     // Configure the cell...
     
     TXHVenue *venue = [self.venues objectAtIndex:indexPath.row];
-    cell.textLabel.text = venue.businessName;
-    
+#warning - AN turned this off!
+//    cell.textLabel.text = venue.businessName;
+    cell.textLabel.text = @"Blame AN";
+
     return cell;
 }
 

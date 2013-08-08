@@ -147,10 +147,12 @@
 
     // Build start/end ranges from all the seasons available for this venue
     NSMutableArray *ranges = [NSMutableArray array];
-    for (TXHSeason *season in self.venue.allSeasons) {
-        // Add a range for each season
-        [ranges addObject:@{@"start": season.startsOn, @"end": season.endsOn}];
-    }
+#warning - AN turned this off!
+//    for (TXHSeason *season in self.venue.allSeasons) {
+//        // Add a range for each season
+//        [ranges addObject:@{@"start": season.startsOn, @"end": season.endsOn}];
+//    }
+    // - commented this section out
     TXHDateSelectorViewController *dateViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Date Selector Popover"];
     dateViewController.delegate = self;
     [dateViewController constrainToDateRanges:ranges];
@@ -283,10 +285,14 @@
     self.venue = [notification object];
     if (self.venue != nil) {
         // Display the selected venue in the navigation bar
-        self.title = self.venue.businessName;
-        
+#warning - AN turned this off!
+//        self.title = self.venue.businessName;
+        self.title = @"Hello!";
+
         // Get the first season for this venue if there is one
-        TXHSeason *season = [self.venue.allSeasons firstObject];
+#warning - AN turned this off!
+//        TXHSeason *season = [self.venue.allSeasons firstObject];
+        TXHSeason *season = nil;
         if (season == nil) {
             self.navigationItem.prompt = NSLocalizedString(@"There are no dates for this venue", @"There are no dates for this venue");
             return;

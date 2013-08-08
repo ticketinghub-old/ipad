@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3389" systemVersion="13A524d" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="TXHPermissionMO" representedClassName="TXHPermissionMO" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="venues" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TXHVenueMO" inverseName="permissions" inverseEntity="TXHVenueMO" syncable="YES"/>
+    </entity>
     <entity name="TXHUserMO" representedClassName="TXHUserMO" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
@@ -7,9 +11,32 @@
         <relationship name="venues" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TXHVenueMO" inverseName="user" inverseEntity="TXHVenueMO" syncable="YES"/>
     </entity>
     <entity name="TXHVenueMO" representedClassName="TXHVenueMO" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="establishmentType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" valueTransformerName="NSKeyedUnarchiveFromData" defaultValueString="0.0" syncable="YES">
+            <userInfo>
+                <entry key="attributeValue" value="value"/>
+            </userInfo>
+        </attribute>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="postcode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="region" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="street1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="street2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stripePublishableKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telephone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeZoneName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="venueId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="venueName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="permissions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TXHPermissionMO" inverseName="venues" inverseEntity="TXHPermissionMO" syncable="YES"/>
         <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="TXHUserMO" inverseName="venues" inverseEntity="TXHUserMO" syncable="YES"/>
     </entity>
     <elements>
+        <element name="TXHPermissionMO" positionX="0" positionY="0" width="0" height="0"/>
         <element name="TXHUserMO" positionX="0" positionY="0" width="0" height="0"/>
         <element name="TXHVenueMO" positionX="0" positionY="0" width="0" height="0"/>
     </elements>

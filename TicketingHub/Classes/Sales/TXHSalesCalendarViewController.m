@@ -128,11 +128,13 @@
   TXHVenue *venue = [notification object];
   
   // Get the current season for this venue
-  TXHSeason *season = venue.currentSeason;
-  
+#warning - AN turned this off!
+//  TXHSeason *season = venue.currentSeason;
+    TXHSeason *season = nil;
+
   // If there is no current season overlay a view with a warning
   if (season == nil) {
-    NSLog(@"There is no season configured for %@", venue.businessName);
+//    NSLog(@"There is no season configured for %@", venue.businessName);
     return;
   }
 

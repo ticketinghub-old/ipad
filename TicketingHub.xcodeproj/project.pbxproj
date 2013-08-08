@@ -32,7 +32,6 @@
 		4D94B79317ABAE0200943A9F /* TXHSalesInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D94B79217ABAE0200943A9F /* TXHSalesInformationViewController.m */; };
 		4D94B79617ABD53100943A9F /* TXHSalesTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D94B79517ABD53100943A9F /* TXHSalesTimerViewController.m */; };
 		4D94B7A417AFFB9100943A9F /* TXHSalesInformationDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D94B7A317AFFB9100943A9F /* TXHSalesInformationDetailsViewController.m */; };
-		4DA05FAB178C2430005161E6 /* TXHVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FAA178C2430005161E6 /* TXHVenue.m */; };
 		4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */; };
 		4DA05FB8178D8DAC005161E6 /* TXHMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB7178D8DAC005161E6 /* TXHMenuViewController.m */; };
 		4DA05FBB178D8F31005161E6 /* TXHMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FBA178D8F31005161E6 /* TXHMenuController.m */; };
@@ -79,6 +78,9 @@
 		EEA6863F17B3DF0D0024B002 /* TXHVenueMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA6863D17B3DF0D0024B002 /* TXHVenueMO.m */; };
 		EEA6864417B3DF190024B002 /* _TXHUserMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA6864117B3DF190024B002 /* _TXHUserMO.m */; };
 		EEA6864517B3DF190024B002 /* _TXHVenueMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA6864317B3DF190024B002 /* _TXHVenueMO.m */; };
+		EEABD7F617B4088300E17D54 /* TXHVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA6864717B3E47D0024B002 /* TXHVenue.m */; };
+		EEABD7F717B4092800E17D54 /* TXHPermissionMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE935E7C17B3FE3D0080A1C2 /* TXHPermissionMO.m */; };
+		EEABD7F817B4092800E17D54 /* _TXHPermissionMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE935E7E17B3FE460080A1C2 /* _TXHPermissionMO.m */; };
 		EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */; };
 		EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */; };
 		EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC4017B272F700F226BC /* Security.framework */; };
@@ -159,8 +161,6 @@
 		4D94B79517ABD53100943A9F /* TXHSalesTimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesTimerViewController.m; sourceTree = "<group>"; };
 		4D94B7A217AFFB9100943A9F /* TXHSalesInformationDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesInformationDetailsViewController.h; sourceTree = "<group>"; };
 		4D94B7A317AFFB9100943A9F /* TXHSalesInformationDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesInformationDetailsViewController.m; sourceTree = "<group>"; };
-		4DA05FA9178C2430005161E6 /* TXHVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVenue.h; sourceTree = "<group>"; };
-		4DA05FAA178C2430005161E6 /* TXHVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVenue.m; sourceTree = "<group>"; };
 		4DA05FAF178C367F005161E6 /* TXHServerAccessManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHServerAccessManager.h; sourceTree = "<group>"; };
 		4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHServerAccessManager.m; sourceTree = "<group>"; };
 		4DA05FB6178D8DAC005161E6 /* TXHMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMenuViewController.h; sourceTree = "<group>"; };
@@ -233,6 +233,10 @@
 		58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMainViewController.m; sourceTree = "<group>"; };
 		EE935E7417B3EB630080A1C2 /* CommonMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonMacros.h; sourceTree = "<group>"; };
 		EE935E7617B3EDFA0080A1C2 /* TicketingHub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TicketingHub.xcdatamodel; sourceTree = "<group>"; };
+		EE935E7B17B3FE3D0080A1C2 /* TXHPermissionMO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHPermissionMO.h; sourceTree = "<group>"; };
+		EE935E7C17B3FE3D0080A1C2 /* TXHPermissionMO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TXHPermissionMO.m; sourceTree = "<group>"; };
+		EE935E7D17B3FE460080A1C2 /* _TXHPermissionMO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _TXHPermissionMO.h; sourceTree = "<group>"; };
+		EE935E7E17B3FE460080A1C2 /* _TXHPermissionMO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _TXHPermissionMO.m; sourceTree = "<group>"; };
 		EEA6863A17B3DF0D0024B002 /* TXHUserMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHUserMO.h; sourceTree = "<group>"; };
 		EEA6863B17B3DF0D0024B002 /* TXHUserMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUserMO.m; sourceTree = "<group>"; };
 		EEA6863C17B3DF0D0024B002 /* TXHVenueMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVenueMO.h; sourceTree = "<group>"; };
@@ -348,6 +352,8 @@
 		4DF9F92C179D50E90040FC5D /* Human */ = {
 			isa = PBXGroup;
 			children = (
+				EE935E7B17B3FE3D0080A1C2 /* TXHPermissionMO.h */,
+				EE935E7C17B3FE3D0080A1C2 /* TXHPermissionMO.m */,
 				EEA6863A17B3DF0D0024B002 /* TXHUserMO.h */,
 				EEA6863B17B3DF0D0024B002 /* TXHUserMO.m */,
 				EEA6863C17B3DF0D0024B002 /* TXHVenueMO.h */,
@@ -360,6 +366,8 @@
 		4DF9F945179D50E90040FC5D /* Machine */ = {
 			isa = PBXGroup;
 			children = (
+				EE935E7D17B3FE460080A1C2 /* _TXHPermissionMO.h */,
+				EE935E7E17B3FE460080A1C2 /* _TXHPermissionMO.m */,
 				EEA6864017B3DF190024B002 /* _TXHUserMO.h */,
 				EEA6864117B3DF190024B002 /* _TXHUserMO.m */,
 				EEA6864217B3DF190024B002 /* _TXHVenueMO.h */,
@@ -485,8 +493,6 @@
 				58E4FB9A1760D3C800E328A0 /* MainScreen */,
 				58E4FB9B1760D3C800E328A0 /* Login */,
 				58E4FB9C1760D3C800E328A0 /* Sales */,
-				4DA05FA9178C2430005161E6 /* TXHVenue.h */,
-				4DA05FAA178C2430005161E6 /* TXHVenue.m */,
 				4DA05FAF178C367F005161E6 /* TXHServerAccessManager.h */,
 				4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */,
 				4D89278717944B61004892FD /* TXHSeason.h */,
@@ -778,6 +784,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEABD7F717B4092800E17D54 /* TXHPermissionMO.m in Sources */,
+				EEABD7F817B4092800E17D54 /* _TXHPermissionMO.m in Sources */,
+				EEABD7F617B4088300E17D54 /* TXHVenue.m in Sources */,
 				EEB4FD5717B277D800F226BC /* _TXHNetworkOAuthClient.m in Sources */,
 				EEB4FD4C17B277D800F226BC /* AFImageRequestOperation.m in Sources */,
 				4DA0980217A17AE6001D5794 /* TXHSalesTicketTiersViewController.m in Sources */,
@@ -820,7 +829,6 @@
 				EEB4FD5A17B277D800F226BC /* TXHUser.m in Sources */,
 				581560D41765E0DE005C20EA /* TXHTimeCell.m in Sources */,
 				EEA6864417B3DF190024B002 /* _TXHUserMO.m in Sources */,
-				4DA05FAB178C2430005161E6 /* TXHVenue.m in Sources */,
 				4DF9F984179DC2850040FC5D /* TXHDateSelectorViewController.m in Sources */,
 				4D68DAA9178B096A00743227 /* BarcodeViewController.m in Sources */,
 				581560D71765E150005C20EA /* TXHGroupCell.m in Sources */,
