@@ -3,14 +3,14 @@
     <entity name="TXHUserMO" representedClassName="TXHUserMO" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="secondName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="venues" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TXHVenueMO" inverseName="user" inverseEntity="TXHVenueMO" syncable="YES"/>
     </entity>
     <entity name="TXHVenueMO" representedClassName="TXHVenueMO" syncable="YES">
         <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="TXHUserMO" inverseName="venues" inverseEntity="TXHUserMO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="TXHUserMO" positionX="-270" positionY="-549" width="128" height="105"/>
-        <element name="TXHVenueMO" positionX="-119" positionY="-423" width="128" height="60"/>
+        <element name="TXHUserMO" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TXHVenueMO" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

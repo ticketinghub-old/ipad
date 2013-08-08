@@ -6,7 +6,7 @@
 const struct TXHUserMOAttributes TXHUserMOAttributes = {
 	.email = @"email",
 	.firstName = @"firstName",
-	.secondName = @"secondName",
+	.lastName = @"lastName",
 };
 
 const struct TXHUserMORelationships TXHUserMORelationships = {
@@ -63,7 +63,7 @@ const struct TXHUserMOFetchedProperties TXHUserMOFetchedProperties = {
 
 
 
-@dynamic secondName;
+@dynamic lastName;
 
 
 

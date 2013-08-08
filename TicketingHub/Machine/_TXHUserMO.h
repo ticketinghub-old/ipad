@@ -7,7 +7,7 @@
 extern const struct TXHUserMOAttributes {
 	__unsafe_unretained NSString *email;
 	__unsafe_unretained NSString *firstName;
-	__unsafe_unretained NSString *secondName;
+	__unsafe_unretained NSString *lastName;
 } TXHUserMOAttributes;
 
 extern const struct TXHUserMORelationships {
@@ -56,11 +56,11 @@ extern const struct TXHUserMOFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* secondName;
+@property (nonatomic, strong) NSString* lastName;
 
 
 
-//- (BOOL)validateSecondName:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateLastName:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -108,8 +108,8 @@ extern const struct TXHUserMOFetchedProperties {
 
 
 
-- (NSString*)primitiveSecondName;
-- (void)setPrimitiveSecondName:(NSString*)value;
+- (NSString*)primitiveLastName;
+- (void)setPrimitiveLastName:(NSString*)value;
 
 
 
