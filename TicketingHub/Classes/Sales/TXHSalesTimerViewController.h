@@ -34,6 +34,9 @@
 // Stop and also hide the countdown timer
 - (void)stopCountdownTimer;
 
+// Hide or show a coupon
+- (void)hideCoupon:(BOOL)hidden animated:(BOOL)animated;
+
 // Hide or show a payment selection
 - (void)hidePaymentSelection:(BOOL)hidden animated:(BOOL)animated;
 

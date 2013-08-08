@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *timerImage;
 @property (weak, nonatomic) IBOutlet UILabel *timeDisplay;
 @property (weak, nonatomic) IBOutlet UIView *dividingLine;
+@property (weak, nonatomic) IBOutlet UIView *couponView;
 
 @property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) NSDictionary *userInfo;
@@ -96,10 +97,28 @@
     [self hidePaymentSelection:YES animated:animated];
 }
 
+- (void)hideCoupon:(BOOL)hidden animated:(BOOL)animated {
+    __block typeof(self) blockSelf = self;
+    
+    self.newVerticalHeight = hidden ? 84.0f : 136.0f;
+    
+    if (animated) {
+        self.animationHandler = ^(BOOL finished) {
+#pragma unused (finished)
+            blockSelf.couponView.hidden = hidden;
+        };
+    } else {
+        self.animationHandler = nil;
+        self.couponView.hidden = hidden;
+    }
+    
+    [[UIApplication sharedApplication] sendAction:@selector(updateTimerContainerHeight:) to:nil from:self forEvent:nil];
+}
+
 - (void)hidePaymentSelection:(BOOL)hidden animated:(BOOL)animated {
     __block typeof(self) blockSelf = self;
     
-    self.newVerticalHeight = hidden ? 102.0f : 131.0f;
+    self.newVerticalHeight = hidden ? 84.0f : 136.0f;
 
     if (animated) {
         self.animationHandler = ^(BOOL finished) {
