@@ -1,14 +1,14 @@
-#import "Customer.h"
+#import "TXHUserMO.h"
 
 
-@interface Customer ()
+@interface TXHUserMO ()
 
 // Private interface goes here.
 
 @end
 
 
-@implementation Customer
+@implementation TXHUserMO
 
 // Custom logic goes here.
 

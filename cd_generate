@@ -1,0 +1,7 @@
+#! /usr/bin/env sh
+
+# Runs the mogenerator tool over the Core Data model.
+
+cd "$( dirname $0 )"
+cd TicketingHub
+mogenerator -m TicketingHub.xcdatamodeld/ -H Human -M Machine --template-var arc=true --template-var frc=true

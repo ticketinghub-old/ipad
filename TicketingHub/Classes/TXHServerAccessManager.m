@@ -446,6 +446,7 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 
 //
 // This notification is posted when a venue is selected from the menu
+// We should probably do away with this notification and handler. This is supposed to be the access manager not the data manager.
 //
 - (void)venueSelected:(NSNotification *)notification {
     // Venue is passed to us in the notification object

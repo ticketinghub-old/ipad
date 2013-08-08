@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3389" systemVersion="13A524d" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="TXHUserMO" representedClassName="TXHUserMO" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="secondName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="venues" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TXHVenueMO" inverseName="user" inverseEntity="TXHVenueMO" syncable="YES"/>
+    </entity>
+    <entity name="TXHVenueMO" representedClassName="TXHVenueMO" syncable="YES">
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="TXHUserMO" inverseName="venues" inverseEntity="TXHUserMO" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TXHUserMO" positionX="-270" positionY="-549" width="128" height="105"/>
+        <element name="TXHVenueMO" positionX="-119" positionY="-423" width="128" height="60"/>
+    </elements>
+</model>

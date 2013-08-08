@@ -1,14 +1,14 @@
-#import "Venue.h"
+#import "TXHVenueMO.h"
 
 
-@interface Venue ()
+@interface TXHVenueMO ()
 
 // Private interface goes here.
 
 @end
 
 
-@implementation Venue
+@implementation TXHVenueMO
 
 // Custom logic goes here.
 
