@@ -103,7 +103,7 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
             completion();
         }
 
-    } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
+    } failure:^(NSHTTPURLResponse *response, NSError *returnedError, id JSON) {
         NSLog(@"Error getting token: %@", error);
     }];
 

@@ -1062,6 +1062,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
+				GCC_WARN_UNUSED_PARAMETER = NO;
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
@@ -1087,6 +1088,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
+				GCC_WARN_UNUSED_PARAMETER = NO;
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
