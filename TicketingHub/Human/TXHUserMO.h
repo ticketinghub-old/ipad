@@ -14,4 +14,6 @@
  */
 + (instancetype)userWithObject:(TXHUser *)aUser inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
+- (NSString *)fullName;
+
 @end

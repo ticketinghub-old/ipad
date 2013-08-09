@@ -38,4 +38,10 @@
     return newUser;
 }
 
+#pragma mark - Public methods
+
+- (NSString *)fullName {
+    return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
+}
+
 @end
