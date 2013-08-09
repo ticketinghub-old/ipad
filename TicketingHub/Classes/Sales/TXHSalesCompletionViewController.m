@@ -8,7 +8,7 @@
 
 #import "TXHSalesCompletionViewController.h"
 
-@interface TXHSalesCompletionViewController () <UITextFieldDelegate>
+@interface TXHSalesCompletionViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *coupon;
 @property (weak, nonatomic) IBOutlet UIButton *continueButton;
