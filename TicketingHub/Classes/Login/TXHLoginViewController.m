@@ -163,11 +163,6 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
     }
 }
 
-- (void)loginFailed:(id)reason {
-    NSError *error = reason;
-    NSLog(@"ERROR:%@", error.userInfo.description);
-}
-
 #pragma mark Actions
 
 - (IBAction)login:(id)sender {
