@@ -73,9 +73,10 @@
 		58E4FB861760AE5500E328A0 /* TicketingHubTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB851760AE5500E328A0 /* TicketingHubTests.m */; };
 		58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB911760AEF300E328A0 /* Storyboard.storyboard */; };
 		58E4FB9F1761CFEC00E328A0 /* TXHMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */; };
-		EE106B5317B529A800910901 /* _DCTCDSManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = EE106B4D17B529A800910901 /* _DCTCDSManagedObjectContext.m */; };
-		EE106B5417B529A800910901 /* DCTCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = EE106B4F17B529A800910901 /* DCTCoreDataStack.m */; };
-		EE106B5517B529A800910901 /* NSManagedObjectContext+DCTCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = EE106B5117B529A800910901 /* NSManagedObjectContext+DCTCoreDataStack.m */; };
+		EE106B5F17B530EB00910901 /* _DCTCDSManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = EE106B5917B530EB00910901 /* _DCTCDSManagedObjectContext.m */; };
+		EE106B6017B530EB00910901 /* DCTCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = EE106B5B17B530EB00910901 /* DCTCoreDataStack.m */; };
+		EE106B6117B530EB00910901 /* NSManagedObjectContext+DCTCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = EE106B5D17B530EB00910901 /* NSManagedObjectContext+DCTCoreDataStack.m */; };
+		EE106B6217B530EB00910901 /* Readme.textile in Resources */ = {isa = PBXBuildFile; fileRef = EE106B5E17B530EB00910901 /* Readme.textile */; };
 		EEA6863E17B3DF0D0024B002 /* TXHUserMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA6863B17B3DF0D0024B002 /* TXHUserMO.m */; };
 		EEA6863F17B3DF0D0024B002 /* TXHVenueMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA6863D17B3DF0D0024B002 /* TXHVenueMO.m */; };
 		EEA6864417B3DF190024B002 /* _TXHUserMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA6864117B3DF190024B002 /* _TXHUserMO.m */; };
@@ -232,12 +233,13 @@
 		58E4FB9D1761CFEC00E328A0 /* TXHMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMainViewController.h; sourceTree = "<group>"; };
 		58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMainViewController.m; sourceTree = "<group>"; };
 		EE106B4A17B4FE2200910901 /* TXHUserDefaultsKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHUserDefaultsKeys.h; sourceTree = "<group>"; };
-		EE106B4C17B529A800910901 /* _DCTCDSManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DCTCDSManagedObjectContext.h; sourceTree = "<group>"; };
-		EE106B4D17B529A800910901 /* _DCTCDSManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DCTCDSManagedObjectContext.m; sourceTree = "<group>"; };
-		EE106B4E17B529A800910901 /* DCTCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCTCoreDataStack.h; sourceTree = "<group>"; };
-		EE106B4F17B529A800910901 /* DCTCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCTCoreDataStack.m; sourceTree = "<group>"; };
-		EE106B5017B529A800910901 /* NSManagedObjectContext+DCTCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+DCTCoreDataStack.h"; sourceTree = "<group>"; };
-		EE106B5117B529A800910901 /* NSManagedObjectContext+DCTCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+DCTCoreDataStack.m"; sourceTree = "<group>"; };
+		EE106B5817B530EB00910901 /* _DCTCDSManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DCTCDSManagedObjectContext.h; sourceTree = "<group>"; };
+		EE106B5917B530EB00910901 /* _DCTCDSManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DCTCDSManagedObjectContext.m; sourceTree = "<group>"; };
+		EE106B5A17B530EB00910901 /* DCTCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCTCoreDataStack.h; sourceTree = "<group>"; };
+		EE106B5B17B530EB00910901 /* DCTCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCTCoreDataStack.m; sourceTree = "<group>"; };
+		EE106B5C17B530EB00910901 /* NSManagedObjectContext+DCTCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+DCTCoreDataStack.h"; sourceTree = "<group>"; };
+		EE106B5D17B530EB00910901 /* NSManagedObjectContext+DCTCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+DCTCoreDataStack.m"; sourceTree = "<group>"; };
+		EE106B5E17B530EB00910901 /* Readme.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.textile; sourceTree = "<group>"; };
 		EE935E7417B3EB630080A1C2 /* CommonMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonMacros.h; sourceTree = "<group>"; };
 		EE935E7617B3EDFA0080A1C2 /* TicketingHub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TicketingHub.xcdatamodel; sourceTree = "<group>"; };
 		EE935E7B17B3FE3D0080A1C2 /* TXHPermissionMO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHPermissionMO.h; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				EE935E7517B3EDFA0080A1C2 /* TicketingHub.xcdatamodeld */,
+				EE106B5717B530EB00910901 /* DCTCoreDataStack */,
 				4DF9F92C179D50E90040FC5D /* Human */,
 				4DF9F945179D50E90040FC5D /* Machine */,
 			);
@@ -398,7 +401,6 @@
 		58E4FB481760AE5500E328A0 = {
 			isa = PBXGroup;
 			children = (
-				EE106B4B17B529A800910901 /* DCTCoreDataStack */,
 				4DF9F92B179D50C10040FC5D /* Core Data */,
 				5860E85917633C990046DFD3 /* Assets */,
 				58E4FB971760D3C800E328A0 /* Classes */,
@@ -612,15 +614,16 @@
 			path = Sales;
 			sourceTree = "<group>";
 		};
-		EE106B4B17B529A800910901 /* DCTCoreDataStack */ = {
+		EE106B5717B530EB00910901 /* DCTCoreDataStack */ = {
 			isa = PBXGroup;
 			children = (
-				EE106B4C17B529A800910901 /* _DCTCDSManagedObjectContext.h */,
-				EE106B4D17B529A800910901 /* _DCTCDSManagedObjectContext.m */,
-				EE106B4E17B529A800910901 /* DCTCoreDataStack.h */,
-				EE106B4F17B529A800910901 /* DCTCoreDataStack.m */,
-				EE106B5017B529A800910901 /* NSManagedObjectContext+DCTCoreDataStack.h */,
-				EE106B5117B529A800910901 /* NSManagedObjectContext+DCTCoreDataStack.m */,
+				EE106B5817B530EB00910901 /* _DCTCDSManagedObjectContext.h */,
+				EE106B5917B530EB00910901 /* _DCTCDSManagedObjectContext.m */,
+				EE106B5A17B530EB00910901 /* DCTCoreDataStack.h */,
+				EE106B5B17B530EB00910901 /* DCTCoreDataStack.m */,
+				EE106B5C17B530EB00910901 /* NSManagedObjectContext+DCTCoreDataStack.h */,
+				EE106B5D17B530EB00910901 /* NSManagedObjectContext+DCTCoreDataStack.m */,
+				EE106B5E17B530EB00910901 /* Readme.textile */,
 			);
 			name = DCTCoreDataStack;
 			path = Externals/DCTCoreDataStack;
@@ -764,6 +767,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58E4FB611760AE5500E328A0 /* InfoPlist.strings in Resources */,
+				EE106B6217B530EB00910901 /* Readme.textile in Resources */,
 				4D8FCCB617A28A8C008B4227 /* Doorman.storyboard in Resources */,
 				58E4FB691760AE5500E328A0 /* Default.png in Resources */,
 				4D586DE11797E51E00E40534 /* Images.xcassets in Resources */,
@@ -811,9 +815,9 @@
 				EEB4FD5717B277D800F226BC /* _TXHNetworkOAuthClient.m in Sources */,
 				EEB4FD4C17B277D800F226BC /* AFImageRequestOperation.m in Sources */,
 				4DA0980217A17AE6001D5794 /* TXHSalesTicketTiersViewController.m in Sources */,
-				EE106B5417B529A800910901 /* DCTCoreDataStack.m in Sources */,
 				58E4FB631760AE5500E328A0 /* main.m in Sources */,
 				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
+				EE106B6017B530EB00910901 /* DCTCoreDataStack.m in Sources */,
 				EEB4FD5917B277D800F226BC /* TXHTicketingHubClient.m in Sources */,
 				4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */,
 				58E4FB9F1761CFEC00E328A0 /* TXHMainViewController.m in Sources */,
@@ -826,6 +830,7 @@
 				4D68DAA3178AE62400743227 /* TXHSalesOptionsCell.m in Sources */,
 				581560CD1765D38A005C20EA /* TXHFlowLayout.m in Sources */,
 				4D307DB71796F9FC00822645 /* TXHTicketDetail.m in Sources */,
+				EE106B5F17B530EB00910901 /* _DCTCDSManagedObjectContext.m in Sources */,
 				4D859FF517945E4D000B2FCC /* TXHVariation.m in Sources */,
 				4D4FBE2B176B5BB70023A0D1 /* TXHDoorTimeController.m in Sources */,
 				4D68DAA6178AE9E300743227 /* TXHOptionsExtrasItem.m in Sources */,
@@ -836,6 +841,7 @@
 				EEA6864517B3DF190024B002 /* _TXHVenueMO.m in Sources */,
 				4DA05FB8178D8DAC005161E6 /* TXHMenuViewController.m in Sources */,
 				EEB4FD4A17B277D800F226BC /* AFHTTPClient.m in Sources */,
+				EE106B6117B530EB00910901 /* NSManagedObjectContext+DCTCoreDataStack.m in Sources */,
 				581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */,
 				4DF9F978179D5B4E0040FC5D /* TXHTransitionSegue.m in Sources */,
 				4DC31A5617A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m in Sources */,
@@ -843,7 +849,6 @@
 				EEB4FD4F17B277D800F226BC /* AFPropertyListRequestOperation.m in Sources */,
 				4D859FF817953FA1000B2FCC /* TXHTimeSlot.m in Sources */,
 				4DF2A49D17A95857000AB600 /* TXHSalesTicketCompletionViewController.m in Sources */,
-				EE106B5317B529A800910901 /* _DCTCDSManagedObjectContext.m in Sources */,
 				EEB4FD5617B277D800F226BC /* _TXHNetworkClient.m in Sources */,
 				4DA0980517A17B3E001D5794 /* TXHSalesInformationCompletionViewController.m in Sources */,
 				4D1A0C2C17A8F84400960906 /* TXHSalesTicketTierCell.m in Sources */,
@@ -866,7 +871,6 @@
 				4DFB1009178DB693006923F7 /* TXHLoginViewController.m in Sources */,
 				4D307DB41796F61C00822645 /* TXHTimeFormatter.m in Sources */,
 				4D94B79317ABAE0200943A9F /* TXHSalesInformationViewController.m in Sources */,
-				EE106B5517B529A800910901 /* NSManagedObjectContext+DCTCoreDataStack.m in Sources */,
 				4D1A0C2917A7F49C00960906 /* TXHTicketTier.m in Sources */,
 				4DB23D7117A17093002B7B11 /* TXHSalesWizardViewController.m in Sources */,
 				4DF2A49A17A95793000AB600 /* TXHSalesTicketViewController.m in Sources */,
