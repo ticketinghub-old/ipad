@@ -392,7 +392,7 @@
 				4DF9F92B179D50C10040FC5D /* Core Data */,
 				5860E85917633C990046DFD3 /* Assets */,
 				58E4FB971760D3C800E328A0 /* Classes */,
-				EEB4FD2017B277D800F226BC /* ios-api */,
+				EEB4FD2017B277D800F226BC /* iOS-api */,
 				58E4FB901760AECF00E328A0 /* UI */,
 				58E4FB5C1760AE5500E328A0 /* TicketingHub */,
 				58E4FB7E1760AE5500E328A0 /* TicketingHubTests */,
@@ -602,7 +602,7 @@
 			path = Sales;
 			sourceTree = "<group>";
 		};
-		EEB4FD2017B277D800F226BC /* ios-api */ = {
+		EEB4FD2017B277D800F226BC /* iOS-api */ = {
 			isa = PBXGroup;
 			children = (
 				EEA6864617B3E47D0024B002 /* TXHVenue.h */,
@@ -615,7 +615,7 @@
 				EEB4FD3A17B277D800F226BC /* NSDictionary+JCSKeyMapping */,
 				EEB4FD3D17B277D800F226BC /* Private */,
 			);
-			name = "ios-api";
+			name = "iOS-api";
 			path = "Externals/ios-api";
 			sourceTree = "<group>";
 		};
