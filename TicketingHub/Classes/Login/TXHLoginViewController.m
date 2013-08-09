@@ -7,10 +7,12 @@
 //
 
 #import "TXHLoginViewController.h"
+
 #import "TXHCommonNames.h"
-#import "TXHServerAccessManager.h"
 #import "TXHMenuViewController.h"
+#import "TXHServerAccessManager.h"
 #import "UIView+TXHAnimationConversions.h"
+#import "TXHUserDefaultsKeys.h"
 
 @interface TXHLoginViewController () <UITextFieldDelegate>
 
@@ -65,7 +67,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 
     // Set up the user field with the last successfully logged on person
-    NSString *lastUser = [[NSUserDefaults standardUserDefaults] stringForKey:LAST_USER];
+    NSString *lastUser = [[NSUserDefaults standardUserDefaults] stringForKey:TXHUserDefaultsLastUserKey];
     if (lastUser && [lastUser length] > 0) {
         self.userField.text = lastUser;
     } else {
@@ -120,11 +122,10 @@
 #pragma mark - Private methods
 
 - (void)loginCompleted {
-    // Save this user in NSUserDefaults
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    // Set the last user
-    [defaults setObject:self.userField.text forKey:LAST_USER];
-    [defaults synchronize];
+    // Set the last user into the defaults
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:self.userField.text forKey:TXHUserDefaultsLastUserKey];
+    [userDefaults synchronize];
 
     // We successfully logged in, so get a list of venues for this user
     [[TXHServerAccessManager sharedInstance] getVenuesWithCompletionHandler:^(NSArray *venues){

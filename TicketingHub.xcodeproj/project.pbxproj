@@ -228,6 +228,7 @@
 		58E4FB911760AEF300E328A0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		58E4FB9D1761CFEC00E328A0 /* TXHMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMainViewController.h; sourceTree = "<group>"; };
 		58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMainViewController.m; sourceTree = "<group>"; };
+		EE106B4A17B4FE2200910901 /* TXHUserDefaultsKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHUserDefaultsKeys.h; sourceTree = "<group>"; };
 		EE935E7417B3EB630080A1C2 /* CommonMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonMacros.h; sourceTree = "<group>"; };
 		EE935E7617B3EDFA0080A1C2 /* TicketingHub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TicketingHub.xcdatamodel; sourceTree = "<group>"; };
 		EE935E7B17B3FE3D0080A1C2 /* TXHPermissionMO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHPermissionMO.h; sourceTree = "<group>"; };
@@ -313,12 +314,13 @@
 			isa = PBXGroup;
 			children = (
 				4D25F644176CE58A00A60359 /* TXHCommonNames.h */,
-				4D68DAA4178AE9E300743227 /* TXHOptionsExtrasItem.h */,
-				4D68DAA5178AE9E300743227 /* TXHOptionsExtrasItem.m */,
 				4D0E512F178C0BBC009436AC /* TXHDataDownloader.h */,
 				4D0E5130178C0BBC009436AC /* TXHDataDownloader.m */,
+				4D68DAA4178AE9E300743227 /* TXHOptionsExtrasItem.h */,
+				4D68DAA5178AE9E300743227 /* TXHOptionsExtrasItem.m */,
 				4D307DB21796F61C00822645 /* TXHTimeFormatter.h */,
 				4D307DB31796F61C00822645 /* TXHTimeFormatter.m */,
+				EE106B4A17B4FE2200910901 /* TXHUserDefaultsKeys.h */,
 				4DE21FDB1799738C004D50F0 /* UIView+TXHAnimationConversions.h */,
 				4DE21FDC1799738C004D50F0 /* UIView+TXHAnimationConversions.m */,
 			);

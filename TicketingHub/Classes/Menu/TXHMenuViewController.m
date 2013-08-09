@@ -7,9 +7,11 @@
 //
 
 #import "TXHMenuViewController.h"
+
 #import "TXHCommonNames.h"
 #import "TXHLoginViewController.h"
 #import "TXHMenuController.h"
+#import "TXHUserDefaultsKeys.h"
 
 @interface TXHMenuViewController ()
 
@@ -25,80 +27,83 @@
 
 @implementation TXHMenuViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-  if (self) {
-    // Custom initialization
-  }
-  return self;
++ (void)initialize {
+    // As this is instantiated early in the app's lifecycle, set up the initial user defaults here
+    NSDictionary *defaultsDictionary = @{TXHUserDefaultsLastUserKey : @""};
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsDictionary];
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-  self = [super initWithCoder:aDecoder];
-  if (self) {
-    [self setup];
-  }
-  return self;
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setup];
+    }
+    return self;
 }
 
 - (void)setup {
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout:) name:NOTIFICATION_MENU_LOGOUT object:nil];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMenu:) name:NOTIFICATION_TOGGLE_MENU object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout:) name:NOTIFICATION_MENU_LOGOUT object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMenu:) name:NOTIFICATION_TOGGLE_MENU object:nil];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-  return UIStatusBarStyleLightContent;
+    return UIStatusBarStyleLightContent;
 }
 
-- (void)viewDidLoad
-{
-  [super viewDidLoad];
+- (void)viewDidLoad {
+    [super viewDidLoad];
 	// Do any additional setup after loading the view.
-  self.tapRecogniser = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-  self.leftHandSpace.constant = -self.menuContainer.bounds.size.width;
-  [self performSegueWithIdentifier:@"modalLogin" sender:self];
+    self.tapRecogniser = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+    self.leftHandSpace.constant = -self.menuContainer.bounds.size.width;
+    [self performSegueWithIdentifier:@"modalLogin" sender:self];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
-  [UIView animateWithDuration:0.4f delay:0.15f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-    self.leftHandSpace.constant = 0.0f;
-    [self.view layoutIfNeeded];
-  } completion:nil];
+    [super viewDidAppear:animated];
+    [UIView animateWithDuration:0.4f delay:0.15f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.leftHandSpace.constant = 0.0f;
+        [self.view layoutIfNeeded];
+    } completion:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
-  [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [super viewWillAppear:animated];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 
 - (void)dealloc {
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)didReceiveMemoryWarning
-{
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)toggleMenu:(id)sender {
 #pragma unused (sender)
-  [UIView animateWithDuration:0.40f animations:^{
-    if (self.leftHandSpace.constant == 0.0f) {
-      self.leftHandSpace.constant = -self.menuContainer.bounds.size.width;
-    } else {
-      self.leftHandSpace.constant = 0.0f;
-    }
-    [self.view layoutIfNeeded];
-  }];
+    [UIView animateWithDuration:0.40f animations:^{
+        if (self.leftHandSpace.constant == 0.0f) {
+            self.leftHandSpace.constant = -self.menuContainer.bounds.size.width;
+        } else {
+            self.leftHandSpace.constant = 0.0f;
+        }
+        [self.view layoutIfNeeded];
+    }];
 }
 
 - (void)tap:(UITapGestureRecognizer *)recogniser {
 #pragma unused (recogniser)
-  [self toggleMenu:nil];
+    [self toggleMenu:nil];
 }
 
 //- (IBAction)mySegueHandler:(UIStoryboardSegue *)sender {
@@ -107,7 +112,7 @@
 //  [controller dismissViewControllerAnimated:YES completion:nil];
 //  [UIView animateWithDuration:0.5
 //                   animations:^{
-//                     
+//
 //                     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
 //                   }
 //                   completion:^(BOOL finished){
@@ -120,8 +125,8 @@
 
 - (void)logout:(NSNotification *)notification {
 #pragma unused (notification)
-  self.loggedIn = YES;
-  [self performSegueWithIdentifier:@"reLogin" sender:self];
+    self.loggedIn = YES;
+    [self performSegueWithIdentifier:@"reLogin" sender:self];
 }
 
 @end

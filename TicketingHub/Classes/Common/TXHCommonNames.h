@@ -14,9 +14,6 @@
 #define doorDateCellSelected  @"doorDateCellSelected"
 #define doorTimeCellSelected  @"doorTimeCellSelected"
 
-// A key for the last user who logged in; stored in NSUserDefaults
-#define LAST_USER @"lastUser"
-
 // Name for notifications dispatched by TXHMenuViewController
 static NSString* const NOTIFICATION_TOGGLE_MENU =       @"notificationToggleMenu";
 static NSString* const NOTIFICATION_MENU_LOGOUT =       @"notificationMenuLogout";
