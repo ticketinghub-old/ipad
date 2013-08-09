@@ -12,7 +12,10 @@
 #import "TXHMenuViewController.h"
 #import "TXHServerAccessManager.h"
 #import "TXHTicketingHubClient.h"
+#import "TXHUser.h"
 #import "TXHUserDefaultsKeys.h"
+#import "TXHUserMO.h"
+#import "TXHVenueMO.h"
 #import "UIView+TXHAnimationConversions.h"
 
 // These are application / client specific constants
@@ -134,11 +137,17 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 
     TXHTicketingHubClient *ticketingHubClient = [TXHTicketingHubClient sharedClient];
 
+    __block TXHUserMO *userMO;
     [ticketingHubClient userInformationSuccess:^(TXHUser *user) {
-        DLog(@"User: %@", user);
+        userMO = [TXHUserMO userWithObject:user inManagedObjectContext:self.managedObjectContext];
 
         [ticketingHubClient venuesWithSuccess:^(NSArray *venues) {
-            DLog(@"Venues: %@", venues);
+            for (TXHVenue *venue in venues) {
+                TXHVenueMO *venueMO = [TXHVenueMO venueWithObjectCreateIfNeeded:venue inManagedObjectContext:self.managedObjectContext];
+                venueMO.user = userMO;
+                DLog(@"New venue created: %@", venueMO);
+            }
+
         } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
             DLog(@"Error: %@ with response: %@", error, JSON);
         }];

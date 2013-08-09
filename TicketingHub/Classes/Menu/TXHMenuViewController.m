@@ -83,6 +83,16 @@ static NSString * const ReLoginSegue = @"ReLogin";
     return UIStatusBarStyleLightContent;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSString *segueIdentifier = segue.identifier;
+
+    if ([segueIdentifier isEqualToString:ModalLoginSegue] || [segueIdentifier isEqualToString:ReLoginSegue]) {
+        if ([segue.destinationViewController respondsToSelector:@selector(setManagedObjectContext:)]) {
+            [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
+        }
+    }
+}
+
 #pragma mark - Private methods
 
 - (void)standUpCoreDataStack {

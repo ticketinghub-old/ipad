@@ -10,4 +10,6 @@
 
 @interface TXHLoginViewController : UIViewController
 
+@property (strong ,nonatomic) NSManagedObjectContext *managedObjectContext;
+
 @end
