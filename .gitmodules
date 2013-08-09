@@ -1,3 +1,7 @@
 [submodule "Externals/ios-api"]
 	path = Externals/ios-api
 	url = git@github.com:ticketinghub/ios-api.git
+[submodule "Externals/DCTCoreDataStack"]
+	path = Externals/DCTCoreDataStack
+	url = git@github.com:Abizern/DCTCoreDataStack.git
+	branch = production
