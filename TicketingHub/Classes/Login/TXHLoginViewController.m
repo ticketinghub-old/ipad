@@ -22,55 +22,27 @@
 @property (weak, nonatomic) IBOutlet UIImageView *email;
 @property (weak, nonatomic) IBOutlet UIImageView *passwordIcon;
 
-@property (strong, nonatomic) NSString *lastUser;
-
 @end
 
 @implementation TXHLoginViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+#pragma mark - Set up and tear down
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self setup];
+    if (!(self = [super initWithCoder:aDecoder])) {
+        return nil; // Bail!
     }
-    return self;
-}
-
-- (void)setup {
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    // Grab the last user
-    self.lastUser = [defaults objectForKey:LAST_USER];
 
     // Set the status bar style to be light since we have a dark background
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
-    // Register for keyboard notifications, so that we can reposition the entry fields to keep them visible
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    return self;
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
+#pragma mark - View lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    if (self.lastUser.length > 0) {
-        self.userField.text = self.lastUser;
-    }
 
     self.email.image = [[UIImage imageNamed:@"mail"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     self.email.tintColor = [UIColor colorWithRed:77.0f / 255.0f
@@ -87,21 +59,65 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
+    // Register for keyboard notifications, so that we can reposition the entry fields to keep them visible
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+
+    // Set up the user field with the last successfully logged on person
+    NSString *lastUser = [[NSUserDefaults standardUserDefaults] stringForKey:LAST_USER];
+    if (lastUser && [lastUser length] > 0) {
+        self.userField.text = lastUser;
+    } else {
+        self.userField.text = @"";
+    }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (IBAction)login:(id)sender {
-#pragma unused (sender)
-    self.loginButton.enabled = NO;
-    [[TXHServerAccessManager sharedInstance] generateAccessTokenFor:self.userField.text
-                                                           password:self.passwordField.text
-                                                         completion:^{[self loginCompleted];}
-                                                              error:^(id reason){[self loginFailed:reason];}];
+#pragma mark - Superclass overrides
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
+
+#pragma mark - Notification Handlers
+
+#pragma mark Keyboard
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSDictionary *keyboardAnimationDetail = [notification userInfo];
+    UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    UIViewAnimationOptions options = [UIView txhAnimationOptionsFromAnimationCurve:animationCurve];
+    // Beta 4 had issues with the animation options, so fixed at the moment
+    options = UIViewAnimationOptionCurveEaseInOut;
+    CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+
+    [UIView animateWithDuration:duration delay:0.0 options:options animations:^{
+        self.verticalSpaceToLogo.constant = 40.0f;
+        [self.view layoutIfNeeded];
+    } completion:nil];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSDictionary *keyboardAnimationDetail = [notification userInfo];
+    UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    UIViewAnimationOptions options = [UIView txhAnimationOptionsFromAnimationCurve:animationCurve];
+    // Beta 4 had issues with the animation options, so fixed at the moment
+    options = UIViewAnimationOptionCurveEaseInOut;
+    CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+
+    [UIView animateWithDuration:duration delay:0.0 options:options animations:^{
+        self.verticalSpaceToLogo.constant = 184.0f;
+        [self.view layoutIfNeeded];
+    } completion:nil];
+}
+
+#pragma mark - Private methods
 
 - (void)loginCompleted {
     // Save this user in NSUserDefaults
@@ -136,39 +152,19 @@
     NSLog(@"ERROR:%@", error.userInfo.description);
 }
 
+#pragma mark Actions
+
+- (IBAction)login:(id)sender {
+    self.loginButton.enabled = NO;
+    [[TXHServerAccessManager sharedInstance] generateAccessTokenFor:self.userField.text
+                                                           password:self.passwordField.text
+                                                         completion:^{[self loginCompleted];}
+                                                              error:^(id reason){[self loginFailed:reason];}];
+}
+
 - (IBAction)editingChanged:(id)sender {
-#pragma unused (sender)
     self.loginButton.enabled = ((self.userField.text.length > 0) && (self.passwordField.text.length > 0));
 }
 
-#pragma mark - Notifications
-
-- (void)keyboardWillShow:(NSNotification *)notification {
-    NSDictionary *keyboardAnimationDetail = [notification userInfo];
-    UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-    UIViewAnimationOptions options = [UIView txhAnimationOptionsFromAnimationCurve:animationCurve];
-    // Beta 4 had issues with the animation options, so fixed at the moment
-    options = UIViewAnimationOptionCurveEaseInOut;
-    CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
-
-    [UIView animateWithDuration:duration delay:0.0 options:options animations:^{
-        self.verticalSpaceToLogo.constant = 40.0f;
-        [self.view layoutIfNeeded];
-    } completion:nil];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    NSDictionary *keyboardAnimationDetail = [notification userInfo];
-    UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-    UIViewAnimationOptions options = [UIView txhAnimationOptionsFromAnimationCurve:animationCurve];
-    // Beta 4 had issues with the animation options, so fixed at the moment
-    options = UIViewAnimationOptionCurveEaseInOut;
-    CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
-
-    [UIView animateWithDuration:duration delay:0.0 options:options animations:^{
-        self.verticalSpaceToLogo.constant = 184.0f;
-        [self.view layoutIfNeeded];
-    } completion:nil];
-}
 
 @end
