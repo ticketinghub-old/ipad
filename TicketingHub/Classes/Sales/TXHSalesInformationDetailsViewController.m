@@ -85,6 +85,7 @@
 
 #import "TXHSalesInformationDetailsViewController.h"
 
+#import "TXHTextCollectionViewCell.h"
 #import "TXHSalesContentProtocol.h"
 #import "TXHSalesInformationHeader.h"
 #import "TXHSalesInformationTextCell.h"
@@ -184,29 +185,42 @@
 
 #pragma mark - Collection View Datasource & Delegate methods
 
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 2;
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 #pragma unused (collectionView, section)
     return 5;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    TXHSalesInformationTextCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"text" forIndexPath:indexPath];
-    switch (indexPath.row) {
-        case 0:
-            cell.ticket = @"First Name";
-            break;
-        case 1:
-            cell.ticket = @"Last Name";
-            [cell hasErrors:YES];
-            break;
-        case 2:
-            cell.ticket = @"Email";
-            break;
-        default:
-            cell.ticket = [NSString stringWithFormat:@"indexPath:{%d,%d}", indexPath.section, indexPath.row];
-            break;
+    if (indexPath.section == 0) {
+        TXHSalesInformationTextCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"text" forIndexPath:indexPath];
+        switch (indexPath.row) {
+            case 0:
+                cell.ticket = @"First Name";
+                break;
+            case 1:
+                cell.ticket = @"Last Name";
+                [cell hasErrors:YES];
+                break;
+            case 2:
+                cell.ticket = @"Email";
+                break;
+            default:
+                cell.ticket = [NSString stringWithFormat:@"indexPath:{%d,%d}", indexPath.section, indexPath.row];
+                break;
+        }
+        return cell;
+    } else {
+        TXHTextCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"temp" forIndexPath:indexPath];
+        if (indexPath.row % 2) {
+            cell.errorMessage = [NSString stringWithFormat:@"error %d", indexPath.row];
+        }
+        cell.textField.placeholder = [NSString stringWithFormat:@"placeholder %d", indexPath.row];
+        return cell;
     }
-    return cell;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {

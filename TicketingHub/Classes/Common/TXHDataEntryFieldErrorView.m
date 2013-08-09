@@ -98,14 +98,4 @@
     self.messageLabel.backgroundColor = messageBackgroundColor;
 }
 
-//- (void)layoutSubviews {
-//    if (self.messageLabel.text.length > 0) {
-//        // Calculate the message position & recentre the frame accordingly
-//        CGRect frame = self.messageLabel.bounds;
-//        CGPoint newOrigin = CGPointMake((self.bounds.size.width - frame.size.width) / 2.0f, (self.bounds.size.height - frame.size.height) / 2.0f);
-//        frame.origin = newOrigin;
-//        self.messageLabel.frame = frame;
-//    }
-//}
-
 @end
