@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3389" systemVersion="13A524d" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3389" systemVersion="13A538g" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="TXHPermissionMO" representedClassName="TXHPermissionMO" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="venues" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TXHVenueMO" inverseName="permissions" inverseEntity="TXHVenueMO" syncable="YES"/>
@@ -36,8 +36,8 @@
         <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="TXHUserMO" inverseName="venues" inverseEntity="TXHUserMO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="TXHPermissionMO" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="TXHUserMO" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="TXHVenueMO" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TXHPermissionMO" positionX="-9" positionY="-81" width="128" height="75"/>
+        <element name="TXHUserMO" positionX="-9" positionY="18" width="128" height="105"/>
+        <element name="TXHVenueMO" positionX="-344" positionY="-267" width="128" height="330"/>
     </elements>
 </model>
