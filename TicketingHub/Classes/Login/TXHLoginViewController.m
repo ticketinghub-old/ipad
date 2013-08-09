@@ -142,11 +142,22 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
         userMO = [TXHUserMO userWithObject:user inManagedObjectContext:self.managedObjectContext];
 
         [ticketingHubClient venuesWithSuccess:^(NSArray *venues) {
+            if (isEmpty(venues)) {
+                // Warn user that they cannot proceed
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Venues" message:@"You do not have access to any venues." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+
+                return; // Bail!
+            }
+
             for (TXHVenue *venue in venues) {
                 TXHVenueMO *venueMO = [TXHVenueMO venueWithObjectCreateIfNeeded:venue inManagedObjectContext:self.managedObjectContext];
                 venueMO.user = userMO;
                 DLog(@"New venue created: %@", venueMO);
             }
+
+
+            [self dismissViewControllerAnimated:YES completion:nil];
 
         } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
             DLog(@"Error: %@ with response: %@", error, JSON);
@@ -156,20 +167,6 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
         DLog(@"Error: %@ with response: %@", error, JSON);
     }];
 
-}
-
-- (void)gotVenues:(NSArray *)venues {
-    // If there are no venues, display a message to the user and do not leave the login page
-    if (venues.count == 0) {
-        // Warn user that they cannot proceed
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Venues" message:@"You do not have access to any venues." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        //    [alert setaccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tickethub"]]];
-        [alert show];
-    } else {
-        // Notify any interested parties that the username has been set
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MENU_LOGIN object:self.userField.text];
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
 }
 
 #pragma mark Actions

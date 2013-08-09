@@ -43,12 +43,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     UIColor *backgroundColor = [UIColor colorWithRed:16.0f / 255.0f
                                                green:46.0f / 255.0f
                                                 blue:66.0f / 255.0f
                                                alpha:1.0f];
-    
+
     self.view.backgroundColor = backgroundColor;
 }
 
@@ -94,12 +94,12 @@
 {
     static NSString *CellIdentifier = @"cellID";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+
     // Configure the cell...
-    
+
     TXHVenue *venue = [self.venues objectAtIndex:indexPath.row];
 #warning - AN turned this off!
-//    cell.textLabel.text = venue.businessName;
+    //    cell.textLabel.text = venue.businessName;
     cell.textLabel.text = @"Blame AN";
 
     return cell;
@@ -117,12 +117,12 @@
         NSDictionary *attributesDict = @{NSFontAttributeName : font};
         NSAttributedString *attributedTitleString = [[NSAttributedString alloc] initWithString:titleString attributes:attributesDict];
         CGSize titleSize = [attributedTitleString size];
-        
+
         CGRect titleLabelFrame = CGRectZero;
         titleLabelFrame.origin.x = 17.50f;
         titleLabelFrame.origin.y = self.headerView.bounds.size.height - titleSize.height;
         titleLabelFrame.size = titleSize;
-        
+
         UILabel *title = [[UILabel alloc] initWithFrame:titleLabelFrame];
         title.backgroundColor = self.headerView.backgroundColor;
         title.textColor = [UIColor whiteColor];
@@ -180,14 +180,14 @@
 
 /*
  #pragma mark - Navigation
- 
+
  // In a story board-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
  {
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
  }
- 
+
  */
 
 - (IBAction)logout:(id)sender {
@@ -201,7 +201,7 @@
 - (void)menuLogin:(NSNotification *)notification {
     // Logged in user will be supplied as a string in the notification object
     NSString *user = notification.object;
-    
+
     [self.logout setTitle:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Logout", @"Logout the current user"), user] forState:UIControlStateNormal];
 }
 
