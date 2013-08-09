@@ -10,6 +10,8 @@
 
 @import QuartzCore;
 
+#import "TXHDataEntryFieldErrorView.h"
+
 @interface TXHSalesInformationTextCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *detail;
@@ -18,6 +20,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *errorView;
 @property (weak, nonatomic) IBOutlet UILabel *errorMessage;
+
+@property (weak, nonatomic) IBOutlet TXHDataEntryFieldErrorView *dataErrorView;
 
 @end
 
@@ -37,7 +41,7 @@
     self.detailField.placeholder = ticket;
     
     // Round corners of the backing view
-    self.backingView.layer.cornerRadius = 3.0f;
+    self.backingView.layer.cornerRadius = 4.0f;
     
     // Round corners of the errorView
     self.errorView.layer.cornerRadius = 5.0f;
@@ -53,6 +57,9 @@
         self.detailField.backgroundColor = errorColor;
         self.detailField.textColor = [UIColor redColor];
         self.detailField.text = @"Oh no - this is bad!";
+        
+        self.dataErrorView.message = @"A really really long test error message";
+        
     } else {
         UIColor *normalColor = [UIColor colorWithRed:238.0f / 255.0f
                                               green:241.0f / 255.0f

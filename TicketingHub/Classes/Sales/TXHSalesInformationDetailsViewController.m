@@ -140,19 +140,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)didMoveToParentViewController:(UIViewController *)parent {
-    [super didMoveToParentViewController:parent];
-    [self resetFrame];
-}
-
-- (void)resetFrame {
-    CGRect frame = self.view.frame;
-    NSLog(@"%s - %@", __FUNCTION__, NSStringFromCGRect(frame));
-//    frame.size.width = 1024;
-//    frame.size.height = 768;
-//    self.view.frame = frame;
-}
-
 - (TXHSalesTimerViewController *)timerViewController {
     return _timerViewController;
 }

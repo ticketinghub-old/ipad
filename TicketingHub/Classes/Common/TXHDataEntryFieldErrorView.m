@@ -1,0 +1,111 @@
+//
+//  TXHDataEntryFieldErrorView.m
+//  TicketingHub
+//
+//  Created by Mark on 09/08/2013.
+//  Copyright (c) 2013 TicketingHub. All rights reserved.
+//
+
+#import "TXHDataEntryFieldErrorView.h"
+
+@import QuartzCore;
+
+@interface TXHDataEntryFieldErrorView ()
+
+@property (strong, nonatomic) UILabel *messageLabel;
+
+@end
+
+@implementation TXHDataEntryFieldErrorView
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
+- (void)setup {
+    // Set up the message to be inset horizontally, so that it doesn't obscure corner rounding (& cos it looks better inset a bit)
+    self.messageLabel = [[UILabel alloc] initWithFrame:CGRectInset(self.bounds, 8.0f, 0.0f)];
+    
+    self.messageLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    
+    self.messageLabel.font = [UIFont systemFontOfSize:12.5f];
+    self.messageLabel.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:self.messageLabel];
+    
+    [self setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
+    
+    UILabel *tempLabel = self.messageLabel;
+    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(tempLabel);
+    
+    NSArray *constraints = [NSLayoutConstraint
+                            constraintsWithVisualFormat:@"H:|-8-[tempLabel]-8-|"
+                            options:0
+                            metrics:nil
+                            views:viewsDictionary];
+    [self addConstraints:constraints];
+
+    self.layer.cornerRadius = 5.0f;
+    
+    self.messageBackgroundColor = [UIColor colorWithRed:28.0f / 255.0f
+                                                  green:60.0f / 255.0f
+                                                   blue:84.0f / 255.0f
+                                                  alpha:1.0f];
+    self.messageColor = [UIColor whiteColor];
+    self.message = @"";
+}
+
+- (NSString *)message {
+    return self.messageLabel.text;
+}
+
+- (void)setMessage:(NSString *)message {
+    self.hidden = (message.length == 0);
+    
+    if (self.hidden) {
+        return;
+    }
+    NSDictionary *attributesDict = @{NSFontAttributeName: self.messageLabel.font};
+    NSAttributedString *attributedMessage = [[NSAttributedString alloc] initWithString:message attributes:attributesDict];
+    CGSize size = [attributedMessage size];
+    CGRect bounds = self.messageLabel.bounds;
+    bounds.size = size;
+    self.messageLabel.bounds = bounds;
+    self.messageLabel.text = message;
+    [self layoutIfNeeded];
+}
+
+- (void)setMessageColor:(UIColor *)messageColor {
+    self.messageLabel.textColor = messageColor;
+}
+
+- (void)setMessageBackgroundColor:(UIColor *)messageBackgroundColor {
+    _messageBackgroundColor = messageBackgroundColor;
+    self.backgroundColor = messageBackgroundColor;
+    self.messageLabel.backgroundColor = messageBackgroundColor;
+}
+
+//- (void)layoutSubviews {
+//    if (self.messageLabel.text.length > 0) {
+//        // Calculate the message position & recentre the frame accordingly
+//        CGRect frame = self.messageLabel.bounds;
+//        CGPoint newOrigin = CGPointMake((self.bounds.size.width - frame.size.width) / 2.0f, (self.bounds.size.height - frame.size.height) / 2.0f);
+//        frame.origin = newOrigin;
+//        self.messageLabel.frame = frame;
+//    }
+//}
+
+@end
