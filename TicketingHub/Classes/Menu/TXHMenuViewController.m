@@ -14,6 +14,10 @@
 #import "TXHMenuController.h"
 #import "TXHUserDefaultsKeys.h"
 
+// Segue Identifiers
+static NSString * const ModalLoginSegue = @"ModalLogin";
+static NSString * const ReLoginSegue = @"ReLogin";
+
 @interface TXHMenuViewController ()
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -48,7 +52,7 @@
 
     [self standUpCoreDataStack];
 
-    [self performSegueWithIdentifier:@"modalLogin" sender:self];
+    [self performSegueWithIdentifier:ModalLoginSegue sender:self];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -130,7 +134,7 @@
 
 - (void)logout:(NSNotification *)notification {
     self.loggedIn = YES;
-    [self performSegueWithIdentifier:@"reLogin" sender:self];
+    [self performSegueWithIdentifier:ReLoginSegue sender:self];
 }
 
 @end
