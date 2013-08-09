@@ -11,8 +11,13 @@
 #import "TXHCommonNames.h"
 #import "TXHMenuViewController.h"
 #import "TXHServerAccessManager.h"
-#import "UIView+TXHAnimationConversions.h"
+#import "TXHTicketingHubClient.h"
 #import "TXHUserDefaultsKeys.h"
+#import "UIView+TXHAnimationConversions.h"
+
+// These are application / client specific constants
+static NSString * const kClientId = @"ca99032b750f829630d8c9272bb9d3d6696b10f5bddfc34e4b7610eb772d28e7";
+static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fbaaf81e6ec900c71b8f4af62d09d";
 
 @interface TXHLoginViewController () <UITextFieldDelegate>
 
@@ -127,11 +132,21 @@
     [userDefaults setObject:self.userField.text forKey:TXHUserDefaultsLastUserKey];
     [userDefaults synchronize];
 
-    // We successfully logged in, so get a list of venues for this user
-    [[TXHServerAccessManager sharedInstance] getVenuesWithCompletionHandler:^(NSArray *venues){
-        [self gotVenues:venues];
-    }
-                                                               errorHandler:^(id reason){[self loginFailed:reason];}];
+    TXHTicketingHubClient *ticketingHubClient = [TXHTicketingHubClient sharedClient];
+
+    [ticketingHubClient userInformationSuccess:^(TXHUser *user) {
+        DLog(@"User: %@", user);
+
+        [ticketingHubClient venuesWithSuccess:^(NSArray *venues) {
+            DLog(@"Venues: %@", venues);
+        } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
+            DLog(@"Error: %@ with response: %@", error, JSON);
+        }];
+
+    } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
+        DLog(@"Error: %@ with response: %@", error, JSON);
+    }];
+
 }
 
 - (void)gotVenues:(NSArray *)venues {
@@ -157,10 +172,14 @@
 
 - (IBAction)login:(id)sender {
     self.loginButton.enabled = NO;
-    [[TXHServerAccessManager sharedInstance] generateAccessTokenFor:self.userField.text
-                                                           password:self.passwordField.text
-                                                         completion:^{[self loginCompleted];}
-                                                              error:^(id reason){[self loginFailed:reason];}];
+
+    [[TXHTicketingHubClient sharedClient] configureWithUsername:self.userField.text password:self.passwordField.text clientId:kClientId clientSecret:kClientSecret success:^(NSURLRequest *request, NSHTTPURLResponse *response) {
+        [self loginCompleted];
+
+    } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
+        // Debug logging for now. - This needs to be tidied for production
+        DLog(@"Unable to log on because: %@ with JSON: %@", error, JSON);
+    }];
 }
 
 - (IBAction)editingChanged:(id)sender {
