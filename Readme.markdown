@@ -10,3 +10,5 @@ the model.
 
 After any changes to the model, run the `cd_generate` script in the root of the
 project to update the Machine generated files.
+
+DCTCoreDataStack is added as a submodule for handling the Core Data Stack
