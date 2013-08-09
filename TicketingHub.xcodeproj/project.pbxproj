@@ -24,7 +24,6 @@
 		4D68DAA9178B096A00743227 /* BarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D68DAA8178B096A00743227 /* BarcodeViewController.m */; };
 		4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D68DAAA178B0A5400743227 /* AVFoundation.framework */; };
 		4D7C9DAA179401C100A225EC /* TXHSalesCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C9DA9179401C100A225EC /* TXHSalesCalendarViewController.m */; };
-		4D80B9A5178ABEA4002A71C8 /* LoginAuthorisation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D80B9A4178ABEA4002A71C8 /* LoginAuthorisation.m */; };
 		4D859FF2179453EA000B2FCC /* TXHSeason.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D89278817944B61004892FD /* TXHSeason.m */; };
 		4D859FF517945E4D000B2FCC /* TXHVariation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D859FF417945E4D000B2FCC /* TXHVariation.m */; };
 		4D859FF817953FA1000B2FCC /* TXHTimeSlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D859FF717953FA1000B2FCC /* TXHTimeSlot.m */; };
@@ -146,8 +145,6 @@
 		4D7A06D31795B2E90008041D /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		4D7C9DA8179401C100A225EC /* TXHSalesCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesCalendarViewController.h; sourceTree = "<group>"; };
 		4D7C9DA9179401C100A225EC /* TXHSalesCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesCalendarViewController.m; sourceTree = "<group>"; };
-		4D80B9A3178ABEA4002A71C8 /* LoginAuthorisation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAuthorisation.h; sourceTree = "<group>"; };
-		4D80B9A4178ABEA4002A71C8 /* LoginAuthorisation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAuthorisation.m; sourceTree = "<group>"; };
 		4D859FF317945E4D000B2FCC /* TXHVariation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVariation.h; sourceTree = "<group>"; };
 		4D859FF417945E4D000B2FCC /* TXHVariation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVariation.m; sourceTree = "<group>"; };
 		4D859FF617953FA1000B2FCC /* TXHTimeSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTimeSlot.h; sourceTree = "<group>"; };
@@ -557,8 +554,6 @@
 		58E4FB9B1760D3C800E328A0 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				4D80B9A3178ABEA4002A71C8 /* LoginAuthorisation.h */,
-				4D80B9A4178ABEA4002A71C8 /* LoginAuthorisation.m */,
 				4DFB1007178DB693006923F7 /* TXHLoginViewController.h */,
 				4DFB1008178DB693006923F7 /* TXHLoginViewController.m */,
 			);
@@ -835,7 +830,6 @@
 				4D3C72BB17B011EA008FACDC /* TXHSalesCompletionViewController.m in Sources */,
 				4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */,
 				4D3C72BE17B014ED008FACDC /* TXHSalesContentsViewController.m in Sources */,
-				4D80B9A5178ABEA4002A71C8 /* LoginAuthorisation.m in Sources */,
 				EEB4FD5117B277D800F226BC /* AFXMLRequestOperation.m in Sources */,
 				EEB4FD5017B277D800F226BC /* AFURLConnectionOperation.m in Sources */,
 				EEB4FD5417B277D800F226BC /* UIImageView+AFNetworking.m in Sources */,
