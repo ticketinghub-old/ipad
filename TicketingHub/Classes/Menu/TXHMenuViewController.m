@@ -8,12 +8,15 @@
 
 #import "TXHMenuViewController.h"
 
+#import "DCTCoreDataStack.h"
 #import "TXHCommonNames.h"
 #import "TXHLoginViewController.h"
 #import "TXHMenuController.h"
 #import "TXHUserDefaultsKeys.h"
 
 @interface TXHMenuViewController ()
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftHandSpace;
 @property (weak, nonatomic) IBOutlet UIView *menuContainer;
@@ -27,42 +30,24 @@
 
 @implementation TXHMenuViewController
 
+#pragma mark - Set up and tear down
+
 + (void)initialize {
     // As this is instantiated early in the app's lifecycle, set up the initial user defaults here
     NSDictionary *defaultsDictionary = @{TXHUserDefaultsLastUserKey : @""};
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsDictionary];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self setup];
-    }
-    return self;
-}
-
-- (void)setup {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout:) name:NOTIFICATION_MENU_LOGOUT object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMenu:) name:NOTIFICATION_TOGGLE_MENU object:nil];
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
+#pragma mark - View lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
     self.tapRecogniser = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     self.leftHandSpace.constant = -self.menuContainer.bounds.size.width;
+
+    [self standUpCoreDataStack];
+
     [self performSegueWithIdentifier:@"modalLogin" sender:self];
 }
 
@@ -77,20 +62,45 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout:) name:NOTIFICATION_MENU_LOGOUT object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMenu:) name:NOTIFICATION_TOGGLE_MENU object:nil];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
 
-- (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Superclass overrides
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
+#pragma mark - Private methods
+
+- (void)standUpCoreDataStack {
+    NSDictionary *options = @{DCTCoreDataStackExcludeFromBackupStoreOption : @YES,
+                              NSMigratePersistentStoresAutomaticallyOption : @YES,
+                              NSInferMappingModelAutomaticallyOption : @YES};
+
+    NSURL *documentDirectoryURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *storeURL = [documentDirectoryURL URLByAppendingPathComponent:@"TicktingHub.sqlite"];
+
+    DCTCoreDataStack *coreDataStack = [[DCTCoreDataStack alloc] initWithStoreURL:storeURL storeType:NSSQLiteStoreType storeOptions:options modelConfiguration:nil modelURL:nil];
+
+    self.managedObjectContext = coreDataStack.managedObjectContext;
+}
+
+- (void)tap:(UITapGestureRecognizer *)recogniser {
+    [self toggleMenu:nil];
+}
+
+#pragma mark Actions
+
 - (IBAction)toggleMenu:(id)sender {
-#pragma unused (sender)
     [UIView animateWithDuration:0.40f animations:^{
         if (self.leftHandSpace.constant == 0.0f) {
             self.leftHandSpace.constant = -self.menuContainer.bounds.size.width;
@@ -99,11 +109,6 @@
         }
         [self.view layoutIfNeeded];
     }];
-}
-
-- (void)tap:(UITapGestureRecognizer *)recogniser {
-#pragma unused (recogniser)
-    [self toggleMenu:nil];
 }
 
 //- (IBAction)mySegueHandler:(UIStoryboardSegue *)sender {
@@ -121,10 +126,9 @@
 //  [self.navigationController popViewControllerAnimated:NO];
 //}
 
-#pragma mark - Notifications
+#pragma mark Notifications
 
 - (void)logout:(NSNotification *)notification {
-#pragma unused (notification)
     self.loggedIn = YES;
     [self performSegueWithIdentifier:@"reLogin" sender:self];
 }
