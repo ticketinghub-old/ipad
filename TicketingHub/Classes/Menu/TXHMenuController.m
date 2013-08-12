@@ -213,8 +213,7 @@
 #pragma mark Action methods
 
 - (IBAction)logout:(id)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MENU_LOGOUT object:nil];
-    self.logoutButton.titleLabel.text = NSLocalizedString(@"Logout", @"Logout the current user");
+    [[UIApplication sharedApplication] sendAction:@selector(logOut:) to:nil from:self forEvent:nil];
 }
 
 

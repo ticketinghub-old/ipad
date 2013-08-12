@@ -16,7 +16,6 @@
 
 // Name for notifications dispatched by TXHMenuViewController
 static NSString* const NOTIFICATION_TOGGLE_MENU =       @"notificationToggleMenu";
-static NSString* const NOTIFICATION_MENU_LOGOUT =       @"notificationMenuLogout";
 static NSString* const NOTIFICATION_VENUE_SELECTED =    @"notificationVenueSelected";
 
 // Names for notifications dispatched by TXHServerAccessManager

@@ -30,8 +30,6 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
 
 @property (strong, nonatomic) UITapGestureRecognizer  *tapRecogniser;
 
-@property (assign, nonatomic) BOOL  loggedIn;
-
 @end
 
 @implementation TXHMenuViewController
@@ -72,7 +70,6 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout:) name:NOTIFICATION_MENU_LOGOUT object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMenu:) name:NOTIFICATION_TOGGLE_MENU object:nil];
 }
 
@@ -134,10 +131,7 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
     }];
 }
 
-#pragma mark Notifications
-
-- (void)logout:(NSNotification *)notification {
-    self.loggedIn = YES;
+- (IBAction)logOut:(id)sender {
     [self performSegueWithIdentifier:ReLoginSegue sender:self];
 }
 
