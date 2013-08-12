@@ -21,6 +21,8 @@
 @property (strong, nonatomic) UIView *headerView;
 @property (strong, nonatomic) NSArray *venues;
 
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+
 @end
 
 @implementation TXHMenuController
@@ -44,7 +46,19 @@
 
     [self.logoutButton setTitle:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Logout", @"Logout the current user"), [self userName]] forState:UIControlStateNormal];
 
-    self.venues = [TXHServerAccessManager sharedInstance].venues;
+    NSError *error;
+    BOOL success = [self.fetchedResultsController performFetch:&error];
+
+    if (!success) {
+        DLog(@"Could not perform fetch because: %@", error);
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    // Reset the fetched results controller
+    self.fetchedResultsController = nil;
 }
 
 
@@ -53,18 +67,31 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Custom accessors
+
+- (NSFetchedResultsController *)fetchedResultsController {
+    // lazily loaded.
+    if (!_fetchedResultsController) {
+        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[TXHVenueMO entityName]];
+        // Since the only venues are those attached to the user, there is no need for a predicate
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:TXHVenueMOAttributes.venueName ascending:YES];
+        [fetchRequest setSortDescriptors:@[sortDescriptor]];
+
+        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    }
+
+    return _fetchedResultsController;
+}
+
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 1;
+    return [self.fetchedResultsController.sections count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    NSUInteger venueCount = [TXHServerAccessManager sharedInstance].venues.count;
-    return venueCount;
+    return [[self.fetchedResultsController fetchedObjects] count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -76,11 +103,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
     // Configure the cell...
-
-    TXHVenue *venue = [self.venues objectAtIndex:indexPath.row];
-#warning - AN turned this off!
-    //    cell.textLabel.text = venue.businessName;
-    cell.textLabel.text = @"Blame AN";
+    TXHVenueMO *venueMO = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = venueMO.venueName;
 
     return cell;
 }
@@ -132,7 +156,6 @@
     TXHUserMO *user = [users lastObject];
 
     return [user fullName];
-
 }
 
 #pragma mark Action methods
