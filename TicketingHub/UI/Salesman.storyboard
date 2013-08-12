@@ -261,7 +261,7 @@
                                                     <color key="textColor" red="0.13725490200000001" green="0.2470588235" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="EmptyCircle" translatesAutoresizingMaskIntoConstraints="NO" id="kd6-ZV-JNk">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="EmptyCircle" translatesAutoresizingMaskIntoConstraints="NO" id="kd6-ZV-JNk">
                                                     <rect key="frame" x="20" y="17" width="40" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <constraints>
@@ -515,32 +515,138 @@
             </objects>
             <point key="canvasLocation" x="3755" y="-970"/>
         </scene>
-        <!--Sales Wizard Details Base View Controller-->
-        <scene sceneID="Osc-ar-lYd">
+        <!--Sales Upgrade Details View Controller-->
+        <scene sceneID="st8-cX-cuO">
             <objects>
-                <viewController id="I8Z-1w-Cz9" customClass="TXHSalesWizardDetailsBaseViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="mfH-LT-uqB"/>
-                        <viewControllerLayoutGuide type="bottom" id="Bcj-Ab-QxK"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2jV-Lf-Fpa">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="2iF-it-Qwa" customClass="TXHSalesUpgradeDetailsViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="uW1-fI-DBJ">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Upgrades" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sv9-Yz-LV5">
-                                <rect key="frame" x="486" y="375" width="75" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VSV-b9-5Wc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="tJd-Qp-PrK">
+                            <size key="itemSize" width="220" height="112"/>
+                            <size key="headerReferenceSize" width="723" height="60"/>
+                            <size key="footerReferenceSize" width="723" height="10"/>
+                            <inset key="sectionInset" minX="40" minY="1" maxX="23" maxY="1"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TXHSalesUpgradeCell" id="xQ2-6G-Xz9" customClass="TXHSalesUpgradeCell">
+                                <rect key="frame" x="40" y="61" width="220" height="112"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="220" height="112"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgU-0W-KI3">
+                                            <rect key="frame" x="0.0" y="8" width="172" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12.5"/>
+                                            <color key="textColor" red="0.15686274509803921" green="0.27450980392156865" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbu-8c-tJu">
+                                            <rect key="frame" x="0.0" y="28" width="172" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12.5"/>
+                                            <color key="textColor" red="0.30588235294117649" green="0.40000000000000002" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1D-dL-cJU">
+                                            <rect key="frame" x="0.0" y="46" width="200" height="66"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <color key="textColor" red="0.29803921568627451" green="0.39215686274509803" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="EmptyCircle" translatesAutoresizingMaskIntoConstraints="NO" id="3XQ-pO-gbU">
+                                            <rect key="frame" x="180" y="18" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="selectedImageView" destination="3XQ-pO-gbU" id="Wgv-55-Pbd"/>
+                                    <outlet property="upgradeDescriptionTextView" destination="e1D-dL-cJU" id="zgq-Ly-dD6"/>
+                                    <outlet property="upgradeNameLabel" destination="XgU-0W-KI3" id="Umq-CE-x8Z"/>
+                                    <outlet property="upgradePriceLabel" destination="nbu-8c-tJu" id="xj9-ll-RBQ"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TXHSalesUpgradeHeader" id="LVF-vc-xeM" customClass="TXHSalesUpgradeHeader">
+                            <rect key="frame" x="0.0" y="0.0" width="1024" height="60"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XG3-ih-neg">
+                                    <rect key="frame" x="0.0" y="59" width="1024" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.97647058819999999" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="nXk-cR-WPC"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSh-Iy-1cH">
+                                    <rect key="frame" x="20" y="19" width="42" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Expanded" translatesAutoresizingMaskIntoConstraints="NO" id="Gtb-e9-kFB">
+                                    <rect key="frame" x="660" y="20" width="53" height="27"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="53" id="9T6-Ki-AdS"/>
+                                        <constraint firstAttribute="height" constant="27" id="KEb-Yr-zTe"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="Gtb-e9-kFB" firstAttribute="leading" secondItem="LVF-vc-xeM" secondAttribute="leading" constant="660" id="1eG-Aa-FJ9"/>
+                                <constraint firstAttribute="bottom" secondItem="XG3-ih-neg" secondAttribute="bottom" id="I7z-sL-7v6"/>
+                                <constraint firstAttribute="trailing" secondItem="XG3-ih-neg" secondAttribute="trailing" id="NSQ-pr-gLg"/>
+                                <constraint firstItem="XG3-ih-neg" firstAttribute="leading" secondItem="LVF-vc-xeM" secondAttribute="leading" id="Tgf-re-hv3"/>
+                                <constraint firstAttribute="centerY" secondItem="GSh-Iy-1cH" secondAttribute="centerY" id="WK1-Gn-oPu"/>
+                                <constraint firstAttribute="centerY" secondItem="Gtb-e9-kFB" secondAttribute="centerY" id="oM2-cE-On8"/>
+                                <constraint firstItem="GSh-Iy-1cH" firstAttribute="leading" secondItem="LVF-vc-xeM" secondAttribute="leading" constant="20" id="xhF-zp-eKR"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="expandedCollapsedImageView" destination="Gtb-e9-kFB" id="3hM-9g-RQm"/>
+                                <outlet property="headerTitle" destination="GSh-Iy-1cH" id="zfC-6b-bC8"/>
+                            </connections>
+                        </collectionReusableView>
+                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TXHSalesUpgradeFooter" id="vIO-oF-DcD">
+                            <rect key="frame" x="0.0" y="174" width="1024" height="10"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cBb-2T-mli">
+                                    <rect key="frame" x="0.0" y="1" width="1024" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="dMl-PW-NgL"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="cBb-2T-mli" firstAttribute="top" secondItem="vIO-oF-DcD" secondAttribute="top" constant="1" id="O7b-Pq-l56"/>
+                                <constraint firstItem="cBb-2T-mli" firstAttribute="leading" secondItem="vIO-oF-DcD" secondAttribute="leading" id="j36-xe-xZt"/>
+                                <constraint firstAttribute="trailing" secondItem="cBb-2T-mli" secondAttribute="trailing" id="rRM-pc-NPP"/>
+                            </constraints>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="2iF-it-Qwa" id="5I8-pi-pR2"/>
+                            <outlet property="delegate" destination="2iF-it-Qwa" id="HCd-7G-d4U"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rmT-2o-baH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3746" y="919"/>
+            <point key="canvasLocation" x="3755" y="877"/>
         </scene>
         <!--Sales Wizard Details Base View Controller-->
         <scene sceneID="ikX-UB-Hrn">
@@ -736,16 +842,16 @@
                         <segue destination="T0G-a3-rT4" kind="custom" identifier="Embed Step1" customClass="TXHEmbeddingSegue" id="aOI-Ow-GKt"/>
                         <segue destination="T0G-a3-rT4" kind="custom" identifier="Transition To Step1" customClass="TXHTransitionSegue" id="ik4-FO-YMn"/>
                         <segue destination="uAI-bG-hdz" kind="custom" identifier="Transition To Step2" customClass="TXHTransitionSegue" id="La3-s7-ewm"/>
-                        <segue destination="I8Z-1w-Cz9" kind="custom" identifier="Transition To Step3" customClass="TXHTransitionSegue" id="0Wr-a8-p5P"/>
                         <segue destination="RRL-s0-Sdj" kind="custom" identifier="Transition To Step4" customClass="TXHTransitionSegue" id="lSb-yj-e6o"/>
                         <segue destination="AMY-wT-Xeo" kind="custom" identifier="Transition To Step5" customClass="TXHTransitionSegue" id="JAa-TB-UKa"/>
                         <segue destination="tay-QP-yle" kind="custom" identifier="Transition To Step6" customClass="TXHTransitionSegue" id="vMF-Me-APH"/>
                         <segue destination="8RN-Pr-hoD" kind="custom" identifier="Transition To Step7" customClass="TXHTransitionSegue" id="ui8-tE-HNw"/>
+                        <segue destination="2iF-it-Qwa" kind="custom" identifier="Transition To Step3" customClass="TXHTransitionSegue" id="33J-rC-64E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJa-x6-Y6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2431" y="-31"/>
+            <point key="canvasLocation" x="2431" y="-4"/>
         </scene>
         <!--Sales Information Details View Controller-->
         <scene sceneID="nDQ-vP-fDX">
@@ -1051,7 +1157,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZI-8j-M21">
                                 <rect key="frame" x="0.0" y="0.0" width="724" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="YQA-EY-H9D"/>
                                 </constraints>
@@ -1092,6 +1198,7 @@
     </scenes>
     <resources>
         <image name="EmptyCircle" width="43" height="43"/>
+        <image name="Expanded" width="53" height="27"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="lightContent"/>

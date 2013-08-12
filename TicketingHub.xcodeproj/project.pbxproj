@@ -15,6 +15,9 @@
 		4D307DB71796F9FC00822645 /* TXHTicketDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D307DB61796F9FC00822645 /* TXHTicketDetail.m */; };
 		4D36517217B4DB5F002E07E9 /* TXHDataEntryFieldErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D36517117B4DB5F002E07E9 /* TXHDataEntryFieldErrorView.m */; };
 		4D38781817B8DE0900627612 /* TXHEmailCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D38781717B8DE0900627612 /* TXHEmailCollectionViewCell.m */; };
+		4D38781B17B8EAFB00627612 /* TXHSalesUpgradeDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D38781A17B8EAFB00627612 /* TXHSalesUpgradeDetailsViewController.m */; };
+		4D38781E17B8EC2200627612 /* TXHSalesUpgradeHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D38781D17B8EC2200627612 /* TXHSalesUpgradeHeader.m */; };
+		4D38782117B8F9CC00627612 /* TXHSalesUpgradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D38782017B8F9CC00627612 /* TXHSalesUpgradeCell.m */; };
 		4D3C72BB17B011EA008FACDC /* TXHSalesCompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3C72BA17B011EA008FACDC /* TXHSalesCompletionViewController.m */; };
 		4D3C72BE17B014ED008FACDC /* TXHSalesContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3C72BD17B014ED008FACDC /* TXHSalesContentsViewController.m */; };
 		4D3FC11117B5480D0036D4DE /* TXHTextCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3FC11017B5480D0036D4DE /* TXHTextCollectionViewCell.m */; };
@@ -146,6 +149,12 @@
 		4D36517117B4DB5F002E07E9 /* TXHDataEntryFieldErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDataEntryFieldErrorView.m; sourceTree = "<group>"; };
 		4D38781617B8DE0900627612 /* TXHEmailCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHEmailCollectionViewCell.h; sourceTree = "<group>"; };
 		4D38781717B8DE0900627612 /* TXHEmailCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHEmailCollectionViewCell.m; sourceTree = "<group>"; };
+		4D38781917B8EAFB00627612 /* TXHSalesUpgradeDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesUpgradeDetailsViewController.h; sourceTree = "<group>"; };
+		4D38781A17B8EAFB00627612 /* TXHSalesUpgradeDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesUpgradeDetailsViewController.m; sourceTree = "<group>"; };
+		4D38781C17B8EC2200627612 /* TXHSalesUpgradeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesUpgradeHeader.h; sourceTree = "<group>"; };
+		4D38781D17B8EC2200627612 /* TXHSalesUpgradeHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesUpgradeHeader.m; sourceTree = "<group>"; };
+		4D38781F17B8F9CC00627612 /* TXHSalesUpgradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesUpgradeCell.h; sourceTree = "<group>"; };
+		4D38782017B8F9CC00627612 /* TXHSalesUpgradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesUpgradeCell.m; sourceTree = "<group>"; };
 		4D3C72B917B011EA008FACDC /* TXHSalesCompletionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesCompletionViewController.h; sourceTree = "<group>"; };
 		4D3C72BA17B011EA008FACDC /* TXHSalesCompletionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesCompletionViewController.m; sourceTree = "<group>"; };
 		4D3C72BC17B014ED008FACDC /* TXHSalesContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesContentsViewController.h; sourceTree = "<group>"; };
@@ -687,6 +696,12 @@
 				4DB2F5FC17B397FD00DD538F /* TXHSalesInformationHeader.m */,
 				4DB2F5FE17B3B3A200DD538F /* TXHSalesInformationTextCell.h */,
 				4DB2F5FF17B3B3A200DD538F /* TXHSalesInformationTextCell.m */,
+				4D38781917B8EAFB00627612 /* TXHSalesUpgradeDetailsViewController.h */,
+				4D38781A17B8EAFB00627612 /* TXHSalesUpgradeDetailsViewController.m */,
+				4D38781C17B8EC2200627612 /* TXHSalesUpgradeHeader.h */,
+				4D38781D17B8EC2200627612 /* TXHSalesUpgradeHeader.m */,
+				4D38781F17B8F9CC00627612 /* TXHSalesUpgradeCell.h */,
+				4D38782017B8F9CC00627612 /* TXHSalesUpgradeCell.m */,
 			);
 			path = Sales;
 			sourceTree = "<group>";
@@ -876,6 +891,7 @@
 				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
 				4DF9F96E179D50E90040FC5D /* _SeasonOption.m in Sources */,
 				4DF9F96B179D50E90040FC5D /* _Permission.m in Sources */,
+				4D38782117B8F9CC00627612 /* TXHSalesUpgradeCell.m in Sources */,
 				EEB4FD5917B277D800F226BC /* TXHTicketingHubClient.m in Sources */,
 				4DF9F96D179D50E90040FC5D /* _Season.m in Sources */,
 				58E4FB701760AE5500E328A0 /* TicketingHub.xcdatamodeld in Sources */,
@@ -899,6 +915,7 @@
 				4D68DAA6178AE9E300743227 /* TXHOptionsExtrasItem.m in Sources */,
 				4D94B79617ABD53100943A9F /* TXHSalesTimerViewController.m in Sources */,
 				4DF9F965179D50E90040FC5D /* TicketType.m in Sources */,
+				4D38781E17B8EC2200627612 /* TXHSalesUpgradeHeader.m in Sources */,
 				4D25F648176CF08000A60359 /* TXHDoorGroupController.m in Sources */,
 				4DF9F961179D50E90040FC5D /* Season.m in Sources */,
 				4DB2F5FD17B397FD00DD538F /* TXHSalesInformationHeader.m in Sources */,
@@ -941,6 +958,7 @@
 				EEB4FD5017B277D800F226BC /* AFURLConnectionOperation.m in Sources */,
 				4DF9F968179D50E90040FC5D /* VariationOption.m in Sources */,
 				EEB4FD5417B277D800F226BC /* UIImageView+AFNetworking.m in Sources */,
+				4D38781B17B8EAFB00627612 /* TXHSalesUpgradeDetailsViewController.m in Sources */,
 				4DF9F962179D50E90040FC5D /* SeasonOption.m in Sources */,
 				EEB4FD4D17B277D800F226BC /* AFJSONRequestOperation.m in Sources */,
 				4DFB1009178DB693006923F7 /* TXHLoginViewController.m in Sources */,
