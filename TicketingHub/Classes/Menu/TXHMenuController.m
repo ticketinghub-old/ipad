@@ -25,24 +25,6 @@
 
 @implementation TXHMenuController
 
-#pragma mark - Set up and tear down
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self setup];
-    }
-    return self;
-}
-
-- (void)setup {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(menuLogin:) name:NOTIFICATION_MENU_LOGIN object:nil];
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
@@ -75,22 +57,17 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#pragma unused (tableView)
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#pragma unused (tableView)
-#pragma unused (section)
     // Return the number of rows in the section.
     NSUInteger venueCount = [TXHServerAccessManager sharedInstance].venues.count;
     return venueCount;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-#pragma unused (tableView)
-#pragma unused (section)
     return 64.0f;
 }
 
@@ -109,7 +86,6 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-#pragma unused (section)
     if (self.headerView == nil) {
         CGRect frame = tableView.bounds;
         frame.size.height = 64.0f;
@@ -137,7 +113,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-#pragma unused (tableView)
     TXHVenue *venue = [self.venues objectAtIndex:indexPath.row];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_VENUE_SELECTED object:venue];
 }
@@ -163,18 +138,9 @@
 #pragma mark Action methods
 
 - (IBAction)logout:(id)sender {
-#pragma unused (sender)
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MENU_LOGOUT object:nil];
     self.logoutButton.titleLabel.text = NSLocalizedString(@"Logout", @"Logout the current user");
 }
 
-#pragma mark  Notification handlers
-
-- (void)menuLogin:(NSNotification *)notification {
-    // Logged in user will be supplied as a string in the notification object
-    NSString *user = notification.object;
-
-    [self.logoutButton setTitle:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Logout", @"Logout the current user"), user] forState:UIControlStateNormal];
-}
 
 @end
