@@ -16,4 +16,7 @@
 // Use this method to provide a data content view that will be used for collecting data from a user
 - (void)updateDataContentView:(UIView *)dataContentView;
 
+// This method is called during initialization to configure cell content.
+- (void)setupDataContent;
+
 @end

@@ -14,6 +14,7 @@
 		4D307DB41796F61C00822645 /* TXHTimeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D307DB31796F61C00822645 /* TXHTimeFormatter.m */; };
 		4D307DB71796F9FC00822645 /* TXHTicketDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D307DB61796F9FC00822645 /* TXHTicketDetail.m */; };
 		4D36517217B4DB5F002E07E9 /* TXHDataEntryFieldErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D36517117B4DB5F002E07E9 /* TXHDataEntryFieldErrorView.m */; };
+		4D38781817B8DE0900627612 /* TXHEmailCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D38781717B8DE0900627612 /* TXHEmailCollectionViewCell.m */; };
 		4D3C72BB17B011EA008FACDC /* TXHSalesCompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3C72BA17B011EA008FACDC /* TXHSalesCompletionViewController.m */; };
 		4D3C72BE17B014ED008FACDC /* TXHSalesContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3C72BD17B014ED008FACDC /* TXHSalesContentsViewController.m */; };
 		4D3FC11117B5480D0036D4DE /* TXHTextCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3FC11017B5480D0036D4DE /* TXHTextCollectionViewCell.m */; };
@@ -143,6 +144,8 @@
 		4D307DB61796F9FC00822645 /* TXHTicketDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketDetail.m; sourceTree = "<group>"; };
 		4D36517017B4DB5F002E07E9 /* TXHDataEntryFieldErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDataEntryFieldErrorView.h; sourceTree = "<group>"; };
 		4D36517117B4DB5F002E07E9 /* TXHDataEntryFieldErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDataEntryFieldErrorView.m; sourceTree = "<group>"; };
+		4D38781617B8DE0900627612 /* TXHEmailCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHEmailCollectionViewCell.h; sourceTree = "<group>"; };
+		4D38781717B8DE0900627612 /* TXHEmailCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHEmailCollectionViewCell.m; sourceTree = "<group>"; };
 		4D3C72B917B011EA008FACDC /* TXHSalesCompletionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesCompletionViewController.h; sourceTree = "<group>"; };
 		4D3C72BA17B011EA008FACDC /* TXHSalesCompletionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesCompletionViewController.m; sourceTree = "<group>"; };
 		4D3C72BC17B014ED008FACDC /* TXHSalesContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesContentsViewController.h; sourceTree = "<group>"; };
@@ -378,6 +381,8 @@
 				4D9AA3CB17B51BDC0093D63B /* TXHBaseCollectionViewCell.m */,
 				4D3FC10F17B5480D0036D4DE /* TXHTextCollectionViewCell.h */,
 				4D3FC11017B5480D0036D4DE /* TXHTextCollectionViewCell.m */,
+				4D38781617B8DE0900627612 /* TXHEmailCollectionViewCell.h */,
+				4D38781717B8DE0900627612 /* TXHEmailCollectionViewCell.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -875,6 +880,7 @@
 				4DF9F96D179D50E90040FC5D /* _Season.m in Sources */,
 				58E4FB701760AE5500E328A0 /* TicketingHub.xcdatamodeld in Sources */,
 				4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */,
+				4D38781817B8DE0900627612 /* TXHEmailCollectionViewCell.m in Sources */,
 				4D9AA3CC17B51BDC0093D63B /* TXHBaseCollectionViewCell.m in Sources */,
 				58E4FB9F1761CFEC00E328A0 /* TXHMainViewController.m in Sources */,
 				4DF9F97B179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m in Sources */,

@@ -85,10 +85,12 @@
 
 #import "TXHSalesInformationDetailsViewController.h"
 
+#import "TXHEmailCollectionViewCell.h"
 #import "TXHTextCollectionViewCell.h"
 #import "TXHSalesContentProtocol.h"
 #import "TXHSalesInformationHeader.h"
 #import "TXHSalesInformationTextCell.h"
+#import "UIView+TXHAnimationConversions.h"
 
 @interface TXHSalesInformationDetailsViewController () <TXHSalesContentProtocol>
 
@@ -118,6 +120,19 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
+- (void)setup {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShown:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -139,6 +154,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (TXHSalesTimerViewController *)timerViewController {
@@ -196,7 +215,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        TXHSalesInformationTextCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"text" forIndexPath:indexPath];
+        TXHSalesInformationTextCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"temp" forIndexPath:indexPath];
         switch (indexPath.row) {
             case 0:
                 cell.ticket = @"First Name";
@@ -214,12 +233,22 @@
         }
         return cell;
     } else {
-        TXHTextCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"temp" forIndexPath:indexPath];
-        if (indexPath.row % 2) {
-            cell.errorMessage = [NSString stringWithFormat:@"error %d", indexPath.row];
+        switch (indexPath.row) {
+            case 0: {
+                TXHTextCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"text" forIndexPath:indexPath];
+                cell.errorMessage = [NSString stringWithFormat:@"error %d", indexPath.row];
+                return cell;
+            }
+            case 1: {
+                TXHTextCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"email" forIndexPath:indexPath];
+                return cell;
+            }
+            default: {
+                TXHSalesInformationTextCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"temp" forIndexPath:indexPath];
+                cell.ticket = [NSString stringWithFormat:@"temp %d", indexPath.row];
+                return cell;
+            }
         }
-        cell.textField.placeholder = [NSString stringWithFormat:@"placeholder %d", indexPath.row];
-        return cell;
     }
 }
 
@@ -243,6 +272,36 @@
         return footer;
     }
     return nil;
+}
+
+- (void)makeCellVisible:(id)sender {
+    UICollectionViewCell *cell = sender;
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+}
+
+
+#pragma mark - Keyboard notifications
+
+- (void)keyboardWillShown:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0f, 0.0f, keyboardSize.width, 0.0f);
+    self.collectionView.contentInset = contentInsets;
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSDictionary *keyboardAnimationDetail = [notification userInfo];
+    UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    UIViewAnimationOptions options = [UIView txhAnimationOptionsFromAnimationCurve:animationCurve];
+    // Beta 4 had issues with the animation options, so fixed at the moment
+    options = UIViewAnimationOptionCurveEaseInOut;
+    CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    [UIView animateWithDuration:duration delay:0.0 options:options animations:^{
+        self.collectionView.contentInset = UIEdgeInsetsZero;
+        [self.collectionView layoutIfNeeded];
+    } completion:nil];
 }
 
 @end

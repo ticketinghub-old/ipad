@@ -58,7 +58,7 @@
         self.detailField.textColor = [UIColor redColor];
         self.detailField.text = @"Oh no - this is bad!";
         
-        self.dataErrorView.message = @"A really really long test error message";
+        self.dataErrorView.message = @"A really really really long test error message";
         
     } else {
         UIColor *normalColor = [UIColor colorWithRed:238.0f / 255.0f
@@ -73,6 +73,12 @@
                                                      alpha:1.0f];
         self.detailField.text = @"Oh no - this is bad!";
     }
+}
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    self.dataErrorView.message = @"";
+    self.detailField.text = @"";
 }
 
 @end

@@ -99,6 +99,10 @@
     // Template method.  Nothing for the base class to do!
 }
 
+- (NSString *)errorMessage {
+    return self.dataErrorView.message;
+}
+
 - (void)setErrorMessage:(NSString *)errorMessage {
     self.dataErrorView.message = errorMessage;
     UIColor *backingColor;
@@ -135,6 +139,11 @@
 
 - (void)updateDataContentView:(UIView *)dataContentView {
     self.dataContentView = dataContentView;
+}
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    self.errorMessage = @"";
 }
 
 @end
