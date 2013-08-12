@@ -10,12 +10,13 @@
 
 #import "TXHCommonNames.h"
 #import "TXHServerAccessManager.h"
-#import "TXHVenue.h"
+#import "TXHUserMO.h"
+#import "TXHVenueMO.h"
 
 @interface TXHMenuController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *logoutView;
-@property (weak, nonatomic) IBOutlet UIButton *logout;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 
 @property (strong, nonatomic) UIView *headerView;
 @property (strong, nonatomic) NSArray *venues;
@@ -23,6 +24,8 @@
 @end
 
 @implementation TXHMenuController
+
+#pragma mark - Set up and tear down
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -40,8 +43,9 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)viewDidLoad
-{
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     UIColor *backgroundColor = [UIColor colorWithRed:16.0f / 255.0f
@@ -54,13 +58,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.venues = [TXHServerAccessManager sharedInstance].venues;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+
+    [self.logoutButton setTitle:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Logout", @"Logout the current user"), [self userName]] forState:UIControlStateNormal];
+
+    self.venues = [TXHServerAccessManager sharedInstance].venues;
 }
 
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -68,15 +74,13 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #pragma unused (tableView)
     // Return the number of sections.
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #pragma unused (tableView)
 #pragma unused (section)
     // Return the number of rows in the section.
@@ -90,8 +94,7 @@
     return 64.0f;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"cellID";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
@@ -139,70 +142,39 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_VENUE_SELECTED object:venue];
 }
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
+#pragma mark - Private methods
 
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
+- (NSString *)userName {
+    NSFetchRequest *userRequest = [NSFetchRequest fetchRequestWithEntityName:[TXHUserMO entityName]];
 
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
+    NSError *error;
+    NSArray *users = [self.managedObjectContext executeFetchRequest:userRequest error:&error];
 
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
+    if (!users) {
+        DLog(@"Unable to fetch users because: %@", error);
+    }
 
-/*
- #pragma mark - Navigation
+    TXHUserMO *user = [users lastObject];
 
- // In a story board-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
+    return [user fullName];
 
- */
+}
+
+#pragma mark Action methods
 
 - (IBAction)logout:(id)sender {
 #pragma unused (sender)
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MENU_LOGOUT object:nil];
-    self.logout.titleLabel.text = NSLocalizedString(@"Logout", @"Logout the current user");
+    self.logoutButton.titleLabel.text = NSLocalizedString(@"Logout", @"Logout the current user");
 }
 
-#pragma mark - Notifications
+#pragma mark  Notification handlers
 
 - (void)menuLogin:(NSNotification *)notification {
     // Logged in user will be supplied as a string in the notification object
     NSString *user = notification.object;
 
-    [self.logout setTitle:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Logout", @"Logout the current user"), user] forState:UIControlStateNormal];
+    [self.logoutButton setTitle:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Logout", @"Logout the current user"), user] forState:UIControlStateNormal];
 }
 
 @end
