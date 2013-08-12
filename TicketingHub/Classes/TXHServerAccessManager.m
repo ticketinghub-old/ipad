@@ -207,7 +207,7 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 - (void)buildVenues:(NSArray *)venues {
     NSMutableArray *venuesArray = [NSMutableArray array];
     for (NSDictionary *venueData in venues) {
-        TXHVenue *venue = [[TXHVenue alloc] initWithData:venueData];
+        TXHVenue *venue;// = [[TXHVenue alloc] initWithData:venueData];
         if (venue != nil) {
             [venuesArray addObject:venue];
         }
@@ -218,7 +218,7 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 - (void)getAvailabilityForVenue:(TXHVenue *)venue{
     TXHDataDownloader *downloader = [[TXHDataDownloader alloc] initWithOwner:self];
     downloader.headerFields = @{@"Authorization" : [NSString stringWithFormat:@"Bearer %@", self.accessToken]};
-    downloader.urlString = [NSString stringWithFormat:@"%@/venues/%d/seasons", TICKETINGHUB_API, venue.venueID.integerValue];
+    downloader.urlString; // = [NSString stringWithFormat:@"%@/venues/%d/seasons", TICKETINGHUB_API, venue.venueID.integerValue];
     downloader.completionHandler = ^(id data){
         NSDictionary *dict = data;
         NSDictionary *payload = dict[@"payload"];
@@ -227,9 +227,9 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
         NSUInteger status = statusNum.unsignedIntegerValue;
         if (status == 200) {
             // Success
-            NSArray *seasonData = payload[@"data"];
-            [self.currentVenue addSeasonData:seasonData];
-            [self getVariationsForVenue:venue];
+            NSArray *seasonData;// = payload[@"data"];
+                                //[self.currentVenue addSeasonData:seasonData];
+                                //[self getVariationsForVenue:venue];
         } else if (status == 401) {
             // Check for token expiry
         } else {
@@ -246,7 +246,7 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 - (void)getVariationsForVenue:(TXHVenue *)venue {
     TXHDataDownloader *downloader = [[TXHDataDownloader alloc] initWithOwner:self];
     downloader.headerFields = @{@"Authorization" : [NSString stringWithFormat:@"Bearer %@", self.accessToken]};
-    downloader.urlString = [NSString stringWithFormat:@"%@/venues/%d/variations", TICKETINGHUB_API, venue.venueID.integerValue];
+    downloader.urlString;// = [NSString stringWithFormat:@"%@/venues/%d/variations", TICKETINGHUB_API, venue.venueID.integerValue];
     downloader.completionHandler = ^(id data){
         NSDictionary *dict = data;
         NSDictionary *payload = dict[@"payload"];
@@ -256,7 +256,7 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
         if (status == 200) {
             // Success
             NSArray *variationData = payload[@"data"];
-            [self.currentVenue addVariationData:variationData];
+            //[self.currentVenue addVariationData:variationData];
         }
         else if (status == 401) {
             // Check for token expiry
@@ -294,7 +294,7 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
     NSInteger weekDay = [components weekday];
 
     // Go for a variation first
-    TXHVariation_old *variation = self.currentVenue.currentVariation;
+    TXHVariation_old *variation;// = self.currentVenue.currentVariation;
     if (variation != nil) {
         for (TXHVariationOption *option in variation.options) {
             // We have timeslots for this date
@@ -310,7 +310,7 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 
     // Go through the current season options if there are no variations
     if (newTimeSlots.count == 0) {
-        TXHSeason_old *season  = [self.currentVenue seasonFor:referenceDate];
+        TXHSeason_old *season;//  = [self.currentVenue seasonFor:referenceDate];
         if (season != nil) {
             for (TXHSeason_oldOption *option in season.options) {
                 // Is the reference date on the right day of the week
@@ -345,7 +345,7 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
         dateFormatter.dateFormat = @"yyyy-MM-dd";
     }
     downloader.headerFields = @{@"Authorization" : [NSString stringWithFormat:@"Bearer %@", self.accessToken]};
-    downloader.urlString = [NSString stringWithFormat:@"%@/venues/%d/option?date=%@&time=%@", TICKETINGHUB_API, self.currentVenue.venueID.integerValue, [dateFormatter stringFromDate:timeslot.date], [TXHTimeFormatter stringFromTimeInterval:timeslot.timeSlotStart]];
+    downloader.urlString = nil;// [NSString stringWithFormat:@"%@/venues/%d/option?date=%@&time=%@", TICKETINGHUB_API, self.currentVenue.venueID.integerValue, [dateFormatter stringFromDate:timeslot.date], [TXHTimeFormatter stringFromTimeInterval:timeslot.timeSlotStart]];
     downloader.completionHandler = ^(id data){
         NSDictionary *dict = data;
         NSDictionary *payload = dict[@"payload"];
@@ -356,7 +356,7 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
             // Success
             NSDictionary *ticket = payload[@"data"];
             [self buildTicket:ticket forVenue:self.currentVenue];
-            completion(self.currentVenue.ticketDetail);
+            //completion(self.currentVenue.ticketDetail);
         }
         else if (status == 401) {
             // Check for token expiry
@@ -414,10 +414,10 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
         formatter.currencyCode = venue.currency;
     }
     mutableTicket[@"dp"] = [NSNumber numberWithUnsignedInteger:formatter.maximumFractionDigits];
-    mutableTicket[@"timezone"] = venue.timeZone;
+    //mutableTicket[@"timezone"] = venue.timeZone;
     TXHTicketDetail *ticket = [[TXHTicketDetail alloc] initWithData:mutableTicket];
     if (ticket != nil) {
-        [venue addTicket:ticket];
+        //[venue addTicket:ticket];
     }
 }
 
