@@ -8,12 +8,12 @@
 
 #import "TXHCommonNames.h"
 #import "TXHDataDownloader.h"
-#import "TXHSeason.h"
+#import "TXHSeason_old.h"
 #import "TXHServerAccessManager.h"
 #import "TXHTicketDetail.h"
 #import "TXHTimeFormatter.h"
-#import "TXHTimeSlot.h"
-#import "TXHVariation.h"
+#import "TXHTimeSlot_old.h"
+#import "TXHVariation_old.h"
 #import "TXHVenue.h"
 #import "TXHTicketingHubClient.h"
 
@@ -294,11 +294,11 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
     NSInteger weekDay = [components weekday];
 
     // Go for a variation first
-    TXHVariation *variation = self.currentVenue.currentVariation;
+    TXHVariation_old *variation = self.currentVenue.currentVariation;
     if (variation != nil) {
         for (TXHVariationOption *option in variation.options) {
             // We have timeslots for this date
-            TXHTimeSlot *oneTimeSlot = [[TXHTimeSlot alloc] init];
+            TXHTimeSlot_old *oneTimeSlot = [[TXHTimeSlot_old alloc] init];
             oneTimeSlot.date = referenceDate;
             oneTimeSlot.timeSlotStart = option.time;
             oneTimeSlot.duration = option.duration;
@@ -310,13 +310,13 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 
     // Go through the current season options if there are no variations
     if (newTimeSlots.count == 0) {
-        TXHSeason *season  = [self.currentVenue seasonFor:referenceDate];
+        TXHSeason_old *season  = [self.currentVenue seasonFor:referenceDate];
         if (season != nil) {
-            for (TXHSeasonOption *option in season.options) {
+            for (TXHSeason_oldOption *option in season.options) {
                 // Is the reference date on the right day of the week
                 if (weekDay == option.weekDay) {
                     // We have timeslots for this date
-                    TXHTimeSlot *oneTimeSlot = [[TXHTimeSlot alloc] init];
+                    TXHTimeSlot_old *oneTimeSlot = [[TXHTimeSlot_old alloc] init];
                     oneTimeSlot.date = referenceDate;
                     oneTimeSlot.timeSlotStart = option.time;
                     oneTimeSlot.title = option.title;
@@ -337,7 +337,7 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
     [self.timeSlots removeAllObjects];
 }
 
-- (void)getTicketOptionsForTimeSlot:(TXHTimeSlot *)timeslot completionHandler:(void (^)(TXHTicketDetail *))completion errorHandler:(void (^)(id))error {
+- (void)getTicketOptionsForTimeSlot:(TXHTimeSlot_old *)timeslot completionHandler:(void (^)(TXHTicketDetail *))completion errorHandler:(void (^)(id))error {
     TXHDataDownloader *downloader = [[TXHDataDownloader alloc] initWithOwner:self];
     static NSDateFormatter *dateFormatter = nil;
     if (dateFormatter == nil) {

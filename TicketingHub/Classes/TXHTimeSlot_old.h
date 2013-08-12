@@ -1,5 +1,5 @@
 //
-//  TXHTimeSlot.h
+//  TXHTimeSlot_old.h
 //  TicketingHub
 //
 //  Created by Mark on 16/07/2013.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TXHTimeSlot : NSObject
+@interface TXHTimeSlot_old : NSObject
 
 @property (strong, nonatomic)   NSDate          *date;
 @property (assign, nonatomic)   NSTimeInterval  timeSlotStart;

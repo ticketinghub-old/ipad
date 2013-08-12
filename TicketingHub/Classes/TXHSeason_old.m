@@ -1,12 +1,12 @@
 //
-//  TXHSeason.m
+//  TXHSeason_old.m
 //  TicketingHub
 //
 //  Created by Mark on 15/07/2013.
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import "TXHSeason.h"
+#import "TXHSeason_old.h"
 #import "TXHTimeFormatter.h"
 
 static NSString* const SEASON_START =     @"starts_on";
@@ -15,11 +15,11 @@ static NSString* const SEASON_OPTIONS =   @"options";
 static NSString* const SEASON_WEEK_DAY =  @"wday";
 static NSString* const SEASON_TIME =      @"time";
 
-@implementation TXHSeasonOption
+@implementation TXHSeason_oldOption
 
 @end
 
-@implementation TXHSeason
+@implementation TXHSeason_old
 
 - (id)initWithData:(NSDictionary *)data forTimeZone:(NSTimeZone *)timeZone {
     self = [super init];
@@ -95,7 +95,7 @@ static NSString* const SEASON_TIME =      @"time";
         components.second = 0.0;
         NSDate *startOfDay = [calendar dateFromComponents:components];
         for (NSDictionary *oneOption in optionsArray) {
-            TXHSeasonOption *seasonOption = [[TXHSeasonOption alloc] init];
+            TXHSeason_oldOption *seasonOption = [[TXHSeason_oldOption alloc] init];
             temp = oneOption[SEASON_WEEK_DAY];
             if ((temp != nil) && ([temp isKindOfClass:[NSNull class]] == NO)) {
                 seasonOption.weekDay = [temp integerValue] + 1; // Convert the server weekday to iOS calendar weekday

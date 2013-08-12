@@ -14,8 +14,8 @@
 #import "TXHDateSelectorViewController.h"
 #import "TXHTimeslotSelectorViewController.h"
 #import "TXHVenue.h"
-#import "TXHSeason.h"
-#import "TXHTimeSlot.h"
+#import "TXHSeason_old.h"
+#import "TXHTimeSlot_old.h"
 #import "TXHTicketDetail.h"
 #import "TXHTicketTier.h"
 
@@ -148,7 +148,7 @@
     // Build start/end ranges from all the seasons available for this venue
     NSMutableArray *ranges = [NSMutableArray array];
 #warning - AN turned this off!
-//    for (TXHSeason *season in self.venue.allSeasons) {
+//    for (TXHSeason_old *season in self.venue.allSeasons) {
 //        // Add a range for each season
 //        [ranges addObject:@{@"start": season.startsOn, @"end": season.endsOn}];
 //    }
@@ -251,7 +251,7 @@
     [self updateControlsForUserInteraction];
 }
 
-- (void)timeSlotSelectorViewController:(TXHTimeslotSelectorViewController *)controller didSelectTime:(TXHTimeSlot *)time {
+- (void)timeSlotSelectorViewController:(TXHTimeslotSelectorViewController *)controller didSelectTime:(TXHTimeSlot_old *)time {
 #pragma unused (controller)
     self.selectedTime = time.timeSlotStart;
     self.timeSelected = YES;
@@ -291,8 +291,8 @@
 
         // Get the first season for this venue if there is one
 #warning - AN turned this off!
-//        TXHSeason *season = [self.venue.allSeasons firstObject];
-        TXHSeason *season = nil;
+//        TXHSeason_old *season = [self.venue.allSeasons firstObject];
+        TXHSeason_old *season = nil;
         if (season == nil) {
             self.navigationItem.prompt = NSLocalizedString(@"There are no dates for this venue", @"There are no dates for this venue");
             return;

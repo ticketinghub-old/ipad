@@ -16,7 +16,7 @@
 
 @end
 
-@interface TXHVariation : NSObject
+@interface TXHVariation_old : NSObject
 
 @property (strong, nonatomic) NSDate    *date;
 @property (strong, nonatomic) NSString  *reference;

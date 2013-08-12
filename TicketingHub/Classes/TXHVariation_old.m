@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import "TXHVariation.h"
+#import "TXHVariation_old.h"
 
 
 static NSString* const VARIATION_DATE =       @"date";
@@ -20,7 +20,7 @@ static NSString* const VARIATION_TITLE =      @"title";
 
 @end
 
-@implementation TXHVariation
+@implementation TXHVariation_old
 
 - (id)initWithData:(NSDictionary *)data {
   self = [super init];

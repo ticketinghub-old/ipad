@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class TXHTimeSlot;
+@class TXHTimeSlot_old;
 
 @protocol TXHTimeSlotSelectorDelegate;
 
@@ -23,6 +23,6 @@
 
 @protocol TXHTimeSlotSelectorDelegate <NSObject>
 
-- (void)timeSlotSelectorViewController:(TXHTimeslotSelectorViewController *)controller didSelectTime:(TXHTimeSlot *)time;
+- (void)timeSlotSelectorViewController:(TXHTimeslotSelectorViewController *)controller didSelectTime:(TXHTimeSlot_old *)time;
 
 @end

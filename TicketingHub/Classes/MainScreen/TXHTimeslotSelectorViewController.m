@@ -7,7 +7,7 @@
 //
 
 #import "TXHTimeslotSelectorViewController.h"
-#import "TXHTimeSlot.h"
+#import "TXHTimeSlot_old.h"
 
 @interface TXHTimeslotSelectorViewController ()
 
@@ -72,7 +72,7 @@
     }
     
     // Configure the cell...
-    TXHTimeSlot *cellTimeSlot = self.timeSlots[indexPath.row];
+    TXHTimeSlot_old *cellTimeSlot = self.timeSlots[indexPath.row];
     
     NSString *timeString = cellTimeSlot.title;
     cell.textLabel.text = timeString;
@@ -82,7 +82,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma unused (tableView)
-    TXHTimeSlot *timeSlot = self.timeSlots[indexPath.row];
+    TXHTimeSlot_old *timeSlot = self.timeSlots[indexPath.row];
     [self.delegate timeSlotSelectorViewController:self didSelectTime:timeSlot];
 }
 

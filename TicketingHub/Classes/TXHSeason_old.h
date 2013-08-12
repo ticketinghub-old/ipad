@@ -1,5 +1,5 @@
 //
-//  TXHSeason.h
+//  TXHSeason_old.h
 //  TicketingHub
 //
 //  Created by Mark on 15/07/2013.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TXHSeasonOption : NSObject
+@interface TXHSeason_oldOption : NSObject
 
 @property (assign, nonatomic) NSInteger       weekDay;  // Sunday = 1, Monday = 2 .. Saturday = 7
 @property (assign, nonatomic) NSTimeInterval  time;
@@ -16,7 +16,7 @@
 
 @end
 
-@interface TXHSeason : NSObject
+@interface TXHSeason_old : NSObject
 
 @property (strong, nonatomic) NSDate  *startsOn;
 @property (strong, nonatomic) NSDate  *endsOn;
