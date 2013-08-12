@@ -9,7 +9,7 @@
 @import UIKit;
 @import CoreData;
 
-@interface TXHMenuController : UIViewController
+@interface TXHMenuController : UIViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 

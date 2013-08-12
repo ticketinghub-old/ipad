@@ -273,6 +273,7 @@
                     <connections>
                         <outlet property="logoutButton" destination="TWl-ug-4Uk" id="1t3-pe-7Qf"/>
                         <outlet property="logoutView" destination="vYL-1t-XRn" id="N81-MC-rkZ"/>
+                        <outlet property="tableView" destination="suw-Sn-fju" id="2Oc-mM-b5d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wdq-j6-jKR" userLabel="First Responder" sceneMemberID="firstResponder"/>
