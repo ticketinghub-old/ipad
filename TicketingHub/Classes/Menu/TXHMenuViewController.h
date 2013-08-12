@@ -11,6 +11,4 @@
 
 @interface TXHMenuViewController : UIViewController
 
-//- (IBAction)mySegueHandler:(UIStoryboardSegue *)sender;
-
 @end

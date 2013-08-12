@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <containerView contentMode="scaleToFill" horizontalCompressionResistancePriority="172" verticalCompressionResistancePriority="172" translatesAutoresizingMaskIntoConstraints="NO" id="Wmp-vt-FSg">
+                            <containerView contentMode="scaleToFill" horizontalCompressionResistancePriority="172" verticalCompressionResistancePriority="172" translatesAutoresizingMaskIntoConstraints="NO" id="Wmp-vt-FSg" userLabel="Menu Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="330" height="768"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -26,15 +26,15 @@
                                     <constraint firstAttribute="width" constant="330" id="J3a-W8-NTb"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="UZq-wc-4TA" kind="embed" id="csm-sF-m76"/>
+                                    <segue destination="UZq-wc-4TA" kind="embed" identifier="MenuContainerEmbed" id="csm-sF-m76"/>
                                 </connections>
                             </containerView>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSo-1q-BaS">
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSo-1q-BaS" userLabel="Detail Container View">
                                 <rect key="frame" x="330" y="0.0" width="694" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="mAK-Hy-xwL" kind="embed" id="s0H-Bp-rku"/>
+                                    <segue destination="mAK-Hy-xwL" kind="embed" identifier="DetailContainerEmbed" id="s0H-Bp-rku"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -591,7 +591,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="4SR-Jn-C4x"/>
+        <segue reference="qUM-VV-UYO"/>
         <segue reference="8qs-1f-Wbj"/>
     </inferredMetricsTieBreakers>
 </document>

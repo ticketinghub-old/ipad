@@ -17,6 +17,8 @@
 // Segue Identifiers
 static NSString * const ModalLoginSegue = @"ModalLogin";
 static NSString * const ReLoginSegue = @"ReLogin";
+static NSString * const MenuContainerEmbedSegue = @"MenuContainerEmbed";
+static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
 
 @interface TXHMenuViewController ()
 
@@ -42,6 +44,11 @@ static NSString * const ReLoginSegue = @"ReLogin";
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsDictionary];
 }
 
+- (void)awakeFromNib {
+    // Stand up the stack as early as possible, so that the moc is set up in time for the embed segues.
+    [self standUpCoreDataStack];
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
@@ -49,8 +56,6 @@ static NSString * const ReLoginSegue = @"ReLogin";
 
     self.tapRecogniser = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     self.leftHandSpace.constant = -self.menuContainer.bounds.size.width;
-
-    [self standUpCoreDataStack];
 
     [self performSegueWithIdentifier:ModalLoginSegue sender:self];
 }
@@ -86,7 +91,11 @@ static NSString * const ReLoginSegue = @"ReLogin";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSString *segueIdentifier = segue.identifier;
 
-    if ([segueIdentifier isEqualToString:ModalLoginSegue] || [segueIdentifier isEqualToString:ReLoginSegue]) {
+    // The segues for which a managed object context needs to be set on the destination.
+    NSArray *coreDataSegues = @[ModalLoginSegue, ReLoginSegue, MenuContainerEmbedSegue];
+
+    if ([coreDataSegues containsObject:segueIdentifier]) {
+        // Doing it this way saves casting, and probably not worth setting up a protocol at this stage.
         if ([segue.destinationViewController respondsToSelector:@selector(setManagedObjectContext:)]) {
             [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
         }
@@ -124,21 +133,6 @@ static NSString * const ReLoginSegue = @"ReLogin";
         [self.view layoutIfNeeded];
     }];
 }
-
-//- (IBAction)mySegueHandler:(UIStoryboardSegue *)sender {
-//  // Do some interesting stuff
-//  TXHLoginViewController *controller = sender.sourceViewController;
-//  [controller dismissViewControllerAnimated:YES completion:nil];
-//  [UIView animateWithDuration:0.5
-//                   animations:^{
-//
-//                     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
-//                   }
-//                   completion:^(BOOL finished){
-//                     self.loggedIn = finished;
-//                   }];
-//  [self.navigationController popViewControllerAnimated:NO];
-//}
 
 #pragma mark Notifications
 

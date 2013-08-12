@@ -6,8 +6,11 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+@import CoreData;
 
 @interface TXHMenuController : UIViewController
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end
