@@ -702,6 +702,133 @@
             </objects>
             <point key="canvasLocation" x="3690" y="4655"/>
         </scene>
+        <!--Sales Product Details View Controller-->
+        <scene sceneID="38c-3h-gIk">
+            <objects>
+                <tableViewController id="LoX-hP-sQk" customClass="TXHSalesProductDetailsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="108" sectionHeaderHeight="22" sectionFooterHeight="22" id="SOA-78-iYF">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TXHSalesProductCell" id="3eD-rS-iK3" customClass="TXHSalesProductCell">
+                                <rect key="frame" x="0.0" y="22" width="1024" height="108"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="3eD-rS-iK3" id="l5Q-mW-MqS">
+                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="107"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwH-U3-96s">
+                                            <rect key="frame" x="904" y="34" width="80" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="CjB-hJ-Za0"/>
+                                                <constraint firstAttribute="width" constant="80" id="lkZ-zQ-gx1"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <state key="normal" title="1    " backgroundImage="Counter">
+                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="changeQuantity:" destination="3eD-rS-iK3" eventType="touchUpInside" id="dhD-QT-uXi"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVg-Lp-pxy">
+                                            <rect key="frame" x="20" y="20" width="420" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3P8-FT-jws">
+                                            <rect key="frame" x="441" y="20" width="142" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sga-kd-PBA">
+                                            <rect key="frame" x="20" y="39" width="872" height="54"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Sga-kd-PBA" firstAttribute="leading" secondItem="l5Q-mW-MqS" secondAttribute="leading" constant="20" id="TvQ-gw-Bhe"/>
+                                        <constraint firstItem="3P8-FT-jws" firstAttribute="top" secondItem="l5Q-mW-MqS" secondAttribute="top" constant="20" id="VD7-wU-9Gl"/>
+                                        <constraint firstItem="hwH-U3-96s" firstAttribute="leading" secondItem="Sga-kd-PBA" secondAttribute="trailing" constant="12" id="W3K-vd-A3U"/>
+                                        <constraint firstAttribute="trailing" secondItem="hwH-U3-96s" secondAttribute="trailing" constant="40" id="WCw-tV-o3E"/>
+                                        <constraint firstAttribute="centerX" secondItem="3P8-FT-jws" secondAttribute="centerX" id="cSt-mp-Tco"/>
+                                        <constraint firstAttribute="centerY" secondItem="hwH-U3-96s" secondAttribute="centerY" id="ykj-76-P09"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="productDescriptionTextView" destination="Sga-kd-PBA" id="TUT-uD-lua"/>
+                                    <outlet property="productNameLabel" destination="zVg-Lp-pxy" id="2po-HL-yWR"/>
+                                    <outlet property="productPriceLabel" destination="3P8-FT-jws" id="tKV-Ss-caW"/>
+                                    <outlet property="quantityButton" destination="hwH-U3-96s" id="8Pf-yS-C8Z"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="LoX-hP-sQk" id="Zt3-7N-o4K"/>
+                            <outlet property="delegate" destination="LoX-hP-sQk" id="0cP-cC-VhV"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B14-al-bgh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3755" y="1813"/>
+        </scene>
+        <!--Quantity Selector View Controller-->
+        <scene sceneID="dEl-Mw-jHQ">
+            <objects>
+                <tableViewController storyboardIdentifier="TXHQuantitySelectorViewController" modalPresentationStyle="formSheet" id="pq1-NA-RtM" customClass="TXHQuantitySelectorViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="7gd-Ri-68E">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuantityCell" textLabel="oBM-J9-tm2" detailTextLabel="N4c-gG-LMj" style="IBUITableViewCellStyleValue2" id="dw8-h3-Cqg">
+                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="dw8-h3-Cqg" id="HTw-sd-dRK">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oBM-J9-tm2">
+                                            <rect key="frame" x="15" y="13" width="91" height="17"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N4c-gG-LMj">
+                                            <rect key="frame" x="112" y="13" width="37" height="17"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pq1-NA-RtM" id="Ata-ci-LHU"/>
+                            <outlet property="delegate" destination="pq1-NA-RtM" id="edL-9X-rg1"/>
+                        </connections>
+                    </tableView>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="600"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cEv-Y4-U5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5487" y="1658"/>
+        </scene>
         <!--Sales Wizard Details Base View Controller-->
         <scene sceneID="hYH-ce-lUE">
             <objects>
@@ -728,33 +855,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JO4-og-c2z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3746" y="2679"/>
-        </scene>
-        <!--Sales Wizard Details Base View Controller-->
-        <scene sceneID="sNK-gf-rGv">
-            <objects>
-                <viewController id="RRL-s0-Sdj" customClass="TXHSalesWizardDetailsBaseViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1Oh-Lb-5hj"/>
-                        <viewControllerLayoutGuide type="bottom" id="Yjw-Xe-qi8"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="dlY-3J-eMC">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Products" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hU6-fU-iQu">
-                                <rect key="frame" x="489" y="375" width="69" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WhX-gX-TE1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3746" y="1791"/>
         </scene>
         <!--Sales Wizard Details View Controller-->
         <scene sceneID="bGf-rX-p11">
@@ -842,11 +942,11 @@
                         <segue destination="T0G-a3-rT4" kind="custom" identifier="Embed Step1" customClass="TXHEmbeddingSegue" id="aOI-Ow-GKt"/>
                         <segue destination="T0G-a3-rT4" kind="custom" identifier="Transition To Step1" customClass="TXHTransitionSegue" id="ik4-FO-YMn"/>
                         <segue destination="uAI-bG-hdz" kind="custom" identifier="Transition To Step2" customClass="TXHTransitionSegue" id="La3-s7-ewm"/>
-                        <segue destination="RRL-s0-Sdj" kind="custom" identifier="Transition To Step4" customClass="TXHTransitionSegue" id="lSb-yj-e6o"/>
                         <segue destination="AMY-wT-Xeo" kind="custom" identifier="Transition To Step5" customClass="TXHTransitionSegue" id="JAa-TB-UKa"/>
                         <segue destination="tay-QP-yle" kind="custom" identifier="Transition To Step6" customClass="TXHTransitionSegue" id="vMF-Me-APH"/>
                         <segue destination="8RN-Pr-hoD" kind="custom" identifier="Transition To Step7" customClass="TXHTransitionSegue" id="ui8-tE-HNw"/>
                         <segue destination="2iF-it-Qwa" kind="custom" identifier="Transition To Step3" customClass="TXHTransitionSegue" id="33J-rC-64E"/>
+                        <segue destination="LoX-hP-sQk" kind="custom" identifier="Transition To Step4" customClass="TXHTransitionSegue" id="RG2-3j-sPg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJa-x6-Y6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1197,6 +1297,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Counter" width="80" height="40"/>
         <image name="EmptyCircle" width="43" height="43"/>
         <image name="Expanded" width="53" height="27"/>
     </resources>

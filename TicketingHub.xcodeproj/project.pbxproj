@@ -23,6 +23,7 @@
 		4D3FC11117B5480D0036D4DE /* TXHTextCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3FC11017B5480D0036D4DE /* TXHTextCollectionViewCell.m */; };
 		4D4FBE2B176B5BB70023A0D1 /* TXHDoorTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4FBE2A176B5BB70023A0D1 /* TXHDoorTimeController.m */; };
 		4D586DE11797E51E00E40534 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D586DE01797E51E00E40534 /* Images.xcassets */; };
+		4D58757417BA3BEB006264BA /* TXHQuantitySelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D58757317BA3BEB006264BA /* TXHQuantitySelectorViewController.m */; };
 		4D68DA9D178AD5F600743227 /* TXHSalesMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D68DA9C178AD5F600743227 /* TXHSalesMainViewController.m */; };
 		4D68DAA6178AE9E300743227 /* TXHOptionsExtrasItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D68DAA5178AE9E300743227 /* TXHOptionsExtrasItem.m */; };
 		4D68DAA9178B096A00743227 /* BarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D68DAA8178B096A00743227 /* BarcodeViewController.m */; };
@@ -46,6 +47,8 @@
 		4DB2F60017B3B3A200DD538F /* TXHSalesInformationTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2F5FF17B3B3A200DD538F /* TXHSalesInformationTextCell.m */; };
 		4DC31A5617A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC31A5517A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m */; };
 		4DC95F26179EA654004E035D /* TXHTimeslotSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC95F25179EA654004E035D /* TXHTimeslotSelectorViewController.m */; };
+		4DD9D82117B93A2F002AC6BD /* TXHSalesProductDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD9D82017B93A2F002AC6BD /* TXHSalesProductDetailsViewController.m */; };
+		4DD9D82417B93AF5002AC6BD /* TXHSalesProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD9D82317B93AF5002AC6BD /* TXHSalesProductCell.m */; };
 		4DE21FDD1799738C004D50F0 /* UIView+TXHAnimationConversions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE21FDC1799738C004D50F0 /* UIView+TXHAnimationConversions.m */; };
 		4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */; };
 		4DF9F95E179D50E90040FC5D /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F92E179D50E90040FC5D /* Customer.m */; };
@@ -165,6 +168,8 @@
 		4D4FBE2A176B5BB70023A0D1 /* TXHDoorTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorTimeController.m; sourceTree = "<group>"; };
 		4D586DDF1797E2BF00E40534 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		4D586DE01797E51E00E40534 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4D58757217BA3BEB006264BA /* TXHQuantitySelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHQuantitySelectorViewController.h; sourceTree = "<group>"; };
+		4D58757317BA3BEB006264BA /* TXHQuantitySelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHQuantitySelectorViewController.m; sourceTree = "<group>"; };
 		4D68DA9B178AD5F600743227 /* TXHSalesMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesMainViewController.h; sourceTree = "<group>"; };
 		4D68DA9C178AD5F600743227 /* TXHSalesMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesMainViewController.m; sourceTree = "<group>"; };
 		4D68DAA4178AE9E300743227 /* TXHOptionsExtrasItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHOptionsExtrasItem.h; sourceTree = "<group>"; };
@@ -210,6 +215,10 @@
 		4DC31A5517A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesWizardDetailsViewController.m; sourceTree = "<group>"; };
 		4DC95F24179EA654004E035D /* TXHTimeslotSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTimeslotSelectorViewController.h; sourceTree = "<group>"; };
 		4DC95F25179EA654004E035D /* TXHTimeslotSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTimeslotSelectorViewController.m; sourceTree = "<group>"; };
+		4DD9D81F17B93A2F002AC6BD /* TXHSalesProductDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesProductDetailsViewController.h; sourceTree = "<group>"; };
+		4DD9D82017B93A2F002AC6BD /* TXHSalesProductDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesProductDetailsViewController.m; sourceTree = "<group>"; };
+		4DD9D82217B93AF5002AC6BD /* TXHSalesProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesProductCell.h; sourceTree = "<group>"; };
+		4DD9D82317B93AF5002AC6BD /* TXHSalesProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesProductCell.m; sourceTree = "<group>"; };
 		4DE21FDB1799738C004D50F0 /* UIView+TXHAnimationConversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TXHAnimationConversions.h"; sourceTree = "<group>"; };
 		4DE21FDC1799738C004D50F0 /* UIView+TXHAnimationConversions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TXHAnimationConversions.m"; sourceTree = "<group>"; };
 		4DF3B5BC177082FF00D657AB /* TXHDoorMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorMainController.h; sourceTree = "<group>"; };
@@ -392,6 +401,8 @@
 				4D3FC11017B5480D0036D4DE /* TXHTextCollectionViewCell.m */,
 				4D38781617B8DE0900627612 /* TXHEmailCollectionViewCell.h */,
 				4D38781717B8DE0900627612 /* TXHEmailCollectionViewCell.m */,
+				4D58757217BA3BEB006264BA /* TXHQuantitySelectorViewController.h */,
+				4D58757317BA3BEB006264BA /* TXHQuantitySelectorViewController.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -702,6 +713,10 @@
 				4D38781D17B8EC2200627612 /* TXHSalesUpgradeHeader.m */,
 				4D38781F17B8F9CC00627612 /* TXHSalesUpgradeCell.h */,
 				4D38782017B8F9CC00627612 /* TXHSalesUpgradeCell.m */,
+				4DD9D81F17B93A2F002AC6BD /* TXHSalesProductDetailsViewController.h */,
+				4DD9D82017B93A2F002AC6BD /* TXHSalesProductDetailsViewController.m */,
+				4DD9D82217B93AF5002AC6BD /* TXHSalesProductCell.h */,
+				4DD9D82317B93AF5002AC6BD /* TXHSalesProductCell.m */,
 			);
 			path = Sales;
 			sourceTree = "<group>";
@@ -914,6 +929,7 @@
 				4DF9F970179D50E90040FC5D /* _TicketMaster.m in Sources */,
 				4D68DAA6178AE9E300743227 /* TXHOptionsExtrasItem.m in Sources */,
 				4D94B79617ABD53100943A9F /* TXHSalesTimerViewController.m in Sources */,
+				4DD9D82117B93A2F002AC6BD /* TXHSalesProductDetailsViewController.m in Sources */,
 				4DF9F965179D50E90040FC5D /* TicketType.m in Sources */,
 				4D38781E17B8EC2200627612 /* TXHSalesUpgradeHeader.m in Sources */,
 				4D25F648176CF08000A60359 /* TXHDoorGroupController.m in Sources */,
@@ -926,6 +942,7 @@
 				EEB4FD4A17B277D800F226BC /* AFHTTPClient.m in Sources */,
 				581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */,
 				4DF9F978179D5B4E0040FC5D /* TXHTransitionSegue.m in Sources */,
+				4DD9D82417B93AF5002AC6BD /* TXHSalesProductCell.m in Sources */,
 				4DF9F972179D50E90040FC5D /* _Tier.m in Sources */,
 				4DC31A5617A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m in Sources */,
 				581560D11765DAB3005C20EA /* TXHDoorDateController.m in Sources */,
@@ -966,6 +983,7 @@
 				4D1A0C2917A7F49C00960906 /* TXHTicketTier.m in Sources */,
 				4DB23D7117A17093002B7B11 /* TXHSalesWizardViewController.m in Sources */,
 				4DF9F975179D50E90040FC5D /* _Venue.m in Sources */,
+				4D58757417BA3BEB006264BA /* TXHQuantitySelectorViewController.m in Sources */,
 				EEB4FD4E17B277D800F226BC /* AFNetworkActivityIndicatorManager.m in Sources */,
 				EEB4FD4B17B277D800F226BC /* AFHTTPRequestOperation.m in Sources */,
 				4D859FF2179453EA000B2FCC /* TXHSeason.m in Sources */,
