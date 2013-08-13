@@ -13,8 +13,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *headerTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *expandedCollapsedImageView;
 
-@property (strong, nonatomic) UIImage *expandedImage;
-@property (strong, nonatomic) UIImage *collapsedImage;
+@property (strong, nonatomic) UIImage *expandImage;
+@property (strong, nonatomic) UIImage *collapseImage;
 
 @end
 
@@ -39,11 +39,11 @@
 
 - (void)setup {
     // Create images for expanded and collapsed modes
-    self.expandedImage = [[UIImage imageNamed:@"Expanded"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.collapsedImage = [[UIImage imageNamed:@"Collapsed"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.expandImage = [[UIImage imageNamed:@"Expand"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.collapseImage = [[UIImage imageNamed:@"Collapse"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     
     // Assign the collapsed mode at startup
-    self.expandedCollapsedImageView.image = self.collapsedImage;
+    self.expandedCollapsedImageView.image = self.collapseImage;
     self.expandedCollapsedImageView.tintColor = [UIColor colorWithRed:77.0f / 255.0f
                                                                 green:134.0f / 255.0f
                                                                  blue:180.0f / 255.0f
@@ -70,7 +70,7 @@
 
 - (void)setIsExpanded:(BOOL)isExpanded {
     _isExpanded = isExpanded;
-    self.expandedCollapsedImageView.image = isExpanded ? self.expandedImage : self.collapsedImage;
+    self.expandedCollapsedImageView.image = isExpanded ? self.collapseImage : self.expandImage;
 }
 
 - (void)toggleMode:(UITapGestureRecognizer *)gesture {

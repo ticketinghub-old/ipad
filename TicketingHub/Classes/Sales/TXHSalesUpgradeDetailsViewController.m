@@ -56,8 +56,9 @@
 - (void)setup {
     self.sections = [NSMutableDictionary dictionary];
     // For now set sections to be expanded
-    for (int index = 0; index < 4; index++) {
-        self.sections[@(index)] = @YES;
+    self.sections[@(0)] = @YES;
+    for (int index = 1; index < 4; index++) {
+        self.sections[@(index)] = @NO;
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShown:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -228,6 +229,7 @@
                 header.ticketTitle = attString;
                 break;
         }
+        header.isExpanded = [self.sections[@(indexPath.section)] boolValue];
         return header;
     } else if (kind == UICollectionElementKindSectionFooter) {
         UICollectionReusableView *footer = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"TXHSalesUpgradeFooter" forIndexPath:indexPath];
@@ -246,6 +248,7 @@
 
 - (void)toggleSection:(id)sender {
     TXHSalesUpgradeHeader *header = sender;
+    NSLog(@"%s - Expanded:%@", __FUNCTION__, header.isExpanded ? @"YES" : @"NO");
     self.sections[@(header.section)] = [NSNumber numberWithBool:header.isExpanded];
     [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:header.section]];
 }
