@@ -261,7 +261,7 @@
                                                     <color key="textColor" red="0.13725490200000001" green="0.2470588235" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="EmptyCircle" translatesAutoresizingMaskIntoConstraints="NO" id="kd6-ZV-JNk">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="EmptyCircle" translatesAutoresizingMaskIntoConstraints="NO" id="kd6-ZV-JNk">
                                                     <rect key="frame" x="20" y="17" width="40" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <constraints>
@@ -1552,6 +1552,10 @@
         <scene sceneID="Cqk-w3-mdl">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="Z2H-xZ-GsB" customClass="TXHSalesPaymentPaymentDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z13-Qo-vWo"/>
+                        <viewControllerLayoutGuide type="bottom" id="6pp-jg-1R1"/>
+                    </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ia8-zE-TDe">
                         <rect key="frame" x="0.0" y="0.0" width="763" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
