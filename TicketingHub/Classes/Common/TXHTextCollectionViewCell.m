@@ -8,17 +8,36 @@
 
 #import "TXHTextCollectionViewCell.h"
 
-@interface TXHTextCollectionViewCell ()
+@interface TXHTextCollectionViewCell () <UITextFieldDelegate>
 
-@property (strong, nonatomic) UITextField *textField;
+@property TXHTextEntryView *placeholder;
 
 @end
 
 @implementation TXHTextCollectionViewCell
 
 - (void)setupDataContent {
-    _textField = [[UITextField alloc] initWithFrame:CGRectZero];
-    [self updateDataContentView:_textField];
+    [super setupDataContent];
+    self.placeholder = [[TXHTextEntryView alloc] initWithFrame:self.bounds];
+    [self.contentView addSubview:self.placeholder];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [[UIApplication sharedApplication] sendAction:@selector(makeCellVisible:) to:nil from:self forEvent:nil];
+    
+    if (self.errorMessage.length) {
+        // If there is an error message associated with this data item, clear it when editing occurs.
+        self.errorMessage = @"";
+    }
+}
+
+- (TXHTextEntryView *)textField {
+    return self.placeholder;
+}
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    [self.textField reset];
 }
 
 @end

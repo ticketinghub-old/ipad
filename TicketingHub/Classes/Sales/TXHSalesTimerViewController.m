@@ -95,6 +95,7 @@
 - (void)resetPresentationAnimated:(BOOL)animated {
     [self hideCountdownTimer:YES];
     [self hidePaymentSelection:YES animated:animated];
+    [self hideCoupon:YES animated:animated];
 }
 
 - (void)hideCoupon:(BOOL)hidden animated:(BOOL)animated {

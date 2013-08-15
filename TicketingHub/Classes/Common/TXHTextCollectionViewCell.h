@@ -8,8 +8,10 @@
 
 #import "TXHBaseCollectionViewCell.h"
 
+#import "TXHTextEntryView.h"
+
 @interface TXHTextCollectionViewCell : TXHBaseCollectionViewCell
 
-@property (readonly, nonatomic) UITextField *textField;
+@property (readonly, nonatomic) TXHTextEntryView *textField;
 
 @end

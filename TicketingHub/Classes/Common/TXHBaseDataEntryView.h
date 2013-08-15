@@ -1,16 +1,14 @@
 //
-//  TXHBaseCollectionViewCell.h
+//  TXHBaseDataEntryView.h
 //  TicketingHub
 //
-//  Created by Mark on 09/08/2013.
+//  Created by Mark on 14/08/2013.
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@class TXHBaseDataEntryView;
-
-@interface TXHBaseCollectionViewCell : UICollectionViewCell
+@interface TXHBaseDataEntryView : UIView
 
 // an error message to display above & overlapping the data content view
 @property (strong, nonatomic) NSString *errorMessage;
