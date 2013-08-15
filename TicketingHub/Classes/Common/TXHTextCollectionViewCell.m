@@ -10,7 +10,7 @@
 
 @interface TXHTextCollectionViewCell () <UITextFieldDelegate>
 
-@property (strong, nonatomic) UITextField *textField;
+@property TXHTextEntryView *placeholder;
 
 @end
 
@@ -18,14 +18,12 @@
 
 - (void)setupDataContent {
     [super setupDataContent];
-    _textField = [[UITextField alloc] initWithFrame:CGRectZero];
-    _textField.delegate = self;
-    [self updateDataContentView:_textField];
+    self.placeholder = [[TXHTextEntryView alloc] initWithFrame:self.bounds];
+    [self.contentView addSubview:self.placeholder];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     [[UIApplication sharedApplication] sendAction:@selector(makeCellVisible:) to:nil from:self forEvent:nil];
-//    [self performSelector:@selector(focusView:) withObject:self];
     
     if (self.errorMessage.length) {
         // If there is an error message associated with this data item, clear it when editing occurs.
@@ -33,12 +31,13 @@
     }
 }
 
-- (void)focusView:(id)sender {
+- (TXHTextEntryView *)textField {
+    return self.placeholder;
 }
 
 - (void)prepareForReuse {
     [super prepareForReuse];
-    self.textField.text = @"";
+    [self.textField reset];
 }
 
 @end

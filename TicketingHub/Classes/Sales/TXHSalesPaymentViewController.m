@@ -46,13 +46,65 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    __block typeof(self) blockSelf = self;
+    self.completionBlock = ^{
+        // Update the order for tickets
+        NSLog(@"Update order for %@", blockSelf);
+    };
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self configureTimerViewController];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (TXHSalesTimerViewController *)timerViewController {
+    return _timerViewController;
+}
+
+- (void)setTimerViewController:(TXHSalesTimerViewController *)timerViewController {
+    _timerViewController = timerViewController;
+    [self configureTimerViewController];
+}
+
+- (TXHSalesCompletionViewController *)completionViewController {
+    return _completionViewController;
+}
+
+- (void)setCompletionViewController:(TXHSalesCompletionViewController *)completionViewController {
+    _completionViewController = completionViewController;
+    [self configureCompletionViewController];
+}
+
+- (void (^)(void))completionBlock {
+    return _completionBlock;
+}
+
+- (void)setCompletionBlock:(void (^)(void))completionBlock {
+    _completionBlock = completionBlock;
+    [self configureCompletionViewController];
+}
+
+- (void)configureTimerViewController {
+    // Set up the timer view to reflect our details
+    if (self.timerViewController) {
+        [self.timerViewController resetPresentationAnimated:NO];
+        self.timerViewController.stepTitle = NSLocalizedString(@"Payment", @"Payment");
+        [self.timerViewController hidePaymentSelection:NO animated:YES];
+        [self.timerViewController hideCountdownTimer:NO];
+    }
+}
+
+- (void)configureCompletionViewController {
+    // Set up the completion view controller to reflect ticket tier details
+    [self.completionViewController setCompletionBlock:self.completionBlock];
 }
 
 @end

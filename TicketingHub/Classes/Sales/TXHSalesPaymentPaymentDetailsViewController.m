@@ -8,6 +8,9 @@
 
 #import "TXHSalesPaymentPaymentDetailsViewController.h"
 
+#import "TXHEmbeddingSegue.h";
+#import "TXHTransitionSegue.h"
+
 @interface TXHSalesPaymentPaymentDetailsViewController ()
 
 @end
@@ -27,6 +30,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self performSegueWithIdentifier:@"Embed TXHSalesPaymentCardDetailsViewController" sender:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +39,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+#pragma unused (sender)
+    if ([segue.identifier isEqualToString:@"Embed TXHSalesPaymentCardDetailsViewController"])
+    {
+        TXHEmbeddingSegue *embeddingSegue = (TXHEmbeddingSegue *)segue;
+        embeddingSegue.containerView = self.view;
+    }
+    
+    if ([segue isMemberOfClass:[TXHTransitionSegue class]]) {
+        TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
+        transitionSegue.containerView = self.view;
+    }
+}
 @end

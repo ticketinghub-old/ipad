@@ -236,6 +236,7 @@
         switch (indexPath.row) {
             case 0: {
                 TXHTextCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"text" forIndexPath:indexPath];
+                cell.textField.placeholder = @"Placeholder Text";
                 cell.errorMessage = [NSString stringWithFormat:@"error %d", indexPath.row];
                 return cell;
             }

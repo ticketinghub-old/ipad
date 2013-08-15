@@ -56,6 +56,8 @@
 		4DB791E017BB749700B707D9 /* TXHSalesPaymentCashDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB791DF17BB749700B707D9 /* TXHSalesPaymentCashDetailsViewController.m */; };
 		4DB791E317BB74B800B707D9 /* TXHSalesPaymentCreditDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB791E217BB74B800B707D9 /* TXHSalesPaymentCreditDetailsViewController.m */; };
 		4DB791E917BB7FC400B707D9 /* TXHBaseDataEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB791E817BB7FC400B707D9 /* TXHBaseDataEntryView.m */; };
+		4DB791EC17BB91D000B707D9 /* TXHTextEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB791EB17BB91D000B707D9 /* TXHTextEntryView.m */; };
+		4DB791EF17BBC87F00B707D9 /* TXHCreditCardNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB791EE17BBC87F00B707D9 /* TXHCreditCardNumberView.m */; };
 		4DC31A5617A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC31A5517A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m */; };
 		4DC95F26179EA654004E035D /* TXHTimeslotSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC95F25179EA654004E035D /* TXHTimeslotSelectorViewController.m */; };
 		4DD9D82117B93A2F002AC6BD /* TXHSalesProductDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD9D82017B93A2F002AC6BD /* TXHSalesProductDetailsViewController.m */; };
@@ -244,6 +246,10 @@
 		4DB791E217BB74B800B707D9 /* TXHSalesPaymentCreditDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesPaymentCreditDetailsViewController.m; sourceTree = "<group>"; };
 		4DB791E717BB7FC400B707D9 /* TXHBaseDataEntryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBaseDataEntryView.h; sourceTree = "<group>"; };
 		4DB791E817BB7FC400B707D9 /* TXHBaseDataEntryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBaseDataEntryView.m; sourceTree = "<group>"; };
+		4DB791EA17BB91D000B707D9 /* TXHTextEntryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTextEntryView.h; sourceTree = "<group>"; };
+		4DB791EB17BB91D000B707D9 /* TXHTextEntryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTextEntryView.m; sourceTree = "<group>"; };
+		4DB791ED17BBC87F00B707D9 /* TXHCreditCardNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHCreditCardNumberView.h; sourceTree = "<group>"; };
+		4DB791EE17BBC87F00B707D9 /* TXHCreditCardNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCreditCardNumberView.m; sourceTree = "<group>"; };
 		4DC31A5417A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesWizardDetailsViewController.h; sourceTree = "<group>"; };
 		4DC31A5517A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesWizardDetailsViewController.m; sourceTree = "<group>"; };
 		4DC95F24179EA654004E035D /* TXHTimeslotSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTimeslotSelectorViewController.h; sourceTree = "<group>"; };
@@ -438,6 +444,10 @@
 				4D58757317BA3BEB006264BA /* TXHQuantitySelectorViewController.m */,
 				4DB791E717BB7FC400B707D9 /* TXHBaseDataEntryView.h */,
 				4DB791E817BB7FC400B707D9 /* TXHBaseDataEntryView.m */,
+				4DB791EA17BB91D000B707D9 /* TXHTextEntryView.h */,
+				4DB791EB17BB91D000B707D9 /* TXHTextEntryView.m */,
+				4DB791ED17BBC87F00B707D9 /* TXHCreditCardNumberView.h */,
+				4DB791EE17BBC87F00B707D9 /* TXHCreditCardNumberView.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1001,6 +1011,7 @@
 				581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */,
 				4DF9F978179D5B4E0040FC5D /* TXHTransitionSegue.m in Sources */,
 				4DD9D82417B93AF5002AC6BD /* TXHSalesProductCell.m in Sources */,
+				4DB791EF17BBC87F00B707D9 /* TXHCreditCardNumberView.m in Sources */,
 				4DF9F972179D50E90040FC5D /* _Tier.m in Sources */,
 				4DB791D717BB734400B707D9 /* TXHSalesPaymentCustomerDetailViewController.m in Sources */,
 				4DC31A5617A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m in Sources */,
@@ -1036,6 +1047,7 @@
 				EEB4FD5117B277D800F226BC /* AFXMLRequestOperation.m in Sources */,
 				EEB4FD5017B277D800F226BC /* AFURLConnectionOperation.m in Sources */,
 				4DF9F968179D50E90040FC5D /* VariationOption.m in Sources */,
+				4DB791EC17BB91D000B707D9 /* TXHTextEntryView.m in Sources */,
 				EEB4FD5417B277D800F226BC /* UIImageView+AFNetworking.m in Sources */,
 				4D38781B17B8EAFB00627612 /* TXHSalesUpgradeDetailsViewController.m in Sources */,
 				4DF9F962179D50E90040FC5D /* SeasonOption.m in Sources */,

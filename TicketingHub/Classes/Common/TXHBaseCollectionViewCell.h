@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class TXHBaseDataEntryView;
+
 @interface TXHBaseCollectionViewCell : UICollectionViewCell
 
 // an error message to display above & overlapping the data content view

@@ -8,6 +8,8 @@
 
 #import "TXHBaseDataEntryView.h"
 
+@import QuartzCore;
+
 #import "TXHDataEntryFieldErrorView.h"
 
 @interface TXHBaseDataEntryView ()
