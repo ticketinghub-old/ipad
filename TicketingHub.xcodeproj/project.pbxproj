@@ -63,8 +63,6 @@
 		4DB7925017BCC32100B707D9 /* STPView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB791F617BCC32100B707D9 /* STPView.m */; };
 		4DB7925117BCC32100B707D9 /* Stripe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB791F917BCC32100B707D9 /* Stripe.m */; };
 		4DB7925217BCC32100B707D9 /* StripeError.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB791FB17BCC32100B707D9 /* StripeError.m */; };
-		4DB7925317BCC32100B707D9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4DB791FE17BCC32100B707D9 /* .gitignore */; };
-		4DB7925417BCC32100B707D9 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4DB791FF17BCC32100B707D9 /* LICENSE */; };
 		4DB7925517BCC32100B707D9 /* PKAddressZip.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB7920217BCC32100B707D9 /* PKAddressZip.m */; };
 		4DB7925617BCC32100B707D9 /* PKCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB7920417BCC32100B707D9 /* PKCard.m */; };
 		4DB7925717BCC32100B707D9 /* PKCardCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB7920617BCC32100B707D9 /* PKCardCVC.m */; };
@@ -94,8 +92,6 @@
 		4DB7926F17BCC32100B707D9 /* gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB7922617BCC32100B707D9 /* gradient@2x.png */; };
 		4DB7927017BCC32100B707D9 /* textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB7922717BCC32100B707D9 /* textfield.png */; };
 		4DB7927117BCC32100B707D9 /* textfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB7922817BCC32100B707D9 /* textfield@2x.png */; };
-		4DB7928317BCC32100B707D9 /* PaymentKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 4DB7924C17BCC32100B707D9 /* PaymentKit.podspec */; };
-		4DB7928417BCC32100B707D9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4DB7924D17BCC32100B707D9 /* README.md */; };
 		4DC31A5617A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC31A5517A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m */; };
 		4DC95F26179EA654004E035D /* TXHTimeslotSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC95F25179EA654004E035D /* TXHTimeslotSelectorViewController.m */; };
 		4DD9D82117B93A2F002AC6BD /* TXHSalesProductDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD9D82017B93A2F002AC6BD /* TXHSalesProductDetailsViewController.m */; };
@@ -299,8 +295,6 @@
 		4DB791F917BCC32100B707D9 /* Stripe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stripe.m; sourceTree = "<group>"; };
 		4DB791FA17BCC32100B707D9 /* StripeError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeError.h; sourceTree = "<group>"; };
 		4DB791FB17BCC32100B707D9 /* StripeError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeError.m; sourceTree = "<group>"; };
-		4DB791FE17BCC32100B707D9 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		4DB791FF17BCC32100B707D9 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4DB7920117BCC32100B707D9 /* PKAddressZip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKAddressZip.h; sourceTree = "<group>"; };
 		4DB7920217BCC32100B707D9 /* PKAddressZip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKAddressZip.m; sourceTree = "<group>"; };
 		4DB7920317BCC32100B707D9 /* PKCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKCard.h; sourceTree = "<group>"; };
@@ -339,8 +333,6 @@
 		4DB7922617BCC32100B707D9 /* gradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gradient@2x.png"; sourceTree = "<group>"; };
 		4DB7922717BCC32100B707D9 /* textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textfield.png; sourceTree = "<group>"; };
 		4DB7922817BCC32100B707D9 /* textfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield@2x.png"; sourceTree = "<group>"; };
-		4DB7924C17BCC32100B707D9 /* PaymentKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PaymentKit.podspec; sourceTree = "<group>"; };
-		4DB7924D17BCC32100B707D9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		4DC31A5417A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesWizardDetailsViewController.h; sourceTree = "<group>"; };
 		4DC31A5517A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesWizardDetailsViewController.m; sourceTree = "<group>"; };
 		4DC95F24179EA654004E035D /* TXHTimeslotSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTimeslotSelectorViewController.h; sourceTree = "<group>"; };
@@ -584,11 +576,7 @@
 		4DB791FD17BCC32100B707D9 /* PaymentKit */ = {
 			isa = PBXGroup;
 			children = (
-				4DB791FE17BCC32100B707D9 /* .gitignore */,
-				4DB791FF17BCC32100B707D9 /* LICENSE */,
 				4DB7920017BCC32100B707D9 /* PaymentKit */,
-				4DB7924C17BCC32100B707D9 /* PaymentKit.podspec */,
-				4DB7924D17BCC32100B707D9 /* README.md */,
 			);
 			path = PaymentKit;
 			sourceTree = "<group>";
@@ -1125,21 +1113,17 @@
 				4DB7926717BCC32100B707D9 /* jcb.png in Resources */,
 				4DB7926B17BCC32100B707D9 /* placeholder.png in Resources */,
 				4DB7926017BCC32100B707D9 /* cvc-amex@2x.png in Resources */,
-				4DB7925417BCC32100B707D9 /* LICENSE in Resources */,
 				4DB7925D17BCC32100B707D9 /* amex.png in Resources */,
 				4DB7926417BCC32100B707D9 /* diners@2x.png in Resources */,
 				4DB7926A17BCC32100B707D9 /* mastercard@2x.png in Resources */,
 				4DB7926917BCC32100B707D9 /* mastercard.png in Resources */,
 				58E4FB6B1760AE5500E328A0 /* Default@2x.png in Resources */,
 				4DB7926C17BCC32100B707D9 /* placeholder@2x.png in Resources */,
-				4DB7928417BCC32100B707D9 /* README.md in Resources */,
 				4DB7926617BCC32100B707D9 /* discover@2x.png in Resources */,
 				4DB7926E17BCC32100B707D9 /* visa@2x.png in Resources */,
-				4DB7928317BCC32100B707D9 /* PaymentKit.podspec in Resources */,
 				4DB7925E17BCC32100B707D9 /* amex@2x.png in Resources */,
 				58E4FB6D1760AE5500E328A0 /* Default-568h@2x.png in Resources */,
 				58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */,
-				4DB7925317BCC32100B707D9 /* .gitignore in Resources */,
 				4DB7927017BCC32100B707D9 /* textfield.png in Resources */,
 				4DB7926317BCC32100B707D9 /* diners.png in Resources */,
 				4DB7927117BCC32100B707D9 /* textfield@2x.png in Resources */,
