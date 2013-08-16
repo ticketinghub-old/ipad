@@ -25,6 +25,7 @@ extern const struct TXHVenueMOAttributes {
 } TXHVenueMOAttributes;
 
 extern const struct TXHVenueMORelationships {
+	__unsafe_unretained NSString *options;
 	__unsafe_unretained NSString *permissions;
 	__unsafe_unretained NSString *user;
 } TXHVenueMORelationships;
@@ -32,6 +33,7 @@ extern const struct TXHVenueMORelationships {
 extern const struct TXHVenueMOFetchedProperties {
 } TXHVenueMOFetchedProperties;
 
+@class TXHOptionMO;
 @class TXHPermissionMO;
 @class TXHUserMO;
 
@@ -248,6 +250,13 @@ extern const struct TXHVenueMOFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSSet *options;
+
+- (NSMutableSet*)optionsSet;
+
+
+
+
 @property (nonatomic, strong) NSSet *permissions;
 
 - (NSMutableSet*)permissionsSet;
@@ -266,6 +275,10 @@ extern const struct TXHVenueMOFetchedProperties {
 #if TARGET_OS_IPHONE
 
 
+- (NSFetchedResultsController*)newOptionsFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors;
+
+
+
 - (NSFetchedResultsController*)newPermissionsFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors;
 
 
@@ -276,6 +289,11 @@ extern const struct TXHVenueMOFetchedProperties {
 @end
 
 @interface _TXHVenueMO (CoreDataGeneratedAccessors)
+
+- (void)addOptions:(NSSet*)value_;
+- (void)removeOptions:(NSSet*)value_;
+- (void)addOptionsObject:(TXHOptionMO*)value_;
+- (void)removeOptionsObject:(TXHOptionMO*)value_;
 
 - (void)addPermissions:(NSSet*)value_;
 - (void)removePermissions:(NSSet*)value_;
@@ -396,6 +414,11 @@ extern const struct TXHVenueMOFetchedProperties {
 - (void)setPrimitiveWebsite:(NSString*)value;
 
 
+
+
+
+- (NSMutableSet*)primitiveOptions;
+- (void)setPrimitiveOptions:(NSMutableSet*)value;
 
 
 

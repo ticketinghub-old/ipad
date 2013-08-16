@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3389" systemVersion="13A538g" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="TXHOptionMO" representedClassName="TXHOptionMO" syncable="YES">
+        <attribute name="duration" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timeString" attributeType="String" syncable="YES"/>
+        <attribute name="weekdayIndex" attributeType="Integer 16" minValueString="1" maxValueString="7" defaultValueString="1" syncable="YES"/>
+        <relationship name="venue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TXHVenueMO" inverseName="options" inverseEntity="TXHVenueMO" syncable="YES"/>
+    </entity>
     <entity name="TXHPermissionMO" representedClassName="TXHPermissionMO" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="venues" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TXHVenueMO" inverseName="permissions" inverseEntity="TXHVenueMO" syncable="YES"/>
+    </entity>
+    <entity name="TXHSeasonMO" representedClassName="TXHSeasonMO" syncable="YES">
+        <attribute name="endDate" attributeType="Date" syncable="YES"/>
+        <attribute name="startDate" attributeType="Date" syncable="YES"/>
     </entity>
     <entity name="TXHUserMO" representedClassName="TXHUserMO" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
@@ -32,12 +42,15 @@
         <attribute name="venueId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="venueName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="options" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TXHOptionMO" inverseName="venue" inverseEntity="TXHOptionMO" syncable="YES"/>
         <relationship name="permissions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TXHPermissionMO" inverseName="venues" inverseEntity="TXHPermissionMO" syncable="YES"/>
         <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="TXHUserMO" inverseName="venues" inverseEntity="TXHUserMO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="TXHPermissionMO" positionX="-9" positionY="-81" width="128" height="75"/>
-        <element name="TXHUserMO" positionX="-9" positionY="18" width="128" height="105"/>
-        <element name="TXHVenueMO" positionX="-344" positionY="-267" width="128" height="330"/>
+        <element name="TXHPermissionMO" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TXHSeasonMO" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TXHUserMO" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TXHVenueMO" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TXHOptionMO" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

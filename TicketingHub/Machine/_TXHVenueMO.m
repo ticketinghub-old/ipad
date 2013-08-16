@@ -24,6 +24,7 @@ const struct TXHVenueMOAttributes TXHVenueMOAttributes = {
 };
 
 const struct TXHVenueMORelationships TXHVenueMORelationships = {
+	.options = @"options",
 	.permissions = @"permissions",
 	.user = @"user",
 };
@@ -255,6 +256,19 @@ const struct TXHVenueMOFetchedProperties TXHVenueMOFetchedProperties = {
 
 
 
+@dynamic options;
+
+	
+- (NSMutableSet*)optionsSet {
+	[self willAccessValueForKey:@"options"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"options"];
+  
+	[self didAccessValueForKey:@"options"];
+	return result;
+}
+	
+
 @dynamic permissions;
 
 	
@@ -278,6 +292,21 @@ const struct TXHVenueMOFetchedProperties TXHVenueMOFetchedProperties = {
 
 
 #if TARGET_OS_IPHONE
+
+
+- (NSFetchedResultsController*)newOptionsFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors {
+	NSFetchRequest *fetchRequest = [NSFetchRequest new];
+	
+	fetchRequest.entity = [NSEntityDescription entityForName:@"TXHOptionMO" inManagedObjectContext:self.managedObjectContext];
+	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"venue == %@", self];
+	fetchRequest.sortDescriptors = sortDescriptors;
+	
+	return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+											   managedObjectContext:self.managedObjectContext
+												 sectionNameKeyPath:nil
+														  cacheName:nil];
+}
+
 
 
 - (NSFetchedResultsController*)newPermissionsFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors {

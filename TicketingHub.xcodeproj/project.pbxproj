@@ -76,7 +76,6 @@
 		58E4FB551760AE5500E328A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB541760AE5500E328A0 /* UIKit.framework */; };
 		58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB561760AE5500E328A0 /* Foundation.framework */; };
 		58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB581760AE5500E328A0 /* CoreGraphics.framework */; };
-		58E4FB5B1760AE5500E328A0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB5A1760AE5500E328A0 /* CoreData.framework */; };
 		58E4FB611760AE5500E328A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB5F1760AE5500E328A0 /* InfoPlist.strings */; };
 		58E4FB631760AE5500E328A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB621760AE5500E328A0 /* main.m */; };
 		58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB661760AE5500E328A0 /* TXHAppDelegate.m */; };
@@ -86,7 +85,6 @@
 		58E4FB781760AE5500E328A0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB771760AE5500E328A0 /* SenTestingKit.framework */; };
 		58E4FB791760AE5500E328A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB541760AE5500E328A0 /* UIKit.framework */; };
 		58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB561760AE5500E328A0 /* Foundation.framework */; };
-		58E4FB7B1760AE5500E328A0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB5A1760AE5500E328A0 /* CoreData.framework */; };
 		58E4FB831760AE5500E328A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB811760AE5500E328A0 /* InfoPlist.strings */; };
 		58E4FB861760AE5500E328A0 /* TicketingHubTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB851760AE5500E328A0 /* TicketingHubTests.m */; };
 		58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB911760AEF300E328A0 /* Storyboard.storyboard */; };
@@ -102,6 +100,10 @@
 		EE6D999417BD453400D1E7CD /* TXHOption.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D998F17BD453400D1E7CD /* TXHOption.m */; };
 		EE6D999517BD453400D1E7CD /* TXHSeason.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D999117BD453400D1E7CD /* TXHSeason.m */; };
 		EE6D999617BD453400D1E7CD /* TXHVariation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D999317BD453400D1E7CD /* TXHVariation.m */; };
+		EE8719C217BE30B80055437C /* TXHOptionMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8719BF17BE30B80055437C /* TXHOptionMO.m */; };
+		EE8719C317BE30B80055437C /* TXHSeasonMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8719C117BE30B80055437C /* TXHSeasonMO.m */; };
+		EE8719C817BE30CB0055437C /* _TXHOptionMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8719C517BE30CB0055437C /* _TXHOptionMO.m */; };
+		EE8719C917BE30CB0055437C /* _TXHSeasonMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8719C717BE30CB0055437C /* _TXHSeasonMO.m */; };
 		EEA6863F17B3DF0D0024B002 /* TXHVenueMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA6863D17B3DF0D0024B002 /* TXHVenueMO.m */; };
 		EEABD7F617B4088300E17D54 /* TXHVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA6864717B3E47D0024B002 /* TXHVenue.m */; };
 		EEABD7F717B4092800E17D54 /* TXHPermissionMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE935E7C17B3FE3D0080A1C2 /* TXHPermissionMO.m */; };
@@ -270,7 +272,6 @@
 		58E4FB541760AE5500E328A0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		58E4FB561760AE5500E328A0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		58E4FB581760AE5500E328A0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		58E4FB5A1760AE5500E328A0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		58E4FB5E1760AE5500E328A0 /* TicketingHub-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TicketingHub-Info.plist"; sourceTree = "<group>"; };
 		58E4FB601760AE5500E328A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58E4FB621760AE5500E328A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -357,6 +358,14 @@
 		EE6D999117BD453400D1E7CD /* TXHSeason.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSeason.m; sourceTree = "<group>"; };
 		EE6D999217BD453400D1E7CD /* TXHVariation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVariation.h; sourceTree = "<group>"; };
 		EE6D999317BD453400D1E7CD /* TXHVariation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVariation.m; sourceTree = "<group>"; };
+		EE8719BE17BE30B80055437C /* TXHOptionMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHOptionMO.h; sourceTree = "<group>"; };
+		EE8719BF17BE30B80055437C /* TXHOptionMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOptionMO.m; sourceTree = "<group>"; };
+		EE8719C017BE30B80055437C /* TXHSeasonMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSeasonMO.h; sourceTree = "<group>"; };
+		EE8719C117BE30B80055437C /* TXHSeasonMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSeasonMO.m; sourceTree = "<group>"; };
+		EE8719C417BE30CB0055437C /* _TXHOptionMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHOptionMO.h; sourceTree = "<group>"; };
+		EE8719C517BE30CB0055437C /* _TXHOptionMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHOptionMO.m; sourceTree = "<group>"; };
+		EE8719C617BE30CB0055437C /* _TXHSeasonMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHSeasonMO.h; sourceTree = "<group>"; };
+		EE8719C717BE30CB0055437C /* _TXHSeasonMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHSeasonMO.m; sourceTree = "<group>"; };
 		EE935E7417B3EB630080A1C2 /* CommonMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonMacros.h; sourceTree = "<group>"; };
 		EE935E7617B3EDFA0080A1C2 /* TicketingHub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TicketingHub.xcdatamodel; sourceTree = "<group>"; };
 		EE935E7B17B3FE3D0080A1C2 /* TXHPermissionMO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHPermissionMO.h; sourceTree = "<group>"; };
@@ -414,7 +423,6 @@
 				58E4FB551760AE5500E328A0 /* UIKit.framework in Frameworks */,
 				58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */,
 				58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */,
-				58E4FB5B1760AE5500E328A0 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,7 +433,6 @@
 				58E4FB781760AE5500E328A0 /* SenTestingKit.framework in Frameworks */,
 				58E4FB791760AE5500E328A0 /* UIKit.framework in Frameworks */,
 				58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */,
-				58E4FB7B1760AE5500E328A0 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,8 +499,12 @@
 		4DF9F92C179D50E90040FC5D /* Human */ = {
 			isa = PBXGroup;
 			children = (
+				EE8719BE17BE30B80055437C /* TXHOptionMO.h */,
+				EE8719BF17BE30B80055437C /* TXHOptionMO.m */,
 				EE935E7B17B3FE3D0080A1C2 /* TXHPermissionMO.h */,
 				EE935E7C17B3FE3D0080A1C2 /* TXHPermissionMO.m */,
+				EE8719C017BE30B80055437C /* TXHSeasonMO.h */,
+				EE8719C117BE30B80055437C /* TXHSeasonMO.m */,
 				EEA6863A17B3DF0D0024B002 /* TXHUserMO.h */,
 				EEA6863B17B3DF0D0024B002 /* TXHUserMO.m */,
 				EEA6863C17B3DF0D0024B002 /* TXHVenueMO.h */,
@@ -506,8 +517,12 @@
 		4DF9F945179D50E90040FC5D /* Machine */ = {
 			isa = PBXGroup;
 			children = (
+				EE8719C417BE30CB0055437C /* _TXHOptionMO.h */,
+				EE8719C517BE30CB0055437C /* _TXHOptionMO.m */,
 				EE11AE1317BD2E18000042B2 /* _TXHPermissionMO.h */,
 				EE11AE1417BD2E18000042B2 /* _TXHPermissionMO.m */,
+				EE8719C617BE30CB0055437C /* _TXHSeasonMO.h */,
+				EE8719C717BE30CB0055437C /* _TXHSeasonMO.m */,
 				EE11AE1917BD2E78000042B2 /* _TXHUserMO.h */,
 				EE11AE1A17BD2EA4000042B2 /* _TXHUserMO.m */,
 				EE11AE1617BD2E48000042B2 /* _TXHVenueMO.h */,
@@ -556,7 +571,6 @@
 			isa = PBXGroup;
 			children = (
 				4D68DAAA178B0A5400743227 /* AVFoundation.framework */,
-				58E4FB5A1760AE5500E328A0 /* CoreData.framework */,
 				58E4FB581760AE5500E328A0 /* CoreGraphics.framework */,
 				58E4FB561760AE5500E328A0 /* Foundation.framework */,
 				EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */,
@@ -1084,14 +1098,17 @@
 				4D0E5131178C0BBC009436AC /* TXHDataDownloader.m in Sources */,
 				4DB2F60017B3B3A200DD538F /* TXHSalesInformationTextCell.m in Sources */,
 				EE11AE0F17BD2C84000042B2 /* DCTCoreDataStack.m in Sources */,
+				EE8719C317BE30B80055437C /* TXHSeasonMO.m in Sources */,
 				4D94B7A417AFFB9100943A9F /* TXHSalesInformationDetailsViewController.m in Sources */,
 				4DF9F97E179D62970040FC5D /* TXHEmbeddingSegue.m in Sources */,
 				EEA6863F17B3DF0D0024B002 /* TXHVenueMO.m in Sources */,
 				581560CD1765D38A005C20EA /* TXHFlowLayout.m in Sources */,
+				EE8719C217BE30B80055437C /* TXHOptionMO.m in Sources */,
 				4D307DB71796F9FC00822645 /* TXHTicketDetail.m in Sources */,
 				4D859FF517945E4D000B2FCC /* TXHVariation_old.m in Sources */,
 				4D4FBE2B176B5BB70023A0D1 /* TXHDoorTimeController.m in Sources */,
 				4D68DAA6178AE9E300743227 /* TXHOptionsExtrasItem.m in Sources */,
+				EE8719C917BE30CB0055437C /* _TXHSeasonMO.m in Sources */,
 				EE11AE1017BD2C84000042B2 /* NSManagedObjectContext+DCTCoreDataStack.m in Sources */,
 				4D94B79617ABD53100943A9F /* TXHSalesTimerViewController.m in Sources */,
 				4DD9D82117B93A2F002AC6BD /* TXHSalesProductDetailsViewController.m in Sources */,
@@ -1136,6 +1153,7 @@
 				4DB791D417BB72FA00B707D9 /* TXHSalesPaymentViewController.m in Sources */,
 				EEB4FD4D17B277D800F226BC /* AFJSONRequestOperation.m in Sources */,
 				EE11AE1517BD2E18000042B2 /* _TXHPermissionMO.m in Sources */,
+				EE8719C817BE30CB0055437C /* _TXHOptionMO.m in Sources */,
 				4DFB1009178DB693006923F7 /* TXHLoginViewController.m in Sources */,
 				EE11AE0E17BD2C84000042B2 /* _DCTCDSManagedObjectContext.m in Sources */,
 				4D307DB41796F61C00822645 /* TXHTimeFormatter.m in Sources */,
