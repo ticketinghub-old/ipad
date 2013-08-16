@@ -8,7 +8,7 @@
 
 #import "TXHSalesPaymentPaymentDetailsViewController.h"
 
-#import "TXHEmbeddingSegue.h";
+#import "TXHEmbeddingSegue.h"
 #import "TXHTransitionSegue.h"
 
 @interface TXHSalesPaymentPaymentDetailsViewController ()
