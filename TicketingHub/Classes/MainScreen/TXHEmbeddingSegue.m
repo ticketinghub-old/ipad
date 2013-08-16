@@ -36,7 +36,7 @@
     
     // set frame of destination controller's view to that of placeholder
     destinationViewController.view.frame = self.containerView.bounds;
-    
+
     
     [sourceViewController addChildViewController:destinationViewController];
     

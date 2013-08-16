@@ -74,6 +74,7 @@
   //                                                      }];
   //
   // automatically cross-fades views
+
   destinationViewController.view.frame = self.containerView.bounds;
   
   [sourceViewController transitionFromViewController:viewControllerToReplace
