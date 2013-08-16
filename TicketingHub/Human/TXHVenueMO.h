@@ -4,6 +4,8 @@
 
 @interface TXHVenueMO : _TXHVenueMO {}
 
+@property (strong, readonly, nonatomic) NSTimeZone *timeZone;
+
 /*! Create or update an existing TXHVenueMO object with a TXHVenue object in a provided managed object context.
  *
  *  \param aVenue the user object returned from a call to the library
