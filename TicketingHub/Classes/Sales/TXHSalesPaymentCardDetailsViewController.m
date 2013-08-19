@@ -43,26 +43,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    CGRect frame = self.view.bounds;
-    NSLog(@"%s - %@", __FUNCTION__, NSStringFromCGRect(frame));
-    frame.size.width = 464.0f;
-    frame.size.height = 444.0f;
-    self.view.frame = frame;
     
     self.creditCardNumber.delegate = self;
     self.stripeCreditCardView.delegate = self;
 
     // Stripe publishable key will come from the venue & be managed by the API
     self.stripeCreditCardView.key = @"pk_test_czwzkTp2tactuLOEOqbMTRzG";
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:NO];
-    CGRect frame = self.view.bounds;
-    NSLog(@"%s - %@", __FUNCTION__, NSStringFromCGRect(frame));
-    frame.size.width = 464.0f;
-    frame.size.height = 444.0f;
-    self.view.frame = frame;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -78,21 +64,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)didMoveToParentViewController:(UIViewController *)parent {
-    [super didMoveToParentViewController:parent];
-    [self resetFrame];
-}
-
-- (void)resetFrame {
-    CGRect frame = self.view.bounds;
-    NSLog(@"%s - %@", __FUNCTION__, NSStringFromCGRect(frame));
-    frame.size.width = 464.0f;
-    frame.size.height = 444.0f;
-    self.view.frame = frame;
-    
-    self.view.frame = frame;
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -12,6 +12,7 @@
 #import "TXHTransitionSegue.h"
 
 @interface TXHSalesPaymentPaymentDetailsViewController ()
+@property (weak, nonatomic) IBOutlet UIView *paymentContentView;
 
 @end
 
@@ -57,14 +58,12 @@
     if ([segue.identifier isEqualToString:@"Embed TXHSalesPaymentCardDetailsViewController"])
     {
         TXHEmbeddingSegue *embeddingSegue = (TXHEmbeddingSegue *)segue;
-        CGRect frame = self.view.frame;
-        NSLog(@"%s - %@", __FUNCTION__, NSStringFromCGRect(frame));
-        embeddingSegue.containerView = self.view;
+        embeddingSegue.containerView = self.paymentContentView;
     }
     
     if ([segue isMemberOfClass:[TXHTransitionSegue class]]) {
         TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
-        transitionSegue.containerView = self.view;
+        transitionSegue.containerView = self.paymentContentView;
     }
 }
 @end

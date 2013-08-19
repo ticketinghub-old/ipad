@@ -66,7 +66,6 @@
 - (void)prepareForReuse {
     [super prepareForReuse];
     self.errorMessage = @"";
-    [self.placeholder updateDataContentView:nil];
 }
 
 @end

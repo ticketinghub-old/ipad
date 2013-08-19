@@ -53,8 +53,8 @@
 - (void)resetFrame {
     CGRect frame = self.view.frame;
     NSLog(@"%s - %@", __FUNCTION__, NSStringFromCGRect(frame));
-    frame.size.height -= 40.0f;
-    self.view.frame = frame;
+//    frame.size.height -= 40.0f;
+//    self.view.frame = frame;
 }
 
 - (void)setTimeController:(TXHSalesTimerViewController *)timeController {

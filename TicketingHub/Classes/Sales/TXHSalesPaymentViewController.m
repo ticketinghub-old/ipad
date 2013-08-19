@@ -47,6 +47,10 @@
 {
     [super viewDidLoad];
     
+    // Add constraints
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    self.view.translatesAutoresizingMaskIntoConstraints = YES;
+
     __block typeof(self) blockSelf = self;
     self.completionBlock = ^{
         // Update the order for tickets
@@ -67,6 +71,8 @@
 
 - (void)didMoveToParentViewController:(UIViewController *)parent {
     [super didMoveToParentViewController:parent];
+    CGRect frame = self.view.bounds;
+    NSLog(@"%s - self:%@ parent:%@", __FUNCTION__, NSStringFromCGRect(frame), NSStringFromCGRect(parent.view.frame));
     [self resetFrame];
 }
 

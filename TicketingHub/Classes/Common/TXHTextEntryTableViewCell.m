@@ -8,7 +8,7 @@
 
 #import "TXHTextEntryTableViewCell.h"
 
-@interface TXHTextEntryTableViewCell ()
+@interface TXHTextEntryTableViewCell () <UITextFieldDelegate>
 
 @property TXHTextEntryView *placeholder;
 
