@@ -39,18 +39,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)didMoveToParentViewController:(UIViewController *)parent {
-    [super didMoveToParentViewController:parent];
-    [self resetFrame];
-}
-
-- (void)resetFrame {
-    CGRect frame = self.view.frame;
-    frame.size.width = 1024;
-    frame.size.height = 768;
-    self.view.frame = frame;
-}
-
 - (IBAction)checkout:(id)sender {
   [self performSegueWithIdentifier:@"SalesCheckoutSegue" sender:sender];
 }
@@ -74,15 +62,6 @@
         transitionSegue.containerView = self.view;
     }
 }
-
-//- (void)wizard:(id <TXHSalesWizardDelegate>)wizard didChooseOption:(NSNumber *)option {
-//    if ([wizard isKindOfClass:[TXHSalesWizardViewController class]] == YES) {
-//        [self.wizardDetails performSegueWithIdentifier:[NSString stringWithFormat:@"Transition To Step%d", option.integerValue] sender:option];
-//    }
-//    if ([wizard isKindOfClass:[TXHSalesWizardDetailsViewController class]] == YES) {
-//        [self.wizardSteps moveToNextStep];
-//    }
-//}
 
 - (void)didChangeOption:(id)sender {
     if ([sender isKindOfClass:[TXHSalesWizardViewController class]] == YES) {

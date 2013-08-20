@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *coupon;
 @property (weak, nonatomic) IBOutlet UIButton *continueButton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @property (assign, nonatomic) BOOL editingCoupon;
 
@@ -32,6 +33,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    UIImage *buttonBorder = [[UIImage imageNamed:@"ButtonBorder"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.cancelButton setBackgroundImage:buttonBorder forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,6 +46,11 @@
 - (void)setCanCompleteStep:(BOOL)canCompleteStep {
     _canCompleteStep = canCompleteStep;
     self.continueButton.enabled = canCompleteStep;
+}
+
+- (IBAction)cancelAction:(id)sender {
+    NSLog(@"cancel");
+    [[UIApplication sharedApplication] sendAction:@selector(orderExpiredWithSender:) to:nil from:self forEvent:nil];
 }
 
 - (IBAction)continueAction:(id)sender {

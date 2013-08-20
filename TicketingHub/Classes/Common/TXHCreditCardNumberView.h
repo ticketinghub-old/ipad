@@ -10,6 +10,7 @@
 
 @interface TXHCreditCardNumberView : UIView
 
+@property (strong, nonatomic) id <UITextFieldDelegate> delegate;
 @property (strong, nonatomic) NSString *cardType;
 @property (strong, nonatomic) NSString *cardNumber;
 

@@ -14,6 +14,7 @@
 #import "TXHTransitionSegue.h"
 
 @interface TXHSalesContentsViewController () <TXHSalesContentProtocol>
+@property (weak, nonatomic) IBOutlet UIView *salesContentView;
 
 // A reference to the timer view controller
 @property (strong, nonatomic) TXHSalesTimerViewController *timerViewController;
@@ -55,6 +56,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)didMoveToParentViewController:(UIViewController *)parent {
+    [super didMoveToParentViewController:parent];
+    [self resetFrame];
+}
+
+- (void)resetFrame {
+    CGRect frame = self.view.frame;
+    NSLog(@"%s - %@", __FUNCTION__, NSStringFromCGRect(frame));
+}
+
 - (TXHSalesTimerViewController *)timerViewController {
     return _timerViewController;
 }
@@ -90,12 +101,12 @@
     if ([segue.identifier isEqualToString:@"Embed Step1"])
     {
         TXHEmbeddingSegue *embeddingSegue = (TXHEmbeddingSegue *)segue;
-        embeddingSegue.containerView = self.view;
+        embeddingSegue.containerView = self.salesContentView;
     }
     
     if ([segue isMemberOfClass:[TXHTransitionSegue class]]) {
         TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
-        transitionSegue.containerView = self.view;
+        transitionSegue.containerView = self.salesContentView;
     }
     
     if ([segue.destinationViewController conformsToProtocol:@protocol(TXHSalesContentProtocol)]) {

@@ -8,13 +8,32 @@
 
 #import "TXHSalesProductDetailsViewController.h"
 
+#import "TXHSalesCompletionViewController.h"
+#import "TXHSalesContentProtocol.h"
 #import "TXHSalesProductCell.h"
+#import "TXHSalesTimerViewController.h"
 
-@interface TXHSalesProductDetailsViewController ()
+@interface TXHSalesProductDetailsViewController () <TXHSalesContentProtocol>
+
+// A reference to the timer view controller
+@property (retain, nonatomic) TXHSalesTimerViewController *timerViewController;
+
+// A reference to the completion view controller
+@property (retain, nonatomic) TXHSalesCompletionViewController *completionViewController;
+
+// A completion block to be run when this step is completed
+@property (copy) void (^completionBlock)(void);
+
+// A mutable collection of sections indicating their expanded status.
+@property (strong, nonatomic) NSMutableDictionary *sections;
 
 @end
 
 @implementation TXHSalesProductDetailsViewController
+
+@synthesize timerViewController = _timerViewController;
+@synthesize completionViewController = _completionViewController;
+@synthesize completionBlock = _completionBlock;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,17 +48,58 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    __block typeof(self) blockSelf = self;
+    self.completionBlock = ^{
+        // Update the order for tickets
+        NSLog(@"Update order for %@", blockSelf);
+    };
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (TXHSalesTimerViewController *)timerViewController {
+    return _timerViewController;
+}
+
+- (void)setTimerViewController:(TXHSalesTimerViewController *)timerViewController {
+    _timerViewController = timerViewController;
+    [self configureTimerViewController];
+}
+
+- (TXHSalesCompletionViewController *)completionViewController {
+    return _completionViewController;
+}
+
+- (void)setCompletionViewController:(TXHSalesCompletionViewController *)completionViewController {
+    _completionViewController = completionViewController;
+    [self configureCompletionViewController];
+}
+
+- (void (^)(void))completionBlock {
+    return _completionBlock;
+}
+
+- (void)setCompletionBlock:(void (^)(void))completionBlock {
+    _completionBlock = completionBlock;
+    [self configureCompletionViewController];
+}
+
+- (void)configureTimerViewController {
+    // Set up the timer view to reflect our details
+    if (self.timerViewController) {
+        [self.timerViewController resetPresentationAnimated:NO];
+        self.timerViewController.stepTitle = NSLocalizedString(@"Extra products", @"Extra products");
+        [self.timerViewController hideCountdownTimer:NO];
+    }
+}
+
+- (void)configureCompletionViewController {
+    // Set up the completion view controller to reflect ticket tier details
+    [self.completionViewController setCompletionBlock:self.completionBlock];
 }
 
 #pragma mark - Table view data source

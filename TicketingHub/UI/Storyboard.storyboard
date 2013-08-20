@@ -404,7 +404,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <!--Main View Controller - tickethub.io-->
         <scene sceneID="VBG-zP-iW6">
             <objects>
-                <viewController id="2do-rv-5Ha" customClass="TXHMainViewController" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="formSheet" id="2do-rv-5Ha" customClass="TXHMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qbE-3C-n6H"/>
                         <viewControllerLayoutGuide type="bottom" id="AXN-QQ-Qrz"/>
@@ -412,7 +412,20 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <view key="view" contentMode="scaleToFill" id="yyH-az-Kwz">
                         <rect key="frame" x="0.0" y="44" width="694" height="724"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJZ-sp-l0P">
+                                <rect key="frame" x="0.0" y="0.0" width="694" height="724"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.91372549020000005" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="qJZ-sp-l0P" firstAttribute="top" secondItem="qbE-3C-n6H" secondAttribute="bottom" id="9JO-wX-e2y"/>
+                            <constraint firstItem="qJZ-sp-l0P" firstAttribute="leading" secondItem="yyH-az-Kwz" secondAttribute="leading" id="Ou1-F3-hcE"/>
+                            <constraint firstItem="AXN-QQ-Qrz" firstAttribute="top" secondItem="qJZ-sp-l0P" secondAttribute="bottom" id="aav-mD-qkw"/>
+                            <constraint firstAttribute="trailing" secondItem="qJZ-sp-l0P" secondAttribute="trailing" id="egj-hB-CDE"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" title="tickethub.io" id="D16-fh-Kky">
@@ -437,6 +450,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="contentDetailView" destination="qJZ-sp-l0P" id="S5h-GX-A7j"/>
                         <outlet property="modeSelector" destination="I90-f6-15I" id="fgG-Ug-m3L"/>
                         <segue destination="QtI-DJ-k8N" kind="custom" identifier="Embed Placeholder" customClass="TXHEmbeddingSegue" id="8qs-1f-Wbj"/>
                         <segue destination="QtI-DJ-k8N" kind="custom" identifier="Flip To Placeholder" customClass="TXHTransitionSegue" id="utj-0e-oIi"/>

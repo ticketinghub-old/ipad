@@ -22,6 +22,7 @@
 @interface TXHMainViewController () <TXHDateSelectorViewDelegate, TXHTimeSlotSelectorDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl         *modeSelector;
+@property (weak, nonatomic) IBOutlet UIView *contentDetailView;
 
 @property (strong, nonatomic) TXHVenue                          *venue;
 @property (strong, nonatomic) UIButton                          *dateBtn;
@@ -187,7 +188,7 @@
         
         TXHEmbeddingSegue *segue = [[TXHEmbeddingSegue alloc] initWithIdentifier:@"Doorman"
                                                                           source:self destination:destinationController];
-        segue.containerView = self.view;
+        segue.containerView = self.contentDetailView;
         
         [segue perform];
     } else {
@@ -199,7 +200,7 @@
         
         TXHEmbeddingSegue *segue = [[TXHEmbeddingSegue alloc] initWithIdentifier:@"Salesman"
                                                                                 source:self destination:destinationController];
-        segue.containerView = self.view;
+        segue.containerView = self.contentDetailView;
         
         [segue perform];
     }
