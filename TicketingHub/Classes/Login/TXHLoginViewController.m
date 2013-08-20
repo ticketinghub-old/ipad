@@ -86,6 +86,7 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 
+    // Keyboard notifications.
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
