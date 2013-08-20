@@ -1,9 +1,23 @@
 {
   "images" : [
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "stretch",
+          "width" : 1,
+          "height" : 1
+        },
+        "capInsets" : {
+          "bottom" : 3,
+          "top" : 3,
+          "right" : 3,
+          "left" : 3
+        }
+      },
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "Counter.png"
+      "filename" : "Counter.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",

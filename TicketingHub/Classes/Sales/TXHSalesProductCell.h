@@ -14,5 +14,6 @@
 @property (strong, nonatomic) NSString *productDescription;
 @property (strong, nonatomic) NSNumber *price;
 @property (strong, nonatomic) NSNumber *quantity;
+@property (strong, nonatomic) NSNumber *limit;
 
 @end

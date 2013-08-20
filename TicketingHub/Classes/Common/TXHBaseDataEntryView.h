@@ -10,6 +10,15 @@
 
 @interface TXHBaseDataEntryView : UIView
 
+// A color for the view surrounding the data entry field
+@property (strong, nonatomic) UIColor *outerColor;
+
+// A color for the view surrounding the data entry field when in an error state
+@property (strong, nonatomic) UIColor *outerColorForError;
+
+// Should the outer color be applied to the dataEntry field (default's to YES
+@property (assign, nonatomic) BOOL applyOuterColorToDataEntryField;
+
 // an error message to display above & overlapping the data content view
 @property (strong, nonatomic) NSString *errorMessage;
 

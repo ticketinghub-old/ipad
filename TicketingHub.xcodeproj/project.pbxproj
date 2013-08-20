@@ -23,6 +23,7 @@
 		4D3FC11117B5480D0036D4DE /* TXHTextCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3FC11017B5480D0036D4DE /* TXHTextCollectionViewCell.m */; };
 		4D41C05D17C2BED40014E5F7 /* TXHDataSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D41C05C17C2BED40014E5F7 /* TXHDataSelectionView.m */; };
 		4D41C06017C2C3F60014E5F7 /* TXHDataSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D41C05F17C2C3F60014E5F7 /* TXHDataSelectionViewController.m */; };
+		4D41C06317C3513E0014E5F7 /* TXHSelectionEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D41C06217C3513E0014E5F7 /* TXHSelectionEntryTableViewCell.m */; };
 		4D4FBE2B176B5BB70023A0D1 /* TXHDoorTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4FBE2A176B5BB70023A0D1 /* TXHDoorTimeController.m */; };
 		4D586DE11797E51E00E40534 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D586DE01797E51E00E40534 /* Images.xcassets */; };
 		4D58757417BA3BEB006264BA /* TXHQuantitySelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D58757317BA3BEB006264BA /* TXHQuantitySelectorViewController.m */; };
@@ -199,6 +200,8 @@
 		4D41C05C17C2BED40014E5F7 /* TXHDataSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDataSelectionView.m; sourceTree = "<group>"; };
 		4D41C05E17C2C3F60014E5F7 /* TXHDataSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDataSelectionViewController.h; sourceTree = "<group>"; };
 		4D41C05F17C2C3F60014E5F7 /* TXHDataSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDataSelectionViewController.m; sourceTree = "<group>"; };
+		4D41C06117C3513E0014E5F7 /* TXHSelectionEntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSelectionEntryTableViewCell.h; sourceTree = "<group>"; };
+		4D41C06217C3513E0014E5F7 /* TXHSelectionEntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSelectionEntryTableViewCell.m; sourceTree = "<group>"; };
 		4D4FBE29176B5BB70023A0D1 /* TXHDoorTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorTimeController.h; sourceTree = "<group>"; };
 		4D4FBE2A176B5BB70023A0D1 /* TXHDoorTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorTimeController.m; sourceTree = "<group>"; };
 		4D586DDF1797E2BF00E40534 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
@@ -533,6 +536,8 @@
 				4D41C05C17C2BED40014E5F7 /* TXHDataSelectionView.m */,
 				4D41C05E17C2C3F60014E5F7 /* TXHDataSelectionViewController.h */,
 				4D41C05F17C2C3F60014E5F7 /* TXHDataSelectionViewController.m */,
+				4D41C06117C3513E0014E5F7 /* TXHSelectionEntryTableViewCell.h */,
+				4D41C06217C3513E0014E5F7 /* TXHSelectionEntryTableViewCell.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1164,6 +1169,7 @@
 				4D38782117B8F9CC00627612 /* TXHSalesUpgradeCell.m in Sources */,
 				EEB4FD5917B277D800F226BC /* TXHTicketingHubClient.m in Sources */,
 				4D8A107217BD2DF700CEECAD /* PKUSAddressZip.m in Sources */,
+				4D41C06317C3513E0014E5F7 /* TXHSelectionEntryTableViewCell.m in Sources */,
 				4DB791D117BAA69D00B707D9 /* TXHSalesSummaryExtraProductsCell.m in Sources */,
 				4DF9F96D179D50E90040FC5D /* _Season.m in Sources */,
 				58E4FB701760AE5500E328A0 /* TicketingHub.xcdatamodeld in Sources */,
