@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface TicketingHubTests : SenTestCase
+@interface TicketingHubTests : XCTestCase
 
 @end
