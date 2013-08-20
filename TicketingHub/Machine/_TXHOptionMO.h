@@ -36,13 +36,9 @@ extern const struct TXHOptionMOFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* duration;
+@property (nonatomic, strong) NSString* duration;
 
 
-
-@property double durationValue;
-- (double)durationValue;
-- (void)setDurationValue:(double)value_;
 
 //- (BOOL)validateDuration:(id*)value_ error:(NSError**)error_;
 
@@ -97,11 +93,8 @@ extern const struct TXHOptionMOFetchedProperties {
 @interface _TXHOptionMO (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSNumber*)primitiveDuration;
-- (void)setPrimitiveDuration:(NSNumber*)value;
-
-- (double)primitiveDurationValue;
-- (void)setPrimitiveDurationValue:(double)value_;
+- (NSString*)primitiveDuration;
+- (void)setPrimitiveDuration:(NSString*)value;
 
 
 

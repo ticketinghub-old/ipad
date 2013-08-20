@@ -42,11 +42,6 @@ const struct TXHOptionMOFetchedProperties TXHOptionMOFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
-	if ([key isEqualToString:@"durationValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"duration"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
-	}
 	if ([key isEqualToString:@"weekdayIndexValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"weekdayIndex"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -61,25 +56,6 @@ const struct TXHOptionMOFetchedProperties TXHOptionMOFetchedProperties = {
 
 @dynamic duration;
 
-
-
-- (double)durationValue {
-	NSNumber *result = [self duration];
-	return [result doubleValue];
-}
-
-- (void)setDurationValue:(double)value_ {
-	[self setDuration:[NSNumber numberWithDouble:value_]];
-}
-
-- (double)primitiveDurationValue {
-	NSNumber *result = [self primitiveDuration];
-	return [result doubleValue];
-}
-
-- (void)setPrimitiveDurationValue:(double)value_ {
-	[self setPrimitiveDuration:[NSNumber numberWithDouble:value_]];
-}
 
 
 

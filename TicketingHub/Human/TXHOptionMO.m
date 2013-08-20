@@ -21,7 +21,7 @@
     TXHOptionMO *optionMO = [TXHOptionMO insertInManagedObjectContext:moc];
 
     optionMO.timeString = option.timeString;
-    optionMO.durationValue = option.duration;
+    optionMO.duration = option.duration;
     optionMO.weekdayIndexValue = option.weekday;
 
     // Sets one side of the relationship
