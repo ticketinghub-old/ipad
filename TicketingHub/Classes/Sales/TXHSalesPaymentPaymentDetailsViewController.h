@@ -10,4 +10,6 @@
 
 @interface TXHSalesPaymentPaymentDetailsViewController : UIViewController
 
+- (void)didChangePaymentMethod:(id)sender;
+
 @end

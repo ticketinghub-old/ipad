@@ -9,10 +9,18 @@
 #import "TXHSalesPaymentPaymentDetailsViewController.h"
 
 #import "TXHEmbeddingSegue.h"
+#import "TXHSalesPaymentCardDetailsViewController.h"
+#import "TXHSalesPaymentCashDetailsViewController.h"
+#import "TXHSalesPaymentCreditDetailsViewController.h"
 #import "TXHTransitionSegue.h"
 
 @interface TXHSalesPaymentPaymentDetailsViewController ()
+
 @property (weak, nonatomic) IBOutlet UIView *paymentContentView;
+
+@property (strong, nonatomic) TXHSalesPaymentCardDetailsViewController *cardController;
+@property (strong, nonatomic) TXHSalesPaymentCashDetailsViewController *cashController;
+@property (strong, nonatomic) TXHSalesPaymentCreditDetailsViewController *creditController;
 
 @end
 
@@ -40,30 +48,55 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)didMoveToParentViewController:(UIViewController *)parent {
-    [super didMoveToParentViewController:parent];
-    [self resetFrame];
-}
-
-- (void)resetFrame {
-    CGRect frame = self.view.frame;
-    NSLog(@"%s - %@", __FUNCTION__, NSStringFromCGRect(frame));
-//    frame.size.width = 1024;
-//    frame.size.height = 768;
-//    self.view.frame = frame;
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 #pragma unused (sender)
-    if ([segue.identifier isEqualToString:@"Embed TXHSalesPaymentCardDetailsViewController"])
-    {
+    if ([segue.identifier isEqualToString:@"Embed TXHSalesPaymentCardDetailsViewController"]) {
+        // Grab a handle to the credit card controller
+        self.cardController = segue.destinationViewController;
         TXHEmbeddingSegue *embeddingSegue = (TXHEmbeddingSegue *)segue;
         embeddingSegue.containerView = self.paymentContentView;
+        return;
     }
     
+    // Transitioning between payment method view controllers
     if ([segue isMemberOfClass:[TXHTransitionSegue class]]) {
         TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
         transitionSegue.containerView = self.paymentContentView;
     }
+    
+    if ([segue.identifier isEqualToString:@"TXHSalesPaymentCashDetailsViewController"]) {
+        self.cashController = segue.destinationViewController;
+        return;
+    }
+    
+    if ([segue.identifier isEqualToString:@"TXHSalesPaymentCreditDetailsViewController"]) {
+        self.creditController = segue.destinationViewController;
+        return;
+    }
+    
+    // Card controller should already be set by the embedding segue
+    if ([segue.identifier isEqualToString:@"TXHSalesPaymentCardDetailsViewController"]) {
+        self.cardController = segue.destinationViewController;
+        return;
+    }
 }
+
+- (void)didChangePaymentMethod:(id)sender {
+    UISegmentedControl *paymentControl = sender;
+    NSString *paymentMethod = @"Card";
+    switch (paymentControl.selectedSegmentIndex) {
+        case 1:     // Cash
+            paymentMethod = @"Cash";
+            break;
+            
+        case 2:     // Credit
+            paymentMethod = @"Credit";
+            break;
+            
+        default:    // Card, set above
+            break;
+    }
+    [self performSegueWithIdentifier:[NSString stringWithFormat:@"TXHSalesPayment%@DetailsViewController", paymentMethod] sender:self];
+}
+
 @end

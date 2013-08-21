@@ -45,18 +45,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)didMoveToParentViewController:(UIViewController *)parent {
-    [super didMoveToParentViewController:parent];
-    [self resetFrame];
-}
-
-- (void)resetFrame {
-    CGRect frame = self.view.frame;
-    NSLog(@"%s - %@", __FUNCTION__, NSStringFromCGRect(frame));
-//    frame.size.height -= 40.0f;
-//    self.view.frame = frame;
-}
-
 - (void)setTimeController:(TXHSalesTimerViewController *)timeController {
     _timeController = timeController;
     [self updateContentController];
@@ -128,6 +116,12 @@
         self.completionViewVerticalConstraint.constant -= 354.0f;
         [self.view layoutIfNeeded];
     } completion:nil];
+}
+
+// Nil targeted action handlers for changing payment method - pass on to the ContentsViewController
+
+- (void)didChangePaymentMethod:(id)sender {
+    [self.stepContentController didChangePaymentMethod:sender];
 }
 
 @end

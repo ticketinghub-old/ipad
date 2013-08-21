@@ -10,6 +10,7 @@
 
 #import "TXHSalesCompletionViewController.h"
 #import "TXHSalesContentProtocol.h"
+#import "TXHSalesPaymentPaymentDetailsViewController.h"
 #import "TXHSalesTimerViewController.h"
 
 @interface TXHSalesPaymentViewController () <TXHSalesContentProtocol, UICollectionViewDelegateFlowLayout>
@@ -25,6 +26,9 @@
 
 // A mutable collection of sections indicating their expanded status.
 @property (strong, nonatomic) NSMutableDictionary *sections;
+
+// A reference to the payment details content controller
+@property (strong, nonatomic) TXHSalesPaymentPaymentDetailsViewController *paymentDetailsController;
 
 @end
 
@@ -69,18 +73,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)didMoveToParentViewController:(UIViewController *)parent {
-    [super didMoveToParentViewController:parent];
-    CGRect frame = self.view.bounds;
-    NSLog(@"%s - self:%@ parent:%@", __FUNCTION__, NSStringFromCGRect(frame), NSStringFromCGRect(parent.view.frame));
-    [self resetFrame];
-}
-
-- (void)resetFrame {
-    CGRect frame = self.view.frame;
-    NSLog(@"%s - %@", __FUNCTION__, NSStringFromCGRect(frame));
-}
-
 - (TXHSalesTimerViewController *)timerViewController {
     return _timerViewController;
 }
@@ -121,6 +113,19 @@
 - (void)configureCompletionViewController {
     // Set up the completion view controller to reflect ticket tier details
     [self.completionViewController setCompletionBlock:self.completionBlock];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+#pragma unused (sender)
+    if ([segue.identifier isEqualToString:@"TXHSalesPaymentPaymentDetailsViewController"]) {
+        self.paymentDetailsController = segue.destinationViewController;
+    }
+}
+
+
+#pragma mark - Payment method changed
+-(void)didChangePaymentMethod:(id)sender {
+    [self.paymentDetailsController didChangePaymentMethod:sender];
 }
 
 @end
