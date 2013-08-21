@@ -195,4 +195,9 @@
     self.timeDisplay.text = [TXHTimeFormatter stringFromTimeInterval:timeLeft];
 }
 
+
+- (IBAction)paymentMethodChanged:(id)sender {
+    [[UIApplication sharedApplication] sendAction:@selector(didChangePaymentMethod:) to:nil from:self.paymentSelection forEvent:nil];
+}
+
 @end

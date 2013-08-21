@@ -9,6 +9,7 @@
 #import "TXHSalesProductCell.h"
 
 #import "TXHQuantitySelectorViewController.h"
+#import "TXHDataSelectionView.h"
 
 @interface TXHSalesProductCell () <TXHQuantitySelectorDelegate>
 
@@ -16,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *productPriceLabel;
 @property (weak, nonatomic) IBOutlet UITextView *productDescriptionTextView;
 @property (weak, nonatomic) IBOutlet UIButton *quantityButton;
+@property (weak, nonatomic) IBOutlet TXHDataSelectionView *quantitySelector;
 
 // A popover controller allowing upgrade quantity to be selected
 @property (strong, nonatomic) UIPopoverController *selectQuantityPopover;
@@ -43,7 +45,7 @@
 
 - (void)setup {
     self.quantityButton.backgroundColor = [UIColor colorWithPatternImage:[[UIImage imageNamed:@"Counter"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
-    
+    self.quantitySelector.applyOuterColorToDataEntryField = NO;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -86,6 +88,18 @@
     _quantity = quantity;
     NSString *quantityString = [NSString stringWithFormat:@"%d  ", quantity.integerValue];
     [self.quantityButton setTitle:quantityString forState:UIControlStateNormal];
+    
+    // Set the data selector
+    self.quantitySelector.text = quantity.stringValue;
+}
+
+- (void)setLimit:(NSNumber *)limit {
+    _limit = limit;
+    NSMutableArray *limits = [NSMutableArray array];
+    for (int i = 0; i < limit.unsignedIntegerValue + 1; i++) {
+        [limits addObject:[NSString stringWithFormat:@"%d", i]];
+    }
+    self.quantitySelector.selectionList = limits;
 }
 
 - (IBAction)changeQuantity:(id)sender {
@@ -95,11 +109,17 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Salesman" bundle:nil];
     TXHQuantitySelectorViewController *quantityController = [storyboard instantiateViewControllerWithIdentifier:@"TXHQuantitySelectorViewController"];
     quantityController.currentQuantitySelected = self.quantity.unsignedIntegerValue;
-    quantityController.maximumQuantityAllowed = self.quantity.unsignedIntegerValue + 5;
+    quantityController.maximumQuantityAllowed = self.limit.unsignedIntegerValue;
     quantityController.delegate = self;
     self.selectQuantityPopover = [[UIPopoverController alloc] initWithContentViewController:quantityController];
     self.selectQuantityPopover.popoverContentSize = CGSizeMake(210.0f, (quantityController.maximumQuantityAllowed * 44.0f));
     [self.selectQuantityPopover presentPopoverFromRect:self.quantityButton.frame inView:self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+- (void)didPerformDataSelection:(id)sender {
+    if (sender == self.quantitySelector) {
+        NSLog(@"%s - %@", __FUNCTION__, self.quantitySelector.text);
+    }
 }
 
 #pragma mark - Popover delegate method

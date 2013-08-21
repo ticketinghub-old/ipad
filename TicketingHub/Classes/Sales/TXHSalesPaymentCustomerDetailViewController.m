@@ -8,6 +8,8 @@
 
 #import "TXHSalesPaymentCustomerDetailViewController.h"
 
+#import "TXHDataSelectionView.h"
+#import "TXHSelectionEntryTableViewCell.h"
 #import "TXHTextEntryTableViewCell.h"
 
 @interface TXHSalesPaymentCustomerDetailViewController ()
@@ -60,28 +62,30 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"TXHSalesPaymentCustomerDetailsTextCell";
-    TXHTextEntryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    NSString *CellIdentifier = [NSString stringWithFormat:@"TXHSalesPaymentCustomerDetails%@Cell", indexPath.row == 4 ? @"Selection" : @"Text"];
+    
+    TXHBaseDataEntryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     switch (indexPath.row) {
         case 0:
-            cell.textField.placeholder = @"First Name";
+            ((TXHTextEntryTableViewCell *)cell).textField.placeholder = @"First Name";
             break;
         case 1:
-            cell.textField.placeholder = @"Last Name";
+            ((TXHTextEntryTableViewCell *)cell).textField.placeholder = @"Last Name";
             break;
         case 2:
-            cell.textField.placeholder = @"Email";
-            cell.textField.text = @"olly@me.com";
+            ((TXHTextEntryTableViewCell *)cell).textField.placeholder = @"Email";
+            ((TXHTextEntryTableViewCell *)cell).textField.text = @"olly@me.com";
             break;
         case 3:
-            cell.textField.placeholder = @"Telephone number";
-            cell.textField.text = @"+44abcdefgh992123";
+            ((TXHTextEntryTableViewCell *)cell).textField.placeholder = @"Telephone number";
+            ((TXHTextEntryTableViewCell *)cell).textField.text = @"+44abcdefgh992123";
             cell.errorMessage = @"invalid number";
             break;
         case 4:
-            cell.textField.placeholder = @"Country";
+            ((TXHSelectionEntryTableViewCell *)cell).field.placeholder = @"Country";
+            ((TXHSelectionEntryTableViewCell *)cell).field.selectionList = @[@"Belgium", @"France", @"Germany", @"Switzerland", @"UK", @"USA"];
             break;
         default:
             break;

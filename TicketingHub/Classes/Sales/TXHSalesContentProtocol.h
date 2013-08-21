@@ -25,6 +25,9 @@
 
 @optional
 
+// Called when the payment method changes (sender holds the payment method segmented control)
+- (void)didChangePaymentMethod:(id)sender;
+
 - (void)transition:(id)sender;
 
 @end

@@ -16,15 +16,6 @@
 
 @implementation TXHTextEntryView
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
 - (void)setupDataContent {
     [super setupDataContent];
     _textField = [[UITextField alloc] initWithFrame:CGRectZero];

@@ -129,30 +129,35 @@
             cell.productName = @"Guide Book";
             cell.price = @(3);
             cell.quantity = @(0);
+            cell.limit = @(8);
             cell.productDescription = @"A wonderful guide to your visit";
             break;
         case 1:
             cell.productName = @"Refreshments";
             cell.price = @(2);
             cell.quantity = @(5);
+            cell.limit = @(9);
             cell.productDescription = @"A satisfying snack, just for you.";
             break;
         case 2:
             cell.productName = @"Day Travelcard";
             cell.price = @(8);
             cell.quantity = @(1);
+            cell.limit = @(2);
             cell.productDescription = @"Now we're going places";
             break;
         case 3:
             cell.productName = @"Local Map";
             cell.price = @(3.50);
             cell.quantity = @(0);
+            cell.limit = @(0);
             cell.productDescription = @"So you know where you are all the time";
             break;
         default:
             cell.productName = [NSString stringWithFormat:@"Unspecified #%d", indexPath.row - 3];
             cell.price = @(indexPath.row);
             cell.quantity = @(indexPath.row);
+            cell.limit = @(8);
             cell.productDescription = @"A surprise";
             break;
     }

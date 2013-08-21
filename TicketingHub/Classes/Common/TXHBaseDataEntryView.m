@@ -42,6 +42,19 @@
 }
 
 - (void)setup {
+    // Set up default colours
+    self.outerColor = [UIColor colorWithRed:238.0f / 255.0f
+                                      green:241.0f / 255.0f
+                                       blue:243.0f / 255.0f
+                                      alpha:1.0f];
+    
+    self.outerColorForError = [UIColor colorWithRed:255.0f / 255.0f
+                                              green:213.0f / 255.0f
+                                               blue:216.0f / 255.0f
+                                              alpha:1.0f];
+    
+    self.applyOuterColorToDataEntryField = YES;
+
     // Create placeHolder for the data entry view
     
     // The placeholder will align with the bottom of the cell allowing room for the error view at the top
@@ -50,10 +63,7 @@
     frame.size.height -= 20.0f;
     _placeholderView = [[UIView alloc] initWithFrame:frame];
     _placeholderView.layer.cornerRadius = 4.0f;
-    _placeholderView.backgroundColor = [UIColor colorWithRed:233.0f / 255.0f
-                                                       green:238.0f / 255.0f
-                                                        blue:241.0f / 255.0f
-                                                       alpha:1.0f];
+    _placeholderView.backgroundColor = self.outerColor;
     
     _placeholderView.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -116,19 +126,15 @@
     self.dataErrorView.message = errorMessage;
     UIColor *backingColor;
     if (errorMessage.length > 0) {
-        backingColor = [UIColor colorWithRed:255.0f / 255.0f
-                                       green:213.0f / 255.0f
-                                        blue:216.0f / 255.0f
-                                       alpha:1.0f];
+        backingColor = self.outerColorForError;
     } else {
-        backingColor = [UIColor colorWithRed:238.0f / 255.0f
-                                       green:241.0f / 255.0f
-                                        blue:243.0f / 255.0f
-                                       alpha:1.0f];
+        backingColor = self.outerColor;
     }
     self.placeholderView.backgroundColor = backingColor;
-    for (UIView *view in self.placeholderView.subviews) {
-        view.backgroundColor = backingColor;
+    if (self.applyOuterColorToDataEntryField) {
+        for (UIView *view in self.placeholderView.subviews) {
+            view.backgroundColor = backingColor;
+        }
     }
 }
 
@@ -142,12 +148,15 @@
     CGRect frame = CGRectInset(self.placeholderView.bounds, 8.0f, 0.0f);
     dataContentView.frame = frame;
     [self.placeholderView addSubview:dataContentView];
-    _dataContentView.backgroundColor = self.placeholderView.backgroundColor;
+    if (self.applyOuterColorToDataEntryField) {
+        _dataContentView.backgroundColor = self.placeholderView.backgroundColor;
+    }
 }
 
 
 - (void)updateDataContentView:(UIView *)dataContentView {
     self.dataContentView = dataContentView;
+    self.dataContentView.tintColor = self.tintColor;
 }
 
 @end
