@@ -40,4 +40,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+#pragma unused (tableView, indexPath)
+    return NO;
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath {
+#pragma unused (tableView, indexPath)
+    return NO;
+}
+
+
 @end
