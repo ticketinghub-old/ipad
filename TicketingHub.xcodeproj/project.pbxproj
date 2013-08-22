@@ -87,6 +87,8 @@
 		4DF3F59817C63BAE0045299B /* libExpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF3F57B17C63BAE0045299B /* libExpecta-ios-universal.a */; };
 		4DF3F59917C63BAE0045299B /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF3F57F17C63BAE0045299B /* libOCMock.a */; };
 		4DF3F59A17C63BAE0045299B /* libSpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF3F58817C63BAE0045299B /* libSpecta-ios-universal.a */; };
+		4DF3F59E17C63E070045299B /* MockingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3F59C17C63E070045299B /* MockingTest.m */; };
+		4DF3F59F17C63E070045299B /* SmokeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3F59D17C63E070045299B /* SmokeSpec.m */; };
 		4DF9F95E179D50E90040FC5D /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F92E179D50E90040FC5D /* Customer.m */; };
 		4DF9F95F179D50E90040FC5D /* Permission.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F930179D50E90040FC5D /* Permission.m */; };
 		4DF9F960179D50E90040FC5D /* Role.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F932179D50E90040FC5D /* Role.m */; };
@@ -138,7 +140,6 @@
 		58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB561760AE5500E328A0 /* Foundation.framework */; };
 		58E4FB7B1760AE5500E328A0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB5A1760AE5500E328A0 /* CoreData.framework */; };
 		58E4FB831760AE5500E328A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB811760AE5500E328A0 /* InfoPlist.strings */; };
-		58E4FB861760AE5500E328A0 /* TicketingHubTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB851760AE5500E328A0 /* TicketingHubTests.m */; };
 		58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB911760AEF300E328A0 /* Storyboard.storyboard */; };
 		58E4FB9F1761CFEC00E328A0 /* TXHMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */; };
 		EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */; };
@@ -355,6 +356,8 @@
 		4DF3F59517C63BAE0045299B /* SPTSenTestInvocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTSenTestInvocation.h; sourceTree = "<group>"; };
 		4DF3F59617C63BAE0045299B /* SPTSharedExampleGroups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTSharedExampleGroups.h; sourceTree = "<group>"; };
 		4DF3F59717C63BAE0045299B /* SPTSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTSpec.h; sourceTree = "<group>"; };
+		4DF3F59C17C63E070045299B /* MockingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockingTest.m; sourceTree = "<group>"; };
+		4DF3F59D17C63E070045299B /* SmokeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmokeSpec.m; sourceTree = "<group>"; };
 		4DF9F92D179D50E90040FC5D /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customer.h; sourceTree = "<group>"; };
 		4DF9F92E179D50E90040FC5D /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer.m; sourceTree = "<group>"; };
 		4DF9F92F179D50E90040FC5D /* Permission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Permission.h; sourceTree = "<group>"; };
@@ -443,8 +446,6 @@
 		58E4FB771760AE5500E328A0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		58E4FB801760AE5500E328A0 /* TicketingHubTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TicketingHubTests-Info.plist"; sourceTree = "<group>"; };
 		58E4FB821760AE5500E328A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		58E4FB841760AE5500E328A0 /* TicketingHubTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketingHubTests.h; sourceTree = "<group>"; };
-		58E4FB851760AE5500E328A0 /* TicketingHubTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketingHubTests.m; sourceTree = "<group>"; };
 		58E4FB911760AEF300E328A0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		58E4FB9D1761CFEC00E328A0 /* TXHMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMainViewController.h; sourceTree = "<group>"; };
 		58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMainViewController.m; sourceTree = "<group>"; };
@@ -705,6 +706,15 @@
 			path = Specta;
 			sourceTree = "<group>";
 		};
+		4DF3F59B17C63E070045299B /* Smoke Tests */ = {
+			isa = PBXGroup;
+			children = (
+				4DF3F59C17C63E070045299B /* MockingTest.m */,
+				4DF3F59D17C63E070045299B /* SmokeSpec.m */,
+			);
+			path = "Smoke Tests";
+			sourceTree = "<group>";
+		};
 		4DF9F92B179D50C10040FC5D /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -859,11 +869,10 @@
 		58E4FB7E1760AE5500E328A0 /* TicketingHubTests */ = {
 			isa = PBXGroup;
 			children = (
+				4DF3F59B17C63E070045299B /* Smoke Tests */,
 				4DF3F55C17C63BAE0045299B /* Expecta */,
 				4DF3F57E17C63BAE0045299B /* OCMock */,
 				4DF3F58717C63BAE0045299B /* Specta */,
-				58E4FB841760AE5500E328A0 /* TicketingHubTests.h */,
-				58E4FB851760AE5500E328A0 /* TicketingHubTests.m */,
 				58E4FB7F1760AE5500E328A0 /* Supporting Files */,
 			);
 			path = TicketingHubTests;
@@ -1440,7 +1449,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58E4FB861760AE5500E328A0 /* TicketingHubTests.m in Sources */,
+				4DF3F59F17C63E070045299B /* SmokeSpec.m in Sources */,
+				4DF3F59E17C63E070045299B /* MockingTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
