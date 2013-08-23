@@ -62,12 +62,6 @@
     self.fetchedResultsController = nil;
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Custom accessors
 
 - (NSFetchedResultsController *)fetchedResultsController {
