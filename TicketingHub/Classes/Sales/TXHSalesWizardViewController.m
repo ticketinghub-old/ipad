@@ -110,7 +110,7 @@
     
     // grab the button images
     self.notStarted = [UIImage imageNamed:@"EmptyCircle"];
-    self.completed = [UIImage imageNamed:@"Completed"];
+    self.completed = [UIImage imageNamed:@"item-check"];
     
     // Set up the initial condition
     [self configureWizardForStage:0];

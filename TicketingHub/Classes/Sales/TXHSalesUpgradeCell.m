@@ -40,7 +40,7 @@
 }
 
 - (void)setup {
-    self.selectedImage = [UIImage imageNamed:@"Completed"];
+    self.selectedImage = [UIImage imageNamed:@"item-check"];
     self.unselectedImage = [[UIImage imageNamed:@"EmptyCircle"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     self.selectedImageView.image = self.unselectedImage;
 
