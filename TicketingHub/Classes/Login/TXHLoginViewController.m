@@ -117,7 +117,7 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
     CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
 
     [UIView animateWithDuration:duration delay:0.0 options:options animations:^{
-        self.verticalSpaceToLogo.constant = 184.0f;
+        self.verticalSpaceToLogo.constant = 152.0f;
         [self.view layoutIfNeeded];
     } completion:nil];
 }

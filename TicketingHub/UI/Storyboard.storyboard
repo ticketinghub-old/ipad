@@ -81,27 +81,27 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="8SD-Da-J5a">
-                                <rect key="frame" x="335" y="187" width="406" height="150"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="8SD-Da-J5a">
+                                <rect key="frame" x="325" y="173" width="396" height="143"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="L1v-E3-HdF"/>
-                                    <constraint firstAttribute="width" constant="406" id="cJA-Go-7TU"/>
+                                    <constraint firstAttribute="height" constant="143" id="L1v-E3-HdF"/>
+                                    <constraint firstAttribute="width" constant="396" id="cJA-Go-7TU"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhj-Za-1cP">
-                                <rect key="frame" x="38" y="383" width="948" height="158"/>
+                                <rect key="frame" x="38" y="368" width="948" height="158"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aHd-4v-y35">
-                                        <rect key="frame" x="296" y="10" width="356" height="60"/>
+                                        <rect key="frame" x="295" y="12" width="355" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="agQ-1B-MLs">
                                                 <rect key="frame" x="20" y="15" width="288" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.89019607840000003" green="0.92941176469999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 <connections>
                                                     <action selector="editingChanged:" destination="Mja-t1-MrX" eventType="editingChanged" id="s6y-Ix-c5o"/>
@@ -117,7 +117,7 @@
                                         <color key="backgroundColor" red="0.89019607840000003" green="0.92941176469999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p1M-41-8iP">
-                                        <rect key="frame" x="296" y="78" width="356" height="60"/>
+                                        <rect key="frame" x="295" y="79" width="355" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="nTH-zJ-YxB">
@@ -128,7 +128,7 @@
                                                 <rect key="frame" x="20" y="15" width="288" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.89019607840000003" green="0.92941176469999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                                                 <connections>
                                                     <action selector="editingChanged:" destination="Mja-t1-MrX" eventType="editingChanged" id="whT-SU-AQJ"/>
@@ -146,9 +146,9 @@
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="8SD-Da-J5a" firstAttribute="top" secondItem="kS3-T9-8Fh" secondAttribute="bottom" constant="167" id="BaO-Nh-bfy"/>
-                            <constraint firstItem="8SD-Da-J5a" firstAttribute="leading" secondItem="Qhu-dC-Fvf" secondAttribute="leading" constant="335" id="a10-cz-HBv"/>
-                            <constraint firstItem="lhj-Za-1cP" firstAttribute="top" secondItem="8SD-Da-J5a" secondAttribute="bottom" constant="46" id="ddI-P5-sNf"/>
+                            <constraint firstItem="8SD-Da-J5a" firstAttribute="top" secondItem="kS3-T9-8Fh" secondAttribute="bottom" constant="152.5" id="BaO-Nh-bfy"/>
+                            <constraint firstItem="8SD-Da-J5a" firstAttribute="leading" secondItem="Qhu-dC-Fvf" secondAttribute="leading" constant="325" id="a10-cz-HBv"/>
+                            <constraint firstItem="lhj-Za-1cP" firstAttribute="top" secondItem="8SD-Da-J5a" secondAttribute="bottom" constant="52" id="ddI-P5-sNf"/>
                             <constraint firstItem="lhj-Za-1cP" firstAttribute="leading" secondItem="Qhu-dC-Fvf" secondAttribute="leading" constant="38" id="n1w-DA-MK4"/>
                             <constraint firstAttribute="centerX" secondItem="lhj-Za-1cP" secondAttribute="centerX" id="wDI-PJ-CYZ"/>
                         </constraints>
