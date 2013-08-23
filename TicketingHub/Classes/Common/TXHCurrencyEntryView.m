@@ -8,43 +8,53 @@
 
 #import "TXHCurrencyEntryView.h"
 
-@interface UITextField (Selection)
-- (NSRange) selectedRange;
-- (void) setSelectedRange:(NSRange) range;
-@end
+//@interface UITextField (Selection)
+//- (NSRange) selectedRange;
+//- (void) setSelectedRange:(NSRange) range;
+//@end
+//
+//@implementation UITextField (Selection)
+//- (NSRange) selectedRange
+//{
+//    UITextPosition* beginning = self.beginningOfDocument;
+//    
+//    UITextRange* selectedRange = self.selectedTextRange;
+//    UITextPosition* selectionStart = selectedRange.start;
+//    UITextPosition* selectionEnd = selectedRange.end;
+//    
+//    const NSInteger location = [self offsetFromPosition:beginning toPosition:selectionStart];
+//    const NSInteger length = [self offsetFromPosition:selectionStart toPosition:selectionEnd];
+//    
+//    return NSMakeRange(location, length);
+//}
+//
+//- (void) setSelectedRange:(NSRange) range
+//{
+//    UITextPosition* beginning = self.beginningOfDocument;
+//    
+//    UITextPosition* startPosition = [self positionFromPosition:beginning offset:range.location];
+//    UITextPosition* endPosition = [self positionFromPosition:beginning offset:range.location + range.length];
+//    UITextRange* selectionRange = [self textRangeFromPosition:startPosition toPosition:endPosition];
+//    
+//    [self setSelectedTextRange:selectionRange];
+//}
+//
+//@end
 
-@implementation UITextField (Selection)
-- (NSRange) selectedRange
-{
-    UITextPosition* beginning = self.beginningOfDocument;
-    
-    UITextRange* selectedRange = self.selectedTextRange;
-    UITextPosition* selectionStart = selectedRange.start;
-    UITextPosition* selectionEnd = selectedRange.end;
-    
-    const NSInteger location = [self offsetFromPosition:beginning toPosition:selectionStart];
-    const NSInteger length = [self offsetFromPosition:selectionStart toPosition:selectionEnd];
-    
-    return NSMakeRange(location, length);
-}
+@interface TXHTextEntryView (currencyExtension)
 
-- (void) setSelectedRange:(NSRange) range
-{
-    UITextPosition* beginning = self.beginningOfDocument;
-    
-    UITextPosition* startPosition = [self positionFromPosition:beginning offset:range.location];
-    UITextPosition* endPosition = [self positionFromPosition:beginning offset:range.location + range.length];
-    UITextRange* selectionRange = [self textRangeFromPosition:startPosition toPosition:endPosition];
-    
-    [self setSelectedTextRange:selectionRange];
-}
+// Expose the underlying textfield property getter method so we can work with it here
+- (UITextField *)textField;
 
 @end
 
 @interface TXHCurrencyEntryView ()
 
-// Redefine the underlying textfield so we can work with it
-@property UITextField *textField;
+// A currency formatter for user facing presentation
+@property (strong, nonatomic) NSNumberFormatter *currencyFormatter;
+
+// The cursor location for our textfield after formatting has been applied
+@property (assign, nonatomic) NSUInteger cursorLocation;
 
 // A backing string to hold characters entered
 @property (strong, nonatomic) NSString *enteredText;
@@ -52,11 +62,9 @@
 // Count of formatting characters added to the entered text
 @property (assign, nonatomic) NSUInteger formattingCharacterCount;
 
-// The cursor location for our textfield after formatting has been applied
-@property (assign, nonatomic) NSUInteger cursorLocation;
-
-// A currency formatter for user facing presentation
-@property (strong, nonatomic) NSNumberFormatter *currencyFormatter;
+// A flag indicating that we are updating the amount
+// needed to suppress recursion in textField:shouldChangeCharactersInRange:replacementString: which also updates the amount
+@property (assign, nonatomic) BOOL updatingAmount;
 
 @end
 
@@ -64,16 +72,34 @@
 
 - (void)setupDataContent {
     [super setupDataContent];
-    self.textField.keyboardType = UIKeyboardTypeDecimalPad;
-    self.textField.textAlignment = NSTextAlignmentRight;
+    
+    UITextField *textField = [self textField];
+    textField.keyboardType = UIKeyboardTypeDecimalPad;
+    textField.textAlignment = NSTextAlignmentRight;
+    textField.clearsOnBeginEditing = YES;
+    
+    // Set the locale to be the default device locale
+    self.locale = [NSLocale currentLocale];
+    
     // Create a currency formatter (with the default currency).
-    self.currencyFormatter = [[NSNumberFormatter alloc] init];
-    self.currencyFormatter.formatterBehavior = NSNumberFormatterBehavior10_4;
-    self.currencyFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
-    self.currencyFormatter.currencyCode = @"GBP";
+    NSNumberFormatter *currencyFormatter = [[NSNumberFormatter alloc] init];
+    currencyFormatter.formatterBehavior = NSNumberFormatterBehavior10_4;
+    currencyFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
+    self.currencyFormatter = currencyFormatter;
+
     self.enteredText = @"";
-    self.amount = @(0);
     self.textField.placeholder = [self formattedAmount];
+}
+
+#pragma mark - Property Getter / Setter Methods
+
+- (void)setAmount:(NSNumber *)amount {
+    _amount = amount;
+    NSString *enteredText = self.enteredText;
+    enteredText = amount.stringValue;
+    UITextField *textField = self.textField;
+    textField.text = [self formattedAmount];
+    self.formattingCharacterCount = (textField.text.length - enteredText.length);
 }
 
 - (void)setCurrencyCode:(NSString *)currencyCode {
@@ -83,13 +109,50 @@
     self.currencyFormatter.currencyCode = currencyCode;
 }
 
-- (void)setAmount:(NSNumber *)amount {
-    _amount = amount;
+- (void)setLocale:(NSLocale *)locale {
+    _locale = locale;
+    self.currencyFormatter.locale = locale;
+    
+    // If a currency has already been specified, override the locale's currency
+    if (self.currencyCode.length > 0) {
+        self.currencyFormatter.currencyCode = self.currencyCode;
+    }
 }
+
+#pragma mark - Private methods
 
 - (NSString *)formattedAmount {
     return [self.currencyFormatter stringFromNumber:self.amount];
 }
+
+#pragma mark - UITextField selected range methods
+
+- (NSRange)selectedRangeForTextField:(UITextField *)textField {
+    UITextPosition* beginning = textField.beginningOfDocument;
+    
+    UITextRange* selectedRange = textField.selectedTextRange;
+    UITextPosition* selectionStart = selectedRange.start;
+    UITextPosition* selectionEnd = selectedRange.end;
+    
+    const NSInteger location = [textField offsetFromPosition:beginning toPosition:selectionStart];
+    const NSInteger length = [textField offsetFromPosition:selectionStart toPosition:selectionEnd];
+    
+    return NSMakeRange(location, length);
+}
+
+- (void)applySelectedRange:(NSRange)range toTextField:(UITextField *)textField {
+    UITextPosition* beginning = textField.beginningOfDocument;
+    
+    UITextPosition* startPosition = [textField positionFromPosition:beginning offset:range.location];
+    UITextPosition* endPosition = [textField positionFromPosition:beginning offset:range.location + range.length];
+    UITextRange* selectionRange = [textField textRangeFromPosition:startPosition toPosition:endPosition];
+    
+    [textField setSelectedTextRange:selectionRange];
+}
+
+
+
+#pragma mark UITextField delegate methods
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
 
@@ -162,8 +225,9 @@
     if (amount) {
         // We have a valid number, so assign backing values.
         self.enteredText = proposedText;
+        
+        // Updating the amount also sets the backing textfield's text to the formatted amount
         self.amount = amount;
-        textField.text = [self formattedAmount];
         
         // We need to estimate the cursor location after formatting in order to work out how many group characters, if any, affect the final cursor position
         NSUInteger expectedCursorLocation;
@@ -180,14 +244,17 @@
             self.formattingCharacterCount += self.currencyFormatter.currencySymbol.length;
         }
         
+        // The cursor location for entering characters if the user has not repositioned the cursor
+        NSUInteger cursorLocationOfEnteredText = self.formattingCharacterCount;
+        
         // Add 1 to the range for each group separator encountered in the formatted text before the expected cursor location
         NSString *temp = textField.text;
         NSRange groupRange = [temp rangeOfString:self.currencyFormatter.groupingSeparator];
         while (groupRange.location != NSNotFound) {
-            if (groupRange.location > expectedCursorLocation) {
-                break;
+            if (groupRange.location < expectedCursorLocation) {
+                self.formattingCharacterCount += 1;
             }
-            self.formattingCharacterCount += 1;
+            cursorLocationOfEnteredText += 1;
             temp = [temp substringFromIndex:groupRange.location + groupRange.length];
             groupRange = [temp rangeOfString:self.currencyFormatter.groupingSeparator];
         }
@@ -202,7 +269,7 @@
         }
         
         // Apply the cursor to the current location
-        [textField setSelectedRange:NSMakeRange(self.cursorLocation, 0)];
+        [self applySelectedRange:NSMakeRange(self.cursorLocation, 0) toTextField:textField];
         return NO;
     }
     
