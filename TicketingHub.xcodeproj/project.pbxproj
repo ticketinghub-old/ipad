@@ -114,7 +114,6 @@
 		58E4FB831760AE5500E328A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB811760AE5500E328A0 /* InfoPlist.strings */; };
 		58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB911760AEF300E328A0 /* Storyboard.storyboard */; };
 		58E4FB9F1761CFEC00E328A0 /* TXHMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */; };
-		EE07756D17C66893000C3D80 /* TXHOptionMOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE07756C17C66893000C3D80 /* TXHOptionMOTests.m */; };
 		EE11AE0E17BD2C84000042B2 /* _DCTCDSManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11AE0817BD2C84000042B2 /* _DCTCDSManagedObjectContext.m */; };
 		EE11AE0F17BD2C84000042B2 /* DCTCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11AE0A17BD2C84000042B2 /* DCTCoreDataStack.m */; };
 		EE11AE1017BD2C84000042B2 /* NSManagedObjectContext+DCTCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11AE0C17BD2C84000042B2 /* NSManagedObjectContext+DCTCoreDataStack.m */; };
@@ -150,6 +149,7 @@
 		EEB4FD5717B277D800F226BC /* _TXHNetworkOAuthClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD4117B277D800F226BC /* _TXHNetworkOAuthClient.m */; };
 		EEB4FD5917B277D800F226BC /* TXHTicketingHubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD4417B277D800F226BC /* TXHTicketingHubClient.m */; };
 		EEB4FD5A17B277D800F226BC /* TXHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD4617B277D800F226BC /* TXHUser.m */; };
+		EEC2878B17C7B89000CDE3F1 /* TXHOptionMOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC2878A17C7B89000CDE3F1 /* TXHOptionMOTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -415,7 +415,6 @@
 		58E4FB911760AEF300E328A0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		58E4FB9D1761CFEC00E328A0 /* TXHMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMainViewController.h; sourceTree = "<group>"; };
 		58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHMainViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EE07756C17C66893000C3D80 /* TXHOptionMOTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOptionMOTests.m; sourceTree = "<group>"; };
 		EE106B4A17B4FE2200910901 /* TXHUserDefaultsKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHUserDefaultsKeys.h; sourceTree = "<group>"; };
 		EE11ADCD17BD2138000042B2 /* STPCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STPCard.h; sourceTree = "<group>"; };
 		EE11ADCE17BD2138000042B2 /* STPCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STPCard.m; sourceTree = "<group>"; };
@@ -534,6 +533,7 @@
 		EEB4FD4417B277D800F226BC /* TXHTicketingHubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubClient.m; sourceTree = "<group>"; };
 		EEB4FD4517B277D800F226BC /* TXHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHUser.h; sourceTree = "<group>"; };
 		EEB4FD4617B277D800F226BC /* TXHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUser.m; sourceTree = "<group>"; };
+		EEC2878A17C7B89000CDE3F1 /* TXHOptionMOTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOptionMOTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -885,6 +885,7 @@
 		58E4FB7E1760AE5500E328A0 /* TicketingHubTests */ = {
 			isa = PBXGroup;
 			children = (
+				EEC2878A17C7B89000CDE3F1 /* TXHOptionMOTests.m */,
 				4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */,
 				4DF3F59B17C63E070045299B /* Smoke Tests */,
 				58E4FB7F1760AE5500E328A0 /* Supporting Files */,
@@ -1477,9 +1478,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */,
+				EEC2878B17C7B89000CDE3F1 /* TXHOptionMOTests.m in Sources */,
 				4DF3F59F17C63E070045299B /* SmokeSpec.m in Sources */,
 				4DF3F59E17C63E070045299B /* MockingTest.m in Sources */,
-				EE07756D17C66893000C3D80 /* TXHOptionMOTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
