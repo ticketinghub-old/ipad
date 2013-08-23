@@ -54,12 +54,6 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.email.image = [[UIImage imageNamed:@"mail"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.email.tintColor = [UIColor colorWithRed:77.0f / 255.0f
-                                           green:134.0f / 255.0f
-                                            blue:180.0f / 255.0f
-                                           alpha:1.0f];
-
     self.passwordIcon.image = [[UIImage imageNamed:@"right-arrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     self.passwordIcon.tintColor = [UIColor colorWithRed:28.0f / 255.0f
                                                   green:60.0f / 255.0f
