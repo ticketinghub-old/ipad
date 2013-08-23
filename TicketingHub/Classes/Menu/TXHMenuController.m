@@ -18,11 +18,12 @@
 @property (weak, nonatomic) IBOutlet UIView *logoutView;
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UILabel *headerViewLabel;
 
-@property (strong, nonatomic) UIView *headerView;
 @property (strong, nonatomic) NSArray *venues;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+
 
 @end
 
@@ -33,9 +34,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    UIColor *backgroundColor = [UIColor colorWithRed:16.0f / 255.0f
-                                               green:46.0f / 255.0f
-                                                blue:66.0f / 255.0f
+    UIColor *backgroundColor = [UIColor colorWithRed:14.0f / 255.0f
+                                               green:47.0f / 255.0f
+                                                blue:67.0f / 255.0f
                                                alpha:1.0f];
 
     self.view.backgroundColor = backgroundColor;
@@ -45,6 +46,7 @@
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
+    [self setHeaderTitle:NSLocalizedString(@"Venues", @"Title for the list of venues")];
     [self.logoutButton setTitle:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Logout", @"Logout the current user"), [self userName]] forState:UIControlStateNormal];
 
     NSError *error;
@@ -58,7 +60,6 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 
-    // Reset the fetched results controller
     self.fetchedResultsController = nil;
 }
 
@@ -140,10 +141,6 @@
     return [[self.fetchedResultsController fetchedObjects] count];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 64.0f;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"cellID";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -155,32 +152,6 @@
     return cell;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (self.headerView == nil) {
-        CGRect frame = tableView.bounds;
-        frame.size.height = 64.0f;
-        self.headerView = [[UIView alloc] initWithFrame:frame];
-        self.headerView.backgroundColor = self.view.backgroundColor;
-        NSString *titleString = @"Venues";
-        UIFont *font = [UIFont systemFontOfSize:34.0f];
-        NSDictionary *attributesDict = @{NSFontAttributeName : font};
-        NSAttributedString *attributedTitleString = [[NSAttributedString alloc] initWithString:titleString attributes:attributesDict];
-        CGSize titleSize = [attributedTitleString size];
-
-        CGRect titleLabelFrame = CGRectZero;
-        titleLabelFrame.origin.x = 17.50f;
-        titleLabelFrame.origin.y = self.headerView.bounds.size.height - titleSize.height;
-        titleLabelFrame.size = titleSize;
-
-        UILabel *title = [[UILabel alloc] initWithFrame:titleLabelFrame];
-        title.backgroundColor = self.headerView.backgroundColor;
-        title.textColor = [UIColor whiteColor];
-        title.font = font;
-        title.text = titleString;
-        [self.headerView addSubview:title];
-    }
-    return self.headerView;
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TXHVenue *venue = [self.venues objectAtIndex:indexPath.row];
@@ -210,5 +181,11 @@
     [[UIApplication sharedApplication] sendAction:@selector(logOut:) to:nil from:self forEvent:nil];
 }
 
+#pragma mark - Private methods
+
+// Set the string to be displayed in header view
+- (void)setHeaderTitle:(NSString *)title {
+    self.headerViewLabel.text = title;
+}
 
 @end
