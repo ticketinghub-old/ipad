@@ -105,9 +105,6 @@
 		58E4FB611760AE5500E328A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB5F1760AE5500E328A0 /* InfoPlist.strings */; };
 		58E4FB631760AE5500E328A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB621760AE5500E328A0 /* main.m */; };
 		58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB661760AE5500E328A0 /* TXHAppDelegate.m */; };
-		58E4FB691760AE5500E328A0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB681760AE5500E328A0 /* Default.png */; };
-		58E4FB6B1760AE5500E328A0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB6A1760AE5500E328A0 /* Default@2x.png */; };
-		58E4FB6D1760AE5500E328A0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB6C1760AE5500E328A0 /* Default-568h@2x.png */; };
 		58E4FB781760AE5500E328A0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB771760AE5500E328A0 /* SenTestingKit.framework */; };
 		58E4FB791760AE5500E328A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB541760AE5500E328A0 /* UIKit.framework */; };
 		58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB561760AE5500E328A0 /* Foundation.framework */; };
@@ -201,7 +198,6 @@
 		4D41C06217C3513E0014E5F7 /* TXHSelectionEntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSelectionEntryTableViewCell.m; sourceTree = "<group>"; };
 		4D4FBE29176B5BB70023A0D1 /* TXHDoorTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorTimeController.h; sourceTree = "<group>"; };
 		4D4FBE2A176B5BB70023A0D1 /* TXHDoorTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorTimeController.m; sourceTree = "<group>"; };
-		4D586DDF1797E2BF00E40534 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		4D586DE01797E51E00E40534 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4D58757217BA3BEB006264BA /* TXHQuantitySelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHQuantitySelectorViewController.h; sourceTree = "<group>"; };
 		4D58757317BA3BEB006264BA /* TXHQuantitySelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHQuantitySelectorViewController.m; sourceTree = "<group>"; };
@@ -218,7 +214,6 @@
 		4D68DAA7178B096A00743227 /* BarcodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeViewController.h; sourceTree = "<group>"; };
 		4D68DAA8178B096A00743227 /* BarcodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeViewController.m; sourceTree = "<group>"; };
 		4D68DAAA178B0A5400743227 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		4D7A06D31795B2E90008041D /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		4D859FF317945E4D000B2FCC /* TXHVariation_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVariation_old.h; sourceTree = "<group>"; };
 		4D859FF417945E4D000B2FCC /* TXHVariation_old.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVariation_old.m; sourceTree = "<group>"; };
 		4D859FF617953FA1000B2FCC /* TXHTimeSlot_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHTimeSlot_old.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -405,9 +400,6 @@
 		58E4FB641760AE5500E328A0 /* TicketingHub-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TicketingHub-Prefix.pch"; sourceTree = "<group>"; };
 		58E4FB651760AE5500E328A0 /* TXHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHAppDelegate.h; sourceTree = "<group>"; };
 		58E4FB661760AE5500E328A0 /* TXHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TXHAppDelegate.m; sourceTree = "<group>"; };
-		58E4FB681760AE5500E328A0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		58E4FB6A1760AE5500E328A0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		58E4FB6C1760AE5500E328A0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		58E4FB761760AE5500E328A0 /* TicketingHubTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicketingHubTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E4FB771760AE5500E328A0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		58E4FB801760AE5500E328A0 /* TicketingHubTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TicketingHubTests-Info.plist"; sourceTree = "<group>"; };
@@ -805,22 +797,11 @@
 			path = TicketingHub/Machine;
 			sourceTree = "<group>";
 		};
-		5860E85917633C990046DFD3 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				4D586DDF1797E2BF00E40534 /* Default-Landscape~ipad.png */,
-				4D7A06D31795B2E90008041D /* Default-Landscape@2x~ipad.png */,
-			);
-			name = Assets;
-			path = TicketingHub/Assets;
-			sourceTree = "<group>";
-		};
 		58E4FB481760AE5500E328A0 = {
 			isa = PBXGroup;
 			children = (
 				EE11ADCC17BD2138000042B2 /* Stripe */,
 				4DF9F92B179D50C10040FC5D /* Core Data */,
-				5860E85917633C990046DFD3 /* Assets */,
 				58E4FB971760D3C800E328A0 /* Classes */,
 				EEB4FD2017B277D800F226BC /* iOS-api */,
 				58E4FB901760AECF00E328A0 /* UI */,
@@ -875,9 +856,6 @@
 				58E4FB5F1760AE5500E328A0 /* InfoPlist.strings */,
 				58E4FB621760AE5500E328A0 /* main.m */,
 				58E4FB641760AE5500E328A0 /* TicketingHub-Prefix.pch */,
-				58E4FB681760AE5500E328A0 /* Default.png */,
-				58E4FB6A1760AE5500E328A0 /* Default@2x.png */,
-				58E4FB6C1760AE5500E328A0 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1314,10 +1292,7 @@
 			files = (
 				58E4FB611760AE5500E328A0 /* InfoPlist.strings in Resources */,
 				4D8FCCB617A28A8C008B4227 /* Doorman.storyboard in Resources */,
-				58E4FB691760AE5500E328A0 /* Default.png in Resources */,
 				4D586DE11797E51E00E40534 /* Images.xcassets in Resources */,
-				58E4FB6B1760AE5500E328A0 /* Default@2x.png in Resources */,
-				58E4FB6D1760AE5500E328A0 /* Default-568h@2x.png in Resources */,
 				58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */,
 				4DB23D6E17A169D8002B7B11 /* Salesman.storyboard in Resources */,
 			);

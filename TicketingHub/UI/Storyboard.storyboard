@@ -623,7 +623,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </scenes>
     <resources>
         <image name="background" width="1024" height="768"/>
-        <image name="handle" width="43" height="31"/>
+        <image name="handle" width="22" height="16"/>
         <image name="logo" width="396" height="142"/>
         <image name="mail" width="20" height="20"/>
         <image name="right-arrow" width="10" height="17"/>
