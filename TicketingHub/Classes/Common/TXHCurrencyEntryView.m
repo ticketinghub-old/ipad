@@ -52,6 +52,9 @@
 // Count of formatting characters added to the entered text
 @property (assign, nonatomic) NSUInteger formattingCharacterCount;
 
+// The cursor location for our textfield after formatting has been applied
+@property (assign, nonatomic) NSUInteger cursorLocation;
+
 // A currency formatter for user facing presentation
 @property (strong, nonatomic) NSNumberFormatter *currencyFormatter;
 
@@ -93,6 +96,11 @@
     // Get previously entered text from the backing field
     NSString *text = self.enteredText;
     
+    // If the string is equal to group separator then eat it
+    if ([string isEqualToString:self.currencyFormatter.groupingSeparator]) {
+        return NO;
+    }
+    
     // If string is equal to decimal separator, disallow if entered text already contains one
     NSRange decimalRange = [text rangeOfString:self.currencyFormatter.decimalSeparator];
     if ((decimalRange.location != NSNotFound) && ([string isEqualToString:self.currencyFormatter.decimalSeparator])) {
@@ -103,14 +111,16 @@
     if ((text.length == 0) && (string.length < 1)) {
         return NO;
     }
-
+    
+    // Grab the range we were given - we need it to work out where the cursor should go after formatting our currency value.
+    NSRange adjustedRange = range;
+    
     // range indicates the text field cursor & is relative to the formatted text presented in the textfield; not the entered text we are storing.
     // We need to adjust the cursor location relative to the backing text held in enteredText.
-    
-    range.location -= self.formattingCharacterCount;
+    adjustedRange.location -= self.formattingCharacterCount;
     
     // Create a new string holding the proposed text
-    NSString *proposedText = [text stringByReplacingCharactersInRange:range withString:string];
+    NSString *proposedText = [text stringByReplacingCharactersInRange:adjustedRange withString:string];
     
     // If the proposed text is an empty string, reset underlying amount & return
     if (proposedText.length == 0) {
@@ -139,27 +149,60 @@
         proposedText = [NSString stringWithFormat:@"0%@", proposedText];
     }
 
-    NSNumber *amount = [NSNumber numberWithDouble:proposedText.doubleValue];
+    // Switch the currency formatter style temporarily in order to extract a number in the appropriate locale
+    self.currencyFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    NSNumber *numberFromProposedText = [self.currencyFormatter numberFromString:proposedText];
+    // Now switch it back to currency style so that text displayed to the user will be presented as a currency 
+    self.currencyFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
+    
+    double proposedValue = numberFromProposedText.doubleValue;
+    NSLog(@"proposed text:%@ value:%f", proposedText, proposedValue);
+    NSNumber *amount = [NSNumber numberWithDouble:proposedValue];
+    
     if (amount) {
         // We have a valid number, so assign backing values.
         self.enteredText = proposedText;
         self.amount = amount;
         textField.text = [self formattedAmount];
+        
+        // We need to estimate the cursor location after formatting in order to work out how many group characters, if any, affect the final cursor position
+        NSUInteger expectedCursorLocation;
+        if (range.location != self.cursorLocation) {
+            expectedCursorLocation = range.location + string.length;
+        } else {
+            expectedCursorLocation = self.cursorLocation + string.length;
+        }
+
         // Set the range according to currency formatting
         self.formattingCharacterCount = 0;
         if ([self.currencyFormatter.positivePrefix isEqualToString:self.currencyFormatter.currencySymbol]) {
             // Add the size of the currency prefix
             self.formattingCharacterCount += self.currencyFormatter.currencySymbol.length;
         }
-        // Add 1 to the range for each group separator
+        
+        // Add 1 to the range for each group separator encountered in the formatted text before the expected cursor location
         NSString *temp = textField.text;
         NSRange groupRange = [temp rangeOfString:self.currencyFormatter.groupingSeparator];
         while (groupRange.location != NSNotFound) {
+            if (groupRange.location > expectedCursorLocation) {
+                break;
+            }
             self.formattingCharacterCount += 1;
             temp = [temp substringFromIndex:groupRange.location + groupRange.length];
             groupRange = [temp rangeOfString:self.currencyFormatter.groupingSeparator];
         }
-        [textField setSelectedRange:NSMakeRange(self.formattingCharacterCount + self.enteredText.length, 0)];
+        
+        // If the range location is different to the range location we calculated last time, use the range provided to determine cursor position
+        if (range.location != self.cursorLocation) {
+            // User amended cursor position, so reuse that instead
+            self.cursorLocation = expectedCursorLocation;
+        } else {
+            // Reset cursor position allowing for formatting characters
+            self.cursorLocation = self.formattingCharacterCount + self.enteredText.length;
+        }
+        
+        // Apply the cursor to the current location
+        [textField setSelectedRange:NSMakeRange(self.cursorLocation, 0)];
         return NO;
     }
     
