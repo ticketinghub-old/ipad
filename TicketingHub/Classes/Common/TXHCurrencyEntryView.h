@@ -10,7 +10,13 @@
 
 @interface TXHCurrencyEntryView : TXHTextEntryView
 
-@property (strong, nonatomic) NSString *currencyCode;
+// The amount entered without any formatting
 @property (strong, nonatomic) NSNumber *amount;
+
+// The currency may be different to the currency associated with the locale
+@property (strong, nonatomic) NSString *currencyCode;
+
+// The locale to use for formatting (default's to device locale)
+@property (strong, nonatomic) NSLocale *locale;
 
 @end

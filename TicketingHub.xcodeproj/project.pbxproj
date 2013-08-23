@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */; };
 		4D0E5131178C0BBC009436AC /* TXHDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E5130178C0BBC009436AC /* TXHDataDownloader.m */; };
 		4D1A0C2917A7F49C00960906 /* TXHTicketTier.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A0C2817A7F49C00960906 /* TXHTicketTier.m */; };
 		4D1A0C2C17A8F84400960906 /* TXHSalesTicketTierCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A0C2B17A8F84400960906 /* TXHSalesTicketTierCell.m */; };
@@ -162,6 +163,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCurrencyEntryViewSpec.m; sourceTree = "<group>"; };
 		4D0E512F178C0BBC009436AC /* TXHDataDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDataDownloader.h; sourceTree = "<group>"; };
 		4D0E5130178C0BBC009436AC /* TXHDataDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDataDownloader.m; sourceTree = "<group>"; };
 		4D1A0C2717A7F49C00960906 /* TXHTicketTier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketTier.h; sourceTree = "<group>"; };
@@ -571,11 +573,15 @@
 			children = (
 				4D9AA3CA17B51BDC0093D63B /* TXHBaseCollectionViewCell.h */,
 				4D9AA3CB17B51BDC0093D63B /* TXHBaseCollectionViewCell.m */,
+				4DA153DE17BE5F24009FF563 /* TXHBaseDataEntryTableViewCell.h */,
+				4DA153DF17BE5F24009FF563 /* TXHBaseDataEntryTableViewCell.m */,
 				4DB791E717BB7FC400B707D9 /* TXHBaseDataEntryView.h */,
 				4DB791E817BB7FC400B707D9 /* TXHBaseDataEntryView.m */,
 				4D25F644176CE58A00A60359 /* TXHCommonNames.h */,
 				4DB791ED17BBC87F00B707D9 /* TXHCreditCardNumberView.h */,
 				4DB791EE17BBC87F00B707D9 /* TXHCreditCardNumberView.m */,
+				4DA552EF17C4AE72000D78D7 /* TXHCurrencyEntryView.h */,
+				4DA552F017C4AE72000D78D7 /* TXHCurrencyEntryView.m */,
 				4D0E512F178C0BBC009436AC /* TXHDataDownloader.h */,
 				4D0E5130178C0BBC009436AC /* TXHDataDownloader.m */,
 				4D36517017B4DB5F002E07E9 /* TXHDataEntryFieldErrorView.h */,
@@ -587,8 +593,12 @@
 				4D68DAA5178AE9E300743227 /* TXHOptionsExtrasItem.m */,
 				4D58757217BA3BEB006264BA /* TXHQuantitySelectorViewController.h */,
 				4D58757317BA3BEB006264BA /* TXHQuantitySelectorViewController.m */,
+				4D41C06117C3513E0014E5F7 /* TXHSelectionEntryTableViewCell.h */,
+				4D41C06217C3513E0014E5F7 /* TXHSelectionEntryTableViewCell.m */,
 				4D3FC10F17B5480D0036D4DE /* TXHTextCollectionViewCell.h */,
 				4D3FC11017B5480D0036D4DE /* TXHTextCollectionViewCell.m */,
+				4DA153E117BE632E009FF563 /* TXHTextEntryTableViewCell.h */,
+				4DA153E217BE632E009FF563 /* TXHTextEntryTableViewCell.m */,
 				4DB791EA17BB91D000B707D9 /* TXHTextEntryView.h */,
 				4DB791EB17BB91D000B707D9 /* TXHTextEntryView.m */,
 				4DB791ED17BBC87F00B707D9 /* TXHCreditCardNumberView.h */,
@@ -875,11 +885,8 @@
 		58E4FB7E1760AE5500E328A0 /* TicketingHubTests */ = {
 			isa = PBXGroup;
 			children = (
+				4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */,
 				4DF3F59B17C63E070045299B /* Smoke Tests */,
-				4DF3F55C17C63BAE0045299B /* Expecta */,
-				4DF3F57E17C63BAE0045299B /* OCMock */,
-				4DF3F58717C63BAE0045299B /* Specta */,
-				EE07756C17C66893000C3D80 /* TXHOptionMOTests.m */,
 				58E4FB7F1760AE5500E328A0 /* Supporting Files */,
 			);
 			path = TicketingHubTests;
@@ -890,6 +897,9 @@
 			children = (
 				58E4FB801760AE5500E328A0 /* TicketingHubTests-Info.plist */,
 				58E4FB811760AE5500E328A0 /* InfoPlist.strings */,
+				4DF3F55C17C63BAE0045299B /* Expecta */,
+				4DF3F57E17C63BAE0045299B /* OCMock */,
+				4DF3F58717C63BAE0045299B /* Specta */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1466,6 +1476,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */,
 				4DF3F59F17C63E070045299B /* SmokeSpec.m in Sources */,
 				4DF3F59E17C63E070045299B /* MockingTest.m in Sources */,
 				EE07756D17C66893000C3D80 /* TXHOptionMOTests.m in Sources */,
