@@ -98,7 +98,14 @@
     self.timeBtn.titleLabel.font = font;
     self.timeBtn.tintColor = [UIColor whiteColor];
     [self.timeBtn setTitle:titleString forState:UIControlStateNormal];
-    
+
+    UIBarButtonItem *handleItem = self.navigationItem.leftBarButtonItem;
+
+    handleItem.tintColor = [UIColor colorWithRed:188.0f / 255.0f
+                                           green:207.0f / 255.0f
+                                            blue:219.0f / 255.0f
+                                           alpha:1.0f];
+
     self.timeButton = [[UIBarButtonItem alloc] initWithCustomView:self.timeBtn];
     [self.navigationItem setLeftBarButtonItems:@[self.navigationItem.leftBarButtonItem, self.dateButton, self.timeButton]];
 }

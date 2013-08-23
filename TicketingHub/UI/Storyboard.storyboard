@@ -458,7 +458,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" title="tickethub.io" id="D16-fh-Kky">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="87w-ec-8Ay">
+                        <barButtonItem key="leftBarButtonItem" image="handle" id="87w-ec-8Ay">
                             <connections>
                                 <action selector="toggleMenu:" destination="2do-rv-5Ha" id="7Gl-oK-rTG"/>
                             </connections>
@@ -624,9 +624,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     <resources>
         <image name="background" width="1024" height="768"/>
         <image name="background" width="1024" height="768"/>
+        <image name="handle" width="43" height="31"/>
         <image name="logo" width="396" height="142"/>
         <image name="mail" width="20" height="20"/>
-        <image name="menu" width="43" height="31"/>
         <image name="right-arrow" width="10" height="17"/>
         <image name="shadow" width="8" height="1"/>
     </resources>
