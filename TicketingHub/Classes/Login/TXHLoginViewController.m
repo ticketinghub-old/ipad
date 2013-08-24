@@ -98,8 +98,6 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
     NSDictionary *keyboardAnimationDetail = [notification userInfo];
     UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
     UIViewAnimationOptions options = [UIView txhAnimationOptionsFromAnimationCurve:animationCurve];
-    // Beta 4 had issues with the animation options, so fixed at the moment
-    options = UIViewAnimationOptionCurveEaseInOut;
     CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
 
     [UIView animateWithDuration:duration delay:0.0 options:options animations:^{
@@ -112,8 +110,6 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
     NSDictionary *keyboardAnimationDetail = [notification userInfo];
     UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
     UIViewAnimationOptions options = [UIView txhAnimationOptionsFromAnimationCurve:animationCurve];
-    // Beta 4 had issues with the animation options, so fixed at the moment
-    options = UIViewAnimationOptionCurveEaseInOut;
     CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
 
     [UIView animateWithDuration:duration delay:0.0 options:options animations:^{
