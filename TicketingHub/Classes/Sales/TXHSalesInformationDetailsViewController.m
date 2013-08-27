@@ -90,7 +90,6 @@
 #import "TXHSalesContentProtocol.h"
 #import "TXHSalesInformationHeader.h"
 #import "TXHSalesInformationTextCell.h"
-#import "UIView+TXHAnimationConversions.h"
 
 @interface TXHSalesInformationDetailsViewController () <TXHSalesContentProtocol>
 
@@ -295,11 +294,8 @@
 - (void)keyboardWillHide:(NSNotification *)notification {
     NSDictionary *keyboardAnimationDetail = [notification userInfo];
     UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-    UIViewAnimationOptions options = [UIView txhAnimationOptionsFromAnimationCurve:animationCurve];
-    // Beta 4 had issues with the animation options, so fixed at the moment
-    options = UIViewAnimationOptionCurveEaseInOut;
     CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
-    [UIView animateWithDuration:duration delay:0.0 options:options animations:^{
+    [UIView animateWithDuration:duration delay:0.0 options:(animationCurve << 16) animations:^{
         self.collectionView.contentInset = UIEdgeInsetsZero;
         [self.collectionView layoutIfNeeded];
     } completion:nil];
