@@ -338,34 +338,6 @@
 		4DF3F59717C63BAE0045299B /* SPTSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTSpec.h; sourceTree = "<group>"; };
 		4DF3F59C17C63E070045299B /* MockingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockingTest.m; sourceTree = "<group>"; };
 		4DF3F59D17C63E070045299B /* SmokeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmokeSpec.m; sourceTree = "<group>"; };
-		4DF9F92D179D50E90040FC5D /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customer.h; sourceTree = "<group>"; };
-		4DF9F92E179D50E90040FC5D /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer.m; sourceTree = "<group>"; };
-		4DF9F92F179D50E90040FC5D /* Permission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Permission.h; sourceTree = "<group>"; };
-		4DF9F930179D50E90040FC5D /* Permission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Permission.m; sourceTree = "<group>"; };
-		4DF9F931179D50E90040FC5D /* Role.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Role.h; sourceTree = "<group>"; };
-		4DF9F932179D50E90040FC5D /* Role.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Role.m; sourceTree = "<group>"; };
-		4DF9F933179D50E90040FC5D /* Season.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Season.h; sourceTree = "<group>"; };
-		4DF9F934179D50E90040FC5D /* Season.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Season.m; sourceTree = "<group>"; };
-		4DF9F935179D50E90040FC5D /* SeasonOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonOption.h; sourceTree = "<group>"; };
-		4DF9F936179D50E90040FC5D /* SeasonOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonOption.m; sourceTree = "<group>"; };
-		4DF9F937179D50E90040FC5D /* Ticket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ticket.h; sourceTree = "<group>"; };
-		4DF9F938179D50E90040FC5D /* Ticket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ticket.m; sourceTree = "<group>"; };
-		4DF9F939179D50E90040FC5D /* TicketMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketMaster.h; sourceTree = "<group>"; };
-		4DF9F93A179D50E90040FC5D /* TicketMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketMaster.m; sourceTree = "<group>"; };
-		4DF9F946179D50E90040FC5D /* _Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Customer.h; sourceTree = "<group>"; };
-		4DF9F947179D50E90040FC5D /* _Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Customer.m; sourceTree = "<group>"; };
-		4DF9F948179D50E90040FC5D /* _Permission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Permission.h; sourceTree = "<group>"; };
-		4DF9F949179D50E90040FC5D /* _Permission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Permission.m; sourceTree = "<group>"; };
-		4DF9F94A179D50E90040FC5D /* _Role.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Role.h; sourceTree = "<group>"; };
-		4DF9F94B179D50E90040FC5D /* _Role.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Role.m; sourceTree = "<group>"; };
-		4DF9F94C179D50E90040FC5D /* _Season.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Season.h; sourceTree = "<group>"; };
-		4DF9F94D179D50E90040FC5D /* _Season.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Season.m; sourceTree = "<group>"; };
-		4DF9F94E179D50E90040FC5D /* _SeasonOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _SeasonOption.h; sourceTree = "<group>"; };
-		4DF9F94F179D50E90040FC5D /* _SeasonOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _SeasonOption.m; sourceTree = "<group>"; };
-		4DF9F950179D50E90040FC5D /* _Ticket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Ticket.h; sourceTree = "<group>"; };
-		4DF9F951179D50E90040FC5D /* _Ticket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Ticket.m; sourceTree = "<group>"; };
-		4DF9F952179D50E90040FC5D /* _TicketMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TicketMaster.h; sourceTree = "<group>"; };
-		4DF9F953179D50E90040FC5D /* _TicketMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TicketMaster.m; sourceTree = "<group>"; };
 		4DF9F976179D5B4E0040FC5D /* TXHTransitionSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTransitionSegue.h; sourceTree = "<group>"; };
 		4DF9F977179D5B4E0040FC5D /* TXHTransitionSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTransitionSegue.m; sourceTree = "<group>"; };
 		4DF9F979179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMainScreenPlaceholderViewController.h; sourceTree = "<group>"; };
@@ -731,20 +703,6 @@
 		4DF9F92C179D50E90040FC5D /* Human */ = {
 			isa = PBXGroup;
 			children = (
-				4DF9F92D179D50E90040FC5D /* Customer.h */,
-				4DF9F92E179D50E90040FC5D /* Customer.m */,
-				4DF9F92F179D50E90040FC5D /* Permission.h */,
-				4DF9F930179D50E90040FC5D /* Permission.m */,
-				4DF9F931179D50E90040FC5D /* Role.h */,
-				4DF9F932179D50E90040FC5D /* Role.m */,
-				4DF9F933179D50E90040FC5D /* Season.h */,
-				4DF9F934179D50E90040FC5D /* Season.m */,
-				4DF9F935179D50E90040FC5D /* SeasonOption.h */,
-				4DF9F936179D50E90040FC5D /* SeasonOption.m */,
-				4DF9F937179D50E90040FC5D /* Ticket.h */,
-				4DF9F938179D50E90040FC5D /* Ticket.m */,
-				4DF9F939179D50E90040FC5D /* TicketMaster.h */,
-				4DF9F93A179D50E90040FC5D /* TicketMaster.m */,
 				EE8719BE17BE30B80055437C /* TXHOptionMO.h */,
 				EE8719BF17BE30B80055437C /* TXHOptionMO.m */,
 				EE935E7B17B3FE3D0080A1C2 /* TXHPermissionMO.h */,
@@ -763,20 +721,6 @@
 		4DF9F945179D50E90040FC5D /* Machine */ = {
 			isa = PBXGroup;
 			children = (
-				4DF9F946179D50E90040FC5D /* _Customer.h */,
-				4DF9F947179D50E90040FC5D /* _Customer.m */,
-				4DF9F948179D50E90040FC5D /* _Permission.h */,
-				4DF9F949179D50E90040FC5D /* _Permission.m */,
-				4DF9F94A179D50E90040FC5D /* _Role.h */,
-				4DF9F94B179D50E90040FC5D /* _Role.m */,
-				4DF9F94C179D50E90040FC5D /* _Season.h */,
-				4DF9F94D179D50E90040FC5D /* _Season.m */,
-				4DF9F94E179D50E90040FC5D /* _SeasonOption.h */,
-				4DF9F94F179D50E90040FC5D /* _SeasonOption.m */,
-				4DF9F950179D50E90040FC5D /* _Ticket.h */,
-				4DF9F951179D50E90040FC5D /* _Ticket.m */,
-				4DF9F952179D50E90040FC5D /* _TicketMaster.h */,
-				4DF9F953179D50E90040FC5D /* _TicketMaster.m */,
 				EE8719C417BE30CB0055437C /* _TXHOptionMO.h */,
 				EE8719C517BE30CB0055437C /* _TXHOptionMO.m */,
 				EE11AE1317BD2E18000042B2 /* _TXHPermissionMO.h */,
