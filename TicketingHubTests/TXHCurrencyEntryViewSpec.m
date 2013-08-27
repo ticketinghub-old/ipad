@@ -13,6 +13,13 @@
 
 #import "TXHCurrencyEntryView.h"
 
+// Cracker to give us access to the currency view's textField
+@interface TXHCurrencyEntryView (Testing) <UITextFieldDelegate>
+
+- (UITextField *)textField;
+
+@end
+
 SpecBegin(TXHCurrencyEntryView)
 
 __block TXHCurrencyEntryView *_currencyEntryView;
@@ -78,21 +85,122 @@ describe(@"Setting locale to en_GB", ^{
     
     context(@"with an amount specified", ^{
         
+        beforeEach(^{
+            _currencyEntryView.amount = @(6543.21);
+        });
+        
         it(@"expects text property to be not nil", ^{
-            _currencyEntryView.amount = @(0);
             NSString *text = _currencyEntryView.text;
             expect(text).toNot.beNil();
         });
         
         it(@"expects the currency symbol to be a prefix", ^{
-            _currencyEntryView.amount = @(0);
             NSString *prefix = [_currencyEntryView.text substringToIndex:1];
             NSString *symbol = [_currencyEntryView.locale objectForKey:NSLocaleCurrencySymbol];
             expect(prefix).to.equal(symbol);
         });
         
+        context(@"with the cursor positioned at the start", ^{
+            
+            context(@"with no selection", ^{
+                
+                beforeEach(^{
+                    [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"7"];
+                });
+                
+                it(@"expects the entered value to be added to the beginning", ^{
+                    NSNumber *newValue = _currencyEntryView.amount;
+                    expect(newValue.doubleValue).to.beCloseToWithin(@(76543.21), @(0.001));
+                });
+                
+                it(@"expects the text to be correctly formatted", ^{
+                    expect(_currencyEntryView.textField.text).to.equal(@"£76,543.21");
+                });
+                
+            });
+                
+            context(@"with one character selected", ^{
+                
+                beforeEach(^{
+                    [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(1, 1) replacementString:@"7"];
+                });
+                
+                it(@"expects the first character to be substituted", ^{
+                    NSNumber *newValue = _currencyEntryView.amount;
+                    expect(newValue.doubleValue).to.beCloseToWithin(@(7543.21), @(0.001));
+                });
+                
+                it(@"expects the text to be correctly formatted", ^{
+                    expect(_currencyEntryView.textField.text).to.equal(@"£7,543.21");
+                });
+                
+            });
+            
+            context(@"with multiple characters selected", ^{
+                
+                beforeEach(^{
+                    [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(1, 4) replacementString:@"987"];
+                });
+                
+                it(@"expects the selected characters to be substituted", ^{
+                    NSNumber *newValue = _currencyEntryView.amount;
+                    expect(newValue.doubleValue).to.beCloseToWithin(@(9873.21), @(0.001));
+                });
+                
+                it(@"expects the text to be correctly formatted", ^{
+                    expect(_currencyEntryView.textField.text).to.equal(@"£9,873.21");
+                });
+                
+            });
+            
+        });
+    
     });
     
+    context(@"typing one character at a time", ^{
+        it(@"entering 4 expects the amount and the formatted text to be correct", ^{
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"4"];
+            expect(_currencyEntryView.amount).to.beCloseToWithin(@(4), @(0.01));
+            expect(_currencyEntryView.text).to.equal(@"£4.00");
+        });
+
+        it(@"entering 6 followed by 3 expects the amount and the formatted text to be correct", ^{
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"6"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(2, 0) replacementString:@"3"];
+            expect(_currencyEntryView.amount).to.beCloseToWithin(@(63), @(0.01));
+            expect(_currencyEntryView.text).to.equal(@"£63.00");
+        });
+        
+        it(@"entering 2 followed by 7 then 5 expects the amount and the formatted text to be correct", ^{
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"2"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(2, 0) replacementString:@"7"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(3, 0) replacementString:@"5"];
+            expect(_currencyEntryView.amount).to.beCloseToWithin(@(275), @(0.01));
+            expect(_currencyEntryView.text).to.equal(@"£275.00");
+        });
+        
+        it(@"entering 9 followed by 1 then 8 then 8 expects the amount and the formatted text to be correct", ^{
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"9"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(2, 0) replacementString:@"1"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(3, 0) replacementString:@"8"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(4, 0) replacementString:@"8"];
+            expect(_currencyEntryView.amount).to.beCloseToWithin(@(9188), @(0.01));
+            expect(_currencyEntryView.text).to.equal(@"£9,188.00");
+        });
+        
+        it(@"entering 4 followed by 3 then 5 then 8 then . then 2 then 7 expects the amount and the formatted text to be correct", ^{
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"4"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(2, 0) replacementString:@"3"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(3, 0) replacementString:@"5"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(4, 0) replacementString:@"8"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(6, 0) replacementString:@"."];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(7, 0) replacementString:@"2"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(8, 0) replacementString:@"7"];
+            expect(_currencyEntryView.amount).to.beCloseToWithin(@(4358.27), @(0.01));
+            expect(_currencyEntryView.text).to.equal(@"£4,358.27");
+        });
+        
+    });
 });
 
 describe(@"Setting locale to el_GR", ^{
@@ -135,8 +243,114 @@ describe(@"Setting locale to el_GR", ^{
             expect(suffix).to.equal(symbol);
         });
         
+        context(@"with the cursor positioned at the start", ^{
+            
+            beforeEach(^{
+                // Add an amount with no decimal places then simulate adding some decimal places
+                _currencyEntryView.amount = @(6719855);
+                [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(9, 0) replacementString:@","];
+                [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(10, 0) replacementString:@"3"];
+            });
+
+            context(@"with no selection", ^{
+                
+                beforeEach(^{
+                    [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"4"];
+                });
+                
+                it(@"expects the entered value to be added to the beginning", ^{
+                    NSNumber *newValue = _currencyEntryView.amount;
+                    expect(newValue.doubleValue).to.beCloseToWithin(@(46719855.3), @(0.001));
+                });
+                
+                it(@"expects the text to be correctly formatted", ^{
+                    expect(_currencyEntryView.textField.text).to.equal(@"46.719.855,30 €");
+                });
+                
+            });
+            
+            context(@"with one character selected", ^{
+                
+                beforeEach(^{
+                    [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(0, 1) replacementString:@"7"];
+                });
+                
+                it(@"expects the first character to be substituted", ^{
+                    NSNumber *newValue = _currencyEntryView.amount;
+                    expect(newValue.doubleValue).to.beCloseToWithin(@(7719855.3), @(0.001));
+                });
+                
+                it(@"expects the text to be correctly formatted", ^{
+                    expect(_currencyEntryView.textField.text).to.equal(@"7.719.855,30 €");
+                });
+                
+            });
+            
+            context(@"with multiple characters selected", ^{
+                
+                beforeEach(^{
+                    [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(1, 4) replacementString:@"987"];
+                });
+                
+                it(@"expects the selected characters to be substituted", ^{
+                    NSNumber *newValue = _currencyEntryView.amount;
+                    expect(newValue.doubleValue).to.beCloseToWithin(@(6987855.3), @(0.001));
+                });
+                
+                it(@"expects the text to be correctly formatted", ^{
+                    expect(_currencyEntryView.textField.text).to.equal(@"6.987.855,30 €");
+                });
+                
+            });
+            
+        });
+        
     });
     
+    context(@"typing one character at a time", ^{
+        it(@"entering 4 expects the amount and the formatted text to be correct", ^{
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"4"];
+            expect(_currencyEntryView.amount).to.beCloseToWithin(@(4), @(0.01));
+            expect(_currencyEntryView.text).to.equal(@"4,00 €");
+        });
+        
+        it(@"entering 6 followed by 3 expects the amount and the formatted text to be correct", ^{
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"6"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(2, 0) replacementString:@"3"];
+            expect(_currencyEntryView.amount).to.beCloseToWithin(@(6.3), @(0.01));
+            expect(_currencyEntryView.text).to.equal(@"6,30 €");
+        });
+        
+        it(@"entering 2 followed by 7 then 5 expects the amount and the formatted text to be correct", ^{
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"2"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(1, 0) replacementString:@"7"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(2, 0) replacementString:@"5"];
+            expect(_currencyEntryView.amount).to.beCloseToWithin(@(275), @(0.01));
+            expect(_currencyEntryView.text).to.equal(@"275,00 €");
+        });
+        
+        it(@"entering 9 followed by 1 then 8 then 8 expects the amount and the formatted text to be correct", ^{
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"9"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(1, 0) replacementString:@"1"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(2, 0) replacementString:@"8"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(3, 0) replacementString:@"8"];
+            expect(_currencyEntryView.amount).to.beCloseToWithin(@(9188), @(0.01));
+            expect(_currencyEntryView.text).to.equal(@"9.188,00 €");
+        });
+        
+        it(@"entering 4 followed by 3 then 5 then 8 then . then 2 then 7 expects the amount and the formatted text to be correct", ^{
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"4"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(1, 0) replacementString:@"3"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(2, 0) replacementString:@"5"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(3, 0) replacementString:@"8"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(5, 0) replacementString:@","];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(6, 0) replacementString:@"2"];
+            [_currencyEntryView textField:_currencyEntryView.textField shouldChangeCharactersInRange:NSMakeRange(7, 0) replacementString:@"7"];
+            expect(_currencyEntryView.amount).to.beCloseToWithin(@(4358.27), @(0.01));
+            expect(_currencyEntryView.text).to.equal(@"4.358,27 €");
+        });
+        
+    });
 });
 
 SpecEnd

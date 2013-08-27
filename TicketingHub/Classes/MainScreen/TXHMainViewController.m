@@ -232,7 +232,7 @@
 
 - (void)updateControlsForUserInteraction {
     BOOL enabled = (self.venue != nil);
-    self.modeSelector.userInteractionEnabled = enabled;
+//    self.modeSelector.userInteractionEnabled = enabled;
     self.dateButton.enabled = enabled;
     self.timeButton.enabled = (enabled && (self.selectedDate != nil));
 }
