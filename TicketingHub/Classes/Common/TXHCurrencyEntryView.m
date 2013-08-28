@@ -8,39 +8,6 @@
 
 #import "TXHCurrencyEntryView.h"
 
-//@interface UITextField (Selection)
-//- (NSRange) selectedRange;
-//- (void) setSelectedRange:(NSRange) range;
-//@end
-//
-//@implementation UITextField (Selection)
-//- (NSRange) selectedRange
-//{
-//    UITextPosition* beginning = self.beginningOfDocument;
-//    
-//    UITextRange* selectedRange = self.selectedTextRange;
-//    UITextPosition* selectionStart = selectedRange.start;
-//    UITextPosition* selectionEnd = selectedRange.end;
-//    
-//    const NSInteger location = [self offsetFromPosition:beginning toPosition:selectionStart];
-//    const NSInteger length = [self offsetFromPosition:selectionStart toPosition:selectionEnd];
-//    
-//    return NSMakeRange(location, length);
-//}
-//
-//- (void) setSelectedRange:(NSRange) range
-//{
-//    UITextPosition* beginning = self.beginningOfDocument;
-//    
-//    UITextPosition* startPosition = [self positionFromPosition:beginning offset:range.location];
-//    UITextPosition* endPosition = [self positionFromPosition:beginning offset:range.location + range.length];
-//    UITextRange* selectionRange = [self textRangeFromPosition:startPosition toPosition:endPosition];
-//    
-//    [self setSelectedTextRange:selectionRange];
-//}
-//
-//@end
-
 @interface TXHTextEntryView (currencyExtension)
 
 // Expose the underlying textfield property getter method so we can work with it here
@@ -54,17 +21,19 @@
 @property (strong, nonatomic) NSNumberFormatter *currencyFormatter;
 
 // The cursor location for our textfield after formatting has been applied
-@property (assign, nonatomic) NSUInteger cursorLocation;
-
-// A backing string to hold characters entered
-@property (strong, nonatomic) NSString *enteredText;
-
-// Count of formatting characters added to the entered text
-@property (assign, nonatomic) NSUInteger formattingCharacterCount;
+@property (assign, nonatomic) NSInteger cursorLocation;
 
 // A flag indicating that we are updating the amount
-// needed to suppress recursion in textField:shouldChangeCharactersInRange:replacementString: which also updates the amount
-@property (assign, nonatomic) BOOL updatingAmount;
+// needed to suppress update from textField:shouldChangeCharactersInRange:replacementString: which also updates the amount
+@property (assign, nonatomic) BOOL updatingAmountIndirectly;
+
+// A dictionary of formatting information for our currency text
+// containing:
+//  key         contining
+//  Currency    NSRange String
+//  Grouping    NSArray of NSRange Strings
+//  Decimal     NSRange String
+@property (strong, nonatomic) NSDictionary *formattingCharacters;
 
 @end
 
@@ -87,19 +56,24 @@
     currencyFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
     self.currencyFormatter = currencyFormatter;
 
-    self.enteredText = @"";
     self.textField.placeholder = [self formattedAmount];
 }
 
 #pragma mark - Property Getter / Setter Methods
 
+- (NSDictionary *)formattingCharacters {
+    if (_formattingCharacters == nil) {
+        return [NSDictionary dictionary];
+    }
+    return _formattingCharacters;
+}
+
 - (void)setAmount:(NSNumber *)amount {
     _amount = amount;
-    NSString *enteredText = self.enteredText;
-    enteredText = amount.stringValue;
-    UITextField *textField = self.textField;
-    textField.text = [self formattedAmount];
-    self.formattingCharacterCount = (textField.text.length - enteredText.length);
+    NSString *formattedText = [self formattedAmount];
+    self.textField.text = formattedText;
+    // Keep a record of the formatting
+    [self updateFormattingDictionary];
 }
 
 - (void)setCurrencyCode:(NSString *)currencyCode {
@@ -120,6 +94,61 @@
 }
 
 #pragma mark - Private methods
+
+- (void)updateFormattingDictionary {
+    NSMutableDictionary *formatting = [NSMutableDictionary dictionary];
+
+    NSString *formattedText = [self formattedAmount];
+    
+    if (formattedText.length == 0) {
+        self.formattingCharacters = formatting;
+        return;
+    }
+    
+    // Appropriate currencySymbol can be found via our currency formatter.
+    NSString *currencySymbol = self.currencyFormatter.currencySymbol;
+    
+    // Appropriate grouping separator can be found from the currency formatter
+    NSString *groupSeparator = self.currencyFormatter.groupingSeparator;
+    
+    // Find a location for the currency symbol if it appears in the text
+    NSRange range = [formattedText rangeOfString:currencySymbol];
+    if (range.location != NSNotFound) {
+        // If the currency symbol is not located at the start allow for space padding
+        if (range.location > 0) {
+            range.length += 1;
+            range.location -= 1;
+        }
+        
+        formatting[@"Currency"] = NSStringFromRange(range);
+    }
+    
+    // Look for a decimal separator
+    range = [formattedText rangeOfString:self.currencyFormatter.decimalSeparator];
+    if (range.location != NSNotFound) {
+        formatting[@"Decimal"] = NSStringFromRange(range);
+    }
+
+    
+    // Check for group separator
+    NSMutableArray *groupings = [NSMutableArray array];
+    
+    NSUInteger offset = 0;
+    range = [formattedText rangeOfString:groupSeparator];
+    while (range.location != NSNotFound) {
+        formattedText = [formattedText substringFromIndex:range.location + 1];
+        offset += range.location;
+        range.location = offset;
+        [groupings addObject:NSStringFromRange(range)];
+        range = [formattedText rangeOfString:groupSeparator];
+    }
+    
+    if (groupings.count > 0) {
+        formatting[@"Grouping"] = groupings;
+    }
+    
+    self.formattingCharacters = formatting;
+}
 
 - (NSString *)formattedAmount {
     return [self.currencyFormatter stringFromNumber:self.amount];
@@ -150,130 +179,231 @@
     [textField setSelectedTextRange:selectionRange];
 }
 
+- (NSDictionary *)buildFormattingDifferencesWith:(NSDictionary *)formatting {
+    // A dictionary to return containing keys for added & removed formatting ranges between what is passed in and the current formatting
+    NSMutableDictionary *differences = [NSMutableDictionary dictionary];
+    
+    // Formatting ranges added in current formatting details that were not present in the formatting dictionary passed in
+    NSMutableDictionary *formattingAdded = [NSMutableDictionary dictionary];
+    
+    // Formatting ranges deleted from the current formatting details that were present in the formatting dictionary passed in
+    NSMutableDictionary *formattingRemoved = [NSMutableDictionary dictionary];
+    
+    // Check currency formatting
+    NSString *currentRangeString = self.formattingCharacters[@"Currency"];
+    NSString *comparedRangeString = formatting[@"Currency"];
+    
+    // Was currency formatting added
+    if ((currentRangeString.length > 0) && (comparedRangeString.length == 0)) {
+        formattingAdded[@"Currency"] = currentRangeString;
+    }
 
+    // Was currency formatting removed
+    if ((currentRangeString.length == 0) && (comparedRangeString.length > 0)) {
+        formattingRemoved[@"Currency"] = comparedRangeString;
+    }
+    
+    // Check decimal formatting
+    currentRangeString = self.formattingCharacters[@"Decimal"];
+    comparedRangeString = formatting[@"Decimal"];
+    
+    // Was decimal formatting added
+    if ((currentRangeString.length > 0) && (comparedRangeString.length == 0)) {
+        formattingAdded[@"Decimal"] = currentRangeString;
+    }
+    
+    // Was decimal formatting removed
+    if ((currentRangeString.length == 0) && (comparedRangeString.length > 0)) {
+        formattingRemoved[@"Decimal"] = comparedRangeString;
+    }
+    
+    // Group details are a little different in that there may be more than one occurrence of the group separator
+    NSArray *currentGroups = self.formattingCharacters[@"Grouping"];
+    NSArray *comparedGroups = formatting[@"Grouping"];
+    
+    // Was grouping wholly added
+    if ((currentGroups.count > 0) && (comparedGroups.count == 0)) {
+        formattingAdded[@"Grouping"] = currentGroups;
+    }
+
+    // Was grouping wholly removed
+    if ((currentGroups.count == 0) && (comparedGroups.count > 0)) {
+        formattingRemoved[@"Grouping"] = comparedGroups;
+    }
+    
+    // Has grouping changed at all
+    if ((currentGroups.count > 0) && (comparedGroups.count > 0)) {
+        // If there are a different number of entries, we definitely have a change.
+        if (currentGroups.count != comparedGroups.count) {
+            formattingAdded[@"Grouping"] = currentGroups;
+            formattingRemoved[@"Grouping"] = comparedGroups;
+        } else {
+            // If there are the same number of entries compare each one looking for any changes.  If there are any then add & remmove
+            for (int index = 0; index < currentGroups.count; index++) {
+                // Check decimal formatting
+                currentRangeString = (NSString *)[currentGroups objectAtIndex:index];
+                comparedRangeString = (NSString *)[comparedGroups objectAtIndex:index];
+                if ([currentRangeString isEqualToString:comparedRangeString] == NO) {
+                    formattingAdded[@"Grouping"] = currentGroups;
+                    formattingRemoved[@"Grouping"] = comparedGroups;
+                    break;
+                }
+            }
+        }
+    }
+    
+    // Set contents of the differences dictionary
+    differences[@"added"] = formattingAdded;
+    differences[@"removed"] = formattingRemoved;
+    
+    return differences;
+}
 
 #pragma mark UITextField delegate methods
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    // Keep an indication of the current cursor location according to the range passed in.
+    // We need this to determine whether any formatting characters added are 'downwind' of the cursor
+    NSUInteger originalCursorLocation = range.location;
+    
+    // Keep a copy of the current formatting for comparison after updating the amount
+    NSDictionary *originalFormatting = [self.formattingCharacters copy];
 
-    // Get previously entered text from the backing field
-    NSString *text = self.enteredText;
+    // Start off with the current textfield contents
+    NSString *text = textField.text;
     
     // If the string is equal to group separator then eat it
     if ([string isEqualToString:self.currencyFormatter.groupingSeparator]) {
         return NO;
     }
     
-    // If string is equal to decimal separator, disallow if entered text already contains one
+    // If string is equal to decimal separator, disallow if entered text already contains one in a different location
     NSRange decimalRange = [text rangeOfString:self.currencyFormatter.decimalSeparator];
     if ((decimalRange.location != NSNotFound) && ([string isEqualToString:self.currencyFormatter.decimalSeparator])) {
-        return NO;
+        if (decimalRange.location != range.location) {
+            return NO;
+        }
+        
+        // Amend the range to cover replacing the separator
+        range.length += self.currencyFormatter.decimalSeparator.length;
     }
     
     // If there is currently nothing entered and we are processing a backspace there is nothing to do
     if ((text.length == 0) && (string.length < 1)) {
         return NO;
     }
-    
-    // Grab the range we were given - we need it to work out where the cursor should go after formatting our currency value.
-    NSRange adjustedRange = range;
-    
-    // range indicates the text field cursor & is relative to the formatted text presented in the textfield; not the entered text we are storing.
-    // We need to adjust the cursor location relative to the backing text held in enteredText.
-    adjustedRange.location -= self.formattingCharacterCount;
-    
-    // Create a new string holding the proposed text
-    NSString *proposedText = [text stringByReplacingCharactersInRange:adjustedRange withString:string];
-    
-    // If the proposed text is an empty string, reset underlying amount & return
-    if (proposedText.length == 0) {
-        textField.text = proposedText;
-        self.enteredText = proposedText;
-        self.formattingCharacterCount = 0;
-        self.amount = @(0);
-        return NO;
-    }
-    
-    // The proposed text contains something
-    
-    // Appropriate currencySymbol can be found via our currency formatter.
-    NSString *currencySymbol = self.currencyFormatter.currencySymbol;
-    
-    // If the proposed text contains just the currency symbol then we eat it.
-    if ((proposedText.length == 1) && ([proposedText isEqualToString:currencySymbol])) {
-        return NO;
-    }
-    
-    // Appropriate decimalSeperator can be found via our currency formatter.
-    NSString *decimalSeperator = self.currencyFormatter.decimalSeparator;
-    
-    // If the proposed text contains a single character and it is the decimal separator, insert a zero before it
-    if ((proposedText.length == 1) && ([proposedText isEqualToString:decimalSeperator])) {
-        proposedText = [NSString stringWithFormat:@"0%@", proposedText];
-    }
 
+    // Go ahead and replace string in the text, generating a proposed replacement
+    NSString *proposedText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    // Strip out any formatting characters from the proposed text
+
+    NSString *currencySymbol = self.currencyFormatter.currencySymbol;
+    proposedText = [proposedText stringByReplacingOccurrencesOfString:currencySymbol withString:@""];
+    
+    NSString *groupSeparator = self.currencyFormatter.groupingSeparator;
+    proposedText = [proposedText stringByReplacingOccurrencesOfString:groupSeparator withString:@""];
+
+    proposedText = [proposedText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    // Convert the resultant text into a number
+    
     // Switch the currency formatter style temporarily in order to extract a number in the appropriate locale
     self.currencyFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-    NSNumber *numberFromProposedText = [self.currencyFormatter numberFromString:proposedText];
-    // Now switch it back to currency style so that text displayed to the user will be presented as a currency 
+    NSNumber *proposedNumber = [self.currencyFormatter numberFromString:proposedText];
+
+    // Now switch the formatter back to currency style so that text displayed to the user will be presented as a currency
     self.currencyFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
     
-    double proposedValue = numberFromProposedText.doubleValue;
-    NSLog(@"proposed text:%@ value:%f", proposedText, proposedValue);
-    NSNumber *amount = [NSNumber numberWithDouble:proposedValue];
+    // Having reset the formatter we can go ahead and assign the number
+    self.amount = proposedNumber;
     
-    if (amount) {
-        // We have a valid number, so assign backing values.
-        self.enteredText = proposedText;
-        
-        // Updating the amount also sets the backing textfield's text to the formatted amount
-        self.amount = amount;
-        
-        // We need to estimate the cursor location after formatting in order to work out how many group characters, if any, affect the final cursor position
-        NSUInteger expectedCursorLocation;
-        if (range.location != self.cursorLocation) {
-            expectedCursorLocation = range.location + string.length;
-        } else {
-            expectedCursorLocation = self.cursorLocation + string.length;
-        }
+    // Formatting will have been updated now, so we can determine what formatting was added or removed by the change to our number
+    NSDictionary *formattingChanges = [self buildFormattingDifferencesWith:originalFormatting];
+    
+    NSDictionary *added = formattingChanges[@"added"];
+    NSDictionary *removed = formattingChanges[@"removed"];
 
-        // Set the range according to currency formatting
-        self.formattingCharacterCount = 0;
-        if ([self.currencyFormatter.positivePrefix isEqualToString:self.currencyFormatter.currencySymbol]) {
-            // Add the size of the currency prefix
-            self.formattingCharacterCount += self.currencyFormatter.currencySymbol.length;
-        }
-        
-        // The cursor location for entering characters if the user has not repositioned the cursor
-        NSUInteger cursorLocationOfEnteredText = self.formattingCharacterCount;
-        
-        // Add 1 to the range for each group separator encountered in the formatted text before the expected cursor location
-        NSString *temp = textField.text;
-        NSRange groupRange = [temp rangeOfString:self.currencyFormatter.groupingSeparator];
-        while (groupRange.location != NSNotFound) {
-            if (groupRange.location < expectedCursorLocation) {
-                self.formattingCharacterCount += 1;
+    // Update our placeholdor for where we think the cursor ought to be and the range provided
+    self.cursorLocation += string.length;
+    
+    range.location += string.length;
+    
+    // Reset range length; since we no longer have a selection once 'string' has replaced it
+    range.length = 0;
+
+    // If we have removed any formatting move cursor upstream as appropriate
+    if (removed.count > 0) {
+        NSString *rangeString = removed[@"Currency"];
+        if (rangeString.length > 0) {
+            NSRange currencyRange = NSRangeFromString(rangeString);
+            if (currencyRange.location <= originalCursorLocation) {
+                range.location -= currencyRange.location + currencyRange.length;
+                self.cursorLocation -= currencyRange.location + currencyRange.length;
             }
-            cursorLocationOfEnteredText += 1;
-            temp = [temp substringFromIndex:groupRange.location + groupRange.length];
-            groupRange = [temp rangeOfString:self.currencyFormatter.groupingSeparator];
         }
         
-        // If the range location is different to the range location we calculated last time, use the range provided to determine cursor position
-        if (range.location != self.cursorLocation) {
-            // User amended cursor position, so reuse that instead
-            self.cursorLocation = expectedCursorLocation;
-        } else {
-            // Reset cursor position allowing for formatting characters
-            self.cursorLocation = self.formattingCharacterCount + self.enteredText.length;
+        // Check for grouping separators
+        NSArray *groupings = removed[@"Grouping"];
+        for (NSString *thisRangeString in groupings) {
+            if (thisRangeString.length > 0) {
+                NSRange groupRange = NSRangeFromString(thisRangeString);
+                if ((groupRange.location <= originalCursorLocation)) {
+                    range.location -= 1;
+                    self.cursorLocation -= 1;
+                }
+            }
         }
         
-        // Apply the cursor to the current location
-        [self applySelectedRange:NSMakeRange(self.cursorLocation, 0) toTextField:textField];
-        return NO;
+        // Finally check the decimal separator
+        rangeString = removed[@"Decimal"];
+        if (rangeString.length > 0) {
+            decimalRange = NSRangeFromString(rangeString);
+            if ((decimalRange.location <= originalCursorLocation)) {
+                range.location -= 1;
+                self.cursorLocation -= 1;
+            }
+        }
     }
     
-    // We couldn't make a number out of the entered text by adding the string, so just eat it
+    // If we have added any formatting move cursor downstream as appropriate
+    if (added.count > 0) {
+        NSString *rangeString = added[@"Currency"];
+        if (rangeString.length > 0) {
+            NSRange currencyRange = NSRangeFromString(rangeString);
+            if (currencyRange.location <= originalCursorLocation) {
+                range.location += currencyRange.location + currencyRange.length;
+                self.cursorLocation += (currencyRange.location + currencyRange.length);
+            }
+        }
+        
+        // Check for grouping separators
+        NSArray *groupings = added[@"Grouping"];
+        for (NSString *thisRangeString in groupings) {
+            if (thisRangeString.length > 0) {
+                NSRange groupRange = NSRangeFromString(thisRangeString);
+                if ((groupRange.location <= originalCursorLocation)) {
+                    range.location += 1;
+                    self.cursorLocation += 1;
+                }
+            }
+        }
+        
+        // Finally check the decimal separator
+        rangeString = added[@"Decimal"];
+        if (rangeString.length > 0) {
+            decimalRange = NSRangeFromString(rangeString);
+            if ((decimalRange.location <= originalCursorLocation)) {
+                range.location += 1;
+                self.cursorLocation += 1;
+            }
+        }
+    }
+    
+    // Apply the cursor to the current location
+    [self applySelectedRange:range toTextField:textField];
+    
     return NO;
 }
 
