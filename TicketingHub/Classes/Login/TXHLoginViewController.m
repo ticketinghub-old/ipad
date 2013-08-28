@@ -16,7 +16,6 @@
 #import "TXHUserDefaultsKeys.h"
 #import "TXHUserMO.h"
 #import "TXHVenueMO.h"
-#import "UIView+TXHAnimationConversions.h"
 
 // These are application / client specific constants
 static NSString * const kClientId = @"ca99032b750f829630d8c9272bb9d3d6696b10f5bddfc34e4b7610eb772d28e7";
@@ -97,10 +96,9 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 - (void)keyboardWillShow:(NSNotification *)notification {
     NSDictionary *keyboardAnimationDetail = [notification userInfo];
     UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-    UIViewAnimationOptions options = [UIView txhAnimationOptionsFromAnimationCurve:animationCurve];
     CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
 
-    [UIView animateWithDuration:duration delay:0.0 options:options animations:^{
+    [UIView animateWithDuration:duration delay:0.0 options:(animationCurve << 16) animations:^{
         self.verticalSpaceToLogo.constant = 40.0f;
         [self.view layoutIfNeeded];
     } completion:nil];
@@ -109,10 +107,9 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 - (void)keyboardWillHide:(NSNotification *)notification {
     NSDictionary *keyboardAnimationDetail = [notification userInfo];
     UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-    UIViewAnimationOptions options = [UIView txhAnimationOptionsFromAnimationCurve:animationCurve];
     CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
 
-    [UIView animateWithDuration:duration delay:0.0 options:options animations:^{
+    [UIView animateWithDuration:duration delay:0.0 options:(animationCurve << 16) animations:^{
         self.verticalSpaceToLogo.constant = 152.0f;
         [self.view layoutIfNeeded];
     } completion:nil];

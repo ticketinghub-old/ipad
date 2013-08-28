@@ -81,7 +81,6 @@
 		4DC95F26179EA654004E035D /* TXHTimeslotSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC95F25179EA654004E035D /* TXHTimeslotSelectorViewController.m */; };
 		4DD9D82117B93A2F002AC6BD /* TXHSalesProductDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD9D82017B93A2F002AC6BD /* TXHSalesProductDetailsViewController.m */; };
 		4DD9D82417B93AF5002AC6BD /* TXHSalesProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD9D82317B93AF5002AC6BD /* TXHSalesProductCell.m */; };
-		4DE21FDD1799738C004D50F0 /* UIView+TXHAnimationConversions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE21FDC1799738C004D50F0 /* UIView+TXHAnimationConversions.m */; };
 		4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */; };
 		4DF3F59817C63BAE0045299B /* libExpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF3F57B17C63BAE0045299B /* libExpecta-ios-universal.a */; };
 		4DF3F59917C63BAE0045299B /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF3F57F17C63BAE0045299B /* libOCMock.a */; };
@@ -279,8 +278,6 @@
 		4DD9D82017B93A2F002AC6BD /* TXHSalesProductDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesProductDetailsViewController.m; sourceTree = "<group>"; };
 		4DD9D82217B93AF5002AC6BD /* TXHSalesProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSalesProductCell.h; sourceTree = "<group>"; };
 		4DD9D82317B93AF5002AC6BD /* TXHSalesProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSalesProductCell.m; sourceTree = "<group>"; };
-		4DE21FDB1799738C004D50F0 /* UIView+TXHAnimationConversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TXHAnimationConversions.h"; sourceTree = "<group>"; };
-		4DE21FDC1799738C004D50F0 /* UIView+TXHAnimationConversions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TXHAnimationConversions.m"; sourceTree = "<group>"; };
 		4DF3B5BC177082FF00D657AB /* TXHDoorMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorMainController.h; sourceTree = "<group>"; };
 		4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorMainController.m; sourceTree = "<group>"; };
 		4DF3F55D17C63BAE0045299B /* EXPBackwardCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPBackwardCompatibility.h; sourceTree = "<group>"; };
@@ -609,8 +606,6 @@
 				4D307DB21796F61C00822645 /* TXHTimeFormatter.h */,
 				4D307DB31796F61C00822645 /* TXHTimeFormatter.m */,
 				EE106B4A17B4FE2200910901 /* TXHUserDefaultsKeys.h */,
-				4DE21FDB1799738C004D50F0 /* UIView+TXHAnimationConversions.h */,
-				4DE21FDC1799738C004D50F0 /* UIView+TXHAnimationConversions.m */,
 				4DA552F017C4AE72000D78D7 /* TXHCurrencyEntryView.m */,
 				4D68DAA5178AE9E300743227 /* TXHOptionsExtrasItem.m */,
 			);
@@ -1399,7 +1394,6 @@
 				EEB4FD5617B277D800F226BC /* _TXHNetworkClient.m in Sources */,
 				4D1A0C2C17A8F84400960906 /* TXHSalesTicketTierCell.m in Sources */,
 				4D8A106A17BD2DDC00CEECAD /* Stripe.m in Sources */,
-				4DE21FDD1799738C004D50F0 /* UIView+TXHAnimationConversions.m in Sources */,
 				4D8A106817BD2DD300CEECAD /* STPToken.m in Sources */,
 				4DA05FBB178D8F31005161E6 /* TXHMenuController.m in Sources */,
 				EEB4FD5A17B277D800F226BC /* TXHUser.m in Sources */,
