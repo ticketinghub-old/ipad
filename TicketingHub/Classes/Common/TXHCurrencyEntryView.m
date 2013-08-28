@@ -23,9 +23,6 @@
 // The cursor location for our textfield after formatting has been applied
 @property (assign, nonatomic) NSInteger cursorLocation;
 
-// Count of formatting characters added to the entered text
-//@property (assign, nonatomic) NSUInteger formattingCharacterCount;
-
 // A flag indicating that we are updating the amount
 // needed to suppress update from textField:shouldChangeCharactersInRange:replacementString: which also updates the amount
 @property (assign, nonatomic) BOOL updatingAmountIndirectly;
@@ -299,7 +296,6 @@
 
     // Go ahead and replace string in the text, generating a proposed replacement
     NSString *proposedText = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    NSLog(@"text:%@ proposed:%@ range:%@ string:%@", textField.text, proposedText, NSStringFromRange(range), string);
     
     // Strip out any formatting characters from the proposed text
 
@@ -333,7 +329,6 @@
     self.cursorLocation += string.length;
     
     range.location += string.length;
-    NSLog(@"inc range by %d to %d", string.length, range.location);
     
     // Reset range length; since we no longer have a selection once 'string' has replaced it
     range.length = 0;
@@ -345,9 +340,7 @@
             NSRange currencyRange = NSRangeFromString(rangeString);
             if (currencyRange.location <= originalCursorLocation) {
                 range.location -= currencyRange.location + currencyRange.length;
-                NSLog(@"dec range by %d + %d to %d (for currency)", currencyRange.location, currencyRange.length, range.location);
                 self.cursorLocation -= currencyRange.location + currencyRange.length;
-                NSLog(@"dec cursor by %d + %d to %d (for currency)", currencyRange.location, currencyRange.length, self.cursorLocation);
             }
         }
         
@@ -358,9 +351,7 @@
                 NSRange groupRange = NSRangeFromString(thisRangeString);
                 if ((groupRange.location <= originalCursorLocation)) {
                     range.location -= 1;
-                    NSLog(@"dec range by 1 (for group:%d)", groupRange.location);
                     self.cursorLocation -= 1;
-                    NSLog(@"dec cursor by 1 to %d (for group:%d)", self.cursorLocation, groupRange.location);
                 }
             }
         }
@@ -371,9 +362,7 @@
             decimalRange = NSRangeFromString(rangeString);
             if ((decimalRange.location <= originalCursorLocation)) {
                 range.location -= 1;
-                NSLog(@"dec range by 1 (for decimal:%d)", decimalRange.location);
                 self.cursorLocation -= 1;
-                NSLog(@"dec cursor by 1 to %d (for decimal:%d)", self.cursorLocation, decimalRange.location);
             }
         }
     }
@@ -385,9 +374,7 @@
             NSRange currencyRange = NSRangeFromString(rangeString);
             if (currencyRange.location <= originalCursorLocation) {
                 range.location += currencyRange.location + currencyRange.length;
-                NSLog(@"inc range by %d + %d to %d (for currency)", currencyRange.location, currencyRange.length, range.location);
                 self.cursorLocation += (currencyRange.location + currencyRange.length);
-                NSLog(@"inc cursor by %d + %d to %d (for currency)", currencyRange.location, currencyRange.length, self.cursorLocation);
             }
         }
         
@@ -398,9 +385,7 @@
                 NSRange groupRange = NSRangeFromString(thisRangeString);
                 if ((groupRange.location <= originalCursorLocation)) {
                     range.location += 1;
-                    NSLog(@"inc range by 1 (for group:%d)", groupRange.location);
                     self.cursorLocation += 1;
-                    NSLog(@"inc cursor by 1 to %d (for group:%d)", self.cursorLocation, groupRange.location);
                 }
             }
         }
@@ -411,115 +396,13 @@
             decimalRange = NSRangeFromString(rangeString);
             if ((decimalRange.location <= originalCursorLocation)) {
                 range.location += 1;
-                NSLog(@"inc range by 1 (for decimal:%d)", decimalRange.location);
                 self.cursorLocation += 1;
-                NSLog(@"inc cursor by 1 to %d (for decimal:%d)", self.cursorLocation, decimalRange.location);
             }
         }
     }
     
-    
-   
-    
-//    // Is the cursor location aligned with entered data
-//    BOOL cursorAligned = (self.cursorLocation == range.location);
-//    NSUInteger formattedCharacterCount = 0;
-//    
-//    // Update our placeholdor for where we think the cursor ought to be
-//    self.cursorLocation += string.length;
-//    
-//    NSLog(@"cursor position:%d range:%@", self.cursorLocation, NSStringFromRange(range));
-//    
-//    // Reposition the cursor to allow for formatting
-//    // Check for formatting earlier in the string than the cursor location
-//    NSString *rangeString = self.formattingCharacters[@"Currency"];
-//    if (rangeString.length > 0) {
-//        NSRange currencyRange = NSRangeFromString(rangeString);
-//        if (currencyRange.location < self.cursorLocation) {
-//            range.location += currencyRange.location + currencyRange.length;
-//            NSLog(@"inc range by %d + %d", currencyRange.location, currencyRange.length);
-//        }
-//    }
-//    // Now check the decimal separator
-//    rangeString = self.formattingCharacters[@"Decimal"];
-//    decimalRange = NSRangeFromString(rangeString);
-//    if (decimalRange.location < self.cursorLocation) {
-//        range.location += 1;
-//        NSLog(@"inc range by 1");
-//    }
-//    
-//    // Finally check for grouping separators
-//    NSArray *groupings = self.formattingCharacters[@"Grouping"];
-//    for (NSString *thisRange in groupings) {
-//        if (thisRange.length > 0) {
-//            NSRange groupRange = NSRangeFromString(thisRange);
-//            if (groupRange.location < self.cursorLocation) {
-//                range.location += 1;
-//                NSLog(@"inc range by 1");
-//                formattedCharacterCount +=1;
-//            }
-//        }
-//    }
-//
-//    // Move the range to allow for the string entered
-//    range.location += string.length;
-//    NSLog(@"inc range by %d to %d", string.length, range.location);
-//
-//    // Reset range length; since we no longer have a selection once 'string' has replaced it
-//    range.length = 0;
-//    
-//    // If we have added new formatting characters upstream of the cursor position then recalculate
-//    NSString *rangeString = self.formattingCharacters[@"Currency"];
-//    if (rangeString.length > 0) {
-//        NSRange currencyRange = NSRangeFromString(rangeString);
-//        if ((currencyRange.location < range.location) && (currencyRange.location >= originalCursorLocation)) {
-//            range.location += currencyRange.location + currencyRange.length;
-//            NSLog(@"inc range by %d + %d to %d (for currency)", currencyRange.location, currencyRange.length, range.location);
-//        }
-//        if (originalCursorLocation <= currencyRange.location) {
-//            self.cursorLocation += currencyRange.location + currencyRange.length;
-//            NSLog(@"inc cursor by %d + %d to %d (for currency)", currencyRange.location, currencyRange.length, self.cursorLocation);
-//        }
-//    }
-//    // Check for grouping separators
-//    NSArray *groupings = self.formattingCharacters[@"Grouping"];
-//    for (NSString *thisRange in groupings) {
-//        if (thisRange.length > 0) {
-//            NSRange groupRange = NSRangeFromString(thisRange);
-//            if ((groupRange.location < range.location) && (groupRange.location >= originalCursorLocation)) {
-//                range.location += 1;
-//                NSLog(@"inc range by 1 (for group:%d)", groupRange.location);
-//            }
-//            if (originalCursorLocation <= groupRange.location) {
-//                self.cursorLocation += 1;
-//                NSLog(@"inc cursor by 1 to %d (for group:%d)", self.cursorLocation, groupRange.location);
-//            }
-//        }
-//    }
-//    // Finally check the decimal separator
-//    rangeString = self.formattingCharacters[@"Decimal"];
-//    decimalRange = NSRangeFromString(rangeString);
-//    if ((decimalRange.location < range.location) && (decimalRange.location >= originalCursorLocation)) {
-//        range.location += 1;
-//        NSLog(@"inc range by 1 (for decimal:%d)", decimalRange.location);
-//    }
-//    if ((decimalRange.location < range.location) && (originalCursorLocation < decimalRange.location)) {
-//        self.cursorLocation += 1;
-//        NSLog(@"inc cursor by 1 to %d (for decimal:%d)", self.cursorLocation, decimalRange.location);
-//    }
-//   
-//    
-//    if (cursorAligned) {
-////        self.cursorLocation += formattedCharacterCount;
-//        NSLog(@"revised cursor:%d inc:%d", self.cursorLocation, formattedCharacterCount);
-//    }
-//    
-//    NSLog(@"revised range:%@", NSStringFromRange(range));
-    
     // Apply the cursor to the current location
     [self applySelectedRange:range toTextField:textField];
-    
-    NSLog(@"Ending range:%@\n ", NSStringFromRange(range));
     
     return NO;
 }
