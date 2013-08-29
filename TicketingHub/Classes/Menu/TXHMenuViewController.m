@@ -58,19 +58,22 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
     [self performSegueWithIdentifier:ModalLoginSegue sender:self];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [UIView animateWithDuration:0.4f delay:0.15f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.leftHandSpace.constant = 0.0f;
-        [self.view layoutIfNeeded];
-    } completion:nil];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMenu:) name:NOTIFICATION_TOGGLE_MENU object:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.leftHandSpace.constant = -self.menuContainer.bounds.size.width;
+    [self.view layoutIfNeeded];
+
+    [UIView animateWithDuration:0.4f delay:0.15f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.leftHandSpace.constant = 0.0f;
+        [self.view layoutIfNeeded];
+    } completion:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

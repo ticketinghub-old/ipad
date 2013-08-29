@@ -144,14 +144,15 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
                 DLog(@"New venue created: %@", venueMO);
             }
 
-
             [self dismissViewControllerAnimated:YES completion:nil];
 
         } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
+            // Venue failure
             DLog(@"Error: %@ with response: %@", error, JSON);
         }];
 
     } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
+        // User failure
         DLog(@"Error: %@ with response: %@", error, JSON);
     }];
 
