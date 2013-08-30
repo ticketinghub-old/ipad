@@ -62,7 +62,7 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMenu:) name:NOTIFICATION_TOGGLE_MENU object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showOrHideVenueList:) name:NOTIFICATION_TOGGLE_MENU object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -79,7 +79,7 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    //[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Superclass overrides
@@ -118,12 +118,12 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
 }
 
 - (void)tap:(UITapGestureRecognizer *)recogniser {
-    [self toggleMenu:nil];
+    [self showOrHideVenueList:nil];
 }
 
 #pragma mark Actions
 
-- (IBAction)toggleMenu:(id)sender {
+- (IBAction)showOrHideVenueList:(id)sender {
     [UIView animateWithDuration:0.40f animations:^{
         if (self.leftHandSpace.constant == 0.0f) {
             self.leftHandSpace.constant = -self.menuContainer.bounds.size.width;

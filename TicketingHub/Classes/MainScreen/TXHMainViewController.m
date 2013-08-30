@@ -133,10 +133,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)toggleMenu:(id)sender {
-#pragma unused (sender)
+- (IBAction)toggleMenu:(id)__unused sender {
     [self dismissVisiblePopover];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TOGGLE_MENU object:nil];
+    [[UIApplication sharedApplication] sendAction:@selector(showOrHideVenueList:) to:nil from:self forEvent:nil];
 }
 
 - (void)dismissVisiblePopover {
@@ -325,7 +324,7 @@
     }
     self.selectedDate = startDate;
     [self updateControlsForUserInteraction];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TOGGLE_MENU object:nil];
+    //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TOGGLE_MENU object:nil];
 }
 
 @end
