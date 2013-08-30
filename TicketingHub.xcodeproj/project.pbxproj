@@ -152,6 +152,7 @@
 		EEB4FD5917B277D800F226BC /* TXHTicketingHubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD4417B277D800F226BC /* TXHTicketingHubClient.m */; };
 		EEB4FD5A17B277D800F226BC /* TXHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD4617B277D800F226BC /* TXHUser.m */; };
 		EEC2878B17C7B89000CDE3F1 /* TXHOptionMOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC2878A17C7B89000CDE3F1 /* TXHOptionMOTests.m */; };
+		EEF6BA4717D1192B005B1B20 /* BarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6BA4617D1192B005B1B20 /* BarcodeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -513,6 +514,8 @@
 		EEB4FD4517B277D800F226BC /* TXHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHUser.h; sourceTree = "<group>"; };
 		EEB4FD4617B277D800F226BC /* TXHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUser.m; sourceTree = "<group>"; };
 		EEC2878A17C7B89000CDE3F1 /* TXHOptionMOTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOptionMOTests.m; sourceTree = "<group>"; };
+		EEF6BA4517D1192B005B1B20 /* BarcodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeViewController.h; sourceTree = "<group>"; };
+		EEF6BA4617D1192B005B1B20 /* BarcodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1066,6 +1069,8 @@
 		EEB1846917D1148A0025530A /* Door */ = {
 			isa = PBXGroup;
 			children = (
+				EEF6BA4517D1192B005B1B20 /* BarcodeViewController.h */,
+				EEF6BA4617D1192B005B1B20 /* BarcodeViewController.m */,
 				EEB1846A17D114B30025530A /* TXHDoorDateCell.h */,
 				EEB1846B17D114B30025530A /* TXHDoorDateCell.m */,
 				EEB1846C17D114B30025530A /* TXHDoorDateController.h */,
@@ -1374,6 +1379,7 @@
 				EEB4FD5117B277D800F226BC /* AFXMLRequestOperation.m in Sources */,
 				4D8A106D17BD2DF700CEECAD /* PKCard.m in Sources */,
 				EEB4FD5017B277D800F226BC /* AFURLConnectionOperation.m in Sources */,
+				EEF6BA4717D1192B005B1B20 /* BarcodeViewController.m in Sources */,
 				EE11AE1817BD2E48000042B2 /* _TXHVenueMO.m in Sources */,
 				EE75D98F17D11048009ADCD8 /* TXHSalesInformationViewController.m in Sources */,
 				EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */,
