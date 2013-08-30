@@ -8,7 +8,8 @@
 //  Seems to be the root view controller
 
 #import <UIKit/UIKit.h>
+#import "TXHVenueSelectionProtocol.h"
 
-@interface TXHMenuViewController : UIViewController
+@interface TXHMenuViewController : UIViewController <TXHVenueSelectionProtocol>
 
 @end

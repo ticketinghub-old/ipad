@@ -80,11 +80,11 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    //[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)registerForNotifications {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueSelected:) name:NOTIFICATION_VENUE_SELECTED object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueSelected:) name:NOTIFICATION_VENUE_SELECTED object:nil];
 }
 
 - (NSMutableDictionary *)timeSlots {
@@ -139,137 +139,6 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 //    downloader.errorHandler = error;
 //    downloader.token = self.accessToken;
 //    [downloader execute];
-}
-
-- (void)getVenuesWithCompletionHandler:(void (^)(NSArray *))completion errorHandler:(void (^)(id))error {
-    TXHDataDownloader *downloader = [[TXHDataDownloader alloc] initWithOwner:self];
-    downloader.headerFields = @{@"Authorization" : [NSString stringWithFormat:@"Bearer %@", self.accessToken]};
-    downloader.urlString = [NSString stringWithFormat:@"%@/venues", TICKETINGHUB_API];
-    downloader.completionHandler = ^(id data){
-        NSDictionary *dict = data;
-        NSDictionary *payload = dict[@"payload"];
-        // Check the payload status for success
-        NSNumber *statusNum = payload[@"status"];
-        NSUInteger status = statusNum.unsignedIntegerValue;
-        if (status == 200) {
-            // Success
-            NSArray *venues = payload[@"data"];
-            [self buildVenues:venues];
-            completion(self.venues);
-        }
-        else if (status == 401) {
-            // Check for token expiry
-        } else {
-            // An error occurred
-        }
-        /*
-         On success (i.e. status=200, we should get back payload data containing an array of venues, such as
-         [
-         {
-         "id": 1000,
-         "business_name": "London Eye",
-         "street_1": "Millennium Pier",
-         "street_2": null,
-         "city": "London",
-         "region": "London Borough of Lambeth",
-         "postal_code": "SE1 7PB",
-         "country": "GB",
-         "latitude": 51.50361,
-         "longitude": -0.11943,
-         "currency": "GBP",
-         "time_zone": "Europe/London",
-         "website": "http://www.londoneye.com",
-         "email": "support@londoneye.com",
-         "telephone": "+448717813000",
-         "stripe_publishable_key": "pk_live_g4RfHyJIdBz7Bs2efWP9dHlW"
-         }
-         ]
-
-         otherwise we will get back a status of 401 with the following
-
-         payload =     {
-         data =         {
-         error = "token_expired";
-         "error_message" = "access_token has expired.";
-         };
-         status = 401;
-         };
-
-         OR we have a genuine error
-
-         */
-    };
-    downloader.errorHandler = error;
-    downloader.token = self.accessToken;
-    [downloader execute];
-}
-
-- (void)buildVenues:(NSArray *)venues {
-    NSMutableArray *venuesArray = [NSMutableArray array];
-    for (NSDictionary *venueData in venues) {
-        TXHVenue *venue;// = [[TXHVenue alloc] initWithData:venueData];
-        if (venue != nil) {
-            [venuesArray addObject:venue];
-        }
-    }
-    self.venues = venuesArray;
-}
-
-- (void)getAvailabilityForVenue:(TXHVenue *)venue{
-    TXHDataDownloader *downloader = [[TXHDataDownloader alloc] initWithOwner:self];
-    downloader.headerFields = @{@"Authorization" : [NSString stringWithFormat:@"Bearer %@", self.accessToken]};
-    downloader.urlString; // = [NSString stringWithFormat:@"%@/venues/%d/seasons", TICKETINGHUB_API, venue.venueID.integerValue];
-    downloader.completionHandler = ^(id data){
-        NSDictionary *dict = data;
-        NSDictionary *payload = dict[@"payload"];
-        // Check the payload status for success
-        NSNumber *statusNum = payload[@"status"];
-        NSUInteger status = statusNum.unsignedIntegerValue;
-        if (status == 200) {
-            // Success
-            NSArray *seasonData;// = payload[@"data"];
-                                //[self.currentVenue addSeasonData:seasonData];
-                                //[self getVariationsForVenue:venue];
-        } else if (status == 401) {
-            // Check for token expiry
-        } else {
-            // An error occurred
-        }
-    };
-    downloader.errorHandler = ^(id reason){
-        NSLog(@"Error retrieving variations:%@", ((NSError *)reason).description);
-    };
-    downloader.token = self.accessToken;
-    [downloader execute];
-}
-
-- (void)getVariationsForVenue:(TXHVenue *)venue {
-    TXHDataDownloader *downloader = [[TXHDataDownloader alloc] initWithOwner:self];
-    downloader.headerFields = @{@"Authorization" : [NSString stringWithFormat:@"Bearer %@", self.accessToken]};
-    downloader.urlString;// = [NSString stringWithFormat:@"%@/venues/%d/variations", TICKETINGHUB_API, venue.venueID.integerValue];
-    downloader.completionHandler = ^(id data){
-        NSDictionary *dict = data;
-        NSDictionary *payload = dict[@"payload"];
-        // Check the payload status for success
-        NSNumber *statusNum = payload[@"status"];
-        NSUInteger status = statusNum.unsignedIntegerValue;
-        if (status == 200) {
-            // Success
-            NSArray *variationData = payload[@"data"];
-            //[self.currentVenue addVariationData:variationData];
-        }
-        else if (status == 401) {
-            // Check for token expiry
-        } else {
-            // An error occurred
-        }
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_VENUE_UPDATED object:self.currentVenue];
-    };
-    downloader.errorHandler = ^(id reason){
-        NSLog(@"Error retrieving variations:%@", ((NSError *)reason).description);
-    };
-    downloader.token = self.accessToken;
-    [downloader execute];
 }
 
 - (NSArray *)timeSlotsFor:(NSDate *)date {
@@ -456,7 +325,7 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
     [self cleanupMenu];
 
     // Get the current availability for this venue
-    [self getAvailabilityForVenue:venue];
+    //[self getAvailabilityForVenue:venue];
 }
 
 @end

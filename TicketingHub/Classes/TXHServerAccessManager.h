@@ -19,10 +19,6 @@
 
 + (TXHServerAccessManager *)sharedInstance;
 
-- (void)generateAccessTokenFor:(NSString *)user password:(NSString *)password completion:(void(^)())completion error:(void(^)(id))error;
-
-- (void)getVenuesWithCompletionHandler:(void(^)(NSArray *))completion errorHandler:(void(^)(id))error;
-
 - (NSArray *)timeSlotsFor:(NSDate *)date;
 
 - (void)getTicketOptionsForTimeSlot:(TXHTimeSlot_old *)timeslot completionHandler:(void(^)(TXHTicketDetail *))completion errorHandler:(void(^)(id))error;

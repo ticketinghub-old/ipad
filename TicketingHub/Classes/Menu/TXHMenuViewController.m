@@ -13,6 +13,7 @@
 #import "TXHLoginViewController.h"
 #import "TXHMenuController.h"
 #import "TXHUserDefaultsKeys.h"
+#import "TXHVenueMO.h"
 
 // Segue Identifiers
 static NSString * const ModalLoginSegue = @"ModalLogin";
@@ -23,12 +24,13 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
 @interface TXHMenuViewController ()
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) UITapGestureRecognizer  *tapRecogniser;
+@property (weak, nonatomic) TXHVenueMO *currentVenue;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftHandSpace;
 @property (weak, nonatomic) IBOutlet UIView *menuContainer;
 @property (weak, nonatomic) IBOutlet UIView *tabContainer;
 
-@property (strong, nonatomic) UITapGestureRecognizer  *tapRecogniser;
 
 @end
 
@@ -90,17 +92,33 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSString *segueIdentifier = segue.identifier;
+    id destinationViewController = segue.destinationViewController;
 
     // The segues for which a managed object context needs to be set on the destination.
     NSArray *coreDataSegues = @[ModalLoginSegue, ReLoginSegue, MenuContainerEmbedSegue];
 
+    // These controllers all need to have an NSManagedObjectContext set
     if ([coreDataSegues containsObject:segueIdentifier]) {
-        // Doing it this way saves casting, and probably not worth setting up a protocol at this stage.
-        if ([segue.destinationViewController respondsToSelector:@selector(setManagedObjectContext:)]) {
-            [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
+        if ([destinationViewController respondsToSelector:@selector(setManagedObjectContext:)]) {
+            [destinationViewController setManagedObjectContext:self.managedObjectContext];
         }
     }
+
+    if ([segueIdentifier isEqualToString:MenuContainerEmbedSegue]) {
+        TXHMenuController *menuController = (TXHMenuController *)destinationViewController;
+        menuController.venueSelectionDelegate = self;
+    }
 }
+
+#pragma mark - Delegate Methods
+
+#pragma mark TXHVenueSelectionProtocol methods
+
+- (void)setSelectedVenue:(TXHVenueMO *)venueMO {
+    self.currentVenue = venueMO;
+    [self showOrHideVenueList:nil];
+}
+
 
 #pragma mark - Private methods
 

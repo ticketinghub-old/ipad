@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UILabel *headerViewLabel;
 
-@property (strong, nonatomic) NSArray *venues;
+//@property (strong, nonatomic) NSArray *venues;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
@@ -154,8 +154,10 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TXHVenue *venue = [self.venues objectAtIndex:indexPath.row];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_VENUE_SELECTED object:venue];
+    TXHVenueMO *venue = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    if ([self.venueSelectionDelegate respondsToSelector:@selector(setSelectedVenue:)]) {
+        [self.venueSelectionDelegate setSelectedVenue:venue];
+    }
 }
 
 #pragma mark - Private methods
