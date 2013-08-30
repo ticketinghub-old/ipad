@@ -10,7 +10,7 @@
 #import "TXHCommonNames.h"
 #import "TXHServerAccessManager.h"
 #import "TXHVenue.h"
-#import "TXHSeason.h"
+#import "TXHSeason_old.h"
 #import "TXHVariation.h"
 
 @interface TXHSalesCalendarViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -130,7 +130,7 @@
   // Get the current season for this venue
 #warning - AN turned this off!
 //  TXHSeason *season = venue.currentSeason;
-    TXHSeason *season = nil;
+    TXHSeason_old *season = nil;
 
   // If there is no current season overlay a view with a warning
   if (season == nil) {
@@ -139,12 +139,12 @@
   }
 
   // Get season start and end to restrict calendar date ranges
-  NSDate *startOfSeason = season.startsOn;
-  NSDate *endOfSeason = season.endsOn;
-  
-  self.datePicker.minimumDate = startOfSeason;
-  self.datePicker.maximumDate = endOfSeason;
-  
+    NSDate *startOfSeason = season.startsOn;
+    NSDate *endOfSeason = season.endsOn;
+
+    self.datePicker.minimumDate = startOfSeason;
+    self.datePicker.maximumDate = endOfSeason;
+
   // If the currently selected date is outside of the bounds of the current season adjust accordingly
   
   [self getTimeSlots];
