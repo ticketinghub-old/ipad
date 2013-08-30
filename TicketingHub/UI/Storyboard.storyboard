@@ -464,7 +464,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="51S-Sr-0ij">
-                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" id="I90-f6-15I">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="I90-f6-15I">
                                 <rect key="frame" x="504" y="7" width="174" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
@@ -481,10 +481,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <connections>
                         <outlet property="contentDetailView" destination="qJZ-sp-l0P" id="S5h-GX-A7j"/>
                         <outlet property="modeSelector" destination="I90-f6-15I" id="fgG-Ug-m3L"/>
-                        <segue destination="QtI-DJ-k8N" kind="custom" identifier="Embed Placeholder" customClass="TXHEmbeddingSegue" id="8qs-1f-Wbj"/>
-                        <segue destination="QtI-DJ-k8N" kind="custom" identifier="Flip To Placeholder" customClass="TXHTransitionSegue" id="utj-0e-oIi"/>
                         <segue destination="ujA-tL-iJr" kind="custom" identifier="Flip to Salesman" customClass="TXHTransitionSegue" id="mqZ-G7-ySZ"/>
                         <segue destination="XVE-h0-EKS" kind="custom" identifier="Flip to Doorman" customClass="TXHTransitionSegue" id="iUg-Pq-Kvt"/>
+                        <segue destination="ujA-tL-iJr" kind="custom" identifier="Embed Placeholder" customClass="TXHEmbeddingSegue" id="z9e-XF-mPc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9no-gQ-7hV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -512,38 +511,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="867" y="1209"/>
         </scene>
-        <!--Main Screen Placeholder View Controller-->
-        <scene sceneID="QcG-aV-LEh">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="QtI-DJ-k8N" customClass="TXHMainScreenPlaceholderViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Fer-nu-6l6"/>
-                        <viewControllerLayoutGuide type="bottom" id="A0q-RD-gzI"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="6FM-0O-TD7">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select one of the venues on the left to begin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="414" translatesAutoresizingMaskIntoConstraints="NO" id="2XW-0f-bCn">
-                                <rect key="frame" x="124" y="291" width="414" height="186"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                <color key="textColor" red="0.50196081399917603" green="0.25098040699958801" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <toolbarItems/>
-                    <connections>
-                        <outlet property="placeholder" destination="2XW-0f-bCn" id="83Z-yE-hDu"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h5Q-bb-tfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3377" y="695"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="94T-lx-FQK">
             <objects>
@@ -570,7 +537,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </items>
                 </navigationBar>
             </objects>
-            <point key="canvasLocation" x="3377" y="1593"/>
+            <point key="canvasLocation" x="3217" y="1125"/>
         </scene>
         <!--Navigation Controller - Initial View Controller-->
         <scene sceneID="Hya-Q2-JH9">
@@ -618,7 +585,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </items>
                 </navigationBar>
             </objects>
-            <point key="canvasLocation" x="3377" y="2521"/>
+            <point key="canvasLocation" x="3217" y="2077"/>
         </scene>
     </scenes>
     <resources>
@@ -636,6 +603,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="qUM-VV-UYO"/>
-        <segue reference="8qs-1f-Wbj"/>
+        <segue reference="mqZ-G7-ySZ"/>
     </inferredMetricsTieBreakers>
 </document>

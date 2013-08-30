@@ -11,6 +11,7 @@
 #import "DCTCoreDataStack.h"
 #import "TXHCommonNames.h"
 #import "TXHLoginViewController.h"
+#import "TXHMainViewController.h"
 #import "TXHMenuController.h"
 #import "TXHUserDefaultsKeys.h"
 #import "TXHVenueMO.h"

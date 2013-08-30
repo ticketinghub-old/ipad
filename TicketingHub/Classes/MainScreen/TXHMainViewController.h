@@ -10,4 +10,6 @@
 
 @interface TXHMainViewController : UIViewController
 
+- (IBAction)selectMode:(id)__unused sender;
+
 @end

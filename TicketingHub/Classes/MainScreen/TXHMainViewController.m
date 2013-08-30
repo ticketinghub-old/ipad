@@ -117,9 +117,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Display a placeholder
-    [self performSegueWithIdentifier:@"Embed Placeholder" sender:self];
+    [self selectMode:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
