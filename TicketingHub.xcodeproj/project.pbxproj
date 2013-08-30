@@ -31,16 +31,11 @@
 		4D8FCCB617A28A8C008B4227 /* Doorman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */; };
 		4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */; };
 		4DB23D6E17A169D8002B7B11 /* Salesman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */; };
-		4DC95F26179EA654004E035D /* TXHTimeslotSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC95F25179EA654004E035D /* TXHTimeslotSelectorViewController.m */; };
 		4DF3F59817C63BAE0045299B /* libExpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF3F57B17C63BAE0045299B /* libExpecta-ios-universal.a */; };
 		4DF3F59917C63BAE0045299B /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF3F57F17C63BAE0045299B /* libOCMock.a */; };
 		4DF3F59A17C63BAE0045299B /* libSpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF3F58817C63BAE0045299B /* libSpecta-ios-universal.a */; };
 		4DF3F59E17C63E070045299B /* MockingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3F59C17C63E070045299B /* MockingTest.m */; };
 		4DF3F59F17C63E070045299B /* SmokeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3F59D17C63E070045299B /* SmokeSpec.m */; };
-		4DF9F978179D5B4E0040FC5D /* TXHTransitionSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F977179D5B4E0040FC5D /* TXHTransitionSegue.m */; };
-		4DF9F97B179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F97A179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m */; };
-		4DF9F97E179D62970040FC5D /* TXHEmbeddingSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F97D179D62970040FC5D /* TXHEmbeddingSegue.m */; };
-		4DF9F984179DC2850040FC5D /* TXHDateSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F983179DC2850040FC5D /* TXHDateSelectorViewController.m */; };
 		5860E8581762175B0046DFD3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5860E8571762175B0046DFD3 /* QuartzCore.framework */; };
 		58E4FB551760AE5500E328A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB541760AE5500E328A0 /* UIKit.framework */; };
 		58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB561760AE5500E328A0 /* Foundation.framework */; };
@@ -53,7 +48,6 @@
 		58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB561760AE5500E328A0 /* Foundation.framework */; };
 		58E4FB831760AE5500E328A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB811760AE5500E328A0 /* InfoPlist.strings */; };
 		58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB911760AEF300E328A0 /* Storyboard.storyboard */; };
-		58E4FB9F1761CFEC00E328A0 /* TXHMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */; };
 		EE11AE0E17BD2C84000042B2 /* _DCTCDSManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11AE0817BD2C84000042B2 /* _DCTCDSManagedObjectContext.m */; };
 		EE11AE0F17BD2C84000042B2 /* DCTCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11AE0A17BD2C84000042B2 /* DCTCoreDataStack.m */; };
 		EE11AE1017BD2C84000042B2 /* NSManagedObjectContext+DCTCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11AE0C17BD2C84000042B2 /* NSManagedObjectContext+DCTCoreDataStack.m */; };
@@ -134,6 +128,12 @@
 		EEB1847F17D114B30025530A /* TXHFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1847517D114B30025530A /* TXHFlowLayout.m */; };
 		EEB1848017D114B30025530A /* TXHGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1847717D114B30025530A /* TXHGroupCell.m */; };
 		EEB1848117D114B30025530A /* TXHTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1847917D114B30025530A /* TXHTimeCell.m */; };
+		EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848417D115640025530A /* TXHDateSelectorViewController.m */; };
+		EEB1849017D115640025530A /* TXHEmbeddingSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848617D115640025530A /* TXHEmbeddingSegue.m */; };
+		EEB1849117D115640025530A /* TXHMainScreenPlaceholderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848817D115640025530A /* TXHMainScreenPlaceholderViewController.m */; };
+		EEB1849217D115640025530A /* TXHMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848A17D115640025530A /* TXHMainViewController.m */; };
+		EEB1849317D115640025530A /* TXHTimeslotSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848C17D115640025530A /* TXHTimeslotSelectorViewController.m */; };
+		EEB1849417D115640025530A /* TXHTransitionSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848E17D115640025530A /* TXHTransitionSegue.m */; };
 		EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */; };
 		EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */; };
 		EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC4017B272F700F226BC /* Security.framework */; };
@@ -182,8 +182,6 @@
 		4DA05FAF178C367F005161E6 /* TXHServerAccessManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHServerAccessManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHServerAccessManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Salesman.storyboard; sourceTree = "<group>"; };
-		4DC95F24179EA654004E035D /* TXHTimeslotSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHTimeslotSelectorViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		4DC95F25179EA654004E035D /* TXHTimeslotSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHTimeslotSelectorViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4DF3F55D17C63BAE0045299B /* EXPBackwardCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPBackwardCompatibility.h; sourceTree = "<group>"; };
 		4DF3F55E17C63BAE0045299B /* EXPBlockDefinedMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPBlockDefinedMatcher.h; sourceTree = "<group>"; };
 		4DF3F55F17C63BAE0045299B /* EXPDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPDefines.h; sourceTree = "<group>"; };
@@ -242,14 +240,6 @@
 		4DF3F59717C63BAE0045299B /* SPTSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTSpec.h; sourceTree = "<group>"; };
 		4DF3F59C17C63E070045299B /* MockingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockingTest.m; sourceTree = "<group>"; };
 		4DF3F59D17C63E070045299B /* SmokeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmokeSpec.m; sourceTree = "<group>"; };
-		4DF9F976179D5B4E0040FC5D /* TXHTransitionSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTransitionSegue.h; sourceTree = "<group>"; };
-		4DF9F977179D5B4E0040FC5D /* TXHTransitionSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTransitionSegue.m; sourceTree = "<group>"; };
-		4DF9F979179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMainScreenPlaceholderViewController.h; sourceTree = "<group>"; };
-		4DF9F97A179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMainScreenPlaceholderViewController.m; sourceTree = "<group>"; };
-		4DF9F97C179D62970040FC5D /* TXHEmbeddingSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHEmbeddingSegue.h; sourceTree = "<group>"; };
-		4DF9F97D179D62970040FC5D /* TXHEmbeddingSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHEmbeddingSegue.m; sourceTree = "<group>"; };
-		4DF9F982179DC2850040FC5D /* TXHDateSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDateSelectorViewController.h; sourceTree = "<group>"; };
-		4DF9F983179DC2850040FC5D /* TXHDateSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHDateSelectorViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5860E8571762175B0046DFD3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		58E4FB511760AE5500E328A0 /* TicketingHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicketingHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E4FB541760AE5500E328A0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -266,8 +256,6 @@
 		58E4FB801760AE5500E328A0 /* TicketingHubTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TicketingHubTests-Info.plist"; sourceTree = "<group>"; };
 		58E4FB821760AE5500E328A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58E4FB911760AEF300E328A0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
-		58E4FB9D1761CFEC00E328A0 /* TXHMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMainViewController.h; sourceTree = "<group>"; };
-		58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHMainViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EE11ADCD17BD2138000042B2 /* STPCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STPCard.h; sourceTree = "<group>"; };
 		EE11ADCE17BD2138000042B2 /* STPCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STPCard.m; sourceTree = "<group>"; };
 		EE11ADCF17BD2138000042B2 /* STPToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STPToken.h; sourceTree = "<group>"; };
@@ -480,6 +468,18 @@
 		EEB1847717D114B30025530A /* TXHGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHGroupCell.m; sourceTree = "<group>"; };
 		EEB1847817D114B30025530A /* TXHTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTimeCell.h; sourceTree = "<group>"; };
 		EEB1847917D114B30025530A /* TXHTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTimeCell.m; sourceTree = "<group>"; };
+		EEB1848317D115640025530A /* TXHDateSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDateSelectorViewController.h; sourceTree = "<group>"; };
+		EEB1848417D115640025530A /* TXHDateSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDateSelectorViewController.m; sourceTree = "<group>"; };
+		EEB1848517D115640025530A /* TXHEmbeddingSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHEmbeddingSegue.h; sourceTree = "<group>"; };
+		EEB1848617D115640025530A /* TXHEmbeddingSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHEmbeddingSegue.m; sourceTree = "<group>"; };
+		EEB1848717D115640025530A /* TXHMainScreenPlaceholderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMainScreenPlaceholderViewController.h; sourceTree = "<group>"; };
+		EEB1848817D115640025530A /* TXHMainScreenPlaceholderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMainScreenPlaceholderViewController.m; sourceTree = "<group>"; };
+		EEB1848917D115640025530A /* TXHMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMainViewController.h; sourceTree = "<group>"; };
+		EEB1848A17D115640025530A /* TXHMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMainViewController.m; sourceTree = "<group>"; };
+		EEB1848B17D115640025530A /* TXHTimeslotSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTimeslotSelectorViewController.h; sourceTree = "<group>"; };
+		EEB1848C17D115640025530A /* TXHTimeslotSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTimeslotSelectorViewController.m; sourceTree = "<group>"; };
+		EEB1848D17D115640025530A /* TXHTransitionSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTransitionSegue.h; sourceTree = "<group>"; };
+		EEB1848E17D115640025530A /* TXHTransitionSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTransitionSegue.m; sourceTree = "<group>"; };
 		EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EEB4FC4017B272F700F226BC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -791,7 +791,7 @@
 				EEB1843317D113FB0025530A /* Common */,
 				EEB1846917D1148A0025530A /* Door */,
 				EE75D9AA17D112AC009ADCD8 /* Login */,
-				58E4FB9A1760D3C800E328A0 /* MainScreen */,
+				EEB1848217D1153B0025530A /* MainScreen */,
 				EE75D9AE17D11300009ADCD8 /* Menu */,
 				EE75D94217D1101C009ADCD8 /* Sales */,
 				4D89278717944B61004892FD /* TXHSeason_old.h */,
@@ -809,25 +809,6 @@
 			);
 			name = Classes;
 			path = TicketingHub/Classes;
-			sourceTree = "<group>";
-		};
-		58E4FB9A1760D3C800E328A0 /* MainScreen */ = {
-			isa = PBXGroup;
-			children = (
-				58E4FB9D1761CFEC00E328A0 /* TXHMainViewController.h */,
-				58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */,
-				4DF9F976179D5B4E0040FC5D /* TXHTransitionSegue.h */,
-				4DF9F977179D5B4E0040FC5D /* TXHTransitionSegue.m */,
-				4DF9F979179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.h */,
-				4DF9F97A179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m */,
-				4DF9F97C179D62970040FC5D /* TXHEmbeddingSegue.h */,
-				4DF9F97D179D62970040FC5D /* TXHEmbeddingSegue.m */,
-				4DF9F982179DC2850040FC5D /* TXHDateSelectorViewController.h */,
-				4DF9F983179DC2850040FC5D /* TXHDateSelectorViewController.m */,
-				4DC95F24179EA654004E035D /* TXHTimeslotSelectorViewController.h */,
-				4DC95F25179EA654004E035D /* TXHTimeslotSelectorViewController.m */,
-			);
-			path = MainScreen;
 			sourceTree = "<group>";
 		};
 		EE11ADCC17BD2138000042B2 /* Stripe */ = {
@@ -1105,6 +1086,25 @@
 			name = Door;
 			sourceTree = "<group>";
 		};
+		EEB1848217D1153B0025530A /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EEB1848317D115640025530A /* TXHDateSelectorViewController.h */,
+				EEB1848417D115640025530A /* TXHDateSelectorViewController.m */,
+				EEB1848517D115640025530A /* TXHEmbeddingSegue.h */,
+				EEB1848617D115640025530A /* TXHEmbeddingSegue.m */,
+				EEB1848717D115640025530A /* TXHMainScreenPlaceholderViewController.h */,
+				EEB1848817D115640025530A /* TXHMainScreenPlaceholderViewController.m */,
+				EEB1848917D115640025530A /* TXHMainViewController.h */,
+				EEB1848A17D115640025530A /* TXHMainViewController.m */,
+				EEB1848B17D115640025530A /* TXHTimeslotSelectorViewController.h */,
+				EEB1848C17D115640025530A /* TXHTimeslotSelectorViewController.m */,
+				EEB1848D17D115640025530A /* TXHTransitionSegue.h */,
+				EEB1848E17D115640025530A /* TXHTransitionSegue.m */,
+			);
+			name = MainScreen;
+			sourceTree = "<group>";
+		};
 		EEB4FD2017B277D800F226BC /* iOS-api */ = {
 			isa = PBXGroup;
 			children = (
@@ -1304,6 +1304,8 @@
 				EE494CEC17B55177001740B3 /* TicketingHub.xcdatamodeld in Sources */,
 				EEB4FD4C17B277D800F226BC /* AFImageRequestOperation.m in Sources */,
 				EE75D99917D11048009ADCD8 /* TXHSalesPaymentViewController.m in Sources */,
+				EEB1849417D115640025530A /* TXHTransitionSegue.m in Sources */,
+				EEB1849017D115640025530A /* TXHEmbeddingSegue.m in Sources */,
 				EE11AE1C17BD2F3D000042B2 /* TXHUserMO.m in Sources */,
 				EE75D99D17D11048009ADCD8 /* TXHSalesSummaryExtraProductsCell.m in Sources */,
 				58E4FB631760AE5500E328A0 /* main.m in Sources */,
@@ -1320,8 +1322,6 @@
 				4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */,
 				EE75D98817D11048009ADCD8 /* TXHSalesCalendarViewController.m in Sources */,
 				EE75D99717D11048009ADCD8 /* TXHSalesPaymentPaymentDetailsContentViewController.m in Sources */,
-				58E4FB9F1761CFEC00E328A0 /* TXHMainViewController.m in Sources */,
-				4DF9F97B179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m in Sources */,
 				EEB1846817D114390025530A /* TXHTimeFormatter.m in Sources */,
 				EEB1846517D114390025530A /* TXHTextCollectionViewCell.m in Sources */,
 				EE75D99617D11048009ADCD8 /* TXHSalesPaymentCustomerDetailViewController.m in Sources */,
@@ -1329,7 +1329,6 @@
 				EE8719C317BE30B80055437C /* TXHSeasonMO.m in Sources */,
 				EEB1847D17D114B30025530A /* TXHDoorMainController.m in Sources */,
 				EE75D99817D11048009ADCD8 /* TXHSalesPaymentPaymentDetailsViewController.m in Sources */,
-				4DF9F97E179D62970040FC5D /* TXHEmbeddingSegue.m in Sources */,
 				EEA6863F17B3DF0D0024B002 /* TXHVenueMO.m in Sources */,
 				EE8719C217BE30B80055437C /* TXHOptionMO.m in Sources */,
 				EE75D9A317D11048009ADCD8 /* TXHSalesTicketViewController.m in Sources */,
@@ -1343,16 +1342,17 @@
 				4D8A106B17BD2DE000CEECAD /* StripeError.m in Sources */,
 				EEB4FD4A17B277D800F226BC /* AFHTTPClient.m in Sources */,
 				EEB1845E17D114390025530A /* TXHDataEntryFieldErrorView.m in Sources */,
-				4DF9F978179D5B4E0040FC5D /* TXHTransitionSegue.m in Sources */,
 				EE75D9A917D11048009ADCD8 /* TXHSalesWizardViewController.m in Sources */,
 				EEB1848017D114B30025530A /* TXHGroupCell.m in Sources */,
 				EE75D98C17D11048009ADCD8 /* TXHSalesInformationDetailsViewController.m in Sources */,
 				4D8A106E17BD2DF700CEECAD /* PKCardCVC.m in Sources */,
 				EEB4FD4F17B277D800F226BC /* AFPropertyListRequestOperation.m in Sources */,
+				EEB1849317D115640025530A /* TXHTimeslotSelectorViewController.m in Sources */,
 				4D859FF817953FA1000B2FCC /* TXHTimeSlot_old.m in Sources */,
 				EE75D99417D11048009ADCD8 /* TXHSalesPaymentCashDetailsViewController.m in Sources */,
 				EEB1845A17D114390025530A /* TXHBaseDataEntryView.m in Sources */,
 				EE75D99A17D11048009ADCD8 /* TXHSalesProductCell.m in Sources */,
+				EEB1849217D115640025530A /* TXHMainViewController.m in Sources */,
 				4D8A107117BD2DF700CEECAD /* PKTextField.m in Sources */,
 				EE75D99217D11048009ADCD8 /* TXHSalesOptionsViewController.m in Sources */,
 				EEB4FD5617B277D800F226BC /* _TXHNetworkClient.m in Sources */,
@@ -1362,10 +1362,10 @@
 				EEB1845917D114390025530A /* TXHBaseDataEntryTableViewCell.m in Sources */,
 				EE75D99F17D11048009ADCD8 /* TXHSalesSummaryViewController.m in Sources */,
 				EEB1845C17D114390025530A /* TXHCurrencyEntryView.m in Sources */,
+				EEB1849117D115640025530A /* TXHMainScreenPlaceholderViewController.m in Sources */,
 				4D8A106817BD2DD300CEECAD /* STPToken.m in Sources */,
 				EEB4FD5A17B277D800F226BC /* TXHUser.m in Sources */,
 				EEB1845817D114390025530A /* TXHBaseCollectionViewCell.m in Sources */,
-				4DF9F984179DC2850040FC5D /* TXHDateSelectorViewController.m in Sources */,
 				EEB1846117D114390025530A /* TXHEmailCollectionViewCell.m in Sources */,
 				EE75D98917D11048009ADCD8 /* TXHSalesCompletionViewController.m in Sources */,
 				EE6D999617BD453400D1E7CD /* TXHVariation.m in Sources */,
@@ -1376,6 +1376,7 @@
 				EEB4FD5017B277D800F226BC /* AFURLConnectionOperation.m in Sources */,
 				EE11AE1817BD2E48000042B2 /* _TXHVenueMO.m in Sources */,
 				EE75D98F17D11048009ADCD8 /* TXHSalesInformationViewController.m in Sources */,
+				EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */,
 				EE75D99517D11048009ADCD8 /* TXHSalesPaymentCreditDetailsViewController.m in Sources */,
 				EEB4FD5417B277D800F226BC /* UIImageView+AFNetworking.m in Sources */,
 				EE75D9A517D11048009ADCD8 /* TXHSalesUpgradeCell.m in Sources */,
@@ -1397,7 +1398,6 @@
 				EEB4FD4E17B277D800F226BC /* AFNetworkActivityIndicatorManager.m in Sources */,
 				EEB4FD4B17B277D800F226BC /* AFHTTPRequestOperation.m in Sources */,
 				4D859FF2179453EA000B2FCC /* TXHSeason_old.m in Sources */,
-				4DC95F26179EA654004E035D /* TXHTimeslotSelectorViewController.m in Sources */,
 				EE75D9A817D11048009ADCD8 /* TXHSalesWizardDetailsViewController.m in Sources */,
 				EE75D99317D11048009ADCD8 /* TXHSalesPaymentCardDetailsViewController.m in Sources */,
 				EE11AE1B17BD2EA9000042B2 /* _TXHUserMO.m in Sources */,
