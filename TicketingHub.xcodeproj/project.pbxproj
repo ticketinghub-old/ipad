@@ -64,7 +64,6 @@
 		4DF9F97B179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F97A179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m */; };
 		4DF9F97E179D62970040FC5D /* TXHEmbeddingSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F97D179D62970040FC5D /* TXHEmbeddingSegue.m */; };
 		4DF9F984179DC2850040FC5D /* TXHDateSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9F983179DC2850040FC5D /* TXHDateSelectorViewController.m */; };
-		4DFB1009178DB693006923F7 /* TXHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFB1008178DB693006923F7 /* TXHLoginViewController.m */; };
 		581560CD1765D38A005C20EA /* TXHFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 581560CA1765D38A005C20EA /* TXHFlowLayout.m */; };
 		581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 581560CC1765D38A005C20EA /* TXHDoorDateCell.m */; };
 		581560D11765DAB3005C20EA /* TXHDoorDateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581560D01765DAB3005C20EA /* TXHDoorDateController.m */; };
@@ -128,6 +127,7 @@
 		EE75D9A717D11048009ADCD8 /* TXHSalesUpgradeHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D98317D11048009ADCD8 /* TXHSalesUpgradeHeader.m */; };
 		EE75D9A817D11048009ADCD8 /* TXHSalesWizardDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D98517D11048009ADCD8 /* TXHSalesWizardDetailsViewController.m */; };
 		EE75D9A917D11048009ADCD8 /* TXHSalesWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D98717D11048009ADCD8 /* TXHSalesWizardViewController.m */; };
+		EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9AC17D112C4009ADCD8 /* TXHLoginViewController.m */; };
 		EE8719C217BE30B80055437C /* TXHOptionMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8719BF17BE30B80055437C /* TXHOptionMO.m */; };
 		EE8719C317BE30B80055437C /* TXHSeasonMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8719C117BE30B80055437C /* TXHSeasonMO.m */; };
 		EE8719C817BE30CB0055437C /* _TXHOptionMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8719C517BE30CB0055437C /* _TXHOptionMO.m */; };
@@ -298,8 +298,6 @@
 		4DF9F97D179D62970040FC5D /* TXHEmbeddingSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHEmbeddingSegue.m; sourceTree = "<group>"; };
 		4DF9F982179DC2850040FC5D /* TXHDateSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDateSelectorViewController.h; sourceTree = "<group>"; };
 		4DF9F983179DC2850040FC5D /* TXHDateSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHDateSelectorViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		4DFB1007178DB693006923F7 /* TXHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHLoginViewController.h; sourceTree = "<group>"; };
-		4DFB1008178DB693006923F7 /* TXHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHLoginViewController.m; sourceTree = "<group>"; };
 		581560C91765D38A005C20EA /* TXHFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHFlowLayout.h; sourceTree = "<group>"; };
 		581560CA1765D38A005C20EA /* TXHFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHFlowLayout.m; sourceTree = "<group>"; };
 		581560CB1765D38A005C20EA /* TXHDoorDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorDateCell.h; sourceTree = "<group>"; };
@@ -465,6 +463,8 @@
 		EE75D98517D11048009ADCD8 /* TXHSalesWizardDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesWizardDetailsViewController.m; path = TicketingHub/Classes/TXHSalesWizardDetailsViewController.m; sourceTree = SOURCE_ROOT; };
 		EE75D98617D11048009ADCD8 /* TXHSalesWizardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesWizardViewController.h; path = TicketingHub/Classes/TXHSalesWizardViewController.h; sourceTree = SOURCE_ROOT; };
 		EE75D98717D11048009ADCD8 /* TXHSalesWizardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesWizardViewController.m; path = TicketingHub/Classes/TXHSalesWizardViewController.m; sourceTree = SOURCE_ROOT; };
+		EE75D9AB17D112C4009ADCD8 /* TXHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHLoginViewController.h; sourceTree = "<group>"; };
+		EE75D9AC17D112C4009ADCD8 /* TXHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHLoginViewController.m; sourceTree = "<group>"; };
 		EE8719BE17BE30B80055437C /* TXHOptionMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHOptionMO.h; sourceTree = "<group>"; };
 		EE8719BF17BE30B80055437C /* TXHOptionMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOptionMO.m; sourceTree = "<group>"; };
 		EE8719C017BE30B80055437C /* TXHSeasonMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSeasonMO.h; sourceTree = "<group>"; };
@@ -861,7 +861,7 @@
 				4D25F643176CE54000A60359 /* Common */,
 				58E4FB991760D3C800E328A0 /* Door */,
 				58E4FB9A1760D3C800E328A0 /* MainScreen */,
-				58E4FB9B1760D3C800E328A0 /* Login */,
+				EE75D9AA17D112AC009ADCD8 /* Login */,
 				EE75D94217D1101C009ADCD8 /* Sales */,
 				4DA05FAF178C367F005161E6 /* TXHServerAccessManager.h */,
 				4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */,
@@ -922,15 +922,6 @@
 				4DC95F25179EA654004E035D /* TXHTimeslotSelectorViewController.m */,
 			);
 			path = MainScreen;
-			sourceTree = "<group>";
-		};
-		58E4FB9B1760D3C800E328A0 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				4DFB1007178DB693006923F7 /* TXHLoginViewController.h */,
-				4DFB1008178DB693006923F7 /* TXHLoginViewController.m */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		EE11ADCC17BD2138000042B2 /* Stripe */ = {
@@ -1120,6 +1111,15 @@
 			);
 			name = Sales;
 			path = Login;
+			sourceTree = "<group>";
+		};
+		EE75D9AA17D112AC009ADCD8 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EE75D9AB17D112C4009ADCD8 /* TXHLoginViewController.h */,
+				EE75D9AC17D112C4009ADCD8 /* TXHLoginViewController.m */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		EEB4FD2017B277D800F226BC /* iOS-api */ = {
@@ -1403,7 +1403,6 @@
 				EEB4FD4D17B277D800F226BC /* AFJSONRequestOperation.m in Sources */,
 				EE11AE1517BD2E18000042B2 /* _TXHPermissionMO.m in Sources */,
 				EE8719C817BE30CB0055437C /* _TXHOptionMO.m in Sources */,
-				4DFB1009178DB693006923F7 /* TXHLoginViewController.m in Sources */,
 				EE75D98A17D11048009ADCD8 /* TXHSalesContentsViewController.m in Sources */,
 				EE11AE0E17BD2C84000042B2 /* _DCTCDSManagedObjectContext.m in Sources */,
 				4D307DB41796F61C00822645 /* TXHTimeFormatter.m in Sources */,
@@ -1412,6 +1411,7 @@
 				EE75D98B17D11048009ADCD8 /* TXHSalesInformationCompletionViewController.m in Sources */,
 				4D1A0C2917A7F49C00960906 /* TXHTicketTier.m in Sources */,
 				EE75D9A617D11048009ADCD8 /* TXHSalesUpgradeDetailsViewController.m in Sources */,
+				EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */,
 				4D8A106F17BD2DF700CEECAD /* PKCardExpiry.m in Sources */,
 				4D58757417BA3BEB006264BA /* TXHQuantitySelectorViewController.m in Sources */,
 				EEB4FD4E17B277D800F226BC /* AFNetworkActivityIndicatorManager.m in Sources */,
