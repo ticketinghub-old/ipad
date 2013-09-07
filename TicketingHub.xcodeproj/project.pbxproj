@@ -523,14 +523,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */,
+				58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */,
+				58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */,
+				EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */,
+				5860E8581762175B0046DFD3 /* QuartzCore.framework in Frameworks */,
 				EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */,
 				EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */,
-				EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */,
-				4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */,
-				5860E8581762175B0046DFD3 /* QuartzCore.framework in Frameworks */,
 				58E4FB551760AE5500E328A0 /* UIKit.framework in Frameworks */,
-				58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */,
-				58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,12 +538,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */,
 				4DF3F59817C63BAE0045299B /* libExpecta-ios-universal.a in Frameworks */,
+				4DF3F59917C63BAE0045299B /* libOCMock.a in Frameworks */,
+				4DF3F59A17C63BAE0045299B /* libSpecta-ios-universal.a in Frameworks */,
 				58E4FB781760AE5500E328A0 /* SenTestingKit.framework in Frameworks */,
 				58E4FB791760AE5500E328A0 /* UIKit.framework in Frameworks */,
-				4DF3F59917C63BAE0045299B /* libOCMock.a in Frameworks */,
-				58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */,
-				4DF3F59A17C63BAE0045299B /* libSpecta-ios-universal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,8 +593,8 @@
 		4DF3F57E17C63BAE0045299B /* OCMock */ = {
 			isa = PBXGroup;
 			children = (
-				4DF3F57F17C63BAE0045299B /* libOCMock.a */,
 				4DF3F58017C63BAE0045299B /* OCMock */,
+				4DF3F57F17C63BAE0045299B /* libOCMock.a */,
 			);
 			path = OCMock;
 			sourceTree = "<group>";
@@ -647,10 +647,10 @@
 		4DF9F92B179D50C10040FC5D /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				EE935E7517B3EDFA0080A1C2 /* TicketingHub.xcdatamodeld */,
 				EE11AE0617BD2C84000042B2 /* DCTCoreDataStack */,
 				4DF9F92C179D50E90040FC5D /* Human */,
 				4DF9F945179D50E90040FC5D /* Machine */,
+				EE935E7517B3EDFA0080A1C2 /* TicketingHub.xcdatamodeld */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -694,15 +694,15 @@
 		58E4FB481760AE5500E328A0 = {
 			isa = PBXGroup;
 			children = (
-				EE11ADCC17BD2138000042B2 /* Stripe */,
-				4DF9F92B179D50C10040FC5D /* Core Data */,
 				58E4FB971760D3C800E328A0 /* Classes */,
+				4DF9F92B179D50C10040FC5D /* Core Data */,
+				58E4FB531760AE5500E328A0 /* Frameworks */,
 				EEB4FD2017B277D800F226BC /* iOS-api */,
-				58E4FB901760AECF00E328A0 /* UI */,
+				58E4FB521760AE5500E328A0 /* Products */,
+				EE11ADCC17BD2138000042B2 /* Stripe */,
 				58E4FB5C1760AE5500E328A0 /* TicketingHub */,
 				58E4FB7E1760AE5500E328A0 /* TicketingHubTests */,
-				58E4FB531760AE5500E328A0 /* Frameworks */,
-				58E4FB521760AE5500E328A0 /* Products */,
+				58E4FB901760AECF00E328A0 /* UI */,
 			);
 			sourceTree = "<group>";
 		};
@@ -734,10 +734,10 @@
 		58E4FB5C1760AE5500E328A0 /* TicketingHub */ = {
 			isa = PBXGroup;
 			children = (
+				58E4FB5D1760AE5500E328A0 /* Supporting Files */,
+				4D586DE01797E51E00E40534 /* Images.xcassets */,
 				58E4FB651760AE5500E328A0 /* TXHAppDelegate.h */,
 				58E4FB661760AE5500E328A0 /* TXHAppDelegate.m */,
-				4D586DE01797E51E00E40534 /* Images.xcassets */,
-				58E4FB5D1760AE5500E328A0 /* Supporting Files */,
 			);
 			path = TicketingHub;
 			sourceTree = "<group>";
@@ -746,9 +746,9 @@
 			isa = PBXGroup;
 			children = (
 				EE935E7417B3EB630080A1C2 /* CommonMacros.h */,
-				58E4FB5E1760AE5500E328A0 /* TicketingHub-Info.plist */,
 				58E4FB5F1760AE5500E328A0 /* InfoPlist.strings */,
 				58E4FB621760AE5500E328A0 /* main.m */,
+				58E4FB5E1760AE5500E328A0 /* TicketingHub-Info.plist */,
 				58E4FB641760AE5500E328A0 /* TicketingHub-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -757,10 +757,10 @@
 		58E4FB7E1760AE5500E328A0 /* TicketingHubTests */ = {
 			isa = PBXGroup;
 			children = (
-				EEC2878A17C7B89000CDE3F1 /* TXHOptionMOTests.m */,
-				4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */,
 				4DF3F59B17C63E070045299B /* Smoke Tests */,
 				58E4FB7F1760AE5500E328A0 /* Supporting Files */,
+				4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */,
+				EEC2878A17C7B89000CDE3F1 /* TXHOptionMOTests.m */,
 			);
 			path = TicketingHubTests;
 			sourceTree = "<group>";
@@ -768,11 +768,11 @@
 		58E4FB7F1760AE5500E328A0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				58E4FB801760AE5500E328A0 /* TicketingHubTests-Info.plist */,
-				58E4FB811760AE5500E328A0 /* InfoPlist.strings */,
 				4DF3F55C17C63BAE0045299B /* Expecta */,
 				4DF3F57E17C63BAE0045299B /* OCMock */,
 				4DF3F58717C63BAE0045299B /* Specta */,
+				58E4FB811760AE5500E328A0 /* InfoPlist.strings */,
+				58E4FB801760AE5500E328A0 /* TicketingHubTests-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -780,9 +780,9 @@
 		58E4FB901760AECF00E328A0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				58E4FB911760AEF300E328A0 /* Storyboard.storyboard */,
-				4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */,
 				4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */,
+				4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */,
+				58E4FB911760AEF300E328A0 /* Storyboard.storyboard */,
 			);
 			name = UI;
 			path = TicketingHub/UI;
@@ -817,6 +817,7 @@
 		EE11ADCC17BD2138000042B2 /* Stripe */ = {
 			isa = PBXGroup;
 			children = (
+				EE11ADD817BD2138000042B2 /* Vendor */,
 				EE11ADCD17BD2138000042B2 /* STPCard.h */,
 				EE11ADCE17BD2138000042B2 /* STPCard.m */,
 				EE11ADCF17BD2138000042B2 /* STPToken.h */,
@@ -828,7 +829,6 @@
 				EE11ADD517BD2138000042B2 /* Stripe.m */,
 				EE11ADD617BD2138000042B2 /* StripeError.h */,
 				EE11ADD717BD2138000042B2 /* StripeError.m */,
-				EE11ADD817BD2138000042B2 /* Vendor */,
 			);
 			name = Stripe;
 			path = "Externals/stripe-ios/Stripe";
@@ -853,6 +853,7 @@
 		EE11ADDC17BD2138000042B2 /* PaymentKit */ = {
 			isa = PBXGroup;
 			children = (
+				EE11ADEE17BD2138000042B2 /* Resources */,
 				EE11ADDD17BD2138000042B2 /* PKAddressZip.h */,
 				EE11ADDE17BD2138000042B2 /* PKAddressZip.m */,
 				EE11ADDF17BD2138000042B2 /* PKCard.h */,
@@ -870,7 +871,6 @@
 				EE11ADEB17BD2138000042B2 /* PKUSAddressZip.m */,
 				EE11ADEC17BD2138000042B2 /* PKView.h */,
 				EE11ADED17BD2138000042B2 /* PKView.m */,
-				EE11ADEE17BD2138000042B2 /* Resources */,
 			);
 			path = PaymentKit;
 			sourceTree = "<group>";
@@ -1113,6 +1113,9 @@
 		EEB4FD2017B277D800F226BC /* iOS-api */ = {
 			isa = PBXGroup;
 			children = (
+				EEB4FD2317B277D800F226BC /* AFNetworking */,
+				EEB4FD3A17B277D800F226BC /* NSDictionary+JCSKeyMapping */,
+				EEB4FD3D17B277D800F226BC /* Private */,
 				EE6D998E17BD453400D1E7CD /* TXHOption.h */,
 				EE6D998F17BD453400D1E7CD /* TXHOption.m */,
 				EE6D999017BD453400D1E7CD /* TXHSeason.h */,
@@ -1125,9 +1128,6 @@
 				EE6D999317BD453400D1E7CD /* TXHVariation.m */,
 				EEA6864617B3E47D0024B002 /* TXHVenue.h */,
 				EEA6864717B3E47D0024B002 /* TXHVenue.m */,
-				EEB4FD2317B277D800F226BC /* AFNetworking */,
-				EEB4FD3A17B277D800F226BC /* NSDictionary+JCSKeyMapping */,
-				EEB4FD3D17B277D800F226BC /* Private */,
 			);
 			name = "iOS-api";
 			path = "Externals/ios-api";
@@ -1253,11 +1253,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58E4FB611760AE5500E328A0 /* InfoPlist.strings in Resources */,
 				4D8FCCB617A28A8C008B4227 /* Doorman.storyboard in Resources */,
 				4D586DE11797E51E00E40534 /* Images.xcassets in Resources */,
-				58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */,
+				58E4FB611760AE5500E328A0 /* InfoPlist.strings in Resources */,
 				4DB23D6E17A169D8002B7B11 /* Salesman.storyboard in Resources */,
+				58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1292,128 +1292,128 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEB1846017D114390025530A /* TXHDataSelectionViewController.m in Sources */,
-				EE75D9A017D11048009ADCD8 /* TXHSalesTicketCompletionViewController.m in Sources */,
-				EEABD7F717B4092800E17D54 /* TXHPermissionMO.m in Sources */,
-				EEABD7F617B4088300E17D54 /* TXHVenue.m in Sources */,
-				EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */,
-				EE75D99017D11048009ADCD8 /* TXHSalesMainViewController.m in Sources */,
-				EE75D9A117D11048009ADCD8 /* TXHSalesTicketTierCell.m in Sources */,
-				EE75D99117D11048009ADCD8 /* TXHSalesOptionsCell.m in Sources */,
-				EEB1847A17D114B30025530A /* TXHDoorDateCell.m in Sources */,
-				EE75D9B317D11311009ADCD8 /* TXHMenuController.m in Sources */,
-				EEB4FD5717B277D800F226BC /* _TXHNetworkOAuthClient.m in Sources */,
-				4D8A106617BD2DC900CEECAD /* STPCard.m in Sources */,
-				EEB1845B17D114390025530A /* TXHCreditCardNumberView.m in Sources */,
-				EEB1845D17D114390025530A /* TXHDataDownloader.m in Sources */,
-				EE494CEC17B55177001740B3 /* TicketingHub.xcdatamodeld in Sources */,
-				EEB4FD4C17B277D800F226BC /* AFImageRequestOperation.m in Sources */,
-				EE75D99917D11048009ADCD8 /* TXHSalesPaymentViewController.m in Sources */,
-				EEB1849417D115640025530A /* TXHTransitionSegue.m in Sources */,
-				EEB1849017D115640025530A /* TXHEmbeddingSegue.m in Sources */,
-				EE11AE1C17BD2F3D000042B2 /* TXHUserMO.m in Sources */,
-				EE75D99D17D11048009ADCD8 /* TXHSalesSummaryExtraProductsCell.m in Sources */,
-				58E4FB631760AE5500E328A0 /* main.m in Sources */,
-				EEB1847B17D114B30025530A /* TXHDoorDateController.m in Sources */,
-				EEB1847F17D114B30025530A /* TXHFlowLayout.m in Sources */,
-				4D8A106917BD2DD700CEECAD /* STPView.m in Sources */,
-				EEB1846617D114390025530A /* TXHTextEntryTableViewCell.m in Sources */,
-				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
-				EE6D999417BD453400D1E7CD /* TXHOption.m in Sources */,
-				EEB4FD5917B277D800F226BC /* TXHTicketingHubClient.m in Sources */,
-				EEB1845F17D114390025530A /* TXHDataSelectionView.m in Sources */,
-				4D8A107217BD2DF700CEECAD /* PKUSAddressZip.m in Sources */,
-				EE75D9A217D11048009ADCD8 /* TXHSalesTicketTiersViewController.m in Sources */,
-				4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */,
-				EE75D98817D11048009ADCD8 /* TXHSalesCalendarViewController.m in Sources */,
-				EE75D99717D11048009ADCD8 /* TXHSalesPaymentPaymentDetailsContentViewController.m in Sources */,
-				EEB1846817D114390025530A /* TXHTimeFormatter.m in Sources */,
-				EEB1846517D114390025530A /* TXHTextCollectionViewCell.m in Sources */,
-				EE75D99617D11048009ADCD8 /* TXHSalesPaymentCustomerDetailViewController.m in Sources */,
-				EE11AE0F17BD2C84000042B2 /* DCTCoreDataStack.m in Sources */,
-				EE8719C317BE30B80055437C /* TXHSeasonMO.m in Sources */,
-				EEB1847D17D114B30025530A /* TXHDoorMainController.m in Sources */,
-				EE75D99817D11048009ADCD8 /* TXHSalesPaymentPaymentDetailsViewController.m in Sources */,
-				EEA6863F17B3DF0D0024B002 /* TXHVenueMO.m in Sources */,
-				EE8719C217BE30B80055437C /* TXHOptionMO.m in Sources */,
-				EE75D9A317D11048009ADCD8 /* TXHSalesTicketViewController.m in Sources */,
-				4D307DB71796F9FC00822645 /* TXHTicketDetail.m in Sources */,
-				4D859FF517945E4D000B2FCC /* TXHVariation_old.m in Sources */,
-				EE75D99E17D11048009ADCD8 /* TXHSalesSummaryHeader.m in Sources */,
-				4D8A106C17BD2DF700CEECAD /* PKAddressZip.m in Sources */,
-				EE75D98E17D11048009ADCD8 /* TXHSalesInformationTextCell.m in Sources */,
-				EE8719C917BE30CB0055437C /* _TXHSeasonMO.m in Sources */,
-				EE11AE1017BD2C84000042B2 /* NSManagedObjectContext+DCTCoreDataStack.m in Sources */,
-				4D8A106B17BD2DE000CEECAD /* StripeError.m in Sources */,
-				EEB4FD4A17B277D800F226BC /* AFHTTPClient.m in Sources */,
-				EEB1845E17D114390025530A /* TXHDataEntryFieldErrorView.m in Sources */,
-				EE75D9A917D11048009ADCD8 /* TXHSalesWizardViewController.m in Sources */,
-				EEB1848017D114B30025530A /* TXHGroupCell.m in Sources */,
-				EE75D98C17D11048009ADCD8 /* TXHSalesInformationDetailsViewController.m in Sources */,
-				4D8A106E17BD2DF700CEECAD /* PKCardCVC.m in Sources */,
-				EEB4FD4F17B277D800F226BC /* AFPropertyListRequestOperation.m in Sources */,
-				EEB1849317D115640025530A /* TXHTimeslotSelectorViewController.m in Sources */,
-				4D859FF817953FA1000B2FCC /* TXHTimeSlot_old.m in Sources */,
-				EE75D99417D11048009ADCD8 /* TXHSalesPaymentCashDetailsViewController.m in Sources */,
-				EEB1845A17D114390025530A /* TXHBaseDataEntryView.m in Sources */,
-				EE75D99A17D11048009ADCD8 /* TXHSalesProductCell.m in Sources */,
-				EEB1849217D115640025530A /* TXHMainViewController.m in Sources */,
-				4D8A107117BD2DF700CEECAD /* PKTextField.m in Sources */,
-				EE75D99217D11048009ADCD8 /* TXHSalesOptionsViewController.m in Sources */,
-				EEB4FD5617B277D800F226BC /* _TXHNetworkClient.m in Sources */,
-				EE75D98D17D11048009ADCD8 /* TXHSalesInformationHeader.m in Sources */,
-				EEB1846317D114390025530A /* TXHQuantitySelectorViewController.m in Sources */,
-				4D8A106A17BD2DDC00CEECAD /* Stripe.m in Sources */,
-				EEB1845917D114390025530A /* TXHBaseDataEntryTableViewCell.m in Sources */,
-				EE75D99F17D11048009ADCD8 /* TXHSalesSummaryViewController.m in Sources */,
-				EEB1845C17D114390025530A /* TXHCurrencyEntryView.m in Sources */,
-				EEB1849117D115640025530A /* TXHMainScreenPlaceholderViewController.m in Sources */,
-				4D8A106817BD2DD300CEECAD /* STPToken.m in Sources */,
-				EEB4FD5A17B277D800F226BC /* TXHUser.m in Sources */,
-				EEB1845817D114390025530A /* TXHBaseCollectionViewCell.m in Sources */,
-				EEB1846117D114390025530A /* TXHEmailCollectionViewCell.m in Sources */,
-				EE75D98917D11048009ADCD8 /* TXHSalesCompletionViewController.m in Sources */,
-				EE6D999617BD453400D1E7CD /* TXHVariation.m in Sources */,
-				EEB1846217D114390025530A /* TXHOptionsExtrasItem.m in Sources */,
-				EE75D9A417D11048009ADCD8 /* TXHSalesTimerViewController.m in Sources */,
-				EEB4FD5117B277D800F226BC /* AFXMLRequestOperation.m in Sources */,
-				4D8A106D17BD2DF700CEECAD /* PKCard.m in Sources */,
-				EEB4FD5017B277D800F226BC /* AFURLConnectionOperation.m in Sources */,
-				EEF6BA4717D1192B005B1B20 /* BarcodeViewController.m in Sources */,
-				EE11AE1817BD2E48000042B2 /* _TXHVenueMO.m in Sources */,
-				EE75D98F17D11048009ADCD8 /* TXHSalesInformationViewController.m in Sources */,
-				EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */,
-				EE75D99517D11048009ADCD8 /* TXHSalesPaymentCreditDetailsViewController.m in Sources */,
-				EEB4FD5417B277D800F226BC /* UIImageView+AFNetworking.m in Sources */,
-				EE75D9A517D11048009ADCD8 /* TXHSalesUpgradeCell.m in Sources */,
-				4D8A107017BD2DF700CEECAD /* PKCardNumber.m in Sources */,
-				4D8A107317BD2DF700CEECAD /* PKView.m in Sources */,
-				EEB4FD4D17B277D800F226BC /* AFJSONRequestOperation.m in Sources */,
-				EE11AE1517BD2E18000042B2 /* _TXHPermissionMO.m in Sources */,
-				EE8719C817BE30CB0055437C /* _TXHOptionMO.m in Sources */,
-				EE75D98A17D11048009ADCD8 /* TXHSalesContentsViewController.m in Sources */,
 				EE11AE0E17BD2C84000042B2 /* _DCTCDSManagedObjectContext.m in Sources */,
-				EE75D99C17D11048009ADCD8 /* TXHSalesSummaryCell.m in Sources */,
-				EEB1848117D114B30025530A /* TXHTimeCell.m in Sources */,
-				EE75D9A717D11048009ADCD8 /* TXHSalesUpgradeHeader.m in Sources */,
-				EE75D98B17D11048009ADCD8 /* TXHSalesInformationCompletionViewController.m in Sources */,
-				4D1A0C2917A7F49C00960906 /* TXHTicketTier.m in Sources */,
-				EE75D9A617D11048009ADCD8 /* TXHSalesUpgradeDetailsViewController.m in Sources */,
-				EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */,
-				4D8A106F17BD2DF700CEECAD /* PKCardExpiry.m in Sources */,
-				EEB4FD4E17B277D800F226BC /* AFNetworkActivityIndicatorManager.m in Sources */,
-				EEB4FD4B17B277D800F226BC /* AFHTTPRequestOperation.m in Sources */,
-				4D859FF2179453EA000B2FCC /* TXHSeason_old.m in Sources */,
-				EE75D9A817D11048009ADCD8 /* TXHSalesWizardDetailsViewController.m in Sources */,
-				EE75D99317D11048009ADCD8 /* TXHSalesPaymentCardDetailsViewController.m in Sources */,
+				EEB4FD5617B277D800F226BC /* _TXHNetworkClient.m in Sources */,
+				EEB4FD5717B277D800F226BC /* _TXHNetworkOAuthClient.m in Sources */,
+				EE8719C817BE30CB0055437C /* _TXHOptionMO.m in Sources */,
+				EE11AE1517BD2E18000042B2 /* _TXHPermissionMO.m in Sources */,
+				EE8719C917BE30CB0055437C /* _TXHSeasonMO.m in Sources */,
 				EE11AE1B17BD2EA9000042B2 /* _TXHUserMO.m in Sources */,
-				EE75D9B417D11311009ADCD8 /* TXHMenuViewController.m in Sources */,
-				EE75D99B17D11048009ADCD8 /* TXHSalesProductDetailsViewController.m in Sources */,
-				EEB1847C17D114B30025530A /* TXHDoorGroupController.m in Sources */,
+				EE11AE1817BD2E48000042B2 /* _TXHVenueMO.m in Sources */,
+				EEB4FD4A17B277D800F226BC /* AFHTTPClient.m in Sources */,
+				EEB4FD4B17B277D800F226BC /* AFHTTPRequestOperation.m in Sources */,
+				EEB4FD4C17B277D800F226BC /* AFImageRequestOperation.m in Sources */,
+				EEB4FD4D17B277D800F226BC /* AFJSONRequestOperation.m in Sources */,
+				EEB4FD4E17B277D800F226BC /* AFNetworkActivityIndicatorManager.m in Sources */,
+				EEB4FD4F17B277D800F226BC /* AFPropertyListRequestOperation.m in Sources */,
+				EEB4FD5017B277D800F226BC /* AFURLConnectionOperation.m in Sources */,
+				EEB4FD5117B277D800F226BC /* AFXMLRequestOperation.m in Sources */,
+				EEF6BA4717D1192B005B1B20 /* BarcodeViewController.m in Sources */,
+				EE11AE0F17BD2C84000042B2 /* DCTCoreDataStack.m in Sources */,
+				58E4FB631760AE5500E328A0 /* main.m in Sources */,
 				EEB4FD5517B277D800F226BC /* NSDictionary+JCSKeyMapping.m in Sources */,
+				EE11AE1017BD2C84000042B2 /* NSManagedObjectContext+DCTCoreDataStack.m in Sources */,
+				4D8A106C17BD2DF700CEECAD /* PKAddressZip.m in Sources */,
+				4D8A106D17BD2DF700CEECAD /* PKCard.m in Sources */,
+				4D8A106E17BD2DF700CEECAD /* PKCardCVC.m in Sources */,
+				4D8A106F17BD2DF700CEECAD /* PKCardExpiry.m in Sources */,
+				4D8A107017BD2DF700CEECAD /* PKCardNumber.m in Sources */,
+				4D8A107117BD2DF700CEECAD /* PKTextField.m in Sources */,
+				4D8A107217BD2DF700CEECAD /* PKUSAddressZip.m in Sources */,
+				4D8A107317BD2DF700CEECAD /* PKView.m in Sources */,
+				4D8A106617BD2DC900CEECAD /* STPCard.m in Sources */,
+				4D8A106817BD2DD300CEECAD /* STPToken.m in Sources */,
+				4D8A106917BD2DD700CEECAD /* STPView.m in Sources */,
+				4D8A106A17BD2DDC00CEECAD /* Stripe.m in Sources */,
+				4D8A106B17BD2DE000CEECAD /* StripeError.m in Sources */,
+				EE494CEC17B55177001740B3 /* TicketingHub.xcdatamodeld in Sources */,
+				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
+				EEB1845817D114390025530A /* TXHBaseCollectionViewCell.m in Sources */,
+				EEB1845917D114390025530A /* TXHBaseDataEntryTableViewCell.m in Sources */,
+				EEB1845A17D114390025530A /* TXHBaseDataEntryView.m in Sources */,
+				EEB1845B17D114390025530A /* TXHCreditCardNumberView.m in Sources */,
+				EEB1845C17D114390025530A /* TXHCurrencyEntryView.m in Sources */,
+				EEB1845D17D114390025530A /* TXHDataDownloader.m in Sources */,
+				EEB1845E17D114390025530A /* TXHDataEntryFieldErrorView.m in Sources */,
+				EEB1845F17D114390025530A /* TXHDataSelectionView.m in Sources */,
+				EEB1846017D114390025530A /* TXHDataSelectionViewController.m in Sources */,
+				EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */,
+				EEB1847A17D114B30025530A /* TXHDoorDateCell.m in Sources */,
+				EEB1847B17D114B30025530A /* TXHDoorDateController.m in Sources */,
+				EEB1847C17D114B30025530A /* TXHDoorGroupController.m in Sources */,
+				EEB1847D17D114B30025530A /* TXHDoorMainController.m in Sources */,
 				EEB1847E17D114B30025530A /* TXHDoorTimeController.m in Sources */,
+				EEB1846117D114390025530A /* TXHEmailCollectionViewCell.m in Sources */,
+				EEB1849017D115640025530A /* TXHEmbeddingSegue.m in Sources */,
+				EEB1847F17D114B30025530A /* TXHFlowLayout.m in Sources */,
+				EEB1848017D114B30025530A /* TXHGroupCell.m in Sources */,
+				EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */,
+				EEB1849117D115640025530A /* TXHMainScreenPlaceholderViewController.m in Sources */,
+				EEB1849217D115640025530A /* TXHMainViewController.m in Sources */,
+				EE75D9B317D11311009ADCD8 /* TXHMenuController.m in Sources */,
+				EE75D9B417D11311009ADCD8 /* TXHMenuViewController.m in Sources */,
+				EE6D999417BD453400D1E7CD /* TXHOption.m in Sources */,
+				EE8719C217BE30B80055437C /* TXHOptionMO.m in Sources */,
+				EEB1846217D114390025530A /* TXHOptionsExtrasItem.m in Sources */,
+				EEABD7F717B4092800E17D54 /* TXHPermissionMO.m in Sources */,
+				EEB1846317D114390025530A /* TXHQuantitySelectorViewController.m in Sources */,
+				EE75D98817D11048009ADCD8 /* TXHSalesCalendarViewController.m in Sources */,
+				EE75D98917D11048009ADCD8 /* TXHSalesCompletionViewController.m in Sources */,
+				EE75D98A17D11048009ADCD8 /* TXHSalesContentsViewController.m in Sources */,
+				EE75D98B17D11048009ADCD8 /* TXHSalesInformationCompletionViewController.m in Sources */,
+				EE75D98C17D11048009ADCD8 /* TXHSalesInformationDetailsViewController.m in Sources */,
+				EE75D98D17D11048009ADCD8 /* TXHSalesInformationHeader.m in Sources */,
+				EE75D98E17D11048009ADCD8 /* TXHSalesInformationTextCell.m in Sources */,
+				EE75D98F17D11048009ADCD8 /* TXHSalesInformationViewController.m in Sources */,
+				EE75D99017D11048009ADCD8 /* TXHSalesMainViewController.m in Sources */,
+				EE75D99117D11048009ADCD8 /* TXHSalesOptionsCell.m in Sources */,
+				EE75D99217D11048009ADCD8 /* TXHSalesOptionsViewController.m in Sources */,
+				EE75D99317D11048009ADCD8 /* TXHSalesPaymentCardDetailsViewController.m in Sources */,
+				EE75D99417D11048009ADCD8 /* TXHSalesPaymentCashDetailsViewController.m in Sources */,
+				EE75D99517D11048009ADCD8 /* TXHSalesPaymentCreditDetailsViewController.m in Sources */,
+				EE75D99617D11048009ADCD8 /* TXHSalesPaymentCustomerDetailViewController.m in Sources */,
+				EE75D99717D11048009ADCD8 /* TXHSalesPaymentPaymentDetailsContentViewController.m in Sources */,
+				EE75D99817D11048009ADCD8 /* TXHSalesPaymentPaymentDetailsViewController.m in Sources */,
+				EE75D99917D11048009ADCD8 /* TXHSalesPaymentViewController.m in Sources */,
+				EE75D99A17D11048009ADCD8 /* TXHSalesProductCell.m in Sources */,
+				EE75D99B17D11048009ADCD8 /* TXHSalesProductDetailsViewController.m in Sources */,
+				EE75D99C17D11048009ADCD8 /* TXHSalesSummaryCell.m in Sources */,
+				EE75D99D17D11048009ADCD8 /* TXHSalesSummaryExtraProductsCell.m in Sources */,
+				EE75D99E17D11048009ADCD8 /* TXHSalesSummaryHeader.m in Sources */,
+				EE75D99F17D11048009ADCD8 /* TXHSalesSummaryViewController.m in Sources */,
+				EE75D9A017D11048009ADCD8 /* TXHSalesTicketCompletionViewController.m in Sources */,
+				EE75D9A117D11048009ADCD8 /* TXHSalesTicketTierCell.m in Sources */,
+				EE75D9A217D11048009ADCD8 /* TXHSalesTicketTiersViewController.m in Sources */,
+				EE75D9A317D11048009ADCD8 /* TXHSalesTicketViewController.m in Sources */,
+				EE75D9A417D11048009ADCD8 /* TXHSalesTimerViewController.m in Sources */,
+				EE75D9A517D11048009ADCD8 /* TXHSalesUpgradeCell.m in Sources */,
+				EE75D9A617D11048009ADCD8 /* TXHSalesUpgradeDetailsViewController.m in Sources */,
+				EE75D9A717D11048009ADCD8 /* TXHSalesUpgradeHeader.m in Sources */,
+				EE75D9A817D11048009ADCD8 /* TXHSalesWizardDetailsViewController.m in Sources */,
+				EE75D9A917D11048009ADCD8 /* TXHSalesWizardViewController.m in Sources */,
 				EE6D999517BD453400D1E7CD /* TXHSeason.m in Sources */,
+				4D859FF2179453EA000B2FCC /* TXHSeason_old.m in Sources */,
+				EE8719C317BE30B80055437C /* TXHSeasonMO.m in Sources */,
+				EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */,
+				4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */,
+				EEB1846517D114390025530A /* TXHTextCollectionViewCell.m in Sources */,
+				EEB1846617D114390025530A /* TXHTextEntryTableViewCell.m in Sources */,
 				EEB1846717D114390025530A /* TXHTextEntryView.m in Sources */,
+				4D307DB71796F9FC00822645 /* TXHTicketDetail.m in Sources */,
+				EEB4FD5917B277D800F226BC /* TXHTicketingHubClient.m in Sources */,
+				4D1A0C2917A7F49C00960906 /* TXHTicketTier.m in Sources */,
+				EEB1848117D114B30025530A /* TXHTimeCell.m in Sources */,
+				EEB1846817D114390025530A /* TXHTimeFormatter.m in Sources */,
+				4D859FF817953FA1000B2FCC /* TXHTimeSlot_old.m in Sources */,
+				EEB1849317D115640025530A /* TXHTimeslotSelectorViewController.m in Sources */,
+				EEB1849417D115640025530A /* TXHTransitionSegue.m in Sources */,
+				EEB4FD5A17B277D800F226BC /* TXHUser.m in Sources */,
+				EE11AE1C17BD2F3D000042B2 /* TXHUserMO.m in Sources */,
+				EE6D999617BD453400D1E7CD /* TXHVariation.m in Sources */,
+				4D859FF517945E4D000B2FCC /* TXHVariation_old.m in Sources */,
+				EEABD7F617B4088300E17D54 /* TXHVenue.m in Sources */,
+				EEA6863F17B3DF0D0024B002 /* TXHVenueMO.m in Sources */,
+				EEB4FD5417B277D800F226BC /* UIImageView+AFNetworking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1421,10 +1421,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DF3F59E17C63E070045299B /* MockingTest.m in Sources */,
+				4DF3F59F17C63E070045299B /* SmokeSpec.m in Sources */,
 				4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */,
 				EEC2878B17C7B89000CDE3F1 /* TXHOptionMOTests.m in Sources */,
-				4DF3F59F17C63E070045299B /* SmokeSpec.m in Sources */,
-				4DF3F59E17C63E070045299B /* MockingTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
