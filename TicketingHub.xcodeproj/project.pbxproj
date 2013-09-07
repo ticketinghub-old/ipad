@@ -503,14 +503,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */,
+				58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */,
+				58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */,
+				EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */,
+				5860E8581762175B0046DFD3 /* QuartzCore.framework in Frameworks */,
 				EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */,
 				EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */,
-				EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */,
-				4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */,
-				5860E8581762175B0046DFD3 /* QuartzCore.framework in Frameworks */,
 				58E4FB551760AE5500E328A0 /* UIKit.framework in Frameworks */,
-				58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */,
-				58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,12 +518,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */,
 				4DF3F59817C63BAE0045299B /* libExpecta-ios-universal.a in Frameworks */,
+				4DF3F59917C63BAE0045299B /* libOCMock.a in Frameworks */,
+				4DF3F59A17C63BAE0045299B /* libSpecta-ios-universal.a in Frameworks */,
 				58E4FB781760AE5500E328A0 /* SenTestingKit.framework in Frameworks */,
 				58E4FB791760AE5500E328A0 /* UIKit.framework in Frameworks */,
-				4DF3F59917C63BAE0045299B /* libOCMock.a in Frameworks */,
-				58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */,
-				4DF3F59A17C63BAE0045299B /* libSpecta-ios-universal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,51 +536,51 @@
 				4D9AA3CA17B51BDC0093D63B /* TXHBaseCollectionViewCell.h */,
 				4D9AA3CB17B51BDC0093D63B /* TXHBaseCollectionViewCell.m */,
 				4DA153DE17BE5F24009FF563 /* TXHBaseDataEntryTableViewCell.h */,
+				4DA153DE17BE5F24009FF563 /* TXHBaseDataEntryTableViewCell.h */,
+				4DA153DF17BE5F24009FF563 /* TXHBaseDataEntryTableViewCell.m */,
 				4DA153DF17BE5F24009FF563 /* TXHBaseDataEntryTableViewCell.m */,
 				4DB791E717BB7FC400B707D9 /* TXHBaseDataEntryView.h */,
 				4DB791E817BB7FC400B707D9 /* TXHBaseDataEntryView.m */,
 				4D25F644176CE58A00A60359 /* TXHCommonNames.h */,
 				4DB791ED17BBC87F00B707D9 /* TXHCreditCardNumberView.h */,
+				4DB791ED17BBC87F00B707D9 /* TXHCreditCardNumberView.h */,
+				4DB791EE17BBC87F00B707D9 /* TXHCreditCardNumberView.m */,
 				4DB791EE17BBC87F00B707D9 /* TXHCreditCardNumberView.m */,
 				4DA552EF17C4AE72000D78D7 /* TXHCurrencyEntryView.h */,
+				4DA552EF17C4AE72000D78D7 /* TXHCurrencyEntryView.h */,
+				4DA552F017C4AE72000D78D7 /* TXHCurrencyEntryView.m */,
 				4DA552F017C4AE72000D78D7 /* TXHCurrencyEntryView.m */,
 				4D0E512F178C0BBC009436AC /* TXHDataDownloader.h */,
 				4D0E5130178C0BBC009436AC /* TXHDataDownloader.m */,
 				4D36517017B4DB5F002E07E9 /* TXHDataEntryFieldErrorView.h */,
 				4D36517117B4DB5F002E07E9 /* TXHDataEntryFieldErrorView.m */,
+				4D41C05B17C2BED40014E5F7 /* TXHDataSelectionView.h */,
+				4D41C05C17C2BED40014E5F7 /* TXHDataSelectionView.m */,
+				4D41C05E17C2C3F60014E5F7 /* TXHDataSelectionViewController.h */,
+				4D41C05F17C2C3F60014E5F7 /* TXHDataSelectionViewController.m */,
 				4D38781617B8DE0900627612 /* TXHEmailCollectionViewCell.h */,
 				4D38781717B8DE0900627612 /* TXHEmailCollectionViewCell.m */,
 				4D68DAA4178AE9E300743227 /* TXHOptionsExtrasItem.h */,
 				4D68DAA4178AE9E300743227 /* TXHOptionsExtrasItem.h */,
 				4D68DAA5178AE9E300743227 /* TXHOptionsExtrasItem.m */,
+				4D68DAA5178AE9E300743227 /* TXHOptionsExtrasItem.m */,
 				4D58757217BA3BEB006264BA /* TXHQuantitySelectorViewController.h */,
 				4D58757317BA3BEB006264BA /* TXHQuantitySelectorViewController.m */,
 				4D41C06117C3513E0014E5F7 /* TXHSelectionEntryTableViewCell.h */,
+				4D41C06117C3513E0014E5F7 /* TXHSelectionEntryTableViewCell.h */,
+				4D41C06217C3513E0014E5F7 /* TXHSelectionEntryTableViewCell.m */,
 				4D41C06217C3513E0014E5F7 /* TXHSelectionEntryTableViewCell.m */,
 				4D3FC10F17B5480D0036D4DE /* TXHTextCollectionViewCell.h */,
 				4D3FC11017B5480D0036D4DE /* TXHTextCollectionViewCell.m */,
 				4DA153E117BE632E009FF563 /* TXHTextEntryTableViewCell.h */,
+				4DA153E117BE632E009FF563 /* TXHTextEntryTableViewCell.h */,
+				4DA153E217BE632E009FF563 /* TXHTextEntryTableViewCell.m */,
 				4DA153E217BE632E009FF563 /* TXHTextEntryTableViewCell.m */,
 				4DB791EA17BB91D000B707D9 /* TXHTextEntryView.h */,
 				4DB791EB17BB91D000B707D9 /* TXHTextEntryView.m */,
-				4DB791ED17BBC87F00B707D9 /* TXHCreditCardNumberView.h */,
-				4DB791EE17BBC87F00B707D9 /* TXHCreditCardNumberView.m */,
-				4DA153DE17BE5F24009FF563 /* TXHBaseDataEntryTableViewCell.h */,
-				4DA153DF17BE5F24009FF563 /* TXHBaseDataEntryTableViewCell.m */,
-				4DA153E117BE632E009FF563 /* TXHTextEntryTableViewCell.h */,
-				4DA153E217BE632E009FF563 /* TXHTextEntryTableViewCell.m */,
-				4D41C05B17C2BED40014E5F7 /* TXHDataSelectionView.h */,
-				4D41C05C17C2BED40014E5F7 /* TXHDataSelectionView.m */,
-				4D41C05E17C2C3F60014E5F7 /* TXHDataSelectionViewController.h */,
-				4D41C05F17C2C3F60014E5F7 /* TXHDataSelectionViewController.m */,
-				4D41C06117C3513E0014E5F7 /* TXHSelectionEntryTableViewCell.h */,
-				4D41C06217C3513E0014E5F7 /* TXHSelectionEntryTableViewCell.m */,
-				4DA552EF17C4AE72000D78D7 /* TXHCurrencyEntryView.h */,
 				4D307DB21796F61C00822645 /* TXHTimeFormatter.h */,
 				4D307DB31796F61C00822645 /* TXHTimeFormatter.m */,
 				EE106B4A17B4FE2200910901 /* TXHUserDefaultsKeys.h */,
-				4DA552F017C4AE72000D78D7 /* TXHCurrencyEntryView.m */,
-				4D68DAA5178AE9E300743227 /* TXHOptionsExtrasItem.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -588,10 +588,10 @@
 		4DA05FB5178D8D85005161E6 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				4DA05FB6178D8DAC005161E6 /* TXHMenuViewController.h */,
-				4DA05FB7178D8DAC005161E6 /* TXHMenuViewController.m */,
 				4DA05FB9178D8F31005161E6 /* TXHMenuController.h */,
 				4DA05FBA178D8F31005161E6 /* TXHMenuController.m */,
+				4DA05FB6178D8DAC005161E6 /* TXHMenuViewController.h */,
+				4DA05FB7178D8DAC005161E6 /* TXHMenuViewController.m */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -639,8 +639,8 @@
 		4DF3F57E17C63BAE0045299B /* OCMock */ = {
 			isa = PBXGroup;
 			children = (
-				4DF3F57F17C63BAE0045299B /* libOCMock.a */,
 				4DF3F58017C63BAE0045299B /* OCMock */,
+				4DF3F57F17C63BAE0045299B /* libOCMock.a */,
 			);
 			path = OCMock;
 			sourceTree = "<group>";
@@ -693,10 +693,10 @@
 		4DF9F92B179D50C10040FC5D /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				EE935E7517B3EDFA0080A1C2 /* TicketingHub.xcdatamodeld */,
 				EE11AE0617BD2C84000042B2 /* DCTCoreDataStack */,
 				4DF9F92C179D50E90040FC5D /* Human */,
 				4DF9F945179D50E90040FC5D /* Machine */,
+				EE935E7517B3EDFA0080A1C2 /* TicketingHub.xcdatamodeld */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -740,15 +740,15 @@
 		58E4FB481760AE5500E328A0 = {
 			isa = PBXGroup;
 			children = (
-				EE11ADCC17BD2138000042B2 /* Stripe */,
-				4DF9F92B179D50C10040FC5D /* Core Data */,
 				58E4FB971760D3C800E328A0 /* Classes */,
+				4DF9F92B179D50C10040FC5D /* Core Data */,
+				58E4FB531760AE5500E328A0 /* Frameworks */,
 				EEB4FD2017B277D800F226BC /* iOS-api */,
-				58E4FB901760AECF00E328A0 /* UI */,
+				58E4FB521760AE5500E328A0 /* Products */,
+				EE11ADCC17BD2138000042B2 /* Stripe */,
 				58E4FB5C1760AE5500E328A0 /* TicketingHub */,
 				58E4FB7E1760AE5500E328A0 /* TicketingHubTests */,
-				58E4FB531760AE5500E328A0 /* Frameworks */,
-				58E4FB521760AE5500E328A0 /* Products */,
+				58E4FB901760AECF00E328A0 /* UI */,
 			);
 			sourceTree = "<group>";
 		};
@@ -780,10 +780,10 @@
 		58E4FB5C1760AE5500E328A0 /* TicketingHub */ = {
 			isa = PBXGroup;
 			children = (
+				58E4FB5D1760AE5500E328A0 /* Supporting Files */,
+				4D586DE01797E51E00E40534 /* Images.xcassets */,
 				58E4FB651760AE5500E328A0 /* TXHAppDelegate.h */,
 				58E4FB661760AE5500E328A0 /* TXHAppDelegate.m */,
-				4D586DE01797E51E00E40534 /* Images.xcassets */,
-				58E4FB5D1760AE5500E328A0 /* Supporting Files */,
 			);
 			path = TicketingHub;
 			sourceTree = "<group>";
@@ -792,9 +792,9 @@
 			isa = PBXGroup;
 			children = (
 				EE935E7417B3EB630080A1C2 /* CommonMacros.h */,
-				58E4FB5E1760AE5500E328A0 /* TicketingHub-Info.plist */,
 				58E4FB5F1760AE5500E328A0 /* InfoPlist.strings */,
 				58E4FB621760AE5500E328A0 /* main.m */,
+				58E4FB5E1760AE5500E328A0 /* TicketingHub-Info.plist */,
 				58E4FB641760AE5500E328A0 /* TicketingHub-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -803,10 +803,10 @@
 		58E4FB7E1760AE5500E328A0 /* TicketingHubTests */ = {
 			isa = PBXGroup;
 			children = (
-				EEC2878A17C7B89000CDE3F1 /* TXHOptionMOTests.m */,
-				4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */,
 				4DF3F59B17C63E070045299B /* Smoke Tests */,
 				58E4FB7F1760AE5500E328A0 /* Supporting Files */,
+				4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */,
+				EEC2878A17C7B89000CDE3F1 /* TXHOptionMOTests.m */,
 			);
 			path = TicketingHubTests;
 			sourceTree = "<group>";
@@ -814,11 +814,11 @@
 		58E4FB7F1760AE5500E328A0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				58E4FB801760AE5500E328A0 /* TicketingHubTests-Info.plist */,
-				58E4FB811760AE5500E328A0 /* InfoPlist.strings */,
 				4DF3F55C17C63BAE0045299B /* Expecta */,
 				4DF3F57E17C63BAE0045299B /* OCMock */,
 				4DF3F58717C63BAE0045299B /* Specta */,
+				58E4FB811760AE5500E328A0 /* InfoPlist.strings */,
+				58E4FB801760AE5500E328A0 /* TicketingHubTests-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -826,9 +826,9 @@
 		58E4FB901760AECF00E328A0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				58E4FB911760AEF300E328A0 /* Storyboard.storyboard */,
-				4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */,
 				4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */,
+				4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */,
+				58E4FB911760AEF300E328A0 /* Storyboard.storyboard */,
 			);
 			name = UI;
 			path = TicketingHub/UI;
@@ -864,24 +864,24 @@
 		58E4FB991760D3C800E328A0 /* Door */ = {
 			isa = PBXGroup;
 			children = (
-				581560C91765D38A005C20EA /* TXHFlowLayout.h */,
-				581560CA1765D38A005C20EA /* TXHFlowLayout.m */,
+				4D68DAA7178B096A00743227 /* BarcodeViewController.h */,
+				4D68DAA8178B096A00743227 /* BarcodeViewController.m */,
 				581560CB1765D38A005C20EA /* TXHDoorDateCell.h */,
 				581560CC1765D38A005C20EA /* TXHDoorDateCell.m */,
 				581560CF1765DAB3005C20EA /* TXHDoorDateController.h */,
 				581560D01765DAB3005C20EA /* TXHDoorDateController.m */,
-				581560D21765E0DE005C20EA /* TXHTimeCell.h */,
-				581560D31765E0DE005C20EA /* TXHTimeCell.m */,
-				581560D51765E150005C20EA /* TXHGroupCell.h */,
-				581560D61765E150005C20EA /* TXHGroupCell.m */,
-				4D4FBE29176B5BB70023A0D1 /* TXHDoorTimeController.h */,
-				4D4FBE2A176B5BB70023A0D1 /* TXHDoorTimeController.m */,
 				4D25F646176CF08000A60359 /* TXHDoorGroupController.h */,
 				4D25F647176CF08000A60359 /* TXHDoorGroupController.m */,
 				4DF3B5BC177082FF00D657AB /* TXHDoorMainController.h */,
 				4DF3B5BD177082FF00D657AB /* TXHDoorMainController.m */,
-				4D68DAA7178B096A00743227 /* BarcodeViewController.h */,
-				4D68DAA8178B096A00743227 /* BarcodeViewController.m */,
+				4D4FBE29176B5BB70023A0D1 /* TXHDoorTimeController.h */,
+				4D4FBE2A176B5BB70023A0D1 /* TXHDoorTimeController.m */,
+				581560C91765D38A005C20EA /* TXHFlowLayout.h */,
+				581560CA1765D38A005C20EA /* TXHFlowLayout.m */,
+				581560D51765E150005C20EA /* TXHGroupCell.h */,
+				581560D61765E150005C20EA /* TXHGroupCell.m */,
+				581560D21765E0DE005C20EA /* TXHTimeCell.h */,
+				581560D31765E0DE005C20EA /* TXHTimeCell.m */,
 			);
 			path = Door;
 			sourceTree = "<group>";
@@ -889,18 +889,18 @@
 		58E4FB9A1760D3C800E328A0 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
-				58E4FB9D1761CFEC00E328A0 /* TXHMainViewController.h */,
-				58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */,
-				4DF9F976179D5B4E0040FC5D /* TXHTransitionSegue.h */,
-				4DF9F977179D5B4E0040FC5D /* TXHTransitionSegue.m */,
-				4DF9F979179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.h */,
-				4DF9F97A179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m */,
-				4DF9F97C179D62970040FC5D /* TXHEmbeddingSegue.h */,
-				4DF9F97D179D62970040FC5D /* TXHEmbeddingSegue.m */,
 				4DF9F982179DC2850040FC5D /* TXHDateSelectorViewController.h */,
 				4DF9F983179DC2850040FC5D /* TXHDateSelectorViewController.m */,
+				4DF9F97C179D62970040FC5D /* TXHEmbeddingSegue.h */,
+				4DF9F97D179D62970040FC5D /* TXHEmbeddingSegue.m */,
+				4DF9F979179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.h */,
+				4DF9F97A179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m */,
+				58E4FB9D1761CFEC00E328A0 /* TXHMainViewController.h */,
+				58E4FB9E1761CFEC00E328A0 /* TXHMainViewController.m */,
 				4DC95F24179EA654004E035D /* TXHTimeslotSelectorViewController.h */,
 				4DC95F25179EA654004E035D /* TXHTimeslotSelectorViewController.m */,
+				4DF9F976179D5B4E0040FC5D /* TXHTransitionSegue.h */,
+				4DF9F977179D5B4E0040FC5D /* TXHTransitionSegue.m */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -917,61 +917,61 @@
 		58E4FB9C1760D3C800E328A0 /* Sales */ = {
 			isa = PBXGroup;
 			children = (
-				4D68DA9B178AD5F600743227 /* TXHSalesMainViewController.h */,
-				4D68DA9C178AD5F600743227 /* TXHSalesMainViewController.m */,
-				4DB23D6F17A17093002B7B11 /* TXHSalesWizardViewController.h */,
-				4DB23D7017A17093002B7B11 /* TXHSalesWizardViewController.m */,
-				4DC31A5417A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.h */,
-				4DC31A5517A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m */,
-				4DA43C5D17B138EA00C77453 /* TXHSalesContentProtocol.h */,
-				4D94B79417ABD53100943A9F /* TXHSalesTimerViewController.h */,
-				4D94B79517ABD53100943A9F /* TXHSalesTimerViewController.m */,
-				4D3C72BC17B014ED008FACDC /* TXHSalesContentsViewController.h */,
-				4D3C72BD17B014ED008FACDC /* TXHSalesContentsViewController.m */,
 				4D3C72B917B011EA008FACDC /* TXHSalesCompletionViewController.h */,
 				4D3C72BA17B011EA008FACDC /* TXHSalesCompletionViewController.m */,
-				4DA0980017A17AE6001D5794 /* TXHSalesTicketTiersViewController.h */,
-				4DA0980117A17AE6001D5794 /* TXHSalesTicketTiersViewController.m */,
-				4D1A0C2A17A8F84400960906 /* TXHSalesTicketTierCell.h */,
-				4D1A0C2B17A8F84400960906 /* TXHSalesTicketTierCell.m */,
+				4DA43C5D17B138EA00C77453 /* TXHSalesContentProtocol.h */,
+				4D3C72BC17B014ED008FACDC /* TXHSalesContentsViewController.h */,
+				4D3C72BD17B014ED008FACDC /* TXHSalesContentsViewController.m */,
 				4D94B7A217AFFB9100943A9F /* TXHSalesInformationDetailsViewController.h */,
 				4D94B7A317AFFB9100943A9F /* TXHSalesInformationDetailsViewController.m */,
 				4DB2F5FB17B397FC00DD538F /* TXHSalesInformationHeader.h */,
 				4DB2F5FC17B397FD00DD538F /* TXHSalesInformationHeader.m */,
 				4DB2F5FE17B3B3A200DD538F /* TXHSalesInformationTextCell.h */,
 				4DB2F5FF17B3B3A200DD538F /* TXHSalesInformationTextCell.m */,
-				4D38781917B8EAFB00627612 /* TXHSalesUpgradeDetailsViewController.h */,
-				4D38781A17B8EAFB00627612 /* TXHSalesUpgradeDetailsViewController.m */,
-				4D38781C17B8EC2200627612 /* TXHSalesUpgradeHeader.h */,
-				4D38781D17B8EC2200627612 /* TXHSalesUpgradeHeader.m */,
-				4D38781F17B8F9CC00627612 /* TXHSalesUpgradeCell.h */,
-				4D38782017B8F9CC00627612 /* TXHSalesUpgradeCell.m */,
-				4DD9D81F17B93A2F002AC6BD /* TXHSalesProductDetailsViewController.h */,
-				4DD9D82017B93A2F002AC6BD /* TXHSalesProductDetailsViewController.m */,
-				4DD9D82217B93AF5002AC6BD /* TXHSalesProductCell.h */,
-				4DD9D82317B93AF5002AC6BD /* TXHSalesProductCell.m */,
-				4D58757517BA6BA9006264BA /* TXHSalesSummaryViewController.h */,
-				4D58757617BA6BA9006264BA /* TXHSalesSummaryViewController.m */,
-				4D58757B17BA7555006264BA /* TXHSalesSummaryHeader.h */,
-				4D58757C17BA7555006264BA /* TXHSalesSummaryHeader.m */,
-				4D58757817BA6EB8006264BA /* TXHSalesSummaryCell.h */,
-				4D58757917BA6EB8006264BA /* TXHSalesSummaryCell.m */,
-				4DB791CF17BAA69D00B707D9 /* TXHSalesSummaryExtraProductsCell.h */,
-				4DB791D017BAA69D00B707D9 /* TXHSalesSummaryExtraProductsCell.m */,
-				4DB791D217BB72FA00B707D9 /* TXHSalesPaymentViewController.h */,
-				4DB791D317BB72FA00B707D9 /* TXHSalesPaymentViewController.m */,
-				4DB791D517BB734400B707D9 /* TXHSalesPaymentCustomerDetailViewController.h */,
-				4DB791D617BB734400B707D9 /* TXHSalesPaymentCustomerDetailViewController.m */,
-				4DB791D817BB73CE00B707D9 /* TXHSalesPaymentPaymentDetailsViewController.h */,
-				4DB791D917BB73CE00B707D9 /* TXHSalesPaymentPaymentDetailsViewController.m */,
-				4DB9AA4117C23F7300504D0F /* TXHSalesPaymentPaymentDetailsContentViewController.h */,
-				4DB9AA4217C23F7300504D0F /* TXHSalesPaymentPaymentDetailsContentViewController.m */,
+				4D68DA9B178AD5F600743227 /* TXHSalesMainViewController.h */,
+				4D68DA9C178AD5F600743227 /* TXHSalesMainViewController.m */,
 				4DB791DB17BB747800B707D9 /* TXHSalesPaymentCardDetailsViewController.h */,
 				4DB791DC17BB747800B707D9 /* TXHSalesPaymentCardDetailsViewController.m */,
 				4DB791DE17BB749700B707D9 /* TXHSalesPaymentCashDetailsViewController.h */,
 				4DB791DF17BB749700B707D9 /* TXHSalesPaymentCashDetailsViewController.m */,
 				4DB791E117BB74B800B707D9 /* TXHSalesPaymentCreditDetailsViewController.h */,
 				4DB791E217BB74B800B707D9 /* TXHSalesPaymentCreditDetailsViewController.m */,
+				4DB791D517BB734400B707D9 /* TXHSalesPaymentCustomerDetailViewController.h */,
+				4DB791D617BB734400B707D9 /* TXHSalesPaymentCustomerDetailViewController.m */,
+				4DB9AA4117C23F7300504D0F /* TXHSalesPaymentPaymentDetailsContentViewController.h */,
+				4DB9AA4217C23F7300504D0F /* TXHSalesPaymentPaymentDetailsContentViewController.m */,
+				4DB791D817BB73CE00B707D9 /* TXHSalesPaymentPaymentDetailsViewController.h */,
+				4DB791D917BB73CE00B707D9 /* TXHSalesPaymentPaymentDetailsViewController.m */,
+				4DB791D217BB72FA00B707D9 /* TXHSalesPaymentViewController.h */,
+				4DB791D317BB72FA00B707D9 /* TXHSalesPaymentViewController.m */,
+				4DD9D82217B93AF5002AC6BD /* TXHSalesProductCell.h */,
+				4DD9D82317B93AF5002AC6BD /* TXHSalesProductCell.m */,
+				4DD9D81F17B93A2F002AC6BD /* TXHSalesProductDetailsViewController.h */,
+				4DD9D82017B93A2F002AC6BD /* TXHSalesProductDetailsViewController.m */,
+				4D58757817BA6EB8006264BA /* TXHSalesSummaryCell.h */,
+				4D58757917BA6EB8006264BA /* TXHSalesSummaryCell.m */,
+				4DB791CF17BAA69D00B707D9 /* TXHSalesSummaryExtraProductsCell.h */,
+				4DB791D017BAA69D00B707D9 /* TXHSalesSummaryExtraProductsCell.m */,
+				4D58757B17BA7555006264BA /* TXHSalesSummaryHeader.h */,
+				4D58757C17BA7555006264BA /* TXHSalesSummaryHeader.m */,
+				4D58757517BA6BA9006264BA /* TXHSalesSummaryViewController.h */,
+				4D58757617BA6BA9006264BA /* TXHSalesSummaryViewController.m */,
+				4D1A0C2A17A8F84400960906 /* TXHSalesTicketTierCell.h */,
+				4D1A0C2B17A8F84400960906 /* TXHSalesTicketTierCell.m */,
+				4DA0980017A17AE6001D5794 /* TXHSalesTicketTiersViewController.h */,
+				4DA0980117A17AE6001D5794 /* TXHSalesTicketTiersViewController.m */,
+				4D94B79417ABD53100943A9F /* TXHSalesTimerViewController.h */,
+				4D94B79517ABD53100943A9F /* TXHSalesTimerViewController.m */,
+				4D38781F17B8F9CC00627612 /* TXHSalesUpgradeCell.h */,
+				4D38782017B8F9CC00627612 /* TXHSalesUpgradeCell.m */,
+				4D38781917B8EAFB00627612 /* TXHSalesUpgradeDetailsViewController.h */,
+				4D38781A17B8EAFB00627612 /* TXHSalesUpgradeDetailsViewController.m */,
+				4D38781C17B8EC2200627612 /* TXHSalesUpgradeHeader.h */,
+				4D38781D17B8EC2200627612 /* TXHSalesUpgradeHeader.m */,
+				4DC31A5417A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.h */,
+				4DC31A5517A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m */,
+				4DB23D6F17A17093002B7B11 /* TXHSalesWizardViewController.h */,
+				4DB23D7017A17093002B7B11 /* TXHSalesWizardViewController.m */,
 			);
 			path = Sales;
 			sourceTree = "<group>";
@@ -979,6 +979,7 @@
 		EE11ADCC17BD2138000042B2 /* Stripe */ = {
 			isa = PBXGroup;
 			children = (
+				EE11ADD817BD2138000042B2 /* Vendor */,
 				EE11ADCD17BD2138000042B2 /* STPCard.h */,
 				EE11ADCE17BD2138000042B2 /* STPCard.m */,
 				EE11ADCF17BD2138000042B2 /* STPToken.h */,
@@ -990,7 +991,6 @@
 				EE11ADD517BD2138000042B2 /* Stripe.m */,
 				EE11ADD617BD2138000042B2 /* StripeError.h */,
 				EE11ADD717BD2138000042B2 /* StripeError.m */,
-				EE11ADD817BD2138000042B2 /* Vendor */,
 			);
 			name = Stripe;
 			path = "Externals/stripe-ios/Stripe";
@@ -1015,6 +1015,7 @@
 		EE11ADDC17BD2138000042B2 /* PaymentKit */ = {
 			isa = PBXGroup;
 			children = (
+				EE11ADEE17BD2138000042B2 /* Resources */,
 				EE11ADDD17BD2138000042B2 /* PKAddressZip.h */,
 				EE11ADDE17BD2138000042B2 /* PKAddressZip.m */,
 				EE11ADDF17BD2138000042B2 /* PKCard.h */,
@@ -1032,7 +1033,6 @@
 				EE11ADEB17BD2138000042B2 /* PKUSAddressZip.m */,
 				EE11ADEC17BD2138000042B2 /* PKView.h */,
 				EE11ADED17BD2138000042B2 /* PKView.m */,
-				EE11ADEE17BD2138000042B2 /* Resources */,
 			);
 			path = PaymentKit;
 			sourceTree = "<group>";
@@ -1099,6 +1099,9 @@
 		EEB4FD2017B277D800F226BC /* iOS-api */ = {
 			isa = PBXGroup;
 			children = (
+				EEB4FD2317B277D800F226BC /* AFNetworking */,
+				EEB4FD3A17B277D800F226BC /* NSDictionary+JCSKeyMapping */,
+				EEB4FD3D17B277D800F226BC /* Private */,
 				EE6D998E17BD453400D1E7CD /* TXHOption.h */,
 				EE6D998F17BD453400D1E7CD /* TXHOption.m */,
 				EE6D999017BD453400D1E7CD /* TXHSeason.h */,
@@ -1111,9 +1114,6 @@
 				EE6D999317BD453400D1E7CD /* TXHVariation.m */,
 				EEA6864617B3E47D0024B002 /* TXHVenue.h */,
 				EEA6864717B3E47D0024B002 /* TXHVenue.m */,
-				EEB4FD2317B277D800F226BC /* AFNetworking */,
-				EEB4FD3A17B277D800F226BC /* NSDictionary+JCSKeyMapping */,
-				EEB4FD3D17B277D800F226BC /* Private */,
 			);
 			name = "iOS-api";
 			path = "Externals/ios-api";
@@ -1239,11 +1239,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58E4FB611760AE5500E328A0 /* InfoPlist.strings in Resources */,
 				4D8FCCB617A28A8C008B4227 /* Doorman.storyboard in Resources */,
 				4D586DE11797E51E00E40534 /* Images.xcassets in Resources */,
-				58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */,
+				58E4FB611760AE5500E328A0 /* InfoPlist.strings in Resources */,
 				4DB23D6E17A169D8002B7B11 /* Salesman.storyboard in Resources */,
+				58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1278,121 +1278,121 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEABD7F717B4092800E17D54 /* TXHPermissionMO.m in Sources */,
-				4D41C06017C2C3F60014E5F7 /* TXHDataSelectionViewController.m in Sources */,
-				EEABD7F617B4088300E17D54 /* TXHVenue.m in Sources */,
-				EEB4FD5717B277D800F226BC /* _TXHNetworkOAuthClient.m in Sources */,
-				4D8A106617BD2DC900CEECAD /* STPCard.m in Sources */,
-				EE494CEC17B55177001740B3 /* TicketingHub.xcdatamodeld in Sources */,
-				EEB4FD4C17B277D800F226BC /* AFImageRequestOperation.m in Sources */,
-				4DA0980217A17AE6001D5794 /* TXHSalesTicketTiersViewController.m in Sources */,
-				EE11AE1C17BD2F3D000042B2 /* TXHUserMO.m in Sources */,
-				4DB791DA17BB73CE00B707D9 /* TXHSalesPaymentPaymentDetailsViewController.m in Sources */,
-				58E4FB631760AE5500E328A0 /* main.m in Sources */,
-				4D8A106917BD2DD700CEECAD /* STPView.m in Sources */,
-				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
-				4D58757D17BA7555006264BA /* TXHSalesSummaryHeader.m in Sources */,
-				EE6D999417BD453400D1E7CD /* TXHOption.m in Sources */,
-				4D38782117B8F9CC00627612 /* TXHSalesUpgradeCell.m in Sources */,
-				EEB4FD5917B277D800F226BC /* TXHTicketingHubClient.m in Sources */,
-				4D8A107217BD2DF700CEECAD /* PKUSAddressZip.m in Sources */,
-				4D41C06317C3513E0014E5F7 /* TXHSelectionEntryTableViewCell.m in Sources */,
-				4DB791D117BAA69D00B707D9 /* TXHSalesSummaryExtraProductsCell.m in Sources */,
-				4DA552F117C4AE72000D78D7 /* TXHCurrencyEntryView.m in Sources */,
-				4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */,
-				4D38781817B8DE0900627612 /* TXHEmailCollectionViewCell.m in Sources */,
-				4DA153E317BE632E009FF563 /* TXHTextEntryTableViewCell.m in Sources */,
-				4D9AA3CC17B51BDC0093D63B /* TXHBaseCollectionViewCell.m in Sources */,
-				58E4FB9F1761CFEC00E328A0 /* TXHMainViewController.m in Sources */,
-				4DF9F97B179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m in Sources */,
-				4D0E5131178C0BBC009436AC /* TXHDataDownloader.m in Sources */,
-				4DB2F60017B3B3A200DD538F /* TXHSalesInformationTextCell.m in Sources */,
-				EE11AE0F17BD2C84000042B2 /* DCTCoreDataStack.m in Sources */,
-				EE8719C317BE30B80055437C /* TXHSeasonMO.m in Sources */,
-				4D94B7A417AFFB9100943A9F /* TXHSalesInformationDetailsViewController.m in Sources */,
-				4DF9F97E179D62970040FC5D /* TXHEmbeddingSegue.m in Sources */,
-				EEA6863F17B3DF0D0024B002 /* TXHVenueMO.m in Sources */,
-				581560CD1765D38A005C20EA /* TXHFlowLayout.m in Sources */,
-				EE8719C217BE30B80055437C /* TXHOptionMO.m in Sources */,
-				4D307DB71796F9FC00822645 /* TXHTicketDetail.m in Sources */,
-				4D859FF517945E4D000B2FCC /* TXHVariation_old.m in Sources */,
-				4D4FBE2B176B5BB70023A0D1 /* TXHDoorTimeController.m in Sources */,
-				4D8A106C17BD2DF700CEECAD /* PKAddressZip.m in Sources */,
-				4D68DAA6178AE9E300743227 /* TXHOptionsExtrasItem.m in Sources */,
-				EE8719C917BE30CB0055437C /* _TXHSeasonMO.m in Sources */,
-				EE11AE1017BD2C84000042B2 /* NSManagedObjectContext+DCTCoreDataStack.m in Sources */,
-				4D94B79617ABD53100943A9F /* TXHSalesTimerViewController.m in Sources */,
-				4DD9D82117B93A2F002AC6BD /* TXHSalesProductDetailsViewController.m in Sources */,
-				4D8A106B17BD2DE000CEECAD /* StripeError.m in Sources */,
-				4D38781E17B8EC2200627612 /* TXHSalesUpgradeHeader.m in Sources */,
-				4D25F648176CF08000A60359 /* TXHDoorGroupController.m in Sources */,
-				4DB2F5FD17B397FD00DD538F /* TXHSalesInformationHeader.m in Sources */,
-				4DB9AA4317C23F7300504D0F /* TXHSalesPaymentPaymentDetailsContentViewController.m in Sources */,
-				4D68DA9D178AD5F600743227 /* TXHSalesMainViewController.m in Sources */,
-				4DA05FB8178D8DAC005161E6 /* TXHMenuViewController.m in Sources */,
-				EEB4FD4A17B277D800F226BC /* AFHTTPClient.m in Sources */,
-				581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */,
-				4DF9F978179D5B4E0040FC5D /* TXHTransitionSegue.m in Sources */,
-				4D41C05D17C2BED40014E5F7 /* TXHDataSelectionView.m in Sources */,
-				4DD9D82417B93AF5002AC6BD /* TXHSalesProductCell.m in Sources */,
-				4DB791EF17BBC87F00B707D9 /* TXHCreditCardNumberView.m in Sources */,
-				4DB791D717BB734400B707D9 /* TXHSalesPaymentCustomerDetailViewController.m in Sources */,
-				4DC31A5617A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m in Sources */,
-				4D8A106E17BD2DF700CEECAD /* PKCardCVC.m in Sources */,
-				581560D11765DAB3005C20EA /* TXHDoorDateController.m in Sources */,
-				4DB791E017BB749700B707D9 /* TXHSalesPaymentCashDetailsViewController.m in Sources */,
-				EEB4FD4F17B277D800F226BC /* AFPropertyListRequestOperation.m in Sources */,
-				4D859FF817953FA1000B2FCC /* TXHTimeSlot_old.m in Sources */,
-				4D8A107117BD2DF700CEECAD /* PKTextField.m in Sources */,
-				4D3FC11117B5480D0036D4DE /* TXHTextCollectionViewCell.m in Sources */,
-				EEB4FD5617B277D800F226BC /* _TXHNetworkClient.m in Sources */,
-				4D1A0C2C17A8F84400960906 /* TXHSalesTicketTierCell.m in Sources */,
-				4D8A106A17BD2DDC00CEECAD /* Stripe.m in Sources */,
-				4D8A106817BD2DD300CEECAD /* STPToken.m in Sources */,
-				4DA05FBB178D8F31005161E6 /* TXHMenuController.m in Sources */,
-				EEB4FD5A17B277D800F226BC /* TXHUser.m in Sources */,
-				581560D41765E0DE005C20EA /* TXHTimeCell.m in Sources */,
-				4DF9F984179DC2850040FC5D /* TXHDateSelectorViewController.m in Sources */,
-				EE6D999617BD453400D1E7CD /* TXHVariation.m in Sources */,
-				4D68DAA9178B096A00743227 /* BarcodeViewController.m in Sources */,
-				581560D71765E150005C20EA /* TXHGroupCell.m in Sources */,
-				4D3C72BB17B011EA008FACDC /* TXHSalesCompletionViewController.m in Sources */,
-				4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */,
-				4D3C72BE17B014ED008FACDC /* TXHSalesContentsViewController.m in Sources */,
-				4DB791E917BB7FC400B707D9 /* TXHBaseDataEntryView.m in Sources */,
-				4DB791E317BB74B800B707D9 /* TXHSalesPaymentCreditDetailsViewController.m in Sources */,
-				EEB4FD5117B277D800F226BC /* AFXMLRequestOperation.m in Sources */,
-				4D8A106D17BD2DF700CEECAD /* PKCard.m in Sources */,
-				EEB4FD5017B277D800F226BC /* AFURLConnectionOperation.m in Sources */,
-				EE11AE1817BD2E48000042B2 /* _TXHVenueMO.m in Sources */,
-				4DB791EC17BB91D000B707D9 /* TXHTextEntryView.m in Sources */,
-				EEB4FD5417B277D800F226BC /* UIImageView+AFNetworking.m in Sources */,
-				4D8A107017BD2DF700CEECAD /* PKCardNumber.m in Sources */,
-				4D8A107317BD2DF700CEECAD /* PKView.m in Sources */,
-				4D38781B17B8EAFB00627612 /* TXHSalesUpgradeDetailsViewController.m in Sources */,
-				4DB791D417BB72FA00B707D9 /* TXHSalesPaymentViewController.m in Sources */,
-				EEB4FD4D17B277D800F226BC /* AFJSONRequestOperation.m in Sources */,
-				EE11AE1517BD2E18000042B2 /* _TXHPermissionMO.m in Sources */,
-				EE8719C817BE30CB0055437C /* _TXHOptionMO.m in Sources */,
-				4DFB1009178DB693006923F7 /* TXHLoginViewController.m in Sources */,
 				EE11AE0E17BD2C84000042B2 /* _DCTCDSManagedObjectContext.m in Sources */,
-				4D307DB41796F61C00822645 /* TXHTimeFormatter.m in Sources */,
-				4D1A0C2917A7F49C00960906 /* TXHTicketTier.m in Sources */,
-				4D8A106F17BD2DF700CEECAD /* PKCardExpiry.m in Sources */,
-				4DB23D7117A17093002B7B11 /* TXHSalesWizardViewController.m in Sources */,
-				4D58757417BA3BEB006264BA /* TXHQuantitySelectorViewController.m in Sources */,
-				EEB4FD4E17B277D800F226BC /* AFNetworkActivityIndicatorManager.m in Sources */,
-				EEB4FD4B17B277D800F226BC /* AFHTTPRequestOperation.m in Sources */,
-				4D58757A17BA6EB8006264BA /* TXHSalesSummaryCell.m in Sources */,
-				4DB791DD17BB747800B707D9 /* TXHSalesPaymentCardDetailsViewController.m in Sources */,
-				4D859FF2179453EA000B2FCC /* TXHSeason_old.m in Sources */,
-				4DC95F26179EA654004E035D /* TXHTimeslotSelectorViewController.m in Sources */,
+				EEB4FD5617B277D800F226BC /* _TXHNetworkClient.m in Sources */,
+				EEB4FD5717B277D800F226BC /* _TXHNetworkOAuthClient.m in Sources */,
+				EE8719C817BE30CB0055437C /* _TXHOptionMO.m in Sources */,
+				EE11AE1517BD2E18000042B2 /* _TXHPermissionMO.m in Sources */,
+				EE8719C917BE30CB0055437C /* _TXHSeasonMO.m in Sources */,
 				EE11AE1B17BD2EA9000042B2 /* _TXHUserMO.m in Sources */,
-				4D58757717BA6BA9006264BA /* TXHSalesSummaryViewController.m in Sources */,
-				4DA153E017BE5F24009FF563 /* TXHBaseDataEntryTableViewCell.m in Sources */,
+				EE11AE1817BD2E48000042B2 /* _TXHVenueMO.m in Sources */,
+				EEB4FD4A17B277D800F226BC /* AFHTTPClient.m in Sources */,
+				EEB4FD4B17B277D800F226BC /* AFHTTPRequestOperation.m in Sources */,
+				EEB4FD4C17B277D800F226BC /* AFImageRequestOperation.m in Sources */,
+				EEB4FD4D17B277D800F226BC /* AFJSONRequestOperation.m in Sources */,
+				EEB4FD4E17B277D800F226BC /* AFNetworkActivityIndicatorManager.m in Sources */,
+				EEB4FD4F17B277D800F226BC /* AFPropertyListRequestOperation.m in Sources */,
+				EEB4FD5017B277D800F226BC /* AFURLConnectionOperation.m in Sources */,
+				EEB4FD5117B277D800F226BC /* AFXMLRequestOperation.m in Sources */,
+				4D68DAA9178B096A00743227 /* BarcodeViewController.m in Sources */,
+				EE11AE0F17BD2C84000042B2 /* DCTCoreDataStack.m in Sources */,
+				58E4FB631760AE5500E328A0 /* main.m in Sources */,
 				EEB4FD5517B277D800F226BC /* NSDictionary+JCSKeyMapping.m in Sources */,
+				EE11AE1017BD2C84000042B2 /* NSManagedObjectContext+DCTCoreDataStack.m in Sources */,
+				4D8A106C17BD2DF700CEECAD /* PKAddressZip.m in Sources */,
+				4D8A106D17BD2DF700CEECAD /* PKCard.m in Sources */,
+				4D8A106E17BD2DF700CEECAD /* PKCardCVC.m in Sources */,
+				4D8A106F17BD2DF700CEECAD /* PKCardExpiry.m in Sources */,
+				4D8A107017BD2DF700CEECAD /* PKCardNumber.m in Sources */,
+				4D8A107117BD2DF700CEECAD /* PKTextField.m in Sources */,
+				4D8A107217BD2DF700CEECAD /* PKUSAddressZip.m in Sources */,
+				4D8A107317BD2DF700CEECAD /* PKView.m in Sources */,
+				4D8A106617BD2DC900CEECAD /* STPCard.m in Sources */,
+				4D8A106817BD2DD300CEECAD /* STPToken.m in Sources */,
+				4D8A106917BD2DD700CEECAD /* STPView.m in Sources */,
+				4D8A106A17BD2DDC00CEECAD /* Stripe.m in Sources */,
+				4D8A106B17BD2DE000CEECAD /* StripeError.m in Sources */,
+				EE494CEC17B55177001740B3 /* TicketingHub.xcdatamodeld in Sources */,
+				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
+				4D9AA3CC17B51BDC0093D63B /* TXHBaseCollectionViewCell.m in Sources */,
+				4DA153E017BE5F24009FF563 /* TXHBaseDataEntryTableViewCell.m in Sources */,
+				4DB791E917BB7FC400B707D9 /* TXHBaseDataEntryView.m in Sources */,
+				4DB791EF17BBC87F00B707D9 /* TXHCreditCardNumberView.m in Sources */,
+				4DA552F117C4AE72000D78D7 /* TXHCurrencyEntryView.m in Sources */,
+				4D0E5131178C0BBC009436AC /* TXHDataDownloader.m in Sources */,
 				4D36517217B4DB5F002E07E9 /* TXHDataEntryFieldErrorView.m in Sources */,
+				4D41C05D17C2BED40014E5F7 /* TXHDataSelectionView.m in Sources */,
+				4D41C06017C2C3F60014E5F7 /* TXHDataSelectionViewController.m in Sources */,
+				4DF9F984179DC2850040FC5D /* TXHDateSelectorViewController.m in Sources */,
+				581560CE1765D38A005C20EA /* TXHDoorDateCell.m in Sources */,
+				581560D11765DAB3005C20EA /* TXHDoorDateController.m in Sources */,
+				4D25F648176CF08000A60359 /* TXHDoorGroupController.m in Sources */,
+				4DF3B5BE177082FF00D657AB /* TXHDoorMainController.m in Sources */,
+				4D4FBE2B176B5BB70023A0D1 /* TXHDoorTimeController.m in Sources */,
+				4D38781817B8DE0900627612 /* TXHEmailCollectionViewCell.m in Sources */,
+				4DF9F97E179D62970040FC5D /* TXHEmbeddingSegue.m in Sources */,
+				581560CD1765D38A005C20EA /* TXHFlowLayout.m in Sources */,
+				581560D71765E150005C20EA /* TXHGroupCell.m in Sources */,
+				4DFB1009178DB693006923F7 /* TXHLoginViewController.m in Sources */,
+				4DF9F97B179D5F520040FC5D /* TXHMainScreenPlaceholderViewController.m in Sources */,
+				58E4FB9F1761CFEC00E328A0 /* TXHMainViewController.m in Sources */,
+				4DA05FBB178D8F31005161E6 /* TXHMenuController.m in Sources */,
+				4DA05FB8178D8DAC005161E6 /* TXHMenuViewController.m in Sources */,
+				EE6D999417BD453400D1E7CD /* TXHOption.m in Sources */,
+				EE8719C217BE30B80055437C /* TXHOptionMO.m in Sources */,
+				4D68DAA6178AE9E300743227 /* TXHOptionsExtrasItem.m in Sources */,
+				EEABD7F717B4092800E17D54 /* TXHPermissionMO.m in Sources */,
+				4D58757417BA3BEB006264BA /* TXHQuantitySelectorViewController.m in Sources */,
+				4D3C72BB17B011EA008FACDC /* TXHSalesCompletionViewController.m in Sources */,
+				4D3C72BE17B014ED008FACDC /* TXHSalesContentsViewController.m in Sources */,
+				4D94B7A417AFFB9100943A9F /* TXHSalesInformationDetailsViewController.m in Sources */,
+				4DB2F5FD17B397FD00DD538F /* TXHSalesInformationHeader.m in Sources */,
+				4DB2F60017B3B3A200DD538F /* TXHSalesInformationTextCell.m in Sources */,
+				4D68DA9D178AD5F600743227 /* TXHSalesMainViewController.m in Sources */,
+				4DB791DD17BB747800B707D9 /* TXHSalesPaymentCardDetailsViewController.m in Sources */,
+				4DB791E017BB749700B707D9 /* TXHSalesPaymentCashDetailsViewController.m in Sources */,
+				4DB791E317BB74B800B707D9 /* TXHSalesPaymentCreditDetailsViewController.m in Sources */,
+				4DB791D717BB734400B707D9 /* TXHSalesPaymentCustomerDetailViewController.m in Sources */,
+				4DB9AA4317C23F7300504D0F /* TXHSalesPaymentPaymentDetailsContentViewController.m in Sources */,
+				4DB791DA17BB73CE00B707D9 /* TXHSalesPaymentPaymentDetailsViewController.m in Sources */,
+				4DB791D417BB72FA00B707D9 /* TXHSalesPaymentViewController.m in Sources */,
+				4DD9D82417B93AF5002AC6BD /* TXHSalesProductCell.m in Sources */,
+				4DD9D82117B93A2F002AC6BD /* TXHSalesProductDetailsViewController.m in Sources */,
+				4D58757A17BA6EB8006264BA /* TXHSalesSummaryCell.m in Sources */,
+				4DB791D117BAA69D00B707D9 /* TXHSalesSummaryExtraProductsCell.m in Sources */,
+				4D58757D17BA7555006264BA /* TXHSalesSummaryHeader.m in Sources */,
+				4D58757717BA6BA9006264BA /* TXHSalesSummaryViewController.m in Sources */,
+				4D1A0C2C17A8F84400960906 /* TXHSalesTicketTierCell.m in Sources */,
+				4DA0980217A17AE6001D5794 /* TXHSalesTicketTiersViewController.m in Sources */,
+				4D94B79617ABD53100943A9F /* TXHSalesTimerViewController.m in Sources */,
+				4D38782117B8F9CC00627612 /* TXHSalesUpgradeCell.m in Sources */,
+				4D38781B17B8EAFB00627612 /* TXHSalesUpgradeDetailsViewController.m in Sources */,
+				4D38781E17B8EC2200627612 /* TXHSalesUpgradeHeader.m in Sources */,
+				4DC31A5617A6CE36009FAEFB /* TXHSalesWizardDetailsViewController.m in Sources */,
+				4DB23D7117A17093002B7B11 /* TXHSalesWizardViewController.m in Sources */,
 				EE6D999517BD453400D1E7CD /* TXHSeason.m in Sources */,
+				4D859FF2179453EA000B2FCC /* TXHSeason_old.m in Sources */,
+				EE8719C317BE30B80055437C /* TXHSeasonMO.m in Sources */,
+				4D41C06317C3513E0014E5F7 /* TXHSelectionEntryTableViewCell.m in Sources */,
+				4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */,
+				4D3FC11117B5480D0036D4DE /* TXHTextCollectionViewCell.m in Sources */,
+				4DA153E317BE632E009FF563 /* TXHTextEntryTableViewCell.m in Sources */,
+				4DB791EC17BB91D000B707D9 /* TXHTextEntryView.m in Sources */,
+				4D307DB71796F9FC00822645 /* TXHTicketDetail.m in Sources */,
+				EEB4FD5917B277D800F226BC /* TXHTicketingHubClient.m in Sources */,
+				4D1A0C2917A7F49C00960906 /* TXHTicketTier.m in Sources */,
+				581560D41765E0DE005C20EA /* TXHTimeCell.m in Sources */,
+				4D307DB41796F61C00822645 /* TXHTimeFormatter.m in Sources */,
+				4D859FF817953FA1000B2FCC /* TXHTimeSlot_old.m in Sources */,
+				4DC95F26179EA654004E035D /* TXHTimeslotSelectorViewController.m in Sources */,
+				4DF9F978179D5B4E0040FC5D /* TXHTransitionSegue.m in Sources */,
+				EEB4FD5A17B277D800F226BC /* TXHUser.m in Sources */,
+				EE11AE1C17BD2F3D000042B2 /* TXHUserMO.m in Sources */,
+				EE6D999617BD453400D1E7CD /* TXHVariation.m in Sources */,
+				4D859FF517945E4D000B2FCC /* TXHVariation_old.m in Sources */,
+				EEABD7F617B4088300E17D54 /* TXHVenue.m in Sources */,
+				EEA6863F17B3DF0D0024B002 /* TXHVenueMO.m in Sources */,
+				EEB4FD5417B277D800F226BC /* UIImageView+AFNetworking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1400,10 +1400,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DF3F59E17C63E070045299B /* MockingTest.m in Sources */,
+				4DF3F59F17C63E070045299B /* SmokeSpec.m in Sources */,
 				4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */,
 				EEC2878B17C7B89000CDE3F1 /* TXHOptionMOTests.m in Sources */,
-				4DF3F59F17C63E070045299B /* SmokeSpec.m in Sources */,
-				4DF3F59E17C63E070045299B /* MockingTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
