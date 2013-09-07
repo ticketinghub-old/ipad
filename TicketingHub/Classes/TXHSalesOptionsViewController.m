@@ -11,7 +11,7 @@
 #import "TXHServerAccessManager.h"
 #import "TXHSalesOptionsCell.h"
 #import "TXHOptionsExtrasItem.h"
-#import "TXHTimeSlot.h"
+#import "TXHTimeSlot_old.h"
 
 #define TIER_SECTION 0
 
