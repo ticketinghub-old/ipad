@@ -148,7 +148,7 @@
   // If the currently selected date is outside of the bounds of the current season adjust accordingly
   
   [self getTimeSlots];
-  [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TOGGLE_MENU object:nil];
+    //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TOGGLE_MENU object:nil];
 }
 
 @end
