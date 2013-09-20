@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3389" systemVersion="13A538g" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="13A584" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="TXHOptionMO" representedClassName="TXHOptionMO" syncable="YES">
         <attribute name="duration" attributeType="String" syncable="YES"/>
         <attribute name="timeString" attributeType="String" syncable="YES"/>
@@ -47,10 +47,10 @@
         <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="TXHUserMO" inverseName="venues" inverseEntity="TXHUserMO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="TXHOptionMO" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="TXHPermissionMO" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="TXHSeasonMO" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="TXHUserMO" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="TXHVenueMO" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TXHOptionMO" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="TXHPermissionMO" positionX="-18" positionY="270" width="128" height="75"/>
+        <element name="TXHSeasonMO" positionX="-135" positionY="123" width="128" height="75"/>
+        <element name="TXHUserMO" positionX="-20" positionY="363" width="128" height="105"/>
+        <element name="TXHVenueMO" positionX="277" positionY="54" width="128" height="343"/>
     </elements>
 </model>
