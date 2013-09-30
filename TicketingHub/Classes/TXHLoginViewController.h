@@ -8,8 +8,11 @@
 
 @import UIKit;
 
+#import "TXHNetworkController.h"
+
 @interface TXHLoginViewController : UIViewController
 
 @property (strong ,nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) TXHNetworkController *networkController;
 
 @end

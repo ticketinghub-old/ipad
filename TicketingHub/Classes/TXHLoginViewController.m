@@ -8,14 +8,7 @@
 
 #import "TXHLoginViewController.h"
 
-#import "TXHCommonNames.h"
-#import "TXHMenuViewController.h"
-#import "TXHServerAccessManager.h"
-#import "TXHTicketingHubClient.h"
-#import "TXHUser.h"
 #import "TXHUserDefaultsKeys.h"
-#import "TXHUserMO.h"
-#import "TXHVenueMO.h"
 
 // These are application / client specific constants
 static NSString * const kClientId = @"ca99032b750f829630d8c9272bb9d3d6696b10f5bddfc34e4b7610eb772d28e7";
@@ -123,39 +116,22 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
     [userDefaults setObject:self.userField.text forKey:TXHUserDefaultsLastUserKey];
     [userDefaults synchronize];
 
-    TXHTicketingHubClient *ticketingHubClient = [TXHTicketingHubClient sharedClient];
-
-    __block TXHUserMO *userMO;
-    [ticketingHubClient userInformationSuccess:^(TXHUser *user) {
-        userMO = [TXHUserMO userWithObject:user inManagedObjectContext:self.managedObjectContext];
-
-        [ticketingHubClient venuesWithSuccess:^(NSArray *venues) {
-            if (isEmpty(venues)) {
-                // Warn user that they cannot proceed
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Venues" message:@"You do not have access to any venues." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alert show];
-
-                return; // Bail!
+    [self.networkController fetchVenuesForCurrentUserWithCompletion:^(NSError *error) {
+        if (error) {
+            if ([[error domain] isEqualToString:TXHNetworkControllerErrorDomain]) {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[error localizedDescription] message:[error localizedFailureReason] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                [alertView show];
+            } else {
+                DLog(@"Unable to fetch venues because: %@", error); // Caveman - needs to be refined.
             }
 
-            for (TXHVenue *venue in venues) {
-                TXHVenueMO *venueMO = [TXHVenueMO venueWithObjectCreateIfNeeded:venue inManagedObjectContext:self.managedObjectContext];
-                venueMO.user = userMO;
-                DLog(@"New venue created: %@", venueMO);
-            }
+            return; // Bail on error.
+        }
 
-            [self dismissViewControllerAnimated:YES completion:nil];
+        // Success, the network controller handles the new object in the managed object context
+        [self dismissViewControllerAnimated:YES completion:nil];
 
-        } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
-            // Venue failure
-            DLog(@"Error: %@ with response: %@", error, JSON);
-        }];
-
-    } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
-        // User failure
-        DLog(@"Error: %@ with response: %@", error, JSON);
     }];
-
 }
 
 #pragma mark Actions
@@ -163,12 +139,10 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 - (IBAction)login:(id)sender {
     self.loginButton.enabled = NO;
 
-    [[TXHTicketingHubClient sharedClient] configureWithUsername:self.userField.text password:self.passwordField.text clientId:kClientId clientSecret:kClientSecret success:^(NSURLRequest *request, NSHTTPURLResponse *response) {
-        [self loginCompleted];
-
-    } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
-        // Debug logging for now. - This needs to be tidied for production
-        DLog(@"Unable to log on because: %@ with JSON: %@", error, JSON);
+    [self.networkController loginWithUsername:self.userField.text password:self.passwordField.text completion:^(NSError *error) {
+        if (error) {
+            DLog(@"Unable to log in because: %@", error); // Caveman - needs to be refined.
+        }
     }];
 }
 

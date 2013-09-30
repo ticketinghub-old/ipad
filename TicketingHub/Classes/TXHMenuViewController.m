@@ -13,6 +13,7 @@
 #import "TXHLoginViewController.h"
 #import "TXHMainViewController.h"
 #import "TXHMenuController.h"
+#import "TXHNetworkController.h"
 #import "TXHUserDefaultsKeys.h"
 #import "TXHVenueMO.h"
 
@@ -27,6 +28,7 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) UITapGestureRecognizer  *tapRecogniser;
 @property (weak, nonatomic) TXHVenueMO *currentVenue;
+@property (strong, nonatomic) TXHNetworkController *networkController;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftHandSpace;
 @property (weak, nonatomic) IBOutlet UIView *menuContainer;
@@ -46,8 +48,9 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
 }
 
 - (void)awakeFromNib {
-    // Stand up the stack as early as possible, so that the moc is set up in time for the embed segues.
+    // Stand up the stack and network controller as early as possible so they are available for the embed segues.
     [self standUpCoreDataStack];
+    self.networkController = [[TXHNetworkController alloc] initWithManagedObjectContext:self.managedObjectContext];
 }
 
 #pragma mark - View lifecycle
@@ -64,8 +67,6 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showOrHideVenueList:) name:NOTIFICATION_TOGGLE_MENU object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -77,12 +78,6 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
         self.leftHandSpace.constant = 0.0f;
         [self.view layoutIfNeeded];
     } completion:nil];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-
-    //[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Superclass overrides
@@ -98,10 +93,19 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
     // The segues for which a managed object context needs to be set on the destination.
     NSArray *coreDataSegues = @[ModalLoginSegue, ReLoginSegue, MenuContainerEmbedSegue];
 
+    // The segues for which a network controller needs to be set.
+    NSArray *networkControllerSegues = @[ModalLoginSegue, ReLoginSegue];
+
     // These controllers all need to have an NSManagedObjectContext set
     if ([coreDataSegues containsObject:segueIdentifier]) {
         if ([destinationViewController respondsToSelector:@selector(setManagedObjectContext:)]) {
             [destinationViewController setManagedObjectContext:self.managedObjectContext];
+        }
+    }
+
+    if ([networkControllerSegues containsObject:segueIdentifier]) {
+        if ([destinationViewController respondsToSelector:@selector(setNetworkController:)]) {
+            [destinationViewController setNetworkController:self.networkController];
         }
     }
 

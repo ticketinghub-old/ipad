@@ -181,8 +181,8 @@
 		4D89278717944B61004892FD /* TXHSeason_old.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHSeason_old.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		4D89278817944B61004892FD /* TXHSeason_old.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHSeason_old.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Doorman.storyboard; sourceTree = "<group>"; };
-		4DA05FAF178C367F005161E6 /* TXHServerAccessManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHServerAccessManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHServerAccessManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		4DA05FAF178C367F005161E6 /* TXHServerAccessManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = TXHServerAccessManager.h; path = TicketingHub/Classes/TXHServerAccessManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = TXHServerAccessManager.m; path = TicketingHub/Classes/TXHServerAccessManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Salesman.storyboard; sourceTree = "<group>"; };
 		4DF3F55D17C63BAE0045299B /* EXPBackwardCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPBackwardCompatibility.h; sourceTree = "<group>"; };
 		4DF3F55E17C63BAE0045299B /* EXPBlockDefinedMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPBlockDefinedMatcher.h; sourceTree = "<group>"; };
@@ -802,8 +802,6 @@
 				EE75D94217D1101C009ADCD8 /* Sales */,
 				4D89278717944B61004892FD /* TXHSeason_old.h */,
 				4D89278817944B61004892FD /* TXHSeason_old.m */,
-				4DA05FAF178C367F005161E6 /* TXHServerAccessManager.h */,
-				4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */,
 				4D307DB51796F9FC00822645 /* TXHTicketDetail.h */,
 				4D307DB61796F9FC00822645 /* TXHTicketDetail.m */,
 				4D1A0C2717A7F49C00960906 /* TXHTicketTier.h */,
@@ -1190,6 +1188,8 @@
 				EEB4FD2017B277D800F226BC /* iOS-api */,
 				EEF8DA7C17F053D500579F5B /* TXHNetworkController.h */,
 				EEF8DA7D17F053D500579F5B /* TXHNetworkController.m */,
+				4DA05FAF178C367F005161E6 /* TXHServerAccessManager.h */,
+				4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";

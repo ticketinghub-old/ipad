@@ -120,7 +120,8 @@ NSString * const TXHNetworkControllerErrorDomain = @"com.ticketinghub.TXHNetworC
 
         if ([venues count] == 0) {
             // Create and return a custom error 
-            NSDictionary *userInfo = @{NSLocalizedDescriptionKey : NSLocalizedString(@"There are no venues to display for the current user", @"There are no venues to display for the current user")};
+            NSDictionary *userInfo = @{NSLocalizedDescriptionKey : NSLocalizedString(@"No Venues", @"No Venues"),
+                                       NSLocalizedFailureReasonErrorKey : NSLocalizedString(@"There are no venues to display for the current user.", @"There are no venues to display for the current user.")};
             NSError *venueError = [NSError errorWithDomain:TXHNetworkControllerErrorDomain code:TXHNetworkControllerErrorNoVenues userInfo:userInfo];
             completionBlock(venueError);
             return; // Bail!

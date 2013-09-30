@@ -94,18 +94,18 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
     return _timeSlots;
 }
 
-- (void)generateAccessTokenFor:(NSString *)user password:(NSString *)password completion:(void (^)())completion error:(void (^)(id))error {
-    [self.ticktetingHubClient configureWithUsername:user password:password clientId:kClientId clientSecret:kClientSecret success:^(NSURLRequest *request, NSHTTPURLResponse *response) {
-        self.accessToken = [self.ticktetingHubClient token];
-        self.refreshToken = [self.ticktetingHubClient refreshToken];
-
-        if (completion) {
-            completion();
-        }
-
-    } failure:^(NSHTTPURLResponse *response, NSError *returnedError, id JSON) {
-        NSLog(@"Error getting token: %@", error);
-    }];
+//- (void)generateAccessTokenFor:(NSString *)user password:(NSString *)password completion:(void (^)())completion error:(void (^)(id))error {
+//    [self.ticktetingHubClient configureWithUsername:user password:password clientId:kClientId clientSecret:kClientSecret success:^(NSURLRequest *request, NSHTTPURLResponse *response) {
+//        self.accessToken = [self.ticktetingHubClient token];
+//        self.refreshToken = [self.ticktetingHubClient refreshToken];
+//
+//        if (completion) {
+//            completion();
+//        }
+//
+//    } failure:^(NSHTTPURLResponse *response, NSError *returnedError, id JSON) {
+//        NSLog(@"Error getting token: %@", error);
+//    }];
 
 
 //    TXHDataDownloader *downloader = [[TXHDataDownloader alloc] initWithOwner:self];
@@ -139,7 +139,7 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 //    downloader.errorHandler = error;
 //    downloader.token = self.accessToken;
 //    [downloader execute];
-}
+//}
 
 - (NSArray *)timeSlotsFor:(NSDate *)date {
     // Make sure the date has no time element
