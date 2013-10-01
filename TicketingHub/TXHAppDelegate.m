@@ -14,9 +14,6 @@
 
 @interface TXHAppDelegate ()
 
-// This is the reference that holds on to the network client singleton.
-@property (strong, nonatomic) TXHTicketingHubClient *ticktetingHubClient;
-
 @end
 
 
@@ -28,8 +25,6 @@
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
 
     [[UINavigationBar appearance] setBackgroundColor:[UIColor colorWithRed:1.0f / 255.0f green:46.0f / 255.0f blue:67.0f / 255.0f alpha:1.0f]];
-
-    self.ticktetingHubClient = [TXHTicketingHubClient sharedClient];
 
     return YES;
 }
