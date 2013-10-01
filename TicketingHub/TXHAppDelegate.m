@@ -8,10 +8,6 @@
 
 #import "TXHAppDelegate.h"
 
-#import "TXHLoginViewController.h"
-#import "TXHMenuViewController.h"
-#import "TXHTicketingHubClient.h"
-
 @interface TXHAppDelegate ()
 
 @end
