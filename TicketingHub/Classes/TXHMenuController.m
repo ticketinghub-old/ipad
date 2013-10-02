@@ -34,12 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    UIColor *backgroundColor = [UIColor colorWithRed:14.0f / 255.0f
-                                               green:47.0f / 255.0f
-                                                blue:67.0f / 255.0f
-                                               alpha:1.0f];
-
-    self.view.backgroundColor = backgroundColor;
+    self.view.backgroundColor = [self customBackgroundColour];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -146,6 +141,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
     // Configure the cell...
+    cell.backgroundColor = [self customBackgroundColour];
+    
     TXHVenueMO *venueMO = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = venueMO.venueName;
 
@@ -188,6 +185,21 @@
 // Set the string to be displayed in header view
 - (void)setHeaderTitle:(NSString *)title {
     self.headerViewLabel.text = title;
+}
+
+// Get the colour to use as a background
+- (UIColor *)customBackgroundColour {
+    static UIColor *customBackgroundColour = nil;
+
+    if (!customBackgroundColour) {
+        customBackgroundColour = [UIColor colorWithRed:14.0f / 255.0f
+                                                 green:47.0f / 255.0f
+                                                  blue:67.0f / 255.0f
+                                                 alpha:1.0f];
+    }
+
+    return customBackgroundColour;
+
 }
 
 @end
