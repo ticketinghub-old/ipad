@@ -142,7 +142,9 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
     [self.networkController loginWithUsername:self.userField.text password:self.passwordField.text completion:^(NSError *error) {
         if (error) {
             DLog(@"Unable to log in because: %@", error); // Caveman - needs to be refined.
+            return;
         }
+        [self loginCompleted];
     }];
 }
 
