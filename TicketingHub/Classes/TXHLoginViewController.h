@@ -10,6 +10,8 @@
 
 #import "TXHNetworkController.h"
 
+extern NSString * const LoginViewControllerStoryboardIdentifier;
+
 @interface TXHLoginViewController : UIViewController
 
 @property (strong ,nonatomic) NSManagedObjectContext *managedObjectContext;

@@ -62,6 +62,7 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
     self.leftHandSpace.constant = -self.menuContainer.bounds.size.width;
 
     [self performSegueWithIdentifier:ModalLoginSegue sender:self];
+    //[self presentLoginViewController];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -113,6 +114,15 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
         TXHMenuController *menuController = (TXHMenuController *)destinationViewController;
         menuController.venueSelectionDelegate = self;
     }
+}
+
+#pragma mark - Public methods
+
+- (void)presentLoginViewController {
+    TXHLoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:LoginViewControllerStoryboardIdentifier];
+    loginViewController.managedObjectContext = self.managedObjectContext;
+    [self presentViewController:loginViewController animated:NO completion:nil];
+    [UIView transitionFromView:self.view toView:loginViewController.view duration:0.25 options:UIViewAnimationOptionTransitionFlipFromRight completion:nil];
 }
 
 #pragma mark - Delegate Methods

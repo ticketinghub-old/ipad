@@ -12,4 +12,6 @@
 
 @interface TXHMenuViewController : UIViewController <TXHVenueSelectionProtocol>
 
+- (void)presentLoginViewController;
+
 @end

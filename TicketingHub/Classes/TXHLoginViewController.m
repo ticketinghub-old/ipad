@@ -10,6 +10,9 @@
 
 #import "TXHUserDefaultsKeys.h"
 
+// The storyboard identifier for this controller
+NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController";
+
 // These are application / client specific constants
 static NSString * const kClientId = @"ca99032b750f829630d8c9272bb9d3d6696b10f5bddfc34e4b7610eb772d28e7";
 static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fbaaf81e6ec900c71b8f4af62d09d";
