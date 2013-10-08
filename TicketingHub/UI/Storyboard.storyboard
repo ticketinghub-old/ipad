@@ -57,8 +57,6 @@
                         <outlet property="leftHandSpace" destination="nU3-BT-f1O" id="GmU-xP-QHz"/>
                         <outlet property="menuContainer" destination="Wmp-vt-FSg" id="Whk-AX-nnM"/>
                         <outlet property="tabContainer" destination="KSo-1q-BaS" id="KxV-FB-mUN"/>
-                        <segue destination="Mja-t1-MrX" kind="modal" identifier="ModalLogin" modalTransitionStyle="flipHorizontal" animates="NO" id="qUM-VV-UYO"/>
-                        <segue destination="Mja-t1-MrX" kind="modal" identifier="ReLogin" modalTransitionStyle="flipHorizontal" id="4SR-Jn-C4x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rs2-KG-ETh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -590,6 +588,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </scenes>
     <resources>
         <image name="background" width="1024" height="768"/>
+        <image name="background" width="1024" height="768"/>
         <image name="envelope" width="20" height="20"/>
         <image name="handle" width="22" height="16"/>
         <image name="logo" width="396" height="144"/>
@@ -602,7 +601,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="4SR-Jn-C4x"/>
         <segue reference="mqZ-G7-ySZ"/>
     </inferredMetricsTieBreakers>
 </document>

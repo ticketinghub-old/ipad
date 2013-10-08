@@ -33,15 +33,9 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 
 #pragma mark - Set up and tear down
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    if (!(self = [super initWithCoder:aDecoder])) {
-        return nil; // Bail!
-    }
-
-    // Set the status bar style to be light since we have a dark background
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-
-    return self;
+- (void)awakeFromNib {
+    self.modalPresentationStyle = UIModalPresentationFullScreen;
+    self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 }
 
 #pragma mark - View lifecycle
@@ -133,7 +127,6 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 
         // Success, the network controller handles the new object in the managed object context
         [self dismissViewControllerAnimated:YES completion:nil];
-
     }];
 }
 

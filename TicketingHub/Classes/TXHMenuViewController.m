@@ -18,8 +18,6 @@
 #import "TXHVenueMO.h"
 
 // Segue Identifiers
-static NSString * const ModalLoginSegue = @"ModalLogin";
-static NSString * const ReLoginSegue = @"ReLogin";
 static NSString * const MenuContainerEmbedSegue = @"MenuContainerEmbed";
 static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
 
@@ -61,8 +59,7 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
     self.tapRecogniser = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     self.leftHandSpace.constant = -self.menuContainer.bounds.size.width;
 
-    [self performSegueWithIdentifier:ModalLoginSegue sender:self];
-    //[self presentLoginViewController];
+    [self presentLoginViewControllerAnimated:NO completion:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -92,10 +89,7 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
     id destinationViewController = segue.destinationViewController;
 
     // The segues for which a managed object context needs to be set on the destination.
-    NSArray *coreDataSegues = @[ModalLoginSegue, ReLoginSegue, MenuContainerEmbedSegue];
-
-    // The segues for which a network controller needs to be set.
-    NSArray *networkControllerSegues = @[ModalLoginSegue, ReLoginSegue];
+    NSArray *coreDataSegues = @[MenuContainerEmbedSegue];
 
     // These controllers all need to have an NSManagedObjectContext set
     if ([coreDataSegues containsObject:segueIdentifier]) {
@@ -104,6 +98,11 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
         }
     }
 
+    // The segues for which a network controller needs to be set.
+    // The empty list for now, I'll need to add more later
+    NSArray *networkControllerSegues = @[];
+
+    // These controllers need to have a network controller set
     if ([networkControllerSegues containsObject:segueIdentifier]) {
         if ([destinationViewController respondsToSelector:@selector(setNetworkController:)]) {
             [destinationViewController setNetworkController:self.networkController];
@@ -118,11 +117,12 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
 
 #pragma mark - Public methods
 
-- (void)presentLoginViewController {
+- (void)presentLoginViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completion {
     TXHLoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:LoginViewControllerStoryboardIdentifier];
     loginViewController.managedObjectContext = self.managedObjectContext;
-    [self presentViewController:loginViewController animated:NO completion:nil];
-    [UIView transitionFromView:self.view toView:loginViewController.view duration:0.25 options:UIViewAnimationOptionTransitionFlipFromRight completion:nil];
+    loginViewController.networkController = self.networkController;
+    
+    [self presentViewController:loginViewController animated:animated completion:completion];
 }
 
 #pragma mark - Delegate Methods
@@ -168,7 +168,7 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
 }
 
 - (IBAction)logOut:(id)sender {
-    [self performSegueWithIdentifier:ReLoginSegue sender:self];
+    [self presentLoginViewControllerAnimated:YES completion:nil];
 }
 
 @end
