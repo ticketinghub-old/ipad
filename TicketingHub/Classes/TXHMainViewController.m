@@ -25,9 +25,9 @@
 @property (weak, nonatomic) IBOutlet UIView *contentDetailView;
 
 @property (strong, nonatomic) TXHVenue                          *venue;
-@property (strong, nonatomic) UIButton                          *dateBtn;
+@property (strong, nonatomic) UIButton                          *dateBtn; // Kill this
+@property (strong, nonatomic) UIButton                          *timeBtn; // Kill this
 @property (strong, nonatomic) UIBarButtonItem                   *dateButton;
-@property (strong, nonatomic) UIButton                          *timeBtn;
 @property (strong, nonatomic) UIBarButtonItem                   *timeButton;
 
 @property (strong, nonatomic) UIPopoverController               *datePopover;
@@ -41,88 +41,68 @@
 
 @implementation TXHMainViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        [self setup];
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self setup];
-    }
-    return self;
-}
-
-- (void)setup {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueUpdated:) name:NOTIFICATION_VENUE_UPDATED object:nil];
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:38.0f / 255.0f
-                                                                             green:65.0f / 255.0f
-                                                                              blue:87.0f / 255.0f
-                                                                             alpha:1.0f]];
-    self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:24.0f],
-                                                                    NSForegroundColorAttributeName: [UIColor whiteColor]};
-
-    NSString *titleString = @"<Date>";
-    UIFont *font = [UIFont systemFontOfSize:15.0f];
-    NSDictionary *attributesDict = @{NSFontAttributeName : font};
-    NSAttributedString *attributedTitleString = [[NSAttributedString alloc] initWithString:titleString attributes:attributesDict];
-    CGSize titleSize = [attributedTitleString size];
-    //  UIImage *buttonBackgroundImage = [[UIImage imageNamed:@"ButtonBackground"] resizableImageWithCapInsets:UIEdgeInsetsMake(1.0, 1.0, 1.0, 1.0)];
-    self.dateBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGRect frame = CGRectZero;
-    frame.size = titleSize;
-    self.dateBtn.frame = CGRectInset(frame, -5, -5);
-    //  [dateBtn setImage:buttonBackgroundImage forState:UIControlStateNormal];
-    //  [dateBtn setImage:buttonBackgroundImage forState:UIControlStateSelected];
-    [self.dateBtn addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventTouchUpInside];
-    self.dateBtn.titleLabel.font = font;
-    [self.dateBtn setTitle:titleString forState:UIControlStateNormal];
-    self.dateBtn.tintColor = [UIColor whiteColor];
-
-    self.dateButton = [[UIBarButtonItem alloc] initWithCustomView:self.dateBtn];
-
-    titleString = @"<Time>";
-    NSAttributedString *attributedTimeString = [[NSAttributedString alloc] initWithString:titleString attributes:attributesDict];
-    CGSize timeSize = [attributedTimeString size];
-    self.timeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    //  [timeBtn setImage:buttonBackgroundImage forState:UIControlStateNormal];
-    //  [timeBtn setImage:buttonBackgroundImage forState:UIControlStateSelected];
-    [self.timeBtn addTarget:self action:@selector(selectTime:) forControlEvents:UIControlEventTouchUpInside];
-    frame.size = timeSize;
-    self.timeBtn.frame = CGRectInset(frame, -5, -5);
-    self.timeBtn.titleLabel.font = font;
-    self.timeBtn.tintColor = [UIColor whiteColor];
-    [self.timeBtn setTitle:titleString forState:UIControlStateNormal];
-
-    UIBarButtonItem *handleItem = self.navigationItem.leftBarButtonItem;
-
-    handleItem.tintColor = [UIColor colorWithRed:188.0f / 255.0f
-                                           green:207.0f / 255.0f
-                                            blue:219.0f / 255.0f
-                                           alpha:1.0f];
-
-    self.timeButton = [[UIBarButtonItem alloc] initWithCustomView:self.timeBtn];
-    [self.navigationItem setLeftBarButtonItems:@[self.navigationItem.leftBarButtonItem, self.dateButton, self.timeButton]];
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
+//- (void)setup_old {
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueUpdated:) name:NOTIFICATION_VENUE_UPDATED object:nil];
+//    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:38.0f / 255.0f
+//                                                                             green:65.0f / 255.0f
+//                                                                              blue:87.0f / 255.0f
+//                                                                             alpha:1.0f]];
+//    self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:24.0f],
+//                                                                    NSForegroundColorAttributeName: [UIColor whiteColor]};
+//
+//    NSString *titleString = @"<Date>";
+//    UIFont *font = [UIFont systemFontOfSize:15.0f];
+//    NSDictionary *attributesDict = @{NSFontAttributeName : font};
+//    NSAttributedString *attributedTitleString = [[NSAttributedString alloc] initWithString:titleString attributes:attributesDict];
+//    CGSize titleSize = [attributedTitleString size];
+//    //  UIImage *buttonBackgroundImage = [[UIImage imageNamed:@"ButtonBackground"] resizableImageWithCapInsets:UIEdgeInsetsMake(1.0, 1.0, 1.0, 1.0)];
+//    self.dateBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    CGRect frame = CGRectZero;
+//    frame.size = titleSize;
+//    self.dateBtn.frame = CGRectInset(frame, -5, -5);
+//    //  [dateBtn setImage:buttonBackgroundImage forState:UIControlStateNormal];
+//    //  [dateBtn setImage:buttonBackgroundImage forState:UIControlStateSelected];
+//    [self.dateBtn addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventTouchUpInside];
+//    self.dateBtn.titleLabel.font = font;
+//    [self.dateBtn setTitle:titleString forState:UIControlStateNormal];
+//    self.dateBtn.tintColor = [UIColor whiteColor];
+//
+//    self.dateButton = [[UIBarButtonItem alloc] initWithCustomView:self.dateBtn];
+//
+//    titleString = @"<Time>";
+//    NSAttributedString *attributedTimeString = [[NSAttributedString alloc] initWithString:titleString attributes:attributesDict];
+//    CGSize timeSize = [attributedTimeString size];
+//    self.timeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    //  [timeBtn setImage:buttonBackgroundImage forState:UIControlStateNormal];
+//    //  [timeBtn setImage:buttonBackgroundImage forState:UIControlStateSelected];
+//    [self.timeBtn addTarget:self action:@selector(selectTime:) forControlEvents:UIControlEventTouchUpInside];
+//    frame.size = timeSize;
+//    self.timeBtn.frame = CGRectInset(frame, -5, -5);
+//    self.timeBtn.titleLabel.font = font;
+//    self.timeBtn.tintColor = [UIColor whiteColor];
+//    [self.timeBtn setTitle:titleString forState:UIControlStateNormal];
+//
+//    UIBarButtonItem *handleItem = self.navigationItem.leftBarButtonItem;
+//
+//    handleItem.tintColor = [UIColor colorWithRed:188.0f / 255.0f
+//                                           green:207.0f / 255.0f
+//                                            blue:219.0f / 255.0f
+//                                           alpha:1.0f];
+//
+//    self.timeButton = [[UIBarButtonItem alloc] initWithCustomView:self.timeBtn];
+//    [self.navigationItem setLeftBarButtonItems:@[self.navigationItem.leftBarButtonItem, self.dateButton, self.timeButton]];
+//}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setup];
     [self selectMode:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self updateControlsForUserInteraction];
+//    [self updateControlsForUserInteraction];
 }
 
 - (void)didReceiveMemoryWarning
@@ -322,6 +302,35 @@
     self.selectedDate = startDate;
     [self updateControlsForUserInteraction];
     //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TOGGLE_MENU object:nil];
+}
+
+#pragma mark - Private
+
+- (void)setup {
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:38.0f / 255.0f
+                                                                             green:65.0f / 255.0f
+                                                                              blue:87.0f / 255.0f
+                                                                             alpha:1.0f]];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:24.0f],
+                                                                    NSForegroundColorAttributeName: [UIColor whiteColor]};
+
+
+
+    NSString *dateButtonPlaceholder = @"<Date2>";
+    NSString *timeButtonPlaceholder = @"<Time2>";
+
+    self.dateButton = [[UIBarButtonItem alloc] initWithTitle:dateButtonPlaceholder style:UIBarButtonItemStyleBordered target:self action:@selector(selectDate:)];
+    self.timeButton = [[UIBarButtonItem alloc] initWithTitle:timeButtonPlaceholder style:UIBarButtonItemStylePlain target:self action:@selector(selectTime:)];
+
+    UIBarButtonItem *handleItem = self.navigationItem.leftBarButtonItem;
+
+    handleItem.tintColor = [UIColor colorWithRed:188.0f / 255.0f
+                                           green:207.0f / 255.0f
+                                            blue:219.0f / 255.0f
+                                           alpha:1.0f];
+
+    [self.navigationItem setLeftBarButtonItems:@[self.navigationItem.leftBarButtonItem, self.dateButton, self.timeButton]];
+
 }
 
 @end
