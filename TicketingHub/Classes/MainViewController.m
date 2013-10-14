@@ -27,10 +27,11 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 @property (strong, nonatomic) UITapGestureRecognizer  *tapRecogniser;
 @property (weak, nonatomic) TXHVenueMO *selectedVenue;
 @property (strong, nonatomic) DataController *dataController;
+@property (strong, nonatomic) SalesOrDoormanViewController *salesOrDoormanViewController;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftHandSpace;
-@property (weak, nonatomic) IBOutlet UIView *menuContainer;
-@property (weak, nonatomic) IBOutlet UIView *tabContainer;
+@property (weak, nonatomic) IBOutlet UIView *venueListContainer;
+@property (weak, nonatomic) IBOutlet UIView *salesOrDoormanContainer;
 
 
 @end
@@ -57,7 +58,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
     [super viewDidLoad];
 
     self.tapRecogniser = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-    self.leftHandSpace.constant = -self.menuContainer.bounds.size.width;
+    self.leftHandSpace.constant = -self.venueListContainer.bounds.size.width;
 
     [self presentLoginViewControllerAnimated:NO completion:nil];
 }
@@ -69,7 +70,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.leftHandSpace.constant = -self.menuContainer.bounds.size.width;
+    self.leftHandSpace.constant = -self.venueListContainer.bounds.size.width;
     [self.view layoutIfNeeded];
 
     [UIView animateWithDuration:0.4f delay:0.15f options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -94,6 +95,13 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
         venueListController.venueSelectionDelegate = self;
     }
 
+    if ([segueIdentifier isEqualToString:SalesOrDoormanContainerEmbedSegue]) {
+        // The storyboard has the this container loading a navigation controller, don't know why.
+        UINavigationController *navController = (UINavigationController *)destinationViewController;
+        self.salesOrDoormanViewController = [navController viewControllers][0];
+        [self.salesOrDoormanViewController setSelectedVenue:self.selectedVenue];
+    }
+
 }
 
 #pragma mark - Public methods
@@ -111,7 +119,8 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 #pragma mark VenueSelectionProtocol methods
 
 - (void)setSelectedVenue:(TXHVenueMO *)venueMO {
-    self.selectedVenue = venueMO;
+    _selectedVenue = venueMO;
+    [self.salesOrDoormanViewController setSelectedVenue:venueMO];
     [self showOrHideVenueList:nil];
 }
 
@@ -140,7 +149,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 - (IBAction)showOrHideVenueList:(id)sender {
     [UIView animateWithDuration:0.40f animations:^{
         if (self.leftHandSpace.constant == 0.0f) {
-            self.leftHandSpace.constant = -self.menuContainer.bounds.size.width;
+            self.leftHandSpace.constant = -self.venueListContainer.bounds.size.width;
         } else {
             self.leftHandSpace.constant = 0.0f;
         }

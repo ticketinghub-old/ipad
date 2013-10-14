@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <containerView contentMode="scaleToFill" horizontalCompressionResistancePriority="172" verticalCompressionResistancePriority="172" translatesAutoresizingMaskIntoConstraints="NO" id="Wmp-vt-FSg" userLabel="Menu Container View">
+                            <containerView contentMode="scaleToFill" horizontalCompressionResistancePriority="172" verticalCompressionResistancePriority="172" translatesAutoresizingMaskIntoConstraints="NO" id="Wmp-vt-FSg" userLabel="Venue List Container">
                                 <rect key="frame" x="0.0" y="0.0" width="330" height="768"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -29,7 +29,7 @@
                                     <segue destination="UZq-wc-4TA" kind="embed" identifier="VenueListContainerEmbed" id="csm-sF-m76"/>
                                 </connections>
                             </containerView>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSo-1q-BaS" userLabel="Detail Container View">
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSo-1q-BaS" userLabel="Sales Or Doorman Container">
                                 <rect key="frame" x="330" y="0.0" width="694" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -55,8 +55,8 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="leftHandSpace" destination="nU3-BT-f1O" id="GmU-xP-QHz"/>
-                        <outlet property="menuContainer" destination="Wmp-vt-FSg" id="Whk-AX-nnM"/>
-                        <outlet property="tabContainer" destination="KSo-1q-BaS" id="KxV-FB-mUN"/>
+                        <outlet property="salesOrDoormanContainer" destination="KSo-1q-BaS" id="0Rg-pc-Cdv"/>
+                        <outlet property="venueListContainer" destination="Wmp-vt-FSg" id="tML-NU-yts"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rs2-KG-ETh" userLabel="First Responder" sceneMemberID="firstResponder"/>
