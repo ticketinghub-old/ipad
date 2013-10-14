@@ -18,8 +18,8 @@
 #import "TXHVenueMO.h"
 
 // Segue Identifiers
-static NSString * const MenuContainerEmbedSegue = @"MenuContainerEmbed";
-static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
+static NSString * const VenueListContainerEmbedSegue = @"VenueListContainerEmbed";
+static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanContainerEmbed";
 
 @interface MainViewController ()
 
@@ -88,31 +88,12 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
     NSString *segueIdentifier = segue.identifier;
     id destinationViewController = segue.destinationViewController;
 
-    // The segues for which a managed object context needs to be set on the destination.
-    NSArray *coreDataSegues = @[MenuContainerEmbedSegue];
-
-    // These controllers all need to have an NSManagedObjectContext set
-    if ([coreDataSegues containsObject:segueIdentifier]) {
-        if ([destinationViewController respondsToSelector:@selector(setManagedObjectContext:)]) {
-            [destinationViewController setManagedObjectContext:self.managedObjectContext];
-        }
+    if ([segueIdentifier isEqualToString:VenueListContainerEmbedSegue]) {
+        VenueListController *venueListController = (VenueListController *)destinationViewController;
+        venueListController.managedObjectContext = self.managedObjectContext;
+        venueListController.venueSelectionDelegate = self;
     }
 
-    // The segues for which a data controller needs to be set.
-    // The empty list for now, I'll need to add more later
-    NSArray *dataControllerSegues = @[];
-
-    // These controllers need to have a network controller set
-    if ([dataControllerSegues containsObject:segueIdentifier]) {
-        if ([destinationViewController respondsToSelector:@selector(setdataController:)]) {
-            [destinationViewController setDataController:self.dataController];
-        }
-    }
-
-    if ([segueIdentifier isEqualToString:MenuContainerEmbedSegue]) {
-        VenueListController *menuController = (VenueListController *)destinationViewController;
-        menuController.venueSelectionDelegate = self;
-    }
 }
 
 #pragma mark - Public methods

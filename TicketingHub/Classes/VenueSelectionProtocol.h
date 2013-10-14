@@ -13,7 +13,7 @@
 
 @protocol VenueSelectionProtocol <NSObject>
 
-@optional
+@required
 - (void)setSelectedVenue:(TXHVenueMO *)venueMO;
 
 @end
