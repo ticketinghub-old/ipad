@@ -12,6 +12,6 @@
 
 @interface TXHMenuViewController : UIViewController <TXHVenueSelectionProtocol>
 
-- (void)presentLoginViewController;
+- (void)presentLoginViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completion;
 
 @end
