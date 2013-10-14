@@ -1,5 +1,5 @@
 //
-//  TXHMenuViewController.h
+//  MainViewController.h
 //  TicketingHub
 //
 //  Created by Mark on 10/07/2013.
@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "TXHVenueSelectionProtocol.h"
 
-@interface TXHMenuViewController : UIViewController <TXHVenueSelectionProtocol>
+@interface MainViewController : UIViewController <TXHVenueSelectionProtocol>
 
 - (void)presentLoginViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completion;
 

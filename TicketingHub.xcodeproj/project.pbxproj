@@ -95,7 +95,7 @@
 		EE75D9A917D11048009ADCD8 /* TXHSalesWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D98717D11048009ADCD8 /* TXHSalesWizardViewController.m */; };
 		EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9AC17D112C4009ADCD8 /* TXHLoginViewController.m */; };
 		EE75D9B317D11311009ADCD8 /* TXHMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B017D11311009ADCD8 /* TXHMenuController.m */; };
-		EE75D9B417D11311009ADCD8 /* TXHMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B217D11311009ADCD8 /* TXHMenuViewController.m */; };
+		EE75D9B417D11311009ADCD8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B217D11311009ADCD8 /* MainViewController.m */; };
 		EE8719C217BE30B80055437C /* TXHOptionMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8719BF17BE30B80055437C /* TXHOptionMO.m */; };
 		EE8719C317BE30B80055437C /* TXHSeasonMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8719C117BE30B80055437C /* TXHSeasonMO.m */; };
 		EE8719C817BE30CB0055437C /* _TXHOptionMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8719C517BE30CB0055437C /* _TXHOptionMO.m */; };
@@ -398,8 +398,8 @@
 		EE75D9AC17D112C4009ADCD8 /* TXHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHLoginViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EE75D9AF17D11311009ADCD8 /* TXHMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMenuController.h; sourceTree = "<group>"; };
 		EE75D9B017D11311009ADCD8 /* TXHMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMenuController.m; sourceTree = "<group>"; };
-		EE75D9B117D11311009ADCD8 /* TXHMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMenuViewController.h; sourceTree = "<group>"; };
-		EE75D9B217D11311009ADCD8 /* TXHMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHMenuViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EE75D9B117D11311009ADCD8 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MainViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		EE75D9B217D11311009ADCD8 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MainViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EE8719BE17BE30B80055437C /* TXHOptionMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHOptionMO.h; sourceTree = "<group>"; };
 		EE8719BF17BE30B80055437C /* TXHOptionMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOptionMO.m; sourceTree = "<group>"; };
 		EE8719C017BE30B80055437C /* TXHSeasonMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSeasonMO.h; sourceTree = "<group>"; };
@@ -424,7 +424,7 @@
 		EEB1843717D114390025530A /* TXHBaseDataEntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBaseDataEntryTableViewCell.m; sourceTree = "<group>"; };
 		EEB1843817D114390025530A /* TXHBaseDataEntryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBaseDataEntryView.h; sourceTree = "<group>"; };
 		EEB1843917D114390025530A /* TXHBaseDataEntryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBaseDataEntryView.m; sourceTree = "<group>"; };
-		EEB1843A17D114390025530A /* TXHCommonNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHCommonNames.h; sourceTree = "<group>"; };
+		EEB1843A17D114390025530A /* TXHCommonNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHCommonNames.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		EEB1843B17D114390025530A /* TXHCreditCardNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHCreditCardNumberView.h; sourceTree = "<group>"; };
 		EEB1843C17D114390025530A /* TXHCreditCardNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCreditCardNumberView.m; sourceTree = "<group>"; };
 		EEB1843D17D114390025530A /* TXHCurrencyEntryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHCurrencyEntryView.h; sourceTree = "<group>"; };
@@ -1018,8 +1018,8 @@
 			children = (
 				EE75D9AF17D11311009ADCD8 /* TXHMenuController.h */,
 				EE75D9B017D11311009ADCD8 /* TXHMenuController.m */,
-				EE75D9B117D11311009ADCD8 /* TXHMenuViewController.h */,
-				EE75D9B217D11311009ADCD8 /* TXHMenuViewController.m */,
+				EE75D9B117D11311009ADCD8 /* MainViewController.h */,
+				EE75D9B217D11311009ADCD8 /* MainViewController.m */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -1365,7 +1365,7 @@
 				EEB1849217D115640025530A /* TXHMainViewController.m in Sources */,
 				EEF8DA7E17F053D500579F5B /* DataController.m in Sources */,
 				EE75D9B317D11311009ADCD8 /* TXHMenuController.m in Sources */,
-				EE75D9B417D11311009ADCD8 /* TXHMenuViewController.m in Sources */,
+				EE75D9B417D11311009ADCD8 /* MainViewController.m in Sources */,
 				EE6D999417BD453400D1E7CD /* TXHOption.m in Sources */,
 				EE8719C217BE30B80055437C /* TXHOptionMO.m in Sources */,
 				EEB1846217D114390025530A /* TXHOptionsExtrasItem.m in Sources */,

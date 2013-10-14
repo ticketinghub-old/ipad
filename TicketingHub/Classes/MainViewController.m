@@ -1,12 +1,12 @@
 //
-//  TXHMenuViewController.m
+//  MainViewController.m
 //  TicketingHub
 //
 //  Created by Mark on 10/07/2013.
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import "TXHMenuViewController.h"
+#import "MainViewController.h"
 
 #import "DCTCoreDataStack.h"
 #import "TXHCommonNames.h"
@@ -21,7 +21,7 @@
 static NSString * const MenuContainerEmbedSegue = @"MenuContainerEmbed";
 static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
 
-@interface TXHMenuViewController ()
+@interface MainViewController ()
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) UITapGestureRecognizer  *tapRecogniser;
@@ -35,7 +35,7 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
 
 @end
 
-@implementation TXHMenuViewController
+@implementation MainViewController
 
 #pragma mark - Set up and tear down
 

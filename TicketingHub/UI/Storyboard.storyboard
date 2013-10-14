@@ -6,10 +6,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
-        <!--Menu View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="8Br-8A-qHs">
             <objects>
-                <viewController storyboardIdentifier="MenuViewController" id="noK-wq-0hO" customClass="TXHMenuViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuViewController" id="noK-wq-0hO" customClass="MainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Ab-ck-gWH"/>
                         <viewControllerLayoutGuide type="bottom" id="gAZ-2D-Pg4"/>
@@ -587,7 +587,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <resources>
-        <image name="background" width="1024" height="768"/>
         <image name="background" width="1024" height="768"/>
         <image name="envelope" width="20" height="20"/>
         <image name="handle" width="22" height="16"/>
