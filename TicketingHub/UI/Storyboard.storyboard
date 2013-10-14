@@ -428,10 +428,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="2957" y="-372"/>
         </scene>
-        <!--Main View Controller - tickethub.io-->
+        <!--Sales Or Doorman View Controller - tickethub.io-->
         <scene sceneID="VBG-zP-iW6">
             <objects>
-                <viewController definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="formSheet" id="2do-rv-5Ha" customClass="TXHMainViewController" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="formSheet" id="2do-rv-5Ha" customClass="SalesOrDoormanViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qbE-3C-n6H"/>
                         <viewControllerLayoutGuide type="bottom" id="AXN-QQ-Qrz"/>

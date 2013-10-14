@@ -9,13 +9,13 @@
 #import "MainViewController.h"
 
 #import "DCTCoreDataStack.h"
+#import "DataController.h"
+#import "SalesOrDoormanViewController.h"
 #import "TXHCommonNames.h"
 #import "TXHLoginViewController.h"
-#import "TXHMainViewController.h"
-#import "VenueListController.h"
-#import "DataController.h"
 #import "TXHUserDefaultsKeys.h"
 #import "TXHVenueMO.h"
+#import "VenueListController.h"
 
 // Segue Identifiers
 static NSString * const VenueListContainerEmbedSegue = @"VenueListContainerEmbed";
@@ -25,7 +25,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) UITapGestureRecognizer  *tapRecogniser;
-@property (weak, nonatomic) TXHVenueMO *currentVenue;
+@property (weak, nonatomic) TXHVenueMO *selectedVenue;
 @property (strong, nonatomic) DataController *dataController;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftHandSpace;
@@ -111,7 +111,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 #pragma mark VenueSelectionProtocol methods
 
 - (void)setSelectedVenue:(TXHVenueMO *)venueMO {
-    self.currentVenue = venueMO;
+    self.selectedVenue = venueMO;
     [self showOrHideVenueList:nil];
 }
 

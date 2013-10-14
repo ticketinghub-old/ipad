@@ -1,30 +1,32 @@
 //
-//  TXHMainViewController.m
+//  SalesOrDoormanViewController.m
 //  TicketingHub
 //
 //  Created by Mark Brindle on 07/06/2013.
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import "TXHMainViewController.h"
-#import "TXHServerAccessManager.h"
-#import "TXHCommonNames.h"
-#import "TXHEmbeddingSegue.h"
-#import "TXHTransitionSegue.h"
+#import "SalesOrDoormanViewController.h"
+@import CoreData;
+
 #import "TXHDateSelectorViewController.h"
-#import "TXHTimeslotSelectorViewController.h"
-#import "TXHVenue.h"
+#import "TXHEmbeddingSegue.h"
 #import "TXHSeason_old.h"
-#import "TXHTimeSlot_old.h"
+#import "TXHServerAccessManager.h"
 #import "TXHTicketDetail.h"
 #import "TXHTicketTier.h"
+#import "TXHTimeSlot_old.h"
+#import "TXHTimeslotSelectorViewController.h"
+#import "TXHTransitionSegue.h"
+#import "TXHVenueMO.h"
 
-@interface TXHMainViewController () <TXHDateSelectorViewDelegate, TXHTimeSlotSelectorDelegate>
+@interface SalesOrDoormanViewController () <TXHDateSelectorViewDelegate, TXHTimeSlotSelectorDelegate>
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl         *modeSelector;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelector;
 @property (weak, nonatomic) IBOutlet UIView *contentDetailView;
 
-@property (strong, nonatomic) TXHVenue                          *venue;
+@property (strong, nonatomic) TXHVenueMO *selectedVenue;
+@property (strong, nonatomic) TXHVenue                          *venue;   // Kill this
 @property (strong, nonatomic) UIButton                          *dateBtn; // Kill this
 @property (strong, nonatomic) UIButton                          *timeBtn; // Kill this
 @property (strong, nonatomic) UIBarButtonItem                   *dateButton;
@@ -39,7 +41,7 @@
 
 @end
 
-@implementation TXHMainViewController
+@implementation SalesOrDoormanViewController
 
 #pragma mark - View Lifecycle
 
@@ -101,11 +103,6 @@
     [self selectMode:nil];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-//    [self updateControlsForUserInteraction];
-}
-
 #pragma mark - Superclass overrides
 
 - (void)prepareForSegue:(UIStoryboardSegue *)__unused segue sender:(id)__unused sender {
@@ -155,6 +152,15 @@
     }
 }
 
+#pragma mark - VenueSelectionDelegate
+
+- (void)setSelectedVenue:(TXHVenueMO *)selectedVenue {
+    _selectedVenue = selectedVenue;
+    // More stuff needed here to reset the UI if the view is loaded
+    if ([self isViewLoaded]) {
+        [self resetDataAndTimeButtons];
+    }
+}
 
 #pragma mark - TXHDateSelectorViewController delegate methods
 
@@ -258,8 +264,8 @@
 
 
 
-    NSString *dateButtonPlaceholder = @"<Date2>";
-    NSString *timeButtonPlaceholder = @"<Time2>";
+    NSString *dateButtonPlaceholder = @"<Date>";
+    NSString *timeButtonPlaceholder = @"<Time>";
 
     self.dateButton = [[UIBarButtonItem alloc] initWithTitle:dateButtonPlaceholder style:UIBarButtonItemStyleBordered target:self action:@selector(selectDate:)];
     self.timeButton = [[UIBarButtonItem alloc] initWithTitle:timeButtonPlaceholder style:UIBarButtonItemStylePlain target:self action:@selector(selectTime:)];
@@ -328,6 +334,12 @@
     //    self.modeSelector.userInteractionEnabled = enabled;
     self.dateButton.enabled = enabled;
     self.timeButton.enabled = (enabled && (self.selectedDate != nil));
+}
+
+// Resets the date and time buttons to when changing venue
+- (void)resetDataAndTimeButtons {
+    self.dateButton.title = @"<Reset Date>";
+    self.timeButton.title = @"<Reset Time>";
 }
 
 

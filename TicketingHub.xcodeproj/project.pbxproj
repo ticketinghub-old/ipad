@@ -131,7 +131,7 @@
 		EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848417D115640025530A /* TXHDateSelectorViewController.m */; };
 		EEB1849017D115640025530A /* TXHEmbeddingSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848617D115640025530A /* TXHEmbeddingSegue.m */; };
 		EEB1849117D115640025530A /* TXHMainScreenPlaceholderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848817D115640025530A /* TXHMainScreenPlaceholderViewController.m */; };
-		EEB1849217D115640025530A /* TXHMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848A17D115640025530A /* TXHMainViewController.m */; };
+		EEB1849217D115640025530A /* SalesOrDoormanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848A17D115640025530A /* SalesOrDoormanViewController.m */; };
 		EEB1849317D115640025530A /* TXHTimeslotSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848C17D115640025530A /* TXHTimeslotSelectorViewController.m */; };
 		EEB1849417D115640025530A /* TXHTransitionSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848E17D115640025530A /* TXHTransitionSegue.m */; };
 		EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */; };
@@ -477,8 +477,8 @@
 		EEB1848617D115640025530A /* TXHEmbeddingSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHEmbeddingSegue.m; sourceTree = "<group>"; };
 		EEB1848717D115640025530A /* TXHMainScreenPlaceholderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMainScreenPlaceholderViewController.h; sourceTree = "<group>"; };
 		EEB1848817D115640025530A /* TXHMainScreenPlaceholderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMainScreenPlaceholderViewController.m; sourceTree = "<group>"; };
-		EEB1848917D115640025530A /* TXHMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMainViewController.h; sourceTree = "<group>"; };
-		EEB1848A17D115640025530A /* TXHMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMainViewController.m; sourceTree = "<group>"; };
+		EEB1848917D115640025530A /* SalesOrDoormanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SalesOrDoormanViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		EEB1848A17D115640025530A /* SalesOrDoormanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SalesOrDoormanViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EEB1848B17D115640025530A /* TXHTimeslotSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTimeslotSelectorViewController.h; sourceTree = "<group>"; };
 		EEB1848C17D115640025530A /* TXHTimeslotSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTimeslotSelectorViewController.m; sourceTree = "<group>"; };
 		EEB1848D17D115640025530A /* TXHTransitionSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTransitionSegue.h; sourceTree = "<group>"; };
@@ -1111,8 +1111,8 @@
 				EEB1848617D115640025530A /* TXHEmbeddingSegue.m */,
 				EEB1848717D115640025530A /* TXHMainScreenPlaceholderViewController.h */,
 				EEB1848817D115640025530A /* TXHMainScreenPlaceholderViewController.m */,
-				EEB1848917D115640025530A /* TXHMainViewController.h */,
-				EEB1848A17D115640025530A /* TXHMainViewController.m */,
+				EEB1848917D115640025530A /* SalesOrDoormanViewController.h */,
+				EEB1848A17D115640025530A /* SalesOrDoormanViewController.m */,
 				EEB1848B17D115640025530A /* TXHTimeslotSelectorViewController.h */,
 				EEB1848C17D115640025530A /* TXHTimeslotSelectorViewController.m */,
 				EEB1848D17D115640025530A /* TXHTransitionSegue.h */,
@@ -1372,7 +1372,7 @@
 				EEB1848017D114B30025530A /* TXHGroupCell.m in Sources */,
 				EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */,
 				EEB1849117D115640025530A /* TXHMainScreenPlaceholderViewController.m in Sources */,
-				EEB1849217D115640025530A /* TXHMainViewController.m in Sources */,
+				EEB1849217D115640025530A /* SalesOrDoormanViewController.m in Sources */,
 				EEF8DA7E17F053D500579F5B /* DataController.m in Sources */,
 				EE75D9B317D11311009ADCD8 /* VenueListController.m in Sources */,
 				EE75D9B417D11311009ADCD8 /* MainViewController.m in Sources */,
