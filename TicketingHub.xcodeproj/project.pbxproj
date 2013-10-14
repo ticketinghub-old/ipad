@@ -153,7 +153,7 @@
 		EEB4FD5A17B277D800F226BC /* TXHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD4617B277D800F226BC /* TXHUser.m */; };
 		EEC2878B17C7B89000CDE3F1 /* TXHOptionMOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC2878A17C7B89000CDE3F1 /* TXHOptionMOTests.m */; };
 		EEF6BA4717D1192B005B1B20 /* BarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6BA4617D1192B005B1B20 /* BarcodeViewController.m */; };
-		EEF8DA7E17F053D500579F5B /* TXHNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF8DA7D17F053D500579F5B /* TXHNetworkController.m */; };
+		EEF8DA7E17F053D500579F5B /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF8DA7D17F053D500579F5B /* DataController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -394,12 +394,12 @@
 		EE75D98517D11048009ADCD8 /* TXHSalesWizardDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesWizardDetailsViewController.m; path = TicketingHub/Classes/TXHSalesWizardDetailsViewController.m; sourceTree = SOURCE_ROOT; };
 		EE75D98617D11048009ADCD8 /* TXHSalesWizardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesWizardViewController.h; path = TicketingHub/Classes/TXHSalesWizardViewController.h; sourceTree = SOURCE_ROOT; };
 		EE75D98717D11048009ADCD8 /* TXHSalesWizardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesWizardViewController.m; path = TicketingHub/Classes/TXHSalesWizardViewController.m; sourceTree = SOURCE_ROOT; };
-		EE75D9AB17D112C4009ADCD8 /* TXHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHLoginViewController.h; sourceTree = "<group>"; };
-		EE75D9AC17D112C4009ADCD8 /* TXHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHLoginViewController.m; sourceTree = "<group>"; };
+		EE75D9AB17D112C4009ADCD8 /* TXHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHLoginViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		EE75D9AC17D112C4009ADCD8 /* TXHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHLoginViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EE75D9AF17D11311009ADCD8 /* TXHMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMenuController.h; sourceTree = "<group>"; };
 		EE75D9B017D11311009ADCD8 /* TXHMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMenuController.m; sourceTree = "<group>"; };
 		EE75D9B117D11311009ADCD8 /* TXHMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHMenuViewController.h; sourceTree = "<group>"; };
-		EE75D9B217D11311009ADCD8 /* TXHMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHMenuViewController.m; sourceTree = "<group>"; };
+		EE75D9B217D11311009ADCD8 /* TXHMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHMenuViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EE8719BE17BE30B80055437C /* TXHOptionMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHOptionMO.h; sourceTree = "<group>"; };
 		EE8719BF17BE30B80055437C /* TXHOptionMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOptionMO.m; sourceTree = "<group>"; };
 		EE8719C017BE30B80055437C /* TXHSeasonMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSeasonMO.h; sourceTree = "<group>"; };
@@ -517,8 +517,8 @@
 		EEC2878A17C7B89000CDE3F1 /* TXHOptionMOTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOptionMOTests.m; sourceTree = "<group>"; };
 		EEF6BA4517D1192B005B1B20 /* BarcodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeViewController.h; sourceTree = "<group>"; };
 		EEF6BA4617D1192B005B1B20 /* BarcodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeViewController.m; sourceTree = "<group>"; };
-		EEF8DA7C17F053D500579F5B /* TXHNetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHNetworkController.h; path = TicketingHub/Classes/TXHNetworkController.h; sourceTree = "<group>"; };
-		EEF8DA7D17F053D500579F5B /* TXHNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHNetworkController.m; path = TicketingHub/Classes/TXHNetworkController.m; sourceTree = "<group>"; };
+		EEF8DA7C17F053D500579F5B /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = DataController.h; path = TicketingHub/Classes/DataController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		EEF8DA7D17F053D500579F5B /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = DataController.m; path = TicketingHub/Classes/DataController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1186,8 +1186,8 @@
 			isa = PBXGroup;
 			children = (
 				EEB4FD2017B277D800F226BC /* iOS-api */,
-				EEF8DA7C17F053D500579F5B /* TXHNetworkController.h */,
-				EEF8DA7D17F053D500579F5B /* TXHNetworkController.m */,
+				EEF8DA7C17F053D500579F5B /* DataController.h */,
+				EEF8DA7D17F053D500579F5B /* DataController.m */,
 				4DA05FAF178C367F005161E6 /* TXHServerAccessManager.h */,
 				4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */,
 			);
@@ -1363,7 +1363,7 @@
 				EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */,
 				EEB1849117D115640025530A /* TXHMainScreenPlaceholderViewController.m in Sources */,
 				EEB1849217D115640025530A /* TXHMainViewController.m in Sources */,
-				EEF8DA7E17F053D500579F5B /* TXHNetworkController.m in Sources */,
+				EEF8DA7E17F053D500579F5B /* DataController.m in Sources */,
 				EE75D9B317D11311009ADCD8 /* TXHMenuController.m in Sources */,
 				EE75D9B417D11311009ADCD8 /* TXHMenuViewController.m in Sources */,
 				EE6D999417BD453400D1E7CD /* TXHOption.m in Sources */,

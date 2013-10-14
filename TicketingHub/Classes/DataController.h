@@ -1,5 +1,5 @@
 //
-//  TXHNetworkController.h
+//  DataController.h
 //  TicketingHub
 //
 //  Created by Abizer Nasir on 23/09/2013.
@@ -10,13 +10,13 @@
 
 @class TXHUserMO;
 
-extern NSString * const TXHNetworkControllerErrorDomain;
+extern NSString * const DataControllerErrorDomain;
 
-typedef NS_ENUM(NSInteger, TXHNetworkControllerError) {
-    TXHNetworkControllerErrorNoVenues,
+typedef NS_ENUM(NSInteger, DataControllerError) {
+    DataControllerErrorNoVenues,
 };
 
-@interface TXHNetworkController : NSObject
+@interface DataController : NSObject
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc __attribute__((nonnull));
 

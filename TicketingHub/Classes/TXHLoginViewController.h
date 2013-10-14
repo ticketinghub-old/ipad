@@ -8,13 +8,13 @@
 
 @import UIKit;
 
-#import "TXHNetworkController.h"
+#import "DataController.h"
 
 extern NSString * const LoginViewControllerStoryboardIdentifier;
 
 @interface TXHLoginViewController : UIViewController
 
 @property (strong ,nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) TXHNetworkController *networkController;
+@property (strong, nonatomic) DataController *dataController;
 
 @end

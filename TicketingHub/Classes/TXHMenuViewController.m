@@ -13,7 +13,7 @@
 #import "TXHLoginViewController.h"
 #import "TXHMainViewController.h"
 #import "TXHMenuController.h"
-#import "TXHNetworkController.h"
+#import "DataController.h"
 #import "TXHUserDefaultsKeys.h"
 #import "TXHVenueMO.h"
 
@@ -26,7 +26,7 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) UITapGestureRecognizer  *tapRecogniser;
 @property (weak, nonatomic) TXHVenueMO *currentVenue;
-@property (strong, nonatomic) TXHNetworkController *networkController;
+@property (strong, nonatomic) DataController *dataController;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftHandSpace;
 @property (weak, nonatomic) IBOutlet UIView *menuContainer;
@@ -48,7 +48,7 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
 - (void)awakeFromNib {
     // Stand up the stack and network controller as early as possible so they are available for the embed segues.
     [self standUpCoreDataStack];
-    self.networkController = [[TXHNetworkController alloc] initWithManagedObjectContext:self.managedObjectContext];
+    self.dataController = [[DataController alloc] initWithManagedObjectContext:self.managedObjectContext];
 }
 
 #pragma mark - View lifecycle
@@ -98,14 +98,14 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
         }
     }
 
-    // The segues for which a network controller needs to be set.
+    // The segues for which a data controller needs to be set.
     // The empty list for now, I'll need to add more later
-    NSArray *networkControllerSegues = @[];
+    NSArray *dataControllerSegues = @[];
 
     // These controllers need to have a network controller set
-    if ([networkControllerSegues containsObject:segueIdentifier]) {
-        if ([destinationViewController respondsToSelector:@selector(setNetworkController:)]) {
-            [destinationViewController setNetworkController:self.networkController];
+    if ([dataControllerSegues containsObject:segueIdentifier]) {
+        if ([destinationViewController respondsToSelector:@selector(setdataController:)]) {
+            [destinationViewController setDataController:self.dataController];
         }
     }
 
@@ -120,7 +120,7 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
 - (void)presentLoginViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completion {
     TXHLoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:LoginViewControllerStoryboardIdentifier];
     loginViewController.managedObjectContext = self.managedObjectContext;
-    loginViewController.networkController = self.networkController;
+    loginViewController.dataController = self.dataController;
     
     [self presentViewController:loginViewController animated:animated completion:completion];
 }

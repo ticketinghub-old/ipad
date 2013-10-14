@@ -1,5 +1,5 @@
 //
-//  TXHNetworkController.m
+//  DataController.m
 //  TicketingHub
 //
 //  Created by Abizer Nasir on 23/09/2013.
@@ -11,23 +11,23 @@ static NSString * const kClientId = @"ca99032b750f829630d8c9272bb9d3d6696b10f5bd
 static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fbaaf81e6ec900c71b8f4af62d09d";
 
 // Error Domain
-NSString * const TXHNetworkControllerErrorDomain = @"com.ticketinghub.TXHNetworControllerErrorDomain";
+NSString * const DataControllerErrorDomain = @"com.ticketinghub.TXHNetworControllerErrorDomain";
 
-#import "TXHNetworkController.h"
+#import "DataController.h"
 
 #import "DCTCoreDataStack.h"
 #import "TXHTicketingHubClient.h"
 #import "TXHUserMO.h"
 #import "TXHVenueMO.h"
 
-@interface TXHNetworkController ()
+@interface DataController ()
 
 @property (strong, nonatomic) NSManagedObjectContext *moc;
 @property (strong, nonatomic) TXHTicketingHubClient *ticketingHubClient;
 
 @end
 
-@implementation TXHNetworkController
+@implementation DataController
 
 #pragma mark - Set up and tear down.
 
@@ -122,7 +122,7 @@ NSString * const TXHNetworkControllerErrorDomain = @"com.ticketinghub.TXHNetworC
             // Create and return a custom error 
             NSDictionary *userInfo = @{NSLocalizedDescriptionKey : NSLocalizedString(@"No Venues", @"No Venues"),
                                        NSLocalizedFailureReasonErrorKey : NSLocalizedString(@"There are no venues to display for the current user.", @"There are no venues to display for the current user.")};
-            NSError *venueError = [NSError errorWithDomain:TXHNetworkControllerErrorDomain code:TXHNetworkControllerErrorNoVenues userInfo:userInfo];
+            NSError *venueError = [NSError errorWithDomain:DataControllerErrorDomain code:DataControllerErrorNoVenues userInfo:userInfo];
             completionBlock(venueError);
             return; // Bail!
         }

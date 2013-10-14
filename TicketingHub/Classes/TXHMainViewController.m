@@ -41,6 +41,8 @@
 
 @implementation TXHMainViewController
 
+#pragma mark - View Lifecycle
+
 //- (void)setup_old {
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueUpdated:) name:NOTIFICATION_VENUE_UPDATED object:nil];
 //    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:38.0f / 255.0f
@@ -93,8 +95,7 @@
 //    [self.navigationItem setLeftBarButtonItems:@[self.navigationItem.leftBarButtonItem, self.dateButton, self.timeButton]];
 //}
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [self setup];
     [self selectMode:nil];
@@ -105,60 +106,25 @@
 //    [self updateControlsForUserInteraction];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - Superclass overrides
 
-- (IBAction)toggleMenu:(id)__unused sender {
-    [self dismissVisiblePopover];
-    [[UIApplication sharedApplication] sendAction:@selector(showOrHideVenueList:) to:nil from:self forEvent:nil];
-}
-
-- (void)dismissVisiblePopover {
-    // Whenever a control receives focus we want to dismiss a visible popover
-    if (self.datePopover.isPopoverVisible) {
-        [self.datePopover dismissPopoverAnimated:YES];
-    }
-    if (self.timePopover.isPopoverVisible) {
-        [self.timePopover dismissPopoverAnimated:YES];
-    }
-}
-
--(void)selectDate:(id)sender {
-#pragma unused (sender)
-    [self dismissVisiblePopover];
-
-    // Build start/end ranges from all the seasons available for this venue
-    NSMutableArray *ranges = [NSMutableArray array];
-#warning - AN turned this off!
-    //    for (TXHSeason_old *season in self.venue.allSeasons) {
-    //        // Add a range for each season
-    //        [ranges addObject:@{@"start": season.startsOn, @"end": season.endsOn}];
+- (void)prepareForSegue:(UIStoryboardSegue *)__unused segue sender:(id)__unused sender {
+    //    if ([segue isMemberOfClass:[TXHTransitionSegue class]]) {
+    //        TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
+    //
+    //        transitionSegue.containerView = self.view;
+    //
+    //        if ([segue.identifier isEqualToString:@"Flip To Salesman"]) {
+    //            transitionSegue.animationOptions = UIViewAnimationOptionTransitionCurlDown;
+    //        }
+    //        else
+    //        {
+    //            transitionSegue.animationOptions = UIViewAnimationOptionTransitionCurlUp;
+    //        }
     //    }
-    // - commented this section out
-    TXHDateSelectorViewController *dateViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Date Selector Popover"];
-    dateViewController.delegate = self;
-    [dateViewController constrainToDateRanges:ranges];
-
-    [self.view layoutIfNeeded];
-
-    self.datePopover = [[UIPopoverController alloc] initWithContentViewController:dateViewController];
-    [self.datePopover presentPopoverFromBarButtonItem:self.dateButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
--(void)selectTime:(id)sender {
-#pragma unused (sender)
-    [self dismissVisiblePopover];
-    TXHTimeslotSelectorViewController *timeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Time Selector Popover"];
-    timeViewController.delegate = self;
-    [timeViewController setTimeSlots:[[TXHServerAccessManager sharedInstance] timeSlotsFor:self.selectedDate]];
-    self.timePopover = [[UIPopoverController alloc] initWithContentViewController:timeViewController];
-    [self.timePopover presentPopoverFromBarButtonItem:self.timeButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    self.navigationItem.prompt = nil;
-    [self.view layoutIfNeeded];
-}
+#pragma mark Public
 
 - (IBAction)selectMode:(id)__unused sender {
     [self dismissVisiblePopover];
@@ -184,40 +150,15 @@
         TXHEmbeddingSegue *segue = [[TXHEmbeddingSegue alloc] initWithIdentifier:@"Salesman"
                                                                           source:self destination:destinationController];
         segue.containerView = self.contentDetailView;
-
+        
         [segue perform];
     }
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-#pragma unused (segue, sender)
-    //    if ([segue isMemberOfClass:[TXHTransitionSegue class]]) {
-    //        TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
-    //
-    //        transitionSegue.containerView = self.view;
-    //
-    //        if ([segue.identifier isEqualToString:@"Flip To Salesman"]) {
-    //            transitionSegue.animationOptions = UIViewAnimationOptionTransitionCurlDown;
-    //        }
-    //        else
-    //        {
-    //            transitionSegue.animationOptions = UIViewAnimationOptionTransitionCurlUp;
-    //        }
-    //    }
-}
-
-- (void)updateControlsForUserInteraction {
-    BOOL enabled = (self.venue != nil);
-    //    self.modeSelector.userInteractionEnabled = enabled;
-    self.dateButton.enabled = enabled;
-    self.timeButton.enabled = (enabled && (self.selectedDate != nil));
 }
 
 
 #pragma mark - TXHDateSelectorViewController delegate methods
 
-- (void)dateSelectorViewController:(TXHDateSelectorViewController *)controller didSelectDate:(NSDate *)date {
-#pragma unused (controller)
+- (void)dateSelectorViewController:(TXHDateSelectorViewController *)__unused controller didSelectDate:(NSDate *)date {
     self.selectedDate = date;
 
     // Having selected a date; we now need to select a timeslot; so reset the time selected flag
@@ -235,8 +176,9 @@
     [self updateControlsForUserInteraction];
 }
 
-- (void)timeSlotSelectorViewController:(TXHTimeslotSelectorViewController *)controller didSelectTime:(TXHTimeSlot_old *)time {
-#pragma unused (controller)
+#pragma mark - TXHTimeSelectorViewController delegate methods
+
+- (void)timeSlotSelectorViewController:(TXHTimeslotSelectorViewController *)__unused controller didSelectTime:(TXHTimeSlot_old *)time {
     self.selectedTime = time.timeSlotStart;
     self.timeSelected = YES;
 
@@ -332,5 +274,61 @@
     [self.navigationItem setLeftBarButtonItems:@[self.navigationItem.leftBarButtonItem, self.dateButton, self.timeButton]];
 
 }
+
+-(void)selectDate:(id)__unused sender {
+    [self dismissVisiblePopover];
+
+    // Build start/end ranges from all the seasons available for this venue
+    NSMutableArray *ranges = [NSMutableArray array];
+#warning - AN turned this off!
+    //    for (TXHSeason_old *season in self.venue.allSeasons) {
+    //        // Add a range for each season
+    //        [ranges addObject:@{@"start": season.startsOn, @"end": season.endsOn}];
+    //    }
+    // - commented this section out
+    TXHDateSelectorViewController *dateViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Date Selector Popover"];
+    dateViewController.delegate = self;
+    [dateViewController constrainToDateRanges:ranges];
+
+    [self.view layoutIfNeeded];
+
+    self.datePopover = [[UIPopoverController alloc] initWithContentViewController:dateViewController];
+    [self.datePopover presentPopoverFromBarButtonItem:self.dateButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+-(void)selectTime:(id)__unused sender {
+    [self dismissVisiblePopover];
+    TXHTimeslotSelectorViewController *timeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Time Selector Popover"];
+    timeViewController.delegate = self;
+    [timeViewController setTimeSlots:[[TXHServerAccessManager sharedInstance] timeSlotsFor:self.selectedDate]];
+    self.timePopover = [[UIPopoverController alloc] initWithContentViewController:timeViewController];
+    [self.timePopover presentPopoverFromBarButtonItem:self.timeButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    self.navigationItem.prompt = nil;
+    [self.view layoutIfNeeded];
+}
+
+- (IBAction)toggleMenu:(id)__unused sender {
+    [self dismissVisiblePopover];
+    [[UIApplication sharedApplication] sendAction:@selector(showOrHideVenueList:) to:nil from:self forEvent:nil];
+}
+
+- (void)dismissVisiblePopover {
+    // Whenever a control receives focus we want to dismiss a visible popover
+    if (self.datePopover.isPopoverVisible) {
+        [self.datePopover dismissPopoverAnimated:YES];
+    }
+    if (self.timePopover.isPopoverVisible) {
+        [self.timePopover dismissPopoverAnimated:YES];
+    }
+}
+
+// Needs to be refactored
+- (void)updateControlsForUserInteraction {
+    BOOL enabled = (self.venue != nil);
+    //    self.modeSelector.userInteractionEnabled = enabled;
+    self.dateButton.enabled = enabled;
+    self.timeButton.enabled = (enabled && (self.selectedDate != nil));
+}
+
 
 @end

@@ -113,9 +113,9 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
     [userDefaults setObject:self.userField.text forKey:TXHUserDefaultsLastUserKey];
     [userDefaults synchronize];
 
-    [self.networkController fetchVenuesForCurrentUserWithCompletion:^(NSError *error) {
+    [self.dataController fetchVenuesForCurrentUserWithCompletion:^(NSError *error) {
         if (error) {
-            if ([[error domain] isEqualToString:TXHNetworkControllerErrorDomain]) {
+            if ([[error domain] isEqualToString:DataControllerErrorDomain]) {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[error localizedDescription] message:[error localizedFailureReason] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [alertView show];
             } else {
@@ -135,7 +135,7 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 - (IBAction)login:(id)sender {
     self.loginButton.enabled = NO;
 
-    [self.networkController loginWithUsername:self.userField.text password:self.passwordField.text completion:^(NSError *error) {
+    [self.dataController loginWithUsername:self.userField.text password:self.passwordField.text completion:^(NSError *error) {
         if (error) {
             DLog(@"Unable to log in because: %@", error); // Caveman - needs to be refined.
             return;
