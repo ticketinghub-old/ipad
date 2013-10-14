@@ -169,10 +169,10 @@
             </objects>
             <point key="canvasLocation" x="468" y="2222"/>
         </scene>
-        <!--Menu Controller-->
+        <!--Venue List Controller-->
         <scene sceneID="2z6-yd-k0i">
             <objects>
-                <viewController id="UZq-wc-4TA" customClass="TXHMenuController" sceneMemberID="viewController">
+                <viewController id="UZq-wc-4TA" customClass="VenueListController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Iv-3d-WXC"/>
                         <viewControllerLayoutGuide type="bottom" id="hcn-rF-iNJ"/>
@@ -587,6 +587,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <resources>
+        <image name="background" width="1024" height="768"/>
         <image name="background" width="1024" height="768"/>
         <image name="envelope" width="20" height="20"/>
         <image name="handle" width="22" height="16"/>

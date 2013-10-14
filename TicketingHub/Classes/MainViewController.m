@@ -12,7 +12,7 @@
 #import "TXHCommonNames.h"
 #import "TXHLoginViewController.h"
 #import "TXHMainViewController.h"
-#import "TXHMenuController.h"
+#import "VenueListController.h"
 #import "DataController.h"
 #import "TXHUserDefaultsKeys.h"
 #import "TXHVenueMO.h"
@@ -110,7 +110,7 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
     }
 
     if ([segueIdentifier isEqualToString:MenuContainerEmbedSegue]) {
-        TXHMenuController *menuController = (TXHMenuController *)destinationViewController;
+        VenueListController *menuController = (VenueListController *)destinationViewController;
         menuController.venueSelectionDelegate = self;
     }
 }

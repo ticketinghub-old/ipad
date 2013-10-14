@@ -1,19 +1,19 @@
 //
-//  TXHMenuController.m
+//  VenueListController.m
 //  TicketingHub
 //
 //  Created by Mark on 10/07/2013.
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import "TXHMenuController.h"
+#import "VenueListController.h"
 
 #import "TXHCommonNames.h"
 #import "TXHServerAccessManager.h"
 #import "TXHUserMO.h"
 #import "TXHVenueMO.h"
 
-@interface TXHMenuController () <UITableViewDataSource, UITableViewDelegate>
+@interface VenueListController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *logoutView;
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
@@ -27,7 +27,7 @@
 
 @end
 
-@implementation TXHMenuController
+@implementation VenueListController
 
 #pragma mark - View lifecycle
 
