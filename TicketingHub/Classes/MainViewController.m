@@ -127,7 +127,7 @@ static NSString * const DetailContainerEmbedSegue = @"DetailContainerEmbed";
 
 #pragma mark - Delegate Methods
 
-#pragma mark TXHVenueSelectionProtocol methods
+#pragma mark VenueSelectionProtocol methods
 
 - (void)setSelectedVenue:(TXHVenueMO *)venueMO {
     self.currentVenue = venueMO;

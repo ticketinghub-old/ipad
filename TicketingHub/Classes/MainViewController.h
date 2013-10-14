@@ -8,9 +8,9 @@
 //  This is the root view controller for the entire app
 
 #import <UIKit/UIKit.h>
-#import "TXHVenueSelectionProtocol.h"
+#import "VenueSelectionProtocol.h"
 
-@interface MainViewController : UIViewController <TXHVenueSelectionProtocol>
+@interface MainViewController : UIViewController <VenueSelectionProtocol>
 
 - (void)presentLoginViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completion;
 

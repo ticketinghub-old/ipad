@@ -9,11 +9,11 @@
 @import CoreData;
 @import UIKit;
 
-#import "TXHVenueSelectionProtocol.h"
+#import "VenueSelectionProtocol.h"
 
 @interface VenueListController : UIViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (weak, nonatomic) id<TXHVenueSelectionProtocol> venueSelectionDelegate;
+@property (weak, nonatomic) id<VenueSelectionProtocol> venueSelectionDelegate;
 
 @end
