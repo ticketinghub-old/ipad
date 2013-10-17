@@ -19,13 +19,13 @@
 #import "TXHTimeslotSelectorViewController.h"
 #import "TXHTransitionSegue.h"
 #import "TXHVenueMO.h"
+#import "VenueListControllerNotifications.h"
 
 @interface SalesOrDoormanViewController () <TXHDateSelectorViewDelegate, TXHTimeSlotSelectorDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelector;
 @property (weak, nonatomic) IBOutlet UIView *contentDetailView;
 
-@property (strong, nonatomic) TXHVenueMO *selectedVenue;
 @property (strong, nonatomic) TXHVenue                          *venue;   // Kill this
 @property (strong, nonatomic) UIButton                          *dateBtn; // Kill this
 @property (strong, nonatomic) UIButton                          *timeBtn; // Kill this
@@ -103,6 +103,11 @@
     [self selectMode:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueChanged:) name:TXHVenueChangedNotification object:nil];
+}
+
 #pragma mark - Superclass overrides
 
 - (void)prepareForSegue:(UIStoryboardSegue *)__unused segue sender:(id)__unused sender {
@@ -152,15 +157,23 @@
     }
 }
 
-#pragma mark - VenueSelectionDelegate
+#pragma mark - Custom accessors
 
 - (void)setSelectedVenue:(TXHVenueMO *)selectedVenue {
     _selectedVenue = selectedVenue;
+
     // More stuff needed here to reset the UI if the view is loaded
     if ([self isViewLoaded]) {
-        [self resetDataAndTimeButtons];
+        [self resetDateAndTimeButtons];
     }
 }
+
+#pragma mark - Notification handlers
+
+- (void)venueChanged:(NSNotification *)notification {
+    self.selectedVenue = [notification userInfo][TXHSelectedVenue];
+}
+
 
 #pragma mark - TXHDateSelectorViewController delegate methods
 
@@ -337,7 +350,7 @@
 }
 
 // Resets the date and time buttons to when changing venue
-- (void)resetDataAndTimeButtons {
+- (void)resetDateAndTimeButtons {
     self.dateButton.title = @"<Reset Date>";
     self.timeButton.title = @"<Reset Time>";
 }

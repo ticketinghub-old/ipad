@@ -12,6 +12,11 @@
 #import "TXHServerAccessManager.h"
 #import "TXHUserMO.h"
 #import "TXHVenueMO.h"
+#import "VenueListControllerNotifications.h"
+
+// Declaration of strings declared in VenueListControllerNotifications.h
+NSString * const TXHVenueChangedNotification = @"TXHVenueChangedNotification";
+NSString * const TXHSelectedVenue = @"TXHSelectedVenue";
 
 @interface VenueListController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -152,9 +157,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TXHVenueMO *venue = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    if ([self.venueSelectionDelegate respondsToSelector:@selector(setSelectedVenue:)]) {
-        [self.venueSelectionDelegate setSelectedVenue:venue];
-    }
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:TXHVenueChangedNotification object:self userInfo:@{TXHSelectedVenue : venue}];
 }
 
 #pragma mark - Private methods

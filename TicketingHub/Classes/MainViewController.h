@@ -7,10 +7,9 @@
 //
 //  This is the root view controller for the entire app
 
-#import <UIKit/UIKit.h>
-#import "VenueSelectionProtocol.h"
+@import UIKit;
 
-@interface MainViewController : UIViewController <VenueSelectionProtocol>
+@interface MainViewController : UIViewController
 
 - (void)presentLoginViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completion;
 

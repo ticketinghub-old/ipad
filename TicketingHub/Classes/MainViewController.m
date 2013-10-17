@@ -16,6 +16,7 @@
 #import "TXHUserDefaultsKeys.h"
 #import "TXHVenueMO.h"
 #import "VenueListController.h"
+#import "VenueListControllerNotifications.h"
 
 // Segue Identifiers
 static NSString * const VenueListContainerEmbedSegue = @"VenueListContainerEmbed";
@@ -66,6 +67,8 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueChanged:) name:TXHVenueChangedNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -77,6 +80,12 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
         self.leftHandSpace.constant = 0.0f;
         [self.view layoutIfNeeded];
     } completion:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Superclass overrides
@@ -92,14 +101,13 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
     if ([segueIdentifier isEqualToString:VenueListContainerEmbedSegue]) {
         VenueListController *venueListController = (VenueListController *)destinationViewController;
         venueListController.managedObjectContext = self.managedObjectContext;
-        venueListController.venueSelectionDelegate = self;
     }
 
     if ([segueIdentifier isEqualToString:SalesOrDoormanContainerEmbedSegue]) {
         // The storyboard has the this container loading a navigation controller, don't know why.
         UINavigationController *navController = (UINavigationController *)destinationViewController;
         self.salesOrDoormanViewController = [navController viewControllers][0];
-        [self.salesOrDoormanViewController setSelectedVenue:self.selectedVenue];
+        self.salesOrDoormanViewController.selectedVenue = self.selectedVenue;
     }
 
 }
@@ -118,12 +126,11 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 #pragma mark VenueSelectionProtocol methods
 
-- (void)setSelectedVenue:(TXHVenueMO *)venueMO {
-    _selectedVenue = venueMO;
-    [self.salesOrDoormanViewController setSelectedVenue:venueMO];
+#pragma mark - NotificationHandlers
+- (void)venueChanged:(NSNotification *)notification {
+    self.selectedVenue = [notification userInfo][TXHSelectedVenue];
     [self showOrHideVenueList:nil];
 }
-
 
 #pragma mark - Private methods
 

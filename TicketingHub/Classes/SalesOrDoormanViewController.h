@@ -8,9 +8,14 @@
 
 @import UIKit;
 
-#import "VenueSelectionProtocol.h"
+@class TXHVenueMO;
 
-@interface SalesOrDoormanViewController : UIViewController <VenueSelectionProtocol>
+@interface SalesOrDoormanViewController : UIViewController
+
+/**
+
+ */
+@property (strong, nonatomic) TXHVenueMO *selectedVenue;
 
 - (IBAction)selectMode:(id)sender;
 

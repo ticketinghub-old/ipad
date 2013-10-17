@@ -319,7 +319,7 @@
 		EE11AE1717BD2E48000042B2 /* _TXHVenueMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHVenueMO.m; sourceTree = "<group>"; };
 		EE11AE1917BD2E78000042B2 /* _TXHUserMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHUserMO.h; sourceTree = "<group>"; };
 		EE11AE1A17BD2EA4000042B2 /* _TXHUserMO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _TXHUserMO.m; sourceTree = "<group>"; };
-		EE3D81C5180C3F9F00D77CE6 /* VenueSelectionProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = VenueSelectionProtocol.h; path = TicketingHub/Classes/VenueSelectionProtocol.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		EE51C1EE180FED4F001AA88A /* VenueListControllerNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueListControllerNotifications.h; sourceTree = "<group>"; };
 		EE6D998E17BD453400D1E7CD /* TXHOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHOption.h; sourceTree = "<group>"; };
 		EE6D998F17BD453400D1E7CD /* TXHOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOption.m; sourceTree = "<group>"; };
 		EE6D999017BD453400D1E7CD /* TXHSeason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSeason.h; sourceTree = "<group>"; };
@@ -699,7 +699,6 @@
 			isa = PBXGroup;
 			children = (
 				58E4FB971760D3C800E328A0 /* Classes */,
-				EE3D81C6180C3FAA00D77CE6 /* Protocols */,
 				4DF9F92B179D50C10040FC5D /* Core Data */,
 				EEF8DA7B17F0539000579F5B /* Networking */,
 				58E4FB521760AE5500E328A0 /* Products */,
@@ -929,14 +928,6 @@
 			path = Externals/DCTCoreDataStack;
 			sourceTree = "<group>";
 		};
-		EE3D81C6180C3FAA00D77CE6 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				EE3D81C5180C3F9F00D77CE6 /* VenueSelectionProtocol.h */,
-			);
-			name = Protocols;
-			sourceTree = "<group>";
-		};
 		EE75D94217D1101C009ADCD8 /* Sales */ = {
 			isa = PBXGroup;
 			children = (
@@ -1026,10 +1017,11 @@
 		EE75D9AE17D11300009ADCD8 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				EE75D9AF17D11311009ADCD8 /* VenueListController.h */,
-				EE75D9B017D11311009ADCD8 /* VenueListController.m */,
 				EE75D9B117D11311009ADCD8 /* MainViewController.h */,
 				EE75D9B217D11311009ADCD8 /* MainViewController.m */,
+				EE75D9AF17D11311009ADCD8 /* VenueListController.h */,
+				EE75D9B017D11311009ADCD8 /* VenueListController.m */,
+				EE51C1EE180FED4F001AA88A /* VenueListControllerNotifications.h */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
