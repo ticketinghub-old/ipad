@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueSelected:) name:NOTIFICATION_VENUE_UPDATED object:nil];
+//  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueSelected:) name:NOTIFICATION_VENUE_UPDATED object:nil];
 }
 
 - (void)didReceiveMemoryWarning

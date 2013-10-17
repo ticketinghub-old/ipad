@@ -14,13 +14,6 @@
 #define doorDateCellSelected  @"doorDateCellSelected"
 #define doorTimeCellSelected  @"doorTimeCellSelected"
 
-// Name for notifications dispatched by MainViewController
-//static NSString* const NOTIFICATION_TOGGLE_MENU =       @"notificationToggleMenu";
-//static NSString* const NOTIFICATION_VENUE_SELECTED =    @"notificationVenueSelected";
-
-// Names for notifications dispatched by TXHServerAccessManager
-static NSString* const NOTIFICATION_VENUE_UPDATED =     @"notificationVenueUpdated";
-
 // Names for notifications dispatched by TXHSalesCalendarController
 static NSString* const NOTIFICATION_TIMESLOT_SELECTED = @"notificationTimeslotSelected";
 

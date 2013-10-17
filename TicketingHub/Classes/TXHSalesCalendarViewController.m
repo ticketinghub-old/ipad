@@ -43,7 +43,7 @@
 }
 
 - (void)setup {
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueUpdated:) name:NOTIFICATION_VENUE_UPDATED object:nil];
+//  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueUpdated:) name:NOTIFICATION_VENUE_UPDATED object:nil];
   self.timeSlots = [NSMutableArray array];
 }
 
