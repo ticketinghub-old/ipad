@@ -115,8 +115,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 - (void)presentLoginViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completion {
     TXHLoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:LoginViewControllerStoryboardIdentifier];
-    loginViewController.managedObjectContext = self.managedObjectContext;
-    loginViewController.dataController = self.dataController;
+    loginViewController.ticketingHubClient = self.ticketingHubClient;
     
     [self presentViewController:loginViewController animated:animated completion:completion];
 }

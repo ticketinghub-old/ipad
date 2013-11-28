@@ -8,14 +8,11 @@
 
 #import "TXHLoginViewController.h"
 
+#import <iOS-api/iOS-api.h>
 #import "TXHUserDefaultsKeys.h"
 
 // The storyboard identifier for this controller
 NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController";
-
-// These are application / client specific constants
-static NSString * const kClientId = @"ca99032b750f829630d8c9272bb9d3d6696b10f5bddfc34e4b7610eb772d28e7";
-static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fbaaf81e6ec900c71b8f4af62d09d";
 
 @interface TXHLoginViewController () <UITextFieldDelegate>
 
@@ -111,23 +108,8 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
     // Set the last user into the defaults
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:self.userField.text forKey:TXHUserDefaultsLastUserKey];
-    [userDefaults synchronize];
 
-    [self.dataController fetchVenuesForCurrentUserWithCompletion:^(NSError *error) {
-        if (error) {
-            if ([[error domain] isEqualToString:DataControllerErrorDomain]) {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[error localizedDescription] message:[error localizedFailureReason] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-                [alertView show];
-            } else {
-                DLog(@"Unable to fetch venues because: %@", error); // Caveman - needs to be refined.
-            }
-
-            return; // Bail on error.
-        }
-
-        // Success, the network controller handles the new object in the managed object context
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark Actions
@@ -135,11 +117,13 @@ static NSString * const kClientSecret = @"f9ce1f4e1c74cc38707e15c0a4286975898fba
 - (IBAction)login:(id)sender {
     self.loginButton.enabled = NO;
 
-    [self.dataController loginWithUsername:self.userField.text password:self.passwordField.text completion:^(NSError *error) {
-        if (error) {
+    [self.ticketingHubClient fetchSuppliersForUsername:self.userField.text password:self.passwordField.text withCompletion:^(NSArray *suppliers, NSError *error) {
+        if (!error) {
             DLog(@"Unable to log in because: %@", error); // Caveman - needs to be refined.
+            self.loginButton.enabled = YES;
             return;
         }
+
         [self loginCompleted];
     }];
 }

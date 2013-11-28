@@ -8,13 +8,12 @@
 
 @import UIKit;
 
-#import "DataController.h"
+@class TXHTicketingHubClient;
 
 extern NSString * const LoginViewControllerStoryboardIdentifier;
 
 @interface TXHLoginViewController : UIViewController
 
-@property (strong ,nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) DataController *dataController;
+@property (strong, nonatomic) TXHTicketingHubClient *ticketingHubClient;
 
 @end
