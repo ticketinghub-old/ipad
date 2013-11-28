@@ -10,11 +10,8 @@
 @import Security;
 @import SystemConfiguration;
 
-#import <Availability.h>
-
 // Logging helper macros
 #import "CommonMacros.h"
 
-#ifndef __IPHONE_7_0
-#warning "This project uses features only available in iOS SDK 7.0 and later."
-#endif
+// TicketingHubClient
+#import <iOS-api/TXHTicketingHubClient.h>

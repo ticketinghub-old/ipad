@@ -46,9 +46,6 @@
 		58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB561760AE5500E328A0 /* Foundation.framework */; };
 		58E4FB831760AE5500E328A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB811760AE5500E328A0 /* InfoPlist.strings */; };
 		58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB911760AEF300E328A0 /* Storyboard.storyboard */; };
-		EE6D999417BD453400D1E7CD /* TXHOption.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D998F17BD453400D1E7CD /* TXHOption.m */; };
-		EE6D999517BD453400D1E7CD /* TXHSeason.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D999117BD453400D1E7CD /* TXHSeason.m */; };
-		EE6D999617BD453400D1E7CD /* TXHVariation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D999317BD453400D1E7CD /* TXHVariation.m */; };
 		EE75D98817D11048009ADCD8 /* TXHSalesCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94417D11047009ADCD8 /* TXHSalesCalendarViewController.m */; };
 		EE75D98917D11048009ADCD8 /* TXHSalesCompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94617D11047009ADCD8 /* TXHSalesCompletionViewController.m */; };
 		EE75D98A17D11048009ADCD8 /* TXHSalesContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94917D11047009ADCD8 /* TXHSalesContentsViewController.m */; };
@@ -86,7 +83,6 @@
 		EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9AC17D112C4009ADCD8 /* TXHLoginViewController.m */; };
 		EE75D9B317D11311009ADCD8 /* VenueListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B017D11311009ADCD8 /* VenueListController.m */; };
 		EE75D9B417D11311009ADCD8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B217D11311009ADCD8 /* MainViewController.m */; };
-		EEABD7F617B4088300E17D54 /* TXHVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA6864717B3E47D0024B002 /* TXHVenue.m */; };
 		EEB1845817D114390025530A /* TXHBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843517D114390025530A /* TXHBaseCollectionViewCell.m */; };
 		EEB1845917D114390025530A /* TXHBaseDataEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843717D114390025530A /* TXHBaseDataEntryTableViewCell.m */; };
 		EEB1845A17D114390025530A /* TXHBaseDataEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843917D114390025530A /* TXHBaseDataEntryView.m */; };
@@ -124,23 +120,11 @@
 		EEB32C781847A709006045AF /* libSpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB32C621847A709006045AF /* libSpecta-ios-universal.a */; };
 		EEB32C791847A70A006045AF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = EEB32C631847A709006045AF /* LICENSE */; };
 		EEB32C7A1847A70A006045AF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EEB32C641847A709006045AF /* README.md */; };
+		EEB32C8C1847AA3D006045AF /* libiOS-api.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB32C831847A8A1006045AF /* libiOS-api.a */; };
+		EEB32C8D1847AA65006045AF /* iOS-api-Model.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EEB32C871847A8A1006045AF /* iOS-api-Model.bundle */; };
 		EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */; };
 		EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */; };
 		EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC4017B272F700F226BC /* Security.framework */; };
-		EEB4FD4A17B277D800F226BC /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD2617B277D800F226BC /* AFHTTPClient.m */; };
-		EEB4FD4B17B277D800F226BC /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD2817B277D800F226BC /* AFHTTPRequestOperation.m */; };
-		EEB4FD4C17B277D800F226BC /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD2A17B277D800F226BC /* AFImageRequestOperation.m */; };
-		EEB4FD4D17B277D800F226BC /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD2C17B277D800F226BC /* AFJSONRequestOperation.m */; };
-		EEB4FD4E17B277D800F226BC /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD2E17B277D800F226BC /* AFNetworkActivityIndicatorManager.m */; };
-		EEB4FD4F17B277D800F226BC /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD3117B277D800F226BC /* AFPropertyListRequestOperation.m */; };
-		EEB4FD5017B277D800F226BC /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD3317B277D800F226BC /* AFURLConnectionOperation.m */; };
-		EEB4FD5117B277D800F226BC /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD3517B277D800F226BC /* AFXMLRequestOperation.m */; };
-		EEB4FD5417B277D800F226BC /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD3917B277D800F226BC /* UIImageView+AFNetworking.m */; };
-		EEB4FD5517B277D800F226BC /* NSDictionary+JCSKeyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD3C17B277D800F226BC /* NSDictionary+JCSKeyMapping.m */; };
-		EEB4FD5617B277D800F226BC /* _TXHNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD3F17B277D800F226BC /* _TXHNetworkClient.m */; };
-		EEB4FD5717B277D800F226BC /* _TXHNetworkOAuthClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD4117B277D800F226BC /* _TXHNetworkOAuthClient.m */; };
-		EEB4FD5917B277D800F226BC /* TXHTicketingHubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD4417B277D800F226BC /* TXHTicketingHubClient.m */; };
-		EEB4FD5A17B277D800F226BC /* TXHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4FD4617B277D800F226BC /* TXHUser.m */; };
 		EEC2878B17C7B89000CDE3F1 /* TXHOptionMOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC2878A17C7B89000CDE3F1 /* TXHOptionMOTests.m */; };
 		EEF6BA4717D1192B005B1B20 /* BarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6BA4617D1192B005B1B20 /* BarcodeViewController.m */; };
 		EEF8DA7E17F053D500579F5B /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF8DA7D17F053D500579F5B /* DataController.m */; };
@@ -153,6 +137,41 @@
 			proxyType = 1;
 			remoteGlobalIDString = 58E4FB501760AE5500E328A0;
 			remoteInfo = TicketingHub;
+		};
+		EEB32C821847A8A1006045AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEB32C7B1847A89F006045AF /* iOS-api.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EEF85C6218183D9200658409;
+			remoteInfo = "iOS-api";
+		};
+		EEB32C841847A8A1006045AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEB32C7B1847A89F006045AF /* iOS-api.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EEF85C7218183D9200658409;
+			remoteInfo = "iOS-apiTests";
+		};
+		EEB32C861847A8A1006045AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEB32C7B1847A89F006045AF /* iOS-api.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE67B398183D175D0021B76A;
+			remoteInfo = "iOS-api-Model";
+		};
+		EEB32C881847AA2F006045AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEB32C7B1847A89F006045AF /* iOS-api.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EEF85C6118183D9200658409;
+			remoteInfo = "iOS-api";
+		};
+		EEB32C8A1847AA2F006045AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEB32C7B1847A89F006045AF /* iOS-api.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EE67B397183D175D0021B76A;
+			remoteInfo = "iOS-api-Model";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -249,12 +268,6 @@
 		EE11AE0317BD2138000042B2 /* textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textfield.png; sourceTree = "<group>"; };
 		EE11AE0417BD2138000042B2 /* textfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield@2x.png"; sourceTree = "<group>"; };
 		EE51C1EE180FED4F001AA88A /* VenueListControllerNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueListControllerNotifications.h; sourceTree = "<group>"; };
-		EE6D998E17BD453400D1E7CD /* TXHOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHOption.h; sourceTree = "<group>"; };
-		EE6D998F17BD453400D1E7CD /* TXHOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOption.m; sourceTree = "<group>"; };
-		EE6D999017BD453400D1E7CD /* TXHSeason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSeason.h; sourceTree = "<group>"; };
-		EE6D999117BD453400D1E7CD /* TXHSeason.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSeason.m; sourceTree = "<group>"; };
-		EE6D999217BD453400D1E7CD /* TXHVariation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVariation.h; sourceTree = "<group>"; };
-		EE6D999317BD453400D1E7CD /* TXHVariation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVariation.m; sourceTree = "<group>"; };
 		EE75D94317D11047009ADCD8 /* TXHSalesCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesCalendarViewController.h; path = TicketingHub/Classes/TXHSalesCalendarViewController.h; sourceTree = SOURCE_ROOT; };
 		EE75D94417D11047009ADCD8 /* TXHSalesCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesCalendarViewController.m; path = TicketingHub/Classes/TXHSalesCalendarViewController.m; sourceTree = SOURCE_ROOT; };
 		EE75D94517D11047009ADCD8 /* TXHSalesCompletionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesCompletionViewController.h; path = TicketingHub/Classes/TXHSalesCompletionViewController.h; sourceTree = SOURCE_ROOT; };
@@ -331,8 +344,6 @@
 		EE75D9B117D11311009ADCD8 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MainViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		EE75D9B217D11311009ADCD8 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MainViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EE935E7417B3EB630080A1C2 /* CommonMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonMacros.h; sourceTree = "<group>"; };
-		EEA6864617B3E47D0024B002 /* TXHVenue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHVenue.h; sourceTree = "<group>"; };
-		EEA6864717B3E47D0024B002 /* TXHVenue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TXHVenue.m; sourceTree = "<group>"; };
 		EEB1843417D114390025530A /* TXHBaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBaseCollectionViewCell.h; sourceTree = "<group>"; };
 		EEB1843517D114390025530A /* TXHBaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBaseCollectionViewCell.m; sourceTree = "<group>"; };
 		EEB1843617D114390025530A /* TXHBaseDataEntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBaseDataEntryTableViewCell.h; sourceTree = "<group>"; };
@@ -454,38 +465,10 @@
 		EEB32C721847A709006045AF /* XCTestCase+Specta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+Specta.h"; sourceTree = "<group>"; };
 		EEB32C731847A709006045AF /* XCTestLog+Specta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestLog+Specta.h"; sourceTree = "<group>"; };
 		EEB32C741847A709006045AF /* XCTestRun+Specta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestRun+Specta.h"; sourceTree = "<group>"; };
+		EEB32C7B1847A89F006045AF /* iOS-api.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "iOS-api.xcodeproj"; path = "Externals/ios-api/iOS-api.xcodeproj"; sourceTree = "<group>"; };
 		EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EEB4FC4017B272F700F226BC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		EEB4FD2517B277D800F226BC /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPClient.h; path = "Externals/ios-api/AFNetworking/AFHTTPClient.h"; sourceTree = SOURCE_ROOT; };
-		EEB4FD2617B277D800F226BC /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPClient.m; path = "Externals/ios-api/AFNetworking/AFHTTPClient.m"; sourceTree = SOURCE_ROOT; };
-		EEB4FD2717B277D800F226BC /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = "Externals/ios-api/AFNetworking/AFHTTPRequestOperation.h"; sourceTree = SOURCE_ROOT; };
-		EEB4FD2817B277D800F226BC /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = "Externals/ios-api/AFNetworking/AFHTTPRequestOperation.m"; sourceTree = SOURCE_ROOT; };
-		EEB4FD2917B277D800F226BC /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFImageRequestOperation.h; path = "Externals/ios-api/AFNetworking/AFImageRequestOperation.h"; sourceTree = SOURCE_ROOT; };
-		EEB4FD2A17B277D800F226BC /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFImageRequestOperation.m; path = "Externals/ios-api/AFNetworking/AFImageRequestOperation.m"; sourceTree = SOURCE_ROOT; };
-		EEB4FD2B17B277D800F226BC /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFJSONRequestOperation.h; path = "Externals/ios-api/AFNetworking/AFJSONRequestOperation.h"; sourceTree = SOURCE_ROOT; };
-		EEB4FD2C17B277D800F226BC /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFJSONRequestOperation.m; path = "Externals/ios-api/AFNetworking/AFJSONRequestOperation.m"; sourceTree = SOURCE_ROOT; };
-		EEB4FD2D17B277D800F226BC /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = "Externals/ios-api/AFNetworking/AFNetworkActivityIndicatorManager.h"; sourceTree = SOURCE_ROOT; };
-		EEB4FD2E17B277D800F226BC /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "Externals/ios-api/AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = SOURCE_ROOT; };
-		EEB4FD2F17B277D800F226BC /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = "Externals/ios-api/AFNetworking/AFNetworking.h"; sourceTree = SOURCE_ROOT; };
-		EEB4FD3017B277D800F226BC /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFPropertyListRequestOperation.h; path = "Externals/ios-api/AFNetworking/AFPropertyListRequestOperation.h"; sourceTree = SOURCE_ROOT; };
-		EEB4FD3117B277D800F226BC /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFPropertyListRequestOperation.m; path = "Externals/ios-api/AFNetworking/AFPropertyListRequestOperation.m"; sourceTree = SOURCE_ROOT; };
-		EEB4FD3217B277D800F226BC /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = "Externals/ios-api/AFNetworking/AFURLConnectionOperation.h"; sourceTree = SOURCE_ROOT; };
-		EEB4FD3317B277D800F226BC /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = "Externals/ios-api/AFNetworking/AFURLConnectionOperation.m"; sourceTree = SOURCE_ROOT; };
-		EEB4FD3417B277D800F226BC /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFXMLRequestOperation.h; path = "Externals/ios-api/AFNetworking/AFXMLRequestOperation.h"; sourceTree = SOURCE_ROOT; };
-		EEB4FD3517B277D800F226BC /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFXMLRequestOperation.m; path = "Externals/ios-api/AFNetworking/AFXMLRequestOperation.m"; sourceTree = SOURCE_ROOT; };
-		EEB4FD3817B277D800F226BC /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "Externals/ios-api/AFNetworking/UIImageView+AFNetworking.h"; sourceTree = SOURCE_ROOT; };
-		EEB4FD3917B277D800F226BC /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "Externals/ios-api/AFNetworking/UIImageView+AFNetworking.m"; sourceTree = SOURCE_ROOT; };
-		EEB4FD3B17B277D800F226BC /* NSDictionary+JCSKeyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JCSKeyMapping.h"; sourceTree = "<group>"; };
-		EEB4FD3C17B277D800F226BC /* NSDictionary+JCSKeyMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JCSKeyMapping.m"; sourceTree = "<group>"; };
-		EEB4FD3E17B277D800F226BC /* _TXHNetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHNetworkClient.h; sourceTree = "<group>"; };
-		EEB4FD3F17B277D800F226BC /* _TXHNetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHNetworkClient.m; sourceTree = "<group>"; };
-		EEB4FD4017B277D800F226BC /* _TXHNetworkOAuthClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHNetworkOAuthClient.h; sourceTree = "<group>"; };
-		EEB4FD4117B277D800F226BC /* _TXHNetworkOAuthClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHNetworkOAuthClient.m; sourceTree = "<group>"; };
-		EEB4FD4317B277D800F226BC /* TXHTicketingHubClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketingHubClient.h; sourceTree = "<group>"; };
-		EEB4FD4417B277D800F226BC /* TXHTicketingHubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubClient.m; sourceTree = "<group>"; };
-		EEB4FD4517B277D800F226BC /* TXHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHUser.h; sourceTree = "<group>"; };
-		EEB4FD4617B277D800F226BC /* TXHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUser.m; sourceTree = "<group>"; };
 		EEC2878A17C7B89000CDE3F1 /* TXHOptionMOTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOptionMOTests.m; sourceTree = "<group>"; };
 		EEF6BA4517D1192B005B1B20 /* BarcodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeViewController.h; sourceTree = "<group>"; };
 		EEF6BA4617D1192B005B1B20 /* BarcodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeViewController.m; sourceTree = "<group>"; };
@@ -498,6 +481,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEB32C8C1847AA3D006045AF /* libiOS-api.a in Frameworks */,
 				4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */,
 				58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */,
 				58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */,
@@ -1032,81 +1016,20 @@
 			path = "Externals/ios-api/iOS-apiTests/Externals/TestKits/specta";
 			sourceTree = SOURCE_ROOT;
 		};
-		EEB4FD2017B277D800F226BC /* iOS-api */ = {
+		EEB32C7C1847A89F006045AF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EEB4FD2317B277D800F226BC /* AFNetworking */,
-				EEB4FD3A17B277D800F226BC /* NSDictionary+JCSKeyMapping */,
-				EEB4FD3D17B277D800F226BC /* Private */,
-				EE6D998E17BD453400D1E7CD /* TXHOption.h */,
-				EE6D998F17BD453400D1E7CD /* TXHOption.m */,
-				EE6D999017BD453400D1E7CD /* TXHSeason.h */,
-				EE6D999117BD453400D1E7CD /* TXHSeason.m */,
-				EEB4FD4317B277D800F226BC /* TXHTicketingHubClient.h */,
-				EEB4FD4417B277D800F226BC /* TXHTicketingHubClient.m */,
-				EEB4FD4517B277D800F226BC /* TXHUser.h */,
-				EEB4FD4617B277D800F226BC /* TXHUser.m */,
-				EE6D999217BD453400D1E7CD /* TXHVariation.h */,
-				EE6D999317BD453400D1E7CD /* TXHVariation.m */,
-				EEA6864617B3E47D0024B002 /* TXHVenue.h */,
-				EEA6864717B3E47D0024B002 /* TXHVenue.m */,
+				EEB32C831847A8A1006045AF /* libiOS-api.a */,
+				EEB32C851847A8A1006045AF /* iOS-apiTests.xctest */,
+				EEB32C871847A8A1006045AF /* iOS-api-Model.bundle */,
 			);
-			name = "iOS-api";
-			path = "Externals/ios-api";
+			name = Products;
 			sourceTree = "<group>";
-		};
-		EEB4FD2317B277D800F226BC /* AFNetworking */ = {
-			isa = PBXGroup;
-			children = (
-				EEB4FD2517B277D800F226BC /* AFHTTPClient.h */,
-				EEB4FD2617B277D800F226BC /* AFHTTPClient.m */,
-				EEB4FD2717B277D800F226BC /* AFHTTPRequestOperation.h */,
-				EEB4FD2817B277D800F226BC /* AFHTTPRequestOperation.m */,
-				EEB4FD2917B277D800F226BC /* AFImageRequestOperation.h */,
-				EEB4FD2A17B277D800F226BC /* AFImageRequestOperation.m */,
-				EEB4FD2B17B277D800F226BC /* AFJSONRequestOperation.h */,
-				EEB4FD2C17B277D800F226BC /* AFJSONRequestOperation.m */,
-				EEB4FD2D17B277D800F226BC /* AFNetworkActivityIndicatorManager.h */,
-				EEB4FD2E17B277D800F226BC /* AFNetworkActivityIndicatorManager.m */,
-				EEB4FD2F17B277D800F226BC /* AFNetworking.h */,
-				EEB4FD3017B277D800F226BC /* AFPropertyListRequestOperation.h */,
-				EEB4FD3117B277D800F226BC /* AFPropertyListRequestOperation.m */,
-				EEB4FD3217B277D800F226BC /* AFURLConnectionOperation.h */,
-				EEB4FD3317B277D800F226BC /* AFURLConnectionOperation.m */,
-				EEB4FD3417B277D800F226BC /* AFXMLRequestOperation.h */,
-				EEB4FD3517B277D800F226BC /* AFXMLRequestOperation.m */,
-				EEB4FD3817B277D800F226BC /* UIImageView+AFNetworking.h */,
-				EEB4FD3917B277D800F226BC /* UIImageView+AFNetworking.m */,
-			);
-			path = AFNetworking;
-			sourceTree = "<group>";
-		};
-		EEB4FD3A17B277D800F226BC /* NSDictionary+JCSKeyMapping */ = {
-			isa = PBXGroup;
-			children = (
-				EEB4FD3B17B277D800F226BC /* NSDictionary+JCSKeyMapping.h */,
-				EEB4FD3C17B277D800F226BC /* NSDictionary+JCSKeyMapping.m */,
-			);
-			name = "NSDictionary+JCSKeyMapping";
-			path = "Externals/ios-api/NSDictionary+JCSKeyMapping";
-			sourceTree = SOURCE_ROOT;
-		};
-		EEB4FD3D17B277D800F226BC /* Private */ = {
-			isa = PBXGroup;
-			children = (
-				EEB4FD3E17B277D800F226BC /* _TXHNetworkClient.h */,
-				EEB4FD3F17B277D800F226BC /* _TXHNetworkClient.m */,
-				EEB4FD4017B277D800F226BC /* _TXHNetworkOAuthClient.h */,
-				EEB4FD4117B277D800F226BC /* _TXHNetworkOAuthClient.m */,
-			);
-			name = Private;
-			path = "Externals/ios-api/Private";
-			sourceTree = SOURCE_ROOT;
 		};
 		EEF8DA7B17F0539000579F5B /* iOS-API */ = {
 			isa = PBXGroup;
 			children = (
-				EEB4FD2017B277D800F226BC /* iOS-api */,
+				EEB32C7B1847A89F006045AF /* iOS-api.xcodeproj */,
 				EEF8DA7C17F053D500579F5B /* DataController.h */,
 				EEF8DA7D17F053D500579F5B /* DataController.m */,
 				4DA05FAF178C367F005161E6 /* TXHServerAccessManager.h */,
@@ -1129,6 +1052,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				EEB32C891847AA2F006045AF /* PBXTargetDependency */,
+				EEB32C8B1847AA2F006045AF /* PBXTargetDependency */,
 			);
 			name = TicketingHub;
 			productName = TicketingHub;
@@ -1174,6 +1099,12 @@
 			mainGroup = 58E4FB481760AE5500E328A0;
 			productRefGroup = 58E4FB521760AE5500E328A0 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EEB32C7C1847A89F006045AF /* Products */;
+					ProjectRef = EEB32C7B1847A89F006045AF /* iOS-api.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				58E4FB501760AE5500E328A0 /* TicketingHub */,
@@ -1181,6 +1112,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EEB32C831847A8A1006045AF /* libiOS-api.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libiOS-api.a";
+			remoteRef = EEB32C821847A8A1006045AF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEB32C851847A8A1006045AF /* iOS-apiTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "iOS-apiTests.xctest";
+			remoteRef = EEB32C841847A8A1006045AF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEB32C871847A8A1006045AF /* iOS-api-Model.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "iOS-api-Model.bundle";
+			remoteRef = EEB32C861847A8A1006045AF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		58E4FB4F1760AE5500E328A0 /* Resources */ = {
@@ -1192,6 +1147,7 @@
 				58E4FB611760AE5500E328A0 /* InfoPlist.strings in Resources */,
 				4DB23D6E17A169D8002B7B11 /* Salesman.storyboard in Resources */,
 				58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */,
+				EEB32C8D1847AA65006045AF /* iOS-api-Model.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1230,19 +1186,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEB4FD5617B277D800F226BC /* _TXHNetworkClient.m in Sources */,
-				EEB4FD5717B277D800F226BC /* _TXHNetworkOAuthClient.m in Sources */,
-				EEB4FD4A17B277D800F226BC /* AFHTTPClient.m in Sources */,
-				EEB4FD4B17B277D800F226BC /* AFHTTPRequestOperation.m in Sources */,
-				EEB4FD4C17B277D800F226BC /* AFImageRequestOperation.m in Sources */,
-				EEB4FD4D17B277D800F226BC /* AFJSONRequestOperation.m in Sources */,
-				EEB4FD4E17B277D800F226BC /* AFNetworkActivityIndicatorManager.m in Sources */,
-				EEB4FD4F17B277D800F226BC /* AFPropertyListRequestOperation.m in Sources */,
-				EEB4FD5017B277D800F226BC /* AFURLConnectionOperation.m in Sources */,
-				EEB4FD5117B277D800F226BC /* AFXMLRequestOperation.m in Sources */,
 				EEF6BA4717D1192B005B1B20 /* BarcodeViewController.m in Sources */,
 				58E4FB631760AE5500E328A0 /* main.m in Sources */,
-				EEB4FD5517B277D800F226BC /* NSDictionary+JCSKeyMapping.m in Sources */,
 				4D8A106C17BD2DF700CEECAD /* PKAddressZip.m in Sources */,
 				4D8A106D17BD2DF700CEECAD /* PKCard.m in Sources */,
 				4D8A106E17BD2DF700CEECAD /* PKCardCVC.m in Sources */,
@@ -1282,7 +1227,6 @@
 				EEF8DA7E17F053D500579F5B /* DataController.m in Sources */,
 				EE75D9B317D11311009ADCD8 /* VenueListController.m in Sources */,
 				EE75D9B417D11311009ADCD8 /* MainViewController.m in Sources */,
-				EE6D999417BD453400D1E7CD /* TXHOption.m in Sources */,
 				EEB1846217D114390025530A /* TXHOptionsExtrasItem.m in Sources */,
 				EEB1846317D114390025530A /* TXHQuantitySelectorViewController.m in Sources */,
 				EE75D98817D11048009ADCD8 /* TXHSalesCalendarViewController.m in Sources */,
@@ -1319,7 +1263,6 @@
 				EE75D9A717D11048009ADCD8 /* TXHSalesUpgradeHeader.m in Sources */,
 				EE75D9A817D11048009ADCD8 /* TXHSalesWizardDetailsViewController.m in Sources */,
 				EE75D9A917D11048009ADCD8 /* TXHSalesWizardViewController.m in Sources */,
-				EE6D999517BD453400D1E7CD /* TXHSeason.m in Sources */,
 				4D859FF2179453EA000B2FCC /* TXHSeason_old.m in Sources */,
 				EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */,
 				4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */,
@@ -1327,18 +1270,13 @@
 				EEB1846617D114390025530A /* TXHTextEntryTableViewCell.m in Sources */,
 				EEB1846717D114390025530A /* TXHTextEntryView.m in Sources */,
 				4D307DB71796F9FC00822645 /* TXHTicketDetail.m in Sources */,
-				EEB4FD5917B277D800F226BC /* TXHTicketingHubClient.m in Sources */,
 				4D1A0C2917A7F49C00960906 /* TXHTicketTier.m in Sources */,
 				EEB1848117D114B30025530A /* TXHTimeCell.m in Sources */,
 				EEB1846817D114390025530A /* TXHTimeFormatter.m in Sources */,
 				4D859FF817953FA1000B2FCC /* TXHTimeSlot_old.m in Sources */,
 				EEB1849317D115640025530A /* TXHTimeslotSelectorViewController.m in Sources */,
 				EEB1849417D115640025530A /* TXHTransitionSegue.m in Sources */,
-				EEB4FD5A17B277D800F226BC /* TXHUser.m in Sources */,
-				EE6D999617BD453400D1E7CD /* TXHVariation.m in Sources */,
 				4D859FF517945E4D000B2FCC /* TXHVariation_old.m in Sources */,
-				EEABD7F617B4088300E17D54 /* TXHVenue.m in Sources */,
-				EEB4FD5417B277D800F226BC /* UIImageView+AFNetworking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1360,6 +1298,16 @@
 			isa = PBXTargetDependency;
 			target = 58E4FB501760AE5500E328A0 /* TicketingHub */;
 			targetProxy = 58E4FB7C1760AE5500E328A0 /* PBXContainerItemProxy */;
+		};
+		EEB32C891847AA2F006045AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "iOS-api";
+			targetProxy = EEB32C881847AA2F006045AF /* PBXContainerItemProxy */;
+		};
+		EEB32C8B1847AA2F006045AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "iOS-api-Model";
+			targetProxy = EEB32C8A1847AA2F006045AF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1476,6 +1424,7 @@
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = (
@@ -1506,6 +1455,7 @@
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = (
@@ -1634,6 +1584,7 @@
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = (

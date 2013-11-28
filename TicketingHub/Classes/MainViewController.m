@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 
-#import "DCTCoreDataStack.h"
+#import <iOS-api/TXHTicketingHubClient.h>
 #import "DataController.h"
 #import "SalesOrDoormanViewController.h"
 #import "TXHCommonNames.h"
