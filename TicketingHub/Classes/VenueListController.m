@@ -12,10 +12,10 @@
 #import "TXHServerAccessManager.h"
 #import "TXHUserMO.h"
 #import "TXHVenueMO.h"
-#import "VenueListControllerNotifications.h"
+#import "ProductListControllerNotifications.h"
 
-// Declaration of strings declared in VenueListControllerNotifications.h
-NSString * const TXHVenueChangedNotification = @"TXHVenueChangedNotification";
+// Declaration of strings declared in ProductListControllerNotifications.h
+NSString * const TXHProductChangedNotification = @"TXHProductChangedNotification";
 NSString * const TXHSelectedVenue = @"TXHSelectedVenue";
 
 @interface VenueListController () <UITableViewDataSource, UITableViewDelegate>
@@ -158,7 +158,7 @@ NSString * const TXHSelectedVenue = @"TXHSelectedVenue";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TXHVenueMO *venue = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:TXHVenueChangedNotification object:self userInfo:@{TXHSelectedVenue : venue}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TXHProductChangedNotification object:self userInfo:@{TXHSelectedVenue : venue}];
 
     // Debug
     DLog(@"Earliest date: %@", venue.earliestDateFromAllSeasons);

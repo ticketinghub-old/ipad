@@ -6,11 +6,12 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-@import CoreData;
 @import UIKit;
+
+@class TXHTicketingHubClient;
 
 @interface VenueListController : UIViewController <NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) TXHTicketingHubClient *ticketingHubClient;
 
 @end

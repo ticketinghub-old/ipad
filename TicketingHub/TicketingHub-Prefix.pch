@@ -14,4 +14,4 @@
 #import "CommonMacros.h"
 
 // TicketingHubClient
-#import <iOS-api/TXHTicketingHubClient.h>
+#import <iOS-api/iOS-api.h>

@@ -1,5 +1,5 @@
 //
-//  VenueListControllerNotifications.h
+//  ProductListControllerNotifications.h
 //  TicketingHub
 //
 //  Created by Abizer Nasir on 17/10/2013.
@@ -13,7 +13,7 @@
  The `userInfo` contain the following key:value
       TXHSelectedVenue : a reference to the TXHVenueMO object that has been selected.
  */
-extern NSString * const TXHVenueChangedNotification;
+extern NSString * const TXHProductChangedNotification;
 
 /**
  The key used by the `userInfo` dictionary containing the selected venue reference

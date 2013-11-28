@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 
-#import <iOS-api/TXHTicketingHubClient.h>
+#import <iOS-api/iOS-api.h>
 #import "DataController.h"
 #import "SalesOrDoormanViewController.h"
 #import "TXHCommonNames.h"
@@ -16,7 +16,7 @@
 #import "TXHUserDefaultsKeys.h"
 #import "TXHVenueMO.h"
 #import "VenueListController.h"
-#import "VenueListControllerNotifications.h"
+#import "ProductListControllerNotifications.h"
 
 // Segue Identifiers
 static NSString * const VenueListContainerEmbedSegue = @"VenueListContainerEmbed";
@@ -24,7 +24,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 @interface MainViewController ()
 
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) TXHTicketingHubClient *ticketingHubClient;
 @property (strong, nonatomic) UITapGestureRecognizer  *tapRecogniser;
 @property (weak, nonatomic) TXHVenueMO *selectedVenue;
 @property (strong, nonatomic) DataController *dataController;
@@ -48,9 +48,8 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 }
 
 - (void)awakeFromNib {
-    // Stand up the stack and network controller as early as possible so they are available for the embed segues.
-    [self standUpCoreDataStack];
-    self.dataController = [[DataController alloc] initWithManagedObjectContext:self.managedObjectContext];
+    // Stand up the client library early on so it is available for the segues.
+    self.ticketingHubClient = [[TXHTicketingHubClient alloc] initWithStoreURL:[[self class] storeURL]];
 }
 
 #pragma mark - View lifecycle
@@ -68,7 +67,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueChanged:) name:TXHVenueChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueChanged:) name:TXHProductChangedNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -100,7 +99,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
     if ([segueIdentifier isEqualToString:VenueListContainerEmbedSegue]) {
         VenueListController *venueListController = (VenueListController *)destinationViewController;
-        venueListController.managedObjectContext = self.managedObjectContext;
+        venueListController.ticketingHubClient = self.ticketingHubClient;
     }
 
     if ([segueIdentifier isEqualToString:SalesOrDoormanContainerEmbedSegue]) {
@@ -134,17 +133,12 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 #pragma mark - Private methods
 
-- (void)standUpCoreDataStack {
-    NSDictionary *options = @{DCTCoreDataStackExcludeFromBackupStoreOption : @YES,
-                              NSMigratePersistentStoresAutomaticallyOption : @YES,
-                              NSInferMappingModelAutomaticallyOption : @YES};
-
+// Convenience method to return the URL for the Core Data Store
++ (NSURL *)storeURL {
     NSURL *documentDirectoryURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     NSURL *storeURL = [documentDirectoryURL URLByAppendingPathComponent:@"TicktingHub.sqlite"];
 
-    DCTCoreDataStack *coreDataStack = [[DCTCoreDataStack alloc] initWithStoreURL:storeURL storeType:NSSQLiteStoreType storeOptions:options modelConfiguration:nil modelURL:nil];
-
-    self.managedObjectContext = coreDataStack.managedObjectContext;
+    return storeURL;
 }
 
 - (void)tap:(UITapGestureRecognizer *)recogniser {

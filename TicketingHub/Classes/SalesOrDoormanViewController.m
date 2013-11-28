@@ -19,7 +19,7 @@
 #import "TXHTimeslotSelectorViewController.h"
 #import "TXHTransitionSegue.h"
 #import "TXHVenueMO.h"
-#import "VenueListControllerNotifications.h"
+#import "ProductListControllerNotifications.h"
 
 @interface SalesOrDoormanViewController () <TXHDateSelectorViewDelegate, TXHTimeSlotSelectorDelegate>
 
@@ -105,7 +105,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueChanged:) name:TXHVenueChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productChanged:) name:TXHProductChangedNotification object:nil];
 }
 
 #pragma mark - Superclass overrides
@@ -170,7 +170,7 @@
 
 #pragma mark - Notification handlers
 
-- (void)venueChanged:(NSNotification *)notification {
+- (void)productChanged:(NSNotification *)notification {
     self.selectedVenue = [notification userInfo][TXHSelectedVenue];
 }
 
