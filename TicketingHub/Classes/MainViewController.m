@@ -67,7 +67,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueChanged:) name:TXHProductChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productChanged:) name:TXHProductChangedNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -116,16 +116,14 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 - (void)presentLoginViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completion {
     TXHLoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:LoginViewControllerStoryboardIdentifier];
     loginViewController.ticketingHubClient = self.ticketingHubClient;
-    
+
     [self presentViewController:loginViewController animated:animated completion:completion];
 }
 
 #pragma mark - Delegate Methods
 
-#pragma mark VenueSelectionProtocol methods
-
 #pragma mark - NotificationHandlers
-- (void)venueChanged:(NSNotification *)notification {
+- (void)productChanged:(NSNotification *)notification {
     self.selectedVenue = [notification userInfo][TXHSelectedVenue];
     [self showOrHideVenueList:nil];
 }
