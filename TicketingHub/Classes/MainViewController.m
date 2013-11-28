@@ -15,7 +15,7 @@
 #import "TXHLoginViewController.h"
 #import "TXHUserDefaultsKeys.h"
 #import "TXHVenueMO.h"
-#import "VenueListController.h"
+#import "ProductListController.h"
 #import "ProductListControllerNotifications.h"
 
 // Segue Identifiers
@@ -98,8 +98,8 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
     id destinationViewController = segue.destinationViewController;
 
     if ([segueIdentifier isEqualToString:VenueListContainerEmbedSegue]) {
-        VenueListController *venueListController = (VenueListController *)destinationViewController;
-        venueListController.ticketingHubClient = self.ticketingHubClient;
+        ProductListController *productListController = (ProductListController *)destinationViewController;
+        productListController.ticketingHubClient = self.ticketingHubClient;
     }
 
     if ([segueIdentifier isEqualToString:SalesOrDoormanContainerEmbedSegue]) {

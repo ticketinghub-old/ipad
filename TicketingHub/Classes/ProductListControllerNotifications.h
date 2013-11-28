@@ -7,9 +7,9 @@
 //
 
 /**
- Notification sent by the VenueListController when the selected venue is changed.
+ Notification sent by the ProductListController when the selected venue is changed.
  
- The `object` will be the instance of VenueListController
+ The `object` will be the instance of ProductListController
  The `userInfo` contain the following key:value
       TXHSelectedVenue : a reference to the TXHVenueMO object that has been selected.
  */

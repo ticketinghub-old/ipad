@@ -1,5 +1,5 @@
 //
-//  VenueListController.h
+//  ProductListController.h
 //  TicketingHub
 //
 //  Created by Mark on 10/07/2013.
@@ -10,7 +10,7 @@
 
 @class TXHTicketingHubClient;
 
-@interface VenueListController : UIViewController <NSFetchedResultsControllerDelegate>
+@interface ProductListController : UIViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) TXHTicketingHubClient *ticketingHubClient;
 

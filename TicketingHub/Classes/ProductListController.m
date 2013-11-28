@@ -1,12 +1,12 @@
 //
-//  VenueListController.m
+//  ProductListController.m
 //  TicketingHub
 //
 //  Created by Mark on 10/07/2013.
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import "VenueListController.h"
+#import "ProductListController.h"
 
 #import "TXHCommonNames.h"
 #import "TXHServerAccessManager.h"
@@ -18,7 +18,7 @@
 NSString * const TXHProductChangedNotification = @"TXHProductChangedNotification";
 NSString * const TXHSelectedVenue = @"TXHSelectedVenue";
 
-@interface VenueListController () <UITableViewDataSource, UITableViewDelegate>
+@interface ProductListController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *logoutView;
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
@@ -32,7 +32,7 @@ NSString * const TXHSelectedVenue = @"TXHSelectedVenue";
 
 @end
 
-@implementation VenueListController
+@implementation ProductListController
 
 #pragma mark - View lifecycle
 
