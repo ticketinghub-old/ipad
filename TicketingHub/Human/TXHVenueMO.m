@@ -2,6 +2,7 @@
 
 #import "TXHVenue.h"
 #import "TXHPermissionMO.h"
+#import "TXHSeasonMO.h"
 
 
 @interface TXHVenueMO ()
@@ -69,6 +70,38 @@
     }
 
     return venue;
+}
+
+#pragma mark - Public
+
+- (NSDate *)earliestDateFromAllSeasons {
+    NSArray *seasonArray = [self.seasons allObjects];
+
+    if (!seasonArray) {
+        return nil;
+    }
+
+    NSDate *earliestDate = [NSDate distantFuture];
+    for (TXHSeasonMO *season in seasonArray) {
+        earliestDate = [season.startDate earlierDate:earliestDate];
+    }
+
+    return earliestDate;
+}
+
+- (NSDate *)latestDateFromAllSeasons {
+    NSArray *seasonArray = [self.seasons allObjects];
+
+    if (!seasonArray) {
+        return nil;
+    }
+
+    NSDate *latestDate = [NSDate distantPast];
+    for (TXHSeasonMO *season in seasonArray) {
+        latestDate = [season.endDate laterDate:latestDate];
+    }
+
+    return latestDate;
 }
 
 @end

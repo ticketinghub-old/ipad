@@ -159,6 +159,10 @@ NSString * const TXHSelectedVenue = @"TXHSelectedVenue";
     TXHVenueMO *venue = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:TXHVenueChangedNotification object:self userInfo:@{TXHSelectedVenue : venue}];
+
+    // Debug
+    DLog(@"Earliest date: %@", venue.earliestDateFromAllSeasons);
+    DLog(@"Latest date: %@", venue.latestDateFromAllSeasons);
 }
 
 #pragma mark - Private methods

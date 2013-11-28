@@ -6,12 +6,24 @@
 
 @property (strong, readonly, nonatomic) NSTimeZone *timeZone;
 
-/*! Create or update an existing TXHVenueMO object with a TXHVenue object in a provided managed object context.
+/** Create or update an existing TXHVenueMO object with a TXHVenue object in a provided managed object context.
  *
  *  \param aVenue the user object returned from a call to the library
  *  \param managedObjectContext the NSManagedObjectContext instance in which to create the new object.
  *  \returns a TXHUserMO object.
  */
 + (instancetype)venueWithObjectCreateIfNeeded:(TXHVenue *)aVenue inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
+
+/** Returns the earliest date from all related seasons
+ 
+    @returns an NSDate object or nil if there are no seasons
+ */
+- (NSDate *)earliestDateFromAllSeasons;
+
+/** Returns the latest date from all related seasons
+
+ @returns an NSDate object or nil if there are no seasons
+ */
+- (NSDate *)latestDateFromAllSeasons;
 
 @end

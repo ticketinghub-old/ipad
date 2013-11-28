@@ -27,6 +27,7 @@ extern const struct TXHVenueMOAttributes {
 extern const struct TXHVenueMORelationships {
 	__unsafe_unretained NSString *options;
 	__unsafe_unretained NSString *permissions;
+	__unsafe_unretained NSString *seasons;
 	__unsafe_unretained NSString *user;
 } TXHVenueMORelationships;
 
@@ -35,6 +36,7 @@ extern const struct TXHVenueMOFetchedProperties {
 
 @class TXHOptionMO;
 @class TXHPermissionMO;
+@class TXHSeasonMO;
 @class TXHUserMO;
 
 
@@ -264,6 +266,13 @@ extern const struct TXHVenueMOFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSSet *seasons;
+
+- (NSMutableSet*)seasonsSet;
+
+
+
+
 @property (nonatomic, strong) TXHUserMO *user;
 
 //- (BOOL)validateUser:(id*)value_ error:(NSError**)error_;
@@ -283,6 +292,10 @@ extern const struct TXHVenueMOFetchedProperties {
 
 
 
+- (NSFetchedResultsController*)newSeasonsFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors;
+
+
+
 
 #endif
 
@@ -299,6 +312,11 @@ extern const struct TXHVenueMOFetchedProperties {
 - (void)removePermissions:(NSSet*)value_;
 - (void)addPermissionsObject:(TXHPermissionMO*)value_;
 - (void)removePermissionsObject:(TXHPermissionMO*)value_;
+
+- (void)addSeasons:(NSSet*)value_;
+- (void)removeSeasons:(NSSet*)value_;
+- (void)addSeasonsObject:(TXHSeasonMO*)value_;
+- (void)removeSeasonsObject:(TXHSeasonMO*)value_;
 
 @end
 
@@ -424,6 +442,11 @@ extern const struct TXHVenueMOFetchedProperties {
 
 - (NSMutableSet*)primitivePermissions;
 - (void)setPrimitivePermissions:(NSMutableSet*)value;
+
+
+
+- (NSMutableSet*)primitiveSeasons;
+- (void)setPrimitiveSeasons:(NSMutableSet*)value;
 
 
 

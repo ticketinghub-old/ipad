@@ -31,6 +31,7 @@
 
     seasonMO.startDate = [seasonMO.dateFormatter dateFromString:season.startsOnDateString];
     seasonMO.endDate = [seasonMO.dateFormatter dateFromString:season.endsOnDateString];
+    seasonMO.venue = venue;
 
     NSArray *options = season.seasonalOptions;
 

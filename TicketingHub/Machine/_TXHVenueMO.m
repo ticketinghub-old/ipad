@@ -26,6 +26,7 @@ const struct TXHVenueMOAttributes TXHVenueMOAttributes = {
 const struct TXHVenueMORelationships TXHVenueMORelationships = {
 	.options = @"options",
 	.permissions = @"permissions",
+	.seasons = @"seasons",
 	.user = @"user",
 };
 
@@ -282,6 +283,19 @@ const struct TXHVenueMOFetchedProperties TXHVenueMOFetchedProperties = {
 }
 	
 
+@dynamic seasons;
+
+	
+- (NSMutableSet*)seasonsSet {
+	[self willAccessValueForKey:@"seasons"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"seasons"];
+  
+	[self didAccessValueForKey:@"seasons"];
+	return result;
+}
+	
+
 @dynamic user;
 
 	
@@ -314,6 +328,21 @@ const struct TXHVenueMOFetchedProperties TXHVenueMOFetchedProperties = {
 	
 	fetchRequest.entity = [NSEntityDescription entityForName:@"TXHPermissionMO" inManagedObjectContext:self.managedObjectContext];
 	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"venues CONTAINS %@", self];
+	fetchRequest.sortDescriptors = sortDescriptors;
+	
+	return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+											   managedObjectContext:self.managedObjectContext
+												 sectionNameKeyPath:nil
+														  cacheName:nil];
+}
+
+
+
+- (NSFetchedResultsController*)newSeasonsFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors {
+	NSFetchRequest *fetchRequest = [NSFetchRequest new];
+	
+	fetchRequest.entity = [NSEntityDescription entityForName:@"TXHSeasonMO" inManagedObjectContext:self.managedObjectContext];
+	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"venue == %@", self];
 	fetchRequest.sortDescriptors = sortDescriptors;
 	
 	return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest

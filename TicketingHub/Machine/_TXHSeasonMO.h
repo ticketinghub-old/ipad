@@ -10,11 +10,13 @@ extern const struct TXHSeasonMOAttributes {
 } TXHSeasonMOAttributes;
 
 extern const struct TXHSeasonMORelationships {
+	__unsafe_unretained NSString *venue;
 } TXHSeasonMORelationships;
 
 extern const struct TXHSeasonMOFetchedProperties {
 } TXHSeasonMOFetchedProperties;
 
+@class TXHVenueMO;
 
 
 
@@ -52,8 +54,17 @@ extern const struct TXHSeasonMOFetchedProperties {
 
 
 
+@property (nonatomic, strong) TXHVenueMO *venue;
+
+//- (BOOL)validateVenue:(id*)value_ error:(NSError**)error_;
+
+
+
+
 
 #if TARGET_OS_IPHONE
+
+
 
 #endif
 
@@ -76,6 +87,11 @@ extern const struct TXHSeasonMOFetchedProperties {
 - (void)setPrimitiveStartDate:(NSDate*)value;
 
 
+
+
+
+- (TXHVenueMO*)primitiveVenue;
+- (void)setPrimitiveVenue:(TXHVenueMO*)value;
 
 
 @end

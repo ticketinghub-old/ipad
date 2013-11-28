@@ -9,6 +9,7 @@ const struct TXHSeasonMOAttributes TXHSeasonMOAttributes = {
 };
 
 const struct TXHSeasonMORelationships TXHSeasonMORelationships = {
+	.venue = @"venue",
 };
 
 const struct TXHSeasonMOFetchedProperties TXHSeasonMOFetchedProperties = {
@@ -61,12 +62,18 @@ const struct TXHSeasonMOFetchedProperties TXHSeasonMOFetchedProperties = {
 
 
 
+@dynamic venue;
+
+	
+
 
 
 
 
 
 #if TARGET_OS_IPHONE
+
+
 
 #endif
 
