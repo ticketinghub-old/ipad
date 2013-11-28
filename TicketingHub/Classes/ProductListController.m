@@ -16,7 +16,7 @@
 
 // Declaration of strings declared in ProductListControllerNotifications.h
 NSString * const TXHProductChangedNotification = @"TXHProductChangedNotification";
-NSString * const TXHSelectedVenue = @"TXHSelectedVenue";
+NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 
 @interface ProductListController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -158,7 +158,7 @@ NSString * const TXHSelectedVenue = @"TXHSelectedVenue";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TXHVenueMO *venue = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:TXHProductChangedNotification object:self userInfo:@{TXHSelectedVenue : venue}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TXHProductChangedNotification object:self userInfo:@{TXHSelectedProduct : venue}];
 
     // Debug
     DLog(@"Earliest date: %@", venue.earliestDateFromAllSeasons);

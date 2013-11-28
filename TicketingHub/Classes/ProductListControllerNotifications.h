@@ -11,11 +11,11 @@
  
  The `object` will be the instance of ProductListController
  The `userInfo` contain the following key:value
-      TXHSelectedVenue : a reference to the TXHVenueMO object that has been selected.
+      TXHSelectedProduct : a reference to the TXHProduct object that has been selected. The object is in the main managed object context.
  */
 extern NSString * const TXHProductChangedNotification;
 
 /**
  The key used by the `userInfo` dictionary containing the selected venue reference
  */
-extern NSString * const TXHSelectedVenue;
+extern NSString * const TXHSelectedProduct;

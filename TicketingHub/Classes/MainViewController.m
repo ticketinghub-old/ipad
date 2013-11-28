@@ -124,7 +124,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 #pragma mark - NotificationHandlers
 - (void)productChanged:(NSNotification *)notification {
-    self.selectedVenue = [notification userInfo][TXHSelectedVenue];
+    self.selectedVenue = [notification userInfo][TXHSelectedProduct];
     [self showOrHideVenueList:nil];
 }
 

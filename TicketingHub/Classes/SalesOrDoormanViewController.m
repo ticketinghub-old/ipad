@@ -171,7 +171,7 @@
 #pragma mark - Notification handlers
 
 - (void)productChanged:(NSNotification *)notification {
-    self.selectedVenue = [notification userInfo][TXHSelectedVenue];
+    self.selectedVenue = [notification userInfo][TXHSelectedProduct];
 }
 
 
