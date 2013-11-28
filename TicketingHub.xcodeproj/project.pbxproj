@@ -48,14 +48,6 @@
 		58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB561760AE5500E328A0 /* Foundation.framework */; };
 		58E4FB831760AE5500E328A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB811760AE5500E328A0 /* InfoPlist.strings */; };
 		58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB911760AEF300E328A0 /* Storyboard.storyboard */; };
-		EE11AE0E17BD2C84000042B2 /* _DCTCDSManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11AE0817BD2C84000042B2 /* _DCTCDSManagedObjectContext.m */; };
-		EE11AE0F17BD2C84000042B2 /* DCTCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11AE0A17BD2C84000042B2 /* DCTCoreDataStack.m */; };
-		EE11AE1017BD2C84000042B2 /* NSManagedObjectContext+DCTCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11AE0C17BD2C84000042B2 /* NSManagedObjectContext+DCTCoreDataStack.m */; };
-		EE11AE1517BD2E18000042B2 /* _TXHPermissionMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11AE1417BD2E18000042B2 /* _TXHPermissionMO.m */; };
-		EE11AE1817BD2E48000042B2 /* _TXHVenueMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11AE1717BD2E48000042B2 /* _TXHVenueMO.m */; };
-		EE11AE1B17BD2EA9000042B2 /* _TXHUserMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11AE1A17BD2EA4000042B2 /* _TXHUserMO.m */; };
-		EE11AE1C17BD2F3D000042B2 /* TXHUserMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA6863B17B3DF0D0024B002 /* TXHUserMO.m */; };
-		EE494CEC17B55177001740B3 /* TicketingHub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE935E7517B3EDFA0080A1C2 /* TicketingHub.xcdatamodeld */; };
 		EE6D999417BD453400D1E7CD /* TXHOption.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D998F17BD453400D1E7CD /* TXHOption.m */; };
 		EE6D999517BD453400D1E7CD /* TXHSeason.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D999117BD453400D1E7CD /* TXHSeason.m */; };
 		EE6D999617BD453400D1E7CD /* TXHVariation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D999317BD453400D1E7CD /* TXHVariation.m */; };
@@ -96,13 +88,7 @@
 		EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9AC17D112C4009ADCD8 /* TXHLoginViewController.m */; };
 		EE75D9B317D11311009ADCD8 /* VenueListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B017D11311009ADCD8 /* VenueListController.m */; };
 		EE75D9B417D11311009ADCD8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B217D11311009ADCD8 /* MainViewController.m */; };
-		EE8719C217BE30B80055437C /* TXHOptionMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8719BF17BE30B80055437C /* TXHOptionMO.m */; };
-		EE8719C317BE30B80055437C /* TXHSeasonMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8719C117BE30B80055437C /* TXHSeasonMO.m */; };
-		EE8719C817BE30CB0055437C /* _TXHOptionMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8719C517BE30CB0055437C /* _TXHOptionMO.m */; };
-		EE8719C917BE30CB0055437C /* _TXHSeasonMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8719C717BE30CB0055437C /* _TXHSeasonMO.m */; };
-		EEA6863F17B3DF0D0024B002 /* TXHVenueMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA6863D17B3DF0D0024B002 /* TXHVenueMO.m */; };
 		EEABD7F617B4088300E17D54 /* TXHVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA6864717B3E47D0024B002 /* TXHVenue.m */; };
-		EEABD7F717B4092800E17D54 /* TXHPermissionMO.m in Sources */ = {isa = PBXBuildFile; fileRef = EE935E7C17B3FE3D0080A1C2 /* TXHPermissionMO.m */; };
 		EEB1845817D114390025530A /* TXHBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843517D114390025530A /* TXHBaseCollectionViewCell.m */; };
 		EEB1845917D114390025530A /* TXHBaseDataEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843717D114390025530A /* TXHBaseDataEntryTableViewCell.m */; };
 		EEB1845A17D114390025530A /* TXHBaseDataEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843917D114390025530A /* TXHBaseDataEntryView.m */; };
@@ -307,18 +293,6 @@
 		EE11AE0217BD2138000042B2 /* gradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gradient@2x.png"; sourceTree = "<group>"; };
 		EE11AE0317BD2138000042B2 /* textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textfield.png; sourceTree = "<group>"; };
 		EE11AE0417BD2138000042B2 /* textfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield@2x.png"; sourceTree = "<group>"; };
-		EE11AE0717BD2C84000042B2 /* _DCTCDSManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DCTCDSManagedObjectContext.h; sourceTree = "<group>"; };
-		EE11AE0817BD2C84000042B2 /* _DCTCDSManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DCTCDSManagedObjectContext.m; sourceTree = "<group>"; };
-		EE11AE0917BD2C84000042B2 /* DCTCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCTCoreDataStack.h; sourceTree = "<group>"; };
-		EE11AE0A17BD2C84000042B2 /* DCTCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCTCoreDataStack.m; sourceTree = "<group>"; };
-		EE11AE0B17BD2C84000042B2 /* NSManagedObjectContext+DCTCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+DCTCoreDataStack.h"; sourceTree = "<group>"; };
-		EE11AE0C17BD2C84000042B2 /* NSManagedObjectContext+DCTCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+DCTCoreDataStack.m"; sourceTree = "<group>"; };
-		EE11AE1317BD2E18000042B2 /* _TXHPermissionMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHPermissionMO.h; sourceTree = "<group>"; };
-		EE11AE1417BD2E18000042B2 /* _TXHPermissionMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHPermissionMO.m; sourceTree = "<group>"; };
-		EE11AE1617BD2E48000042B2 /* _TXHVenueMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHVenueMO.h; sourceTree = "<group>"; };
-		EE11AE1717BD2E48000042B2 /* _TXHVenueMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHVenueMO.m; sourceTree = "<group>"; };
-		EE11AE1917BD2E78000042B2 /* _TXHUserMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHUserMO.h; sourceTree = "<group>"; };
-		EE11AE1A17BD2EA4000042B2 /* _TXHUserMO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _TXHUserMO.m; sourceTree = "<group>"; };
 		EE51C1EE180FED4F001AA88A /* VenueListControllerNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueListControllerNotifications.h; sourceTree = "<group>"; };
 		EE6D998E17BD453400D1E7CD /* TXHOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHOption.h; sourceTree = "<group>"; };
 		EE6D998F17BD453400D1E7CD /* TXHOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOption.m; sourceTree = "<group>"; };
@@ -401,22 +375,7 @@
 		EE75D9B017D11311009ADCD8 /* VenueListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = VenueListController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EE75D9B117D11311009ADCD8 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MainViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		EE75D9B217D11311009ADCD8 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MainViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EE8719BE17BE30B80055437C /* TXHOptionMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHOptionMO.h; sourceTree = "<group>"; };
-		EE8719BF17BE30B80055437C /* TXHOptionMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOptionMO.m; sourceTree = "<group>"; };
-		EE8719C017BE30B80055437C /* TXHSeasonMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSeasonMO.h; sourceTree = "<group>"; };
-		EE8719C117BE30B80055437C /* TXHSeasonMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSeasonMO.m; sourceTree = "<group>"; };
-		EE8719C417BE30CB0055437C /* _TXHOptionMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHOptionMO.h; sourceTree = "<group>"; };
-		EE8719C517BE30CB0055437C /* _TXHOptionMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHOptionMO.m; sourceTree = "<group>"; };
-		EE8719C617BE30CB0055437C /* _TXHSeasonMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHSeasonMO.h; sourceTree = "<group>"; };
-		EE8719C717BE30CB0055437C /* _TXHSeasonMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHSeasonMO.m; sourceTree = "<group>"; };
 		EE935E7417B3EB630080A1C2 /* CommonMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonMacros.h; sourceTree = "<group>"; };
-		EE935E7617B3EDFA0080A1C2 /* TicketingHub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TicketingHub.xcdatamodel; sourceTree = "<group>"; };
-		EE935E7B17B3FE3D0080A1C2 /* TXHPermissionMO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHPermissionMO.h; sourceTree = "<group>"; };
-		EE935E7C17B3FE3D0080A1C2 /* TXHPermissionMO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TXHPermissionMO.m; sourceTree = "<group>"; };
-		EEA6863A17B3DF0D0024B002 /* TXHUserMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHUserMO.h; sourceTree = "<group>"; };
-		EEA6863B17B3DF0D0024B002 /* TXHUserMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUserMO.m; sourceTree = "<group>"; };
-		EEA6863C17B3DF0D0024B002 /* TXHVenueMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVenueMO.h; sourceTree = "<group>"; };
-		EEA6863D17B3DF0D0024B002 /* TXHVenueMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVenueMO.m; sourceTree = "<group>"; };
 		EEA6864617B3E47D0024B002 /* TXHVenue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHVenue.h; sourceTree = "<group>"; };
 		EEA6864717B3E47D0024B002 /* TXHVenue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TXHVenue.m; sourceTree = "<group>"; };
 		EEB1843417D114390025530A /* TXHBaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBaseCollectionViewCell.h; sourceTree = "<group>"; };
@@ -648,59 +607,11 @@
 			path = "Smoke Tests";
 			sourceTree = "<group>";
 		};
-		4DF9F92B179D50C10040FC5D /* Core Data */ = {
-			isa = PBXGroup;
-			children = (
-				EE11AE0617BD2C84000042B2 /* DCTCoreDataStack */,
-				4DF9F92C179D50E90040FC5D /* Human */,
-				4DF9F945179D50E90040FC5D /* Machine */,
-				EE935E7517B3EDFA0080A1C2 /* TicketingHub.xcdatamodeld */,
-			);
-			name = "Core Data";
-			sourceTree = "<group>";
-		};
-		4DF9F92C179D50E90040FC5D /* Human */ = {
-			isa = PBXGroup;
-			children = (
-				EE8719BE17BE30B80055437C /* TXHOptionMO.h */,
-				EE8719BF17BE30B80055437C /* TXHOptionMO.m */,
-				EE935E7B17B3FE3D0080A1C2 /* TXHPermissionMO.h */,
-				EE935E7C17B3FE3D0080A1C2 /* TXHPermissionMO.m */,
-				EE8719C017BE30B80055437C /* TXHSeasonMO.h */,
-				EE8719C117BE30B80055437C /* TXHSeasonMO.m */,
-				EEA6863A17B3DF0D0024B002 /* TXHUserMO.h */,
-				EEA6863B17B3DF0D0024B002 /* TXHUserMO.m */,
-				EEA6863C17B3DF0D0024B002 /* TXHVenueMO.h */,
-				EEA6863D17B3DF0D0024B002 /* TXHVenueMO.m */,
-			);
-			name = Human;
-			path = TicketingHub/Human;
-			sourceTree = "<group>";
-		};
-		4DF9F945179D50E90040FC5D /* Machine */ = {
-			isa = PBXGroup;
-			children = (
-				EE8719C417BE30CB0055437C /* _TXHOptionMO.h */,
-				EE8719C517BE30CB0055437C /* _TXHOptionMO.m */,
-				EE11AE1317BD2E18000042B2 /* _TXHPermissionMO.h */,
-				EE11AE1417BD2E18000042B2 /* _TXHPermissionMO.m */,
-				EE8719C617BE30CB0055437C /* _TXHSeasonMO.h */,
-				EE8719C717BE30CB0055437C /* _TXHSeasonMO.m */,
-				EE11AE1917BD2E78000042B2 /* _TXHUserMO.h */,
-				EE11AE1A17BD2EA4000042B2 /* _TXHUserMO.m */,
-				EE11AE1617BD2E48000042B2 /* _TXHVenueMO.h */,
-				EE11AE1717BD2E48000042B2 /* _TXHVenueMO.m */,
-			);
-			name = Machine;
-			path = TicketingHub/Machine;
-			sourceTree = "<group>";
-		};
 		58E4FB481760AE5500E328A0 = {
 			isa = PBXGroup;
 			children = (
 				58E4FB971760D3C800E328A0 /* Classes */,
-				4DF9F92B179D50C10040FC5D /* Core Data */,
-				EEF8DA7B17F0539000579F5B /* Networking */,
+				EEF8DA7B17F0539000579F5B /* iOS-API */,
 				58E4FB521760AE5500E328A0 /* Products */,
 				EE11ADCC17BD2138000042B2 /* Stripe */,
 				58E4FB901760AECF00E328A0 /* UI */,
@@ -912,20 +823,6 @@
 			);
 			name = DCTCoreDataStack;
 			path = Cards;
-			sourceTree = "<group>";
-		};
-		EE11AE0617BD2C84000042B2 /* DCTCoreDataStack */ = {
-			isa = PBXGroup;
-			children = (
-				EE11AE0717BD2C84000042B2 /* _DCTCDSManagedObjectContext.h */,
-				EE11AE0817BD2C84000042B2 /* _DCTCDSManagedObjectContext.m */,
-				EE11AE0917BD2C84000042B2 /* DCTCoreDataStack.h */,
-				EE11AE0A17BD2C84000042B2 /* DCTCoreDataStack.m */,
-				EE11AE0B17BD2C84000042B2 /* NSManagedObjectContext+DCTCoreDataStack.h */,
-				EE11AE0C17BD2C84000042B2 /* NSManagedObjectContext+DCTCoreDataStack.m */,
-			);
-			name = DCTCoreDataStack;
-			path = Externals/DCTCoreDataStack;
 			sourceTree = "<group>";
 		};
 		EE75D94217D1101C009ADCD8 /* Sales */ = {
@@ -1184,7 +1081,7 @@
 			path = "Externals/ios-api/Private";
 			sourceTree = SOURCE_ROOT;
 		};
-		EEF8DA7B17F0539000579F5B /* Networking */ = {
+		EEF8DA7B17F0539000579F5B /* iOS-API */ = {
 			isa = PBXGroup;
 			children = (
 				EEB4FD2017B277D800F226BC /* iOS-api */,
@@ -1193,7 +1090,7 @@
 				4DA05FAF178C367F005161E6 /* TXHServerAccessManager.h */,
 				4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */,
 			);
-			name = Networking;
+			name = "iOS-API";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1307,14 +1204,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE11AE0E17BD2C84000042B2 /* _DCTCDSManagedObjectContext.m in Sources */,
 				EEB4FD5617B277D800F226BC /* _TXHNetworkClient.m in Sources */,
 				EEB4FD5717B277D800F226BC /* _TXHNetworkOAuthClient.m in Sources */,
-				EE8719C817BE30CB0055437C /* _TXHOptionMO.m in Sources */,
-				EE11AE1517BD2E18000042B2 /* _TXHPermissionMO.m in Sources */,
-				EE8719C917BE30CB0055437C /* _TXHSeasonMO.m in Sources */,
-				EE11AE1B17BD2EA9000042B2 /* _TXHUserMO.m in Sources */,
-				EE11AE1817BD2E48000042B2 /* _TXHVenueMO.m in Sources */,
 				EEB4FD4A17B277D800F226BC /* AFHTTPClient.m in Sources */,
 				EEB4FD4B17B277D800F226BC /* AFHTTPRequestOperation.m in Sources */,
 				EEB4FD4C17B277D800F226BC /* AFImageRequestOperation.m in Sources */,
@@ -1324,10 +1215,8 @@
 				EEB4FD5017B277D800F226BC /* AFURLConnectionOperation.m in Sources */,
 				EEB4FD5117B277D800F226BC /* AFXMLRequestOperation.m in Sources */,
 				EEF6BA4717D1192B005B1B20 /* BarcodeViewController.m in Sources */,
-				EE11AE0F17BD2C84000042B2 /* DCTCoreDataStack.m in Sources */,
 				58E4FB631760AE5500E328A0 /* main.m in Sources */,
 				EEB4FD5517B277D800F226BC /* NSDictionary+JCSKeyMapping.m in Sources */,
-				EE11AE1017BD2C84000042B2 /* NSManagedObjectContext+DCTCoreDataStack.m in Sources */,
 				4D8A106C17BD2DF700CEECAD /* PKAddressZip.m in Sources */,
 				4D8A106D17BD2DF700CEECAD /* PKCard.m in Sources */,
 				4D8A106E17BD2DF700CEECAD /* PKCardCVC.m in Sources */,
@@ -1341,7 +1230,6 @@
 				4D8A106917BD2DD700CEECAD /* STPView.m in Sources */,
 				4D8A106A17BD2DDC00CEECAD /* Stripe.m in Sources */,
 				4D8A106B17BD2DE000CEECAD /* StripeError.m in Sources */,
-				EE494CEC17B55177001740B3 /* TicketingHub.xcdatamodeld in Sources */,
 				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
 				EEB1845817D114390025530A /* TXHBaseCollectionViewCell.m in Sources */,
 				EEB1845917D114390025530A /* TXHBaseDataEntryTableViewCell.m in Sources */,
@@ -1369,9 +1257,7 @@
 				EE75D9B317D11311009ADCD8 /* VenueListController.m in Sources */,
 				EE75D9B417D11311009ADCD8 /* MainViewController.m in Sources */,
 				EE6D999417BD453400D1E7CD /* TXHOption.m in Sources */,
-				EE8719C217BE30B80055437C /* TXHOptionMO.m in Sources */,
 				EEB1846217D114390025530A /* TXHOptionsExtrasItem.m in Sources */,
-				EEABD7F717B4092800E17D54 /* TXHPermissionMO.m in Sources */,
 				EEB1846317D114390025530A /* TXHQuantitySelectorViewController.m in Sources */,
 				EE75D98817D11048009ADCD8 /* TXHSalesCalendarViewController.m in Sources */,
 				EE75D98917D11048009ADCD8 /* TXHSalesCompletionViewController.m in Sources */,
@@ -1409,7 +1295,6 @@
 				EE75D9A917D11048009ADCD8 /* TXHSalesWizardViewController.m in Sources */,
 				EE6D999517BD453400D1E7CD /* TXHSeason.m in Sources */,
 				4D859FF2179453EA000B2FCC /* TXHSeason_old.m in Sources */,
-				EE8719C317BE30B80055437C /* TXHSeasonMO.m in Sources */,
 				EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */,
 				4DA05FB1178C367F005161E6 /* TXHServerAccessManager.m in Sources */,
 				EEB1846517D114390025530A /* TXHTextCollectionViewCell.m in Sources */,
@@ -1424,11 +1309,9 @@
 				EEB1849317D115640025530A /* TXHTimeslotSelectorViewController.m in Sources */,
 				EEB1849417D115640025530A /* TXHTransitionSegue.m in Sources */,
 				EEB4FD5A17B277D800F226BC /* TXHUser.m in Sources */,
-				EE11AE1C17BD2F3D000042B2 /* TXHUserMO.m in Sources */,
 				EE6D999617BD453400D1E7CD /* TXHVariation.m in Sources */,
 				4D859FF517945E4D000B2FCC /* TXHVariation_old.m in Sources */,
 				EEABD7F617B4088300E17D54 /* TXHVenue.m in Sources */,
-				EEA6863F17B3DF0D0024B002 /* TXHVenueMO.m in Sources */,
 				EEB4FD5417B277D800F226BC /* UIImageView+AFNetworking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1796,20 +1679,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		EE935E7517B3EDFA0080A1C2 /* TicketingHub.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				EE935E7617B3EDFA0080A1C2 /* TicketingHub.xcdatamodel */,
-			);
-			currentVersion = EE935E7617B3EDFA0080A1C2 /* TicketingHub.xcdatamodel */;
-			name = TicketingHub.xcdatamodeld;
-			path = TicketingHub/TicketingHub.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 58E4FB491760AE5500E328A0 /* Project object */;
 }
