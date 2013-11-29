@@ -46,6 +46,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 - (void)awakeFromNib {
     // Stand up the client library early on so it is available for the segues.
+    [[self class] resetStore];
     self.ticketingHubClient = [[TXHTicketingHubClient alloc] initWithStoreURL:[[self class] storeURL]];
 }
 
@@ -129,10 +130,25 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 // Convenience method to return the URL for the Core Data Store
 + (NSURL *)storeURL {
-    NSURL *documentDirectoryURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    NSURL *storeURL = [documentDirectoryURL URLByAppendingPathComponent:@"TicktingHub.sqlite"];
+    static NSURL *storeURL = nil;
+    if (!storeURL) {
+        NSURL *documentDirectoryURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+        storeURL = [documentDirectoryURL URLByAppendingPathComponent:@"TicktingHub.sqlite"];
+    }
 
     return storeURL;
+}
+
+// Deletes the Core Data persistent store if it exists
++ (void)resetStore {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *storeURL = [self storeURL];
+    if (![storeURL checkResourceIsReachableAndReturnError:nil]) {
+        return;
+    }
+
+    NSError *error;
+    ZAssert([fileManager removeItemAtURL:[self storeURL] error:&error], @"Cannot remove store url because: %@", error);
 }
 
 - (void)tap:(UITapGestureRecognizer *)recogniser {

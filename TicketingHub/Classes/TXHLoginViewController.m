@@ -118,7 +118,7 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
     self.loginButton.enabled = NO;
 
     [self.ticketingHubClient fetchSuppliersForUsername:self.userField.text password:self.passwordField.text withCompletion:^(NSArray *suppliers, NSError *error) {
-        if (!error) {
+        if (error) {
             DLog(@"Unable to log in because: %@", error); // Caveman - needs to be refined.
             self.loginButton.enabled = YES;
             return;
