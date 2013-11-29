@@ -478,10 +478,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEB32C8C1847AA3D006045AF /* libiOS-api.a in Frameworks */,
 				4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */,
 				58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */,
 				58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */,
+				EEB32C8C1847AA3D006045AF /* libiOS-api.a in Frameworks */,
 				EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */,
 				5860E8581762175B0046DFD3 /* QuartzCore.framework in Frameworks */,
 				EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */,
@@ -494,8 +494,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEB32C751847A709006045AF /* libExpecta-ios-universal.a in Frameworks */,
 				58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */,
+				EEB32C751847A709006045AF /* libExpecta-ios-universal.a in Frameworks */,
 				4DF3F59917C63BAE0045299B /* libOCMock.a in Frameworks */,
 				EEB32C781847A709006045AF /* libSpecta-ios-universal.a in Frameworks */,
 				58E4FB781760AE5500E328A0 /* SenTestingKit.framework in Frameworks */,
@@ -540,14 +540,14 @@
 		58E4FB481760AE5500E328A0 = {
 			isa = PBXGroup;
 			children = (
-				58E4FB971760D3C800E328A0 /* Classes */,
-				EEF8DA7B17F0539000579F5B /* iOS-API */,
-				58E4FB521760AE5500E328A0 /* Products */,
-				EE11ADCC17BD2138000042B2 /* Stripe */,
-				58E4FB901760AECF00E328A0 /* UI */,
 				58E4FB5C1760AE5500E328A0 /* TicketingHub */,
+				58E4FB971760D3C800E328A0 /* Classes */,
+				58E4FB901760AECF00E328A0 /* UI */,
+				EEF8DA7B17F0539000579F5B /* iOS-API */,
+				EE11ADCC17BD2138000042B2 /* Stripe */,
 				58E4FB7E1760AE5500E328A0 /* TicketingHubTests */,
 				58E4FB531760AE5500E328A0 /* Frameworks */,
+				58E4FB521760AE5500E328A0 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -614,8 +614,8 @@
 			isa = PBXGroup;
 			children = (
 				EEB32C3A1847A709006045AF /* expecta */,
-				EEB32C611847A709006045AF /* specta */,
 				4DF3F57E17C63BAE0045299B /* OCMock */,
+				EEB32C611847A709006045AF /* specta */,
 				58E4FB811760AE5500E328A0 /* InfoPlist.strings */,
 				58E4FB801760AE5500E328A0 /* TicketingHubTests-Info.plist */,
 			);
@@ -924,14 +924,14 @@
 		EEB1848217D1153B0025530A /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				EEB1848917D115640025530A /* SalesOrDoormanViewController.h */,
+				EEB1848A17D115640025530A /* SalesOrDoormanViewController.m */,
 				EEB1848317D115640025530A /* TXHDateSelectorViewController.h */,
 				EEB1848417D115640025530A /* TXHDateSelectorViewController.m */,
 				EEB1848517D115640025530A /* TXHEmbeddingSegue.h */,
 				EEB1848617D115640025530A /* TXHEmbeddingSegue.m */,
 				EEB1848717D115640025530A /* TXHMainScreenPlaceholderViewController.h */,
 				EEB1848817D115640025530A /* TXHMainScreenPlaceholderViewController.m */,
-				EEB1848917D115640025530A /* SalesOrDoormanViewController.h */,
-				EEB1848A17D115640025530A /* SalesOrDoormanViewController.m */,
 				EEB1848B17D115640025530A /* TXHTimeslotSelectorViewController.h */,
 				EEB1848C17D115640025530A /* TXHTimeslotSelectorViewController.m */,
 				EEB1848D17D115640025530A /* TXHTransitionSegue.h */,
@@ -943,6 +943,7 @@
 		EEB32C3A1847A709006045AF /* expecta */ = {
 			isa = PBXGroup;
 			children = (
+				EEB32C5D1847A709006045AF /* LICENSE */,
 				EEB32C3B1847A709006045AF /* EXPBackwardCompatibility.h */,
 				EEB32C3C1847A709006045AF /* EXPBlockDefinedMatcher.h */,
 				EEB32C3D1847A709006045AF /* EXPDefines.h */,
@@ -977,7 +978,6 @@
 				EEB32C5A1847A709006045AF /* EXPMatchers.h */,
 				EEB32C5B1847A709006045AF /* EXPUnsupportedObject.h */,
 				EEB32C5C1847A709006045AF /* libExpecta-ios-universal.a */,
-				EEB32C5D1847A709006045AF /* LICENSE */,
 				EEB32C5E1847A709006045AF /* NSObject+Expecta.h */,
 				EEB32C5F1847A709006045AF /* NSValue+Expecta.h */,
 				EEB32C601847A709006045AF /* README.md */,
@@ -989,8 +989,8 @@
 		EEB32C611847A709006045AF /* specta */ = {
 			isa = PBXGroup;
 			children = (
-				EEB32C621847A709006045AF /* libSpecta-ios-universal.a */,
 				EEB32C631847A709006045AF /* LICENSE */,
+				EEB32C621847A709006045AF /* libSpecta-ios-universal.a */,
 				EEB32C641847A709006045AF /* README.md */,
 				EEB32C651847A709006045AF /* Specta.h */,
 				EEB32C661847A709006045AF /* SpectaSupport.h */,
@@ -1031,7 +1031,7 @@
 				EEC8BCB51848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m */,
 			);
 			name = "iOS-API";
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -1140,9 +1140,9 @@
 				4D8FCCB617A28A8C008B4227 /* Doorman.storyboard in Resources */,
 				4D586DE11797E51E00E40534 /* Images.xcassets in Resources */,
 				58E4FB611760AE5500E328A0 /* InfoPlist.strings in Resources */,
+				EEB32C8D1847AA65006045AF /* iOS-api-Model.bundle in Resources */,
 				4DB23D6E17A169D8002B7B11 /* Salesman.storyboard in Resources */,
 				58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */,
-				EEB32C8D1847AA65006045AF /* iOS-api-Model.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1150,11 +1150,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEB32C771847A709006045AF /* README.md in Resources */,
-				EEB32C761847A709006045AF /* LICENSE in Resources */,
-				EEB32C7A1847A70A006045AF /* README.md in Resources */,
-				EEB32C791847A70A006045AF /* LICENSE in Resources */,
 				58E4FB831760AE5500E328A0 /* InfoPlist.strings in Resources */,
+				EEB32C761847A709006045AF /* LICENSE in Resources */,
+				EEB32C791847A70A006045AF /* LICENSE in Resources */,
+				EEB32C771847A709006045AF /* README.md in Resources */,
+				EEB32C7A1847A70A006045AF /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1183,6 +1183,7 @@
 			files = (
 				EEF6BA4717D1192B005B1B20 /* BarcodeViewController.m in Sources */,
 				58E4FB631760AE5500E328A0 /* main.m in Sources */,
+				EE75D9B417D11311009ADCD8 /* MainViewController.m in Sources */,
 				4D8A106C17BD2DF700CEECAD /* PKAddressZip.m in Sources */,
 				4D8A106D17BD2DF700CEECAD /* PKCard.m in Sources */,
 				4D8A106E17BD2DF700CEECAD /* PKCardCVC.m in Sources */,
@@ -1191,6 +1192,8 @@
 				4D8A107117BD2DF700CEECAD /* PKTextField.m in Sources */,
 				4D8A107217BD2DF700CEECAD /* PKUSAddressZip.m in Sources */,
 				4D8A107317BD2DF700CEECAD /* PKView.m in Sources */,
+				EE75D9B317D11311009ADCD8 /* ProductListController.m in Sources */,
+				EEB1849217D115640025530A /* SalesOrDoormanViewController.m in Sources */,
 				4D8A106617BD2DC900CEECAD /* STPCard.m in Sources */,
 				4D8A106817BD2DD300CEECAD /* STPToken.m in Sources */,
 				4D8A106917BD2DD700CEECAD /* STPView.m in Sources */,
@@ -1217,11 +1220,7 @@
 				EEB1847F17D114B30025530A /* TXHFlowLayout.m in Sources */,
 				EEB1848017D114B30025530A /* TXHGroupCell.m in Sources */,
 				EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */,
-				EEC8BCB61848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m in Sources */,
 				EEB1849117D115640025530A /* TXHMainScreenPlaceholderViewController.m in Sources */,
-				EEB1849217D115640025530A /* SalesOrDoormanViewController.m in Sources */,
-				EE75D9B317D11311009ADCD8 /* ProductListController.m in Sources */,
-				EE75D9B417D11311009ADCD8 /* MainViewController.m in Sources */,
 				EEB1846217D114390025530A /* TXHOptionsExtrasItem.m in Sources */,
 				EEB1846317D114390025530A /* TXHQuantitySelectorViewController.m in Sources */,
 				EE75D98817D11048009ADCD8 /* TXHSalesCalendarViewController.m in Sources */,
@@ -1264,6 +1263,7 @@
 				EEB1846617D114390025530A /* TXHTextEntryTableViewCell.m in Sources */,
 				EEB1846717D114390025530A /* TXHTextEntryView.m in Sources */,
 				4D307DB71796F9FC00822645 /* TXHTicketDetail.m in Sources */,
+				EEC8BCB61848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m in Sources */,
 				4D1A0C2917A7F49C00960906 /* TXHTicketTier.m in Sources */,
 				EEB1848117D114B30025530A /* TXHTimeCell.m in Sources */,
 				EEB1846817D114390025530A /* TXHTimeFormatter.m in Sources */,
