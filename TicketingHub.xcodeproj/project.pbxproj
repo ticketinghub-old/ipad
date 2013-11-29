@@ -542,7 +542,7 @@
 			children = (
 				58E4FB5C1760AE5500E328A0 /* TicketingHub */,
 				58E4FB971760D3C800E328A0 /* Classes */,
-				58E4FB901760AECF00E328A0 /* UI */,
+				58E4FB901760AECF00E328A0 /* Storyboards */,
 				EEF8DA7B17F0539000579F5B /* iOS-API */,
 				EE11ADCC17BD2138000042B2 /* Stripe */,
 				58E4FB7E1760AE5500E328A0 /* TicketingHubTests */,
@@ -622,15 +622,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		58E4FB901760AECF00E328A0 /* UI */ = {
+		58E4FB901760AECF00E328A0 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */,
 				4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */,
 				58E4FB911760AEF300E328A0 /* Storyboard.storyboard */,
 			);
-			name = UI;
-			path = TicketingHub/UI;
+			name = Storyboards;
+			path = TicketingHub/Storyboards;
 			sourceTree = "<group>";
 		};
 		58E4FB971760D3C800E328A0 /* Classes */ = {
