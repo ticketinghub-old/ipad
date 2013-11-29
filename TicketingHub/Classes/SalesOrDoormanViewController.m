@@ -18,7 +18,6 @@
 #import "TXHTimeSlot_old.h"
 #import "TXHTimeslotSelectorViewController.h"
 #import "TXHTransitionSegue.h"
-#import "TXHVenueMO.h"
 #import "ProductListControllerNotifications.h"
 
 @interface SalesOrDoormanViewController () <TXHDateSelectorViewDelegate, TXHTimeSlotSelectorDelegate>

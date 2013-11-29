@@ -126,6 +126,7 @@
 		EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */; };
 		EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC4017B272F700F226BC /* Security.framework */; };
 		EEC2878B17C7B89000CDE3F1 /* TXHOptionMOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC2878A17C7B89000CDE3F1 /* TXHOptionMOTests.m */; };
+		EEC8BCB61848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC8BCB51848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m */; };
 		EEF6BA4717D1192B005B1B20 /* BarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6BA4617D1192B005B1B20 /* BarcodeViewController.m */; };
 		EEF8DA7E17F053D500579F5B /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF8DA7D17F053D500579F5B /* DataController.m */; };
 /* End PBXBuildFile section */
@@ -470,6 +471,8 @@
 		EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EEB4FC4017B272F700F226BC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		EEC2878A17C7B89000CDE3F1 /* TXHOptionMOTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOptionMOTests.m; sourceTree = "<group>"; };
+		EEC8BCB41848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TXHTicketingHubClient+AppExtension.h"; path = "TicketingHub/TXHTicketingHubClient+AppExtension.h"; sourceTree = "<group>"; };
+		EEC8BCB51848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TXHTicketingHubClient+AppExtension.m"; path = "TicketingHub/TXHTicketingHubClient+AppExtension.m"; sourceTree = "<group>"; };
 		EEF6BA4517D1192B005B1B20 /* BarcodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeViewController.h; sourceTree = "<group>"; };
 		EEF6BA4617D1192B005B1B20 /* BarcodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeViewController.m; sourceTree = "<group>"; };
 		EEF8DA7C17F053D500579F5B /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = DataController.h; path = TicketingHub/Classes/DataController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -1034,6 +1037,8 @@
 				EEF8DA7D17F053D500579F5B /* DataController.m */,
 				4DA05FAF178C367F005161E6 /* TXHServerAccessManager.h */,
 				4DA05FB0178C367F005161E6 /* TXHServerAccessManager.m */,
+				EEC8BCB41848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.h */,
+				EEC8BCB51848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m */,
 			);
 			name = "iOS-API";
 			sourceTree = "<group>";
@@ -1222,6 +1227,7 @@
 				EEB1847F17D114B30025530A /* TXHFlowLayout.m in Sources */,
 				EEB1848017D114B30025530A /* TXHGroupCell.m in Sources */,
 				EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */,
+				EEC8BCB61848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m in Sources */,
 				EEB1849117D115640025530A /* TXHMainScreenPlaceholderViewController.m in Sources */,
 				EEB1849217D115640025530A /* SalesOrDoormanViewController.m in Sources */,
 				EEF8DA7E17F053D500579F5B /* DataController.m in Sources */,
