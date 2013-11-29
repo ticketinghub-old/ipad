@@ -8,10 +8,8 @@
 
 #import "ProductListController.h"
 
+#import <iOS-api/iOS-api.h>
 #import "TXHCommonNames.h"
-#import "TXHServerAccessManager.h"
-#import "TXHUserMO.h"
-#import "TXHVenueMO.h"
 #import "ProductListControllerNotifications.h"
 
 // Declaration of strings declared in ProductListControllerNotifications.h
@@ -28,6 +26,7 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 //@property (strong, nonatomic) NSArray *venues;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (weak, readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 
 @end
@@ -68,15 +67,19 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 - (NSFetchedResultsController *)fetchedResultsController {
     // lazily loaded.
     if (!_fetchedResultsController) {
-        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[TXHVenueMO entityName]];
-        // Since the only venues are those attached to the user, there is no need for a predicate
-        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:TXHVenueMOAttributes.venueName ascending:YES];
+        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[TXHProduct entityName]];
+        // Since the only products are those attached to the supplier (user), there is no need for a predicate
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:TXHProductAttributes.name ascending:YES];
         [fetchRequest setSortDescriptors:@[sortDescriptor]];
 
         _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     }
 
     return _fetchedResultsController;
+}
+
+- (NSManagedObjectContext *)managedObjectContext {
+    return self.ticketingHubClient.managedObjectContext;
 }
 
 #pragma mark - NSFetchedResultsController delegate
@@ -114,7 +117,7 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 
         case NSFetchedResultsChangeUpdate: {
             UITableViewCell *changedCell = [tableView cellForRowAtIndexPath:indexPath];
-            changedCell.textLabel.text = ((TXHVenueMO *)[controller objectAtIndexPath:indexPath]).venueName;
+            changedCell.textLabel.text = ((TXHProduct *)[controller objectAtIndexPath:indexPath]).name;
             break;
         }
 
@@ -148,27 +151,23 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
     // Configure the cell...
     cell.backgroundColor = [self customBackgroundColour];
     
-    TXHVenueMO *venueMO = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = venueMO.venueName;
+    TXHProduct *product = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = product.name;
 
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TXHVenueMO *venue = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    TXHProduct *product = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:TXHProductChangedNotification object:self userInfo:@{TXHSelectedProduct : venue}];
-
-    // Debug
-    DLog(@"Earliest date: %@", venue.earliestDateFromAllSeasons);
-    DLog(@"Latest date: %@", venue.latestDateFromAllSeasons);
+    [[NSNotificationCenter defaultCenter] postNotificationName:TXHProductChangedNotification object:self userInfo:@{TXHSelectedProduct : product}];
 }
 
 #pragma mark - Private methods
 
 - (NSString *)userName {
-    NSFetchRequest *userRequest = [NSFetchRequest fetchRequestWithEntityName:[TXHUserMO entityName]];
+    NSFetchRequest *userRequest = [NSFetchRequest fetchRequestWithEntityName:[TXHUser entityName]];
 
     NSError *error;
     NSArray *users = [self.managedObjectContext executeFetchRequest:userRequest error:&error];
@@ -177,7 +176,7 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
         DLog(@"Unable to fetch users because: %@", error);
     }
 
-    TXHUserMO *user = [users lastObject];
+    TXHUser *user = [users firstObject];
 
     return [user fullName];
 }
