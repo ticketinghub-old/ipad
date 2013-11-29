@@ -7,8 +7,10 @@
 //
 
 #import "TXHSalesOptionsViewController.h"
+
+#import <iOS-api/iOS-api.h>
+#import "TXHTicketingHubClient+AppExtension.h"
 #import "TXHCommonNames.h"
-#import "TXHServerAccessManager.h"
 #import "TXHSalesOptionsCell.h"
 #import "TXHOptionsExtrasItem.h"
 #import "TXHTimeSlot_old.h"

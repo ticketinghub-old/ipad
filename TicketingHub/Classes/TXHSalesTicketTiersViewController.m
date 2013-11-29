@@ -8,16 +8,16 @@
 
 #import "TXHSalesTicketTiersViewController.h"
 
+#import <iOS-api/iOS-api.h>
+
 #import "TXHSalesContentProtocol.h"
 #import "TXHSalesTicketTierCell.h"
-#import "TXHServerAccessManager.h"
 #import "TXHTicketDetail.h"
 #import "TXHTicketTier.h"
-#import "TXHVenue.h"
 
 @interface TXHSalesTicketTiersViewController () <UITextFieldDelegate, TXHSalesContentProtocol>
 
-@property (strong, nonatomic) TXHVenue *venue;
+@property (strong, nonatomic) TXHProduct *product;
 
 // Keep a running total of the quantity of tickets keyed by tier
 @property (strong, nonatomic) NSMutableDictionary *tierQuantities;
@@ -67,8 +67,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.venue = [TXHServerAccessManager sharedInstance].currentVenue;
-    
+    //    self.venue = [TXHServerAccessManager sharedInstance].currentVenue; // AN Turned this off
+
     [self configureTimerViewController];
 }
 

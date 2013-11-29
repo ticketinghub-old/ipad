@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class TXHTicketingHubClient;
+
 @protocol TXHDateSelectorViewDelegate;
 
 @interface TXHDateSelectorViewController : UIViewController
+
+@property (strong, nonatomic) TXHTicketingHubClient *ticketingHubClient;
 
 // A delegate that will receive date selection
 @property (weak, nonatomic) id <TXHDateSelectorViewDelegate> delegate;

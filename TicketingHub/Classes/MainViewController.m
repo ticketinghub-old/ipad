@@ -9,12 +9,10 @@
 #import "MainViewController.h"
 
 #import <iOS-api/iOS-api.h>
-#import "DataController.h"
 #import "SalesOrDoormanViewController.h"
 #import "TXHCommonNames.h"
 #import "TXHLoginViewController.h"
 #import "TXHUserDefaultsKeys.h"
-#import "TXHVenueMO.h"
 #import "ProductListController.h"
 #import "ProductListControllerNotifications.h"
 
@@ -26,8 +24,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 @property (strong, nonatomic) TXHTicketingHubClient *ticketingHubClient;
 @property (strong, nonatomic) UITapGestureRecognizer  *tapRecogniser;
-@property (weak, nonatomic) TXHVenueMO *selectedVenue;
-@property (strong, nonatomic) DataController *dataController;
+@property (weak, nonatomic) TXHProduct *selectedProduct;
 @property (strong, nonatomic) SalesOrDoormanViewController *salesOrDoormanViewController;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftHandSpace;
@@ -106,7 +103,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
         // The storyboard has the this container loading a navigation controller, don't know why.
         UINavigationController *navController = (UINavigationController *)destinationViewController;
         self.salesOrDoormanViewController = [navController viewControllers][0];
-        self.salesOrDoormanViewController.selectedVenue = self.selectedVenue;
+        self.salesOrDoormanViewController.selectedProduct = self.selectedProduct;
     }
 
 }
@@ -124,7 +121,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 #pragma mark - NotificationHandlers
 - (void)productChanged:(NSNotification *)notification {
-    self.selectedVenue = [notification userInfo][TXHSelectedProduct];
+    self.selectedProduct = [notification userInfo][TXHSelectedProduct];
     [self showOrHideVenueList:nil];
 }
 

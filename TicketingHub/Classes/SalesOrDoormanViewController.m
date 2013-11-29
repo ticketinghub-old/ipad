@@ -9,10 +9,11 @@
 #import "SalesOrDoormanViewController.h"
 @import CoreData;
 
+#import <iOS-api/iOS-api.h>
+#import "TXHTicketingHubClient+AppExtension.h"
 #import "TXHDateSelectorViewController.h"
 #import "TXHEmbeddingSegue.h"
 #import "TXHSeason_old.h"
-#import "TXHServerAccessManager.h"
 #import "TXHTicketDetail.h"
 #import "TXHTicketTier.h"
 #import "TXHTimeSlot_old.h"
@@ -25,9 +26,9 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelector;
 @property (weak, nonatomic) IBOutlet UIView *contentDetailView;
 
-@property (strong, nonatomic) TXHVenue                          *venue;   // Kill this
-@property (strong, nonatomic) UIButton                          *dateBtn; // Kill this
-@property (strong, nonatomic) UIButton                          *timeBtn; // Kill this
+//@property (strong, nonatomic) TXHVenue                          *venue;   // Kill this
+//@property (strong, nonatomic) UIButton                          *dateBtn; // Kill this
+//@property (strong, nonatomic) UIButton                          *timeBtn; // Kill this
 @property (strong, nonatomic) UIBarButtonItem                   *dateButton;
 @property (strong, nonatomic) UIBarButtonItem                   *timeButton;
 
@@ -158,8 +159,8 @@
 
 #pragma mark - Custom accessors
 
-- (void)setSelectedVenue:(TXHVenueMO *)selectedVenue {
-    _selectedVenue = selectedVenue;
+- (void)setSelectedProduct:(TXHProduct *)selectedProduct {
+    _selectedProduct = selectedProduct;
 
     // More stuff needed here to reset the UI if the view is loaded
     if ([self isViewLoaded]) {
@@ -170,7 +171,7 @@
 #pragma mark - Notification handlers
 
 - (void)productChanged:(NSNotification *)notification {
-    self.selectedVenue = [notification userInfo][TXHSelectedProduct];
+    self.selectedProduct = [notification userInfo][TXHSelectedProduct];
 }
 
 
@@ -189,7 +190,7 @@
         dateFormatter.dateStyle = NSDateFormatterMediumStyle;
         dateFormatter.timeStyle = NSDateFormatterNoStyle;
     }
-    [self.dateBtn setTitle:[dateFormatter stringFromDate:self.selectedDate] forState:UIControlStateNormal];
+    self.dateButton.title = [dateFormatter stringFromDate:self.selectedDate];
     [self.datePopover dismissPopoverAnimated:YES];
     [self updateControlsForUserInteraction];
 }
@@ -208,61 +209,60 @@
         timeFormatter.timeStyle = NSDateFormatterMediumStyle;
     }
     NSDate *dateAndTime = [self.selectedDate dateByAddingTimeInterval:self.selectedTime];
-    [self.timeBtn setTitle:[timeFormatter stringFromDate:dateAndTime] forState:UIControlStateNormal];
-    [self.timeBtn sizeToFit];
+    self.timeButton.title = [timeFormatter stringFromDate:dateAndTime];
     [self.timePopover dismissPopoverAnimated:YES];
     [self updateControlsForUserInteraction];
-    [[TXHServerAccessManager sharedInstance] getTicketOptionsForTimeSlot:time
-                                                       completionHandler:^(TXHTicketDetail *detail){
-#pragma unused (detail)
-                                                       }
-                                                            errorHandler:^(id reason){
-                                                                NSLog(@"ticket detail error: %@", reason);
-                                                            }];
+//    [[TXHServerAccessManager sharedInstance] getTicketOptionsForTimeSlot:time
+//                                                       completionHandler:^(TXHTicketDetail *detail){
+//#pragma unused (detail)
+//                                                       }
+//                                                            errorHandler:^(id reason){
+//                                                                NSLog(@"ticket detail error: %@", reason);
+//                                                            }];
 }
 
 #pragma mark - Notifications
 
-- (void)venueUpdated:(NSNotification *)notification {
-    // Check for venue details then close menu if appropriate
-    NSDate *startDate = [NSDate date];
-    self.venue = [notification object];
-    if (self.venue != nil) {
-        // Display the selected venue in the navigation bar
-#warning - AN turned this off!
-        //        self.title = self.venue.businessName;
-        self.title = @"Hello!";
-
-        // Get the first season for this venue if there is one
-#warning - AN turned this off!
-        //        TXHSeason_old *season = [self.venue.allSeasons firstObject];
-        TXHSeason_old *season = nil;
-        if (season == nil) {
-            self.navigationItem.prompt = NSLocalizedString(@"There are no dates for this venue", @"There are no dates for this venue");
-            return;
-        }
-        self.navigationItem.prompt = nil;
-
-        // Update our date picker barbutton control to show the date
-        // Choose today, or the start of the season if it's later than today.
-        NSDate *seasonStart = season.startsOn;
-        if ([startDate compare:seasonStart] == NSOrderedAscending) {
-            startDate = seasonStart;
-        }
-        static NSDateFormatter *dateFormatter = nil;
-        if (dateFormatter == nil) {
-            dateFormatter = [[NSDateFormatter alloc] init];
-            dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-            dateFormatter.timeStyle = NSDateFormatterNoStyle;
-        }
-        NSString *dateString = [dateFormatter stringFromDate:startDate];
-        [self.dateBtn setTitle:dateString forState:UIControlStateNormal];
-        [self.dateBtn sizeToFit];
-    }
-    self.selectedDate = startDate;
-    [self updateControlsForUserInteraction];
-    //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TOGGLE_MENU object:nil];
-}
+//- (void)venueUpdated:(NSNotification *)notification {
+//    // Check for venue details then close menu if appropriate
+//    NSDate *startDate = [NSDate date];
+//    self.venue = [notification object];
+//    if (self.venue != nil) {
+//        // Display the selected venue in the navigation bar
+//#warning - AN turned this off!
+//        //        self.title = self.venue.businessName;
+//        self.title = @"Hello!";
+//
+//        // Get the first season for this venue if there is one
+//#warning - AN turned this off!
+//        //        TXHSeason_old *season = [self.venue.allSeasons firstObject];
+//        TXHSeason_old *season = nil;
+//        if (season == nil) {
+//            self.navigationItem.prompt = NSLocalizedString(@"There are no dates for this venue", @"There are no dates for this venue");
+//            return;
+//        }
+//        self.navigationItem.prompt = nil;
+//
+//        // Update our date picker barbutton control to show the date
+//        // Choose today, or the start of the season if it's later than today.
+//        NSDate *seasonStart = season.startsOn;
+//        if ([startDate compare:seasonStart] == NSOrderedAscending) {
+//            startDate = seasonStart;
+//        }
+//        static NSDateFormatter *dateFormatter = nil;
+//        if (dateFormatter == nil) {
+//            dateFormatter = [[NSDateFormatter alloc] init];
+//            dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+//            dateFormatter.timeStyle = NSDateFormatterNoStyle;
+//        }
+//        NSString *dateString = [dateFormatter stringFromDate:startDate];
+//        [self.dateBtn setTitle:dateString forState:UIControlStateNormal];
+//        [self.dateBtn sizeToFit];
+//    }
+//    self.selectedDate = startDate;
+//    [self updateControlsForUserInteraction];
+//    //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TOGGLE_MENU object:nil];
+//}
 
 #pragma mark - Private
 
@@ -318,7 +318,7 @@
     [self dismissVisiblePopover];
     TXHTimeslotSelectorViewController *timeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Time Selector Popover"];
     timeViewController.delegate = self;
-    [timeViewController setTimeSlots:[[TXHServerAccessManager sharedInstance] timeSlotsFor:self.selectedDate]];
+    [timeViewController setTimeSlots:[self.ticketingHubClient timeSlotsFor:self.selectedDate]];
     self.timePopover = [[UIPopoverController alloc] initWithContentViewController:timeViewController];
     [self.timePopover presentPopoverFromBarButtonItem:self.timeButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     self.navigationItem.prompt = nil;
@@ -342,7 +342,7 @@
 
 // Needs to be refactored
 - (void)updateControlsForUserInteraction {
-    BOOL enabled = (self.venue != nil);
+    BOOL enabled = (self.selectedProduct != nil);
     //    self.modeSelector.userInteractionEnabled = enabled;
     self.dateButton.enabled = enabled;
     self.timeButton.enabled = (enabled && (self.selectedDate != nil));

@@ -7,11 +7,11 @@
 //
 
 #import "TXHSalesCalendarViewController.h"
+
+#import <iOS-api/iOS-api.h>
+#import "TXHTicketingHubClient+AppExtension.h"
 #import "TXHCommonNames.h"
-#import "TXHServerAccessManager.h"
-#import "TXHVenue.h"
 #import "TXHSeason_old.h"
-#import "TXHVariation.h"
 
 @interface TXHSalesCalendarViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -107,7 +107,7 @@
   [self.timeSlots removeAllObjects];
 
   // Get timeslots for the currently selected date
-  NSArray *timeslots = [[TXHServerAccessManager sharedInstance] timeSlotsFor:self.datePicker.date];
+  NSArray *timeslots = [self.ticketingHubClient timeSlotsFor:self.datePicker.date];
   
   if (timeslots.count > 0) {
     [self.timeSlots addObjectsFromArray:timeslots];
@@ -123,32 +123,32 @@
 
 #pragma mark - Notifications
 
-- (void)venueUpdated:(NSNotification *)notification {
-  // The updated venue is passed to us in the notification
-  TXHVenue *venue = [notification object];
-  
-  // Get the current season for this venue
-#warning - AN turned this off!
-//  TXHSeason *season = venue.currentSeason;
-    TXHSeason_old *season = nil;
-
-  // If there is no current season overlay a view with a warning
-  if (season == nil) {
-//    NSLog(@"There is no season configured for %@", venue.businessName);
-    return;
-  }
-
-  // Get season start and end to restrict calendar date ranges
-    NSDate *startOfSeason = season.startsOn;
-    NSDate *endOfSeason = season.endsOn;
-
-    self.datePicker.minimumDate = startOfSeason;
-    self.datePicker.maximumDate = endOfSeason;
-
-  // If the currently selected date is outside of the bounds of the current season adjust accordingly
-  
-  [self getTimeSlots];
-    //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TOGGLE_MENU object:nil];
-}
+//- (void)venueUpdated:(NSNotification *)notification {
+//  // The updated venue is passed to us in the notification
+//  TXHVenue *venue = [notification object];
+//  
+//  // Get the current season for this venue
+//#warning - AN turned this off!
+////  TXHSeason *season = venue.currentSeason;
+//    TXHSeason_old *season = nil;
+//
+//  // If there is no current season overlay a view with a warning
+//  if (season == nil) {
+////    NSLog(@"There is no season configured for %@", venue.businessName);
+//    return;
+//  }
+//
+//  // Get season start and end to restrict calendar date ranges
+//    NSDate *startOfSeason = season.startsOn;
+//    NSDate *endOfSeason = season.endsOn;
+//
+//    self.datePicker.minimumDate = startOfSeason;
+//    self.datePicker.maximumDate = endOfSeason;
+//
+//  // If the currently selected date is outside of the bounds of the current season adjust accordingly
+//  
+//  [self getTimeSlots];
+//    //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TOGGLE_MENU object:nil];
+//}
 
 @end

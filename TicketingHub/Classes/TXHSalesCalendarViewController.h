@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TXHTicketingHubClient;
 
 @interface TXHSalesCalendarViewController : UIViewController
+
+@property (strong, nonatomic) TXHTicketingHubClient *ticketingHubClient;
 
 @end

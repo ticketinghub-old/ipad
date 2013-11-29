@@ -8,7 +8,8 @@
 
 #import "TXHSalesTicketTierCell.h"
 
-#import "TXHServerAccessManager.h"
+#import <iOS-api/iOS-api.h>
+#import "TXHTicketingHubClient+AppExtension.h"
 #import "TXHTicketTier.h"
 
 @interface TXHSalesTicketTierCell ()
@@ -50,7 +51,7 @@
     self.tierDescription.text = self.tier.tierDescription;
     self.quantity.keyboardType = UIKeyboardTypeNumberPad;
     // Currency is specified by the venue
-    self.price.text = [[TXHServerAccessManager sharedInstance] formatCurrencyValue:self.tier.price];
+    self.price.text = [self.ticketingHubClient formatCurrencyValue:self.tier.price];
     self.stepper.maximumValue = self.tier.limit.doubleValue;
 }
 

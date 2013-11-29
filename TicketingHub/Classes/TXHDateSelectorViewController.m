@@ -7,7 +7,10 @@
 //
 
 #import "TXHDateSelectorViewController.h"
-#import "TXHServerAccessManager.h"
+
+#import <iOS-api/iOS-api.h>
+
+#import "TXHTicketingHubClient+AppExtension.h"
 #import "TXHTimeslotSelectorViewController.h"
 
 @interface TXHDateSelectorViewController () <TXHTimeSlotSelectorDelegate>
@@ -141,7 +144,7 @@
     }
 
     // Check that we have some timeslots for the selected date
-    NSArray *timeslots = [[TXHServerAccessManager sharedInstance] timeSlotsFor:self.datePicker.date];
+    NSArray *timeslots = [self.ticketingHubClient timeSlotsFor:self.datePicker.date];
 
     self.previousSelectedDate = self.datePicker.date;
     self.timeSlotSelector.timeSlots = timeslots;
