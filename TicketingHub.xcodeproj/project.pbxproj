@@ -124,7 +124,6 @@
 		EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */; };
 		EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */; };
 		EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC4017B272F700F226BC /* Security.framework */; };
-		EEC2878B17C7B89000CDE3F1 /* TXHOptionMOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC2878A17C7B89000CDE3F1 /* TXHOptionMOTests.m */; };
 		EEC8BCB61848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC8BCB51848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m */; };
 		EEF6BA4717D1192B005B1B20 /* BarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6BA4617D1192B005B1B20 /* BarcodeViewController.m */; };
 /* End PBXBuildFile section */
@@ -466,7 +465,6 @@
 		EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EEB4FC4017B272F700F226BC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		EEC2878A17C7B89000CDE3F1 /* TXHOptionMOTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOptionMOTests.m; sourceTree = "<group>"; };
 		EEC8BCB41848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TXHTicketingHubClient+AppExtension.h"; path = "TicketingHub/TXHTicketingHubClient+AppExtension.h"; sourceTree = "<group>"; };
 		EEC8BCB51848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TXHTicketingHubClient+AppExtension.m"; path = "TicketingHub/TXHTicketingHubClient+AppExtension.m"; sourceTree = "<group>"; };
 		EEF6BA4517D1192B005B1B20 /* BarcodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeViewController.h; sourceTree = "<group>"; };
@@ -605,7 +603,6 @@
 				4DF3F59B17C63E070045299B /* Smoke Tests */,
 				58E4FB7F1760AE5500E328A0 /* Supporting Files */,
 				4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */,
-				EEC2878A17C7B89000CDE3F1 /* TXHOptionMOTests.m */,
 			);
 			path = TicketingHubTests;
 			sourceTree = "<group>";
@@ -1281,7 +1278,6 @@
 				4DF3F59E17C63E070045299B /* MockingTest.m in Sources */,
 				4DF3F59F17C63E070045299B /* SmokeSpec.m in Sources */,
 				4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */,
-				EEC2878B17C7B89000CDE3F1 /* TXHOptionMOTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1362,6 +1358,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -1395,6 +1392,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
+				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1555,6 +1553,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
+				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = AdHoc;
