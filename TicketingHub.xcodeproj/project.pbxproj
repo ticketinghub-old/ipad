@@ -577,10 +577,10 @@
 		58E4FB5C1760AE5500E328A0 /* TicketingHub */ = {
 			isa = PBXGroup;
 			children = (
-				58E4FB5D1760AE5500E328A0 /* Supporting Files */,
 				4D586DE01797E51E00E40534 /* Images.xcassets */,
 				58E4FB651760AE5500E328A0 /* TXHAppDelegate.h */,
 				58E4FB661760AE5500E328A0 /* TXHAppDelegate.m */,
+				58E4FB5D1760AE5500E328A0 /* Supporting Files */,
 			);
 			path = TicketingHub;
 			sourceTree = "<group>";
@@ -1413,6 +1413,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
 				GCC_WARN_UNUSED_PARAMETER = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(CONFIGURATION_BUILD_DIR)/**",
+				);
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
@@ -1444,6 +1449,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
 				GCC_WARN_UNUSED_PARAMETER = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(CONFIGURATION_BUILD_DIR)/**",
+				);
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
@@ -1574,6 +1584,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
 				GCC_WARN_UNUSED_PARAMETER = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(CONFIGURATION_BUILD_DIR)/**",
+				);
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
