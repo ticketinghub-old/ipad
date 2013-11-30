@@ -18,20 +18,21 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 
 @interface ProductListController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (weak, readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, readonly, nonatomic) TXHUser *user;
+
 @property (weak, nonatomic) IBOutlet UIView *logoutView;
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UILabel *headerViewLabel;
 
-//@property (strong, nonatomic) NSArray *venues;
-
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (weak, readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
-
-
 @end
 
-@implementation ProductListController
+@implementation ProductListController {
+    NSManagedObjectContext *_managedObjectContext;
+    TXHUser *_user;
+}
 
 #pragma mark - View lifecycle
 
@@ -46,7 +47,9 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
     [self setHeaderTitle:NSLocalizedString(@"Venues", @"Title for the list of venues")];
-    [self.logoutButton setTitle:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Logout", @"Logout the current user"), [self userName]] forState:UIControlStateNormal];
+    [self setLogoutButtonTitle:self.user.fullName];
+
+    [_user addObserver:self forKeyPath:@"fullName" options:NSKeyValueObservingOptionNew context:@"user.fullName"];
 
     NSError *error;
     BOOL success = [self.fetchedResultsController performFetch:&error];
@@ -54,15 +57,23 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
     if (!success) {
         DLog(@"Could not perform fetch because: %@", error);
     }
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectContextDidSave:) name:NSManagedObjectContextDidSaveNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 
+    [self.user removeObserver:self forKeyPath:@"fullName" context:@"user.fullName"];
+
     self.fetchedResultsController = nil;
+    _user = nil;
+    _managedObjectContext = nil;
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSManagedObjectContextDidSaveNotification object:nil];
 }
 
-#pragma mark - Custom accessors
+#pragma mark - Custom accessor
 
 - (NSFetchedResultsController *)fetchedResultsController {
     // lazily loaded.
@@ -79,7 +90,11 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 }
 
 - (NSManagedObjectContext *)managedObjectContext {
-    return self.ticketingHubClient.managedObjectContext;
+    if (!_managedObjectContext) {
+        _managedObjectContext = self.ticketingHubClient.managedObjectContext;
+    }
+
+    return _managedObjectContext;
 }
 
 #pragma mark - NSFetchedResultsController delegate
@@ -164,21 +179,41 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
     [[NSNotificationCenter defaultCenter] postNotificationName:TXHProductChangedNotification object:self userInfo:@{TXHSelectedProduct : product}];
 }
 
-#pragma mark - Private methods
+#pragma mark - Custom accessors
 
-- (NSString *)userName {
-    NSFetchRequest *userRequest = [NSFetchRequest fetchRequestWithEntityName:[TXHUser entityName]];
+- (TXHUser *)user {
+    if (!_user) {
+        NSFetchRequest *userRequest = [NSFetchRequest fetchRequestWithEntityName:[TXHUser entityName]];
 
-    NSError *error;
-    NSArray *users = [self.managedObjectContext executeFetchRequest:userRequest error:&error];
+        NSError *error;
+        NSArray *users = [self.managedObjectContext executeFetchRequest:userRequest error:&error];
 
-    if (!users) {
-        DLog(@"Unable to fetch users because: %@", error);
+        if (!users) {
+            DLog(@"Unable to fetch users because: %@", error);
+        }
+
+        _user = [users firstObject];
+
     }
 
-    TXHUser *user = [users firstObject];
+    return _user;
+}
 
-    return [user fullName];
+#pragma mark - Notifications
+
+- (void)managedObjectContextDidSave:(NSNotification *)notification {
+    DLog(@"Core data context saved: %@", notification);
+    [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+}
+
+#pragma mark - KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"fullName"]) {
+        [self setLogoutButtonTitle:self.user.fullName];
+    }
+
+    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 #pragma mark Action methods
@@ -194,6 +229,10 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
     self.headerViewLabel.text = title;
 }
 
+- (void)setLogoutButtonTitle:(NSString *)title {
+    [self.logoutButton setTitle:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Logout", @"Logout the current user"), title] forState:UIControlStateNormal];
+}
+
 // Get the colour to use as a background
 - (UIColor *)customBackgroundColour {
     static UIColor *customBackgroundColour = nil;
@@ -206,7 +245,6 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
     }
 
     return customBackgroundColour;
-
 }
 
 @end
