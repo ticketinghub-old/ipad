@@ -19,7 +19,7 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 @interface ProductListController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (weak, readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, readonly, nonatomic) TXHUser *user;
 
 @property (weak, nonatomic) IBOutlet UIView *logoutView;
