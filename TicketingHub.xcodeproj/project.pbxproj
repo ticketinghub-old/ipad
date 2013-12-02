@@ -114,11 +114,7 @@
 		EEB1849317D115640025530A /* TXHTimeslotSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848C17D115640025530A /* TXHTimeslotSelectorViewController.m */; };
 		EEB1849417D115640025530A /* TXHTransitionSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848E17D115640025530A /* TXHTransitionSegue.m */; };
 		EEB32C751847A709006045AF /* libExpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB32C5C1847A709006045AF /* libExpecta-ios-universal.a */; };
-		EEB32C761847A709006045AF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = EEB32C5D1847A709006045AF /* LICENSE */; };
-		EEB32C771847A709006045AF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EEB32C601847A709006045AF /* README.md */; };
 		EEB32C781847A709006045AF /* libSpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB32C621847A709006045AF /* libSpecta-ios-universal.a */; };
-		EEB32C791847A70A006045AF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = EEB32C631847A709006045AF /* LICENSE */; };
-		EEB32C7A1847A70A006045AF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EEB32C641847A709006045AF /* README.md */; };
 		EEB32C8C1847AA3D006045AF /* libiOS-api.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB32C831847A8A1006045AF /* libiOS-api.a */; };
 		EEB32C8D1847AA65006045AF /* iOS-api-Model.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EEB32C871847A8A1006045AF /* iOS-api-Model.bundle */; };
 		EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */; };
@@ -438,13 +434,9 @@
 		EEB32C5A1847A709006045AF /* EXPMatchers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPMatchers.h; sourceTree = "<group>"; };
 		EEB32C5B1847A709006045AF /* EXPUnsupportedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPUnsupportedObject.h; sourceTree = "<group>"; };
 		EEB32C5C1847A709006045AF /* libExpecta-ios-universal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libExpecta-ios-universal.a"; sourceTree = "<group>"; };
-		EEB32C5D1847A709006045AF /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		EEB32C5E1847A709006045AF /* NSObject+Expecta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Expecta.h"; sourceTree = "<group>"; };
 		EEB32C5F1847A709006045AF /* NSValue+Expecta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+Expecta.h"; sourceTree = "<group>"; };
-		EEB32C601847A709006045AF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		EEB32C621847A709006045AF /* libSpecta-ios-universal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libSpecta-ios-universal.a"; sourceTree = "<group>"; };
-		EEB32C631847A709006045AF /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		EEB32C641847A709006045AF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		EEB32C651847A709006045AF /* Specta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Specta.h; sourceTree = "<group>"; };
 		EEB32C661847A709006045AF /* SpectaSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectaSupport.h; sourceTree = "<group>"; };
 		EEB32C671847A709006045AF /* SpectaTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectaTypes.h; sourceTree = "<group>"; };
@@ -940,7 +932,6 @@
 		EEB32C3A1847A709006045AF /* expecta */ = {
 			isa = PBXGroup;
 			children = (
-				EEB32C5D1847A709006045AF /* LICENSE */,
 				EEB32C3B1847A709006045AF /* EXPBackwardCompatibility.h */,
 				EEB32C3C1847A709006045AF /* EXPBlockDefinedMatcher.h */,
 				EEB32C3D1847A709006045AF /* EXPDefines.h */,
@@ -977,7 +968,6 @@
 				EEB32C5C1847A709006045AF /* libExpecta-ios-universal.a */,
 				EEB32C5E1847A709006045AF /* NSObject+Expecta.h */,
 				EEB32C5F1847A709006045AF /* NSValue+Expecta.h */,
-				EEB32C601847A709006045AF /* README.md */,
 			);
 			name = expecta;
 			path = "Externals/ios-api/iOS-apiTests/Externals/TestKits/expecta";
@@ -986,9 +976,7 @@
 		EEB32C611847A709006045AF /* specta */ = {
 			isa = PBXGroup;
 			children = (
-				EEB32C631847A709006045AF /* LICENSE */,
 				EEB32C621847A709006045AF /* libSpecta-ios-universal.a */,
-				EEB32C641847A709006045AF /* README.md */,
 				EEB32C651847A709006045AF /* Specta.h */,
 				EEB32C661847A709006045AF /* SpectaSupport.h */,
 				EEB32C671847A709006045AF /* SpectaTypes.h */,
@@ -1148,10 +1136,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				58E4FB831760AE5500E328A0 /* InfoPlist.strings in Resources */,
-				EEB32C761847A709006045AF /* LICENSE in Resources */,
-				EEB32C791847A70A006045AF /* LICENSE in Resources */,
-				EEB32C771847A709006045AF /* README.md in Resources */,
-				EEB32C7A1847A70A006045AF /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
