@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
+@import Foundation;
+
 /**
  Notification sent by the ProductListController when the selected venue is changed.
  
