@@ -57,8 +57,6 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
     if (!success) {
         DLog(@"Could not perform fetch because: %@", error);
     }
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectContextDidSave:) name:NSManagedObjectContextDidSaveNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -199,18 +197,12 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
     return _user;
 }
 
-#pragma mark - Notifications
-
-- (void)managedObjectContextDidSave:(NSNotification *)notification {
-    DLog(@"Core data context saved: %@", notification);
-    [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
-}
-
 #pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"fullName"]) {
-        [self setLogoutButtonTitle:self.user.fullName];
+    if (context == @"user.fullName") {
+        [self setLogoutButtonTitle:change[NSKeyValueChangeNewKey]];
+        return;
     }
 
     [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
