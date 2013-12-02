@@ -48,6 +48,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
     // Stand up the client library early on so it is available for the segues.
     [[self class] resetStore];
     self.ticketingHubClient = [[TXHTicketingHubClient alloc] initWithStoreURL:[[self class] storeURL]];
+    self.ticketingHubClient.showNetworkActivityIndicatorAutomatically = YES;
 }
 
 #pragma mark - View lifecycle
