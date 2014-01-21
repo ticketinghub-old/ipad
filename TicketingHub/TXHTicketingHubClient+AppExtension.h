@@ -5,6 +5,8 @@
 //  Created by Abizer Nasir on 29/11/2013.
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
+//  Category for library methods used by the app that aren't yet implemented in the library.
+//  This is so that we can get the app built and running.
 
 #import <iOS-api/iOS-api.h>
 @class TXHTimeSlot_old;
