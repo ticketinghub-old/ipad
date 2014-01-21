@@ -1,6 +1,3 @@
 [submodule "Externals/ios-api"]
 	path = Externals/ios-api
 	url = git@github.com:ticketinghub/ios-api.git
-[submodule "Externals/stripe-ios"]
-	path = Externals/stripe-ios
-	url = https://github.com/stripe/stripe-ios
