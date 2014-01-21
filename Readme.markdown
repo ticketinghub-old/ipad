@@ -1,17 +1,22 @@
 ## TicketingHub
 
+This is the repository for the iPad app.
+
+The connection to the TicketingHub API is provided by the ios-api library which
+is a submodule. The app uses Core Data, but the model is provided by the ios-api
+library and is already part of the repository, as are the custom NSManagedObject
+classes that are used as part of this.
+
+## Installation
+
+A simple git clone will do. To make life simpler it can be cloned in one stop
+from the command line with
+
+    git clone -r git@github.com:ticketinghub/ipad.git
+
+which will clone and recursively clone the submodules.
+
 ### Notes
-
-#### Core Data
-
-This uses [mogenerator](https://github.com/rentzsch/mogenerator). Not part of
-the project, but will need to be installed on the machine if changes are made to
-the model.
-
-After any changes to the model, run the `cd_generate` script in the root of the
-project to update the Machine generated files.
-
-DCTCoreDataStack is added as a submodule for handling the Core Data Stack
 
 #### sort-xcode-project-file
 
