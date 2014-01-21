@@ -3,4 +3,4 @@
 	url = git@github.com:ticketinghub/ios-api.git
 [submodule "Externals/stripe-ios"]
 	path = Externals/stripe-ios
-	url = git@github.com:ticketinghub/stripe-ios.git
+	url = https://github.com/stripe/stripe-ios
