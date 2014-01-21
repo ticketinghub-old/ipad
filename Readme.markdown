@@ -12,7 +12,7 @@ classes that are used as part of this.
 A simple git clone will do. To make life simpler it can be cloned in one stop
 from the command line with
 
-    git clone -r git@github.com:ticketinghub/ipad.git
+    git clone --recursive git@github.com:ticketinghub/ipad.git
 
 which will clone and recursively clone the submodules.
 
