@@ -16,6 +16,24 @@ from the command line with
 
 which will clone and recursively clone the submodules.
 
+## Updating
+
+After cloning the app and getting the code running locally, you'll need to
+update to the latest code base from time to time. This is easily done.
+
+Firstly - update the code from git:
+
+    git pull origin master
+
+If you haven't made any local changes to the code, then this should cause no
+problems.
+
+Secondly - update the dependencies
+
+    git submodule update --recursive
+
+And this should update any external code to their required versions
+
 ### Notes
 
 #### sort-xcode-project-file
