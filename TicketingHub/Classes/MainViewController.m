@@ -46,7 +46,8 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 - (void)awakeFromNib {
     // Stand up the client library early on so it is available for the segues.
-    [[self class] resetStore];
+    [[self class] resetStore]; // Kill currently stored data.
+
     self.ticketingHubClient = [[TXHTicketingHubClient alloc] initWithStoreURL:[[self class] storeURL]];
     self.ticketingHubClient.showNetworkActivityIndicatorAutomatically = YES;
 }
@@ -122,6 +123,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 #pragma mark - Delegate Methods
 
 #pragma mark - NotificationHandlers
+
 - (void)productChanged:(NSNotification *)notification {
     self.selectedProduct = [notification userInfo][TXHSelectedProduct];
     [self showOrHideVenueList:nil];
@@ -159,7 +161,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 #pragma mark Actions
 
 - (IBAction)showOrHideVenueList:(id)sender {
-    [UIView animateWithDuration:0.40f animations:^{
+    [UIView animateWithDuration:0.30f animations:^{
         if (self.leftHandSpace.constant == 0.0f) {
             self.leftHandSpace.constant = -self.venueListContainer.bounds.size.width;
         } else {
