@@ -174,7 +174,8 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TXHProduct *product = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:TXHProductChangedNotification object:self userInfo:@{TXHSelectedProduct : product}];
+    [self fetchAvailabilitiesForNextThreeMonthsForProduct:product];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TXHProductChangedNotification object:self userInfo:@{TXHSelectedProduct: product}];
 }
 
 #pragma mark - Custom accessors
@@ -237,6 +238,28 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
     }
 
     return customBackgroundColour;
+}
+
+- (void)fetchAvailabilitiesForNextThreeMonthsForProduct:(TXHProduct *)product {
+    static NSDateFormatter *isoDateFormatter;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        isoDateFormatter = [NSDateFormatter new];
+        [isoDateFormatter setDateFormat:@"yyyy-MM-dd"];
+    });
+
+    NSDate *today = [NSDate date];
+
+    NSDateComponents *components = [NSDateComponents new];
+    [components setMonth:3];
+
+    NSDate *forwardDate = [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:today options:kNilOptions];
+    NSString *forwardDateString = [isoDateFormatter stringFromDate:forwardDate];
+
+    [self.ticketingHubClient availabilitiesForProduct:product from:nil to:forwardDateString completion:^(NSArray *availabilities, NSError *error) {
+        DLog(@"3 month availability updated for Product: %@",product.name);
+    }];
+
 }
 
 @end
