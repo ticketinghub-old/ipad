@@ -11,7 +11,6 @@
 #import <iOS-api/iOS-api.h>
 #import "TXHTicketingHubClient+AppExtension.h"
 #import "TXHCommonNames.h"
-#import "TXHSeason_old.h"
 
 @interface TXHSalesCalendarViewController () <UITableViewDataSource, UITableViewDelegate>
 

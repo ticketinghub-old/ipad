@@ -13,7 +13,6 @@
 #import "TXHTicketingHubClient+AppExtension.h"
 #import "TXHDateSelectorViewController.h"
 #import "TXHEmbeddingSegue.h"
-#import "TXHSeason_old.h"
 #import "TXHTicketDetail.h"
 #import "TXHTicketTier.h"
 #import "TXHTimeSlot_old.h"

@@ -12,7 +12,6 @@
 		4D307DB71796F9FC00822645 /* TXHTicketDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D307DB61796F9FC00822645 /* TXHTicketDetail.m */; };
 		4D586DE11797E51E00E40534 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D586DE01797E51E00E40534 /* Images.xcassets */; };
 		4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D68DAAA178B0A5400743227 /* AVFoundation.framework */; };
-		4D859FF2179453EA000B2FCC /* TXHSeason_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D89278817944B61004892FD /* TXHSeason_old.m */; };
 		4D859FF517945E4D000B2FCC /* TXHVariation_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D859FF417945E4D000B2FCC /* TXHVariation_old.m */; };
 		4D859FF817953FA1000B2FCC /* TXHTimeSlot_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D859FF717953FA1000B2FCC /* TXHTimeSlot_old.m */; };
 		4D8A106617BD2DC900CEECAD /* STPCard.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11ADCE17BD2138000042B2 /* STPCard.m */; };
@@ -181,8 +180,6 @@
 		4D859FF417945E4D000B2FCC /* TXHVariation_old.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVariation_old.m; sourceTree = "<group>"; };
 		4D859FF617953FA1000B2FCC /* TXHTimeSlot_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHTimeSlot_old.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		4D859FF717953FA1000B2FCC /* TXHTimeSlot_old.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHTimeSlot_old.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		4D89278717944B61004892FD /* TXHSeason_old.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHSeason_old.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		4D89278817944B61004892FD /* TXHSeason_old.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHSeason_old.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Doorman.storyboard; sourceTree = "<group>"; };
 		4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Salesman.storyboard; sourceTree = "<group>"; };
 		4DF3F57F17C63BAE0045299B /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
@@ -631,8 +628,6 @@
 				EEB1848217D1153B0025530A /* MainScreen */,
 				EE75D9AE17D11300009ADCD8 /* Menu */,
 				EE75D94217D1101C009ADCD8 /* Sales */,
-				4D89278717944B61004892FD /* TXHSeason_old.h */,
-				4D89278817944B61004892FD /* TXHSeason_old.m */,
 				4D307DB51796F9FC00822645 /* TXHTicketDetail.h */,
 				4D307DB61796F9FC00822645 /* TXHTicketDetail.m */,
 				4D1A0C2717A7F49C00960906 /* TXHTicketTier.h */,
@@ -1238,7 +1233,6 @@
 				EE75D9A717D11048009ADCD8 /* TXHSalesUpgradeHeader.m in Sources */,
 				EE75D9A817D11048009ADCD8 /* TXHSalesWizardDetailsViewController.m in Sources */,
 				EE75D9A917D11048009ADCD8 /* TXHSalesWizardViewController.m in Sources */,
-				4D859FF2179453EA000B2FCC /* TXHSeason_old.m in Sources */,
 				EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */,
 				EEB1846517D114390025530A /* TXHTextCollectionViewCell.m in Sources */,
 				EEB1846617D114390025530A /* TXHTextEntryTableViewCell.m in Sources */,
