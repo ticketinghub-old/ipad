@@ -25,76 +25,21 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelector;
 @property (weak, nonatomic) IBOutlet UIView *contentDetailView;
 
-//@property (strong, nonatomic) TXHVenue                          *venue;   // Kill this
-//@property (strong, nonatomic) UIButton                          *dateBtn; // Kill this
-//@property (strong, nonatomic) UIButton                          *timeBtn; // Kill this
-@property (strong, nonatomic) UIBarButtonItem                   *dateButton;
-@property (strong, nonatomic) UIBarButtonItem                   *timeButton;
+@property (strong, nonatomic) UIBarButtonItem *dateButton;
+@property (strong, nonatomic) UIBarButtonItem *timeButton;
 
-@property (strong, nonatomic) UIPopoverController               *datePopover;
-@property (strong, nonatomic) UIPopoverController               *timePopover;
+@property (strong, nonatomic) UIPopoverController *datePopover;
+@property (strong, nonatomic) UIPopoverController *timePopover;
 
-@property (strong, nonatomic) NSDate                            *selectedDate;
-@property (assign, nonatomic) NSTimeInterval                    selectedTime;
-@property (assign, nonatomic) BOOL                              timeSelected;
+@property (strong, nonatomic) NSDate *selectedDate;
+@property (assign, nonatomic) NSTimeInterval selectedTime;
+@property (assign, nonatomic) BOOL timeSelected;
 
 @end
 
 @implementation SalesOrDoormanViewController
 
 #pragma mark - View Lifecycle
-
-//- (void)setup_old {
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(venueUpdated:) name:NOTIFICATION_VENUE_UPDATED object:nil];
-//    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:38.0f / 255.0f
-//                                                                             green:65.0f / 255.0f
-//                                                                              blue:87.0f / 255.0f
-//                                                                             alpha:1.0f]];
-//    self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:24.0f],
-//                                                                    NSForegroundColorAttributeName: [UIColor whiteColor]};
-//
-//    NSString *titleString = @"<Date>";
-//    UIFont *font = [UIFont systemFontOfSize:15.0f];
-//    NSDictionary *attributesDict = @{NSFontAttributeName : font};
-//    NSAttributedString *attributedTitleString = [[NSAttributedString alloc] initWithString:titleString attributes:attributesDict];
-//    CGSize titleSize = [attributedTitleString size];
-//    //  UIImage *buttonBackgroundImage = [[UIImage imageNamed:@"ButtonBackground"] resizableImageWithCapInsets:UIEdgeInsetsMake(1.0, 1.0, 1.0, 1.0)];
-//    self.dateBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    CGRect frame = CGRectZero;
-//    frame.size = titleSize;
-//    self.dateBtn.frame = CGRectInset(frame, -5, -5);
-//    //  [dateBtn setImage:buttonBackgroundImage forState:UIControlStateNormal];
-//    //  [dateBtn setImage:buttonBackgroundImage forState:UIControlStateSelected];
-//    [self.dateBtn addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventTouchUpInside];
-//    self.dateBtn.titleLabel.font = font;
-//    [self.dateBtn setTitle:titleString forState:UIControlStateNormal];
-//    self.dateBtn.tintColor = [UIColor whiteColor];
-//
-//    self.dateButton = [[UIBarButtonItem alloc] initWithCustomView:self.dateBtn];
-//
-//    titleString = @"<Time>";
-//    NSAttributedString *attributedTimeString = [[NSAttributedString alloc] initWithString:titleString attributes:attributesDict];
-//    CGSize timeSize = [attributedTimeString size];
-//    self.timeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    //  [timeBtn setImage:buttonBackgroundImage forState:UIControlStateNormal];
-//    //  [timeBtn setImage:buttonBackgroundImage forState:UIControlStateSelected];
-//    [self.timeBtn addTarget:self action:@selector(selectTime:) forControlEvents:UIControlEventTouchUpInside];
-//    frame.size = timeSize;
-//    self.timeBtn.frame = CGRectInset(frame, -5, -5);
-//    self.timeBtn.titleLabel.font = font;
-//    self.timeBtn.tintColor = [UIColor whiteColor];
-//    [self.timeBtn setTitle:titleString forState:UIControlStateNormal];
-//
-//    UIBarButtonItem *handleItem = self.navigationItem.leftBarButtonItem;
-//
-//    handleItem.tintColor = [UIColor colorWithRed:188.0f / 255.0f
-//                                           green:207.0f / 255.0f
-//                                            blue:219.0f / 255.0f
-//                                           alpha:1.0f];
-//
-//    self.timeButton = [[UIBarButtonItem alloc] initWithCustomView:self.timeBtn];
-//    [self.navigationItem setLeftBarButtonItems:@[self.navigationItem.leftBarButtonItem, self.dateButton, self.timeButton]];
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -110,22 +55,22 @@
 #pragma mark - Superclass overrides
 
 - (void)prepareForSegue:(UIStoryboardSegue *)__unused segue sender:(id)__unused sender {
-    //    if ([segue isMemberOfClass:[TXHTransitionSegue class]]) {
-    //        TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
-    //
-    //        transitionSegue.containerView = self.view;
-    //
-    //        if ([segue.identifier isEqualToString:@"Flip To Salesman"]) {
-    //            transitionSegue.animationOptions = UIViewAnimationOptionTransitionCurlDown;
-    //        }
-    //        else
-    //        {
-    //            transitionSegue.animationOptions = UIViewAnimationOptionTransitionCurlUp;
-    //        }
-    //    }
+    if ([segue isMemberOfClass:[TXHTransitionSegue class]]) {
+        TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
+
+        transitionSegue.containerView = self.view;
+
+        if ([segue.identifier isEqualToString:@"Flip To Salesman"]) {
+            transitionSegue.animationOptions = UIViewAnimationOptionTransitionCurlDown;
+        }
+        else
+        {
+            transitionSegue.animationOptions = UIViewAnimationOptionTransitionCurlUp;
+        }
+    }
 }
 
-#pragma mark Public
+#pragma mark Actions
 
 - (IBAction)selectMode:(id)__unused sender {
     [self dismissVisiblePopover];
@@ -141,6 +86,7 @@
         segue.containerView = self.contentDetailView;
 
         [segue perform];
+        
     } else {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Salesman" bundle:nil];
 
@@ -163,7 +109,7 @@
 
     // More stuff needed here to reset the UI if the view is loaded
     if ([self isViewLoaded]) {
-        [self resetDateAndTimeButtons];
+        [self resetDateAndTimeButtonLabels];
     }
 }
 
@@ -211,57 +157,8 @@
     self.timeButton.title = [timeFormatter stringFromDate:dateAndTime];
     [self.timePopover dismissPopoverAnimated:YES];
     [self updateControlsForUserInteraction];
-//    [[TXHServerAccessManager sharedInstance] getTicketOptionsForTimeSlot:time
-//                                                       completionHandler:^(TXHTicketDetail *detail){
-//#pragma unused (detail)
-//                                                       }
-//                                                            errorHandler:^(id reason){
-//                                                                NSLog(@"ticket detail error: %@", reason);
-//                                                            }];
+
 }
-
-#pragma mark - Notifications
-
-//- (void)venueUpdated:(NSNotification *)notification {
-//    // Check for venue details then close menu if appropriate
-//    NSDate *startDate = [NSDate date];
-//    self.venue = [notification object];
-//    if (self.venue != nil) {
-//        // Display the selected venue in the navigation bar
-//#warning - AN turned this off!
-//        //        self.title = self.venue.businessName;
-//        self.title = @"Hello!";
-//
-//        // Get the first season for this venue if there is one
-//#warning - AN turned this off!
-//        //        TXHSeason_old *season = [self.venue.allSeasons firstObject];
-//        TXHSeason_old *season = nil;
-//        if (season == nil) {
-//            self.navigationItem.prompt = NSLocalizedString(@"There are no dates for this venue", @"There are no dates for this venue");
-//            return;
-//        }
-//        self.navigationItem.prompt = nil;
-//
-//        // Update our date picker barbutton control to show the date
-//        // Choose today, or the start of the season if it's later than today.
-//        NSDate *seasonStart = season.startsOn;
-//        if ([startDate compare:seasonStart] == NSOrderedAscending) {
-//            startDate = seasonStart;
-//        }
-//        static NSDateFormatter *dateFormatter = nil;
-//        if (dateFormatter == nil) {
-//            dateFormatter = [[NSDateFormatter alloc] init];
-//            dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-//            dateFormatter.timeStyle = NSDateFormatterNoStyle;
-//        }
-//        NSString *dateString = [dateFormatter stringFromDate:startDate];
-//        [self.dateBtn setTitle:dateString forState:UIControlStateNormal];
-//        [self.dateBtn sizeToFit];
-//    }
-//    self.selectedDate = startDate;
-//    [self updateControlsForUserInteraction];
-//    //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TOGGLE_MENU object:nil];
-//}
 
 #pragma mark - Private
 
@@ -297,12 +194,7 @@
 
     // Build start/end ranges from all the seasons available for this venue
     NSMutableArray *ranges = [NSMutableArray array];
-#warning - AN turned this off!
-    //    for (TXHSeason_old *season in self.venue.allSeasons) {
-    //        // Add a range for each season
-    //        [ranges addObject:@{@"start": season.startsOn, @"end": season.endsOn}];
-    //    }
-    // - commented this section out
+
     TXHDateSelectorViewController *dateViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Date Selector Popover"];
     dateViewController.delegate = self;
     [dateViewController constrainToDateRanges:ranges];
@@ -347,10 +239,9 @@
     self.timeButton.enabled = (enabled && (self.selectedDate != nil));
 }
 
-// Resets the date and time buttons to when changing venue
-- (void)resetDateAndTimeButtons {
-    self.dateButton.title = @"<Reset Date>";
-    self.timeButton.title = @"<Reset Time>";
+- (void)resetDateAndTimeButtonLabels {
+    self.dateButton.title = @"<Date>";
+    self.timeButton.title = @"<Time>";
 }
 
 
