@@ -81,6 +81,7 @@
 		EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9AC17D112C4009ADCD8 /* TXHLoginViewController.m */; };
 		EE75D9B317D11311009ADCD8 /* ProductListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B017D11311009ADCD8 /* ProductListController.m */; };
 		EE75D9B417D11311009ADCD8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B217D11311009ADCD8 /* MainViewController.m */; };
+		EE8883D5189AD0EC00176CB0 /* libTimesSquare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8883D2189AD0C300176CB0 /* libTimesSquare.a */; };
 		EEB1845817D114390025530A /* TXHBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843517D114390025530A /* TXHBaseCollectionViewCell.m */; };
 		EEB1845917D114390025530A /* TXHBaseDataEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843717D114390025530A /* TXHBaseDataEntryTableViewCell.m */; };
 		EEB1845A17D114390025530A /* TXHBaseDataEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843917D114390025530A /* TXHBaseDataEntryView.m */; };
@@ -130,6 +131,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 58E4FB501760AE5500E328A0;
 			remoteInfo = TicketingHub;
+		};
+		EE8883D1189AD0C300176CB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE8883CC189AD0C200176CB0 /* TimesSquare.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A806805B16700FD70071C71E;
+			remoteInfo = TimesSquare;
+		};
+		EE8883D3189AD0D300176CB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE8883CC189AD0C200176CB0 /* TimesSquare.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A806805A16700FD70071C71E;
+			remoteInfo = TimesSquare;
 		};
 		EEB32C821847A8A1006045AF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -332,6 +347,7 @@
 		EE75D9B017D11311009ADCD8 /* ProductListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ProductListController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EE75D9B117D11311009ADCD8 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MainViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		EE75D9B217D11311009ADCD8 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MainViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EE8883CC189AD0C200176CB0 /* TimesSquare.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TimesSquare.xcodeproj; path = "Externals/objc-TimesSquare/TimesSquare.xcodeproj"; sourceTree = "<group>"; };
 		EE935E7417B3EB630080A1C2 /* CommonMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonMacros.h; sourceTree = "<group>"; };
 		EEB1843417D114390025530A /* TXHBaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBaseCollectionViewCell.h; sourceTree = "<group>"; };
 		EEB1843517D114390025530A /* TXHBaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBaseCollectionViewCell.m; sourceTree = "<group>"; };
@@ -465,6 +481,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE8883D5189AD0EC00176CB0 /* libTimesSquare.a in Frameworks */,
 				4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */,
 				58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */,
 				58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */,
@@ -531,6 +548,7 @@
 				58E4FB971760D3C800E328A0 /* Classes */,
 				58E4FB901760AECF00E328A0 /* Storyboards */,
 				EEF8DA7B17F0539000579F5B /* iOS-API */,
+				EE8883CA189AD09C00176CB0 /* TimesSquare */,
 				EE11ADCC17BD2138000042B2 /* Stripe */,
 				58E4FB7E1760AE5500E328A0 /* TicketingHubTests */,
 				58E4FB531760AE5500E328A0 /* Frameworks */,
@@ -837,6 +855,22 @@
 			name = Menu;
 			sourceTree = "<group>";
 		};
+		EE8883CA189AD09C00176CB0 /* TimesSquare */ = {
+			isa = PBXGroup;
+			children = (
+				EE8883CC189AD0C200176CB0 /* TimesSquare.xcodeproj */,
+			);
+			name = TimesSquare;
+			sourceTree = "<group>";
+		};
+		EE8883CD189AD0C200176CB0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE8883D2189AD0C300176CB0 /* libTimesSquare.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		EEB1843317D113FB0025530A /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -1027,6 +1061,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				EE8883D4189AD0D300176CB0 /* PBXTargetDependency */,
 				EEB32C891847AA2F006045AF /* PBXTargetDependency */,
 				EEB32C8B1847AA2F006045AF /* PBXTargetDependency */,
 			);
@@ -1079,6 +1114,10 @@
 					ProductGroup = EEB32C7C1847A89F006045AF /* Products */;
 					ProjectRef = EEB32C7B1847A89F006045AF /* iOS-api.xcodeproj */;
 				},
+				{
+					ProductGroup = EE8883CD189AD0C200176CB0 /* Products */;
+					ProjectRef = EE8883CC189AD0C200176CB0 /* TimesSquare.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -1089,6 +1128,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		EE8883D2189AD0C300176CB0 /* libTimesSquare.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libTimesSquare.a;
+			remoteRef = EE8883D1189AD0C300176CB0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		EEB32C831847A8A1006045AF /* libiOS-api.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1266,6 +1312,11 @@
 			isa = PBXTargetDependency;
 			target = 58E4FB501760AE5500E328A0 /* TicketingHub */;
 			targetProxy = 58E4FB7C1760AE5500E328A0 /* PBXContainerItemProxy */;
+		};
+		EE8883D4189AD0D300176CB0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TimesSquare;
+			targetProxy = EE8883D3189AD0D300176CB0 /* PBXContainerItemProxy */;
 		};
 		EEB32C891847AA2F006045AF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
