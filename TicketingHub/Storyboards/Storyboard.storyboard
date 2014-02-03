@@ -308,106 +308,42 @@
             <point key="canvasLocation" x="433" y="1209"/>
         </scene>
         <!--Date Selector View Controller-->
-        <scene sceneID="DpJ-Ct-eVJ">
+        <scene sceneID="6d1-JM-7Te">
             <objects>
-                <viewController storyboardIdentifier="Date Selector Popover" modalPresentationStyle="formSheet" id="MV3-Nl-t0D" customClass="TXHDateSelectorViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DateSelectorViewController" id="PjA-IE-8KG" customClass="TXHDateSelectorViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3pU-c6-jpe"/>
-                        <viewControllerLayoutGuide type="bottom" id="uFg-bL-p6X"/>
+                        <viewControllerLayoutGuide type="top" id="rKg-d3-6yi"/>
+                        <viewControllerLayoutGuide type="bottom" id="ShR-ZE-dJE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" horizontalHuggingPriority="241" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="270" id="7rR-Ki-b2q">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                    <view key="view" contentMode="scaleToFill" id="UOP-7h-kde">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="FCd-54-3dq">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.30196078430000001" green="0.52549019610000003" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <date key="date" timeIntervalSinceReferenceDate="396199300.86056501">
-                                    <!--2013-07-22 15:21:40 +0000-->
-                                </date>
-                                <timeZone key="timeZone" name="America/Los_Angeles">
-                                    <data key="data">
-VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
-y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
-5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
-8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
-AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
-DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
-HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
-KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
-OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
-Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
-VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
-Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
-cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
-f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</data>
-                                </timeZone>
-                                <connections>
-                                    <action selector="selectDate:" destination="MV3-Nl-t0D" eventType="valueChanged" id="JNq-Hk-35d"/>
-                                </connections>
-                            </datePicker>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timeslots" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="woO-0i-cVP">
-                                <rect key="frame" x="0.0" y="220" width="320" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6A4-Ov-6Lr">
-                                <rect key="frame" x="0.0" y="243" width="320" height="781"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="Zi7-Bl-5ym" kind="embed" identifier="Embedded Timeslots" id="GRm-s9-KC7"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="FCd-54-3dq" firstAttribute="leading" secondItem="woO-0i-cVP" secondAttribute="leading" id="2e0-ML-752"/>
-                            <constraint firstItem="6A4-Ov-6Lr" firstAttribute="top" secondItem="woO-0i-cVP" secondAttribute="bottom" constant="2" id="5ya-KV-tac"/>
-                            <constraint firstItem="FCd-54-3dq" firstAttribute="leading" secondItem="7rR-Ki-b2q" secondAttribute="leading" id="8g0-t5-NNY"/>
-                            <constraint firstItem="woO-0i-cVP" firstAttribute="top" secondItem="FCd-54-3dq" secondAttribute="bottom" constant="4" id="Sxu-nT-32s"/>
-                            <constraint firstItem="woO-0i-cVP" firstAttribute="width" secondItem="FCd-54-3dq" secondAttribute="width" id="XqM-C9-Ie7"/>
-                            <constraint firstItem="FCd-54-3dq" firstAttribute="leading" secondItem="6A4-Ov-6Lr" secondAttribute="leading" id="dtt-av-yKK"/>
-                            <constraint firstItem="6A4-Ov-6Lr" firstAttribute="width" secondItem="FCd-54-3dq" secondAttribute="width" id="gW1-T7-oQI"/>
-                            <constraint firstAttribute="bottom" secondItem="6A4-Ov-6Lr" secondAttribute="bottom" id="rGi-oh-X2C"/>
-                            <constraint firstItem="FCd-54-3dq" firstAttribute="top" secondItem="7rR-Ki-b2q" secondAttribute="top" id="uU5-G7-nEs"/>
-                            <constraint firstItem="6A4-Ov-6Lr" firstAttribute="width" secondItem="woO-0i-cVP" secondAttribute="width" id="xU5-mD-CVg"/>
-                        </constraints>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="320" height="470"/>
-                    <connections>
-                        <outlet property="datePicker" destination="FCd-54-3dq" id="kZI-TT-ROv"/>
-                    </connections>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="L7e-Pd-Pa7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k9w-Fb-f6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2669" y="-464"/>
+            <point key="canvasLocation" x="2128" y="-304"/>
         </scene>
         <!--Timeslot Selector View Controller-->
         <scene sceneID="fRV-N2-66j">
             <objects>
                 <tableViewController storyboardIdentifier="Time Selector Popover" id="Zi7-Bl-5ym" customClass="TXHTimeslotSelectorViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="a3C-Mj-MXo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="781"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="CellID" textLabel="M12-co-zTE" style="IBUITableViewCellStyleDefault" id="ngC-pT-Xac">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ngC-pT-Xac" id="8Uf-Oe-wCy">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="M12-co-zTE">
-                                            <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="738" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -426,7 +362,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n9r-0U-SRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3557" y="-464"/>
+            <point key="canvasLocation" x="3061" y="-440"/>
         </scene>
         <!--Sales Or Doorman View Controller - tickethub.io-->
         <scene sceneID="VBG-zP-iW6">

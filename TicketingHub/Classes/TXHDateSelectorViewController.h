@@ -8,6 +8,8 @@
 
 @import UIKit;
 
+extern NSString * const DateSelectorViewControllerStoryboardIdentifier;
+
 @class TXHTicketingHubClient;
 @class TXHDateSelectorViewController;
 

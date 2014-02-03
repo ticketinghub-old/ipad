@@ -192,7 +192,7 @@
 -(void)selectDate:(id)__unused sender {
     [self dismissVisiblePopover];
 
-    TXHDateSelectorViewController *dateViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Date Selector Popover"];
+    TXHDateSelectorViewController *dateViewController = [self.storyboard instantiateViewControllerWithIdentifier:DateSelectorViewControllerStoryboardIdentifier];
     dateViewController.delegate = self;
 
     [self.view layoutIfNeeded];

@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
+NSString * const DateSelectorViewControllerStoryboardIdentifier = @"DateSelectorViewController";
+
 #import "TXHDateSelectorViewController.h"
 
 #import <iOS-api/iOS-api.h>
