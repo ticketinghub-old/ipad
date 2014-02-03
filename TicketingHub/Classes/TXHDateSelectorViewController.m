@@ -13,6 +13,8 @@ NSString * const DateSelectorViewControllerStoryboardIdentifier = @"DateSelector
 #import <iOS-api/iOS-api.h>
 #import <TimesSquare/TimesSquare.h>
 
+#import "TXHCalendarRowCell.h"
+
 @interface TXHDateSelectorViewController ()
 
 @property (weak, nonatomic) TSQCalendarView *calendarView;
@@ -39,6 +41,11 @@ NSString * const DateSelectorViewControllerStoryboardIdentifier = @"DateSelector
     TSQCalendarView *calendarView = [[TSQCalendarView alloc] init];
     calendarView.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     calendarView.calendar.locale = [NSLocale currentLocale];
+    calendarView.rowCellClass = [TXHCalendarRowCell class];
+    calendarView.backgroundColor = [UIColor colorWithRed:0.84f green:0.85f blue:0.86f alpha:1.0f];
+
+    CGFloat onePixel = 1.0f / [UIScreen mainScreen].scale;
+    calendarView.contentInset = UIEdgeInsetsMake(0.0f, onePixel, 0.0f, onePixel);
 
     // Hard coded one month for development.
     calendarView.firstDate = [NSDate date];
