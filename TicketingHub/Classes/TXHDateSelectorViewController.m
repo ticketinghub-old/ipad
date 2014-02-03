@@ -10,39 +10,22 @@
 
 #import <iOS-api/iOS-api.h>
 
-#import "TXHTicketingHubClient+AppExtension.h"
-#import "TXHTimeslotSelectorViewController.h"
+#import "TXHTicketingHubClient+AppExtension.h" // Needed for compilation - but the goal is to remove this.
+#import "TXHTimeslotSelectorViewController.h" // Not really needed.
 
 @interface TXHDateSelectorViewController () <TXHTimeSlotSelectorDelegate>
 
-@property (strong, nonatomic) IBOutlet UIDatePicker             *datePicker;
-
-@property (strong, nonatomic) IBOutlet UIButton                 *selectButton;
-
-@property (strong, nonatomic) NSDate                            *previousSelectedDate;
-
-@property (strong, nonatomic) NSArray                           *dateRanges;
-
+@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (strong, nonatomic) IBOutlet UIButton *selectButton;
+@property (strong, nonatomic) NSDate *previousSelectedDate;
+@property (strong, nonatomic) NSArray *dateRanges;
 @property (strong, nonatomic) TXHTimeslotSelectorViewController *timeSlotSelector;
 
 @end
 
 @implementation TXHDateSelectorViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
+#pragma mark - View lifecycle
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -51,17 +34,27 @@
     self.previousSelectedDate = self.datePicker.date;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (CGSize)contentSizeForViewInPopover
-{
+#pragma mark - Superclass
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+#pragma unused (sender)
+    if ([segue.identifier isEqualToString:@"Embedded Timeslots"]) {
+        self.timeSlotSelector = segue.destinationViewController;
+        self.timeSlotSelector.delegate = self;
+    }
+}
+
+- (CGSize)contentSizeForViewInPopover {
     // Determine the size of the popover
     return CGSizeMake(self.datePicker.bounds.size.width, self.datePicker.bounds.size.height + 254.0f);
 }
+
+#pragma mark - Private
 
 - (void)constrainToDateRanges:(NSArray *)ranges {
     self.dateRanges = ranges;
@@ -148,14 +141,6 @@
 
     self.previousSelectedDate = self.datePicker.date;
     self.timeSlotSelector.timeSlots = timeslots;
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-#pragma unused (sender)
-    if ([segue.identifier isEqualToString:@"Embedded Timeslots"]) {
-        self.timeSlotSelector = segue.destinationViewController;
-        self.timeSlotSelector.delegate = self;
-    }
 }
 
 - (void)timeSlotSelectorViewController:(TXHTimeslotSelectorViewController *)controller didSelectTime:(NSNumber *)time {

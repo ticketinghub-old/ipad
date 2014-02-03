@@ -14,11 +14,17 @@
 
 @interface TXHDateSelectorViewController : UIViewController
 
+/** 
+ A reference to the network library
+ */
 @property (strong, nonatomic) TXHTicketingHubClient *ticketingHubClient;
 
-// A delegate that will receive date selection
+/** 
+ A delegate to handle date selection
+ */
 @property (weak, nonatomic) id <TXHDateSelectorViewDelegate> delegate;
 
+#warning Kill this. It should be picked up from the data source.
 // Constrain the date picker to a range of dates from which one may be selected.
 // Each element contains a dictionary with start & end keys
 - (void)constrainToDateRanges:(NSArray *)ranges;
