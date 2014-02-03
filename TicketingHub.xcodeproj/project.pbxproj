@@ -44,6 +44,7 @@
 		58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB561760AE5500E328A0 /* Foundation.framework */; };
 		58E4FB831760AE5500E328A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB811760AE5500E328A0 /* InfoPlist.strings */; };
 		58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB911760AEF300E328A0 /* Storyboard.storyboard */; };
+		EE09F1FF189FEBA5004FEBCE /* TXHCalendarRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE09F1FE189FEBA5004FEBCE /* TXHCalendarRowCell.m */; };
 		EE75D98817D11048009ADCD8 /* TXHSalesCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94417D11047009ADCD8 /* TXHSalesCalendarViewController.m */; };
 		EE75D98917D11048009ADCD8 /* TXHSalesCompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94617D11047009ADCD8 /* TXHSalesCompletionViewController.m */; };
 		EE75D98A17D11048009ADCD8 /* TXHSalesContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94917D11047009ADCD8 /* TXHSalesContentsViewController.m */; };
@@ -222,6 +223,8 @@
 		58E4FB801760AE5500E328A0 /* TicketingHubTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TicketingHubTests-Info.plist"; sourceTree = "<group>"; };
 		58E4FB821760AE5500E328A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58E4FB911760AEF300E328A0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		EE09F1FD189FEBA5004FEBCE /* TXHCalendarRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHCalendarRowCell.h; sourceTree = "<group>"; };
+		EE09F1FE189FEBA5004FEBCE /* TXHCalendarRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCalendarRowCell.m; sourceTree = "<group>"; };
 		EE11ADCD17BD2138000042B2 /* STPCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STPCard.h; sourceTree = "<group>"; };
 		EE11ADCE17BD2138000042B2 /* STPCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STPCard.m; sourceTree = "<group>"; };
 		EE11ADCF17BD2138000042B2 /* STPToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STPToken.h; sourceTree = "<group>"; };
@@ -944,6 +947,8 @@
 			children = (
 				EEB1848917D115640025530A /* SalesOrDoormanViewController.h */,
 				EEB1848A17D115640025530A /* SalesOrDoormanViewController.m */,
+				EE09F1FD189FEBA5004FEBCE /* TXHCalendarRowCell.h */,
+				EE09F1FE189FEBA5004FEBCE /* TXHCalendarRowCell.m */,
 				EEB1848317D115640025530A /* TXHDateSelectorViewController.h */,
 				EEB1848417D115640025530A /* TXHDateSelectorViewController.m */,
 				EEB1848517D115640025530A /* TXHEmbeddingSegue.h */,
@@ -1230,6 +1235,7 @@
 				EEB1845D17D114390025530A /* TXHDataDownloader.m in Sources */,
 				EEB1845E17D114390025530A /* TXHDataEntryFieldErrorView.m in Sources */,
 				EEB1845F17D114390025530A /* TXHDataSelectionView.m in Sources */,
+				EE09F1FF189FEBA5004FEBCE /* TXHCalendarRowCell.m in Sources */,
 				EEB1846017D114390025530A /* TXHDataSelectionViewController.m in Sources */,
 				EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */,
 				EEB1847A17D114B30025530A /* TXHDoorDateCell.m in Sources */,
