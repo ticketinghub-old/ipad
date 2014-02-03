@@ -192,12 +192,8 @@
 -(void)selectDate:(id)__unused sender {
     [self dismissVisiblePopover];
 
-    // Build start/end ranges from all the seasons available for this venue
-    NSMutableArray *ranges = [NSMutableArray array];
-
     TXHDateSelectorViewController *dateViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Date Selector Popover"];
     dateViewController.delegate = self;
-    [dateViewController constrainToDateRanges:ranges];
 
     [self.view layoutIfNeeded];
 

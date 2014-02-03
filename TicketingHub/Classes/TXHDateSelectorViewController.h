@@ -6,11 +6,17 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @class TXHTicketingHubClient;
+@class TXHDateSelectorViewController;
 
-@protocol TXHDateSelectorViewDelegate;
+@protocol TXHDateSelectorViewDelegate <NSObject>
+
+- (void)dateSelectorViewController:(TXHDateSelectorViewController *)controller didSelectDate:(NSDate *)date;
+
+@end
+
 
 @interface TXHDateSelectorViewController : UIViewController
 
@@ -24,15 +30,5 @@
  */
 @property (weak, nonatomic) id <TXHDateSelectorViewDelegate> delegate;
 
-#warning Kill this. It should be picked up from the data source.
-// Constrain the date picker to a range of dates from which one may be selected.
-// Each element contains a dictionary with start & end keys
-- (void)constrainToDateRanges:(NSArray *)ranges;
-
 @end
 
-@protocol TXHDateSelectorViewDelegate <NSObject>
-
-- (void)dateSelectorViewController:(TXHDateSelectorViewController *)controller didSelectDate:(NSDate *)date ;
-
-@end
