@@ -31,8 +31,15 @@ NSString * const DateSelectorViewControllerStoryboardIdentifier = @"DateSelector
 }
 
 - (void)viewDidLayoutSubviews {
-    // Set the calendar view to show today date on start
-    [(TSQCalendarView *)self.calendarView scrollToDate:[NSDate date] animated:NO];
+    NSDate *dateToMakeVisible;
+    
+    if (self.selectedDate) {
+        dateToMakeVisible = self.selectedDate;
+    } else {
+        dateToMakeVisible = [NSDate date];
+    }
+
+    [self.calendarView scrollToDate:dateToMakeVisible animated:NO];
 }
 
 #pragma mark - Private
