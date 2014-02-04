@@ -21,6 +21,7 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, readonly, nonatomic) TXHUser *user;
+@property (strong, nonatomic) NSDateFormatter *isoDateFormatter;
 
 @property (weak, nonatomic) IBOutlet UIView *logoutView;
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
@@ -93,6 +94,15 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
     }
 
     return _managedObjectContext;
+}
+
+- (NSDateFormatter *)isoDateFormatter {
+    if (!_isoDateFormatter) {
+        _isoDateFormatter = [NSDateFormatter new];
+        [_isoDateFormatter setDateFormat:@"yyyy-MM-dd"];
+    }
+
+    return _isoDateFormatter;
 }
 
 #pragma mark - NSFetchedResultsController delegate
@@ -241,25 +251,35 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 }
 
 - (void)fetchAvailabilitiesForNextThreeMonthsForProduct:(TXHProduct *)product {
-    static NSDateFormatter *isoDateFormatter;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        isoDateFormatter = [NSDateFormatter new];
-        [isoDateFormatter setDateFormat:@"yyyy-MM-dd"];
-    });
-
     NSDate *today = [NSDate date];
 
     NSDateComponents *components = [NSDateComponents new];
     [components setMonth:3];
 
     NSDate *forwardDate = [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:today options:kNilOptions];
-    NSString *forwardDateString = [isoDateFormatter stringFromDate:forwardDate];
+    NSString *forwardDateString = [self.isoDateFormatter stringFromDate:forwardDate];
 
-    [self.ticketingHubClient availabilitiesForProduct:product from:nil to:forwardDateString completion:^(NSArray *availabilities, NSError *error) {
-        DLog(@"3 month availability updated for Product: %@",product.name);
+    [self fetchAvailabilitiesToDate:forwardDateString forProduct:product];
+}
+
+- (void)fetchAvailabilitiesForNextYearForProduct:(TXHProduct *)product {
+    // Check against last update time so that this isn't called too often
+    NSTimeInterval checkInterval = 60 * 5.0; // Not using components, as 5 minutes is the absolute time between checks.
+
+    NSDateComponents *components = [NSDateComponents new];
+    [components setYear:1];
+
+    NSDate *forwardDate = [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:[NSDate date] options:kNilOptions];
+    NSString *forwardDateString = [self.isoDateFormatter stringFromDate:forwardDate];
+
+    [self fetchAvailabilitiesToDate:forwardDateString forProduct:product];
+
+}
+
+- (void)fetchAvailabilitiesToDate:(NSString *)isoDateString forProduct:(TXHProduct *)product {
+    [self.ticketingHubClient availabilitiesForProduct:product from:nil to:isoDateString completion:^(NSArray *availabilities, NSError *error) {
+        DLog(@"Availability update to %@ for Product: %@", isoDateString, product.name);
     }];
-
 }
 
 @end
