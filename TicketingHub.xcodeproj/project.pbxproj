@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3E0DAB9118AA41510045697C /* iOS-api.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3E0DAB9018AA41510045697C /* iOS-api.podspec */; };
+		3E22139B18AA791000DE35A6 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E22139A18AA791000DE35A6 /* ArrayDataSource.m */; };
+		3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E22139D18AA794C00DE35A6 /* DictionaryDataSource.m */; };
 		3E3A5B2018AA74E100A54812 /* TXHTicketTier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3A5B1F18AA74E100A54812 /* TXHTicketTier.m */; };
 		4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */; };
 		4D586DE11797E51E00E40534 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D586DE01797E51E00E40534 /* Images.xcassets */; };
@@ -111,6 +113,11 @@
 
 /* Begin PBXFileReference section */
 		3E0DAB9018AA41510045697C /* iOS-api.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS-api.podspec"; sourceTree = "<group>"; };
+		3E22139918AA791000DE35A6 /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
+		3E22139A18AA791000DE35A6 /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
+		3E22139C18AA794C00DE35A6 /* DictionaryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryDataSource.h; sourceTree = "<group>"; };
+		3E22139D18AA794C00DE35A6 /* DictionaryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryDataSource.m; sourceTree = "<group>"; };
+		3E22139F18AA799700DE35A6 /* TableViewConfigurationBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewConfigurationBlock.h; sourceTree = "<group>"; };
 		3E3A5B1E18AA74E100A54812 /* TXHTicketTier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketTier.h; sourceTree = "<group>"; };
 		3E3A5B1F18AA74E100A54812 /* TXHTicketTier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketTier.m; sourceTree = "<group>"; };
 		416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
@@ -308,6 +315,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E22139818AA78DB00DE35A6 /* TableViewDataSources */ = {
+			isa = PBXGroup;
+			children = (
+				3E22139F18AA799700DE35A6 /* TableViewConfigurationBlock.h */,
+				3E22139918AA791000DE35A6 /* ArrayDataSource.h */,
+				3E22139A18AA791000DE35A6 /* ArrayDataSource.m */,
+				3E22139C18AA794C00DE35A6 /* DictionaryDataSource.h */,
+				3E22139D18AA794C00DE35A6 /* DictionaryDataSource.m */,
+			);
+			name = TableViewDataSources;
+			sourceTree = "<group>";
+		};
 		3E3A5B0018AA58EB00A54812 /* Date Time PIcker */ = {
 			isa = PBXGroup;
 			children = (
@@ -765,6 +784,7 @@
 			children = (
 				EEB1845717D114390025530A /* TXHUserDefaultsKeys.h */,
 				EEB1843A17D114390025530A /* TXHCommonNames.h */,
+				3E22139818AA78DB00DE35A6 /* TableViewDataSources */,
 				3E3A5B0718AA64EA00A54812 /* Formatters */,
 				3E3A5B0618AA624500A54812 /* Selection Controllers */,
 				3E3A5B0118AA5C1F00A54812 /* Seques */,
@@ -1032,10 +1052,12 @@
 				EE75D99617D11048009ADCD8 /* TXHSalesPaymentCustomerDetailViewController.m in Sources */,
 				EE75D99817D11048009ADCD8 /* TXHSalesPaymentPaymentDetailsViewController.m in Sources */,
 				EE75D99917D11048009ADCD8 /* TXHSalesPaymentViewController.m in Sources */,
+				3E22139B18AA791000DE35A6 /* ArrayDataSource.m in Sources */,
 				EE75D99A17D11048009ADCD8 /* TXHSalesProductCell.m in Sources */,
 				EE75D99B17D11048009ADCD8 /* TXHSalesProductDetailsViewController.m in Sources */,
 				EE75D99C17D11048009ADCD8 /* TXHSalesSummaryCell.m in Sources */,
 				EE75D99D17D11048009ADCD8 /* TXHSalesSummaryExtraProductsCell.m in Sources */,
+				3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */,
 				EE75D99E17D11048009ADCD8 /* TXHSalesSummaryHeader.m in Sources */,
 				EE75D99F17D11048009ADCD8 /* TXHSalesSummaryViewController.m in Sources */,
 				EE75D9A017D11048009ADCD8 /* TXHSalesTicketCompletionViewController.m in Sources */,

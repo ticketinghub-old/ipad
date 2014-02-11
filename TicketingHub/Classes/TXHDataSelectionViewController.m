@@ -8,20 +8,17 @@
 
 #import "TXHDataSelectionViewController.h"
 
+// TableView data sources
+#import "ArrayDataSource.h"
+#import "DictionaryDataSource.h"
+
 @interface TXHDataSelectionViewController ()
+
+@property (strong, nonatomic) id<UITableViewDataSource> tableViewDataSource;
 
 @end
 
 @implementation TXHDataSelectionViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -32,68 +29,51 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
 }
 
-- (void)didReceiveMemoryWarning
+-(void)setItems:(id)items
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    if ([self.items isKindOfClass:[NSDictionary class]]) {
-        NSDictionary *itemsDictionary = self.items;
-        return itemsDictionary.count;
-    }
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    if ([self.items isKindOfClass:[NSArray class]]) {
-        NSArray *itemsArray = self.items;
-        return itemsArray.count;
-    }
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    self.items = items;
+    self.tableViewDataSource = [self dataSourceForItems:items
+                                     configureCellBlock:^(id cell, id item) {
+                                         [self configureCell:cell withItem:item];
+                                     }];
     
-    // Configure the cell...
-    [self configureCell:cell forRowAtIndexPath:indexPath];
-    
-    return cell;
+    self.tableView.dataSource = self.tableViewDataSource;
+    [self.tableView reloadData];
 }
 
-- (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.items isKindOfClass:[NSDictionary class]]) {
-        [self configureCell:cell forDictionaryAtIndexPath:indexPath];
-    } else {
-        [self configureCell:cell forIndex:indexPath.row];
+- (id<UITableViewDataSource>)dataSourceForItems:(id)items
+                             configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock
+{
+    if ([items isKindOfClass:[NSArray class]])
+    {
+        return [[ArrayDataSource alloc] initWithItems:items
+                                       cellIdentifier:@"CellIdentifier"
+                                   configureCellBlock:aConfigureCellBlock];
+    }
+    else if ([items isKindOfClass:[NSDictionary class]])
+    {
+        return [[DictionaryDataSource alloc] initWithItems:items
+                                            cellIdentifier:@"CellIdentifier"
+                                        configureCellBlock:aConfigureCellBlock];
+    }
+    return nil;
+}
+
+- (void)configureCell:(UITableViewCell *)cell withItem:(id)item
+{
+    if ([item isKindOfClass:[NSString class]])
+    {
+        cell.textLabel.text = item;
+    }
+    else
+    {
+        cell.textLabel.text = nil;
     }
 }
 
-- (void)configureCell:(UITableViewCell *)cell forIndex:(NSUInteger)index {
-    id result = [self.items objectAtIndex:index];
-    if ([result isKindOfClass:[NSString class]]) {
-        cell.textLabel.text = result;
-    }
-}
-
-- (void)configureCell:(UITableViewCell *)cell forDictionaryAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
+#pragma mark UItableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.delegate dataSelectionViewController:self didSelectItemAtIndexPath:indexPath];
