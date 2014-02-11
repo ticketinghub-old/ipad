@@ -12,7 +12,6 @@
 
 #import "TXHSalesContentProtocol.h"
 #import "TXHSalesTicketTierCell.h"
-#import "TXHTicketDetail.h"
 #import "TXHTicketTier.h"
 
 @interface TXHSalesTicketTiersViewController () <UITextFieldDelegate, TXHSalesContentProtocol>
