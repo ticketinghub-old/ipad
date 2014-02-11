@@ -8,8 +8,8 @@
 
 #define EXP_SHORTHAND
 
-#import "Specta.h"
-#import "Expecta.h"
+#import <Specta/Specta.h>
+#import <Expecta/Expecta.h>
 
 #import "TXHCurrencyEntryView.h"
 

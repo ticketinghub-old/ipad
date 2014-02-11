@@ -14,22 +14,8 @@
 		4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D68DAAA178B0A5400743227 /* AVFoundation.framework */; };
 		4D859FF517945E4D000B2FCC /* TXHVariation_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D859FF417945E4D000B2FCC /* TXHVariation_old.m */; };
 		4D859FF817953FA1000B2FCC /* TXHTimeSlot_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D859FF717953FA1000B2FCC /* TXHTimeSlot_old.m */; };
-		4D8A106617BD2DC900CEECAD /* STPCard.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11ADCE17BD2138000042B2 /* STPCard.m */; };
-		4D8A106817BD2DD300CEECAD /* STPToken.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11ADD017BD2138000042B2 /* STPToken.m */; };
-		4D8A106917BD2DD700CEECAD /* STPView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11ADD217BD2138000042B2 /* STPView.m */; };
-		4D8A106A17BD2DDC00CEECAD /* Stripe.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11ADD517BD2138000042B2 /* Stripe.m */; };
-		4D8A106B17BD2DE000CEECAD /* StripeError.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11ADD717BD2138000042B2 /* StripeError.m */; };
-		4D8A106C17BD2DF700CEECAD /* PKAddressZip.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11ADDE17BD2138000042B2 /* PKAddressZip.m */; };
-		4D8A106D17BD2DF700CEECAD /* PKCard.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11ADE017BD2138000042B2 /* PKCard.m */; };
-		4D8A106E17BD2DF700CEECAD /* PKCardCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11ADE217BD2138000042B2 /* PKCardCVC.m */; };
-		4D8A106F17BD2DF700CEECAD /* PKCardExpiry.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11ADE417BD2138000042B2 /* PKCardExpiry.m */; };
-		4D8A107017BD2DF700CEECAD /* PKCardNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11ADE617BD2138000042B2 /* PKCardNumber.m */; };
-		4D8A107117BD2DF700CEECAD /* PKTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11ADE917BD2138000042B2 /* PKTextField.m */; };
-		4D8A107217BD2DF700CEECAD /* PKUSAddressZip.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11ADEB17BD2138000042B2 /* PKUSAddressZip.m */; };
-		4D8A107317BD2DF700CEECAD /* PKView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11ADED17BD2138000042B2 /* PKView.m */; };
 		4D8FCCB617A28A8C008B4227 /* Doorman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */; };
 		4DB23D6E17A169D8002B7B11 /* Salesman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */; };
-		4DF3F59917C63BAE0045299B /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF3F57F17C63BAE0045299B /* libOCMock.a */; };
 		4DF3F59E17C63E070045299B /* MockingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3F59C17C63E070045299B /* MockingTest.m */; };
 		4DF3F59F17C63E070045299B /* SmokeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3F59D17C63E070045299B /* SmokeSpec.m */; };
 		5860E8581762175B0046DFD3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5860E8571762175B0046DFD3 /* QuartzCore.framework */; };
@@ -44,6 +30,7 @@
 		58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB561760AE5500E328A0 /* Foundation.framework */; };
 		58E4FB831760AE5500E328A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB811760AE5500E328A0 /* InfoPlist.strings */; };
 		58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB911760AEF300E328A0 /* Storyboard.storyboard */; };
+		AE2DFA468AA749E4AA6D795E /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F162CF42C7D94DB9B5422913 /* libPods-test.a */; };
 		CEA4926CD193447DAE8A8A56 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED64DB9D6E348A7B2A040BE /* libPods.a */; };
 		CF019832248E4EA59EA0E4E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED64DB9D6E348A7B2A040BE /* libPods.a */; };
 		EE09F1FF189FEBA5004FEBCE /* TXHCalendarRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE09F1FE189FEBA5004FEBCE /* TXHCalendarRowCell.m */; };
@@ -84,7 +71,6 @@
 		EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9AC17D112C4009ADCD8 /* TXHLoginViewController.m */; };
 		EE75D9B317D11311009ADCD8 /* ProductListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B017D11311009ADCD8 /* ProductListController.m */; };
 		EE75D9B417D11311009ADCD8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B217D11311009ADCD8 /* MainViewController.m */; };
-		EE8883D5189AD0EC00176CB0 /* libTimesSquare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8883D2189AD0C300176CB0 /* libTimesSquare.a */; };
 		EEB1845817D114390025530A /* TXHBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843517D114390025530A /* TXHBaseCollectionViewCell.m */; };
 		EEB1845917D114390025530A /* TXHBaseDataEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843717D114390025530A /* TXHBaseDataEntryTableViewCell.m */; };
 		EEB1845A17D114390025530A /* TXHBaseDataEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843917D114390025530A /* TXHBaseDataEntryView.m */; };
@@ -152,6 +138,7 @@
 		3E9B51F718A94AE400524BEE /* libPods-iOS-api.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-iOS-api.a"; path = "Pods/build/Debug-iphoneos/libPods-iOS-api.a"; sourceTree = "<group>"; };
 		3E9B51FA18A94D7F00524BEE /* libPods-iOS-api.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-iOS-api.a"; path = "Pods/build/Debug-iphoneos/libPods-iOS-api.a"; sourceTree = "<group>"; };
 		3E9B520F18A96AB800524BEE /* libPods-iOS-api.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-iOS-api.a"; path = "Pods/build/Debug-iphoneos/libPods-iOS-api.a"; sourceTree = "<group>"; };
+		416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
 		4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCurrencyEntryViewSpec.m; sourceTree = "<group>"; };
 		4D1A0C2717A7F49C00960906 /* TXHTicketTier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketTier.h; sourceTree = "<group>"; };
 		4D1A0C2817A7F49C00960906 /* TXHTicketTier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketTier.m; sourceTree = "<group>"; };
@@ -165,13 +152,6 @@
 		4D859FF717953FA1000B2FCC /* TXHTimeSlot_old.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHTimeSlot_old.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Doorman.storyboard; sourceTree = "<group>"; };
 		4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Salesman.storyboard; sourceTree = "<group>"; };
-		4DF3F57F17C63BAE0045299B /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
-		4DF3F58117C63BAE0045299B /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
-		4DF3F58217C63BAE0045299B /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
-		4DF3F58317C63BAE0045299B /* OCMConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
-		4DF3F58417C63BAE0045299B /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
-		4DF3F58517C63BAE0045299B /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
-		4DF3F58617C63BAE0045299B /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
 		4DF3F59C17C63E070045299B /* MockingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockingTest.m; sourceTree = "<group>"; };
 		4DF3F59D17C63E070045299B /* SmokeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmokeSpec.m; sourceTree = "<group>"; };
 		5860E8571762175B0046DFD3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -392,6 +372,7 @@
 		EEC8BCB51848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TXHTicketingHubClient+AppExtension.m"; path = "TicketingHub/TXHTicketingHubClient+AppExtension.m"; sourceTree = "<group>"; };
 		EEF6BA4517D1192B005B1B20 /* BarcodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeViewController.h; sourceTree = "<group>"; };
 		EEF6BA4617D1192B005B1B20 /* BarcodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeViewController.m; sourceTree = "<group>"; };
+		F162CF42C7D94DB9B5422913 /* libPods-test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -400,7 +381,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEA4926CD193447DAE8A8A56 /* libPods.a in Frameworks */,
-				EE8883D5189AD0EC00176CB0 /* libTimesSquare.a in Frameworks */,
 				4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */,
 				58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */,
 				58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */,
@@ -417,38 +397,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */,
-				4DF3F59917C63BAE0045299B /* libOCMock.a in Frameworks */,
 				58E4FB781760AE5500E328A0 /* SenTestingKit.framework in Frameworks */,
 				58E4FB791760AE5500E328A0 /* UIKit.framework in Frameworks */,
 				CF019832248E4EA59EA0E4E7 /* libPods.a in Frameworks */,
+				AE2DFA468AA749E4AA6D795E /* libPods-test.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4DF3F57E17C63BAE0045299B /* OCMock */ = {
-			isa = PBXGroup;
-			children = (
-				4DF3F58017C63BAE0045299B /* OCMock */,
-				4DF3F57F17C63BAE0045299B /* libOCMock.a */,
-			);
-			path = OCMock;
-			sourceTree = "<group>";
-		};
-		4DF3F58017C63BAE0045299B /* OCMock */ = {
-			isa = PBXGroup;
-			children = (
-				4DF3F58117C63BAE0045299B /* NSNotificationCenter+OCMAdditions.h */,
-				4DF3F58217C63BAE0045299B /* OCMArg.h */,
-				4DF3F58317C63BAE0045299B /* OCMConstraint.h */,
-				4DF3F58417C63BAE0045299B /* OCMock.h */,
-				4DF3F58517C63BAE0045299B /* OCMockObject.h */,
-				4DF3F58617C63BAE0045299B /* OCMockRecorder.h */,
-			);
-			path = OCMock;
-			sourceTree = "<group>";
-		};
 		4DF3F59B17C63E070045299B /* Smoke Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +429,7 @@
 				58E4FB531760AE5500E328A0 /* Frameworks */,
 				58E4FB521760AE5500E328A0 /* Products */,
 				7082BAD3DAB74253A99F8290 /* Pods.xcconfig */,
+				416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -500,6 +459,7 @@
 				EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */,
 				58E4FB541760AE5500E328A0 /* UIKit.framework */,
 				8ED64DB9D6E348A7B2A040BE /* libPods.a */,
+				F162CF42C7D94DB9B5422913 /* libPods-test.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -540,7 +500,6 @@
 		58E4FB7F1760AE5500E328A0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4DF3F57E17C63BAE0045299B /* OCMock */,
 				58E4FB811760AE5500E328A0 /* InfoPlist.strings */,
 				58E4FB801760AE5500E328A0 /* TicketingHubTests-Info.plist */,
 			);
@@ -1042,7 +1001,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-test-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B273E82DB1714EE49E6FC742 /* Check Pods Manifest.lock */ = {
@@ -1085,21 +1044,8 @@
 				EEF6BA4717D1192B005B1B20 /* BarcodeViewController.m in Sources */,
 				58E4FB631760AE5500E328A0 /* main.m in Sources */,
 				EE75D9B417D11311009ADCD8 /* MainViewController.m in Sources */,
-				4D8A106C17BD2DF700CEECAD /* PKAddressZip.m in Sources */,
-				4D8A106D17BD2DF700CEECAD /* PKCard.m in Sources */,
-				4D8A106E17BD2DF700CEECAD /* PKCardCVC.m in Sources */,
-				4D8A106F17BD2DF700CEECAD /* PKCardExpiry.m in Sources */,
-				4D8A107017BD2DF700CEECAD /* PKCardNumber.m in Sources */,
-				4D8A107117BD2DF700CEECAD /* PKTextField.m in Sources */,
-				4D8A107217BD2DF700CEECAD /* PKUSAddressZip.m in Sources */,
-				4D8A107317BD2DF700CEECAD /* PKView.m in Sources */,
 				EE75D9B317D11311009ADCD8 /* ProductListController.m in Sources */,
 				EEB1849217D115640025530A /* SalesOrDoormanViewController.m in Sources */,
-				4D8A106617BD2DC900CEECAD /* STPCard.m in Sources */,
-				4D8A106817BD2DD300CEECAD /* STPToken.m in Sources */,
-				4D8A106917BD2DD700CEECAD /* STPView.m in Sources */,
-				4D8A106A17BD2DDC00CEECAD /* Stripe.m in Sources */,
-				4D8A106B17BD2DE000CEECAD /* StripeError.m in Sources */,
 				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
 				EEB1845817D114390025530A /* TXHBaseCollectionViewCell.m in Sources */,
 				EEB1845917D114390025530A /* TXHBaseDataEntryTableViewCell.m in Sources */,
@@ -1382,7 +1328,7 @@
 		};
 		58E4FB8D1760AE5500E328A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
+			baseConfigurationReference = 416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TicketingHub.app/TicketingHub";
@@ -1394,15 +1340,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/TicketingHubTests/OCMock";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "TicketingHubTests/TicketingHubTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"-force_load",
-					"$(SRCROOT)/TicketingHubTests/OCMock/libOCMock.a",
-					"-ObjC",
-					"$(inherited)",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -1411,7 +1352,7 @@
 		};
 		58E4FB8E1760AE5500E328A0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
+			baseConfigurationReference = 416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TicketingHub.app/TicketingHub";
@@ -1423,15 +1364,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/TicketingHubTests/OCMock";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "TicketingHubTests/TicketingHubTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"-force_load",
-					"$(SRCROOT)/TicketingHubTests/OCMock/libOCMock.a",
-					"-ObjC",
-					"$(inherited)",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -1517,7 +1453,7 @@
 		};
 		EE51A47F17D10271005231C1 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
+			baseConfigurationReference = 416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TicketingHub.app/TicketingHub";
@@ -1529,15 +1465,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/TicketingHubTests/OCMock";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "TicketingHubTests/TicketingHubTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"-force_load",
-					"$(SRCROOT)/TicketingHubTests/OCMock/libOCMock.a",
-					"-ObjC",
-					"$(inherited)",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;

@@ -18,12 +18,24 @@ PODS:
   - AFNetworking/UIKit (2.1.0):
     - AFNetworking/NSURLConnection
   - DCTCoreDataStack (1.1)
+  - Expecta (0.2.3)
   - iOS-api (0.0.1):
     - AFNetworking (~> 2.1.0)
     - DCTCoreDataStack (~> 1.1)
+  - OCMock (2.2.3)
+  - PaymentKit (1.0.2)
+  - Specta (0.2.1)
+  - Stripe (1.0.2):
+    - PaymentKit
+  - TimesSquare (1.0.1)
 
 DEPENDENCIES:
+  - Expecta (~> 0.2.3)
   - iOS-api (from `.`)
+  - OCMock (~> 2.2.3)
+  - Specta (~> 0.2.1)
+  - Stripe (~> 1.0.2)
+  - TimesSquare (~> 1.0.1)
 
 EXTERNAL SOURCES:
   iOS-api:
@@ -32,6 +44,12 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
   DCTCoreDataStack: 4090bc1d6819fda813c7cc45119d1fa8fd8b8b3c
+  Expecta: dbc4a27fabb853bdd2e907e33f11ee43a9a47d0c
   iOS-api: 2ef860cd25932840c2d943493c88a5998f650c4f
+  OCMock: 74e4ddbcef134170dcc844f91c691f13868075d7
+  PaymentKit: be75a5398a9465edd84f7249a9e57d707da025fb
+  Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
+  Stripe: 8ce5fe9eca204058d325fcf08d4835585ab8d23b
+  TimesSquare: e36079b68c7495c06657af19c5853fe49dc8afa3
 
 COCOAPODS: 0.29.0
