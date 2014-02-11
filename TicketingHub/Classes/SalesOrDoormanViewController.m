@@ -9,7 +9,6 @@
 #import "SalesOrDoormanViewController.h"
 @import CoreData;
 
-#import <iOS-api/iOS-api.h>
 #import "TXHTicketingHubClient+AppExtension.h"
 #import "TXHDateSelectorViewController.h"
 #import "TXHEmbeddingSegue.h"

@@ -7,6 +7,7 @@
 *.mode2v3
 *.perspectivev3
 *.xcuserstate
+*.xcworkspace
 project.xcworkspace/
 xcuserdata/
 
@@ -19,3 +20,6 @@ xcuserdata/
 .#*
 *.swp
 *.un~
+
+# pods
+Pods/*

@@ -44,6 +44,8 @@
 		58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB561760AE5500E328A0 /* Foundation.framework */; };
 		58E4FB831760AE5500E328A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB811760AE5500E328A0 /* InfoPlist.strings */; };
 		58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB911760AEF300E328A0 /* Storyboard.storyboard */; };
+		CEA4926CD193447DAE8A8A56 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED64DB9D6E348A7B2A040BE /* libPods.a */; };
+		CF019832248E4EA59EA0E4E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED64DB9D6E348A7B2A040BE /* libPods.a */; };
 		EE09F1FF189FEBA5004FEBCE /* TXHCalendarRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE09F1FE189FEBA5004FEBCE /* TXHCalendarRowCell.m */; };
 		EE75D98817D11048009ADCD8 /* TXHSalesCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94417D11047009ADCD8 /* TXHSalesCalendarViewController.m */; };
 		EE75D98917D11048009ADCD8 /* TXHSalesCompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94617D11047009ADCD8 /* TXHSalesCompletionViewController.m */; };
@@ -114,10 +116,6 @@
 		EEB1849217D115640025530A /* SalesOrDoormanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848A17D115640025530A /* SalesOrDoormanViewController.m */; };
 		EEB1849317D115640025530A /* TXHTimeslotSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848C17D115640025530A /* TXHTimeslotSelectorViewController.m */; };
 		EEB1849417D115640025530A /* TXHTransitionSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848E17D115640025530A /* TXHTransitionSegue.m */; };
-		EEB32C751847A709006045AF /* libExpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB32C5C1847A709006045AF /* libExpecta-ios-universal.a */; };
-		EEB32C781847A709006045AF /* libSpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB32C621847A709006045AF /* libSpecta-ios-universal.a */; };
-		EEB32C8C1847AA3D006045AF /* libiOS-api.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB32C831847A8A1006045AF /* libiOS-api.a */; };
-		EEB32C8D1847AA65006045AF /* iOS-api-Model.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EEB32C871847A8A1006045AF /* iOS-api-Model.bundle */; };
 		EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */; };
 		EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */; };
 		EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC4017B272F700F226BC /* Security.framework */; };
@@ -147,44 +145,13 @@
 			remoteGlobalIDString = A806805A16700FD70071C71E;
 			remoteInfo = TimesSquare;
 		};
-		EEB32C821847A8A1006045AF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EEB32C7B1847A89F006045AF /* iOS-api.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EEF85C6218183D9200658409;
-			remoteInfo = "iOS-api";
-		};
-		EEB32C841847A8A1006045AF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EEB32C7B1847A89F006045AF /* iOS-api.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EEF85C7218183D9200658409;
-			remoteInfo = "iOS-apiTests";
-		};
-		EEB32C861847A8A1006045AF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EEB32C7B1847A89F006045AF /* iOS-api.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EE67B398183D175D0021B76A;
-			remoteInfo = "iOS-api-Model";
-		};
-		EEB32C881847AA2F006045AF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EEB32C7B1847A89F006045AF /* iOS-api.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = EEF85C6118183D9200658409;
-			remoteInfo = "iOS-api";
-		};
-		EEB32C8A1847AA2F006045AF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EEB32C7B1847A89F006045AF /* iOS-api.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = EE67B397183D175D0021B76A;
-			remoteInfo = "iOS-api-Model";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E05240E18A9ACFF00777D8D /* libPods-iOS-api.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-iOS-api.a"; path = "Pods/build/Debug-iphoneos/libPods-iOS-api.a"; sourceTree = "<group>"; };
+		3E9B51F718A94AE400524BEE /* libPods-iOS-api.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-iOS-api.a"; path = "Pods/build/Debug-iphoneos/libPods-iOS-api.a"; sourceTree = "<group>"; };
+		3E9B51FA18A94D7F00524BEE /* libPods-iOS-api.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-iOS-api.a"; path = "Pods/build/Debug-iphoneos/libPods-iOS-api.a"; sourceTree = "<group>"; };
+		3E9B520F18A96AB800524BEE /* libPods-iOS-api.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-iOS-api.a"; path = "Pods/build/Debug-iphoneos/libPods-iOS-api.a"; sourceTree = "<group>"; };
 		4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCurrencyEntryViewSpec.m; sourceTree = "<group>"; };
 		4D1A0C2717A7F49C00960906 /* TXHTicketTier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketTier.h; sourceTree = "<group>"; };
 		4D1A0C2817A7F49C00960906 /* TXHTicketTier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketTier.m; sourceTree = "<group>"; };
@@ -223,6 +190,8 @@
 		58E4FB801760AE5500E328A0 /* TicketingHubTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TicketingHubTests-Info.plist"; sourceTree = "<group>"; };
 		58E4FB821760AE5500E328A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58E4FB911760AEF300E328A0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		7082BAD3DAB74253A99F8290 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		8ED64DB9D6E348A7B2A040BE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE09F1FD189FEBA5004FEBCE /* TXHCalendarRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHCalendarRowCell.h; sourceTree = "<group>"; };
 		EE09F1FE189FEBA5004FEBCE /* TXHCalendarRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCalendarRowCell.m; sourceTree = "<group>"; };
 		EE11ADCD17BD2138000042B2 /* STPCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STPCard.h; sourceTree = "<group>"; };
@@ -416,60 +385,6 @@
 		EEB1848C17D115640025530A /* TXHTimeslotSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTimeslotSelectorViewController.m; sourceTree = "<group>"; };
 		EEB1848D17D115640025530A /* TXHTransitionSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTransitionSegue.h; sourceTree = "<group>"; };
 		EEB1848E17D115640025530A /* TXHTransitionSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTransitionSegue.m; sourceTree = "<group>"; };
-		EEB32C3B1847A709006045AF /* EXPBackwardCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPBackwardCompatibility.h; sourceTree = "<group>"; };
-		EEB32C3C1847A709006045AF /* EXPBlockDefinedMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPBlockDefinedMatcher.h; sourceTree = "<group>"; };
-		EEB32C3D1847A709006045AF /* EXPDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPDefines.h; sourceTree = "<group>"; };
-		EEB32C3E1847A709006045AF /* EXPDoubleTuple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPDoubleTuple.h; sourceTree = "<group>"; };
-		EEB32C3F1847A709006045AF /* Expecta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expecta.h; sourceTree = "<group>"; };
-		EEB32C401847A709006045AF /* ExpectaSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpectaSupport.h; sourceTree = "<group>"; };
-		EEB32C411847A709006045AF /* EXPExpect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPExpect.h; sourceTree = "<group>"; };
-		EEB32C421847A709006045AF /* EXPFloatTuple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPFloatTuple.h; sourceTree = "<group>"; };
-		EEB32C431847A709006045AF /* EXPMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPMatcher.h; sourceTree = "<group>"; };
-		EEB32C441847A709006045AF /* EXPMatcherHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPMatcherHelpers.h; sourceTree = "<group>"; };
-		EEB32C451847A709006045AF /* EXPMatchers+beCloseTo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+beCloseTo.h"; sourceTree = "<group>"; };
-		EEB32C461847A709006045AF /* EXPMatchers+beFalsy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+beFalsy.h"; sourceTree = "<group>"; };
-		EEB32C471847A709006045AF /* EXPMatchers+beGreaterThan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+beGreaterThan.h"; sourceTree = "<group>"; };
-		EEB32C481847A709006045AF /* EXPMatchers+beGreaterThanOrEqualTo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+beGreaterThanOrEqualTo.h"; sourceTree = "<group>"; };
-		EEB32C491847A709006045AF /* EXPMatchers+beIdenticalTo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+beIdenticalTo.h"; sourceTree = "<group>"; };
-		EEB32C4A1847A709006045AF /* EXPMatchers+beInstanceOf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+beInstanceOf.h"; sourceTree = "<group>"; };
-		EEB32C4B1847A709006045AF /* EXPMatchers+beInTheRangeOf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+beInTheRangeOf.h"; sourceTree = "<group>"; };
-		EEB32C4C1847A709006045AF /* EXPMatchers+beKindOf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+beKindOf.h"; sourceTree = "<group>"; };
-		EEB32C4D1847A709006045AF /* EXPMatchers+beLessThan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+beLessThan.h"; sourceTree = "<group>"; };
-		EEB32C4E1847A709006045AF /* EXPMatchers+beLessThanOrEqualTo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+beLessThanOrEqualTo.h"; sourceTree = "<group>"; };
-		EEB32C4F1847A709006045AF /* EXPMatchers+beNil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+beNil.h"; sourceTree = "<group>"; };
-		EEB32C501847A709006045AF /* EXPMatchers+beSubclassOf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+beSubclassOf.h"; sourceTree = "<group>"; };
-		EEB32C511847A709006045AF /* EXPMatchers+beSupersetOf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+beSupersetOf.h"; sourceTree = "<group>"; };
-		EEB32C521847A709006045AF /* EXPMatchers+beTruthy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+beTruthy.h"; sourceTree = "<group>"; };
-		EEB32C531847A709006045AF /* EXPMatchers+conformTo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+conformTo.h"; sourceTree = "<group>"; };
-		EEB32C541847A709006045AF /* EXPMatchers+contain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+contain.h"; sourceTree = "<group>"; };
-		EEB32C551847A709006045AF /* EXPMatchers+equal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+equal.h"; sourceTree = "<group>"; };
-		EEB32C561847A709006045AF /* EXPMatchers+haveCountOf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+haveCountOf.h"; sourceTree = "<group>"; };
-		EEB32C571847A709006045AF /* EXPMatchers+raise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+raise.h"; sourceTree = "<group>"; };
-		EEB32C581847A709006045AF /* EXPMatchers+raiseWithReason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+raiseWithReason.h"; sourceTree = "<group>"; };
-		EEB32C591847A709006045AF /* EXPMatchers+respondTo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+respondTo.h"; sourceTree = "<group>"; };
-		EEB32C5A1847A709006045AF /* EXPMatchers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPMatchers.h; sourceTree = "<group>"; };
-		EEB32C5B1847A709006045AF /* EXPUnsupportedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPUnsupportedObject.h; sourceTree = "<group>"; };
-		EEB32C5C1847A709006045AF /* libExpecta-ios-universal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libExpecta-ios-universal.a"; sourceTree = "<group>"; };
-		EEB32C5E1847A709006045AF /* NSObject+Expecta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Expecta.h"; sourceTree = "<group>"; };
-		EEB32C5F1847A709006045AF /* NSValue+Expecta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+Expecta.h"; sourceTree = "<group>"; };
-		EEB32C621847A709006045AF /* libSpecta-ios-universal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libSpecta-ios-universal.a"; sourceTree = "<group>"; };
-		EEB32C651847A709006045AF /* Specta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Specta.h; sourceTree = "<group>"; };
-		EEB32C661847A709006045AF /* SpectaSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectaSupport.h; sourceTree = "<group>"; };
-		EEB32C671847A709006045AF /* SpectaTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectaTypes.h; sourceTree = "<group>"; };
-		EEB32C681847A709006045AF /* SpectaUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectaUtility.h; sourceTree = "<group>"; };
-		EEB32C691847A709006045AF /* SPTExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTExample.h; sourceTree = "<group>"; };
-		EEB32C6A1847A709006045AF /* SPTExampleGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTExampleGroup.h; sourceTree = "<group>"; };
-		EEB32C6B1847A709006045AF /* SPTNestedReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTNestedReporter.h; sourceTree = "<group>"; };
-		EEB32C6C1847A709006045AF /* SPTReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTReporter.h; sourceTree = "<group>"; };
-		EEB32C6D1847A709006045AF /* SPTSharedExampleGroups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTSharedExampleGroups.h; sourceTree = "<group>"; };
-		EEB32C6E1847A709006045AF /* SPTSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTSpec.h; sourceTree = "<group>"; };
-		EEB32C6F1847A709006045AF /* SPTXCTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTXCTestCase.h; sourceTree = "<group>"; };
-		EEB32C701847A709006045AF /* SPTXCTestInvocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTXCTestInvocation.h; sourceTree = "<group>"; };
-		EEB32C711847A709006045AF /* SPTXCTestReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTXCTestReporter.h; sourceTree = "<group>"; };
-		EEB32C721847A709006045AF /* XCTestCase+Specta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+Specta.h"; sourceTree = "<group>"; };
-		EEB32C731847A709006045AF /* XCTestLog+Specta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestLog+Specta.h"; sourceTree = "<group>"; };
-		EEB32C741847A709006045AF /* XCTestRun+Specta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestRun+Specta.h"; sourceTree = "<group>"; };
-		EEB32C7B1847A89F006045AF /* iOS-api.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "iOS-api.xcodeproj"; path = "Externals/ios-api/iOS-api.xcodeproj"; sourceTree = "<group>"; };
 		EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EEB4FC4017B272F700F226BC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -484,11 +399,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA4926CD193447DAE8A8A56 /* libPods.a in Frameworks */,
 				EE8883D5189AD0EC00176CB0 /* libTimesSquare.a in Frameworks */,
 				4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */,
 				58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */,
 				58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */,
-				EEB32C8C1847AA3D006045AF /* libiOS-api.a in Frameworks */,
 				EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */,
 				5860E8581762175B0046DFD3 /* QuartzCore.framework in Frameworks */,
 				EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */,
@@ -502,11 +417,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */,
-				EEB32C751847A709006045AF /* libExpecta-ios-universal.a in Frameworks */,
 				4DF3F59917C63BAE0045299B /* libOCMock.a in Frameworks */,
-				EEB32C781847A709006045AF /* libSpecta-ios-universal.a in Frameworks */,
 				58E4FB781760AE5500E328A0 /* SenTestingKit.framework in Frameworks */,
 				58E4FB791760AE5500E328A0 /* UIKit.framework in Frameworks */,
+				CF019832248E4EA59EA0E4E7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,6 +470,7 @@
 				58E4FB7E1760AE5500E328A0 /* TicketingHubTests */,
 				58E4FB531760AE5500E328A0 /* Frameworks */,
 				58E4FB521760AE5500E328A0 /* Products */,
+				7082BAD3DAB74253A99F8290 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -571,6 +486,10 @@
 		58E4FB531760AE5500E328A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3E05240E18A9ACFF00777D8D /* libPods-iOS-api.a */,
+				3E9B520F18A96AB800524BEE /* libPods-iOS-api.a */,
+				3E9B51FA18A94D7F00524BEE /* libPods-iOS-api.a */,
+				3E9B51F718A94AE400524BEE /* libPods-iOS-api.a */,
 				4D68DAAA178B0A5400743227 /* AVFoundation.framework */,
 				58E4FB581760AE5500E328A0 /* CoreGraphics.framework */,
 				58E4FB561760AE5500E328A0 /* Foundation.framework */,
@@ -580,6 +499,7 @@
 				58E4FB771760AE5500E328A0 /* SenTestingKit.framework */,
 				EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */,
 				58E4FB541760AE5500E328A0 /* UIKit.framework */,
+				8ED64DB9D6E348A7B2A040BE /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -620,9 +540,7 @@
 		58E4FB7F1760AE5500E328A0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				EEB32C3A1847A709006045AF /* expecta */,
 				4DF3F57E17C63BAE0045299B /* OCMock */,
-				EEB32C611847A709006045AF /* specta */,
 				58E4FB811760AE5500E328A0 /* InfoPlist.strings */,
 				58E4FB801760AE5500E328A0 /* TicketingHubTests-Info.plist */,
 			);
@@ -767,9 +685,9 @@
 				EE75D94417D11047009ADCD8 /* TXHSalesCalendarViewController.m */,
 				EE75D94517D11047009ADCD8 /* TXHSalesCompletionViewController.h */,
 				EE75D94617D11047009ADCD8 /* TXHSalesCompletionViewController.m */,
-				EE75D94717D11047009ADCD8 /* TXHSalesContentProtocol.h */,
 				EE75D94817D11047009ADCD8 /* TXHSalesContentsViewController.h */,
 				EE75D94917D11047009ADCD8 /* TXHSalesContentsViewController.m */,
+				EE75D94717D11047009ADCD8 /* TXHSalesContentProtocol.h */,
 				EE75D94A17D11047009ADCD8 /* TXHSalesInformationCompletionViewController.h */,
 				EE75D94B17D11047009ADCD8 /* TXHSalesInformationCompletionViewController.m */,
 				EE75D94C17D11047009ADCD8 /* TXHSalesInformationDetailsViewController.h */,
@@ -963,89 +881,9 @@
 			name = MainScreen;
 			sourceTree = "<group>";
 		};
-		EEB32C3A1847A709006045AF /* expecta */ = {
-			isa = PBXGroup;
-			children = (
-				EEB32C3B1847A709006045AF /* EXPBackwardCompatibility.h */,
-				EEB32C3C1847A709006045AF /* EXPBlockDefinedMatcher.h */,
-				EEB32C3D1847A709006045AF /* EXPDefines.h */,
-				EEB32C3E1847A709006045AF /* EXPDoubleTuple.h */,
-				EEB32C3F1847A709006045AF /* Expecta.h */,
-				EEB32C401847A709006045AF /* ExpectaSupport.h */,
-				EEB32C411847A709006045AF /* EXPExpect.h */,
-				EEB32C421847A709006045AF /* EXPFloatTuple.h */,
-				EEB32C431847A709006045AF /* EXPMatcher.h */,
-				EEB32C441847A709006045AF /* EXPMatcherHelpers.h */,
-				EEB32C451847A709006045AF /* EXPMatchers+beCloseTo.h */,
-				EEB32C461847A709006045AF /* EXPMatchers+beFalsy.h */,
-				EEB32C471847A709006045AF /* EXPMatchers+beGreaterThan.h */,
-				EEB32C481847A709006045AF /* EXPMatchers+beGreaterThanOrEqualTo.h */,
-				EEB32C491847A709006045AF /* EXPMatchers+beIdenticalTo.h */,
-				EEB32C4A1847A709006045AF /* EXPMatchers+beInstanceOf.h */,
-				EEB32C4B1847A709006045AF /* EXPMatchers+beInTheRangeOf.h */,
-				EEB32C4C1847A709006045AF /* EXPMatchers+beKindOf.h */,
-				EEB32C4D1847A709006045AF /* EXPMatchers+beLessThan.h */,
-				EEB32C4E1847A709006045AF /* EXPMatchers+beLessThanOrEqualTo.h */,
-				EEB32C4F1847A709006045AF /* EXPMatchers+beNil.h */,
-				EEB32C501847A709006045AF /* EXPMatchers+beSubclassOf.h */,
-				EEB32C511847A709006045AF /* EXPMatchers+beSupersetOf.h */,
-				EEB32C521847A709006045AF /* EXPMatchers+beTruthy.h */,
-				EEB32C531847A709006045AF /* EXPMatchers+conformTo.h */,
-				EEB32C541847A709006045AF /* EXPMatchers+contain.h */,
-				EEB32C551847A709006045AF /* EXPMatchers+equal.h */,
-				EEB32C561847A709006045AF /* EXPMatchers+haveCountOf.h */,
-				EEB32C571847A709006045AF /* EXPMatchers+raise.h */,
-				EEB32C581847A709006045AF /* EXPMatchers+raiseWithReason.h */,
-				EEB32C591847A709006045AF /* EXPMatchers+respondTo.h */,
-				EEB32C5A1847A709006045AF /* EXPMatchers.h */,
-				EEB32C5B1847A709006045AF /* EXPUnsupportedObject.h */,
-				EEB32C5C1847A709006045AF /* libExpecta-ios-universal.a */,
-				EEB32C5E1847A709006045AF /* NSObject+Expecta.h */,
-				EEB32C5F1847A709006045AF /* NSValue+Expecta.h */,
-			);
-			name = expecta;
-			path = "Externals/ios-api/iOS-apiTests/Externals/TestKits/expecta";
-			sourceTree = SOURCE_ROOT;
-		};
-		EEB32C611847A709006045AF /* specta */ = {
-			isa = PBXGroup;
-			children = (
-				EEB32C621847A709006045AF /* libSpecta-ios-universal.a */,
-				EEB32C651847A709006045AF /* Specta.h */,
-				EEB32C661847A709006045AF /* SpectaSupport.h */,
-				EEB32C671847A709006045AF /* SpectaTypes.h */,
-				EEB32C681847A709006045AF /* SpectaUtility.h */,
-				EEB32C691847A709006045AF /* SPTExample.h */,
-				EEB32C6A1847A709006045AF /* SPTExampleGroup.h */,
-				EEB32C6B1847A709006045AF /* SPTNestedReporter.h */,
-				EEB32C6C1847A709006045AF /* SPTReporter.h */,
-				EEB32C6D1847A709006045AF /* SPTSharedExampleGroups.h */,
-				EEB32C6E1847A709006045AF /* SPTSpec.h */,
-				EEB32C6F1847A709006045AF /* SPTXCTestCase.h */,
-				EEB32C701847A709006045AF /* SPTXCTestInvocation.h */,
-				EEB32C711847A709006045AF /* SPTXCTestReporter.h */,
-				EEB32C721847A709006045AF /* XCTestCase+Specta.h */,
-				EEB32C731847A709006045AF /* XCTestLog+Specta.h */,
-				EEB32C741847A709006045AF /* XCTestRun+Specta.h */,
-			);
-			name = specta;
-			path = "Externals/ios-api/iOS-apiTests/Externals/TestKits/specta";
-			sourceTree = SOURCE_ROOT;
-		};
-		EEB32C7C1847A89F006045AF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				EEB32C831847A8A1006045AF /* libiOS-api.a */,
-				EEB32C851847A8A1006045AF /* iOS-apiTests.xctest */,
-				EEB32C871847A8A1006045AF /* iOS-api-Model.bundle */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		EEF8DA7B17F0539000579F5B /* iOS-API */ = {
 			isa = PBXGroup;
 			children = (
-				EEB32C7B1847A89F006045AF /* iOS-api.xcodeproj */,
 				EEC8BCB41848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.h */,
 				EEC8BCB51848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m */,
 			);
@@ -1059,16 +897,16 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58E4FB891760AE5500E328A0 /* Build configuration list for PBXNativeTarget "TicketingHub" */;
 			buildPhases = (
+				B273E82DB1714EE49E6FC742 /* Check Pods Manifest.lock */,
 				58E4FB4D1760AE5500E328A0 /* Sources */,
 				58E4FB4E1760AE5500E328A0 /* Frameworks */,
 				58E4FB4F1760AE5500E328A0 /* Resources */,
+				CA29D3015EA944E897BD8944 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				EE8883D4189AD0D300176CB0 /* PBXTargetDependency */,
-				EEB32C891847AA2F006045AF /* PBXTargetDependency */,
-				EEB32C8B1847AA2F006045AF /* PBXTargetDependency */,
 			);
 			name = TicketingHub;
 			productName = TicketingHub;
@@ -1079,10 +917,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58E4FB8C1760AE5500E328A0 /* Build configuration list for PBXNativeTarget "TicketingHubTests" */;
 			buildPhases = (
+				4EF73529A190447C81EAC719 /* Check Pods Manifest.lock */,
 				58E4FB711760AE5500E328A0 /* Sources */,
 				58E4FB721760AE5500E328A0 /* Frameworks */,
 				58E4FB731760AE5500E328A0 /* Resources */,
 				58E4FB741760AE5500E328A0 /* ShellScript */,
+				5D647D46B81C496DB0C7D105 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1116,10 +956,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = EEB32C7C1847A89F006045AF /* Products */;
-					ProjectRef = EEB32C7B1847A89F006045AF /* iOS-api.xcodeproj */;
-				},
-				{
 					ProductGroup = EE8883CD189AD0C200176CB0 /* Products */;
 					ProjectRef = EE8883CC189AD0C200176CB0 /* TimesSquare.xcodeproj */;
 				},
@@ -1140,27 +976,6 @@
 			remoteRef = EE8883D1189AD0C300176CB0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EEB32C831847A8A1006045AF /* libiOS-api.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libiOS-api.a";
-			remoteRef = EEB32C821847A8A1006045AF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		EEB32C851847A8A1006045AF /* iOS-apiTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "iOS-apiTests.xctest";
-			remoteRef = EEB32C841847A8A1006045AF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		EEB32C871847A8A1006045AF /* iOS-api-Model.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "iOS-api-Model.bundle";
-			remoteRef = EEB32C861847A8A1006045AF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1171,7 +986,6 @@
 				4D8FCCB617A28A8C008B4227 /* Doorman.storyboard in Resources */,
 				4D586DE11797E51E00E40534 /* Images.xcassets in Resources */,
 				58E4FB611760AE5500E328A0 /* InfoPlist.strings in Resources */,
-				EEB32C8D1847AA65006045AF /* iOS-api-Model.bundle in Resources */,
 				4DB23D6E17A169D8002B7B11 /* Salesman.storyboard in Resources */,
 				58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */,
 			);
@@ -1188,6 +1002,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4EF73529A190447C81EAC719 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		58E4FB741760AE5500E328A0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1200,6 +1029,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		5D647D46B81C496DB0C7D105 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B273E82DB1714EE49E6FC742 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CA29D3015EA944E897BD8944 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1324,16 +1198,6 @@
 			name = TimesSquare;
 			targetProxy = EE8883D3189AD0D300176CB0 /* PBXContainerItemProxy */;
 		};
-		EEB32C891847AA2F006045AF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "iOS-api";
-			targetProxy = EEB32C881847AA2F006045AF /* PBXContainerItemProxy */;
-		};
-		EEB32C8B1847AA2F006045AF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "iOS-api-Model";
-			targetProxy = EEB32C8A1847AA2F006045AF /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1372,6 +1236,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1390,10 +1255,10 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
-				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -1413,6 +1278,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1424,17 +1290,19 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
-				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		58E4FB8A1760AE5500E328A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1456,7 +1324,10 @@
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = (
@@ -1470,7 +1341,9 @@
 		};
 		58E4FB8B1760AE5500E328A0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1492,7 +1365,10 @@
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = (
@@ -1506,29 +1382,26 @@
 		};
 		58E4FB8D1760AE5500E328A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TicketingHub.app/TicketingHub";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/TicketingHubTests/OCMock";
 				INFOPLIST_FILE = "TicketingHubTests/TicketingHubTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/TicketingHubTests/Expecta",
-					"$(SRCROOT)/TicketingHubTests/OCMock",
-					"$(SRCROOT)/TicketingHubTests/Specta",
-					"/Users/abizer/dev/ios/client/TicketingHub/Externals/ios-api/iOS-apiTests/Externals/TestKits/expecta",
-					"/Users/abizer/dev/ios/client/TicketingHub/Externals/ios-api/iOS-apiTests/Externals/TestKits/specta",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"$(SRCROOT)/TicketingHubTests/OCMock/libOCMock.a",
 					"-ObjC",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -1538,29 +1411,26 @@
 		};
 		58E4FB8E1760AE5500E328A0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TicketingHub.app/TicketingHub";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/TicketingHubTests/OCMock";
 				INFOPLIST_FILE = "TicketingHubTests/TicketingHubTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/TicketingHubTests/Expecta",
-					"$(SRCROOT)/TicketingHubTests/OCMock",
-					"$(SRCROOT)/TicketingHubTests/Specta",
-					"/Users/abizer/dev/ios/client/TicketingHub/Externals/ios-api/iOS-apiTests/Externals/TestKits/expecta",
-					"/Users/abizer/dev/ios/client/TicketingHub/Externals/ios-api/iOS-apiTests/Externals/TestKits/specta",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"$(SRCROOT)/TicketingHubTests/OCMock/libOCMock.a",
 					"-ObjC",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -1581,9 +1451,10 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Abizer Nasir (2HKX3CMJ2Y)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Abizer Nasir (2HKX3CMJ2Y)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1595,17 +1466,19 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
-				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = AdHoc;
 		};
 		EE51A47E17D10271005231C1 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1627,7 +1500,10 @@
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = (
@@ -1641,29 +1517,26 @@
 		};
 		EE51A47F17D10271005231C1 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TicketingHub.app/TicketingHub";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/TicketingHubTests/OCMock";
 				INFOPLIST_FILE = "TicketingHubTests/TicketingHubTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/TicketingHubTests/Expecta",
-					"$(SRCROOT)/TicketingHubTests/OCMock",
-					"$(SRCROOT)/TicketingHubTests/Specta",
-					"/Users/abizer/dev/ios/client/TicketingHub/Externals/ios-api/iOS-apiTests/Externals/TestKits/expecta",
-					"/Users/abizer/dev/ios/client/TicketingHub/Externals/ios-api/iOS-apiTests/Externals/TestKits/specta",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"$(SRCROOT)/TicketingHubTests/OCMock/libOCMock.a",
 					"-ObjC",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";

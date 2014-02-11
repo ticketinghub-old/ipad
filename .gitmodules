@@ -1,6 +1,4 @@
-[submodule "Externals/ios-api"]
-	path = Externals/ios-api
-	url = git@github.com:ticketinghub/ios-api.git
+
 [submodule "Externals/objc-TimesSquare"]
 	path = Externals/objc-TimesSquare
 	url = https://github.com/square/objc-TimesSquare.git
