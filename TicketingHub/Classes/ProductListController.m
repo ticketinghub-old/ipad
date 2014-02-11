@@ -264,7 +264,7 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 
 - (void)fetchAvailabilitiesForNextYearForProduct:(TXHProduct *)product {
     // Check against last update time so that this isn't called too often
-    NSTimeInterval checkInterval = 60 * 5.0; // Not using components, as 5 minutes is the absolute time between checks.
+    // NSTimeInterval checkInterval = 60 * 5.0; // Not using components, as 5 minutes is the absolute time between checks.
 
     NSDateComponents *components = [NSDateComponents new];
     [components setYear:1];

@@ -93,17 +93,22 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 #pragma unused (tableView)
-  UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 34.0f)];
-  header.backgroundColor = [UIColor lightGrayColor];
-  NSString *headerText = [NSString stringWithFormat:@"Group %c - %@", [@(section + 65) charValue], self.timeSpan];
-  UIFont *headerFont = [UIFont systemFontOfSize:24.0f];
-  CGSize headerTextSize = [headerText sizeWithFont:headerFont];
-  UILabel *headerTitle = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, (header.frame.size.height - headerTextSize.height) / 2.0f, headerTextSize.width, headerTextSize.height)];
-  headerTitle.font = headerFont;
-  headerTitle.backgroundColor = header.backgroundColor;
-  headerTitle.text = headerText;
-  [header addSubview:headerTitle];
-  return header;
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 34.0f)];
+    header.backgroundColor = [UIColor lightGrayColor];
+    NSString *headerText = [NSString stringWithFormat:@"Group %c - %@", [@(section + 65) charValue], self.timeSpan];
+    UIFont *headerFont = [UIFont systemFontOfSize:24.0f];
+    NSDictionary *attributes = @{NSFontAttributeName: headerFont};
+    CGRect headerTextSizeRect = [headerText boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
+                                              options:NSStringDrawingUsesLineFragmentOrigin
+                                           attributes:attributes
+                                              context:nil];
+    CGSize headerTextSize = headerTextSizeRect.size;
+    UILabel *headerTitle = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, (header.frame.size.height - headerTextSize.height) / 2.0f, headerTextSize.width, headerTextSize.height)];
+    headerTitle.font = headerFont;
+    headerTitle.backgroundColor = header.backgroundColor;
+    headerTitle.text = headerText;
+    [header addSubview:headerTitle];
+    return header;
 }
 
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

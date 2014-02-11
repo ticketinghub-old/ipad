@@ -39,7 +39,7 @@ NSString * const DateSelectorViewControllerStoryboardIdentifier = @"DateSelector
         dateToMakeVisible = [NSDate date];
     }
 
-    [self.calendarView scrollToDate:dateToMakeVisible animated:NO];
+    self.calendarView.selectedDate = dateToMakeVisible;
 }
 
 #pragma mark - Private
