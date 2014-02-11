@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E0DAB9118AA41510045697C /* iOS-api.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3E0DAB9018AA41510045697C /* iOS-api.podspec */; };
 		4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */; };
 		4D1A0C2917A7F49C00960906 /* TXHTicketTier.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A0C2817A7F49C00960906 /* TXHTicketTier.m */; };
 		4D307DB71796F9FC00822645 /* TXHTicketDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D307DB61796F9FC00822645 /* TXHTicketDetail.m */; };
@@ -117,27 +118,10 @@
 			remoteGlobalIDString = 58E4FB501760AE5500E328A0;
 			remoteInfo = TicketingHub;
 		};
-		EE8883D1189AD0C300176CB0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EE8883CC189AD0C200176CB0 /* TimesSquare.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A806805B16700FD70071C71E;
-			remoteInfo = TimesSquare;
-		};
-		EE8883D3189AD0D300176CB0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EE8883CC189AD0C200176CB0 /* TimesSquare.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = A806805A16700FD70071C71E;
-			remoteInfo = TimesSquare;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3E05240E18A9ACFF00777D8D /* libPods-iOS-api.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-iOS-api.a"; path = "Pods/build/Debug-iphoneos/libPods-iOS-api.a"; sourceTree = "<group>"; };
-		3E9B51F718A94AE400524BEE /* libPods-iOS-api.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-iOS-api.a"; path = "Pods/build/Debug-iphoneos/libPods-iOS-api.a"; sourceTree = "<group>"; };
-		3E9B51FA18A94D7F00524BEE /* libPods-iOS-api.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-iOS-api.a"; path = "Pods/build/Debug-iphoneos/libPods-iOS-api.a"; sourceTree = "<group>"; };
-		3E9B520F18A96AB800524BEE /* libPods-iOS-api.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-iOS-api.a"; path = "Pods/build/Debug-iphoneos/libPods-iOS-api.a"; sourceTree = "<group>"; };
+		3E0DAB9018AA41510045697C /* iOS-api.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS-api.podspec"; sourceTree = "<group>"; };
 		416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
 		4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCurrencyEntryViewSpec.m; sourceTree = "<group>"; };
 		4D1A0C2717A7F49C00960906 /* TXHTicketTier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketTier.h; sourceTree = "<group>"; };
@@ -174,55 +158,6 @@
 		8ED64DB9D6E348A7B2A040BE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE09F1FD189FEBA5004FEBCE /* TXHCalendarRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHCalendarRowCell.h; sourceTree = "<group>"; };
 		EE09F1FE189FEBA5004FEBCE /* TXHCalendarRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCalendarRowCell.m; sourceTree = "<group>"; };
-		EE11ADCD17BD2138000042B2 /* STPCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STPCard.h; sourceTree = "<group>"; };
-		EE11ADCE17BD2138000042B2 /* STPCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STPCard.m; sourceTree = "<group>"; };
-		EE11ADCF17BD2138000042B2 /* STPToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STPToken.h; sourceTree = "<group>"; };
-		EE11ADD017BD2138000042B2 /* STPToken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STPToken.m; sourceTree = "<group>"; };
-		EE11ADD117BD2138000042B2 /* STPView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STPView.h; sourceTree = "<group>"; };
-		EE11ADD217BD2138000042B2 /* STPView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STPView.m; sourceTree = "<group>"; };
-		EE11ADD317BD2138000042B2 /* Stripe-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stripe-Prefix.pch"; sourceTree = "<group>"; };
-		EE11ADD417BD2138000042B2 /* Stripe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stripe.h; sourceTree = "<group>"; };
-		EE11ADD517BD2138000042B2 /* Stripe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Stripe.m; sourceTree = "<group>"; };
-		EE11ADD617BD2138000042B2 /* StripeError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StripeError.h; sourceTree = "<group>"; };
-		EE11ADD717BD2138000042B2 /* StripeError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StripeError.m; sourceTree = "<group>"; };
-		EE11ADDD17BD2138000042B2 /* PKAddressZip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PKAddressZip.h; sourceTree = "<group>"; };
-		EE11ADDE17BD2138000042B2 /* PKAddressZip.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PKAddressZip.m; sourceTree = "<group>"; };
-		EE11ADDF17BD2138000042B2 /* PKCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PKCard.h; sourceTree = "<group>"; };
-		EE11ADE017BD2138000042B2 /* PKCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PKCard.m; sourceTree = "<group>"; };
-		EE11ADE117BD2138000042B2 /* PKCardCVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PKCardCVC.h; sourceTree = "<group>"; };
-		EE11ADE217BD2138000042B2 /* PKCardCVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PKCardCVC.m; sourceTree = "<group>"; };
-		EE11ADE317BD2138000042B2 /* PKCardExpiry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PKCardExpiry.h; sourceTree = "<group>"; };
-		EE11ADE417BD2138000042B2 /* PKCardExpiry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PKCardExpiry.m; sourceTree = "<group>"; };
-		EE11ADE517BD2138000042B2 /* PKCardNumber.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PKCardNumber.h; sourceTree = "<group>"; };
-		EE11ADE617BD2138000042B2 /* PKCardNumber.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PKCardNumber.m; sourceTree = "<group>"; };
-		EE11ADE717BD2138000042B2 /* PKCardType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PKCardType.h; sourceTree = "<group>"; };
-		EE11ADE817BD2138000042B2 /* PKTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PKTextField.h; sourceTree = "<group>"; };
-		EE11ADE917BD2138000042B2 /* PKTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PKTextField.m; sourceTree = "<group>"; };
-		EE11ADEA17BD2138000042B2 /* PKUSAddressZip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PKUSAddressZip.h; sourceTree = "<group>"; };
-		EE11ADEB17BD2138000042B2 /* PKUSAddressZip.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PKUSAddressZip.m; sourceTree = "<group>"; };
-		EE11ADEC17BD2138000042B2 /* PKView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PKView.h; sourceTree = "<group>"; };
-		EE11ADED17BD2138000042B2 /* PKView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PKView.m; sourceTree = "<group>"; };
-		EE11ADF017BD2138000042B2 /* amex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amex.png; sourceTree = "<group>"; };
-		EE11ADF117BD2138000042B2 /* amex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "amex@2x.png"; sourceTree = "<group>"; };
-		EE11ADF217BD2138000042B2 /* cvc-amex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cvc-amex.png"; sourceTree = "<group>"; };
-		EE11ADF317BD2138000042B2 /* cvc-amex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cvc-amex@2x.png"; sourceTree = "<group>"; };
-		EE11ADF417BD2138000042B2 /* cvc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cvc.png; sourceTree = "<group>"; };
-		EE11ADF517BD2138000042B2 /* cvc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cvc@2x.png"; sourceTree = "<group>"; };
-		EE11ADF617BD2138000042B2 /* diners.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diners.png; sourceTree = "<group>"; };
-		EE11ADF717BD2138000042B2 /* diners@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "diners@2x.png"; sourceTree = "<group>"; };
-		EE11ADF817BD2138000042B2 /* discover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discover.png; sourceTree = "<group>"; };
-		EE11ADF917BD2138000042B2 /* discover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "discover@2x.png"; sourceTree = "<group>"; };
-		EE11ADFA17BD2138000042B2 /* jcb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jcb.png; sourceTree = "<group>"; };
-		EE11ADFB17BD2138000042B2 /* jcb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jcb@2x.png"; sourceTree = "<group>"; };
-		EE11ADFC17BD2138000042B2 /* mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mastercard.png; sourceTree = "<group>"; };
-		EE11ADFD17BD2138000042B2 /* mastercard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mastercard@2x.png"; sourceTree = "<group>"; };
-		EE11ADFE17BD2138000042B2 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
-		EE11ADFF17BD2138000042B2 /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder@2x.png"; sourceTree = "<group>"; };
-		EE11AE0017BD2138000042B2 /* visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = visa.png; sourceTree = "<group>"; };
-		EE11AE0117BD2138000042B2 /* visa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visa@2x.png"; sourceTree = "<group>"; };
-		EE11AE0217BD2138000042B2 /* gradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gradient@2x.png"; sourceTree = "<group>"; };
-		EE11AE0317BD2138000042B2 /* textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textfield.png; sourceTree = "<group>"; };
-		EE11AE0417BD2138000042B2 /* textfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield@2x.png"; sourceTree = "<group>"; };
 		EE51C1EE180FED4F001AA88A /* ProductListControllerNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ProductListControllerNotifications.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		EE75D94317D11047009ADCD8 /* TXHSalesCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesCalendarViewController.h; path = TicketingHub/Classes/TXHSalesCalendarViewController.h; sourceTree = SOURCE_ROOT; };
 		EE75D94417D11047009ADCD8 /* TXHSalesCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesCalendarViewController.m; path = TicketingHub/Classes/TXHSalesCalendarViewController.m; sourceTree = SOURCE_ROOT; };
@@ -299,7 +234,6 @@
 		EE75D9B017D11311009ADCD8 /* ProductListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ProductListController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EE75D9B117D11311009ADCD8 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MainViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		EE75D9B217D11311009ADCD8 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MainViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EE8883CC189AD0C200176CB0 /* TimesSquare.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TimesSquare.xcodeproj; path = "Externals/objc-TimesSquare/TimesSquare.xcodeproj"; sourceTree = "<group>"; };
 		EE935E7417B3EB630080A1C2 /* CommonMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonMacros.h; sourceTree = "<group>"; };
 		EEB1843417D114390025530A /* TXHBaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBaseCollectionViewCell.h; sourceTree = "<group>"; };
 		EEB1843517D114390025530A /* TXHBaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBaseCollectionViewCell.m; sourceTree = "<group>"; };
@@ -419,12 +353,11 @@
 		58E4FB481760AE5500E328A0 = {
 			isa = PBXGroup;
 			children = (
+				3E0DAB9018AA41510045697C /* iOS-api.podspec */,
 				58E4FB5C1760AE5500E328A0 /* TicketingHub */,
 				58E4FB971760D3C800E328A0 /* Classes */,
 				58E4FB901760AECF00E328A0 /* Storyboards */,
 				EEF8DA7B17F0539000579F5B /* iOS-API */,
-				EE8883CA189AD09C00176CB0 /* TimesSquare */,
-				EE11ADCC17BD2138000042B2 /* Stripe */,
 				58E4FB7E1760AE5500E328A0 /* TicketingHubTests */,
 				58E4FB531760AE5500E328A0 /* Frameworks */,
 				58E4FB521760AE5500E328A0 /* Products */,
@@ -445,10 +378,6 @@
 		58E4FB531760AE5500E328A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3E05240E18A9ACFF00777D8D /* libPods-iOS-api.a */,
-				3E9B520F18A96AB800524BEE /* libPods-iOS-api.a */,
-				3E9B51FA18A94D7F00524BEE /* libPods-iOS-api.a */,
-				3E9B51F718A94AE400524BEE /* libPods-iOS-api.a */,
 				4D68DAAA178B0A5400743227 /* AVFoundation.framework */,
 				58E4FB581760AE5500E328A0 /* CoreGraphics.framework */,
 				58E4FB561760AE5500E328A0 /* Foundation.framework */,
@@ -537,104 +466,6 @@
 			);
 			name = Classes;
 			path = TicketingHub/Classes;
-			sourceTree = "<group>";
-		};
-		EE11ADCC17BD2138000042B2 /* Stripe */ = {
-			isa = PBXGroup;
-			children = (
-				EE11ADD817BD2138000042B2 /* Vendor */,
-				EE11ADCD17BD2138000042B2 /* STPCard.h */,
-				EE11ADCE17BD2138000042B2 /* STPCard.m */,
-				EE11ADCF17BD2138000042B2 /* STPToken.h */,
-				EE11ADD017BD2138000042B2 /* STPToken.m */,
-				EE11ADD117BD2138000042B2 /* STPView.h */,
-				EE11ADD217BD2138000042B2 /* STPView.m */,
-				EE11ADD317BD2138000042B2 /* Stripe-Prefix.pch */,
-				EE11ADD417BD2138000042B2 /* Stripe.h */,
-				EE11ADD517BD2138000042B2 /* Stripe.m */,
-				EE11ADD617BD2138000042B2 /* StripeError.h */,
-				EE11ADD717BD2138000042B2 /* StripeError.m */,
-			);
-			name = Stripe;
-			path = "Externals/stripe-ios/Stripe";
-			sourceTree = "<group>";
-		};
-		EE11ADD817BD2138000042B2 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				EE11ADD917BD2138000042B2 /* PaymentKit */,
-			);
-			path = Vendor;
-			sourceTree = "<group>";
-		};
-		EE11ADD917BD2138000042B2 /* PaymentKit */ = {
-			isa = PBXGroup;
-			children = (
-				EE11ADDC17BD2138000042B2 /* PaymentKit */,
-			);
-			path = PaymentKit;
-			sourceTree = "<group>";
-		};
-		EE11ADDC17BD2138000042B2 /* PaymentKit */ = {
-			isa = PBXGroup;
-			children = (
-				EE11ADEE17BD2138000042B2 /* Resources */,
-				EE11ADDD17BD2138000042B2 /* PKAddressZip.h */,
-				EE11ADDE17BD2138000042B2 /* PKAddressZip.m */,
-				EE11ADDF17BD2138000042B2 /* PKCard.h */,
-				EE11ADE017BD2138000042B2 /* PKCard.m */,
-				EE11ADE117BD2138000042B2 /* PKCardCVC.h */,
-				EE11ADE217BD2138000042B2 /* PKCardCVC.m */,
-				EE11ADE317BD2138000042B2 /* PKCardExpiry.h */,
-				EE11ADE417BD2138000042B2 /* PKCardExpiry.m */,
-				EE11ADE517BD2138000042B2 /* PKCardNumber.h */,
-				EE11ADE617BD2138000042B2 /* PKCardNumber.m */,
-				EE11ADE717BD2138000042B2 /* PKCardType.h */,
-				EE11ADE817BD2138000042B2 /* PKTextField.h */,
-				EE11ADE917BD2138000042B2 /* PKTextField.m */,
-				EE11ADEA17BD2138000042B2 /* PKUSAddressZip.h */,
-				EE11ADEB17BD2138000042B2 /* PKUSAddressZip.m */,
-				EE11ADEC17BD2138000042B2 /* PKView.h */,
-				EE11ADED17BD2138000042B2 /* PKView.m */,
-			);
-			path = PaymentKit;
-			sourceTree = "<group>";
-		};
-		EE11ADEE17BD2138000042B2 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				EE11ADEF17BD2138000042B2 /* DCTCoreDataStack */,
-				EE11AE0217BD2138000042B2 /* gradient@2x.png */,
-				EE11AE0317BD2138000042B2 /* textfield.png */,
-				EE11AE0417BD2138000042B2 /* textfield@2x.png */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		EE11ADEF17BD2138000042B2 /* DCTCoreDataStack */ = {
-			isa = PBXGroup;
-			children = (
-				EE11ADF017BD2138000042B2 /* amex.png */,
-				EE11ADF117BD2138000042B2 /* amex@2x.png */,
-				EE11ADF217BD2138000042B2 /* cvc-amex.png */,
-				EE11ADF317BD2138000042B2 /* cvc-amex@2x.png */,
-				EE11ADF417BD2138000042B2 /* cvc.png */,
-				EE11ADF517BD2138000042B2 /* cvc@2x.png */,
-				EE11ADF617BD2138000042B2 /* diners.png */,
-				EE11ADF717BD2138000042B2 /* diners@2x.png */,
-				EE11ADF817BD2138000042B2 /* discover.png */,
-				EE11ADF917BD2138000042B2 /* discover@2x.png */,
-				EE11ADFA17BD2138000042B2 /* jcb.png */,
-				EE11ADFB17BD2138000042B2 /* jcb@2x.png */,
-				EE11ADFC17BD2138000042B2 /* mastercard.png */,
-				EE11ADFD17BD2138000042B2 /* mastercard@2x.png */,
-				EE11ADFE17BD2138000042B2 /* placeholder.png */,
-				EE11ADFF17BD2138000042B2 /* placeholder@2x.png */,
-				EE11AE0017BD2138000042B2 /* visa.png */,
-				EE11AE0117BD2138000042B2 /* visa@2x.png */,
-			);
-			name = DCTCoreDataStack;
-			path = Cards;
 			sourceTree = "<group>";
 		};
 		EE75D94217D1101C009ADCD8 /* Sales */ = {
@@ -733,22 +564,6 @@
 				EE51C1EE180FED4F001AA88A /* ProductListControllerNotifications.h */,
 			);
 			name = Menu;
-			sourceTree = "<group>";
-		};
-		EE8883CA189AD09C00176CB0 /* TimesSquare */ = {
-			isa = PBXGroup;
-			children = (
-				EE8883CC189AD0C200176CB0 /* TimesSquare.xcodeproj */,
-			);
-			name = TimesSquare;
-			sourceTree = "<group>";
-		};
-		EE8883CD189AD0C200176CB0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				EE8883D2189AD0C300176CB0 /* libTimesSquare.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		EEB1843317D113FB0025530A /* Common */ = {
@@ -865,7 +680,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				EE8883D4189AD0D300176CB0 /* PBXTargetDependency */,
 			);
 			name = TicketingHub;
 			productName = TicketingHub;
@@ -913,12 +727,6 @@
 			mainGroup = 58E4FB481760AE5500E328A0;
 			productRefGroup = 58E4FB521760AE5500E328A0 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = EE8883CD189AD0C200176CB0 /* Products */;
-					ProjectRef = EE8883CC189AD0C200176CB0 /* TimesSquare.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				58E4FB501760AE5500E328A0 /* TicketingHub */,
@@ -927,22 +735,13 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		EE8883D2189AD0C300176CB0 /* libTimesSquare.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libTimesSquare.a;
-			remoteRef = EE8883D1189AD0C300176CB0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		58E4FB4F1760AE5500E328A0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4D8FCCB617A28A8C008B4227 /* Doorman.storyboard in Resources */,
+				3E0DAB9118AA41510045697C /* iOS-api.podspec in Resources */,
 				4D586DE11797E51E00E40534 /* Images.xcassets in Resources */,
 				58E4FB611760AE5500E328A0 /* InfoPlist.strings in Resources */,
 				4DB23D6E17A169D8002B7B11 /* Salesman.storyboard in Resources */,
@@ -1138,11 +937,6 @@
 			isa = PBXTargetDependency;
 			target = 58E4FB501760AE5500E328A0 /* TicketingHub */;
 			targetProxy = 58E4FB7C1760AE5500E328A0 /* PBXContainerItemProxy */;
-		};
-		EE8883D4189AD0D300176CB0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TimesSquare;
-			targetProxy = EE8883D3189AD0D300176CB0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
