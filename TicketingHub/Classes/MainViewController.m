@@ -22,7 +22,6 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 @interface MainViewController ()
 
-@property (strong, nonatomic) TXHTicketingHubClient *ticketingHubClient;
 @property (strong, nonatomic) UITapGestureRecognizer  *tapRecogniser;
 @property (weak, nonatomic) TXHProduct *selectedProduct;
 @property (strong, nonatomic) SalesOrDoormanViewController *salesOrDoormanViewController;
@@ -44,14 +43,6 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsDictionary];
 }
 
-- (void)awakeFromNib {
-    // Stand up the client library early on so it is available for the segues.
-    [[self class] resetStore]; // Kill currently stored data.
-
-    self.ticketingHubClient = [[TXHTicketingHubClient alloc] initWithStoreURL:[[self class] storeURL]];
-    self.ticketingHubClient.showNetworkActivityIndicatorAutomatically = YES;
-}
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
@@ -60,7 +51,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
     self.tapRecogniser = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     self.leftHandSpace.constant = -self.venueListContainer.bounds.size.width;
 
-    [self presentLoginViewControllerAnimated:NO completion:nil];
+//    [self presentLoginViewControllerAnimated:NO completion:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -99,7 +90,6 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
     if ([segueIdentifier isEqualToString:VenueListContainerEmbedSegue]) {
         ProductListController *productListController = (ProductListController *)destinationViewController;
-        productListController.ticketingHubClient = self.ticketingHubClient;
     }
 
     if ([segueIdentifier isEqualToString:SalesOrDoormanContainerEmbedSegue]) {
@@ -115,7 +105,6 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 - (void)presentLoginViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completion {
     TXHLoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:LoginViewControllerStoryboardIdentifier];
-    loginViewController.ticketingHubClient = self.ticketingHubClient;
 
     [self presentViewController:loginViewController animated:animated completion:completion];
 }

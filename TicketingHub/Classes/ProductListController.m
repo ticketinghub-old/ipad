@@ -9,8 +9,11 @@
 #import "ProductListController.h"
 
 #import <iOS-api/iOS-api.h>
-#import "TXHCommonNames.h"
+
 #import "ProductListControllerNotifications.h"
+
+#import "TXHCommonNames.h"
+#import "TXHTicketingHubManager.h"
 
 // Declaration of strings declared in ProductListControllerNotifications.h
 NSString * const TXHProductChangedNotification = @"TXHProductChangedNotification";
@@ -90,7 +93,7 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 
 - (NSManagedObjectContext *)managedObjectContext {
     if (!_managedObjectContext) {
-        _managedObjectContext = self.ticketingHubClient.managedObjectContext;
+        _managedObjectContext = TXHTICKETINHGUBCLIENT.managedObjectContext;
     }
 
     return _managedObjectContext;
@@ -277,7 +280,7 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 }
 
 - (void)fetchAvailabilitiesToDate:(NSString *)isoDateString forProduct:(TXHProduct *)product {
-    [self.ticketingHubClient availabilitiesForProduct:product from:nil to:isoDateString completion:^(NSArray *availabilities, NSError *error) {
+    [TXHTICKETINHGUBCLIENT availabilitiesForProduct:product from:nil to:isoDateString completion:^(NSArray *availabilities, NSError *error) {
         DLog(@"Availability update to %@ for Product: %@", isoDateString, product.name);
     }];
 }

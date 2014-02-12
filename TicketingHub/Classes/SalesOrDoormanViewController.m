@@ -202,7 +202,7 @@
     [self dismissVisiblePopover];
     TXHTimeslotSelectorViewController *timeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Time Selector Popover"];
     timeViewController.delegate = self;
-    [timeViewController setTimeSlots:[self.ticketingHubClient timeSlotsFor:self.selectedDate]];
+    //TODO : fix after switching to singleton [timeViewController setTimeSlots:[self.ticketingHubClient timeSlotsFor:self.selectedDate]];
     self.timePopover = [[UIPopoverController alloc] initWithContentViewController:timeViewController];
     [self.timePopover presentPopoverFromBarButtonItem:self.timeButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     self.navigationItem.prompt = nil;

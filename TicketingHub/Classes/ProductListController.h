@@ -8,10 +8,6 @@
 
 @import UIKit;
 
-@class TXHTicketingHubClient;
-
 @interface ProductListController : UIViewController <NSFetchedResultsControllerDelegate>
-
-@property (strong, nonatomic) TXHTicketingHubClient *ticketingHubClient;
 
 @end

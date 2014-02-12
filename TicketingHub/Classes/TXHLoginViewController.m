@@ -8,7 +8,7 @@
 
 #import "TXHLoginViewController.h"
 
-#import <iOS-api/iOS-api.h>
+#import "TXHTicketingHubManager.h"
 #import "TXHUserDefaultsKeys.h"
 
 // The storyboard identifier for this controller
@@ -45,6 +45,7 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
                                                   green:60.0f / 255.0f
                                                    blue:54.0f / 255.0f
                                                   alpha:1.0f];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -109,7 +110,7 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:self.userField.text forKey:TXHUserDefaultsLastUserKey];
 
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self performSegueWithIdentifier:@"Show Main Interface" sender:self];
 }
 
 #pragma mark Actions
@@ -117,7 +118,7 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
 - (IBAction)login:(id)sender {
     self.loginButton.enabled = NO;
 
-    [self.ticketingHubClient fetchSuppliersForUsername:self.userField.text password:self.passwordField.text withCompletion:^(NSArray *suppliers, NSError *error) {
+    [TXHTICKETINHGUBCLIENT fetchSuppliersForUsername:self.userField.text password:self.passwordField.text withCompletion:^(NSArray *suppliers, NSError *error) {
         if (error) {
             DLog(@"Unable to log in because: %@", error); // Caveman - needs to be refined.
             self.loginButton.enabled = YES;
@@ -131,6 +132,9 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
 - (IBAction)editingChanged:(id)sender {
     self.loginButton.enabled = ((self.userField.text.length > 0) && (self.passwordField.text.length > 0));
 }
+
+#pragma mark - unwind action
+
 
 
 @end

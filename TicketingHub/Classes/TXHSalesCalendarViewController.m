@@ -8,7 +8,6 @@
 
 #import "TXHSalesCalendarViewController.h"
 
-#import <iOS-api/iOS-api.h>
 #import "TXHTicketingHubClient+AppExtension.h"
 #import "TXHCommonNames.h"
 
@@ -106,18 +105,18 @@
   [self.timeSlots removeAllObjects];
 
   // Get timeslots for the currently selected date
-  NSArray *timeslots = [self.ticketingHubClient timeSlotsFor:self.datePicker.date];
-  
-  if (timeslots.count > 0) {
-    [self.timeSlots addObjectsFromArray:timeslots];
-  } else {
-    NSLog(@"no timeslots for %@", self.datePicker.description);
-  }
-  
-  // Update our timezone display
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [self.timeIntervalTable reloadData];
-  });
+//  NSArray *timeslots = [TXHTICKETINHGUBCLIENT timeSlotsFor:self.datePicker.date];
+//  
+//  if (timeslots.count > 0) {
+//    [self.timeSlots addObjectsFromArray:timeslots];
+//  } else {
+//    NSLog(@"no timeslots for %@", self.datePicker.description);
+//  }
+//  
+//  // Update our timezone display
+//  dispatch_async(dispatch_get_main_queue(), ^{
+//    [self.timeIntervalTable reloadData];
+//  });
 }
 
 #pragma mark - Notifications

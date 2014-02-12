@@ -9,11 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @class TXHTicketTier;
-@class TXHTicketingHubClient;
 
 @interface TXHSalesTicketTierCell : UITableViewCell
 
-@property (strong, nonatomic) TXHTicketingHubClient *ticketingHubClient;
 @property (strong, nonatomic) TXHTicketTier *tier;
 
 // When the quantity of tickets for the cell's tier changes, this handler will be invoked, passing the quantity .

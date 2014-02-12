@@ -7,6 +7,7 @@
 //
 
 #import "TXHAppDelegate.h"
+#import "TXHTicketingHubManager.h"
 
 @interface TXHAppDelegate ()
 
@@ -19,6 +20,9 @@
 
     // We want a light status bar style as the launch screen and nav bars are dark
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    // Remove all local data when launching app
+    [TXHTicketingHubManager clearLocalData];
 
     [[UINavigationBar appearance] setBackgroundColor:[UIColor colorWithRed:1.0f / 255.0f green:46.0f / 255.0f blue:67.0f / 255.0f alpha:1.0f]];
 

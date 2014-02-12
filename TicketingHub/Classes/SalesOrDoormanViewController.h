@@ -9,11 +9,9 @@
 @import UIKit;
 
 @class TXHProduct;
-@class TXHTicketingHubClient;
 
 @interface SalesOrDoormanViewController : UIViewController
 
-@property (strong, nonatomic) TXHTicketingHubClient *ticketingHubClient;
 @property (strong, nonatomic) TXHProduct *selectedProduct;
 
 - (IBAction)selectMode:(id)sender;

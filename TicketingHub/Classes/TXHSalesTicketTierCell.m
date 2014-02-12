@@ -51,7 +51,7 @@
     self.tierDescription.text = self.tier.tierDescription;
     self.quantity.keyboardType = UIKeyboardTypeNumberPad;
     // Currency is specified by the venue
-    self.price.text = [self.ticketingHubClient formatCurrencyValue:self.tier.price];
+    // TODO: after singleton creation self.price.text = [TXHTICKETINHGUBCLIENT formatCurrencyValue:self.tier.price];
     self.stepper.maximumValue = self.tier.limit.doubleValue;
 }
 

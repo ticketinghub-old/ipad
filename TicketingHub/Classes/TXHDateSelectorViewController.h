@@ -10,7 +10,6 @@
 
 extern NSString * const DateSelectorViewControllerStoryboardIdentifier;
 
-@class TXHTicketingHubClient;
 @class TXHDateSelectorViewController;
 
 @protocol TXHDateSelectorViewDelegate <NSObject>
@@ -29,11 +28,6 @@ extern NSString * const DateSelectorViewControllerStoryboardIdentifier;
 
 
 @interface TXHDateSelectorViewController : UIViewController
-
-/** 
- A reference to the network library
- */
-@property (strong, nonatomic) TXHTicketingHubClient *ticketingHubClient;
 
 /**
  The selected date to be highlighted in the calendar. Only the date portion is used.
