@@ -91,7 +91,6 @@
 - (void)configureTimerViewController {
     // Set up the timer view to reflect our details
     if (self.timerViewController) {
-        [self.timerViewController resetPresentationAnimated:NO];
         self.timerViewController.stepTitle = NSLocalizedString(@"Extra products", @"Extra products");
         [self.timerViewController hideCountdownTimer:NO];
     }

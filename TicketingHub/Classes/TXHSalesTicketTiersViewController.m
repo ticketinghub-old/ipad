@@ -114,9 +114,7 @@
     // Set up the timer view to reflect our details
     if (self.timerViewController) {
         [self.timerViewController stopCountdownTimer];
-        [self.timerViewController resetPresentationAnimated:NO];
         self.timerViewController.stepTitle = NSLocalizedString(@"Select your tickets", @"Select your tickets");
-        [self.timerViewController hideCoupon:NO animated:NO];
     }
 }
 

@@ -121,7 +121,6 @@
 - (void)configureTimerViewController {
     // Set up the timer view to reflect our details
     if (self.timerViewController) {
-        [self.timerViewController resetPresentationAnimated:NO];
         self.timerViewController.stepTitle = NSLocalizedString(@"Add Ticket extras", @"Add Ticket extras");
         [self.timerViewController hideCountdownTimer:NO];
     }

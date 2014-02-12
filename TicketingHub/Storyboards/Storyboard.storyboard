@@ -428,7 +428,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mAK-Hy-xwL" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" backIndicatorImage="background" id="j20-SX-Axk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="j20-SX-Axk">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0039215686269999999" green="0.18039215689999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>

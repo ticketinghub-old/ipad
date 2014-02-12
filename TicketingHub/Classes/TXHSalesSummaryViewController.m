@@ -116,7 +116,6 @@
 - (void)configureTimerViewController {
     // Set up the timer view to reflect our details
     if (self.timerViewController) {
-        [self.timerViewController resetPresentationAnimated:NO];
         self.timerViewController.stepTitle = NSLocalizedString(@"Review the order", @"Review the order");
         [self.timerViewController hideCountdownTimer:NO];
     }

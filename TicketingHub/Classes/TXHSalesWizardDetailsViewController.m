@@ -82,15 +82,6 @@
     [self.stepContentController transition:sender];
 }
 
-- (void)updateTimerContainerHeight:(id)sender {
-    // The timer container needs to respond to changes in height based on whether a payment selection control is visible or not
-    TXHSalesTimerViewController *controller = sender;
-    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.timerViewVerticalConstraint.constant = controller.newVerticalHeight;
-        [self.view layoutIfNeeded];
-    } completion:controller.animationHandler];
-}
-
 - (void)updateCompletionContainerHeight:(id)sender {
     // The completion container needs to respond to changes in height based on whether a coupon selection control is visible or not
     TXHSalesCompletionViewController *controller = sender;

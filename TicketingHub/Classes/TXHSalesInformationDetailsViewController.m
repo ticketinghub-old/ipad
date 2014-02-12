@@ -189,7 +189,6 @@
 - (void)configureTimerViewController {
     // Set up the timer view to reflect our details
     if (self.timerViewController) {
-        [self.timerViewController resetPresentationAnimated:NO];
         self.timerViewController.stepTitle = NSLocalizedString(@"Customer Details", @"Customer Details");
         self.timerViewController.duration = 600.0f;
         [self.timerViewController hideCountdownTimer:NO];

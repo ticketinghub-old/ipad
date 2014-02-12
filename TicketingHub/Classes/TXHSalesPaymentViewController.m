@@ -103,9 +103,7 @@
 - (void)configureTimerViewController {
     // Set up the timer view to reflect our details
     if (self.timerViewController) {
-        [self.timerViewController resetPresentationAnimated:NO];
         self.timerViewController.stepTitle = NSLocalizedString(@"Payment", @"Payment");
-        [self.timerViewController hidePaymentSelection:NO animated:YES];
         [self.timerViewController hideCountdownTimer:NO];
     }
 }
