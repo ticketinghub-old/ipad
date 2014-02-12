@@ -61,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rs2-KG-ETh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1142" y="1678"/>
+            <point key="canvasLocation" x="-1142" y="1374"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="YNr-Hj-fse">
@@ -168,7 +168,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIi-T5-xZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8S6-Gn-AeR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-2556" y="1678"/>
+            <point key="canvasLocation" x="-2556" y="1374"/>
         </scene>
         <!--Product List Controller-->
         <scene sceneID="2z6-yd-k0i">
@@ -307,7 +307,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wdq-j6-jKR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="lNM-S3-Mou" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="433" y="1209"/>
+            <point key="canvasLocation" x="-1142" y="2291"/>
         </scene>
         <!--Date Selector View Controller-->
         <scene sceneID="6d1-JM-7Te">
@@ -326,7 +326,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k9w-Fb-f6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2128" y="-304"/>
+            <point key="canvasLocation" x="-1503" y="372"/>
         </scene>
         <!--Timeslot Selector View Controller-->
         <scene sceneID="fRV-N2-66j">
@@ -364,7 +364,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n9r-0U-SRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3061" y="-440"/>
+            <point key="canvasLocation" x="-2556" y="100"/>
         </scene>
         <!--Sales Or Doorman View Controller - tickethub.io-->
         <scene sceneID="VBG-zP-iW6">
@@ -421,7 +421,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9no-gQ-7hV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1813" y="1209"/>
+            <point key="canvasLocation" x="169" y="2275"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VEb-9o-9sZ">
@@ -442,7 +442,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v62-BC-wLf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="939" y="1209"/>
+            <point key="canvasLocation" x="-812" y="2275"/>
         </scene>
     </scenes>
     <resources>

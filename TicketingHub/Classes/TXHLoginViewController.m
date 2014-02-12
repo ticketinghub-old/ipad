@@ -139,7 +139,7 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
 
 - (IBAction)showLoginViewController:(UIStoryboardSegue *)sender;
 {
-    
+    [TXHTicketingHubManager clearLocalData];
 }
 
 
