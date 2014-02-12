@@ -8,8 +8,6 @@
 
 #import "ProductListController.h"
 
-#import <iOS-api/iOS-api.h>
-
 #import "ProductListControllerNotifications.h"
 
 #import "TXHCommonNames.h"

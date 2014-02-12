@@ -8,11 +8,9 @@
 
 #import "MainViewController.h"
 
-#import <iOS-api/iOS-api.h>
 #import "SalesOrDoormanViewController.h"
 #import "TXHCommonNames.h"
 #import "TXHLoginViewController.h"
-#import "TXHUserDefaultsKeys.h"
 #import "ProductListController.h"
 #import "ProductListControllerNotifications.h"
 
@@ -35,13 +33,6 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 @implementation MainViewController
 
-#pragma mark - Set up and tear down
-
-+ (void)initialize {
-    // As this is instantiated early in the app's lifecycle, set up the initial user defaults here
-    NSDictionary *defaultsDictionary = @{TXHUserDefaultsLastUserKey : @""};
-    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsDictionary];
-}
 
 #pragma mark - View lifecycle
 

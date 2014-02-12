@@ -8,8 +8,6 @@
 
 #import "TXHSalesTicketTiersViewController.h"
 
-#import <iOS-api/iOS-api.h>
-
 #import "TXHSalesContentProtocol.h"
 #import "TXHSalesTicketTierCell.h"
 #import "TXHTicketTier.h"

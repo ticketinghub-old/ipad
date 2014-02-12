@@ -8,7 +8,6 @@
 //  Category for library methods used by the app that aren't yet implemented in the library.
 //  This is so that we can get the app built and running.
 
-#import <iOS-api/iOS-api.h>
 @class TXHTimeSlot_old;
 
 @interface TXHTicketingHubClient (AppExtension)

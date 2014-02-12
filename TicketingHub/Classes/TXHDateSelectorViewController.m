@@ -10,7 +10,6 @@ NSString * const DateSelectorViewControllerStoryboardIdentifier = @"DateSelector
 
 #import "TXHDateSelectorViewController.h"
 
-#import <iOS-api/iOS-api.h>
 #import <TimesSquare/TimesSquare.h>
 
 #import "TXHCalendarRowCell.h"

@@ -120,15 +120,17 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
 - (IBAction)login:(id)sender {
     self.loginButton.enabled = NO;
 
-    [TXHTICKETINHGUBCLIENT fetchSuppliersForUsername:self.userField.text password:self.passwordField.text withCompletion:^(NSArray *suppliers, NSError *error) {
-        if (error) {
-            DLog(@"Unable to log in because: %@", error); // Caveman - needs to be refined.
-            self.loginButton.enabled = YES;
-            return;
-        }
-
-        [self loginCompleted];
-    }];
+    [TXHTICKETINHGUBCLIENT fetchSuppliersForUsername:self.userField.text
+                                            password:self.passwordField.text
+                                      withCompletion:^(NSArray *suppliers, NSError *error) {
+                                          if (error) {
+                                              DLog(@"Unable to log in because: %@", error); // Caveman - needs to be refined.
+                                              self.loginButton.enabled = YES;
+                                              return;
+                                          }
+                                          
+                                          [self loginCompleted];
+                                      }];
 }
 
 - (IBAction)editingChanged:(id)sender {

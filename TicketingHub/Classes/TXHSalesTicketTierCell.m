@@ -8,7 +8,6 @@
 
 #import "TXHSalesTicketTierCell.h"
 
-#import <iOS-api/iOS-api.h>
 #import "TXHTicketingHubClient+AppExtension.h"
 #import "TXHTicketTier.h"
 
