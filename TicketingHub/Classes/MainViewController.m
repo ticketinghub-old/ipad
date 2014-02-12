@@ -160,8 +160,5 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
     }];
 }
 
-- (IBAction)logOut:(id)sender {
-    [self presentLoginViewControllerAnimated:YES completion:nil];
-}
 
 @end

@@ -12,4 +12,6 @@ extern NSString * const LoginViewControllerStoryboardIdentifier;
 
 @interface TXHLoginViewController : UIViewController
 
+- (IBAction)showLoginViewController:(UIStoryboardSegue *)sender;
+
 @end

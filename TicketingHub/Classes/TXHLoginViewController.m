@@ -62,6 +62,8 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
     } else {
         self.userField.text = @"";
     }
+    
+    self.passwordField.text = @"";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -135,6 +137,10 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
 
 #pragma mark - unwind action
 
+- (IBAction)showLoginViewController:(UIStoryboardSegue *)sender;
+{
+    
+}
 
 
 @end
