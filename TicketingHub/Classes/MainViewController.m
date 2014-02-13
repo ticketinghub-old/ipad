@@ -69,6 +69,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+
 #pragma mark - Superclass overrides
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -80,7 +81,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
     id destinationViewController = segue.destinationViewController;
 
     if ([segueIdentifier isEqualToString:VenueListContainerEmbedSegue]) {
-        ProductListController *productListController = (ProductListController *)destinationViewController;
+        __unused ProductListController *productListController = (ProductListController *)destinationViewController;
     }
 
     if ([segueIdentifier isEqualToString:SalesOrDoormanContainerEmbedSegue]) {
@@ -106,33 +107,12 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 - (void)productChanged:(NSNotification *)notification {
     self.selectedProduct = [notification userInfo][TXHSelectedProduct];
+
     [self showOrHideVenueList:nil];
 }
 
 #pragma mark - Private methods
 
-// Convenience method to return the URL for the Core Data Store
-+ (NSURL *)storeURL {
-    static NSURL *storeURL = nil;
-    if (!storeURL) {
-        NSURL *documentDirectoryURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-        storeURL = [documentDirectoryURL URLByAppendingPathComponent:@"TicktingHub.sqlite"];
-    }
-
-    return storeURL;
-}
-
-// Deletes the Core Data persistent store if it exists
-+ (void)resetStore {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *storeURL = [self storeURL];
-    if (![storeURL checkResourceIsReachableAndReturnError:nil]) {
-        return;
-    }
-
-    NSError *error;
-    ZAssert([fileManager removeItemAtURL:[self storeURL] error:&error], @"Cannot remove store url because: %@", error);
-}
 
 - (void)tap:(UITapGestureRecognizer *)recogniser {
     [self showOrHideVenueList:nil];
