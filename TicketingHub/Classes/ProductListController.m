@@ -12,202 +12,113 @@
 
 #import "TXHCommonNames.h"
 #import "TXHTicketingHubManager.h"
+#import "UIColor+TicketingHub.h"
+#import "FetchedResultsControllerDataSource.h"
 
 // Declaration of strings declared in ProductListControllerNotifications.h
 NSString * const TXHProductChangedNotification = @"TXHProductChangedNotification";
 NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 
-@interface ProductListController () <UITableViewDataSource, UITableViewDelegate>
+@interface ProductListController () <UITableViewDelegate>
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, readonly, nonatomic) TXHUser *user;
-@property (strong, nonatomic) NSDateFormatter *isoDateFormatter;
+
+@property (strong, nonatomic) FetchedResultsControllerDataSource *tableViewDataSource;
 
 @property (weak, nonatomic) IBOutlet UIView *logoutView;
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) IBOutlet UILabel *headerViewLabel;
+@property (weak, nonatomic) IBOutlet UILabel *headerViewLabel;
+
 
 @end
 
-@implementation ProductListController {
-    NSManagedObjectContext *_managedObjectContext;
-    TXHUser *_user;
-}
+@implementation ProductListController
 
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.view.backgroundColor = [self customBackgroundColour];
+    self.view.backgroundColor = [UIColor txhDarkBlueColor];
+    
+    [self setupDataSource];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
     [self setHeaderTitle:NSLocalizedString(@"Venues", @"Title for the list of venues")];
-    [self setLogoutButtonTitle:self.user.fullName];
-
-    [_user addObserver:self forKeyPath:@"fullName" options:NSKeyValueObservingOptionNew context:@"user.fullName"];
+    
+    [self setLogoutButtonTitle:[TXHTICKETINHGUBCLIENT currentUser].fullName];
 
     NSError *error;
-    BOOL success = [self.fetchedResultsController performFetch:&error];
+    BOOL success = [self.tableViewDataSource performFetch:&error];
 
     if (!success) {
         DLog(@"Could not perform fetch because: %@", error);
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+#pragma mark - setup
 
-    [self.user removeObserver:self forKeyPath:@"fullName" context:@"user.fullName"];
-
-    self.fetchedResultsController = nil;
-    _user = nil;
-    _managedObjectContext = nil;
-
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSManagedObjectContextDidSaveNotification object:nil];
+- (void)setupDataSource
+{
+    NSString *cellIdentifier = @"ProductCellIDentifier";
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    self.tableViewDataSource = [[FetchedResultsControllerDataSource alloc] initWithFetchedResultsController:[self fetchedResultsController]
+                                                                                                  tableView:self.tableView
+                                                                                             cellIdentifier:cellIdentifier
+                                                                                         configureCellBlock:^(id cell, id item) {
+                                                                                             [self configureCell:cell withItem:item];
+                                                                                         }];
+    self.tableView.dataSource = self.tableViewDataSource;
 }
 
-#pragma mark - Custom accessor
-
-- (NSFetchedResultsController *)fetchedResultsController {
-    // lazily loaded.
-    if (!_fetchedResultsController) {
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    NSFetchedResultsController *fetchedResultsController;
+    
+    if (!fetchedResultsController) {
         NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[TXHProduct entityName]];
-        // Since the only products are those attached to the supplier (user), there is no need for a predicate
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:TXHProductAttributes.name ascending:YES];
         [fetchRequest setSortDescriptors:@[sortDescriptor]];
 
-        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+        fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                       managedObjectContext:TXHTICKETINHGUBCLIENT.managedObjectContext
+                                                                         sectionNameKeyPath:nil
+                                                                                  cacheName:nil];
     }
 
-    return _fetchedResultsController;
-}
-
-- (NSManagedObjectContext *)managedObjectContext {
-    if (!_managedObjectContext) {
-        _managedObjectContext = TXHTICKETINHGUBCLIENT.managedObjectContext;
-    }
-
-    return _managedObjectContext;
-}
-
-- (NSDateFormatter *)isoDateFormatter {
-    if (!_isoDateFormatter) {
-        _isoDateFormatter = [NSDateFormatter new];
-        [_isoDateFormatter setDateFormat:@"yyyy-MM-dd"];
-    }
-
-    return _isoDateFormatter;
-}
-
-#pragma mark - NSFetchedResultsController delegate
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView beginUpdates];
+    return fetchedResultsController;
 }
 
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]  withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-    UITableView *tableView = self.tableView;
-
-    switch(type) {
-
-        case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeUpdate: {
-            UITableViewCell *changedCell = [tableView cellForRowAtIndexPath:indexPath];
-            changedCell.textLabel.text = ((TXHProduct *)[controller objectAtIndexPath:indexPath]).name;
-            break;
-        }
-
-        case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView endUpdates];
-}
-
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.fetchedResultsController.sections count];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[self.fetchedResultsController fetchedObjects] count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"cellID";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-
-    // Configure the cell...
-    cell.backgroundColor = [self customBackgroundColour];
-    
-    TXHProduct *product = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = product.name;
-
-    return cell;
-}
-
+#pragma mark - Table View Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TXHProduct *product = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
+    TXHProduct *product = [self.tableViewDataSource itemAtIndexPath:indexPath];
+    
     [self fetchAvailabilitiesForNextThreeMonthsForProduct:product];
-    [[NSNotificationCenter defaultCenter] postNotificationName:TXHProductChangedNotification object:self userInfo:@{TXHSelectedProduct: product}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TXHProductChangedNotification
+                                                        object:self
+                                                      userInfo:@{TXHSelectedProduct: product}];
 }
 
-#pragma mark - Custom accessors
+#pragma mark - Cell configuration
 
-- (TXHUser *)user {
-    if (!_user) {
-        NSFetchRequest *userRequest = [NSFetchRequest fetchRequestWithEntityName:[TXHUser entityName]];
-
-        NSError *error;
-        NSArray *users = [self.managedObjectContext executeFetchRequest:userRequest error:&error];
-
-        if (!users) {
-            DLog(@"Unable to fetch users because: %@", error);
-        }
-
-        _user = [users firstObject];
-
+- (void)configureCell:(UITableViewCell *)cell withItem:(id)item
+{
+    if ([item isKindOfClass:[TXHProduct class]])
+    {
+        cell.textLabel.text = [(TXHProduct *)item name];
     }
-
-    return _user;
+    else
+    {
+        cell.textLabel.text = nil;
+    }
 }
+
 
 #pragma mark - KVO
 
@@ -221,7 +132,7 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 }
 
 #pragma mark Action methods
-
+    
 - (IBAction)logout:(id)sender {
     [[UIApplication sharedApplication] sendAction:@selector(logOut:) to:nil from:self forEvent:nil];
 }
@@ -234,22 +145,10 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 }
 
 - (void)setLogoutButtonTitle:(NSString *)title {
-    [self.logoutButton setTitle:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Logout", @"Logout the current user"), title] forState:UIControlStateNormal];
+    [self.logoutButton setTitle:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Logout", @"Logout the current user"), title]
+                       forState:UIControlStateNormal];
 }
 
-// Get the colour to use as a background
-- (UIColor *)customBackgroundColour {
-    static UIColor *customBackgroundColour = nil;
-
-    if (!customBackgroundColour) {
-        customBackgroundColour = [UIColor colorWithRed:14.0f / 255.0f
-                                                 green:47.0f / 255.0f
-                                                  blue:67.0f / 255.0f
-                                                 alpha:1.0f];
-    }
-
-    return customBackgroundColour;
-}
 
 - (void)fetchAvailabilitiesForNextThreeMonthsForProduct:(TXHProduct *)product {
     NSDate *today = [NSDate date];
@@ -258,9 +157,8 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
     [components setMonth:3];
 
     NSDate *forwardDate = [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:today options:kNilOptions];
-    NSString *forwardDateString = [self.isoDateFormatter stringFromDate:forwardDate];
 
-    [self fetchAvailabilitiesToDate:forwardDateString forProduct:product];
+    [self fetchAvailabilitiesToDate:forwardDate forProduct:product];
 }
 
 - (void)fetchAvailabilitiesForNextYearForProduct:(TXHProduct *)product {
@@ -271,15 +169,13 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
     [components setYear:1];
 
     NSDate *forwardDate = [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:[NSDate date] options:kNilOptions];
-    NSString *forwardDateString = [self.isoDateFormatter stringFromDate:forwardDate];
 
-    [self fetchAvailabilitiesToDate:forwardDateString forProduct:product];
-
+    [self fetchAvailabilitiesToDate:forwardDate forProduct:product];
 }
 
-- (void)fetchAvailabilitiesToDate:(NSString *)isoDateString forProduct:(TXHProduct *)product {
-    [TXHTICKETINHGUBCLIENT availabilitiesForProduct:product from:nil to:isoDateString completion:^(NSArray *availabilities, NSError *error) {
-        DLog(@"Availability update to %@ for Product: %@", isoDateString, product.name);
+- (void)fetchAvailabilitiesToDate:(NSDate *)date forProduct:(TXHProduct *)product {
+    [TXHTICKETINHGUBCLIENT availabilitiesForProduct:product fromDate:nil toDate:date completion:^(NSArray *availabilities, NSError *error) {
+        DLog(@"Availability update to %@ for Product: %@", date, product.name);
     }];
 }
 

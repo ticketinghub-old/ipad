@@ -8,6 +8,6 @@
 
 @import UIKit;
 
-@interface ProductListController : UIViewController <NSFetchedResultsControllerDelegate>
+@interface ProductListController : UIViewController 
 
 @end

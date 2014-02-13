@@ -11,6 +11,8 @@
 		3E22139B18AA791000DE35A6 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E22139A18AA791000DE35A6 /* ArrayDataSource.m */; };
 		3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E22139D18AA794C00DE35A6 /* DictionaryDataSource.m */; };
 		3E3A5B2018AA74E100A54812 /* TXHTicketTier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3A5B1F18AA74E100A54812 /* TXHTicketTier.m */; };
+		3E3D46EA18ACB89A00275ACF /* FetchedResultsControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D46E918ACB89A00275ACF /* FetchedResultsControllerDataSource.m */; };
+		3E3D46EE18ACBB8500275ACF /* UIColor+TicketingHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D46ED18ACBB8500275ACF /* UIColor+TicketingHub.m */; };
 		3E44157018AB80EA00C4AE1C /* TXHTicketingHubManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E44156F18AB80EA00C4AE1C /* TXHTicketingHubManager.m */; };
 		4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */; };
 		4D586DE11797E51E00E40534 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D586DE01797E51E00E40534 /* Images.xcassets */; };
@@ -121,6 +123,10 @@
 		3E22139F18AA799700DE35A6 /* TableViewConfigurationBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewConfigurationBlock.h; sourceTree = "<group>"; };
 		3E3A5B1E18AA74E100A54812 /* TXHTicketTier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketTier.h; sourceTree = "<group>"; };
 		3E3A5B1F18AA74E100A54812 /* TXHTicketTier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketTier.m; sourceTree = "<group>"; };
+		3E3D46E818ACB89A00275ACF /* FetchedResultsControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedResultsControllerDataSource.h; sourceTree = "<group>"; };
+		3E3D46E918ACB89A00275ACF /* FetchedResultsControllerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedResultsControllerDataSource.m; sourceTree = "<group>"; };
+		3E3D46EC18ACBB8500275ACF /* UIColor+TicketingHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TicketingHub.h"; sourceTree = "<group>"; };
+		3E3D46ED18ACBB8500275ACF /* UIColor+TicketingHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TicketingHub.m"; sourceTree = "<group>"; };
 		3E44156E18AB80EA00C4AE1C /* TXHTicketingHubManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketingHubManager.h; sourceTree = "<group>"; };
 		3E44156F18AB80EA00C4AE1C /* TXHTicketingHubManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubManager.m; sourceTree = "<group>"; };
 		416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
@@ -326,6 +332,8 @@
 				3E22139A18AA791000DE35A6 /* ArrayDataSource.m */,
 				3E22139C18AA794C00DE35A6 /* DictionaryDataSource.h */,
 				3E22139D18AA794C00DE35A6 /* DictionaryDataSource.m */,
+				3E3D46E818ACB89A00275ACF /* FetchedResultsControllerDataSource.h */,
+				3E3D46E918ACB89A00275ACF /* FetchedResultsControllerDataSource.m */,
 			);
 			name = TableViewDataSources;
 			sourceTree = "<group>";
@@ -627,6 +635,15 @@
 			name = "Concrete Content";
 			sourceTree = "<group>";
 		};
+		3E3D46EB18ACBB6E00275ACF /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				3E3D46EC18ACBB8500275ACF /* UIColor+TicketingHub.h */,
+				3E3D46ED18ACBB8500275ACF /* UIColor+TicketingHub.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		4DF3F59B17C63E070045299B /* Smoke Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -785,6 +802,7 @@
 		EEB1843317D113FB0025530A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3E3D46EB18ACBB6E00275ACF /* Categories */,
 				EEB1845717D114390025530A /* TXHUserDefaultsKeys.h */,
 				EEB1843A17D114390025530A /* TXHCommonNames.h */,
 				3E22139818AA78DB00DE35A6 /* TableViewDataSources */,
@@ -1024,6 +1042,7 @@
 				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
 				EEB1845817D114390025530A /* TXHBaseCollectionViewCell.m in Sources */,
 				EEB1845917D114390025530A /* TXHBaseDataEntryTableViewCell.m in Sources */,
+				3E3D46EE18ACBB8500275ACF /* UIColor+TicketingHub.m in Sources */,
 				EEB1845A17D114390025530A /* TXHBaseDataEntryView.m in Sources */,
 				EEB1845B17D114390025530A /* TXHCreditCardNumberView.m in Sources */,
 				EEB1845C17D114390025530A /* TXHCurrencyEntryView.m in Sources */,
@@ -1033,6 +1052,7 @@
 				EEB1846017D114390025530A /* TXHDataSelectionViewController.m in Sources */,
 				EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */,
 				3E3A5B2018AA74E100A54812 /* TXHTicketTier.m in Sources */,
+				3E3D46EA18ACB89A00275ACF /* FetchedResultsControllerDataSource.m in Sources */,
 				EEB1847A17D114B30025530A /* TXHDoorDateCell.m in Sources */,
 				EEB1847B17D114B30025530A /* TXHDoorDateController.m in Sources */,
 				EEB1847C17D114B30025530A /* TXHDoorGroupController.m in Sources */,
