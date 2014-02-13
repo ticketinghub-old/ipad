@@ -101,12 +101,19 @@
 
 #pragma mark - Custom accessors
 
-- (void)setSelectedProduct:(TXHProduct *)selectedProduct {
-    _selectedProduct = selectedProduct;
+#pragma mark - Setters / Getters
 
-    // More stuff needed here to reset the UI if the view is loaded
-    if ([self isViewLoaded]) {
-        [self resetDateAndTimeButtonLabels];
+- (void)setSelectedProduct:(TXHProduct *)selectedProduct
+{
+    if (selectedProduct && _selectedProduct != selectedProduct)
+    {
+        _selectedProduct = selectedProduct;
+        
+        self.title = selectedProduct.name;
+        
+        if ([self isViewLoaded]) {
+            [self resetDateAndTimeButtonLabels];
+        }
     }
 }
 
