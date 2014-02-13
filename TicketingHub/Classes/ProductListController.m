@@ -99,7 +99,6 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 
     TXHProduct *product = [self.tableViewDataSource itemAtIndexPath:indexPath];
     
-    [self fetchAvailabilitiesForNextThreeMonthsForProduct:product];
     [[NSNotificationCenter defaultCenter] postNotificationName:TXHProductChangedNotification
                                                         object:self
                                                       userInfo:@{TXHSelectedProduct: product}];
@@ -149,34 +148,5 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
                        forState:UIControlStateNormal];
 }
 
-
-- (void)fetchAvailabilitiesForNextThreeMonthsForProduct:(TXHProduct *)product {
-    NSDate *today = [NSDate date];
-
-    NSDateComponents *components = [NSDateComponents new];
-    [components setMonth:3];
-
-    NSDate *forwardDate = [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:today options:kNilOptions];
-
-    [self fetchAvailabilitiesToDate:forwardDate forProduct:product];
-}
-
-- (void)fetchAvailabilitiesForNextYearForProduct:(TXHProduct *)product {
-    // Check against last update time so that this isn't called too often
-    // NSTimeInterval checkInterval = 60 * 5.0; // Not using components, as 5 minutes is the absolute time between checks.
-
-    NSDateComponents *components = [NSDateComponents new];
-    [components setYear:1];
-
-    NSDate *forwardDate = [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:[NSDate date] options:kNilOptions];
-
-    [self fetchAvailabilitiesToDate:forwardDate forProduct:product];
-}
-
-- (void)fetchAvailabilitiesToDate:(NSDate *)date forProduct:(TXHProduct *)product {
-    [TXHTICKETINHGUBCLIENT availabilitiesForProduct:product fromDate:nil toDate:date completion:^(NSArray *availabilities, NSError *error) {
-        DLog(@"Availability update to %@ for Product: %@", date, product.name);
-    }];
-}
 
 @end
