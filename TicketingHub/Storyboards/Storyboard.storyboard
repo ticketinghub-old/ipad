@@ -181,21 +181,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="330" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="44" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="suw-Sn-fju">
-                                <rect key="frame" x="0.0" y="74" width="330" height="638"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="118" sectionHeaderHeight="44" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="suw-Sn-fju">
+                                <rect key="frame" x="0.0" y="72" width="330" height="638"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.18039215689999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexTrackingBackgroundColor" red="0.054901960784313725" green="0.18431372549019609" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="cellID" textLabel="ww5-fY-QW6" style="IBUITableViewCellStyleDefault" id="jGl-gd-nHr">
-                                        <rect key="frame" x="0.0" y="44" width="330" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="ProductCellIdentifier" textLabel="ww5-fY-QW6" rowHeight="118" style="IBUITableViewCellStyleDefault" id="jGl-gd-nHr">
+                                        <rect key="frame" x="0.0" y="44" width="330" height="118"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jGl-gd-nHr" id="qHK-D1-LDC">
-                                            <rect key="frame" x="0.0" y="0.0" width="297" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="297" height="118"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ww5-fY-QW6">
-                                                    <rect key="frame" x="15" y="0.0" width="280" height="44"/>
+                                                    <rect key="frame" x="15" y="0.0" width="280" height="118"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="backgroundColor" red="0.054901960780000002" green="0.1843137255" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -213,11 +213,11 @@
                                     <outlet property="delegate" destination="UZq-wc-4TA" id="K5c-Qg-TbG"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FiJ-8i-n6o" userLabel="Header View">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FiJ-8i-n6o" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="0.0" width="330" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zX7-nT-Jag">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zX7-nT-Jag">
                                         <rect key="frame" x="17" y="23" width="82" height="41"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.054901960780000002" green="0.1843137255" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -269,7 +269,7 @@
                                     <constraint firstAttribute="height" constant="56" id="xjC-ta-wIZ"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shadow" translatesAutoresizingMaskIntoConstraints="NO" id="NjO-cz-bla">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="shadow" translatesAutoresizingMaskIntoConstraints="NO" id="NjO-cz-bla">
                                 <rect key="frame" x="322" y="0.0" width="8" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -361,7 +361,6 @@
         <!--Sales Or Doorman View Controller - tickethub.io-->
         <scene sceneID="VBG-zP-iW6">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9no-gQ-7hV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="formSheet" id="2do-rv-5Ha" customClass="SalesOrDoormanViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qbE-3C-n6H"/>
@@ -412,6 +411,7 @@
                         <outlet property="modeSelector" destination="I90-f6-15I" id="fgG-Ug-m3L"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9no-gQ-7hV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="169" y="2275"/>
         </scene>

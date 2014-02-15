@@ -75,11 +75,10 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Doorman" bundle:nil];
 
         UIViewController *destinationController = [storyboard instantiateInitialViewController];
-
-        //        destinationController.containerNavigationItem = self.navigationItem;
-
+        
         TXHEmbeddingSegue *segue = [[TXHEmbeddingSegue alloc] initWithIdentifier:@"Doorman"
-                                                                          source:self destination:destinationController];
+                                                                          source:self
+                                                                     destination:destinationController];
         segue.containerView = self.contentDetailView;
 
         [segue perform];
@@ -89,10 +88,9 @@
 
         UIViewController *destinationController = [storyboard instantiateInitialViewController];
 
-        //        destinationController.containerNavigationItem = self.navigationItem;
-
         TXHEmbeddingSegue *segue = [[TXHEmbeddingSegue alloc] initWithIdentifier:@"Salesman"
-                                                                          source:self destination:destinationController];
+                                                                          source:self
+                                                                     destination:destinationController];
         segue.containerView = self.contentDetailView;
         
         [segue perform];
@@ -121,6 +119,8 @@
 
 - (void)productChanged:(NSNotification *)notification {
     self.selectedProduct = [notification userInfo][TXHSelectedProduct];
+    
+    // forward taht to
 }
 
 

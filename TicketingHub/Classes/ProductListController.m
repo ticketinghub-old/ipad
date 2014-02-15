@@ -63,8 +63,7 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 
 - (void)setupDataSource
 {
-    NSString *cellIdentifier = @"ProductCellIDentifier";
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    NSString *cellIdentifier = @"ProductCellIdentifier";
     self.tableViewDataSource = [[FetchedResultsControllerDataSource alloc] initWithFetchedResultsController:[self fetchedResultsController]
                                                                                                   tableView:self.tableView
                                                                                              cellIdentifier:cellIdentifier
