@@ -31,18 +31,17 @@
 {
     // convert source and destination controllers from ids
     UIViewController *sourceViewController = self.sourceViewController;
-    
     UIViewController *destinationViewController = self.destinationViewController;
     
-    // set frame of destination controller's view to that of placeholder
+    // set destinations controller view to fill container view all the time
     destinationViewController.view.frame = self.containerView.bounds;
-
+    destinationViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    destinationViewController.view.translatesAutoresizingMaskIntoConstraints = YES;
     
     [sourceViewController addChildViewController:destinationViewController];
-    
     [self.containerView addSubview:destinationViewController.view];
-    
     [destinationViewController didMoveToParentViewController:sourceViewController];
+    
 }
 
 @end
