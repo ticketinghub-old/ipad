@@ -8,8 +8,7 @@
 
 #import "TXHSalesTicketTierCell.h"
 
-#import "TXHTicketingHubClient+AppExtension.h"
-#import "TXHTicketTier.h"
+#import <iOS-api/TXHTier+PriceFormatter.h>
 
 @interface TXHSalesTicketTierCell ()
 
@@ -39,25 +38,24 @@
     // Configure the view for the selected state
 }
 
-- (void)setTier:(TXHTicketTier *)tier {
+- (void)setTier:(TXHTier *)tier {
     _tier = tier;
     [self configureTierDetails];
     [self layoutIfNeeded];
 }
 
 - (void)configureTierDetails {
-    self.tierName.text = self.tier.tierName;
+    self.tierName.text = self.tier.name;
     self.tierDescription.text = self.tier.tierDescription;
     self.quantity.keyboardType = UIKeyboardTypeNumberPad;
-    // Currency is specified by the venue
-    // TODO: after singleton creation self.price.text = [TXHTICKETINHGUBCLIENT formatCurrencyValue:self.tier.price];
+    self.price.text = self.tier.priceString;
     self.stepper.maximumValue = self.tier.limit.doubleValue;
 }
 
 - (void)quantityDidChange {
-    if (self.quantityChangedHandler) {
-        self.quantityChangedHandler(@{self.tier.tierID: [NSNumber numberWithInteger:self.quantity.text.integerValue]});
-    }
+//    if (self.quantityChangedHandler) {
+//        self.quantityChangedHandler(@{self.tier.tierID: [NSNumber numberWithInteger:self.quantity.text.integerValue]});
+//    }
 }
 
 #pragma mark - Quantity Value Changed action

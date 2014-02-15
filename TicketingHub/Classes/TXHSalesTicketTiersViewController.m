@@ -10,7 +10,7 @@
 
 #import "TXHSalesContentProtocol.h"
 #import "TXHSalesTicketTierCell.h"
-#import "TXHTicketTier.h"
+#import <iOS-api/TXHProduct.h>
 
 @interface TXHSalesTicketTiersViewController () <UITextFieldDelegate, TXHSalesContentProtocol>
 
@@ -153,7 +153,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TXHSalesTicketTierCell *cell = (TXHSalesTicketTierCell *)[tableView cellForRowAtIndexPath:indexPath];
-    NSLog(@"did select cell%@ at row %d", cell.tier.tierName, indexPath.row);
+//    NSLog(@"did select cell%@ at row %d", cell.tier.name, indexPath.row);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

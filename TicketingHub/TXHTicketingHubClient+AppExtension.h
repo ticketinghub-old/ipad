@@ -16,6 +16,4 @@
 
 - (void)getTicketOptionsForTimeSlot:(TXHTimeSlot_old *)timeslot completionHandler:(void(^)(id))completion errorHandler:(void(^)(id))error;
 
-- (NSString *)formatCurrencyValue:(NSNumber *)value;
-
 @end
