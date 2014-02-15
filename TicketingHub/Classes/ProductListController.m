@@ -12,12 +12,13 @@
 
 #import "TXHCommonNames.h"
 #import "TXHTicketingHubManager.h"
-#import "UIColor+TicketingHub.h"
 #import "FetchedResultsControllerDataSource.h"
 
 // Declaration of strings declared in ProductListControllerNotifications.h
 NSString * const TXHProductChangedNotification = @"TXHProductChangedNotification";
 NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
+
+static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 
 @interface ProductListController () <UITableViewDelegate>
 
@@ -29,6 +30,7 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *headerViewLabel;
 
+@property (nonatomic, strong) TXHUser *user;
 
 @end
 
@@ -36,10 +38,10 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor txhDarkBlueColor];
-    
+
     [self setupDataSource];
 }
 
@@ -49,14 +51,28 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 
     [self setHeaderTitle:NSLocalizedString(@"Venues", @"Title for the list of venues")];
     
-    [self setLogoutButtonTitle:[TXHTICKETINHGUBCLIENT currentUser].fullName];
-
+    self.user = [TXHTICKETINHGUBCLIENT currentUser];
+    
+    [self setLogoutButtonTitle:self.user.fullName];
+    
+    [self.user addObserver:self
+                  forKeyPath:@"fullName"
+                     options:NSKeyValueObservingOptionNew
+                     context:kUserFullNameKVOContext];
+    
     NSError *error;
     BOOL success = [self.tableViewDataSource performFetch:&error];
 
     if (!success) {
         DLog(@"Could not perform fetch because: %@", error);
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [[TXHTICKETINHGUBCLIENT currentUser] removeObserver:self forKeyPath:@"fullName" context:@"user.fullName"];
 }
 
 #pragma mark - setup
@@ -120,8 +136,9 @@ NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 
 #pragma mark - KVO
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (context == @"user.fullName") {
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (context == kUserFullNameKVOContext) {
         [self setLogoutButtonTitle:change[NSKeyValueChangeNewKey]];
         return;
     }
