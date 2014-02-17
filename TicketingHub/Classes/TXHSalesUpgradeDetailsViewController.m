@@ -128,7 +128,6 @@
 
 - (void)configureCompletionViewController {
     // Set up the completion view controller to reflect ticket tier details
-    [self.completionViewController setCompletionBlock:self.completionBlock];
 }
 
 #pragma mark - Collection View Datasource & Delegate methods

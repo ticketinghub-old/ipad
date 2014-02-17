@@ -10,11 +10,8 @@
 
 @interface TXHSalesCompletionViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *coupon;
 @property (weak, nonatomic) IBOutlet UIButton *continueButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
-
-@property (assign, nonatomic) BOOL editingCoupon;
 
 @end
 
@@ -48,43 +45,23 @@
     self.continueButton.enabled = canCompleteStep;
 }
 
+#pragma mark - Button Actions
+
 - (IBAction)cancelAction:(id)sender {
-    NSLog(@"cancel");
     [[UIApplication sharedApplication] sendAction:@selector(orderExpiredWithSender:) to:nil from:self forEvent:nil];
 }
 
 - (IBAction)continueAction:(id)sender {
-#pragma unused (sender)
     [[UIApplication sharedApplication] sendAction:@selector(completeWizardStep:) to:nil from:self forEvent:nil];
-}
-
-- (void)hideCoupon:(BOOL)hidden {
-    __block typeof(self) blockSelf = self;
-    
-    if (hidden) {
-        self.animationHandler = nil;
-        self.coupon.hidden = YES;
-        self.newVerticalHeight = 102.0f;
-    } else {
-        self.animationHandler = ^(BOOL finished) {
-#pragma unused (finished)
-            blockSelf.coupon.hidden = NO;
-        };
-        self.newVerticalHeight = 131.0f;
-    }
-    
-    [[UIApplication sharedApplication] sendAction:@selector(updateCompletionContainerHeight:) to:nil from:self forEvent:nil];
 }
 
 #pragma mark - UITextField delegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-#pragma unused (textField)
     [[UIApplication sharedApplication] sendAction:@selector(increaseCompletionContainerHeight:) to:nil from:self forEvent:nil];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-#pragma unused (textField)
     [[UIApplication sharedApplication] sendAction:@selector(decreaseCompletionContainerHeight:) to:nil from:self forEvent:nil];
 }
 

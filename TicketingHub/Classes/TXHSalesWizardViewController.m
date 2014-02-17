@@ -213,10 +213,6 @@
 
 - (void)moveToNextStep:(id)sender {
     // Perform any completion processing
-    TXHSalesCompletionViewController *completionController = sender;
-    if ([completionController completionBlock] != nil) {
-        completionController.completionBlock();
-    }
     [self configureWizardForStage:self.currentStageInProgress + 1];
 }
 

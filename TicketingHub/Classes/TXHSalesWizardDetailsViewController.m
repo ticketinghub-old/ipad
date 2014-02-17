@@ -82,15 +82,6 @@
     [self.stepContentController transition:sender];
 }
 
-- (void)updateCompletionContainerHeight:(id)sender {
-    // The completion container needs to respond to changes in height based on whether a coupon selection control is visible or not
-    TXHSalesCompletionViewController *controller = sender;
-    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.completionViewVerticalConstraint.constant = controller.newVerticalHeight;
-        [self.view layoutIfNeeded];
-    } completion:controller.animationHandler];
-}
-
 // This action method is sent when the coupon text field gets focus - the container height is increased to keep the coupon field in view above the keyboard
 - (void)increaseCompletionContainerHeight:(id)sender {
 #pragma unused (sender)
