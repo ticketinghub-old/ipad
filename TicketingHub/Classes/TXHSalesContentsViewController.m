@@ -120,7 +120,7 @@
 - (void)didChangeOption:(id)sender {
     if ([sender isKindOfClass:[TXHSalesWizardViewController class]]) {
         TXHSalesWizardViewController *controller = sender;
-        NSString *transitionId = [NSString stringWithFormat:@"Transition To Step%d", controller.step];
+        NSString *transitionId = [NSString stringWithFormat:@"Transition To Step %d", controller.step];
         [self performSegueWithIdentifier:transitionId sender:sender];
     }
 }

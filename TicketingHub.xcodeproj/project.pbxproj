@@ -15,6 +15,8 @@
 		3E44157018AB80EA00C4AE1C /* TXHTicketingHubManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E44156F18AB80EA00C4AE1C /* TXHTicketingHubManager.m */; };
 		3E6F479718AFD6A300E644F7 /* TXHBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F479618AFD6A300E644F7 /* TXHBorderedButton.m */; };
 		3EA36B8018AFDF5C008F8C59 /* TXHProductListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA36B7F18AFDF5C008F8C59 /* TXHProductListCell.m */; };
+		3EA36B8318B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA36B8218B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m */; };
+		3EA36B8618B237BF008F8C59 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA36B8518B237BF008F8C59 /* UIView+Additions.m */; };
 		4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */; };
 		4D586DE11797E51E00E40534 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D586DE01797E51E00E40534 /* Images.xcassets */; };
 		4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D68DAAA178B0A5400743227 /* AVFoundation.framework */; };
@@ -132,6 +134,10 @@
 		3E6F479618AFD6A300E644F7 /* TXHBorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBorderedButton.m; sourceTree = "<group>"; };
 		3EA36B7E18AFDF5C008F8C59 /* TXHProductListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHProductListCell.h; sourceTree = "<group>"; };
 		3EA36B7F18AFDF5C008F8C59 /* TXHProductListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHProductListCell.m; sourceTree = "<group>"; };
+		3EA36B8118B21F42008F8C59 /* TXHSalesWizardTabelViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesWizardTabelViewCell.h; path = TicketingHub/Classes/TXHSalesWizardTabelViewCell.h; sourceTree = SOURCE_ROOT; };
+		3EA36B8218B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesWizardTabelViewCell.m; path = TicketingHub/Classes/TXHSalesWizardTabelViewCell.m; sourceTree = SOURCE_ROOT; };
+		3EA36B8418B237BF008F8C59 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
+		3EA36B8518B237BF008F8C59 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
 		416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
 		4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCurrencyEntryViewSpec.m; sourceTree = "<group>"; };
 		4D586DE01797E51E00E40534 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -463,6 +469,8 @@
 		3E3A5B0D18AA6AA800A54812 /* Wizard */ = {
 			isa = PBXGroup;
 			children = (
+				3EA36B8118B21F42008F8C59 /* TXHSalesWizardTabelViewCell.h */,
+				3EA36B8218B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m */,
 				EE75D98617D11048009ADCD8 /* TXHSalesWizardViewController.h */,
 				EE75D98717D11048009ADCD8 /* TXHSalesWizardViewController.m */,
 				EE75D98417D11048009ADCD8 /* TXHSalesWizardDetailsViewController.h */,
@@ -644,6 +652,8 @@
 			children = (
 				3E3D46EC18ACBB8500275ACF /* UIColor+TicketingHub.h */,
 				3E3D46ED18ACBB8500275ACF /* UIColor+TicketingHub.m */,
+				3EA36B8418B237BF008F8C59 /* UIView+Additions.h */,
+				3EA36B8518B237BF008F8C59 /* UIView+Additions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1065,6 +1075,7 @@
 				EEB1845917D114390025530A /* TXHBaseDataEntryTableViewCell.m in Sources */,
 				3E3D46EE18ACBB8500275ACF /* UIColor+TicketingHub.m in Sources */,
 				EEB1845A17D114390025530A /* TXHBaseDataEntryView.m in Sources */,
+				3EA36B8618B237BF008F8C59 /* UIView+Additions.m in Sources */,
 				EEB1845B17D114390025530A /* TXHCreditCardNumberView.m in Sources */,
 				EEB1845C17D114390025530A /* TXHCurrencyEntryView.m in Sources */,
 				EEB1845E17D114390025530A /* TXHDataEntryFieldErrorView.m in Sources */,
@@ -1106,6 +1117,7 @@
 				3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */,
 				EE75D99E17D11048009ADCD8 /* TXHSalesSummaryHeader.m in Sources */,
 				EE75D99F17D11048009ADCD8 /* TXHSalesSummaryViewController.m in Sources */,
+				3EA36B8318B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m in Sources */,
 				EE75D9A017D11048009ADCD8 /* TXHSalesTicketCompletionViewController.m in Sources */,
 				EE75D9A117D11048009ADCD8 /* TXHSalesTicketTierCell.m in Sources */,
 				EE75D9A217D11048009ADCD8 /* TXHSalesTicketTiersViewController.m in Sources */,

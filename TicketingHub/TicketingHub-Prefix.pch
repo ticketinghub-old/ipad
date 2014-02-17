@@ -18,3 +18,6 @@
 
 // TimesSquare Calendar control
 #import <TimesSquare/TimesSquare.h>
+
+// UIView Helper methods
+#import "UIView+Additions.h"
