@@ -1070,22 +1070,11 @@
                                 <color key="textColor" red="0.074509803920000006" green="0.2274509804" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cs4-Qr-l03">
-                                <rect key="frame" x="669" y="21" width="35" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.2784842609" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="TaY-9V-wFF"/>
-                                    <constraint firstAttribute="height" constant="35" id="sj6-9q-Wfh"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="XLs-5a-gKP" secondAttribute="centerY" id="5xk-3y-0tE"/>
                             <constraint firstItem="XLs-5a-gKP" firstAttribute="leading" secondItem="l6J-uU-4bz" secondAttribute="leading" constant="20" symbolic="YES" id="7BU-Bz-lc7"/>
-                            <constraint firstAttribute="trailing" secondItem="cs4-Qr-l03" secondAttribute="trailing" constant="20" id="k7O-Xz-XXW"/>
-                            <constraint firstItem="cs4-Qr-l03" firstAttribute="bottom" secondItem="XLs-5a-gKP" secondAttribute="bottom" id="usB-ed-MIi"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -1635,6 +1624,24 @@
             </objects>
             <point key="canvasLocation" x="6613" y="2695"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="S3B-NR-vih">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="IcQ-g4-BBr" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fle-pH-nxM"/>
+                        <viewControllerLayoutGuide type="bottom" id="27G-OZ-Me0"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="xuC-LS-b0w">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VUf-Oa-hhA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="Counter" width="30" height="18"/>
@@ -1648,7 +1655,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ik4-FO-YMn"/>
+        <segue reference="aOI-Ow-GKt"/>
         <segue reference="sVq-aS-Wzq"/>
     </inferredMetricsTieBreakers>
 </document>
