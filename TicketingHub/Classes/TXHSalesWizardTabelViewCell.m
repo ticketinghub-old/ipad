@@ -42,7 +42,7 @@
 
 - (void)setNumber:(NSUInteger)number
 {
-    self.numberLabel.text = [NSString stringWithFormat:@"%d", number];
+    self.numberLabel.text = [NSString stringWithFormat:@"%ld", number];
 }
 
 - (void)setCompleted:(BOOL)completed
