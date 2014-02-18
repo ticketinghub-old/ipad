@@ -17,7 +17,7 @@
 #import "TXHSalesStepAbstract.h"
 #import "TXHSaleStepsManager.h"
 
-@interface TXHSalesMainViewController () // <TXHSalesWizardDelegate>
+@interface TXHSalesMainViewController ()  <TXHSaleStepsManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *stepsView;
 @property (weak, nonatomic) IBOutlet UIView *detailsView;
@@ -67,53 +67,46 @@
                                                                        kWizardStepDescriptionKey : NSLocalizedString(@"Print tickets and recipt", @"Print tickets and recipt")}
                                                                      ]];
 
+    
     self.wizardSteps.dataSource = self.stepsManager;
     
     [self.wizardSteps reloadWizard];
 }
 
-- (IBAction)checkout:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-  [self performSegueWithIdentifier:@"SalesCheckoutSegue" sender:sender];
-}
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-#pragma unused (sender)
-    // If this segue is embedding one of the containers give it ourself as a delegate
-    if ([segue.identifier isEqualToString:@"Embed Steps"]) {
+    if ([segue.identifier isEqualToString:@"Embed Steps"])
+    {
         self.wizardSteps = segue.destinationViewController;
-//        self.wizardSteps.delegate = self;
         return;
     }
-    if ([segue.identifier isEqualToString:@"Embed Details"]) {
+    else if ([segue.identifier isEqualToString:@"Embed Details"])
+    {
         self.wizardDetails = segue.destinationViewController;
-        self.wizardDetails.delegate = self;
         return;
     }
-    
-    if ([segue isMemberOfClass:[TXHTransitionSegue class]]) {
+    else if ([segue isMemberOfClass:[TXHTransitionSegue class]])
+    {
         TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
         transitionSegue.containerView = self.view;
     }
 }
 
-- (void)didChangeOption:(id)sender {
-    if ([sender isKindOfClass:[TXHSalesWizardViewController class]] == YES) {
-        [self.wizardDetails transition:sender];
-    }
-    if ([sender isKindOfClass:[TXHSalesWizardDetailsViewController class]] == YES) {
-    }
-}
+//- (void)didChangeOption:(id)sender
+//{
+//    if ([sender isKindOfClass:[TXHSalesWizardViewController class]] == YES) {
+//        [self.wizardDetails transition:sender];
+//    }
+//    if ([sender isKindOfClass:[TXHSalesWizardDetailsViewController class]] == YES) {
+//    }
+//}
 
-- (void)continueFromStep:(NSNumber *)step {
-    // We want to progress to the next step
-//    [self wizard:self.wizardSteps didChooseOption:step];
-}
+#pragma mark - TXHSaleStepsManagerDelegate
 
-- (void)completeWizardStep:(id)sender {
-}
-
-- (void)orderExpiredWithSender:(id)sender {
+- (void)saleStepsManager:(TXHSaleStepsManager *)manager didChangeToStep:(id)step
+{
+    
 }
 
 @end

@@ -9,21 +9,11 @@
 #import "TXHSalesUpgradeDetailsViewController.h"
 
 #import "TXHSalesCompletionViewController.h"
-#import "TXHSalesContentProtocol.h"
 #import "TXHSalesTimerViewController.h"
 #import "TXHSalesUpgradeCell.h"
 #import "TXHSalesUpgradeHeader.h"
 
-@interface TXHSalesUpgradeDetailsViewController () <TXHSalesContentProtocol, UICollectionViewDelegateFlowLayout>
-
-// A reference to the timer view controller
-@property (retain, nonatomic) TXHSalesTimerViewController *timerViewController;
-
-// A reference to the completion view controller
-@property (retain, nonatomic) TXHSalesCompletionViewController *completionViewController;
-
-// A completion block to be run when this step is completed
-@property (copy) void (^completionBlock)(void);
+@interface TXHSalesUpgradeDetailsViewController () <UICollectionViewDelegateFlowLayout>
 
 // A mutable collection of sections indicating their expanded status.
 @property (strong, nonatomic) NSMutableDictionary *sections;
@@ -32,26 +22,6 @@
 
 @implementation TXHSalesUpgradeDetailsViewController
 
-@synthesize timerViewController = _timerViewController;
-@synthesize completionViewController = _completionViewController;
-@synthesize completionBlock = _completionBlock;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self setup];
-    }
-    return self;
-}
 
 - (void)setup {
     self.sections = [NSMutableDictionary dictionary];
@@ -60,74 +30,15 @@
     for (int index = 1; index < 4; index++) {
         self.sections[@(index)] = @NO;
     }
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShown:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShown:) name:UIKeyboardWillShowNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
-    __block typeof(self) blockSelf = self;
-    self.completionBlock = ^{
-        // Update the order for tickets
-        NSLog(@"Update order for %@", blockSelf);
-    };
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self configureTimerViewController];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (TXHSalesTimerViewController *)timerViewController {
-    return _timerViewController;
-}
-
-- (void)setTimerViewController:(TXHSalesTimerViewController *)timerViewController {
-    _timerViewController = timerViewController;
-    [self configureTimerViewController];
-}
-
-- (TXHSalesCompletionViewController *)completionViewController {
-    return _completionViewController;
-}
-
-- (void)setCompletionViewController:(TXHSalesCompletionViewController *)completionViewController {
-    _completionViewController = completionViewController;
-    [self configureCompletionViewController];
-}
-
-- (void (^)(void))completionBlock {
-    return _completionBlock;
-}
-
-- (void)setCompletionBlock:(void (^)(void))completionBlock {
-    _completionBlock = completionBlock;
-    [self configureCompletionViewController];
-}
-
-- (void)configureTimerViewController {
-    // Set up the timer view to reflect our details
-    if (self.timerViewController) {
-        self.timerViewController.stepTitle = NSLocalizedString(@"Add Ticket extras", @"Add Ticket extras");
-        [self.timerViewController hideCountdownTimer:NO];
-    }
-}
-
-- (void)configureCompletionViewController {
-    // Set up the completion view controller to reflect ticket tier details
+    [self setup];
 }
 
 #pragma mark - Collection View Datasource & Delegate methods
@@ -244,32 +155,32 @@
 
 #pragma mark - Action methods
 
-- (void)toggleSection:(id)sender {
-    TXHSalesUpgradeHeader *header = sender;
-    self.sections[@(header.section)] = [NSNumber numberWithBool:header.isExpanded];
-    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:header.section]];
-}
+//- (void)toggleSection:(id)sender {
+//    TXHSalesUpgradeHeader *header = sender;
+//    self.sections[@(header.section)] = [NSNumber numberWithBool:header.isExpanded];
+//    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:header.section]];
+//}
 
-#pragma mark - Keyboard notifications
-
-- (void)keyboardWillShown:(NSNotification *)notification {
-    NSDictionary *info = [notification userInfo];
-    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0f, 0.0f, keyboardSize.width, 0.0f);
-    self.collectionView.contentInset = contentInsets;
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    NSDictionary *keyboardAnimationDetail = [notification userInfo];
-    UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-
-    CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
-    [UIView animateWithDuration:duration delay:0.0 options:(animationCurve << 16) animations:^{
-        self.collectionView.contentInset = UIEdgeInsetsZero;
-        [self.collectionView layoutIfNeeded];
-    } completion:nil];
-}
+//#pragma mark - Keyboard notifications
+//
+//- (void)keyboardWillShown:(NSNotification *)notification {
+//    NSDictionary *info = [notification userInfo];
+//    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+//    
+//    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0f, 0.0f, keyboardSize.width, 0.0f);
+//    self.collectionView.contentInset = contentInsets;
+//}
+//
+//- (void)keyboardWillHide:(NSNotification *)notification {
+//    NSDictionary *keyboardAnimationDetail = [notification userInfo];
+//    UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+//
+//    CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+//    [UIView animateWithDuration:duration delay:0.0 options:(animationCurve << 16) animations:^{
+//        self.collectionView.contentInset = UIEdgeInsetsZero;
+//        [self.collectionView layoutIfNeeded];
+//    } completion:nil];
+//}
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSNumber *expanded = self.sections[@(indexPath.section)];

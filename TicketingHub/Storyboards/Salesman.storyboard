@@ -1112,26 +1112,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="724" height="70"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyCircle" translatesAutoresizingMaskIntoConstraints="NO" id="HzM-cX-KaE">
-                                <rect key="frame" x="579" y="25" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="fYd-JY-xaf"/>
-                                    <constraint firstAttribute="width" constant="20" id="qZy-qf-xYi"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09:16" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywz-fz-auU">
-                                <rect key="frame" x="607" y="17" width="97" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="DSr-R2-yce"/>
-                                    <constraint firstAttribute="width" constant="97" id="ouh-MK-R8e"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" red="0.070588235289999995" green="0.25490196079999999" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Step Description>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLs-5a-gKP">
                                 <rect key="frame" x="20" y="14" width="299" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1144,20 +1124,12 @@
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="XLs-5a-gKP" secondAttribute="centerY" id="5xk-3y-0tE"/>
                             <constraint firstItem="XLs-5a-gKP" firstAttribute="leading" secondItem="l6J-uU-4bz" secondAttribute="leading" constant="20" symbolic="YES" id="7BU-Bz-lc7"/>
-                            <constraint firstItem="ywz-fz-auU" firstAttribute="leading" secondItem="HzM-cX-KaE" secondAttribute="trailing" constant="8" id="Fd9-fi-HRd"/>
-                            <constraint firstItem="HzM-cX-KaE" firstAttribute="centerY" secondItem="ywz-fz-auU" secondAttribute="centerY" id="JE8-Na-mCY"/>
-                            <constraint firstAttribute="centerY" secondItem="ywz-fz-auU" secondAttribute="centerY" id="M3Y-MD-dNc"/>
-                            <constraint firstAttribute="trailing" secondItem="ywz-fz-auU" secondAttribute="trailing" constant="20" id="QT3-yC-QXh"/>
-                            <constraint firstAttribute="centerY" secondItem="HzM-cX-KaE" secondAttribute="centerY" id="Ur4-N6-n9Y"/>
-                            <constraint firstAttribute="centerY" secondItem="ywz-fz-auU" secondAttribute="centerY" id="hfU-uJ-W53"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
                     <connections>
-                        <outlet property="stepDescription" destination="XLs-5a-gKP" id="K5Q-7d-Nar"/>
-                        <outlet property="timeDisplay" destination="ywz-fz-auU" id="Kns-Lf-bTh"/>
-                        <outlet property="timerImage" destination="HzM-cX-KaE" id="adt-EO-QTZ"/>
+                        <outlet property="titleLabel" destination="XLs-5a-gKP" id="zUo-47-1Jw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSc-tg-v0v" userLabel="First Responder" sceneMemberID="firstResponder"/>

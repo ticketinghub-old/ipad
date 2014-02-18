@@ -10,8 +10,4 @@
 
 @interface TXHSalesWizardDetailsViewController : UIViewController
 
-@property (strong, nonatomic) id delegate;
-
-- (void)transition:(id)sender;
-
 @end

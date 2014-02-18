@@ -180,7 +180,6 @@
 		EE75D94417D11047009ADCD8 /* TXHSalesCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesCalendarViewController.m; path = TicketingHub/Classes/TXHSalesCalendarViewController.m; sourceTree = SOURCE_ROOT; };
 		EE75D94517D11047009ADCD8 /* TXHSalesCompletionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesCompletionViewController.h; path = TicketingHub/Classes/TXHSalesCompletionViewController.h; sourceTree = SOURCE_ROOT; };
 		EE75D94617D11047009ADCD8 /* TXHSalesCompletionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesCompletionViewController.m; path = TicketingHub/Classes/TXHSalesCompletionViewController.m; sourceTree = SOURCE_ROOT; };
-		EE75D94717D11047009ADCD8 /* TXHSalesContentProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesContentProtocol.h; path = TicketingHub/Classes/TXHSalesContentProtocol.h; sourceTree = SOURCE_ROOT; };
 		EE75D94817D11047009ADCD8 /* TXHSalesContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesContentsViewController.h; path = TicketingHub/Classes/TXHSalesContentsViewController.h; sourceTree = SOURCE_ROOT; };
 		EE75D94917D11047009ADCD8 /* TXHSalesContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesContentsViewController.m; path = TicketingHub/Classes/TXHSalesContentsViewController.m; sourceTree = SOURCE_ROOT; };
 		EE75D94C17D11047009ADCD8 /* TXHSalesInformationDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesInformationDetailsViewController.h; path = TicketingHub/Classes/TXHSalesInformationDetailsViewController.h; sourceTree = SOURCE_ROOT; };
@@ -833,7 +832,6 @@
 				3E3A5B0D18AA6AA800A54812 /* Wizard */,
 				EE75D94317D11047009ADCD8 /* TXHSalesCalendarViewController.h */,
 				EE75D94417D11047009ADCD8 /* TXHSalesCalendarViewController.m */,
-				EE75D94717D11047009ADCD8 /* TXHSalesContentProtocol.h */,
 			);
 			name = Sales;
 			path = Login;
