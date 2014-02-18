@@ -19,41 +19,21 @@
 
 @implementation TXHSalesCompletionViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void)setContinueButtonEnabled:(BOOL)enabled
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-   
-    self.canCompleteStep = YES;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)setCanCompleteStep:(BOOL)canCompleteStep {
-    _canCompleteStep = canCompleteStep;
-    self.continueButton.enabled = canCompleteStep;
+    self.continueButton.enabled = enabled;
 }
 
 #pragma mark - Button Actions
 
-- (IBAction)cancelAction:(id)sender {
-    [[UIApplication sharedApplication] sendAction:@selector(orderExpiredWithSender:) to:nil from:self forEvent:nil];
+- (IBAction)cancelAction:(id)sender
+{
+    [self.delegate salesCompletionViewControllerDidCancel:self];
 }
 
-- (IBAction)continueAction:(id)sender {
-    [[UIApplication sharedApplication] sendAction:@selector(completeWizardStep:) to:nil from:self forEvent:nil];
+- (IBAction)continueAction:(id)sender
+{
+    [self.delegate salesCompletionViewControllerDidContinue:self];
 }
 
 #pragma mark - UITextField delegate

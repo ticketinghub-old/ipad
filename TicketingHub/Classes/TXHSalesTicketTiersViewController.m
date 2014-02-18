@@ -173,7 +173,7 @@
     cell.quantityChangedHandler = ^(NSDictionary *quantity) {
         // Add this quantity to our dictionary
         [self.tierQuantities addEntriesFromDictionary:quantity];
-        self.completionViewController.canCompleteStep = ([self ticketCount] > 0);
+//        self.completionViewController.canCompleteStep = ([self ticketCount] > 0);
     };
 }
 

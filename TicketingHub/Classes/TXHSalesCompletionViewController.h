@@ -8,9 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class TXHSalesCompletionViewController;
+
+@protocol TXHSalesCompletionViewControllerDelegate <NSObject>
+
+- (void)salesCompletionViewControllerDidCancel:(TXHSalesCompletionViewController *)controller;
+- (void)salesCompletionViewControllerDidContinue:(TXHSalesCompletionViewController *)controller;
+
+@end
+
 @interface TXHSalesCompletionViewController : UIViewController
 
-// Can the current step be completed (enables / disables the continue button)
-@property (assign, nonatomic) BOOL canCompleteStep;
+@property (weak, nonatomic) id<TXHSalesCompletionViewControllerDelegate> delegate;
+
+- (void)setContinueButtonEnabled:(BOOL)enabled;
 
 @end
