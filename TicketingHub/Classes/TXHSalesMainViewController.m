@@ -10,7 +10,8 @@
 
 // child controllers
 #import "TXHTransitionSegue.h"
-#import "TXHSalesWizardDetailsViewController.h"
+#import "TXHSalesTimerViewController.h"
+#import "TXHSalesCompletionViewController.h"
 #import "TXHSalesWizardViewController.h"
 
 // steps data
@@ -19,11 +20,10 @@
 
 @interface TXHSalesMainViewController ()  <TXHSaleStepsManagerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *stepsView;
-@property (weak, nonatomic) IBOutlet UIView *detailsView;
-
-@property (strong, nonatomic)   TXHSalesWizardViewController *wizardSteps;
-@property (strong, nonatomic)   TXHSalesWizardDetailsViewController *wizardDetails;
+@property (strong, nonatomic) TXHSalesWizardViewController *wizardSteps;
+@property (strong, nonatomic) TXHSalesTimerViewController *timeController;
+@property (strong, nonatomic) id  stepContentController;
+@property (strong, nonatomic) TXHSalesCompletionViewController *stepCompletionController;
 
 // data
 @property (strong, nonatomic) TXHSaleStepsManager *stepsManager;
@@ -75,38 +75,31 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-
-    if ([segue.identifier isEqualToString:@"Embed Steps"])
-    {
+    if ([segue.identifier isEqualToString:@"Embed Steps"]){
         self.wizardSteps = segue.destinationViewController;
-        return;
-    }
-    else if ([segue.identifier isEqualToString:@"Embed Details"])
-    {
-        self.wizardDetails = segue.destinationViewController;
-        return;
-    }
-    else if ([segue isMemberOfClass:[TXHTransitionSegue class]])
-    {
+    } else if ([segue.identifier isEqualToString:@"TXHSalesTimerViewController"]) {
+        self.timeController = segue.destinationViewController;
+    } else if ([segue.identifier isEqualToString:@"TXHSalesContentsViewController"]) {
+        self.stepContentController = segue.destinationViewController;
+    } else if ([segue.identifier isEqualToString:@"TXHSalesCompletionViewController"]) {
+        self.stepCompletionController = segue.destinationViewController;
+    } else if ([segue isMemberOfClass:[TXHTransitionSegue class]]){
         TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
         transitionSegue.containerView = self.view;
     }
 }
 
-//- (void)didChangeOption:(id)sender
-//{
-//    if ([sender isKindOfClass:[TXHSalesWizardViewController class]] == YES) {
-//        [self.wizardDetails transition:sender];
-//    }
-//    if ([sender isKindOfClass:[TXHSalesWizardDetailsViewController class]] == YES) {
-//    }
-//}
-
 #pragma mark - TXHSaleStepsManagerDelegate
 
 - (void)saleStepsManager:(TXHSaleStepsManager *)manager didChangeToStep:(id)step
 {
+    // update header
     
+    // update footer
+    
+    // update content
+    
+    // update list
 }
 
 @end

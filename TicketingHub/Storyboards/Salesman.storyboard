@@ -17,47 +17,80 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vZg-xY-3ej">
-                                <rect key="frame" x="0.0" y="20" width="300" height="748"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="768"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="mLv-34-uVk"/>
+                                    <constraint firstAttribute="width" constant="300" id="YH0-z1-bKb"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="8R7-Yk-baf" kind="embed" identifier="Embed Steps" id="68B-u2-hDE"/>
                                 </connections>
                             </containerView>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0MX-zN-MuK">
-                                <rect key="frame" x="300" y="20" width="724" height="748"/>
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XuI-3a-PNx">
+                                <rect key="frame" x="300" y="0.0" width="724" height="70"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="724" id="4pG-A9-aIc"/>
+                                    <constraint firstAttribute="height" constant="70" id="Zw2-O5-MMU"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="G0c-Vm-fHx" kind="embed" identifier="TXHSalesTimerViewController" id="OK0-pF-7M7"/>
+                                </connections>
+                            </containerView>
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ee0-R6-44p">
+                                <rect key="frame" x="300" y="70" width="724" height="628"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="724" id="9t1-b6-8M7"/>
+                                </constraints>
                                 <connections>
-                                    <segue destination="q9y-bn-hEH" kind="embed" identifier="Embed Details" id="PFG-zO-BVA"/>
+                                    <segue destination="IA2-NF-o6Z" kind="embed" identifier="TXHSalesContentsViewController" id="p2l-JI-iwC"/>
+                                </connections>
+                            </containerView>
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laq-oY-G0v">
+                                <rect key="frame" x="300" y="698" width="724" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="724" id="cyt-pa-TrF"/>
+                                    <constraint firstAttribute="height" constant="70" id="fpC-EB-Tv5"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="ECv-yP-c3G" kind="embed" id="9Fg-Eq-dIt"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vZg-xY-3ej" firstAttribute="top" secondItem="SVV-1f-ahD" secondAttribute="bottom" id="48r-GU-0vF"/>
-                            <constraint firstItem="vZg-xY-3ej" firstAttribute="leading" secondItem="JWv-YI-EIi" secondAttribute="leading" id="9rE-6A-8Cl"/>
-                            <constraint firstItem="rye-Fa-MVC" firstAttribute="top" secondItem="vZg-xY-3ej" secondAttribute="bottom" id="Qqo-O3-ERv"/>
-                            <constraint firstAttribute="trailing" secondItem="0MX-zN-MuK" secondAttribute="trailing" id="UDV-D4-bui"/>
-                            <constraint firstItem="0MX-zN-MuK" firstAttribute="top" secondItem="SVV-1f-ahD" secondAttribute="bottom" id="W1O-r7-aZV"/>
-                            <constraint firstItem="0MX-zN-MuK" firstAttribute="leading" secondItem="vZg-xY-3ej" secondAttribute="trailing" id="tDx-mO-3eV"/>
-                            <constraint firstItem="rye-Fa-MVC" firstAttribute="top" secondItem="0MX-zN-MuK" secondAttribute="bottom" id="xT1-xm-GWs"/>
+                            <constraint firstItem="Ee0-R6-44p" firstAttribute="top" secondItem="XuI-3a-PNx" secondAttribute="bottom" id="2LN-8C-d7K"/>
+                            <constraint firstItem="Ee0-R6-44p" firstAttribute="leading" secondItem="vZg-xY-3ej" secondAttribute="trailing" id="4PN-4h-dDO"/>
+                            <constraint firstItem="laq-oY-G0v" firstAttribute="top" secondItem="Ee0-R6-44p" secondAttribute="bottom" id="4wG-PE-LGV"/>
+                            <constraint firstItem="rye-Fa-MVC" firstAttribute="top" secondItem="laq-oY-G0v" secondAttribute="bottom" id="9ZS-hb-3O2"/>
+                            <constraint firstItem="laq-oY-G0v" firstAttribute="top" secondItem="Ee0-R6-44p" secondAttribute="bottom" id="A6P-Rx-CNu"/>
+                            <constraint firstItem="XuI-3a-PNx" firstAttribute="top" secondItem="SVV-1f-ahD" secondAttribute="bottom" id="Aex-JT-Hwq"/>
+                            <constraint firstAttribute="trailing" secondItem="XuI-3a-PNx" secondAttribute="trailing" id="LMf-uF-7MV"/>
+                            <constraint firstItem="laq-oY-G0v" firstAttribute="leading" secondItem="vZg-xY-3ej" secondAttribute="trailing" id="NXK-4X-bZq"/>
+                            <constraint firstItem="vZg-xY-3ej" firstAttribute="top" secondItem="SVV-1f-ahD" secondAttribute="bottom" id="Onp-aM-YwX"/>
+                            <constraint firstAttribute="trailing" secondItem="Ee0-R6-44p" secondAttribute="trailing" id="P4P-71-m0f"/>
+                            <constraint firstItem="rye-Fa-MVC" firstAttribute="top" secondItem="vZg-xY-3ej" secondAttribute="bottom" id="WWR-nb-3cu"/>
+                            <constraint firstAttribute="trailing" secondItem="laq-oY-G0v" secondAttribute="trailing" id="oKt-JP-bLB"/>
+                            <constraint firstItem="XuI-3a-PNx" firstAttribute="leading" secondItem="vZg-xY-3ej" secondAttribute="trailing" id="wFj-fx-tkC"/>
+                            <constraint firstItem="vZg-xY-3ej" firstAttribute="leading" secondItem="JWv-YI-EIi" secondAttribute="leading" id="xdM-mD-zDq"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <connections>
-                        <outlet property="detailsView" destination="0MX-zN-MuK" id="Tpq-v4-nTE"/>
-                        <outlet property="stepsView" destination="vZg-xY-3ej" id="9NM-RW-5dn"/>
-                        <outlet property="view" destination="JWv-YI-EIi" id="8Q7-Im-rno"/>
-                    </connections>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMN-iG-JPu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-452" y="-1468"/>
+            <point key="canvasLocation" x="30" y="-126"/>
         </scene>
         <!--Sales Wizard View Controller-->
         <scene sceneID="tJR-NP-ZHx">
@@ -130,7 +163,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GoJ-Ob-adv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="616" y="-156"/>
+            <point key="canvasLocation" x="1172" y="764"/>
         </scene>
         <!--Sales Ticket Tiers View Controller-->
         <scene sceneID="hw0-RF-QwV">
@@ -843,74 +876,6 @@
             </objects>
             <point key="canvasLocation" x="5195" y="926"/>
         </scene>
-        <!--Sales Wizard Details View Controller-->
-        <scene sceneID="bGf-rX-p11">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="q9y-bn-hEH" customClass="TXHSalesWizardDetailsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="05c-h3-M3P"/>
-                        <viewControllerLayoutGuide type="bottom" id="nzH-Ql-c90"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Qf2-dg-W1t">
-                        <rect key="frame" x="0.0" y="0.0" width="724" height="748"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1w-F9-Pcn">
-                                <rect key="frame" x="0.0" y="0.0" width="724" height="70"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="XK4-x3-zoR"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="G0c-Vm-fHx" kind="embed" identifier="TXHSalesTimerViewController" id="g49-s4-2hz"/>
-                                </connections>
-                            </containerView>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEW-HM-Ssd">
-                                <rect key="frame" x="0.0" y="70" width="724" height="608"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="IA2-NF-o6Z" kind="embed" identifier="TXHSalesContentsViewController" id="B4u-et-9b0"/>
-                                </connections>
-                            </containerView>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mZ5-pH-zz8">
-                                <rect key="frame" x="0.0" y="678" width="724" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="HTd-EF-nqF"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="ECv-yP-c3G" kind="embed" identifier="TXHSalesCompletionViewController" id="Gel-k0-7wt"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="hEW-HM-Ssd" firstAttribute="top" secondItem="e1w-F9-Pcn" secondAttribute="bottom" id="Mx8-Ac-KZ5"/>
-                            <constraint firstItem="hEW-HM-Ssd" firstAttribute="leading" secondItem="Qf2-dg-W1t" secondAttribute="leading" id="Obz-el-bge"/>
-                            <constraint firstAttribute="trailing" secondItem="mZ5-pH-zz8" secondAttribute="trailing" id="bzh-Vi-gQk"/>
-                            <constraint firstItem="mZ5-pH-zz8" firstAttribute="leading" secondItem="Qf2-dg-W1t" secondAttribute="leading" id="cGw-oS-1V7"/>
-                            <constraint firstItem="e1w-F9-Pcn" firstAttribute="top" secondItem="05c-h3-M3P" secondAttribute="bottom" id="cmQ-lO-vcK"/>
-                            <constraint firstItem="nzH-Ql-c90" firstAttribute="top" secondItem="mZ5-pH-zz8" secondAttribute="bottom" id="o3I-Lt-3xb"/>
-                            <constraint firstItem="mZ5-pH-zz8" firstAttribute="top" secondItem="hEW-HM-Ssd" secondAttribute="bottom" id="u18-5H-RA0"/>
-                            <constraint firstItem="e1w-F9-Pcn" firstAttribute="leading" secondItem="Qf2-dg-W1t" secondAttribute="leading" id="uFH-Pu-C2d"/>
-                            <constraint firstAttribute="trailing" secondItem="e1w-F9-Pcn" secondAttribute="trailing" id="wV6-Jz-HZj"/>
-                            <constraint firstAttribute="trailing" secondItem="hEW-HM-Ssd" secondAttribute="trailing" id="zf7-Gs-kj6"/>
-                        </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                    <toolbarItems/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <connections>
-                        <outlet property="completionViewVerticalConstraint" destination="HTd-EF-nqF" id="LSm-f3-biy"/>
-                        <outlet property="timerViewVerticalConstraint" destination="XK4-x3-zoR" id="M0Q-Hn-kOf"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RIi-dF-Kmr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1211" y="-156"/>
-        </scene>
         <!--Sales Contents View Controller-->
         <scene sceneID="cyC-yA-bXy">
             <objects>
@@ -920,26 +885,12 @@
                         <viewControllerLayoutGuide type="bottom" id="6HM-iE-9Bf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ykp-Zv-cfN">
-                        <rect key="frame" x="0.0" y="0.0" width="724" height="608"/>
+                        <rect key="frame" x="0.0" y="0.0" width="724" height="628"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psW-5d-2ms">
-                                <rect key="frame" x="0.0" y="0.0" width="724" height="608"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="psW-5d-2ms" firstAttribute="leading" secondItem="Ykp-Zv-cfN" secondAttribute="leading" id="E5t-vu-Cwg"/>
-                            <constraint firstItem="psW-5d-2ms" firstAttribute="top" secondItem="Q0R-lk-ll8" secondAttribute="bottom" id="LtV-84-b4i"/>
-                            <constraint firstAttribute="trailing" secondItem="psW-5d-2ms" secondAttribute="trailing" id="OVf-Yv-NFg"/>
-                            <constraint firstItem="6HM-iE-9Bf" firstAttribute="top" secondItem="psW-5d-2ms" secondAttribute="bottom" id="kVC-2H-t0Y"/>
-                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <connections>
-                        <outlet property="salesContentView" destination="psW-5d-2ms" id="NId-a1-m0v"/>
                         <segue destination="T0G-a3-rT4" kind="custom" identifier="Embed Step1" customClass="TXHEmbeddingSegue" id="aOI-Ow-GKt"/>
                         <segue destination="T0G-a3-rT4" kind="custom" identifier="Transition To Step 0" customClass="TXHTransitionSegue" id="ik4-FO-YMn"/>
                         <segue destination="uAI-bG-hdz" kind="custom" identifier="Transition To Step 1" customClass="TXHTransitionSegue" id="La3-s7-ewm"/>
@@ -952,7 +903,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJa-x6-Y6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2431" y="-4"/>
+            <point key="canvasLocation" x="1574" y="-60"/>
         </scene>
         <!--Sales Information Details View Controller-->
         <scene sceneID="nDQ-vP-fDX">
@@ -1119,11 +1070,22 @@
                                 <color key="textColor" red="0.074509803920000006" green="0.2274509804" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cs4-Qr-l03">
+                                <rect key="frame" x="669" y="21" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.2784842609" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="TaY-9V-wFF"/>
+                                    <constraint firstAttribute="height" constant="35" id="sj6-9q-Wfh"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="XLs-5a-gKP" secondAttribute="centerY" id="5xk-3y-0tE"/>
                             <constraint firstItem="XLs-5a-gKP" firstAttribute="leading" secondItem="l6J-uU-4bz" secondAttribute="leading" constant="20" symbolic="YES" id="7BU-Bz-lc7"/>
+                            <constraint firstAttribute="trailing" secondItem="cs4-Qr-l03" secondAttribute="trailing" constant="20" id="k7O-Xz-XXW"/>
+                            <constraint firstItem="cs4-Qr-l03" firstAttribute="bottom" secondItem="XLs-5a-gKP" secondAttribute="bottom" id="usB-ed-MIi"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -1134,7 +1096,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSc-tg-v0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2431" y="-211"/>
+            <point key="canvasLocation" x="1574" y="-247"/>
         </scene>
         <!--Sales Completion View Controller-->
         <scene sceneID="9zM-iI-1Uh">
@@ -1220,7 +1182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bj5-Ga-t15" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2431" y="621"/>
+            <point key="canvasLocation" x="1574" y="678"/>
         </scene>
         <!--Sales Payment Customer Detail View Controller-->
         <scene sceneID="cCb-UP-9y2">

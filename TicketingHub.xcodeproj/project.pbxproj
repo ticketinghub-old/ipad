@@ -45,7 +45,6 @@
 		EE09F1FF189FEBA5004FEBCE /* TXHCalendarRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE09F1FE189FEBA5004FEBCE /* TXHCalendarRowCell.m */; };
 		EE75D98817D11048009ADCD8 /* TXHSalesCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94417D11047009ADCD8 /* TXHSalesCalendarViewController.m */; };
 		EE75D98917D11048009ADCD8 /* TXHSalesCompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94617D11047009ADCD8 /* TXHSalesCompletionViewController.m */; };
-		EE75D98A17D11048009ADCD8 /* TXHSalesContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94917D11047009ADCD8 /* TXHSalesContentsViewController.m */; };
 		EE75D98C17D11048009ADCD8 /* TXHSalesInformationDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94D17D11047009ADCD8 /* TXHSalesInformationDetailsViewController.m */; };
 		EE75D98D17D11048009ADCD8 /* TXHSalesInformationHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94F17D11047009ADCD8 /* TXHSalesInformationHeader.m */; };
 		EE75D98E17D11048009ADCD8 /* TXHSalesInformationTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D95117D11047009ADCD8 /* TXHSalesInformationTextCell.m */; };
@@ -69,7 +68,6 @@
 		EE75D9A517D11048009ADCD8 /* TXHSalesUpgradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D97F17D11048009ADCD8 /* TXHSalesUpgradeCell.m */; };
 		EE75D9A617D11048009ADCD8 /* TXHSalesUpgradeDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D98117D11048009ADCD8 /* TXHSalesUpgradeDetailsViewController.m */; };
 		EE75D9A717D11048009ADCD8 /* TXHSalesUpgradeHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D98317D11048009ADCD8 /* TXHSalesUpgradeHeader.m */; };
-		EE75D9A817D11048009ADCD8 /* TXHSalesWizardDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D98517D11048009ADCD8 /* TXHSalesWizardDetailsViewController.m */; };
 		EE75D9A917D11048009ADCD8 /* TXHSalesWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D98717D11048009ADCD8 /* TXHSalesWizardViewController.m */; };
 		EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9AC17D112C4009ADCD8 /* TXHLoginViewController.m */; };
 		EE75D9B317D11311009ADCD8 /* ProductListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B017D11311009ADCD8 /* ProductListController.m */; };
@@ -180,8 +178,6 @@
 		EE75D94417D11047009ADCD8 /* TXHSalesCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesCalendarViewController.m; path = TicketingHub/Classes/TXHSalesCalendarViewController.m; sourceTree = SOURCE_ROOT; };
 		EE75D94517D11047009ADCD8 /* TXHSalesCompletionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesCompletionViewController.h; path = TicketingHub/Classes/TXHSalesCompletionViewController.h; sourceTree = SOURCE_ROOT; };
 		EE75D94617D11047009ADCD8 /* TXHSalesCompletionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesCompletionViewController.m; path = TicketingHub/Classes/TXHSalesCompletionViewController.m; sourceTree = SOURCE_ROOT; };
-		EE75D94817D11047009ADCD8 /* TXHSalesContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesContentsViewController.h; path = TicketingHub/Classes/TXHSalesContentsViewController.h; sourceTree = SOURCE_ROOT; };
-		EE75D94917D11047009ADCD8 /* TXHSalesContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesContentsViewController.m; path = TicketingHub/Classes/TXHSalesContentsViewController.m; sourceTree = SOURCE_ROOT; };
 		EE75D94C17D11047009ADCD8 /* TXHSalesInformationDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesInformationDetailsViewController.h; path = TicketingHub/Classes/TXHSalesInformationDetailsViewController.h; sourceTree = SOURCE_ROOT; };
 		EE75D94D17D11047009ADCD8 /* TXHSalesInformationDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesInformationDetailsViewController.m; path = TicketingHub/Classes/TXHSalesInformationDetailsViewController.m; sourceTree = SOURCE_ROOT; };
 		EE75D94E17D11047009ADCD8 /* TXHSalesInformationHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesInformationHeader.h; path = TicketingHub/Classes/TXHSalesInformationHeader.h; sourceTree = SOURCE_ROOT; };
@@ -228,8 +224,6 @@
 		EE75D98117D11048009ADCD8 /* TXHSalesUpgradeDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesUpgradeDetailsViewController.m; path = TicketingHub/Classes/TXHSalesUpgradeDetailsViewController.m; sourceTree = SOURCE_ROOT; };
 		EE75D98217D11048009ADCD8 /* TXHSalesUpgradeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesUpgradeHeader.h; path = TicketingHub/Classes/TXHSalesUpgradeHeader.h; sourceTree = SOURCE_ROOT; };
 		EE75D98317D11048009ADCD8 /* TXHSalesUpgradeHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesUpgradeHeader.m; path = TicketingHub/Classes/TXHSalesUpgradeHeader.m; sourceTree = SOURCE_ROOT; };
-		EE75D98417D11048009ADCD8 /* TXHSalesWizardDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesWizardDetailsViewController.h; path = TicketingHub/Classes/TXHSalesWizardDetailsViewController.h; sourceTree = SOURCE_ROOT; };
-		EE75D98517D11048009ADCD8 /* TXHSalesWizardDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesWizardDetailsViewController.m; path = TicketingHub/Classes/TXHSalesWizardDetailsViewController.m; sourceTree = SOURCE_ROOT; };
 		EE75D98617D11048009ADCD8 /* TXHSalesWizardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesWizardViewController.h; path = TicketingHub/Classes/TXHSalesWizardViewController.h; sourceTree = SOURCE_ROOT; };
 		EE75D98717D11048009ADCD8 /* TXHSalesWizardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesWizardViewController.m; path = TicketingHub/Classes/TXHSalesWizardViewController.m; sourceTree = SOURCE_ROOT; };
 		EE75D9AB17D112C4009ADCD8 /* TXHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHLoginViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -505,8 +499,6 @@
 		3E3A5B1118AA6B2100A54812 /* Content */ = {
 			isa = PBXGroup;
 			children = (
-				EE75D94817D11047009ADCD8 /* TXHSalesContentsViewController.h */,
-				EE75D94917D11047009ADCD8 /* TXHSalesContentsViewController.m */,
 				3E3A5B1318AA6D2A00A54812 /* Steps */,
 			);
 			name = Content;
@@ -698,8 +690,6 @@
 			isa = PBXGroup;
 			children = (
 				3E3A5B0F18AA6ADD00A54812 /* Wizard Details Content */,
-				EE75D98417D11048009ADCD8 /* TXHSalesWizardDetailsViewController.h */,
-				EE75D98517D11048009ADCD8 /* TXHSalesWizardDetailsViewController.m */,
 			);
 			name = "Step Details";
 			sourceTree = "<group>";
@@ -1124,7 +1114,6 @@
 				EEB1846317D114390025530A /* TXHQuantitySelectorViewController.m in Sources */,
 				EE75D98817D11048009ADCD8 /* TXHSalesCalendarViewController.m in Sources */,
 				EE75D98917D11048009ADCD8 /* TXHSalesCompletionViewController.m in Sources */,
-				EE75D98A17D11048009ADCD8 /* TXHSalesContentsViewController.m in Sources */,
 				EE75D98C17D11048009ADCD8 /* TXHSalesInformationDetailsViewController.m in Sources */,
 				EE75D98D17D11048009ADCD8 /* TXHSalesInformationHeader.m in Sources */,
 				EE75D98E17D11048009ADCD8 /* TXHSalesInformationTextCell.m in Sources */,
@@ -1153,7 +1142,6 @@
 				EE75D9A617D11048009ADCD8 /* TXHSalesUpgradeDetailsViewController.m in Sources */,
 				EE75D9A717D11048009ADCD8 /* TXHSalesUpgradeHeader.m in Sources */,
 				3EC63E0818B3721600B091A0 /* TXHSalesStepAbstract.m in Sources */,
-				EE75D9A817D11048009ADCD8 /* TXHSalesWizardDetailsViewController.m in Sources */,
 				EE75D9A917D11048009ADCD8 /* TXHSalesWizardViewController.m in Sources */,
 				EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */,
 				EEB1846517D114390025530A /* TXHTextCollectionViewCell.m in Sources */,
