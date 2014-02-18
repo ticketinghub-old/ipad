@@ -40,9 +40,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)updateTicketCount:(NSInteger)total {
-    self.continueButton.enabled = (total > 0);
-}
 
 - (IBAction)continueAction:(id)sender {
 #pragma unused (sender)

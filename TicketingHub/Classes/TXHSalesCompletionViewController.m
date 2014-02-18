@@ -8,10 +8,12 @@
 
 #import "TXHSalesCompletionViewController.h"
 
+#import "TXHBorderedButton.h"
+
 @interface TXHSalesCompletionViewController ()
 
-@property (weak, nonatomic) IBOutlet UIButton *continueButton;
-@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet TXHBorderedButton *continueButton;
+@property (weak, nonatomic) IBOutlet TXHBorderedButton *cancelButton;
 
 @end
 
@@ -29,9 +31,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    UIImage *buttonBorder = [[UIImage imageNamed:@"ButtonBorder"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [self.cancelButton setBackgroundImage:buttonBorder forState:UIControlStateNormal];
+   
+    self.canCompleteStep = YES;
 }
 
 - (void)didReceiveMemoryWarning

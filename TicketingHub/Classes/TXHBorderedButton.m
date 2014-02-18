@@ -53,11 +53,12 @@
 
 - (void)updateColors
 {
-    self.backgroundColor                 = self.isHighlighted ? self.tintColor : self.fillColor;
-    self.titleLabel.textColor            = self.tintColor;
-    self.titleLabel.highlightedTextColor = self.fillColor;
-    self.layer.borderColor               = self.isHighlighted ? self.fillColor.CGColor : self.tintColor.CGColor;
-    self.titleLabel.highlighted          = self.isHighlighted;
+    UIColor *backgroundColor = self.isHighlighted ? self.tintColor : self.fillColor;
+    UIColor *textColor       = self.isHighlighted ? self.fillColor : self.tintColor;
+    
+    self.backgroundColor                 = backgroundColor;
+    self.titleLabel.textColor            = textColor;
+    self.layer.borderColor               = textColor.CGColor;
 }
 
 @end

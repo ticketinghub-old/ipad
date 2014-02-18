@@ -12,6 +12,4 @@
 
 @property (weak, nonatomic) id delegate;
 
-- (void)updateTicketCount:(NSInteger)total;
-
 @end
