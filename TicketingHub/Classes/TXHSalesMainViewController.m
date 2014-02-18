@@ -8,17 +8,25 @@
 
 #import "TXHSalesMainViewController.h"
 
+// child controllers
 #import "TXHTransitionSegue.h"
 #import "TXHSalesWizardDetailsViewController.h"
 #import "TXHSalesWizardViewController.h"
 
+// steps data
+#import "TXHSalesStepAbstract.h"
+#import "TXHSaleStepsManager.h"
+
 @interface TXHSalesMainViewController () // <TXHSalesWizardDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *steps;
-@property (weak, nonatomic) IBOutlet UIView *details;
+@property (weak, nonatomic) IBOutlet UIView *stepsView;
+@property (weak, nonatomic) IBOutlet UIView *detailsView;
 
 @property (strong, nonatomic)   TXHSalesWizardViewController *wizardSteps;
 @property (strong, nonatomic)   TXHSalesWizardDetailsViewController *wizardDetails;
+
+// data
+@property (strong, nonatomic) TXHSaleStepsManager *stepsManager;
 
 @end
 
@@ -33,13 +41,39 @@
     return self;
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewDidLoad
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewDidLoad];
+    
+    self.stepsManager = [[TXHSaleStepsManager alloc] initWithSteps:@[@{kWizardStepTitleKey  : NSLocalizedString(@"Tickets", @"Tickets"),
+                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"Select Type & Quantity", @"Select Type & Quantity")},
+
+                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"Information", @"Information"),
+                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"Customer details", @"Customer details")},
+
+                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"Upgrades", @"Upgrades"),
+                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"Add ticket extras", @"Add ticket extras")},
+
+                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"Products", @"Products"),
+                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"Optional extras", @"Optional extras")},
+
+                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"Summary", @"Summary"),
+                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"Review the order", @"Review the order")},
+
+                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"Payment", @"Payment"),
+                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"By card, cash or credit", @"By card, cash or credit")},
+
+                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"Completed", @"Completed"),
+                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"Print tickets and recipt", @"Print tickets and recipt")}
+                                                                     ]];
+
+    self.wizardSteps.dataSource = self.stepsManager;
+    
+    [self.wizardSteps reloadWizard];
 }
 
-- (IBAction)checkout:(id)sender {
+- (IBAction)checkout:(id)sender
+{
   [self performSegueWithIdentifier:@"SalesCheckoutSegue" sender:sender];
 }
 
@@ -68,7 +102,6 @@
         [self.wizardDetails transition:sender];
     }
     if ([sender isKindOfClass:[TXHSalesWizardDetailsViewController class]] == YES) {
-        [self.wizardSteps moveToNextStep:sender];
     }
 }
 
@@ -78,12 +111,9 @@
 }
 
 - (void)completeWizardStep:(id)sender {
-    [self.wizardSteps moveToNextStep:sender];
 }
 
 - (void)orderExpiredWithSender:(id)sender {
-#pragma unused (sender)
-    [self.wizardSteps orderExpired];
 }
 
 @end

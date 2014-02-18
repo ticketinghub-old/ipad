@@ -50,8 +50,9 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="details" destination="0MX-zN-MuK" id="FQ5-XK-h5B"/>
-                        <outlet property="steps" destination="vZg-xY-3ej" id="NQx-Rl-Tsa"/>
+                        <outlet property="detailsView" destination="0MX-zN-MuK" id="Tpq-v4-nTE"/>
+                        <outlet property="stepsView" destination="vZg-xY-3ej" id="9NM-RW-5dn"/>
+                        <outlet property="view" destination="JWv-YI-EIi" id="8Q7-Im-rno"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMN-iG-JPu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -121,8 +122,8 @@
                         </prototypes>
                         <sections/>
                         <connections>
-                            <outlet property="dataSource" destination="8R7-Yk-baf" id="H0z-TE-wkB"/>
-                            <outlet property="delegate" destination="8R7-Yk-baf" id="0nC-3P-aD0"/>
+                            <outlet property="dataSource" destination="8R7-Yk-baf" id="Puy-OP-Enb"/>
+                            <outlet property="delegate" destination="8R7-Yk-baf" id="Cli-wx-ekQ"/>
                         </connections>
                     </tableView>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -17,6 +17,8 @@
 		3EA36B8018AFDF5C008F8C59 /* TXHProductListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA36B7F18AFDF5C008F8C59 /* TXHProductListCell.m */; };
 		3EA36B8318B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA36B8218B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m */; };
 		3EA36B8618B237BF008F8C59 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA36B8518B237BF008F8C59 /* UIView+Additions.m */; };
+		3EC63E0218B36E7A00B091A0 /* TXHSaleStepsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0118B36E7A00B091A0 /* TXHSaleStepsManager.m */; };
+		3EC63E0818B3721600B091A0 /* TXHSalesStepAbstract.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0718B3721600B091A0 /* TXHSalesStepAbstract.m */; };
 		4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */; };
 		4D586DE11797E51E00E40534 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D586DE01797E51E00E40534 /* Images.xcassets */; };
 		4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D68DAAA178B0A5400743227 /* AVFoundation.framework */; };
@@ -138,6 +140,11 @@
 		3EA36B8218B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesWizardTabelViewCell.m; path = TicketingHub/Classes/TXHSalesWizardTabelViewCell.m; sourceTree = SOURCE_ROOT; };
 		3EA36B8418B237BF008F8C59 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
 		3EA36B8518B237BF008F8C59 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
+		3EC63E0018B36E7A00B091A0 /* TXHSaleStepsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSaleStepsManager.h; path = TicketingHub/Classes/TXHSaleStepsManager.h; sourceTree = SOURCE_ROOT; };
+		3EC63E0118B36E7A00B091A0 /* TXHSaleStepsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSaleStepsManager.m; path = TicketingHub/Classes/TXHSaleStepsManager.m; sourceTree = SOURCE_ROOT; };
+		3EC63E0318B36EAB00B091A0 /* TXHSalesWizardViewControllerDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TXHSalesWizardViewControllerDataSource.h; path = TicketingHub/Classes/TXHSalesWizardViewControllerDataSource.h; sourceTree = SOURCE_ROOT; };
+		3EC63E0618B3721600B091A0 /* TXHSalesStepAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesStepAbstract.h; path = TicketingHub/Classes/TXHSalesStepAbstract.h; sourceTree = SOURCE_ROOT; };
+		3EC63E0718B3721600B091A0 /* TXHSalesStepAbstract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesStepAbstract.m; path = TicketingHub/Classes/TXHSalesStepAbstract.m; sourceTree = SOURCE_ROOT; };
 		416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
 		4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCurrencyEntryViewSpec.m; sourceTree = "<group>"; };
 		4D586DE01797E51E00E40534 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -469,13 +476,10 @@
 		3E3A5B0D18AA6AA800A54812 /* Wizard */ = {
 			isa = PBXGroup;
 			children = (
-				3EA36B8118B21F42008F8C59 /* TXHSalesWizardTabelViewCell.h */,
-				3EA36B8218B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m */,
-				EE75D98617D11048009ADCD8 /* TXHSalesWizardViewController.h */,
-				EE75D98717D11048009ADCD8 /* TXHSalesWizardViewController.m */,
-				EE75D98417D11048009ADCD8 /* TXHSalesWizardDetailsViewController.h */,
-				EE75D98517D11048009ADCD8 /* TXHSalesWizardDetailsViewController.m */,
-				3E3A5B0F18AA6ADD00A54812 /* Wizard Details Content */,
+				3EC63E0618B3721600B091A0 /* TXHSalesStepAbstract.h */,
+				3EC63E0718B3721600B091A0 /* TXHSalesStepAbstract.m */,
+				3EC63E0518B36F0C00B091A0 /* Step Details */,
+				3EC63E0418B36EFF00B091A0 /* Steps List */,
 			);
 			name = Wizard;
 			sourceTree = "<group>";
@@ -679,6 +683,28 @@
 			name = "Products List";
 			sourceTree = "<group>";
 		};
+		3EC63E0418B36EFF00B091A0 /* Steps List */ = {
+			isa = PBXGroup;
+			children = (
+				3EA36B8118B21F42008F8C59 /* TXHSalesWizardTabelViewCell.h */,
+				3EA36B8218B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m */,
+				EE75D98617D11048009ADCD8 /* TXHSalesWizardViewController.h */,
+				EE75D98717D11048009ADCD8 /* TXHSalesWizardViewController.m */,
+				3EC63E0318B36EAB00B091A0 /* TXHSalesWizardViewControllerDataSource.h */,
+			);
+			name = "Steps List";
+			sourceTree = "<group>";
+		};
+		3EC63E0518B36F0C00B091A0 /* Step Details */ = {
+			isa = PBXGroup;
+			children = (
+				3E3A5B0F18AA6ADD00A54812 /* Wizard Details Content */,
+				EE75D98417D11048009ADCD8 /* TXHSalesWizardDetailsViewController.h */,
+				EE75D98517D11048009ADCD8 /* TXHSalesWizardDetailsViewController.m */,
+			);
+			name = "Step Details";
+			sourceTree = "<group>";
+		};
 		4DF3F59B17C63E070045299B /* Smoke Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -801,6 +827,8 @@
 		EE75D94217D1101C009ADCD8 /* Sales */ = {
 			isa = PBXGroup;
 			children = (
+				3EC63E0018B36E7A00B091A0 /* TXHSaleStepsManager.h */,
+				3EC63E0118B36E7A00B091A0 /* TXHSaleStepsManager.m */,
 				3E3A5B0C18AA691A00A54812 /* Main Contriner Controller */,
 				3E3A5B0D18AA6AA800A54812 /* Wizard */,
 				EE75D94317D11047009ADCD8 /* TXHSalesCalendarViewController.h */,
@@ -1122,9 +1150,11 @@
 				EE75D9A117D11048009ADCD8 /* TXHSalesTicketTierCell.m in Sources */,
 				EE75D9A217D11048009ADCD8 /* TXHSalesTicketTiersViewController.m in Sources */,
 				EE75D9A417D11048009ADCD8 /* TXHSalesTimerViewController.m in Sources */,
+				3EC63E0218B36E7A00B091A0 /* TXHSaleStepsManager.m in Sources */,
 				EE75D9A517D11048009ADCD8 /* TXHSalesUpgradeCell.m in Sources */,
 				EE75D9A617D11048009ADCD8 /* TXHSalesUpgradeDetailsViewController.m in Sources */,
 				EE75D9A717D11048009ADCD8 /* TXHSalesUpgradeHeader.m in Sources */,
+				3EC63E0818B3721600B091A0 /* TXHSalesStepAbstract.m in Sources */,
 				EE75D9A817D11048009ADCD8 /* TXHSalesWizardDetailsViewController.m in Sources */,
 				EE75D9A917D11048009ADCD8 /* TXHSalesWizardViewController.m in Sources */,
 				EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */,
