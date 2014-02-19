@@ -505,8 +505,8 @@
 		3E3A5B1118AA6B2100A54812 /* Content */ = {
 			isa = PBXGroup;
 			children = (
-				3EA43B2C18B3BA78006C74F2 /* TXHSalesContentsViewController.m */,
 				3EA43B2D18B3BA78006C74F2 /* TXHSalesContentsViewController.h */,
+				3EA43B2C18B3BA78006C74F2 /* TXHSalesContentsViewController.m */,
 				3E3A5B1318AA6D2A00A54812 /* Steps */,
 			);
 			name = Content;

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <iOS-api/TXHProduct.h>
 
+#import "ProductListControllerNotifications.h"
+
 #define TXHPRODUCTSMANAGER [TXHProductsManager sharedManager]
 
 @interface TXHProductsManager : NSObject

@@ -8,13 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class TXHTier;
-
 @interface TXHSalesTicketTierCell : UITableViewCell
 
 @property (strong, nonatomic) TXHTier *tier;
 
-// When the quantity of tickets for the cell's tier changes, this handler will be invoked, passing the quantity .
 @property (copy) void (^quantityChangedHandler)(NSDictionary *);
 
 @end

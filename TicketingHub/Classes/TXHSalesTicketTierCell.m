@@ -22,22 +22,6 @@
 
 @implementation TXHSalesTicketTierCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 - (void)setTier:(TXHTier *)tier {
     _tier = tier;
     [self configureTierDetails];
@@ -53,9 +37,9 @@
 }
 
 - (void)quantityDidChange {
-//    if (self.quantityChangedHandler) {
-//        self.quantityChangedHandler(@{self.tier.tierID: [NSNumber numberWithInteger:self.quantity.text.integerValue]});
-//    }
+    if (self.quantityChangedHandler) {
+        self.quantityChangedHandler(@{self.tier.tierId : [NSNumber numberWithInteger:self.quantity.text.integerValue]});
+    }
 }
 
 #pragma mark - Quantity Value Changed action
