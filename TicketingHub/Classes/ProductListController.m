@@ -11,12 +11,9 @@
 #import "ProductListControllerNotifications.h"
 
 #import "TXHCommonNames.h"
+#import "TXHProductsManager.h"
 #import "TXHTicketingHubManager.h"
 #import "FetchedResultsControllerDataSource.h"
-
-// Declaration of strings declared in ProductListControllerNotifications.h
-NSString * const TXHProductChangedNotification = @"TXHProductChangedNotification";
-NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
 
 static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 
@@ -80,7 +77,7 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 - (void)setupDataSource
 {
     NSString *cellIdentifier = @"ProductCellIdentifier";
-    self.tableViewDataSource = [[FetchedResultsControllerDataSource alloc] initWithFetchedResultsController:[self fetchedResultsController]
+    self.tableViewDataSource = [[FetchedResultsControllerDataSource alloc] initWithFetchedResultsController:[TXHProductsManager productsFetchedResultsController]
                                                                                                   tableView:self.tableView
                                                                                              cellIdentifier:cellIdentifier
                                                                                          configureCellBlock:^(id cell, id item) {
@@ -89,34 +86,13 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
     self.tableView.dataSource = self.tableViewDataSource;
 }
 
-- (NSFetchedResultsController *)fetchedResultsController
-{
-    NSFetchedResultsController *fetchedResultsController;
-    
-    if (!fetchedResultsController) {
-        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[TXHProduct entityName]];
-        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:TXHProductAttributes.name ascending:YES];
-        [fetchRequest setSortDescriptors:@[sortDescriptor]];
-
-        fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                                                       managedObjectContext:TXHTICKETINHGUBCLIENT.managedObjectContext
-                                                                         sectionNameKeyPath:nil
-                                                                                  cacheName:nil];
-    }
-
-    return fetchedResultsController;
-}
-
-
 #pragma mark - Table View Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     TXHProduct *product = [self.tableViewDataSource itemAtIndexPath:indexPath];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:TXHProductChangedNotification
-                                                        object:self
-                                                      userInfo:@{TXHSelectedProduct: product}];
+    [TXHPRODUCTSMANAGER setSelectedProduct:product];
 }
 
 #pragma mark - Cell configuration
