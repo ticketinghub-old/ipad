@@ -15,31 +15,17 @@
 
 @interface TXHSalesContentsViewController ()
 
+@property (readwrite, nonatomic, getter = isValid) BOOL valid;
+
 @end
 
 @implementation TXHSalesContentsViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
 	[self performSegueWithIdentifier:@"Embed Step1" sender:self];
-    
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -54,6 +40,12 @@
         TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
         transitionSegue.containerView = self.view;
     }
+}
+
+- (void)showStepWithSegueID:(NSString *)segueID
+{
+	[self performSegueWithIdentifier:segueID sender:self];
+    
 }
 
 @end

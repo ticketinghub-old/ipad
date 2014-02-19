@@ -27,5 +27,8 @@
 @property (weak, nonatomic) id<TXHSaleStepsManagerDelegate> delegate;
 
 - (instancetype)initWithSteps:(NSArray *)steps;
+- (void)continueToNextStep;
+- (void)resetProcess;
+- (BOOL)hasNextStep;
 
 @end

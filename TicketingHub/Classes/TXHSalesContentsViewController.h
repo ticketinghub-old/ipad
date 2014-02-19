@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class TXHProduct;
+
 @interface TXHSalesContentsViewController : UIViewController
+
+// tells if current controller filled enough informations to go to the next step
+@property (readonly, nonatomic, getter = isValid) BOOL valid;
+
+- (void)showStepWithSegueID:(NSString *)segueID;
 
 @end

@@ -12,7 +12,7 @@
 @interface TXHSaleStepsManager ()
 
 @property (strong, nonatomic) NSArray *steps;
-@property (assign, nonatomic) NSUInteger currentStepIndex;
+@property (assign, nonatomic) NSUInteger currentStep;
 
 @end
 
@@ -28,11 +28,37 @@
     return self;
 }
 
+- (void)continueToNextStep;
+{
+    self.currentStep++;
+}
+
+- (BOOL)hasNextStep
+{
+    return self.currentStep + 1 < [self numberOfsteps];
+}
+
+- (void)resetProcess
+{
+    _currentStep = -1;
+    self.currentStep = 0;
+}
+
+-(void)setCurrentStep:(NSUInteger)currentStep
+{
+    if (_currentStep != currentStep)
+    {
+        _currentStep = currentStep;
+        
+        [self.delegate saleStepsManager:self didChangeToStep:[self stepAtIndex:_currentStep]];
+    }
+}
+
 #pragma mark TXHSalesWizardViewControllerDataSource
 
 - (NSUInteger)currentStepIndex
 {
-    return _currentStepIndex;
+    return _currentStep;
 }
 
 - (NSUInteger)numberOfsteps
@@ -60,7 +86,7 @@
 
 - (void)salesWizardViewController:(TXHSalesWizardViewController *)wizard didSelectStepAtIndex:(NSUInteger)stepIndex
 {
-    
+    self.currentStep = stepIndex;
 }
 
 - (BOOL)salesWizardViewController:(TXHSalesWizardViewController *)wizard canSelectStepAtIndex:(NSUInteger)stepIndex

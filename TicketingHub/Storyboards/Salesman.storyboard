@@ -32,7 +32,6 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="724" id="4pG-A9-aIc"/>
                                     <constraint firstAttribute="height" constant="70" id="Zw2-O5-MMU"/>
                                 </constraints>
                                 <connections>
@@ -43,9 +42,6 @@
                                 <rect key="frame" x="300" y="70" width="724" height="628"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="724" id="9t1-b6-8M7"/>
-                                </constraints>
                                 <connections>
                                     <segue destination="IA2-NF-o6Z" kind="embed" identifier="TXHSalesContentsViewController" id="p2l-JI-iwC"/>
                                 </connections>
@@ -55,11 +51,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="724" id="cyt-pa-TrF"/>
                                     <constraint firstAttribute="height" constant="70" id="fpC-EB-Tv5"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="ECv-yP-c3G" kind="embed" id="9Fg-Eq-dIt"/>
+                                    <segue destination="ECv-yP-c3G" kind="embed" identifier="TXHSalesCompletionViewController" id="9Fg-Eq-dIt"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -892,13 +887,13 @@
                     </view>
                     <connections>
                         <segue destination="T0G-a3-rT4" kind="custom" identifier="Embed Step1" customClass="TXHEmbeddingSegue" id="aOI-Ow-GKt"/>
-                        <segue destination="T0G-a3-rT4" kind="custom" identifier="Transition To Step 0" customClass="TXHTransitionSegue" id="ik4-FO-YMn"/>
-                        <segue destination="uAI-bG-hdz" kind="custom" identifier="Transition To Step 1" customClass="TXHTransitionSegue" id="La3-s7-ewm"/>
-                        <segue destination="8RN-Pr-hoD" kind="custom" identifier="Transition To Step 6" customClass="TXHTransitionSegue" id="ui8-tE-HNw"/>
-                        <segue destination="2iF-it-Qwa" kind="custom" identifier="Transition To Step 2" customClass="TXHTransitionSegue" id="33J-rC-64E"/>
-                        <segue destination="LoX-hP-sQk" kind="custom" identifier="Transition To Step 3" customClass="TXHTransitionSegue" id="RG2-3j-sPg"/>
-                        <segue destination="FmA-Tp-fAD" kind="custom" identifier="Transition To Step 4" customClass="TXHTransitionSegue" id="nc5-GH-qS2"/>
-                        <segue destination="2z9-so-MKI" kind="custom" identifier="Transition To Step 5" customClass="TXHTransitionSegue" id="aFA-x7-Dvu"/>
+                        <segue destination="T0G-a3-rT4" kind="custom" identifier="Tickets Quantity" customClass="TXHTransitionSegue" id="ik4-FO-YMn"/>
+                        <segue destination="uAI-bG-hdz" kind="custom" identifier="Tickets Details" customClass="TXHTransitionSegue" id="La3-s7-ewm"/>
+                        <segue destination="8RN-Pr-hoD" kind="custom" identifier="Order Completion" customClass="TXHTransitionSegue" id="ui8-tE-HNw"/>
+                        <segue destination="2iF-it-Qwa" kind="custom" identifier="Tickets Upgrades" customClass="TXHTransitionSegue" id="33J-rC-64E"/>
+                        <segue destination="LoX-hP-sQk" kind="custom" identifier="Extra Products" customClass="TXHTransitionSegue" id="RG2-3j-sPg"/>
+                        <segue destination="FmA-Tp-fAD" kind="custom" identifier="Order Summary" customClass="TXHTransitionSegue" id="nc5-GH-qS2"/>
+                        <segue destination="2z9-so-MKI" kind="custom" identifier="Payment" customClass="TXHTransitionSegue" id="aFA-x7-Dvu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJa-x6-Y6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1131,7 +1126,7 @@
                                     <action selector="cancelAction:" destination="ECv-yP-c3G" eventType="touchUpInside" id="PqU-TS-0lM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8AU-qh-5zk" customClass="TXHBorderedButton">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8AU-qh-5zk" customClass="TXHBorderedButton">
                                 <rect key="frame" x="504" y="15" width="200" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25098040699958801" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1641,6 +1636,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VUf-Oa-hhA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="953" y="-1874"/>
         </scene>
     </scenes>
     <resources>

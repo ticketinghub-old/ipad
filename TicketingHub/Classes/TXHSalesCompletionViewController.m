@@ -22,6 +22,7 @@
 - (void)setContinueButtonEnabled:(BOOL)enabled
 {
     self.continueButton.enabled = enabled;
+    self.continueButton.alpha = enabled ? 1.0 : 0.5;
 }
 
 #pragma mark - Button Actions
