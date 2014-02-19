@@ -10,6 +10,7 @@
 
 extern NSString * const kWizardStepTitleKey;
 extern NSString * const kWizardStepDescriptionKey;
+extern NSString * const kWizardStepControllerSegueID;
 
 @interface TXHSalesStepAbstract : NSObject
 

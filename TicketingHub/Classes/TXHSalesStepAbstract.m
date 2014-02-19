@@ -8,8 +8,9 @@
 
 #import "TXHSalesStepAbstract.h"
 
-NSString * const kWizardStepTitleKey       = @"kWizardStepTitleKey";
-NSString * const kWizardStepDescriptionKey = @"kWizardStepDescriptionKey";
+NSString * const kWizardStepTitleKey          = @"kWizardStepTitleKey";
+NSString * const kWizardStepDescriptionKey    = @"kWizardStepDescriptionKey";
+NSString * const kWizardStepControllerSegueID = @"kWizardStepControllerSegueID";
 
 @implementation TXHSalesStepAbstract
 
