@@ -10,12 +10,12 @@
 
 #import "TXHSalesTicketTierCell.h"
 #import "TXHTicketingHubManager.h"
-#import <iOS-api/iOS-api.h>
-
+#import "TXHProductsManager.h"
 @interface TXHSalesTicketTiersViewController () <UITextFieldDelegate>
 
-@property (strong, nonatomic) NSArray *availabilities;
+@property (strong, nonatomic) NSArray *tiers;
 @property (strong, nonatomic) NSDate *selectedDate;
+@property (strong, nonatomic) NSMutableDictionary *quantities;
 
 @end
 
@@ -26,21 +26,53 @@
 {
     [super viewDidLoad];
  
-    if (![self.availabilities count])
+    self.quantities = [NSMutableDictionary dictionary];
+    
+    if ([TXHPRODUCTSMANAGER selectedProduct])
     {
         [self loadTickers];
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productChanged:) name:TXHProductChangedNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
+}
+
+- (void)productChanged:(NSNotification *)note
+{
+    [self loadTickers];
+    
+}
 
 - (void)loadTickers
 {
-//    [TXHTICKETINHGUBCLIENT availabilitiesForProduct:self.product
-//                                           fromDate:[NSDate date]
-//                                             toDate:nil
-//                                         completion:^(NSArray *availabilities, NSError *error) {
-//                                             NSLog(@"%@",availabilities);
-//                                         }];
+    __weak typeof(self) wself = self;
+    
+    // Convert string to date object
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSDate *date = [dateFormat dateFromString:@"2014-02-20"];
+
+    
+    [TXHTICKETINHGUBCLIENT availabilitiesForProduct:[TXHPRODUCTSMANAGER selectedProduct]
+                                           fromDate:date
+                                             toDate:nil
+                                         completion:^(NSArray *availabilities, NSError *error) {
+                                             TXHAvailability *availability = [availabilities lastObject];
+                                             NSArray *tiers = [availability.tiers allObjects];
+                                             wself.tiers = tiers;
+                                             [wself.tableView reloadData];
+                                         }];
 }
 
 #pragma mark - Table view data source
@@ -53,12 +85,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TXHSalesTicketTierCell *cell = (TXHSalesTicketTierCell *)[tableView cellForRowAtIndexPath:indexPath];
-//    NSLog(@"did select cell%@ at row %d", cell.tier.name, indexPath.row);
+    return [self.tiers count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,12 +99,31 @@
 }
 
 - (void)configureCell:(TXHSalesTicketTierCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    TXHTicketTier *tier = self.venue.ticketDetail.tiers[indexPath.row];
-    cell.tier = nil;
-    // - nil'ed this
+
+    TXHTier *tier = self.tiers[indexPath.row];
+    cell.tier = tier;
     cell.quantityChangedHandler = ^(NSDictionary *quantity) {
-        // Add this quantity to our dictionary
+        [self updateQuantitiesWithDictionary:quantity];
     };
+}
+
+- (void)updateQuantitiesWithDictionary:(NSDictionary *)dic
+{
+    for (NSString *key in dic)
+    {
+        [self.quantities setObject:dic[key] forKey:key];
+    }
+}
+
+#pragma mark - validation
+
+- (BOOL)hasQuantitiesSelected
+{
+    for (NSNumber *quantity in [self.quantities allValues])
+        if ([quantity integerValue] > 0)
+            return YES;
+    
+    return NO;
 }
 
 @end
