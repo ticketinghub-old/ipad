@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TXHSalesContentsViewControllerProtocol <NSObject>
+
+@property (nonatomic, readonly, getter = isValid) BOOL valid;
+
+@end
+
 @interface TXHSalesMainViewController : UIViewController
 
 @end

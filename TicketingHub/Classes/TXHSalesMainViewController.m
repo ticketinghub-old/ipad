@@ -8,10 +8,13 @@
 
 #import "TXHSalesMainViewController.h"
 
-// child controllers
+// segues
+#import "TXHEmbeddingSegue.h"
 #import "TXHTransitionSegue.h"
+
+
+// child controllers
 #import "TXHSalesTimerViewController.h"
-#import "TXHSalesContentsViewController.h"
 #import "TXHSalesCompletionViewController.h"
 #import "TXHSalesWizardViewController.h"
 
@@ -23,11 +26,12 @@ static void * ContentValidContext = &ContentValidContext;
 
 @interface TXHSalesMainViewController ()  <TXHSaleStepsManagerDelegate, TXHSalesCompletionViewControllerDelegate>
 
-@property (strong, nonatomic) TXHSalesWizardViewController     *wizardSteps;
-@property (strong, nonatomic) TXHSalesTimerViewController      *timeController;
-@property (strong, nonatomic) TXHSalesContentsViewController   *stepContentController;
-@property (strong, nonatomic) TXHSalesCompletionViewController *stepCompletionController;
+@property (strong, nonatomic) TXHSalesWizardViewController           *wizardSteps;
+@property (strong, nonatomic) TXHSalesTimerViewController            *timeController;
+@property (strong, nonatomic) UIViewController<TXHSalesContentsViewControllerProtocol> *stepContentController;
+@property (strong, nonatomic) TXHSalesCompletionViewController       *stepCompletionController;
 
+@property (weak, nonatomic) IBOutlet UIView *contentsContainer;
 
 // data
 @property (strong, nonatomic) TXHSaleStepsManager *stepsManager;
@@ -43,6 +47,12 @@ static void * ContentValidContext = &ContentValidContext;
         // Custom initialization
     }
     return self;
+}
+
+- (void)dealloc
+{
+    // remove observer
+    self.stepCompletionController = nil;
 }
 
 - (void)viewDidLoad
@@ -81,28 +91,37 @@ static void * ContentValidContext = &ContentValidContext;
     self.stepsManager.delegate = self;
     self.wizardSteps.dataSource = self.stepsManager;
     
+    [self performSegueWithIdentifier:@"Embed Step1" sender:self];
+    
     [self.stepsManager resetProcess];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"Embed Steps"]){
+    if ([segue.identifier isEqualToString:@"Embed Steps"])
+    {
         self.wizardSteps = segue.destinationViewController;
-    } else if ([segue.identifier isEqualToString:@"TXHSalesTimerViewController"]) {
+    }
+    else if ([segue.identifier isEqualToString:@"TXHSalesTimerViewController"])
+    {
         self.timeController = segue.destinationViewController;
-    } else if ([segue.identifier isEqualToString:@"TXHSalesContentsViewController"]) {
-        self.stepContentController = segue.destinationViewController;
-    } else if ([segue.identifier isEqualToString:@"TXHSalesCompletionViewController"]) {
+    }
+    else if ([segue.identifier isEqualToString:@"TXHSalesCompletionViewController"])
+    {
         self.stepCompletionController = segue.destinationViewController;
         self.stepCompletionController.delegate = self;
-    } else if ([segue isMemberOfClass:[TXHTransitionSegue class]]){
+    }
+    else if (([segue isMemberOfClass:[TXHTransitionSegue class]]) ||
+             ([segue.identifier isEqualToString:@"Embed Step1"]))
+    {
         TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
-        transitionSegue.containerView = self.view;
+        transitionSegue.containerView = self.contentsContainer;
+        self.stepContentController = segue.destinationViewController;
     }
 }
 
 // TODO: rethink that idea (or sorry if not good enough and i forgot)
-- (void)setStepContentController:(TXHSalesContentsViewController *)stepContentController
+- (void)setStepContentController:(UIViewController<TXHSalesContentsViewControllerProtocol> *)stepContentController
 {
     id observer = self;
     NSString * keyPath = @"valid";
@@ -125,7 +144,7 @@ static void * ContentValidContext = &ContentValidContext;
 {
     if (context == ContentValidContext)
     {
-        DLog(@"is Valid changed");
+        [self.stepCompletionController setContinueButtonEnabled:[self.stepContentController isValid]];
     }
 }
 
@@ -140,10 +159,15 @@ static void * ContentValidContext = &ContentValidContext;
     [self.stepCompletionController setContinueButtonEnabled:[self.stepsManager hasNextStep]];
     
     // update content
-    [self.stepContentController showStepWithSegueID:step[kWizardStepControllerSegueID]];
+    [self showStepContentControllerWithSegueID:step[kWizardStepControllerSegueID]];
     
     // update list
     [self.wizardSteps reloadWizard];
+}
+
+- (void)showStepContentControllerWithSegueID:(NSString *)segueID
+{
+    [self performSegueWithIdentifier:segueID sender:self];
 }
 
 #pragma mark - TXHSalesCompletionViewControllerDelegate
@@ -158,5 +182,6 @@ static void * ContentValidContext = &ContentValidContext;
 {
     [self.stepsManager continueToNextStep];
 }
+
 
 @end

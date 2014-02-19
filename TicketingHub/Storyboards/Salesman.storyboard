@@ -42,9 +42,6 @@
                                 <rect key="frame" x="300" y="70" width="724" height="628"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="IA2-NF-o6Z" kind="embed" identifier="TXHSalesContentsViewController" id="p2l-JI-iwC"/>
-                                </connections>
                             </containerView>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laq-oY-G0v">
                                 <rect key="frame" x="300" y="698" width="724" height="70"/>
@@ -82,10 +79,21 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="contentsContainer" destination="Ee0-R6-44p" id="cVE-5v-zwJ"/>
+                        <segue destination="uAI-bG-hdz" kind="custom" identifier="Tickets Details" customClass="TXHTransitionSegue" id="HNJ-pf-Swm"/>
+                        <segue destination="2iF-it-Qwa" kind="custom" identifier="Tickets Upgrades" customClass="TXHTransitionSegue" id="n4W-1F-JWS"/>
+                        <segue destination="LoX-hP-sQk" kind="custom" identifier="Extra Products" customClass="TXHTransitionSegue" id="UPU-vL-3WI"/>
+                        <segue destination="FmA-Tp-fAD" kind="custom" identifier="Order Summary" customClass="TXHTransitionSegue" id="2O4-LG-WgR"/>
+                        <segue destination="2z9-so-MKI" kind="custom" identifier="Payment" customClass="TXHTransitionSegue" id="FY2-hM-zEj"/>
+                        <segue destination="8RN-Pr-hoD" kind="custom" identifier="Order Completion" customClass="TXHTransitionSegue" id="ANc-Tn-Zs5"/>
+                        <segue destination="T0G-a3-rT4" kind="custom" identifier="Tickets Quantity" customClass="TXHTransitionSegue" id="OeC-9m-Ezw"/>
+                        <segue destination="T0G-a3-rT4" kind="custom" identifier="Embed Step1" customClass="TXHEmbeddingSegue" id="5ay-Gg-Lh6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMN-iG-JPu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="-126"/>
+            <point key="canvasLocation" x="181" y="-175"/>
         </scene>
         <!--Sales Wizard View Controller-->
         <scene sceneID="tJR-NP-ZHx">
@@ -874,31 +882,24 @@
         <!--Sales Contents View Controller-->
         <scene sceneID="cyC-yA-bXy">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nJa-x6-Y6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="formSheet" id="IA2-NF-o6Z" customClass="TXHSalesContentsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q0R-lk-ll8"/>
                         <viewControllerLayoutGuide type="bottom" id="6HM-iE-9Bf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ykp-Zv-cfN">
-                        <rect key="frame" x="0.0" y="0.0" width="724" height="628"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <connections>
-                        <segue destination="T0G-a3-rT4" kind="custom" identifier="Embed Step1" customClass="TXHEmbeddingSegue" id="aOI-Ow-GKt"/>
-                        <segue destination="T0G-a3-rT4" kind="custom" identifier="Tickets Quantity" customClass="TXHTransitionSegue" id="ik4-FO-YMn"/>
-                        <segue destination="uAI-bG-hdz" kind="custom" identifier="Tickets Details" customClass="TXHTransitionSegue" id="La3-s7-ewm"/>
                         <segue destination="8RN-Pr-hoD" kind="custom" identifier="Order Completion" customClass="TXHTransitionSegue" id="ui8-tE-HNw"/>
-                        <segue destination="2iF-it-Qwa" kind="custom" identifier="Tickets Upgrades" customClass="TXHTransitionSegue" id="33J-rC-64E"/>
-                        <segue destination="LoX-hP-sQk" kind="custom" identifier="Extra Products" customClass="TXHTransitionSegue" id="RG2-3j-sPg"/>
-                        <segue destination="FmA-Tp-fAD" kind="custom" identifier="Order Summary" customClass="TXHTransitionSegue" id="nc5-GH-qS2"/>
                         <segue destination="2z9-so-MKI" kind="custom" identifier="Payment" customClass="TXHTransitionSegue" id="aFA-x7-Dvu"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nJa-x6-Y6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1574" y="-60"/>
+            <point key="canvasLocation" x="1646" y="2628"/>
         </scene>
         <!--Sales Information Details View Controller-->
         <scene sceneID="nDQ-vP-fDX">
@@ -1651,7 +1652,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="aOI-Ow-GKt"/>
+        <segue reference="5ay-Gg-Lh6"/>
+        <segue reference="FY2-hM-zEj"/>
+        <segue reference="ANc-Tn-Zs5"/>
         <segue reference="sVq-aS-Wzq"/>
     </inferredMetricsTieBreakers>
 </document>
