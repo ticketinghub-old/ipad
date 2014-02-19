@@ -33,7 +33,6 @@
     self.tierDescription.text = self.tier.tierDescription;
     self.quantity.keyboardType = UIKeyboardTypeNumberPad;
     self.price.text = self.tier.priceString;
-    self.stepper.maximumValue = self.tier.limit.doubleValue;
 }
 
 - (void)quantityDidChange {
@@ -44,14 +43,11 @@
 
 #pragma mark - Quantity Value Changed action
 - (IBAction)quantityChanged:(id)sender {
-#pragma unused (sender)
-    // Validate the quantity entered & update the stepper to reflect this new quantity
+    NSInteger maxValue = [self.delegate maximumQuantityForTier:self.tier];
+    
     NSUInteger quantity = [self.quantity.text integerValue];
-    if (quantity < self.stepper.minimumValue) {
-        quantity = self.stepper.minimumValue;
-    }
-    if (quantity > self.stepper.maximumValue) {
-        quantity = self.stepper.maximumValue;
+    if (quantity > maxValue) {
+        quantity = maxValue;
     }
     self.stepper.value = quantity;
     self.quantity.text = [NSString stringWithFormat:@"%d", quantity];
@@ -64,7 +60,7 @@
 - (IBAction)stepChanged:(id)sender {
     UIStepper *stepper = sender;
     [self.quantity setText:[NSString stringWithFormat:@"%.0f", stepper.value]];
-    [self quantityDidChange];
+    [self quantityChanged:sender];
 }
 
 @end

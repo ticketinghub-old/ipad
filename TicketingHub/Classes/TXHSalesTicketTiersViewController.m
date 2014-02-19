@@ -11,8 +11,11 @@
 #import "TXHSalesTicketTierCell.h"
 #import "TXHTicketingHubManager.h"
 #import "TXHProductsManager.h"
-@interface TXHSalesTicketTiersViewController () <UITextFieldDelegate>
+@interface TXHSalesTicketTiersViewController () <UITextFieldDelegate, TXHSalesTicketTierCellDelegate>
 
+@property (assign, nonatomic, getter = isValid) BOOL valid;
+
+@property (strong, nonatomic) TXHAvailability *availability;
 @property (strong, nonatomic) NSArray *tiers;
 @property (strong, nonatomic) NSDate *selectedDate;
 @property (strong, nonatomic) NSMutableDictionary *quantities;
@@ -68,20 +71,20 @@
                                            fromDate:date
                                              toDate:nil
                                          completion:^(NSArray *availabilities, NSError *error) {
-                                             TXHAvailability *availability = [availabilities lastObject];
-                                             NSArray *tiers = [availability.tiers allObjects];
-                                             wself.tiers = tiers;
-                                             [wself.tableView reloadData];
+                                             wself.availability = [availabilities lastObject];
                                          }];
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (void)setAvailability:(TXHAvailability *)availability
 {
-    // Return the number of sections.
-    return 1;
+    _availability = availability;
+    
+    self.tiers = [availability.tiers allObjects];
+    
+    [self.tableView reloadData];
 }
+
+#pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -102,6 +105,8 @@
 
     TXHTier *tier = self.tiers[indexPath.row];
     cell.tier = tier;
+    cell.delegate = self;
+    
     cell.quantityChangedHandler = ^(NSDictionary *quantity) {
         [self updateQuantitiesWithDictionary:quantity];
     };
@@ -113,17 +118,39 @@
     {
         [self.quantities setObject:dic[key] forKey:key];
     }
+    self.valid = [self hasQuantitiesSelected];
 }
 
 #pragma mark - validation
 
 - (BOOL)hasQuantitiesSelected
 {
+    BOOL atLeastOneTicketSelected;
+    
     for (NSNumber *quantity in [self.quantities allValues])
         if ([quantity integerValue] > 0)
-            return YES;
+            atLeastOneTicketSelected = YES;
     
-    return NO;
+    return atLeastOneTicketSelected;
+}
+
+#pragma mark - TXHSalesTicketTierCellDelegate
+
+- (NSInteger)maximumQuantityForTier:(TXHTier*)tier
+{
+    if (!self.availability.limitValue)
+        return tier.limitValue;
+    
+    NSInteger totalQuantityWithoutaTier = 0;
+    
+    // sum up quantity without the one from arg
+    for (NSString *tierId in self.quantities)
+        if (![tierId isEqualToString:tier.tierId])
+            totalQuantityWithoutaTier += [self.quantities[tierId] integerValue];
+    
+    NSInteger availabilityLImit = self.availability.limitValue - totalQuantityWithoutaTier;
+    
+    return MIN(availabilityLImit, tier.limitValue);
 }
 
 @end
