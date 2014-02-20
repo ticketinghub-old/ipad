@@ -9,10 +9,8 @@
 #import "SalesOrDoormanViewController.h"
 @import CoreData;
 
-#import "TXHTicketingHubClient+AppExtension.h"
 #import "TXHDateSelectorViewController.h"
 #import "TXHEmbeddingSegue.h"
-#import "TXHTimeSlot_old.h"
 #import "TXHTransitionSegue.h"
 #import "ProductListControllerNotifications.h"
 

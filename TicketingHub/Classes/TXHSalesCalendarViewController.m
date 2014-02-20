@@ -8,7 +8,6 @@
 
 #import "TXHSalesCalendarViewController.h"
 
-#import "TXHTicketingHubClient+AppExtension.h"
 #import "TXHCommonNames.h"
 
 @interface TXHSalesCalendarViewController () <UITableViewDataSource, UITableViewDelegate>

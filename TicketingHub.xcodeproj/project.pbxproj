@@ -25,7 +25,6 @@
 		4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */; };
 		4D586DE11797E51E00E40534 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D586DE01797E51E00E40534 /* Images.xcassets */; };
 		4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D68DAAA178B0A5400743227 /* AVFoundation.framework */; };
-		4D859FF817953FA1000B2FCC /* TXHTimeSlot_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D859FF717953FA1000B2FCC /* TXHTimeSlot_old.m */; };
 		4D8FCCB617A28A8C008B4227 /* Doorman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */; };
 		4DB23D6E17A169D8002B7B11 /* Salesman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */; };
 		4DF3F59E17C63E070045299B /* MockingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3F59C17C63E070045299B /* MockingTest.m */; };
@@ -104,7 +103,6 @@
 		EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */; };
 		EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */; };
 		EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC4017B272F700F226BC /* Security.framework */; };
-		EEC8BCB61848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC8BCB51848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m */; };
 		EEF6BA4717D1192B005B1B20 /* BarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6BA4617D1192B005B1B20 /* BarcodeViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -154,8 +152,6 @@
 		4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCurrencyEntryViewSpec.m; sourceTree = "<group>"; };
 		4D586DE01797E51E00E40534 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4D68DAAA178B0A5400743227 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		4D859FF617953FA1000B2FCC /* TXHTimeSlot_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHTimeSlot_old.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		4D859FF717953FA1000B2FCC /* TXHTimeSlot_old.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHTimeSlot_old.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Doorman.storyboard; sourceTree = "<group>"; };
 		4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Salesman.storyboard; sourceTree = "<group>"; };
 		4DF3F59C17C63E070045299B /* MockingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockingTest.m; sourceTree = "<group>"; };
@@ -297,8 +293,6 @@
 		EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EEB4FC4017B272F700F226BC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		EEC8BCB41848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TXHTicketingHubClient+AppExtension.h"; path = "TicketingHub/TXHTicketingHubClient+AppExtension.h"; sourceTree = "<group>"; };
-		EEC8BCB51848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TXHTicketingHubClient+AppExtension.m"; path = "TicketingHub/TXHTicketingHubClient+AppExtension.m"; sourceTree = "<group>"; };
 		EEF6BA4517D1192B005B1B20 /* BarcodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeViewController.h; sourceTree = "<group>"; };
 		EEF6BA4617D1192B005B1B20 /* BarcodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeViewController.m; sourceTree = "<group>"; };
 		F162CF42C7D94DB9B5422913 /* libPods-test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -751,7 +745,6 @@
 			children = (
 				58E4FB971760D3C800E328A0 /* Classes */,
 				58E4FB901760AECF00E328A0 /* Storyboards */,
-				EEF8DA7B17F0539000579F5B /* iOS-API */,
 				58E4FB5D1760AE5500E328A0 /* Supporting Files */,
 				4D586DE01797E51E00E40534 /* Images.xcassets */,
 				58E4FB651760AE5500E328A0 /* TXHAppDelegate.h */,
@@ -810,8 +803,6 @@
 				EEB1848217D1153B0025530A /* MainScreen */,
 				EE75D9AE17D11300009ADCD8 /* Menu */,
 				EE75D94217D1101C009ADCD8 /* Sales */,
-				4D859FF617953FA1000B2FCC /* TXHTimeSlot_old.h */,
-				4D859FF717953FA1000B2FCC /* TXHTimeSlot_old.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -900,15 +891,6 @@
 			);
 			name = MainScreen;
 			sourceTree = "<group>";
-		};
-		EEF8DA7B17F0539000579F5B /* iOS-API */ = {
-			isa = PBXGroup;
-			children = (
-				EEC8BCB41848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.h */,
-				EEC8BCB51848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m */,
-			);
-			name = "iOS-API";
-			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -1153,12 +1135,10 @@
 				EEB1846617D114390025530A /* TXHTextEntryTableViewCell.m in Sources */,
 				3ECE137418B63A6900E7148F /* NSDate+Additions.m in Sources */,
 				EEB1846717D114390025530A /* TXHTextEntryView.m in Sources */,
-				EEC8BCB61848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m in Sources */,
 				3ECE137718B689CE00E7148F /* NSDate+CupertinoYankee.m in Sources */,
 				EEB1848117D114B30025530A /* TXHTimeCell.m in Sources */,
 				3E44157018AB80EA00C4AE1C /* TXHTicketingHubManager.m in Sources */,
 				EEB1846817D114390025530A /* TXHTimeFormatter.m in Sources */,
-				4D859FF817953FA1000B2FCC /* TXHTimeSlot_old.m in Sources */,
 				3E6F479718AFD6A300E644F7 /* TXHBorderedButton.m in Sources */,
 				EEB1849417D115640025530A /* TXHTransitionSegue.m in Sources */,
 			);
