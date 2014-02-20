@@ -20,6 +20,8 @@
 		3EC63E0218B36E7A00B091A0 /* TXHSaleStepsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0118B36E7A00B091A0 /* TXHSaleStepsManager.m */; };
 		3EC63E0818B3721600B091A0 /* TXHSalesStepAbstract.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0718B3721600B091A0 /* TXHSalesStepAbstract.m */; };
 		3ECE132418B4C8A800E7148F /* TXHProductsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE132318B4C8A800E7148F /* TXHProductsManager.m */; };
+		3ECE137418B63A6900E7148F /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE137318B63A6900E7148F /* NSDate+Additions.m */; };
+		3ECE137718B689CE00E7148F /* NSDate+CupertinoYankee.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE137618B689CE00E7148F /* NSDate+CupertinoYankee.m */; };
 		4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */; };
 		4D586DE11797E51E00E40534 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D586DE01797E51E00E40534 /* Images.xcassets */; };
 		4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D68DAAA178B0A5400743227 /* AVFoundation.framework */; };
@@ -43,7 +45,6 @@
 		AE2DFA468AA749E4AA6D795E /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F162CF42C7D94DB9B5422913 /* libPods-test.a */; };
 		CEA4926CD193447DAE8A8A56 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED64DB9D6E348A7B2A040BE /* libPods.a */; };
 		CF019832248E4EA59EA0E4E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED64DB9D6E348A7B2A040BE /* libPods.a */; };
-		EE09F1FF189FEBA5004FEBCE /* TXHCalendarRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE09F1FE189FEBA5004FEBCE /* TXHCalendarRowCell.m */; };
 		EE75D98817D11048009ADCD8 /* TXHSalesCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94417D11047009ADCD8 /* TXHSalesCalendarViewController.m */; };
 		EE75D98917D11048009ADCD8 /* TXHSalesCompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94617D11047009ADCD8 /* TXHSalesCompletionViewController.m */; };
 		EE75D98C17D11048009ADCD8 /* TXHSalesInformationDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94D17D11047009ADCD8 /* TXHSalesInformationDetailsViewController.m */; };
@@ -99,7 +100,6 @@
 		EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848417D115640025530A /* TXHDateSelectorViewController.m */; };
 		EEB1849017D115640025530A /* TXHEmbeddingSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848617D115640025530A /* TXHEmbeddingSegue.m */; };
 		EEB1849217D115640025530A /* SalesOrDoormanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848A17D115640025530A /* SalesOrDoormanViewController.m */; };
-		EEB1849317D115640025530A /* TXHTimeslotSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848C17D115640025530A /* TXHTimeslotSelectorViewController.m */; };
 		EEB1849417D115640025530A /* TXHTransitionSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848E17D115640025530A /* TXHTransitionSegue.m */; };
 		EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */; };
 		EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */; };
@@ -146,6 +146,10 @@
 		3EC63E0718B3721600B091A0 /* TXHSalesStepAbstract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesStepAbstract.m; path = TicketingHub/Classes/TXHSalesStepAbstract.m; sourceTree = SOURCE_ROOT; };
 		3ECE132218B4C8A800E7148F /* TXHProductsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHProductsManager.h; sourceTree = "<group>"; };
 		3ECE132318B4C8A800E7148F /* TXHProductsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHProductsManager.m; sourceTree = "<group>"; };
+		3ECE137218B63A6900E7148F /* NSDate+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Additions.h"; sourceTree = "<group>"; };
+		3ECE137318B63A6900E7148F /* NSDate+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Additions.m"; sourceTree = "<group>"; };
+		3ECE137518B689CE00E7148F /* NSDate+CupertinoYankee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CupertinoYankee.h"; sourceTree = "<group>"; };
+		3ECE137618B689CE00E7148F /* NSDate+CupertinoYankee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CupertinoYankee.m"; sourceTree = "<group>"; };
 		416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
 		4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCurrencyEntryViewSpec.m; sourceTree = "<group>"; };
 		4D586DE01797E51E00E40534 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -174,8 +178,6 @@
 		58E4FB911760AEF300E328A0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		7082BAD3DAB74253A99F8290 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		8ED64DB9D6E348A7B2A040BE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE09F1FD189FEBA5004FEBCE /* TXHCalendarRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHCalendarRowCell.h; sourceTree = "<group>"; };
-		EE09F1FE189FEBA5004FEBCE /* TXHCalendarRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCalendarRowCell.m; sourceTree = "<group>"; };
 		EE51C1EE180FED4F001AA88A /* ProductListControllerNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ProductListControllerNotifications.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		EE75D94317D11047009ADCD8 /* TXHSalesCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesCalendarViewController.h; path = TicketingHub/Classes/TXHSalesCalendarViewController.h; sourceTree = SOURCE_ROOT; };
 		EE75D94417D11047009ADCD8 /* TXHSalesCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesCalendarViewController.m; path = TicketingHub/Classes/TXHSalesCalendarViewController.m; sourceTree = SOURCE_ROOT; };
@@ -290,8 +292,6 @@
 		EEB1848617D115640025530A /* TXHEmbeddingSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHEmbeddingSegue.m; sourceTree = "<group>"; };
 		EEB1848917D115640025530A /* SalesOrDoormanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SalesOrDoormanViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		EEB1848A17D115640025530A /* SalesOrDoormanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SalesOrDoormanViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EEB1848B17D115640025530A /* TXHTimeslotSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTimeslotSelectorViewController.h; sourceTree = "<group>"; };
-		EEB1848C17D115640025530A /* TXHTimeslotSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTimeslotSelectorViewController.m; sourceTree = "<group>"; };
 		EEB1848D17D115640025530A /* TXHTransitionSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTransitionSegue.h; sourceTree = "<group>"; };
 		EEB1848E17D115640025530A /* TXHTransitionSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTransitionSegue.m; sourceTree = "<group>"; };
 		EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -353,12 +353,8 @@
 		3E3A5B0018AA58EB00A54812 /* Date Time PIcker */ = {
 			isa = PBXGroup;
 			children = (
-				EEB1848B17D115640025530A /* TXHTimeslotSelectorViewController.h */,
-				EEB1848C17D115640025530A /* TXHTimeslotSelectorViewController.m */,
 				EEB1848317D115640025530A /* TXHDateSelectorViewController.h */,
 				EEB1848417D115640025530A /* TXHDateSelectorViewController.m */,
-				EE09F1FD189FEBA5004FEBCE /* TXHCalendarRowCell.h */,
-				EE09F1FE189FEBA5004FEBCE /* TXHCalendarRowCell.m */,
 			);
 			name = "Date Time PIcker";
 			sourceTree = "<group>";
@@ -652,6 +648,10 @@
 				3E3D46ED18ACBB8500275ACF /* UIColor+TicketingHub.m */,
 				3EA36B8418B237BF008F8C59 /* UIView+Additions.h */,
 				3EA36B8518B237BF008F8C59 /* UIView+Additions.m */,
+				3ECE137218B63A6900E7148F /* NSDate+Additions.h */,
+				3ECE137318B63A6900E7148F /* NSDate+Additions.m */,
+				3ECE137518B689CE00E7148F /* NSDate+CupertinoYankee.h */,
+				3ECE137618B689CE00E7148F /* NSDate+CupertinoYankee.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1101,7 +1101,6 @@
 				EEB1845C17D114390025530A /* TXHCurrencyEntryView.m in Sources */,
 				EEB1845E17D114390025530A /* TXHDataEntryFieldErrorView.m in Sources */,
 				EEB1845F17D114390025530A /* TXHDataSelectionView.m in Sources */,
-				EE09F1FF189FEBA5004FEBCE /* TXHCalendarRowCell.m in Sources */,
 				EEB1846017D114390025530A /* TXHDataSelectionViewController.m in Sources */,
 				3EA36B8018AFDF5C008F8C59 /* TXHProductListCell.m in Sources */,
 				EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */,
@@ -1152,14 +1151,15 @@
 				EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */,
 				EEB1846517D114390025530A /* TXHTextCollectionViewCell.m in Sources */,
 				EEB1846617D114390025530A /* TXHTextEntryTableViewCell.m in Sources */,
+				3ECE137418B63A6900E7148F /* NSDate+Additions.m in Sources */,
 				EEB1846717D114390025530A /* TXHTextEntryView.m in Sources */,
 				EEC8BCB61848BA78008ED7D1 /* TXHTicketingHubClient+AppExtension.m in Sources */,
+				3ECE137718B689CE00E7148F /* NSDate+CupertinoYankee.m in Sources */,
 				EEB1848117D114B30025530A /* TXHTimeCell.m in Sources */,
 				3E44157018AB80EA00C4AE1C /* TXHTicketingHubManager.m in Sources */,
 				EEB1846817D114390025530A /* TXHTimeFormatter.m in Sources */,
 				4D859FF817953FA1000B2FCC /* TXHTimeSlot_old.m in Sources */,
 				3E6F479718AFD6A300E644F7 /* TXHBorderedButton.m in Sources */,
-				EEB1849317D115640025530A /* TXHTimeslotSelectorViewController.m in Sources */,
 				EEB1849417D115640025530A /* TXHTransitionSegue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

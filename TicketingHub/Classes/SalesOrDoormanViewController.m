@@ -13,17 +13,15 @@
 #import "TXHDateSelectorViewController.h"
 #import "TXHEmbeddingSegue.h"
 #import "TXHTimeSlot_old.h"
-#import "TXHTimeslotSelectorViewController.h"
 #import "TXHTransitionSegue.h"
 #import "ProductListControllerNotifications.h"
 
-@interface SalesOrDoormanViewController () <TXHDateSelectorViewDelegate, TXHTimeSlotSelectorDelegate>
+@interface SalesOrDoormanViewController () <TXHDateSelectorViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelector;
 @property (weak, nonatomic) IBOutlet UIView *contentDetailView;
 
 @property (strong, nonatomic) UIBarButtonItem *dateButton;
-@property (strong, nonatomic) UIBarButtonItem *timeButton;
 
 @property (strong, nonatomic) UIPopoverController *datePopover;
 @property (strong, nonatomic) UIPopoverController *timePopover;
@@ -110,7 +108,7 @@
         self.title = selectedProduct.name;
         
         if ([self isViewLoaded]) {
-            [self resetDateAndTimeButtonLabels];
+            [self resetDateButtonLabel];
         }
     }
 }
@@ -126,42 +124,19 @@
 
 #pragma mark - TXHDateSelectorViewController delegate methods
 
-- (void)dateSelectorViewController:(TXHDateSelectorViewController *)__unused controller didSelectDate:(NSDate *)date {
-    self.selectedDate = date;
+- (void)dateSelectorViewController:(TXHDateSelectorViewController *)controller didSelectAvailability:(TXHAvailability *)availability
+{
+    self.dateButton.title = [self dateTimeButtonTitleForAvailability:availability];
 
-    // Having selected a date; we now need to select a timeslot; so reset the time selected flag
-    self.timeSelected = NO;
-
-    // Update the date picker barbutton control
-    static NSDateFormatter *dateFormatter = nil;
-    if (dateFormatter == nil) {
-        dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-        dateFormatter.timeStyle = NSDateFormatterNoStyle;
-    }
-    self.dateButton.title = [dateFormatter stringFromDate:self.selectedDate];
     [self.datePopover dismissPopoverAnimated:YES];
     [self updateControlsForUserInteraction];
 }
 
-#pragma mark - TXHTimeSelectorViewController delegate methods
+- (NSString *)dateTimeButtonTitleForAvailability:(TXHAvailability *)availability
+{
+    NSString *dateTimeButtonTitle = [NSString stringWithFormat:@"%@ %@", availability.dateString, availability.timeString];
 
-- (void)timeSlotSelectorViewController:(TXHTimeslotSelectorViewController *)__unused controller didSelectTime:(TXHTimeSlot_old *)time {
-    self.selectedTime = time.timeSlotStart;
-    self.timeSelected = YES;
-
-    // Update the time barbutton control
-    static NSDateFormatter *timeFormatter = nil;
-    if (timeFormatter == nil) {
-        timeFormatter = [[NSDateFormatter alloc] init];
-        timeFormatter.dateStyle = NSDateFormatterNoStyle;
-        timeFormatter.timeStyle = NSDateFormatterMediumStyle;
-    }
-    NSDate *dateAndTime = [self.selectedDate dateByAddingTimeInterval:self.selectedTime];
-    self.timeButton.title = [timeFormatter stringFromDate:dateAndTime];
-    [self.timePopover dismissPopoverAnimated:YES];
-    [self updateControlsForUserInteraction];
-
+    return dateTimeButtonTitle;
 }
 
 #pragma mark - Private
@@ -175,12 +150,7 @@
                                                                     NSForegroundColorAttributeName: [UIColor whiteColor]};
 
 
-
-    NSString *dateButtonPlaceholder = @"<Date>";
-    NSString *timeButtonPlaceholder = @"<Time>";
-
-    self.dateButton = [[UIBarButtonItem alloc] initWithTitle:dateButtonPlaceholder style:UIBarButtonItemStyleBordered target:self action:@selector(selectDate:)];
-    self.timeButton = [[UIBarButtonItem alloc] initWithTitle:timeButtonPlaceholder style:UIBarButtonItemStylePlain target:self action:@selector(selectTime:)];
+    self.dateButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(selectDate:)];
 
     UIBarButtonItem *handleItem = self.navigationItem.leftBarButtonItem;
 
@@ -189,31 +159,21 @@
                                             blue:219.0f / 255.0f
                                            alpha:1.0f];
 
-    [self.navigationItem setLeftBarButtonItems:@[self.navigationItem.leftBarButtonItem, self.dateButton, self.timeButton]];
-
+    [self.navigationItem setLeftBarButtonItems:@[self.navigationItem.leftBarButtonItem, self.dateButton]];
+    
+    [self resetDateButtonLabel];
 }
 
 -(void)selectDate:(id)__unused sender {
     [self dismissVisiblePopover];
 
-    TXHDateSelectorViewController *dateViewController = [self.storyboard instantiateViewControllerWithIdentifier:DateSelectorViewControllerStoryboardIdentifier];
+    TXHDateSelectorViewController *dateViewController = [[TXHDateSelectorViewController alloc] initWithSunday:NO];
     dateViewController.delegate = self;
 
     [self.view layoutIfNeeded];
 
     self.datePopover = [[UIPopoverController alloc] initWithContentViewController:dateViewController];
     [self.datePopover presentPopoverFromBarButtonItem:self.dateButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-}
-
--(void)selectTime:(id)__unused sender {
-    [self dismissVisiblePopover];
-    TXHTimeslotSelectorViewController *timeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Time Selector Popover"];
-    timeViewController.delegate = self;
-    //TODO : fix after switching to singleton [timeViewController setTimeSlots:[self.ticketingHubClient timeSlotsFor:self.selectedDate]];
-    self.timePopover = [[UIPopoverController alloc] initWithContentViewController:timeViewController];
-    [self.timePopover presentPopoverFromBarButtonItem:self.timeButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    self.navigationItem.prompt = nil;
-    [self.view layoutIfNeeded];
 }
 
 - (IBAction)toggleMenu:(id)__unused sender {
@@ -236,12 +196,10 @@
     BOOL enabled = (self.selectedProduct != nil);
     //    self.modeSelector.userInteractionEnabled = enabled;
     self.dateButton.enabled = enabled;
-    self.timeButton.enabled = (enabled && (self.selectedDate != nil));
 }
 
-- (void)resetDateAndTimeButtonLabels {
+- (void)resetDateButtonLabel {
     self.dateButton.title = @"<Date>";
-    self.timeButton.title = @"<Time>";
 }
 
 

@@ -208,7 +208,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TXHSalesTicketTierCell" id="7qP-mI-xwg" customClass="TXHSalesTicketTierCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TXHSalesTicketTierCell" id="7qP-mI-xwg" customClass="TXHSalesTicketTierCell">
                                 <rect key="frame" x="0.0" y="151" width="1024" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7qP-mI-xwg" id="r5a-zE-6k2">
@@ -882,7 +882,6 @@
         <!--Sales Contents View Controller-->
         <scene sceneID="cyC-yA-bXy">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nJa-x6-Y6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="formSheet" id="IA2-NF-o6Z" customClass="TXHSalesContentsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q0R-lk-ll8"/>
@@ -898,6 +897,7 @@
                         <segue destination="2z9-so-MKI" kind="custom" identifier="Payment" customClass="TXHTransitionSegue" id="aFA-x7-Dvu"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nJa-x6-Y6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1646" y="2628"/>
         </scene>

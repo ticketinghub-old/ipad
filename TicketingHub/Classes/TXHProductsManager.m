@@ -9,10 +9,17 @@
 #import "TXHProductsManager.h"
 
 #import "TXHTicketingHubManager.h"
+#import "NSDate+Additions.h"
 
 // Declaration of strings declared in ProductListControllerNotifications.h
-NSString * const TXHProductChangedNotification = @"TXHProductChangedNotification";
-NSString * const TXHSelectedProduct = @"TXHSelectedProduct";
+NSString * const TXHProductChangedNotification               = @"TXHProductChangedNotification";
+NSString * const TXHSelectedProduct                          = @"TXHSelectedProduct";
+
+@interface TXHProductsManager ()
+
+@property (assign, nonatomic, getter = isAvailabilitiesInfoLoaded) BOOL availabilitiesInfoLoaded;
+
+@end
 
 @implementation TXHProductsManager
 
