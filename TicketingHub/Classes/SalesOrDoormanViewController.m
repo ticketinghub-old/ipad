@@ -25,15 +25,12 @@
 
 @property (strong, nonatomic) UIBarButtonItem *dateButton;
 
-@property (strong, nonatomic) UIPopoverController *datePopover;
-@property (strong, nonatomic) UIPopoverController *timePopover;
-
-@property (strong, nonatomic) NSDate         *selectedDate;
-@property (assign, nonatomic) NSTimeInterval selectedTime;
-@property (assign, nonatomic) BOOL           timeSelected;
+@property (strong, nonatomic) UIPopoverController *popover;
 
 @property (strong, nonatomic) TXHProduct      *selectedProduct;
 @property (strong, nonatomic) TXHAvailability *selectedAvailability;
+
+@property (strong, nonatomic) UIActivityIndicatorView *loadingView;
 
 @end
 
@@ -45,9 +42,9 @@
     [super viewDidLoad];
     [self setup];
     [self selectMode:nil];
+    
     self.selectedProduct = [TXHPRODUCTSMANAGER selectedProduct];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productChanged:) name:TXHProductChangedNotification object:nil];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -79,30 +76,30 @@
 
 #pragma mark Actions
 
-- (IBAction)selectMode:(id)__unused sender {
+- (IBAction)selectMode:(id)__unused sender
+{
     [self dismissVisiblePopover];
-    if (self.modeSelector.selectedSegmentIndex == 1) {
+    if (self.modeSelector.selectedSegmentIndex == 1)
+    {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Doorman" bundle:nil];
-
         UIViewController *destinationController = [storyboard instantiateInitialViewController];
         
         TXHEmbeddingSegue *segue = [[TXHEmbeddingSegue alloc] initWithIdentifier:@"Doorman"
                                                                           source:self
                                                                      destination:destinationController];
         segue.containerView = self.contentDetailView;
-
         [segue perform];
         
-    } else {
+    }
+    else
+    {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Salesman" bundle:nil];
-
         UIViewController *destinationController = [storyboard instantiateInitialViewController];
 
         TXHEmbeddingSegue *segue = [[TXHEmbeddingSegue alloc] initWithIdentifier:@"Salesman"
                                                                           source:self
                                                                      destination:destinationController];
         segue.containerView = self.contentDetailView;
-        
         [segue perform];
     }
 }
@@ -113,14 +110,23 @@
 
 - (void)setSelectedProduct:(TXHProduct *)selectedProduct
 {
-    if (selectedProduct && _selectedProduct != selectedProduct)
+    if (_selectedProduct == selectedProduct)
+        return;
+
+    _selectedProduct = selectedProduct;
+
+    if (!selectedProduct)
     {
-        _selectedProduct = selectedProduct;
-        self.selectedAvailability = nil;
-        
-        [self updateTitle];
-        [self updateAvailabilityButton];
+        [self showLoadingView];
     }
+    else
+    {
+        [self hideLoadingView];
+    }
+    
+    self.selectedAvailability = nil;
+    
+    [self updateUI];
 }
 
 - (void)setSelectedAvailability:(TXHAvailability *)selectedAvailability
@@ -129,7 +135,7 @@
 
     [self updateAvailabilityButton];
     
-    if (self.selectedProduct)
+    if (!selectedAvailability && self.selectedProduct)
     {
         [self fetchAvailability];
     }
@@ -149,7 +155,7 @@
 {
     self.selectedAvailability = availability;
     
-    [self.datePopover dismissPopoverAnimated:YES];
+    [self.popover dismissPopoverAnimated:YES];
 }
 
 #pragma mark - Private
@@ -163,7 +169,7 @@
                                                                     NSForegroundColorAttributeName: [UIColor whiteColor]};
 
 
-    self.dateButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(selectDate:)];
+    self.dateButton = [[UIBarButtonItem alloc] initWithTitle:nil style:UIBarButtonItemStyleBordered target:self action:@selector(selectDate:)];
 
     UIBarButtonItem *handleItem = self.navigationItem.leftBarButtonItem;
 
@@ -183,8 +189,8 @@
 
     [self.view layoutIfNeeded];
 
-    self.datePopover = [[UIPopoverController alloc] initWithContentViewController:dateViewController];
-    [self.datePopover presentPopoverFromBarButtonItem:self.dateButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    self.popover = [[UIPopoverController alloc] initWithContentViewController:dateViewController];
+    [self.popover presentPopoverFromBarButtonItem:self.dateButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (IBAction)toggleMenu:(id)__unused sender {
@@ -192,21 +198,17 @@
     [[UIApplication sharedApplication] sendAction:@selector(showOrHideVenueList:) to:nil from:self forEvent:nil];
 }
 
-- (void)dismissVisiblePopover {
-    
-    if (self.datePopover.isPopoverVisible) {
-        [self.datePopover dismissPopoverAnimated:YES];
-    }
-    if (self.timePopover.isPopoverVisible) {
-        [self.timePopover dismissPopoverAnimated:YES];
-    }
+- (void)dismissVisiblePopover
+{
+    [self.popover dismissPopoverAnimated:YES];
 }
-
 
 - (void)fetchAvailability
 {
     __weak typeof(self) wself = self;
-    
+
+    [self showLoadingView];
+
     if (self.selectedProduct)
         [TXHTICKETINHGUBCLIENT availabilitiesForProduct:self.selectedProduct
                                                fromDate:[NSDate date]
@@ -228,6 +230,7 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 wself.selectedAvailability = [sortedArray firstObject];
+                [wself hideLoadingView];
             });
         }
     });
@@ -235,12 +238,11 @@
 
 #pragma mark UI stuff
 
-
-// Needs to be refactored
-- (void)updateControlsForUserInteraction {
-    BOOL enabled = (self.selectedProduct != nil);
-//    self.modeSelector.userInteractionEnabled = enabled;
-    self.dateButton.enabled = enabled;
+- (void)updateUI
+{
+    [self updateTitle];
+    [self updateAvailabilityButton];
+    [self updateModeSelector];
 }
 
 - (void)updateTitle
@@ -248,8 +250,14 @@
     self.title = self.selectedProduct ? self.selectedProduct.name : @"";
 }
 
+- (void)updateModeSelector
+{
+    self.modeSelector.enabled = (self.selectedProduct != nil);
+}
+
 - (void)updateAvailabilityButton
 {
+    self.dateButton.enabled = (self.selectedProduct != nil);
     self.dateButton.title = [self dateTimeButtonTitleForAvailability:self.selectedAvailability];
 }
 
@@ -263,6 +271,39 @@
         dateTimeButtonTitle = NSLocalizedString(@"Select Date", nil);
     
     return dateTimeButtonTitle;
+}
+
+#pragma mark - loading view
+
+- (void)showLoadingView
+{
+    if (!self.loadingView.superview)
+    {
+        self.loadingView.frame = self.view.bounds;
+        [self.view addSubview:self.loadingView];
+    }
+    [self.view bringSubviewToFront:self.loadingView];
+    [self.loadingView startAnimating];
+}
+
+- (void)hideLoadingView
+{
+    [self.loadingView stopAnimating];
+    [self.loadingView removeFromSuperview];
+}
+
+- (UIActivityIndicatorView *)loadingView
+{
+    if (!_loadingView)
+    {
+        UIActivityIndicatorView *loadingView = [[UIActivityIndicatorView alloc] initWithFrame:self.view.bounds];
+        loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+        loadingView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        loadingView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
+        _loadingView = loadingView;
+    }
+    
+    return _loadingView;
 }
 
 @end
