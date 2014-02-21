@@ -105,8 +105,7 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
         DLog(@"Could not perform fetch because: %@", error);
     }
     
-    if (!TXHPRODUCTSMANAGER.selectedProduct)
-        [self selectFirstProduct];
+    [self selectFirstProduct];
 }
 
 #pragma mark - Table View Delegate
