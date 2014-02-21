@@ -12,8 +12,6 @@
 
 @interface SalesOrDoormanViewController : UIViewController
 
-@property (strong, nonatomic) TXHProduct *selectedProduct;
-
 - (IBAction)selectMode:(id)sender;
 
 @end

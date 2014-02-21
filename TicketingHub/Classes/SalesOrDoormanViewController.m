@@ -9,24 +9,31 @@
 #import "SalesOrDoormanViewController.h"
 @import CoreData;
 
+#import "TXHProductsManager.h"
+#import "TXHTicketingHubManager.h"
 #import "TXHDateSelectorViewController.h"
+
 #import "TXHEmbeddingSegue.h"
 #import "TXHTransitionSegue.h"
+
 #import "ProductListControllerNotifications.h"
 
 @interface SalesOrDoormanViewController () <TXHDateSelectorViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelector;
-@property (weak, nonatomic) IBOutlet UIView *contentDetailView;
+@property (weak, nonatomic) IBOutlet UIView             *contentDetailView;
 
 @property (strong, nonatomic) UIBarButtonItem *dateButton;
 
 @property (strong, nonatomic) UIPopoverController *datePopover;
 @property (strong, nonatomic) UIPopoverController *timePopover;
 
-@property (strong, nonatomic) NSDate *selectedDate;
+@property (strong, nonatomic) NSDate         *selectedDate;
 @property (assign, nonatomic) NSTimeInterval selectedTime;
-@property (assign, nonatomic) BOOL timeSelected;
+@property (assign, nonatomic) BOOL           timeSelected;
+
+@property (strong, nonatomic) TXHProduct      *selectedProduct;
+@property (strong, nonatomic) TXHAvailability *selectedAvailability;
 
 @end
 
@@ -38,11 +45,18 @@
     [super viewDidLoad];
     [self setup];
     [self selectMode:nil];
+    self.selectedProduct = [TXHPRODUCTSMANAGER selectedProduct];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productChanged:) name:TXHProductChangedNotification object:nil];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productChanged:) name:TXHProductChangedNotification object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
 }
 
 #pragma mark - Superclass overrides
@@ -102,21 +116,30 @@
     if (selectedProduct && _selectedProduct != selectedProduct)
     {
         _selectedProduct = selectedProduct;
+        self.selectedAvailability = nil;
         
-        self.title = selectedProduct.name;
-        
-        if ([self isViewLoaded]) {
-            [self resetDateButtonLabel];
-        }
+        [self updateTitle];
+        [self updateAvailabilityButton];
+    }
+}
+
+- (void)setSelectedAvailability:(TXHAvailability *)selectedAvailability
+{
+    _selectedAvailability = selectedAvailability;
+
+    [self updateAvailabilityButton];
+    
+    if (self.selectedProduct)
+    {
+        [self fetchAvailability];
     }
 }
 
 #pragma mark - Notification handlers
 
-- (void)productChanged:(NSNotification *)notification {
+- (void)productChanged:(NSNotification *)notification
+{
     self.selectedProduct = [notification userInfo][TXHSelectedProduct];
-    
-    // forward taht to
 }
 
 
@@ -124,17 +147,9 @@
 
 - (void)dateSelectorViewController:(TXHDateSelectorViewController *)controller didSelectAvailability:(TXHAvailability *)availability
 {
-    self.dateButton.title = [self dateTimeButtonTitleForAvailability:availability];
-
+    self.selectedAvailability = availability;
+    
     [self.datePopover dismissPopoverAnimated:YES];
-    [self updateControlsForUserInteraction];
-}
-
-- (NSString *)dateTimeButtonTitleForAvailability:(TXHAvailability *)availability
-{
-    NSString *dateTimeButtonTitle = [NSString stringWithFormat:@"%@ %@", availability.dateString, availability.timeString];
-
-    return dateTimeButtonTitle;
 }
 
 #pragma mark - Private
@@ -158,8 +173,6 @@
                                            alpha:1.0f];
 
     [self.navigationItem setLeftBarButtonItems:@[self.navigationItem.leftBarButtonItem, self.dateButton]];
-    
-    [self resetDateButtonLabel];
 }
 
 -(void)selectDate:(id)__unused sender {
@@ -180,7 +193,7 @@
 }
 
 - (void)dismissVisiblePopover {
-    // Whenever a control receives focus we want to dismiss a visible popover
+    
     if (self.datePopover.isPopoverVisible) {
         [self.datePopover dismissPopoverAnimated:YES];
     }
@@ -189,16 +202,67 @@
     }
 }
 
+
+- (void)fetchAvailability
+{
+    __weak typeof(self) wself = self;
+    
+    if (self.selectedProduct)
+        [TXHTICKETINHGUBCLIENT availabilitiesForProduct:self.selectedProduct
+                                               fromDate:[NSDate date]
+                                                 toDate:[[NSDate date] dateByAddingDays:60]
+                                             completion:^(NSArray *availabilities, NSError *error) {
+                                                 [wself selectFirstAvailabilitiesFrom:availabilities];
+                                             }];
+}
+
+- (void)selectFirstAvailabilitiesFrom:(NSArray *)availabilities
+{
+    __weak typeof(self) wself = self;
+    
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if (!wself.selectedAvailability)
+        {
+            NSSortDescriptor *valueDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateString" ascending:YES];
+            NSArray *sortedArray = [availabilities sortedArrayUsingDescriptors:@[valueDescriptor]];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                wself.selectedAvailability = [sortedArray firstObject];
+            });
+        }
+    });
+}
+
+#pragma mark UI stuff
+
+
 // Needs to be refactored
 - (void)updateControlsForUserInteraction {
     BOOL enabled = (self.selectedProduct != nil);
-    //    self.modeSelector.userInteractionEnabled = enabled;
+//    self.modeSelector.userInteractionEnabled = enabled;
     self.dateButton.enabled = enabled;
 }
 
-- (void)resetDateButtonLabel {
-    self.dateButton.title = @"<Date>";
+- (void)updateTitle
+{
+    self.title = self.selectedProduct ? self.selectedProduct.name : @"";
 }
 
+- (void)updateAvailabilityButton
+{
+    self.dateButton.title = [self dateTimeButtonTitleForAvailability:self.selectedAvailability];
+}
+
+- (NSString *)dateTimeButtonTitleForAvailability:(TXHAvailability *)availability
+{
+    NSString *dateTimeButtonTitle;
+    
+    if (availability)
+        dateTimeButtonTitle = [NSString stringWithFormat:@"%@ %@", availability.dateString, availability.timeString];
+    else
+        dateTimeButtonTitle = NSLocalizedString(@"Select Date", nil);
+    
+    return dateTimeButtonTitle;
+}
 
 @end
