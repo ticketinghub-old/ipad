@@ -58,9 +58,14 @@ NSString * const TXHSelectedProduct                          = @"TXHSelectedProd
 {
     _selectedProduct = selectedProduct;
     
+    NSDictionary *userInfo;
+    
+    if (selectedProduct)
+        userInfo = @{TXHSelectedProduct: selectedProduct};
+        
     [[NSNotificationCenter defaultCenter] postNotificationName:TXHProductChangedNotification
                                                         object:self
-                                                      userInfo:@{TXHSelectedProduct: selectedProduct}];
+                                                      userInfo:userInfo];
 }
 
 @end

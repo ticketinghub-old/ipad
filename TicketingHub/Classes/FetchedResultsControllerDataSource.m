@@ -41,9 +41,19 @@
     return [self.fetchedResultsController objectAtIndexPath:indexPath];
 }
 
+- (NSIndexPath *)indexPathForItem:(id)item
+{
+    return [self.fetchedResultsController indexPathForObject:item];
+}
+
 - (BOOL)performFetch:(NSError **)error
 {
     return [self.fetchedResultsController performFetch:error];
+}
+
+- (NSArray *)allItems
+{
+    return [self.fetchedResultsController fetchedObjects];
 }
 
 #pragma mark - Table view data source

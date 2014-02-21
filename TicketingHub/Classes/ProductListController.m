@@ -39,30 +39,25 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 {
     [super viewDidLoad];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedProductChanged:) name:TXHProductChangedNotification object:nil];
+    
+    self.user = [TXHTICKETINHGUBCLIENT currentUser];
+
+    [self setHeaderTitle:NSLocalizedString(@"Venues", @"Title for the list of venues")];
+    [self setLogoutButtonTitle:self.user.fullName];
+
     [self setupDataSource];
+    [self reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
-    [self setHeaderTitle:NSLocalizedString(@"Venues", @"Title for the list of venues")];
-    
-    self.user = [TXHTICKETINHGUBCLIENT currentUser];
-    
-    [self setLogoutButtonTitle:self.user.fullName];
     
     [self.user addObserver:self
                   forKeyPath:@"fullName"
                      options:NSKeyValueObservingOptionNew
                      context:kUserFullNameKVOContext];
-    
-    NSError *error;
-    BOOL success = [self.tableViewDataSource performFetch:&error];
-
-    if (!success) {
-        DLog(@"Could not perform fetch because: %@", error);
-    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -70,6 +65,21 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
     [super viewWillDisappear:animated];
     
     [[TXHTICKETINHGUBCLIENT currentUser] removeObserver:self forKeyPath:@"fullName" context:@"user.fullName"];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
+}
+
+#pragma mark - notifications
+
+- (void)selectedProductChanged:(NSNotification *)note
+{
+    TXHProduct *product = [note userInfo][TXHSelectedProduct];
+    
+    NSIndexPath *indexPath = [self.tableViewDataSource indexPathForItem:product];
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
 }
 
 #pragma mark - setup
@@ -86,12 +96,25 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
     self.tableView.dataSource = self.tableViewDataSource;
 }
 
+- (void)reloadData
+{
+    NSError *error;
+    BOOL success = [self.tableViewDataSource performFetch:&error];
+    
+    if (!success) {
+        DLog(@"Could not perform fetch because: %@", error);
+    }
+    
+    if (!TXHPRODUCTSMANAGER.selectedProduct)
+        [self selectFirstProduct];
+}
+
 #pragma mark - Table View Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     TXHProduct *product = [self.tableViewDataSource itemAtIndexPath:indexPath];
-    
+
     [TXHPRODUCTSMANAGER setSelectedProduct:product];
 }
 
@@ -100,13 +123,9 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 - (void)configureCell:(UITableViewCell *)cell withItem:(id)item
 {
     if ([item isKindOfClass:[TXHProduct class]])
-    {
         cell.textLabel.text = [(TXHProduct *)item name];
-    }
     else
-    {
         cell.textLabel.text = nil;
-    }
 }
 
 
@@ -114,7 +133,8 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if (context == kUserFullNameKVOContext) {
+    if (context == kUserFullNameKVOContext)
+    {
         [self setLogoutButtonTitle:change[NSKeyValueChangeNewKey]];
         return;
     }
@@ -130,7 +150,6 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 
 #pragma mark - Private methods
 
-// Set the string to be displayed in header view
 - (void)setHeaderTitle:(NSString *)title {
     self.headerViewLabel.text = title;
 }
@@ -140,5 +159,11 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
                        forState:UIControlStateNormal];
 }
 
+- (void)selectFirstProduct
+{
+    NSArray *allProducts = [self.tableViewDataSource allItems];
+    TXHProduct *product = [allProducts firstObject];
+    TXHPRODUCTSMANAGER.selectedProduct = product;
+}
 
 @end

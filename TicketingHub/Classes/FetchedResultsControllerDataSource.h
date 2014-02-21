@@ -17,7 +17,9 @@
                     configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock;
 
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath;
+- (NSIndexPath *)indexPathForItem:(id)item;
 
 - (BOOL)performFetch:(NSError **)error;
+- (NSArray *)allItems;
 
 @end

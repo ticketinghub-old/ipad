@@ -34,17 +34,15 @@
 + (void)initialize
 {
     [TKCalendarMonthView setImageTintColour:[UIColor txhDarkBlueColor]];
-
 }
 
 - (void) viewDidLoad
 {
 	[super viewDidLoad];
     
-    self.dataDictionary     = [NSMutableDictionary dictionary];
+    self.dataDictionary = [NSMutableDictionary dictionary];
 
 	[self.monthView selectDate:[NSDate date]];
-    self.view.tintColor = [UIColor greenColor];
 }
 
 - (void)availabilitiesUpdated:(NSNotification *)note
