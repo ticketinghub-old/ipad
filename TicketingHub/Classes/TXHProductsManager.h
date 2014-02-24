@@ -16,6 +16,7 @@
 @interface TXHProductsManager : NSObject
 
 @property (strong, nonatomic) TXHProduct *selectedProduct;
+@property (strong, nonatomic) TXHAvailability *selectedAvailability;
 
 + (instancetype)sharedManager;
 + (NSFetchedResultsController *)productsFetchedResultsController;

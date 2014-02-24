@@ -21,3 +21,9 @@ extern NSString * const TXHProductChangedNotification;
  The key used by the `userInfo` dictionary containing the selected venue reference
  */
 extern NSString * const TXHSelectedProduct;
+
+// same as with product
+
+extern NSString * const TXHAvailabilityChangedNotification;
+
+extern NSString * const TXHSelectedAvailability;

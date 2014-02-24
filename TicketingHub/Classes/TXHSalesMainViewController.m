@@ -22,6 +22,9 @@
 #import "TXHSalesStepAbstract.h"
 #import "TXHSaleStepsManager.h"
 
+// defines
+#import "ProductListControllerNotifications.h"
+
 static void * ContentValidContext = &ContentValidContext;
 
 @interface TXHSalesMainViewController ()  <TXHSaleStepsManagerDelegate, TXHSalesCompletionViewControllerDelegate>
@@ -94,6 +97,8 @@ static void * ContentValidContext = &ContentValidContext;
     [self performSegueWithIdentifier:@"Embed Step1" sender:self];
     
     [self.stepsManager resetProcess];
+    
+    [self registerForProductAndAvailabilityChanges];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -137,6 +142,32 @@ static void * ContentValidContext = &ContentValidContext;
                                     options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial
                                     context:ContentValidContext];
 }
+
+- (void)registerForProductAndAvailabilityChanges
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(productDidChange:)
+                                                 name:TXHProductChangedNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(availabilityDidChange:)
+                                                 name:TXHAvailabilityChangedNotification
+                                               object:nil];
+}
+
+#pragma mark notifications
+
+- (void)productDidChange:(NSNotification *)note
+{
+    [self.stepsManager resetProcess];
+}
+
+- (void)availabilityDidChange:(NSNotification *)note
+{
+    [self.stepsManager resetProcess];
+}
+
 
 #pragma mark - KVO
 

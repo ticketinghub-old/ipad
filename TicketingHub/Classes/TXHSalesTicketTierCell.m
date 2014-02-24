@@ -32,7 +32,8 @@
     self.tierName.text = self.tier.name;
     self.tierDescription.text = self.tier.tierDescription;
     self.quantity.keyboardType = UIKeyboardTypeNumberPad;
-    self.price.text = self.tier.priceString;
+    // TODO: this is bad after changing to to many relationship
+    self.price.text = [self.tier priceStringForProduct:[(TXHAvailability *)[self.tier.availabilities anyObject] product]];
 }
 
 - (void)quantityDidChange {

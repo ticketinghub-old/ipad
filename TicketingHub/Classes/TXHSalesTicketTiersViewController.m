@@ -31,48 +31,22 @@
  
     self.quantities = [NSMutableDictionary dictionary];
     
-    if ([TXHPRODUCTSMANAGER selectedProduct])
+    if ([TXHPRODUCTSMANAGER selectedProduct] && [TXHPRODUCTSMANAGER selectedAvailability])
     {
-        [self loadTickers];
+        self.availability = [TXHPRODUCTSMANAGER selectedAvailability];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availabilityChanged:) name:TXHAvailabilityChangedNotification object:nil];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)dealloc
 {
-    [super viewWillAppear:animated];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productChanged:) name:TXHProductChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)availabilityChanged:(NSNotification *)note
 {
-    [super viewWillDisappear:animated];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
-}
-
-- (void)productChanged:(NSNotification *)note
-{
-    [self loadTickers];
-    
-}
-
-- (void)loadTickers
-{
-    __weak typeof(self) wself = self;
-    
-    // Convert string to date object
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd"];
-    NSDate *date = [dateFormat dateFromString:@"2014-02-20"];
-
-    
-    [TXHTICKETINHGUBCLIENT availabilitiesForProduct:[TXHPRODUCTSMANAGER selectedProduct]
-                                           fromDate:date
-                                             toDate:nil
-                                         completion:^(NSArray *availabilities, NSError *error) {
-                                             wself.availability = [availabilities lastObject];
-                                         }];
+    self.availability = note.userInfo[TXHSelectedAvailability];
 }
 
 - (void)setAvailability:(TXHAvailability *)availability

@@ -30,7 +30,8 @@
 @property (strong, nonatomic) TXHProduct      *selectedProduct;
 @property (strong, nonatomic) TXHAvailability *selectedAvailability;
 
-@property (strong, nonatomic) UIActivityIndicatorView *loadingView;
+@property (strong, nonatomic) IBOutlet UIView *loadingView;
+@property (assign, nonatomic) BOOL loadingAvailabilitesDetails;
 
 @end
 
@@ -38,22 +39,24 @@
 
 #pragma mark - View Lifecycle
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+ 
     [self setup];
     [self selectMode:nil];
     
     self.selectedProduct = [TXHPRODUCTSMANAGER selectedProduct];
+    self.selectedAvailability = [TXHPRODUCTSMANAGER selectedAvailability];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productChanged:) name:TXHProductChangedNotification object:nil];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availabilityChanged:) name:TXHAvailabilityChangedNotification object:nil];
 }
 
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];
 }
 
 #pragma mark - Superclass overrides
@@ -91,6 +94,7 @@
         [segue perform];
         
     }
+    
     else
     {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Salesman" bundle:nil];
@@ -104,8 +108,6 @@
     }
 }
 
-#pragma mark - Custom accessors
-
 #pragma mark - Setters / Getters
 
 - (void)setSelectedProduct:(TXHProduct *)selectedProduct
@@ -115,26 +117,15 @@
 
     _selectedProduct = selectedProduct;
 
-    if (!selectedProduct)
-    {
-        [self showLoadingView];
-    }
-    else
-    {
-        [self hideLoadingView];
-    }
-    
-    self.selectedAvailability = nil;
-    
     [self updateUI];
 }
 
 - (void)setSelectedAvailability:(TXHAvailability *)selectedAvailability
 {
     _selectedAvailability = selectedAvailability;
-
-    [self updateAvailabilityButton];
     
+    [self updateUI];
+
     if (!selectedAvailability && self.selectedProduct)
     {
         [self fetchAvailability];
@@ -148,14 +139,48 @@
     self.selectedProduct = [notification userInfo][TXHSelectedProduct];
 }
 
+- (void)availabilityChanged:(NSNotification *)notification
+{
+    self.selectedAvailability = [notification userInfo][TXHSelectedAvailability];
+}
 
 #pragma mark - TXHDateSelectorViewController delegate methods
 
 - (void)dateSelectorViewController:(TXHDateSelectorViewController *)controller didSelectAvailability:(TXHAvailability *)availability
 {
     self.selectedAvailability = availability;
+
+    [self loadDetailsForAvailability:availability];
     
     [self.popover dismissPopoverAnimated:YES];
+}
+
+- (void)loadDetailsForAvailability:(TXHAvailability *)availability
+{
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSDate *date = [dateFormat dateFromString:[availability dateString]];
+    
+    self.loadingAvailabilitesDetails = YES;
+    __block typeof(self) wself = self;
+    
+    [TXHTICKETINHGUBCLIENT availabilitiesForProduct:[TXHPRODUCTSMANAGER selectedProduct]
+                                           fromDate:date
+                                             toDate:nil
+                                         completion:^(NSArray *availabilities, NSError *error) {
+                                             
+                                             for (TXHAvailability *newAvilability in availabilities)
+                                             {
+                                                 if ([newAvilability.dateString isEqualToString:[availability dateString]] &&
+                                                     [newAvilability.timeString isEqualToString:[availability timeString]])
+                                                 {
+                                                     [TXHPRODUCTSMANAGER setSelectedAvailability:availability];
+                                                     break;
+                                                 }
+                                             }
+                                             wself.loadingAvailabilitesDetails = NO;
+                                             [wself updateUI];
+                                         }];
 }
 
 #pragma mark - Private
@@ -207,8 +232,6 @@
 {
     __weak typeof(self) wself = self;
 
-    [self showLoadingView];
-
     if (self.selectedProduct)
         [TXHTICKETINHGUBCLIENT availabilitiesForProduct:self.selectedProduct
                                                fromDate:[NSDate date]
@@ -228,10 +251,8 @@
             NSSortDescriptor *valueDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateString" ascending:YES];
             NSArray *sortedArray = [availabilities sortedArrayUsingDescriptors:@[valueDescriptor]];
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-                wself.selectedAvailability = [sortedArray firstObject];
-                [wself hideLoadingView];
-            });
+            wself.selectedAvailability = [sortedArray firstObject];
+            [wself loadDetailsForAvailability:wself.selectedAvailability];
         }
     });
 }
@@ -240,9 +261,24 @@
 
 - (void)updateUI
 {
-    [self updateTitle];
-    [self updateAvailabilityButton];
-    [self updateModeSelector];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateActivityIndicator];
+        [self updateTitle];
+        [self updateAvailabilityButton];
+        [self updateModeSelector];
+    });
+}
+
+- (void)updateActivityIndicator
+{
+    if (!self.selectedProduct || !self.selectedAvailability || self.loadingAvailabilitesDetails)
+    {
+        [self showLoadingView];
+    }
+    else
+    {
+        [self hideLoadingView];
+    }
 }
 
 - (void)updateTitle
@@ -277,33 +313,24 @@
 
 - (void)showLoadingView
 {
-    if (!self.loadingView.superview)
-    {
-        self.loadingView.frame = self.view.bounds;
-        [self.view addSubview:self.loadingView];
-    }
-    [self.view bringSubviewToFront:self.loadingView];
-    [self.loadingView startAnimating];
+    [UIView animateKeyframesWithDuration:0.2
+                                   delay:0.0
+                                 options:UIViewKeyframeAnimationOptionBeginFromCurrentState
+                              animations:^{
+                                  self.loadingView.alpha = 1.0;
+                              }
+                              completion:nil];
 }
 
 - (void)hideLoadingView
 {
-    [self.loadingView stopAnimating];
-    [self.loadingView removeFromSuperview];
-}
-
-- (UIActivityIndicatorView *)loadingView
-{
-    if (!_loadingView)
-    {
-        UIActivityIndicatorView *loadingView = [[UIActivityIndicatorView alloc] initWithFrame:self.view.bounds];
-        loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-        loadingView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        loadingView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
-        _loadingView = loadingView;
-    }
-    
-    return _loadingView;
+    [UIView animateKeyframesWithDuration:0.2
+                                   delay:0.0
+                                 options:UIViewKeyframeAnimationOptionBeginFromCurrentState
+                              animations:^{
+                                  self.loadingView.alpha = 0.0;
+                              }
+                              completion:nil];
 }
 
 @end

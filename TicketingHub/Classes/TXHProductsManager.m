@@ -12,8 +12,11 @@
 #import "NSDate+Additions.h"
 
 // Declaration of strings declared in ProductListControllerNotifications.h
-NSString * const TXHProductChangedNotification               = @"TXHProductChangedNotification";
-NSString * const TXHSelectedProduct                          = @"TXHSelectedProduct";
+NSString * const TXHProductChangedNotification      = @"TXHProductChangedNotification";
+NSString * const TXHSelectedProduct                 = @"TXHSelectedProduct";
+NSString * const TXHAvailabilityChangedNotification = @"TXHAvailabilityChangedNotification";
+NSString * const TXHSelectedAvailability            = @"TXHSelectedProduct";
+
 
 @interface TXHProductsManager ()
 
@@ -56,6 +59,9 @@ NSString * const TXHSelectedProduct                          = @"TXHSelectedProd
 
 - (void)setSelectedProduct:(TXHProduct *)selectedProduct
 {
+    if (selectedProduct == _selectedProduct)
+        return;
+    
     _selectedProduct = selectedProduct;
     
     NSDictionary *userInfo;
@@ -67,5 +73,23 @@ NSString * const TXHSelectedProduct                          = @"TXHSelectedProd
                                                         object:self
                                                       userInfo:userInfo];
 }
+
+- (void)setSelectedAvailability:(TXHAvailability *)selectedAvailability
+{
+    if (_selectedAvailability == selectedAvailability)
+        return;
+    
+    _selectedAvailability = selectedAvailability;
+    
+    NSDictionary *userInfo;
+    
+    if (selectedAvailability)
+        userInfo = @{TXHSelectedAvailability: selectedAvailability};
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:TXHAvailabilityChangedNotification
+                                                        object:self
+                                                      userInfo:userInfo];
+}
+
 
 @end
