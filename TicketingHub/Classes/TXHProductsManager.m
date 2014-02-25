@@ -59,9 +59,6 @@ NSString * const TXHSelectedAvailability            = @"TXHSelectedProduct";
 
 - (void)setSelectedProduct:(TXHProduct *)selectedProduct
 {
-    if (selectedProduct == _selectedProduct)
-        return;
-    
     _selectedProduct = selectedProduct;
     
     NSDictionary *userInfo;
@@ -76,9 +73,6 @@ NSString * const TXHSelectedAvailability            = @"TXHSelectedProduct";
 
 - (void)setSelectedAvailability:(TXHAvailability *)selectedAvailability
 {
-    if (_selectedAvailability == selectedAvailability)
-        return;
-    
     _selectedAvailability = selectedAvailability;
     
     NSDictionary *userInfo;

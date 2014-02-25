@@ -211,7 +211,11 @@ static void * ContentValidContext = &ContentValidContext;
 
 - (void)salesCompletionViewControllerDidContinue:(TXHSalesCompletionViewController *)controller
 {
-    [self.stepsManager continueToNextStep];
+    self.stepCompletionController.view.userInteractionEnabled = NO;
+    [self.stepContentController finishStepWithCompletion:^(NSError *error) {
+        [self.stepsManager continueToNextStep];
+        self.stepCompletionController.view.userInteractionEnabled = NO;
+    }];
 }
 
 

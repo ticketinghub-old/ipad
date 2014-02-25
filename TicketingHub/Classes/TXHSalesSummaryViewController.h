@@ -10,4 +10,7 @@
 
 @interface TXHSalesSummaryViewController : UICollectionViewController
 
+@property (assign, nonatomic, getter = isValid) BOOL valid;
+
+
 @end

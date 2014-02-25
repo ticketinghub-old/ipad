@@ -12,6 +12,8 @@
 
 @property (nonatomic, readonly, getter = isValid) BOOL valid;
 
+- (void)finishStepWithCompletion:(void (^)(NSError *error))blockName;
+
 @end
 
 @interface TXHSalesMainViewController : UIViewController

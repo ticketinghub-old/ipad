@@ -10,4 +10,6 @@
 
 @interface TXHSalesProductDetailsViewController : UITableViewController
 
+@property (assign, nonatomic, getter = isValid) BOOL valid;
+
 @end

@@ -11,6 +11,8 @@
 #import "TXHSalesTicketTierCell.h"
 #import "TXHTicketingHubManager.h"
 #import "TXHProductsManager.h"
+#import "TXHTicketingHubManager.h"
+
 @interface TXHSalesTicketTiersViewController () <UITextFieldDelegate, TXHSalesTicketTierCellDelegate>
 
 @property (assign, nonatomic, getter = isValid) BOOL valid;
@@ -118,13 +120,27 @@
     NSInteger totalQuantityWithoutaTier = 0;
     
     // sum up quantity without the one from arg
-    for (NSString *tierId in self.quantities)
-        if (![tierId isEqualToString:tier.tierId])
-            totalQuantityWithoutaTier += [self.quantities[tierId] integerValue];
+    for (NSString *internalTierId in self.quantities)
+        if (![internalTierId isEqualToString:tier.internalTierId])
+            totalQuantityWithoutaTier += [self.quantities[internalTierId] integerValue];
     
     NSInteger availabilityLImit = self.availability.limitValue - totalQuantityWithoutaTier;
     
     return MIN(availabilityLImit, tier.limitValue);
 }
 
+#pragma mark - TXHSalesContentsViewControllerProtocol
+
+- (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
+{
+    [TXHTICKETINHGUBCLIENT reserveTicketsWithTierQuantities:self.quantities
+                                               availability:self.availability
+                                                 completion:^(TXHOrder *order, NSError *error) {
+                                                     
+                                                     NSLog(@"order: %@",order);
+                                                     
+                                                     blockName(nil);
+                                                 }];
+    
+}
 @end

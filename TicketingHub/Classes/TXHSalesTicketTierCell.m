@@ -38,7 +38,7 @@
 
 - (void)quantityDidChange {
     if (self.quantityChangedHandler) {
-        self.quantityChangedHandler(@{self.tier.tierId : [NSNumber numberWithInteger:self.quantity.text.integerValue]});
+        self.quantityChangedHandler(@{self.tier.internalTierId : [NSNumber numberWithInteger:self.quantity.text.integerValue]});
     }
 }
 
