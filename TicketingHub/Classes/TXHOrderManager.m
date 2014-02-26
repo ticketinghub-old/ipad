@@ -53,6 +53,17 @@
     return nil;
 }
 
+- (NSDictionary *)customerErrorsForTicketId:(NSString *)ticketId
+{
+    for (TXHTicket *ticket in self.order.tickets)
+    {
+        if ([ticket.ticketId isEqualToString:ticketId]) {
+            return ticket.customer.errors;
+        }
+    }
+    return nil;
+}
+
 - (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability completion:(void(^)(TXHOrder *order, NSError *error))completion
 {
     __weak typeof(self) wself = self;

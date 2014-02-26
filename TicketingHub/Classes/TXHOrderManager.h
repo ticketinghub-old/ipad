@@ -18,6 +18,8 @@
 
 - (TXHTicket *)ticketFromOrderWithID:(NSString *)ticketID;
 
+- (NSDictionary *)customerErrorsForTicketId:(NSString *)ticketId;
+
 // fething data
 
 - (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities

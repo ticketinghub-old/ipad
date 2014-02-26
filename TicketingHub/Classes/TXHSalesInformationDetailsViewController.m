@@ -75,11 +75,7 @@
     
     NSMutableArray *notEmpty = [NSMutableArray array];
     
-    for (NSString *ticketID in fields)
-        if ([fields[ticketID] count])
-            [notEmpty addObject:ticketID];
-    
-    self.ticketIds = notEmpty;// [fields allKeys];
+    self.ticketIds = [self.fields allKeys];
     
     self.userInput = [NSMutableDictionary dictionary];
     for (NSString *ticketID in self.ticketIds)
@@ -129,11 +125,16 @@
     {
         TXHSalesInformationTextCell *textCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"textCell" forIndexPath:indexPath];
         
-        textCell.delegate = self;
-        textCell.name = field.name;
-        textCell.placeholder = field.label;
-        textCell.text = indexPath.row > 0 ? @"TEXT text" : @"";
-        textCell.errorMessage = indexPath.row < 2 ? @"TEXT text" : @"";
+        NSString *ticketID     = [self ticketIdForIndexPath:indexPath];
+        NSString *fieldType    = field.name;
+        NSString *userInput    = [self userInputWithType:fieldType forTicketID:ticketID];
+        NSString *errorMessage = [self errorMessageForFieldType:fieldType withTicketID:ticketID];
+        
+        textCell.delegate     = self;
+        textCell.name         = field.name;
+        textCell.placeholder  = field.label;
+        textCell.text         = userInput;
+        textCell.errorMessage = errorMessage;
         
         cell = textCell;
     }
@@ -178,7 +179,12 @@
 - (void)setUserInput:(NSString *)userInput withType:(NSString *)fieldType forTicketID:(NSString *)ticketID
 {
     if ([userInput length])
+    {
+        if (!self.userInput[ticketID]) {
+            self.userInput[ticketID] = [NSMutableDictionary dictionary];
+        }
         self.userInput[ticketID][fieldType] = userInput;
+    }
     else
         [self.userInput removeObjectForKey:ticketID];
     
@@ -191,10 +197,15 @@
     return self.userInput[ticketID][type];
 }
 
+- (NSString *)errorMessageForFieldType:(NSString *)fieldType withTicketID:(NSString *)ticketID
+{
+    NSDictionary *errors = [TXHORDERMANAGER customerErrorsForTicketId:ticketID];
+    
+    return [errors[fieldType] firstObject];
+}
+
 - (BOOL)hasAllfieldsFilled
 {
-    NSLog(@"%@",self.userInput);
-    
     for (NSString *ticketID in self.ticketIds)
     {
         for (TXHField *field in self.fields[ticketID])
@@ -219,7 +230,7 @@
         
         for (TXHField *field in self.fields[ticketID])
         {
-//            customerDic[field.name] = @"";//[self userInputWithType:field.name forTicketID:ticketID];
+            customerDic[field.name] = [self userInputWithType:field.name forTicketID:ticketID];
         }
         
         infoDic[ticketID] = customerDic;
@@ -267,16 +278,14 @@
     
     [TXHORDERMANAGER updateOrderWithCustomersInfo:customersInfo
                                        completion:^(TXHOrder *order, NSError *error) {
-                                           NSLog(@"%@",order);
                                            
-                                           NSLog(@"%@",order.errors);
+                                           dispatch_async(dispatch_get_main_queue(), ^{
                                            
-                                           for (TXHTicket *t in order.tickets)
-                                           {
-                                               NSLog(@"%@",t.errors);
-                                           }
-                                           
-                                           blockName([NSError errorWithDomain:@"" code:1 userInfo:nil]);
+                                               if (error) {
+                                                   [self.collectionView reloadData];
+                                               }
+                                               blockName(error);
+                                           });
                                        }];
     
 }
