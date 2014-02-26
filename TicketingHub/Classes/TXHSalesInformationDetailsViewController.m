@@ -73,8 +73,6 @@
 {
     _fields = fields;
     
-    NSMutableArray *notEmpty = [NSMutableArray array];
-    
     self.ticketIds = [self.fields allKeys];
     
     self.userInput = [NSMutableDictionary dictionary];
@@ -82,6 +80,8 @@
     {
         self.userInput[ticketID] = [NSMutableDictionary dictionary];
     }
+    
+    self.valid = [self hasAllfieldsFilled];
     
     [self.collectionView reloadData];
 }
