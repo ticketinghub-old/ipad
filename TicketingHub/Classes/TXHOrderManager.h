@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const TXHOrderDidExpireNotification;
+
 #define TXHORDERMANAGER [TXHOrderManager sharedManager]
 
 @interface TXHOrderManager : NSObject

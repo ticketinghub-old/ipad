@@ -114,7 +114,11 @@
     NSTimeInterval total = [self.endDate timeIntervalSince1970] - [self.starDate timeIntervalSince1970];
     NSTimeInterval current = [self.endDate timeIntervalSince1970] - [[NSDate date] timeIntervalSince1970];
     
-    current = current > 0 ? current : 0;
+    if (current < 0)
+    {
+        [self stopTimer];
+        current = 0;
+    }
     
     NSInteger minutes = floor((current/60));
     NSInteger seconds = floor(current - (minutes * 60));

@@ -100,6 +100,15 @@ static void * ContentValidContext = &ContentValidContext;
     [self resetData];
     
     [self registerForProductAndAvailabilityChanges];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(orderDidExpire:)
+                                                 name:TXHOrderDidExpireNotification object:nil];
+}
+
+- (void)orderDidExpire:(NSNotification *)note
+{
+    [self resetData];
 }
 
 - (void)resetData

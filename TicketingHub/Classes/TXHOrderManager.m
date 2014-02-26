@@ -12,11 +12,13 @@
 #import <iOS-api/TXHTicket.h>
 #import <iOS-api/TXHCustomer.h>
 
+NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification";
 
 @interface TXHOrderManager ()
 
 @property (readwrite, strong, nonatomic) TXHOrder *order;
 @property (strong, nonatomic) NSDate *expirationDate;
+@property (strong, nonatomic) NSTimer *expirationTimer;
 
 @end
 
@@ -41,7 +43,7 @@
 {
     if (!_order && order)
     {
-        self.expirationDate = [[NSDate date] dateByAddingTimeInterval:60*10];
+        self.expirationDate = [[NSDate date] dateByAddingTimeInterval:10*60];
     }
     else if (!order)
     {
@@ -49,6 +51,47 @@
     }
     
     _order = order;
+}
+
+- (void)setExpirationDate:(NSDate *)expirationDate
+{
+    _expirationDate = expirationDate;
+    
+    [self sheduleExpirationTimer];
+}
+
+- (void)invalidateExpirationTimer
+{
+    if (self.expirationTimer)
+    {
+        [self.expirationTimer invalidate];
+        self.expirationTimer = nil;
+    }
+}
+
+
+- (void)sheduleExpirationTimer
+{
+    [self invalidateExpirationTimer];
+    
+    if (self.expirationDate)
+    {
+        self.expirationTimer = [[NSTimer alloc] initWithFireDate:self.expirationDate
+                                                        interval:0
+                                                          target:self
+                                                        selector:@selector(orderDidExpire:)
+                                                        userInfo:nil
+                                                         repeats:NO];
+        
+        [[NSRunLoop currentRunLoop] addTimer:self.expirationTimer forMode:NSRunLoopCommonModes];
+    }
+}
+
+- (void)orderDidExpire:(NSTimer *)timer
+{
+    [self invalidateExpirationTimer];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:TXHOrderDidExpireNotification object:nil];
 }
 
 #pragma mark public methods
