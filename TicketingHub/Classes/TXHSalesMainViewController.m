@@ -213,8 +213,11 @@ static void * ContentValidContext = &ContentValidContext;
 {
     self.stepCompletionController.view.userInteractionEnabled = NO;
     [self.stepContentController finishStepWithCompletion:^(NSError *error) {
-        [self.stepsManager continueToNextStep];
-        self.stepCompletionController.view.userInteractionEnabled = NO;
+        if (!error)
+        {
+            [self.stepsManager continueToNextStep];
+        }
+        self.stepCompletionController.view.userInteractionEnabled = YES;
     }];
 }
 

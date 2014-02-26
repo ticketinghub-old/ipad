@@ -10,13 +10,9 @@
 
 @interface TXHDataEntryFieldErrorView : UIView
 
-// An error message to be displayed
 @property (strong, nonatomic) NSString *message;
 
-// Text colour for the error message
 @property (strong, nonatomic) UIColor *messageColor;
-
-// background colour for the error message
 @property (strong, nonatomic) UIColor *messageBackgroundColor;
 
 @end

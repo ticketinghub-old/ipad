@@ -73,7 +73,7 @@
 
 - (BOOL)isStepCompleted:(id)step
 {
-    return NO;
+    return [self indexOfStep:step] < self.currentStep;
 }
 
 - (id)stepAtIndex:(NSUInteger)stepIndex

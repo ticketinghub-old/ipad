@@ -22,6 +22,7 @@
 		3ECE132418B4C8A800E7148F /* TXHProductsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE132318B4C8A800E7148F /* TXHProductsManager.m */; };
 		3ECE137418B63A6900E7148F /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE137318B63A6900E7148F /* NSDate+Additions.m */; };
 		3ECE137718B689CE00E7148F /* NSDate+CupertinoYankee.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE137618B689CE00E7148F /* NSDate+CupertinoYankee.m */; };
+		3ED7561818BDD96500D8F60B /* TXHOrderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7561718BDD96500D8F60B /* TXHOrderManager.m */; };
 		4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */; };
 		4D586DE11797E51E00E40534 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D586DE01797E51E00E40534 /* Images.xcassets */; };
 		4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D68DAAA178B0A5400743227 /* AVFoundation.framework */; };
@@ -44,7 +45,6 @@
 		AE2DFA468AA749E4AA6D795E /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F162CF42C7D94DB9B5422913 /* libPods-test.a */; };
 		CEA4926CD193447DAE8A8A56 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED64DB9D6E348A7B2A040BE /* libPods.a */; };
 		CF019832248E4EA59EA0E4E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED64DB9D6E348A7B2A040BE /* libPods.a */; };
-		EE75D98817D11048009ADCD8 /* TXHSalesCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94417D11047009ADCD8 /* TXHSalesCalendarViewController.m */; };
 		EE75D98917D11048009ADCD8 /* TXHSalesCompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94617D11047009ADCD8 /* TXHSalesCompletionViewController.m */; };
 		EE75D98C17D11048009ADCD8 /* TXHSalesInformationDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94D17D11047009ADCD8 /* TXHSalesInformationDetailsViewController.m */; };
 		EE75D98D17D11048009ADCD8 /* TXHSalesInformationHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D94F17D11047009ADCD8 /* TXHSalesInformationHeader.m */; };
@@ -73,7 +73,6 @@
 		EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9AC17D112C4009ADCD8 /* TXHLoginViewController.m */; };
 		EE75D9B317D11311009ADCD8 /* ProductListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B017D11311009ADCD8 /* ProductListController.m */; };
 		EE75D9B417D11311009ADCD8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B217D11311009ADCD8 /* MainViewController.m */; };
-		EEB1845817D114390025530A /* TXHBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843517D114390025530A /* TXHBaseCollectionViewCell.m */; };
 		EEB1845917D114390025530A /* TXHBaseDataEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843717D114390025530A /* TXHBaseDataEntryTableViewCell.m */; };
 		EEB1845A17D114390025530A /* TXHBaseDataEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843917D114390025530A /* TXHBaseDataEntryView.m */; };
 		EEB1845B17D114390025530A /* TXHCreditCardNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843C17D114390025530A /* TXHCreditCardNumberView.m */; };
@@ -81,10 +80,8 @@
 		EEB1845E17D114390025530A /* TXHDataEntryFieldErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1844217D114390025530A /* TXHDataEntryFieldErrorView.m */; };
 		EEB1845F17D114390025530A /* TXHDataSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1844417D114390025530A /* TXHDataSelectionView.m */; };
 		EEB1846017D114390025530A /* TXHDataSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1844617D114390025530A /* TXHDataSelectionViewController.m */; };
-		EEB1846117D114390025530A /* TXHEmailCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1844817D114390025530A /* TXHEmailCollectionViewCell.m */; };
 		EEB1846317D114390025530A /* TXHQuantitySelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1844C17D114390025530A /* TXHQuantitySelectorViewController.m */; };
 		EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1844E17D114390025530A /* TXHSelectionEntryTableViewCell.m */; };
-		EEB1846517D114390025530A /* TXHTextCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1845017D114390025530A /* TXHTextCollectionViewCell.m */; };
 		EEB1846617D114390025530A /* TXHTextEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1845217D114390025530A /* TXHTextEntryTableViewCell.m */; };
 		EEB1846717D114390025530A /* TXHTextEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1845417D114390025530A /* TXHTextEntryView.m */; };
 		EEB1846817D114390025530A /* TXHTimeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1845617D114390025530A /* TXHTimeFormatter.m */; };
@@ -148,6 +145,8 @@
 		3ECE137318B63A6900E7148F /* NSDate+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Additions.m"; sourceTree = "<group>"; };
 		3ECE137518B689CE00E7148F /* NSDate+CupertinoYankee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CupertinoYankee.h"; sourceTree = "<group>"; };
 		3ECE137618B689CE00E7148F /* NSDate+CupertinoYankee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CupertinoYankee.m"; sourceTree = "<group>"; };
+		3ED7561618BDD96500D8F60B /* TXHOrderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHOrderManager.h; path = TicketingHub/Classes/TXHOrderManager.h; sourceTree = SOURCE_ROOT; };
+		3ED7561718BDD96500D8F60B /* TXHOrderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHOrderManager.m; path = TicketingHub/Classes/TXHOrderManager.m; sourceTree = SOURCE_ROOT; };
 		416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
 		4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCurrencyEntryViewSpec.m; sourceTree = "<group>"; };
 		4D586DE01797E51E00E40534 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -175,8 +174,6 @@
 		7082BAD3DAB74253A99F8290 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		8ED64DB9D6E348A7B2A040BE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE51C1EE180FED4F001AA88A /* ProductListControllerNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ProductListControllerNotifications.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		EE75D94317D11047009ADCD8 /* TXHSalesCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesCalendarViewController.h; path = TicketingHub/Classes/TXHSalesCalendarViewController.h; sourceTree = SOURCE_ROOT; };
-		EE75D94417D11047009ADCD8 /* TXHSalesCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesCalendarViewController.m; path = TicketingHub/Classes/TXHSalesCalendarViewController.m; sourceTree = SOURCE_ROOT; };
 		EE75D94517D11047009ADCD8 /* TXHSalesCompletionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesCompletionViewController.h; path = TicketingHub/Classes/TXHSalesCompletionViewController.h; sourceTree = SOURCE_ROOT; };
 		EE75D94617D11047009ADCD8 /* TXHSalesCompletionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesCompletionViewController.m; path = TicketingHub/Classes/TXHSalesCompletionViewController.m; sourceTree = SOURCE_ROOT; };
 		EE75D94C17D11047009ADCD8 /* TXHSalesInformationDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesInformationDetailsViewController.h; path = TicketingHub/Classes/TXHSalesInformationDetailsViewController.h; sourceTree = SOURCE_ROOT; };
@@ -234,8 +231,6 @@
 		EE75D9B117D11311009ADCD8 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MainViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		EE75D9B217D11311009ADCD8 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MainViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EE935E7417B3EB630080A1C2 /* CommonMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonMacros.h; sourceTree = "<group>"; };
-		EEB1843417D114390025530A /* TXHBaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBaseCollectionViewCell.h; sourceTree = "<group>"; };
-		EEB1843517D114390025530A /* TXHBaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBaseCollectionViewCell.m; sourceTree = "<group>"; };
 		EEB1843617D114390025530A /* TXHBaseDataEntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBaseDataEntryTableViewCell.h; sourceTree = "<group>"; };
 		EEB1843717D114390025530A /* TXHBaseDataEntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBaseDataEntryTableViewCell.m; sourceTree = "<group>"; };
 		EEB1843817D114390025530A /* TXHBaseDataEntryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBaseDataEntryView.h; sourceTree = "<group>"; };
@@ -251,14 +246,10 @@
 		EEB1844417D114390025530A /* TXHDataSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDataSelectionView.m; sourceTree = "<group>"; };
 		EEB1844517D114390025530A /* TXHDataSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDataSelectionViewController.h; sourceTree = "<group>"; };
 		EEB1844617D114390025530A /* TXHDataSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDataSelectionViewController.m; sourceTree = "<group>"; };
-		EEB1844717D114390025530A /* TXHEmailCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHEmailCollectionViewCell.h; sourceTree = "<group>"; };
-		EEB1844817D114390025530A /* TXHEmailCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHEmailCollectionViewCell.m; sourceTree = "<group>"; };
 		EEB1844B17D114390025530A /* TXHQuantitySelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHQuantitySelectorViewController.h; sourceTree = "<group>"; };
 		EEB1844C17D114390025530A /* TXHQuantitySelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHQuantitySelectorViewController.m; sourceTree = "<group>"; };
 		EEB1844D17D114390025530A /* TXHSelectionEntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSelectionEntryTableViewCell.h; sourceTree = "<group>"; };
 		EEB1844E17D114390025530A /* TXHSelectionEntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSelectionEntryTableViewCell.m; sourceTree = "<group>"; };
-		EEB1844F17D114390025530A /* TXHTextCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTextCollectionViewCell.h; sourceTree = "<group>"; };
-		EEB1845017D114390025530A /* TXHTextCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTextCollectionViewCell.m; sourceTree = "<group>"; };
 		EEB1845117D114390025530A /* TXHTextEntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTextEntryTableViewCell.h; sourceTree = "<group>"; };
 		EEB1845217D114390025530A /* TXHTextEntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTextEntryTableViewCell.m; sourceTree = "<group>"; };
 		EEB1845317D114390025530A /* TXHTextEntryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTextEntryView.h; sourceTree = "<group>"; };
@@ -376,12 +367,6 @@
 		3E3A5B0318AA5CB300A54812 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				EEB1843417D114390025530A /* TXHBaseCollectionViewCell.h */,
-				EEB1843517D114390025530A /* TXHBaseCollectionViewCell.m */,
-				EEB1844F17D114390025530A /* TXHTextCollectionViewCell.h */,
-				EEB1845017D114390025530A /* TXHTextCollectionViewCell.m */,
-				EEB1844717D114390025530A /* TXHEmailCollectionViewCell.h */,
-				EEB1844817D114390025530A /* TXHEmailCollectionViewCell.m */,
 			);
 			name = CollectionViewCells;
 			sourceTree = "<group>";
@@ -691,6 +676,17 @@
 			name = "Step Details";
 			sourceTree = "<group>";
 		};
+		3ED7561918BDDA8700D8F60B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				3ED7561618BDD96500D8F60B /* TXHOrderManager.h */,
+				3ED7561718BDD96500D8F60B /* TXHOrderManager.m */,
+				3EC63E0018B36E7A00B091A0 /* TXHSaleStepsManager.h */,
+				3EC63E0118B36E7A00B091A0 /* TXHSaleStepsManager.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
 		4DF3F59B17C63E070045299B /* Smoke Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -810,12 +806,9 @@
 		EE75D94217D1101C009ADCD8 /* Sales */ = {
 			isa = PBXGroup;
 			children = (
-				3EC63E0018B36E7A00B091A0 /* TXHSaleStepsManager.h */,
-				3EC63E0118B36E7A00B091A0 /* TXHSaleStepsManager.m */,
+				3ED7561918BDDA8700D8F60B /* Managers */,
 				3E3A5B0C18AA691A00A54812 /* Main Contriner Controller */,
 				3E3A5B0D18AA6AA800A54812 /* Wizard */,
-				EE75D94317D11047009ADCD8 /* TXHSalesCalendarViewController.h */,
-				EE75D94417D11047009ADCD8 /* TXHSalesCalendarViewController.m */,
 			);
 			name = Sales;
 			path = Login;
@@ -1074,9 +1067,9 @@
 				EE75D9B317D11311009ADCD8 /* ProductListController.m in Sources */,
 				EEB1849217D115640025530A /* SalesOrDoormanViewController.m in Sources */,
 				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
-				EEB1845817D114390025530A /* TXHBaseCollectionViewCell.m in Sources */,
 				EEB1845917D114390025530A /* TXHBaseDataEntryTableViewCell.m in Sources */,
 				3E3D46EE18ACBB8500275ACF /* UIColor+TicketingHub.m in Sources */,
+				3ED7561818BDD96500D8F60B /* TXHOrderManager.m in Sources */,
 				EEB1845A17D114390025530A /* TXHBaseDataEntryView.m in Sources */,
 				3EA36B8618B237BF008F8C59 /* UIView+Additions.m in Sources */,
 				EEB1845B17D114390025530A /* TXHCreditCardNumberView.m in Sources */,
@@ -1092,13 +1085,11 @@
 				EEB1847C17D114B30025530A /* TXHDoorGroupController.m in Sources */,
 				EEB1847D17D114B30025530A /* TXHDoorMainController.m in Sources */,
 				EEB1847E17D114B30025530A /* TXHDoorTimeController.m in Sources */,
-				EEB1846117D114390025530A /* TXHEmailCollectionViewCell.m in Sources */,
 				EEB1849017D115640025530A /* TXHEmbeddingSegue.m in Sources */,
 				EEB1847F17D114B30025530A /* TXHFlowLayout.m in Sources */,
 				EEB1848017D114B30025530A /* TXHGroupCell.m in Sources */,
 				EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */,
 				EEB1846317D114390025530A /* TXHQuantitySelectorViewController.m in Sources */,
-				EE75D98817D11048009ADCD8 /* TXHSalesCalendarViewController.m in Sources */,
 				EE75D98917D11048009ADCD8 /* TXHSalesCompletionViewController.m in Sources */,
 				EE75D98C17D11048009ADCD8 /* TXHSalesInformationDetailsViewController.m in Sources */,
 				EE75D98D17D11048009ADCD8 /* TXHSalesInformationHeader.m in Sources */,
@@ -1131,7 +1122,6 @@
 				3EC63E0818B3721600B091A0 /* TXHSalesStepAbstract.m in Sources */,
 				EE75D9A917D11048009ADCD8 /* TXHSalesWizardViewController.m in Sources */,
 				EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */,
-				EEB1846517D114390025530A /* TXHTextCollectionViewCell.m in Sources */,
 				EEB1846617D114390025530A /* TXHTextEntryTableViewCell.m in Sources */,
 				3ECE137418B63A6900E7148F /* NSDate+Additions.m in Sources */,
 				EEB1846717D114390025530A /* TXHTextEntryView.m in Sources */,

@@ -9,17 +9,15 @@
 #import "TXHSalesTicketTiersViewController.h"
 
 #import "TXHSalesTicketTierCell.h"
-#import "TXHTicketingHubManager.h"
 #import "TXHProductsManager.h"
-#import "TXHTicketingHubManager.h"
+#import "TXHOrderManager.h"
 
 @interface TXHSalesTicketTiersViewController () <UITextFieldDelegate, TXHSalesTicketTierCellDelegate>
 
 @property (assign, nonatomic, getter = isValid) BOOL valid;
 
+@property (strong, nonatomic) NSArray *tiers; // to keep tiers ordered
 @property (strong, nonatomic) TXHAvailability *availability;
-@property (strong, nonatomic) NSArray *tiers;
-@property (strong, nonatomic) NSDate *selectedDate;
 @property (strong, nonatomic) NSMutableDictionary *quantities;
 
 @end
@@ -133,14 +131,13 @@
 
 - (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
 {
-    [TXHTICKETINHGUBCLIENT reserveTicketsWithTierQuantities:self.quantities
-                                               availability:self.availability
-                                                 completion:^(TXHOrder *order, NSError *error) {
-                                                     
-                                                     NSLog(@"order: %@",order);
-                                                     
-                                                     blockName(nil);
-                                                 }];
+    [TXHORDERMANAGER reserveTicketsWithTierQuantities:self.quantities
+                                         availability:self.availability
+                                           completion:^(TXHOrder *order, NSError *error) {
+                                           
+                                               blockName(error);
+                                          
+                                           }];
     
 }
 @end

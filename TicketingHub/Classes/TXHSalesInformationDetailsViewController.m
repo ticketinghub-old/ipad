@@ -6,99 +6,40 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-/*
- {
-     "id": 4000,
-     "currency": "GBP",
-     "opt_out": false,
-     "expires_in": 600,
-     "total": 3400,
-     "commission": 200,
-     "customer": null,
-     "coupon": null,
-     "payment": null,
-     "products": [
-         {
-             "id": 3000,
-             "name": "Guide Book",
-             "description": "A detailed outline of the venue which you can read",
-             "price": 300,
-             "quantity": 2,
-             "errors": {}
-         }
-     ],
-     "tickets": [
-         {
-         "id": 7000,
-         "valid_from": "2013-05-27T07:00:00.000+01:00",
-         "expires_at": "2013-05-27T11:00:00.000+01:00",
-         "price": 800,
-         "commission": 50,
-         "voucher": null,
-         "upgrades": [],
-         "tier": {
-             "id": 2000,
-             "name": "Child",
-             "description": "Under 18 years old"
-         },
-         "errors": {}
-     },
-     {
-         "id": 7001,
-         "valid_from": "2013-05-27T07:00:00.000+01:00",
-         "expires_at": "2013-05-27T11:00:00.000+01:00",
-         "price": 800,
-         "commission": 50,
-         "voucher": null,
-         "upgrades": [],
-         "tier": {
-             "id": 2000,
-             "name": "Child",
-             "description": "Under 18 years old"
-         },
-         "errors": {}
-     },
-     {
-         "id": 7002,
-         "valid_from": "2013-05-27T07:00:00.000+01:00",
-         "expires_at": "2013-05-27T11:00:00.000+01:00",
-         "price": 1200,
-         "commission": 100,
-         "voucher": null,
-         "upgrades": [],
-         "tier": {
-             "id": 2001,
-             "name": "Adult",
-             "description": "18 years old or more"
-         },
-         "errors": {
-             "customer": [
-                 "can't be blank"
-             ]
-         }
-         }
-    ],
-    "errors": {}
- }
-
-*/
-
 #import "TXHSalesInformationDetailsViewController.h"
 
-#import "TXHEmailCollectionViewCell.h"
-#import "TXHTextCollectionViewCell.h"
 #import "TXHSalesInformationHeader.h"
 #import "TXHSalesInformationTextCell.h"
 
-@interface TXHSalesInformationDetailsViewController ()
+#import "TXHOrderManager.h"
+#import <iOS-api/TXHOrder.h>
+#import <iOS-api/TXHField.h>
+#import <iOS-api/TXHTicket.h>
+#import <iOS-api/TXHCustomer.h>
+
+@interface TXHSalesInformationDetailsViewController () <TXHSalesInformationTextCellDelegate>
+
+@property (readwrite, nonatomic, getter = isValid) BOOL valid;
+
+@property (nonatomic, strong) NSArray *ticketIds; // to keep data sorted
+@property (nonatomic, strong) NSDictionary *fields;
+
+@property (nonatomic, strong) NSMutableDictionary *userInput;
 
 @end
 
 @implementation TXHSalesInformationDetailsViewController
 
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self loadFields];
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShown:) name:UIKeyboardWillShowNotification object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -106,74 +47,108 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
 //    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)loadFields
+{
+    [self showLoadingIndicator];
+    
+    __weak typeof(self) wself = self;
+    
+    [TXHORDERMANAGER fieldsForCurrentOrderWithCompletion:^(NSDictionary *fields, NSError *error) {
+
+        wself.fields = fields;
+
+        
+        [wself hideLoadingIndicator];
+    }];
+    
+}
+
+#pragma mark accessors
+
+- (void)setFields:(NSDictionary *)fields
+{
+    _fields = fields;
+    
+    NSMutableArray *notEmpty = [NSMutableArray array];
+    
+    for (NSString *ticketID in fields)
+        if ([fields[ticketID] count])
+            [notEmpty addObject:ticketID];
+    
+    self.ticketIds = notEmpty;// [fields allKeys];
+    
+    self.userInput = [NSMutableDictionary dictionary];
+    for (NSString *ticketID in self.ticketIds)
+    {
+        self.userInput[ticketID] = [NSMutableDictionary dictionary];
+    }
+    
+    [self.collectionView reloadData];
+}
+
+#pragma mark UI
+
+- (void)showLoadingIndicator
+{
+
+}
+
+- (void)hideLoadingIndicator
+{
+    
 }
 
 #pragma mark - Collection View Datasource & Delegate methods
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 2;
+    return [self.ticketIds count];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#pragma unused (collectionView, section)
-    return 5;
+    return [self.fields[self.ticketIds[section]] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        TXHSalesInformationTextCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"temp" forIndexPath:indexPath];
-        switch (indexPath.row) {
-            case 0:
-                cell.ticket = @"First Name";
-                break;
-            case 1:
-                cell.ticket = @"Last Name";
-                [cell hasErrors:YES];
-                break;
-            case 2:
-                cell.ticket = @"Email";
-                break;
-            default:
-                cell.ticket = [NSString stringWithFormat:@"indexPath:{%d,%d}", indexPath.section, indexPath.row];
-                break;
-        }
-        return cell;
-    } else {
-        switch (indexPath.row) {
-            case 0: {
-                TXHTextCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"text" forIndexPath:indexPath];
-                cell.textField.placeholder = @"Placeholder Text";
-                cell.errorMessage = [NSString stringWithFormat:@"error %d", indexPath.row];
-                return cell;
-            }
-            case 1: {
-                TXHTextCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"email" forIndexPath:indexPath];
-                return cell;
-            }
-            default: {
-                TXHSalesInformationTextCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"temp" forIndexPath:indexPath];
-                cell.ticket = [NSString stringWithFormat:@"temp %d", indexPath.row];
-                return cell;
-            }
-        }
+    
+    TXHField *field = [self fieldForIndexPath:indexPath];
+    
+    UICollectionViewCell *cell;
+    
+    // TODO improve this shit
+    if ([field.inputType isEqualToString:@"select"])
+    {
+        TXHSalesInformationTextCell *selectCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"textCell" forIndexPath:indexPath];
+
+        cell = selectCell;
     }
+    else
+    {
+        TXHSalesInformationTextCell *textCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"textCell" forIndexPath:indexPath];
+        
+        textCell.delegate = self;
+        textCell.name = field.name;
+        textCell.placeholder = field.label;
+        textCell.text = indexPath.row > 0 ? @"TEXT text" : @"";
+        textCell.errorMessage = indexPath.row < 2 ? @"TEXT text" : @"";
+        
+        cell = textCell;
+    }
+    
+    return cell;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if (kind == UICollectionElementKindSectionHeader) {
         TXHSalesInformationHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"TXHSalesInformationHeader" forIndexPath:indexPath];
-        switch (indexPath.section) {
-            case 0:
-                header.tierTitle = [NSString stringWithFormat:@"Adult"];
-                break;
-            case 1:
-                header.tierTitle = [NSString stringWithFormat:@"Under 18"];
-                break;
-            default:
-                header.tierTitle = [NSString stringWithFormat:@"Section:%d", indexPath.section];
-                break;
-        }
+        
+        NSString *ticketID = [self ticketIdForIndexPath:indexPath];
+        TXHTicket *ticket = [TXHORDERMANAGER ticketFromOrderWithID:ticketID];
+        header.tierTitle = ticket.tier.name;
+       
         return header;
     } else if (kind == UICollectionElementKindSectionFooter) {
         UICollectionReusableView *footer = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"TXHSalesInformationFooter" forIndexPath:indexPath];
@@ -188,6 +163,70 @@
     [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
 }
 
+- (TXHField *)fieldForIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *ticketID = [self ticketIdForIndexPath:indexPath];
+    
+    return self.fields[ticketID][indexPath.item];
+}
+
+- (NSString *)ticketIdForIndexPath:(NSIndexPath *)indexPath
+{
+    return self.ticketIds[indexPath.section];
+}
+
+- (void)setUserInput:(NSString *)userInput withType:(NSString *)fieldType forTicketID:(NSString *)ticketID
+{
+    if ([userInput length])
+        self.userInput[ticketID][fieldType] = userInput;
+    else
+        [self.userInput removeObjectForKey:ticketID];
+    
+    
+    self.valid = [self hasAllfieldsFilled];
+}
+
+- (NSString *)userInputWithType:(NSString *)type forTicketID:(NSString *)ticketID
+{
+    return self.userInput[ticketID][type];
+}
+
+- (BOOL)hasAllfieldsFilled
+{
+    NSLog(@"%@",self.userInput);
+    
+    for (NSString *ticketID in self.ticketIds)
+    {
+        for (TXHField *field in self.fields[ticketID])
+        {
+            if (![[self userInputWithType:field.name forTicketID:ticketID] length])
+            {
+                return NO;
+            }
+        }
+    }
+    
+    return YES;
+}
+
+- (NSDictionary *)buildCustomersInfo
+{
+    NSMutableDictionary *infoDic = [NSMutableDictionary dictionary];
+    
+    for (NSString *ticketID in self.ticketIds)
+    {
+        NSMutableDictionary *customerDic = [NSMutableDictionary dictionary];
+        
+        for (TXHField *field in self.fields[ticketID])
+        {
+//            customerDic[field.name] = @"";//[self userInputWithType:field.name forTicketID:ticketID];
+        }
+        
+        infoDic[ticketID] = customerDic;
+    }
+    
+    return infoDic;
+}
 
 //#pragma mark - Keyboard notifications
 //
@@ -208,5 +247,39 @@
 //        [self.collectionView layoutIfNeeded];
 //    } completion:nil];
 //}
+
+#pragma mark - TXHSalesInformationTextCellDelegate
+
+- (void)txhSalesInformationTextCellDidChangeText:(TXHSalesInformationTextCell *)cell
+{
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    NSString *ticketId = [self ticketIdForIndexPath:indexPath];
+
+    [self setUserInput:cell.text withType:cell.name forTicketID:ticketId];
+}
+
+
+#pragma mark - TXHSalesContentsViewControllerProtocol
+
+- (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
+{
+    NSDictionary *customersInfo = [self buildCustomersInfo];
+    
+    [TXHORDERMANAGER updateOrderWithCustomersInfo:customersInfo
+                                       completion:^(TXHOrder *order, NSError *error) {
+                                           NSLog(@"%@",order);
+                                           
+                                           NSLog(@"%@",order.errors);
+                                           
+                                           for (TXHTicket *t in order.tickets)
+                                           {
+                                               NSLog(@"%@",t.errors);
+                                           }
+                                           
+                                           blockName([NSError errorWithDomain:@"" code:1 userInfo:nil]);
+                                       }];
+    
+}
+
 
 @end

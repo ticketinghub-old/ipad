@@ -18,25 +18,14 @@
 
 @implementation TXHDataEntryFieldErrorView
 
-- (id)initWithFrame:(CGRect)frame
+- (void)awakeFromNib
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self setup];
-    }
-    return self;
+    [super awakeFromNib];
+    [self setup];
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self setup];
-    }
-    return self;
-}
-
-- (void)setup {
-    // Set up the message to be inset horizontally, so that it doesn't obscure corner rounding (& cos it looks better inset a bit)
+- (void)setup
+{
     self.messageLabel = [[UILabel alloc] initWithFrame:CGRectInset(self.bounds, 8.0f, 0.0f)];
     
     self.messageLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -56,6 +45,7 @@
                             options:0
                             metrics:nil
                             views:viewsDictionary];
+    
     [self addConstraints:constraints];
 
     self.layer.cornerRadius = 5.0f;
@@ -72,12 +62,13 @@
     return self.messageLabel.text;
 }
 
-- (void)setMessage:(NSString *)message {
+- (void)setMessage:(NSString *)message
+{
     self.hidden = (message.length == 0);
     
-    if (self.hidden) {
+    if (self.hidden)
         return;
-    }
+    
     NSDictionary *attributesDict = @{NSFontAttributeName: self.messageLabel.font};
     NSAttributedString *attributedMessage = [[NSAttributedString alloc] initWithString:message attributes:attributesDict];
     CGSize size = [attributedMessage size];

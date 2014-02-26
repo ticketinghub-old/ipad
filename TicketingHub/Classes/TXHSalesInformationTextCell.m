@@ -12,14 +12,10 @@
 
 #import "TXHDataEntryFieldErrorView.h"
 
-@interface TXHSalesInformationTextCell ()
+@interface TXHSalesInformationTextCell () <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *detail;
-@property (weak, nonatomic) IBOutlet UITextField *detailField;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIView *backingView;
-
-@property (weak, nonatomic) IBOutlet UIView *errorView;
-@property (weak, nonatomic) IBOutlet UILabel *errorMessage;
 
 @property (weak, nonatomic) IBOutlet TXHDataEntryFieldErrorView *dataErrorView;
 
@@ -27,58 +23,112 @@
 
 @implementation TXHSalesInformationTextCell
 
-- (id)initWithFrame:(CGRect)frame
++ (UIColor *)errorBackgroundColor
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+    static UIColor *_errorBackgroundColor;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _errorBackgroundColor = [UIColor colorWithRed:255.0f / 255.0f
+                                                green:213.0f / 255.0f
+                                                 blue:216.0f / 255.0f
+                                                alpha:1.0f];
+    });
+    return _errorBackgroundColor;
 }
 
-- (void)setTicket:(NSString *)ticket {
-    self.detail.text = ticket;
-    self.detailField.placeholder = ticket;
-    
-    // Round corners of the backing view
-    self.backingView.layer.cornerRadius = 4.0f;
-    
-    // Round corners of the errorView
-    self.errorView.layer.cornerRadius = 5.0f;
++ (UIColor *)normalBackgroundColor
+{
+    static UIColor *_normalBackgroundColor;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _normalBackgroundColor = [UIColor colorWithRed:238.0f / 255.0f
+                                                 green:241.0f / 255.0f
+                                                  blue:243.0f / 255.0f
+                                                 alpha:1.0f];
+    });
+    return _normalBackgroundColor;
 }
 
-- (void)hasErrors:(BOOL)errors {
-    if (errors) {
-        UIColor *errorColor = [UIColor colorWithRed:255.0f / 255.0f
-                                              green:213.0f / 255.0f
-                                               blue:216.0f / 255.0f
-                                              alpha:1.0f];
-        self.backingView.backgroundColor = errorColor;
-        self.detailField.backgroundColor = errorColor;
-        self.detailField.textColor = [UIColor redColor];
-        self.detailField.text = @"Oh no - this is bad!";
-        
-        self.dataErrorView.message = @"A really really really long test error message";
-        
-    } else {
-        UIColor *normalColor = [UIColor colorWithRed:238.0f / 255.0f
-                                              green:241.0f / 255.0f
-                                               blue:243.0f / 255.0f
-                                              alpha:1.0f];
-        self.backingView.backgroundColor = normalColor;
-        self.detailField.backgroundColor = normalColor;
-        self.detailField.textColor = [UIColor colorWithRed:37.0f / 255.0f
-                                                     green:16.0f / 255.0f
-                                                      blue:87.0f / 255.0f
-                                                     alpha:1.0f];
-        self.detailField.text = @"Oh no - this is bad!";
-    }
++ (UIColor *)errorTextColor
+{
+    static UIColor *_errorTextColor;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _errorTextColor = [UIColor redColor];
+    });
+    return _errorTextColor;
+}
+
++ (UIColor *)normalTextColor
+{
+    static UIColor *_normalTextColor;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _normalTextColor = [UIColor colorWithRed:37.0f / 255.0f
+                                           green:16.0f / 255.0f
+                                            blue:87.0f / 255.0f
+                                           alpha:1.0f];
+    });
+    return _normalTextColor;
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    self.backingView.layer.cornerRadius = 4.0;
+    self.dataErrorView.layer.cornerRadius = 3.0;
+    
+    self.textField.delegate = self;
+}
+
+- (void)setPlaceholder:(NSString *)placeholder
+{
+    self.textField.placeholder = placeholder;
+}
+
+- (void)setText:(NSString *)text
+{
+    self.textField.text = text;
+}
+
+- (NSString *)text
+{
+    return self.textField.text;
+}
+
+- (void)setErrorMessage:(NSString *)errorMessage
+{
+    self.dataErrorView.message = errorMessage;
+    [self updateColors];
+}
+
+- (void)updateColors
+{
+    BOOL hasError = [self hasErrors];
+    
+    self.textField.backgroundColor   = hasError ? [[self class] errorBackgroundColor] : [[self class] normalBackgroundColor];
+    self.backingView.backgroundColor = self.textField.backgroundColor;
+    self.textField.textColor         = hasError ? [[self class] errorTextColor] : [[self class] normalTextColor];
+}
+
+- (BOOL)hasErrors
+{
+    return (self.dataErrorView.message.length > 0);
 }
 
 - (void)prepareForReuse {
     [super prepareForReuse];
+    
     self.dataErrorView.message = @"";
-    self.detailField.text = @"";
+    self.textField.text = @"";
+}
+
+#pragma mark UITextFieldDelegate
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self.delegate txhSalesInformationTextCellDidChangeText:self];
 }
 
 @end
