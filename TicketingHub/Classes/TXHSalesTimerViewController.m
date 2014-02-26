@@ -9,129 +9,118 @@
 #import "TXHSalesTimerViewController.h"
 
 #import "TXHSalesTimerViewController.h"
-#import "TXHTimeFormatter.h"
+#import "UIColor+TicketingHub.h"
+
+#import "RMDownloadIndicator.h"
 
 @interface TXHSalesTimerViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel     *titleLabel;
-//@property (weak, nonatomic) IBOutlet UILabel     *timeDisplay;
-//@property (weak, nonatomic) IBOutlet UIImageView *timerImage;
+@property (strong, nonatomic) RMDownloadIndicator *timerIndicator;
 
-//@property (strong, nonatomic) NSTimer      *timer;
-//@property (strong, nonatomic) NSDictionary *userInfo;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *timerLabel;
+
+@property (strong, nonatomic) NSDate *endDate;
+@property (strong, nonatomic) NSDate *starDate;
+
+@property (strong, nonatomic) NSTimer *timer;
 
 @end
 
 @implementation TXHSalesTimerViewController
-
-//- (void)dealloc {
-//    [self removeTimer];
-//}
 
 - (void)setTitleText:(NSString *)title
 {
     self.titleLabel.text = title;
 }
 
-- (void)viewDidLoad
+- (void)setTimerEndDate:(NSDate *)date
 {
-    [super viewDidLoad];
-    
-    // Set the image to be a template image
-//    self.timerImage.image = [[UIImage imageNamed:@"EmptyCircle"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-//    self.timerImage.tintColor = [UIColor greenColor];
-
-    // Initially the timer and payment selection are hidden
-//    [self resetPresentationAnimated:NO];
+    if (!date){
+        [self removeTimer];
+        self.endDate = nil;
+    }
+    else if (!self.endDate)
+    {
+        self.endDate = date;
+        [self addTimer];
+    }
+        
 }
 
-// TODO: hmmm...
-//- (NSDictionary *)userInfo {
-//    return @{ @"StartDate" : [NSDate date]};
-//}
+- (void)removeTimer
+{
+    [self.timerIndicator removeFromSuperview];
+    [self.timerLabel removeFromSuperview];
+    [self stopTimer];
+}
 
-//- (void)setStepTitle:(NSString *)stepTitle {
-//    _stepTitle = stepTitle;
-//    self.stepDescription.text = stepTitle;
-//}
-//
-//- (void)hideCountdownTimer:(BOOL)hidden {
-//    self.timerImage.hidden = hidden;
-//    self.timeDisplay.hidden = hidden;
-//    
-//    // If we are showing the timer, create one if needed
-//    if (hidden == NO) {
-//        if (self.timer == nil) {
-//            [self createTimer];
-//        }
-//    }
-//}
+- (void)stopTimer
+{
+    if (self.timer)
+    {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+}
 
-//- (void)stopCountdownTimer {
-//    [self removeTimer];
-//    [self hideCountdownTimer:YES];
-//}
+- (void)addTimer
+{
+    self.starDate = [NSDate date];
+    
+    NSTimer *timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    self.timer = timer;
 
-//- (void)createTimer {
-//    // Stop any previous timer that may have been active
-//    [self.timer invalidate];
-//    
-//    // If the duration is <= 0.0 there is no countdown left
-//    if (self.duration <= 0.0f) {
-//        return;
-//    }
-//    
-//    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.50f
-//                                                  target:self
-//                                                selector:@selector(timerFireMethod:)
-//                                                userInfo:[self userInfo]
-//                                                 repeats:YES];
-//}
+    [self addTimerLabel];
+    [self addTimerIndicator];
+    
+    [self timerFireMethod:timer];
+}
 
-//- (void)removeTimer {
-//    [self.timer invalidate];
-//    self.timer = nil;
-//}
+- (void)addTimerIndicator
+{
+    RMDownloadIndicator *timerIndicator = [[RMDownloadIndicator alloc]initWithFrame:CGRectMake(0, 0, 40, 40) type:kRMMixedIndictor];
+    timerIndicator.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
+    timerIndicator.center = CGPointMake(0 , self.view.height / 2.0);
+    timerIndicator.right = self.timerLabel.left - 10;
+    
+    [timerIndicator setBackgroundColor:self.view.backgroundColor];
+    [timerIndicator setFillColor:[UIColor txhDarkBlueColor]];
+    [timerIndicator setStrokeColor:[UIColor txhDarkBlueColor]];
+    [timerIndicator setRadiusPercent:0.45];
+    [self.view addSubview:timerIndicator];
+    [timerIndicator loadIndicator];
+    
+    self.timerIndicator = timerIndicator;
+}
 
-//- (void)timerFireMethod:(NSTimer *)theTimer {
-//    NSDate *startDate = [[theTimer userInfo] objectForKey:@"StartDate"];
-//    
-//    // Determine elapsed interval since the timer started
-//    NSTimeInterval elapsed = -[startDate timeIntervalSinceNow];
-//    
-//    // Determine how long there is to go
-//    NSTimeInterval timeLeft = self.duration - elapsed;
-//
-//    // If the timer has expired then notify whoever is concerned
-//    if (timeLeft < 0) {
-//        [[UIApplication sharedApplication] sendAction:@selector(orderExpiredWithSender:) to:nil from:self forEvent:nil];
-//        return;
-//    }
-//    
-//    UIColor *tintColor;
-//    // If we have < 5 seconds of the duration left turn indicator red
-//    if (timeLeft < 5.0f) {
-//        tintColor = [UIColor redColor];
-//    } else if (timeLeft < 10.0f) {
-//        // Calculate a tint colour going from orange to red
-//        CGFloat factor = timeLeft / 10.0f;
-//        CGFloat redComponent = 1.0f;
-//        CGFloat greenComponent = 0.50f * factor;
-//        tintColor = [UIColor colorWithRed:redComponent green:greenComponent blue:0.0f alpha:1.0f];
-//    } else {
-//        // Calculate a tint colour going from green to orange
-//        CGFloat factor = (MAX(0.0f, (timeLeft - 10.0f)) / (self.duration - 10.0f));
-//        CGFloat redComponent = (1.0f - factor);
-//        CGFloat greenComponent = (1.0f - (0.50f * (1 - factor)));
-//        tintColor = [UIColor colorWithRed:redComponent green:greenComponent blue:0.0f alpha:1.0f];
-//    }
-//    
-//    self.timerImage.tintColor = tintColor;
-//    if (timeLeft < 10.0f) {
-//        self.timeDisplay.textColor = tintColor;
-//    }
-//    self.timeDisplay.text = [TXHTimeFormatter stringFromTimeInterval:timeLeft];
-//}
+- (void)addTimerLabel
+{
+    UILabel *timerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 70, 30)];
+    timerLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
+    timerLabel.center = CGPointMake(0, self.view.height / 2.0);
+    timerLabel.right = self.view.width - 10;
+    
+    timerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:30];
+    timerLabel.textColor = [UIColor blackColor];
 
+    [self.view addSubview:timerLabel];
+    self.timerLabel = timerLabel;
+}
+
+- (void)timerFireMethod:(NSTimer *)tiemr
+{
+    NSTimeInterval total = [self.endDate timeIntervalSince1970] - [self.starDate timeIntervalSince1970];
+    NSTimeInterval current = [self.endDate timeIntervalSince1970] - [[NSDate date] timeIntervalSince1970];
+    
+    current = current > 0 ? current : 0;
+    
+    NSInteger minutes = floor((current/60));
+    NSInteger seconds = floor(current - (minutes * 60));
+    
+    self.timerLabel.text = [NSString stringWithFormat:@"%d:%d",minutes,seconds];
+    [self.timerIndicator updateWithTotalBytes:total downloadedBytes:total-current];
+}
 
 @end

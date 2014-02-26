@@ -16,6 +16,7 @@
 @interface TXHOrderManager ()
 
 @property (readwrite, strong, nonatomic) TXHOrder *order;
+@property (strong, nonatomic) NSDate *expirationDate;
 
 @end
 
@@ -33,14 +34,29 @@
     return _sharedManager;
 }
 
+
 #pragma mark accessors
 
 - (void)setOrder:(TXHOrder *)order
 {
+    if (!_order && order)
+    {
+        self.expirationDate = [[NSDate date] dateByAddingTimeInterval:60*10];
+    }
+    else if (!order)
+    {
+        self.expirationDate = nil;
+    }
+    
     _order = order;
 }
 
 #pragma mark public methods
+
+- (void)resetOrder
+{
+    self.order = nil;
+}
 
 - (TXHTicket *)ticketFromOrderWithID:(NSString *)ticketID
 {

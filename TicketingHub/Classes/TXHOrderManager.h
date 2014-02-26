@@ -13,8 +13,12 @@
 @interface TXHOrderManager : NSObject
 
 @property (readonly, nonatomic) TXHOrder *order;
+@property (readonly, nonatomic) NSDate *expirationDate;
+
 
 + (instancetype)sharedManager;
+
+- (void)resetOrder;
 
 - (TXHTicket *)ticketFromOrderWithID:(NSString *)ticketID;
 

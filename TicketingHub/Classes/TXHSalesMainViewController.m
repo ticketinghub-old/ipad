@@ -21,6 +21,7 @@
 // steps data
 #import "TXHSalesStepAbstract.h"
 #import "TXHSaleStepsManager.h"
+#import "TXHOrderManager.h"
 
 // defines
 #import "ProductListControllerNotifications.h"
@@ -31,8 +32,8 @@ static void * ContentValidContext = &ContentValidContext;
 
 @property (strong, nonatomic) TXHSalesWizardViewController           *wizardSteps;
 @property (strong, nonatomic) TXHSalesTimerViewController            *timeController;
-@property (strong, nonatomic) UIViewController<TXHSalesContentsViewControllerProtocol> *stepContentController;
 @property (strong, nonatomic) TXHSalesCompletionViewController       *stepCompletionController;
+@property (strong, nonatomic) UIViewController<TXHSalesContentsViewControllerProtocol> *stepContentController;
 
 @property (weak, nonatomic) IBOutlet UIView *contentsContainer;
 
@@ -96,9 +97,15 @@ static void * ContentValidContext = &ContentValidContext;
     
     [self performSegueWithIdentifier:@"Embed Step1" sender:self];
     
-    [self.stepsManager resetProcess];
+    [self resetData];
     
     [self registerForProductAndAvailabilityChanges];
+}
+
+- (void)resetData
+{
+    [TXHORDERMANAGER resetOrder];
+    [self.stepsManager resetProcess];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -160,12 +167,12 @@ static void * ContentValidContext = &ContentValidContext;
 
 - (void)productDidChange:(NSNotification *)note
 {
-    [self.stepsManager resetProcess];
+    [self resetData];
 }
 
 - (void)availabilityDidChange:(NSNotification *)note
 {
-    [self.stepsManager resetProcess];
+    [self resetData];
 }
 
 
@@ -185,7 +192,8 @@ static void * ContentValidContext = &ContentValidContext;
 {
     // update header
     [self.timeController setTitleText:step[kWizardStepTitleKey]];
-    
+    [self.timeController setTimerEndDate:[TXHORDERMANAGER expirationDate]];
+
     // update footer
     [self.stepCompletionController setContinueButtonEnabled:[self.stepsManager hasNextStep]];
     
@@ -206,7 +214,7 @@ static void * ContentValidContext = &ContentValidContext;
 - (void)salesCompletionViewControllerDidCancel:(TXHSalesCompletionViewController *)controller
 {
     //TODO: show alertview to confirm
-    [self.stepsManager resetProcess];
+    [self resetData];
 }
 
 - (void)salesCompletionViewControllerDidContinue:(TXHSalesCompletionViewController *)controller

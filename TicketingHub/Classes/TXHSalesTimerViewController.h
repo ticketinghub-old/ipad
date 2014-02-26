@@ -11,7 +11,8 @@
 @interface TXHSalesTimerViewController : UIViewController
 
 - (void)setTitleText:(NSString *)title;
-    
+
+- (void)setTimerEndDate:(NSDate *)date;
     
 
 @end
