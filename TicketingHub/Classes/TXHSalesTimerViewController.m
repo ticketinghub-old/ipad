@@ -80,7 +80,7 @@
 
 - (void)addTimerIndicator
 {
-    RMDownloadIndicator *timerIndicator = [[RMDownloadIndicator alloc]initWithFrame:CGRectMake(0, 0, 40, 40) type:kRMMixedIndictor];
+    RMDownloadIndicator *timerIndicator = [[RMDownloadIndicator alloc]initWithFrame:CGRectMake(0, 0, 35, 35) type:kRMMixedIndictor];
     timerIndicator.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
     timerIndicator.center = CGPointMake(0 , self.view.height / 2.0);
     timerIndicator.right = self.timerLabel.left - 10;
@@ -123,7 +123,7 @@
     NSInteger minutes = floor((current/60));
     NSInteger seconds = floor(current - (minutes * 60));
     
-    self.timerLabel.text = [NSString stringWithFormat:@"%d:%d",minutes,seconds];
+    self.timerLabel.text = [NSString stringWithFormat:@"%d:%.2d",minutes,seconds];
     [self.timerIndicator updateWithTotalBytes:total downloadedBytes:total-current];
 }
 
