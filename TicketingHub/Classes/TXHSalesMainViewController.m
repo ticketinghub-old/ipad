@@ -75,10 +75,6 @@ static void * ContentValidContext = &ContentValidContext;
                                                                        kWizardStepDescriptionKey : NSLocalizedString(@"Add ticket extras", @"Add ticket extras"),
                                                                        kWizardStepControllerSegueID : @"Tickets Upgrades"},
 
-                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"Products", @"Products"),
-                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"Optional extras", @"Optional extras"),
-                                                                       kWizardStepControllerSegueID : @"Extra Products"},
-
                                                                      @{kWizardStepTitleKey  : NSLocalizedString(@"Summary", @"Summary"),
                                                                        kWizardStepDescriptionKey : NSLocalizedString(@"Review the order", @"Review the order"),
                                                                        kWizardStepControllerSegueID : @"Order Summary"},
