@@ -14,7 +14,8 @@
 
 @interface TXHSalesProductDetailsViewController ()
 
-// A mutable collection of sections indicating their expanded status.
+@property (readwrite, nonatomic, getter = isValid) BOOL valid;
+
 @property (strong, nonatomic) NSMutableDictionary *sections;
 
 @end
