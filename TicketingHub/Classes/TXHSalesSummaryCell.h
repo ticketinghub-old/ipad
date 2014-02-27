@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+//TODO: this cell should be datasource based
+
 @interface TXHSalesSummaryCell : UICollectionViewCell
+
+@property (nonatomic, weak) TXHTicket *ticket;
 
 @end

@@ -385,7 +385,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XG3-ih-neg">
-                                    <rect key="frame" x="0.0" y="59" width="1024" height="1"/>
+                                    <rect key="frame" x="30" y="59" width="994" height="1"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.97647058819999999" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
@@ -413,7 +413,7 @@
                                 <constraint firstAttribute="bottom" secondItem="XG3-ih-neg" secondAttribute="bottom" id="I7z-sL-7v6"/>
                                 <constraint firstAttribute="trailing" secondItem="Gtb-e9-kFB" secondAttribute="trailing" constant="20" symbolic="YES" id="LWN-gD-83L"/>
                                 <constraint firstAttribute="trailing" secondItem="XG3-ih-neg" secondAttribute="trailing" id="NSQ-pr-gLg"/>
-                                <constraint firstItem="XG3-ih-neg" firstAttribute="leading" secondItem="LVF-vc-xeM" secondAttribute="leading" id="Tgf-re-hv3"/>
+                                <constraint firstItem="XG3-ih-neg" firstAttribute="leading" secondItem="LVF-vc-xeM" secondAttribute="leading" constant="30" id="Tgf-re-hv3"/>
                                 <constraint firstAttribute="centerY" secondItem="GSh-Iy-1cH" secondAttribute="centerY" id="WK1-Gn-oPu"/>
                                 <constraint firstAttribute="centerY" secondItem="Gtb-e9-kFB" secondAttribute="centerY" id="oM2-cE-On8"/>
                                 <constraint firstItem="GSh-Iy-1cH" firstAttribute="leading" secondItem="LVF-vc-xeM" secondAttribute="leading" constant="20" id="xhF-zp-eKR"/>
@@ -554,18 +554,18 @@
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="Bdl-uy-lHm">
                             <size key="itemSize" width="440" height="112"/>
                             <size key="headerReferenceSize" width="723" height="50"/>
-                            <size key="footerReferenceSize" width="723" height="10"/>
-                            <inset key="sectionInset" minX="0.0" minY="1" maxX="183" maxY="1"/>
+                            <size key="footerReferenceSize" width="723" height="1"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="183" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TXHSalesSummaryCell" id="i9V-a8-ntO" customClass="TXHSalesSummaryCell">
-                                <rect key="frame" x="0.0" y="51" width="440" height="112"/>
+                                <rect key="frame" x="0.0" y="50" width="440" height="112"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="440" height="112"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="24" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Mf2-sg-b3J">
+                                        <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="24" sectionHeaderHeight="27" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Mf2-sg-b3J">
                                             <rect key="frame" x="208" y="0.0" width="232" height="112"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -574,7 +574,7 @@
                                             </constraints>
                                             <prototypes>
                                                 <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SalesSummaryLineHeader" textLabel="oZo-Yj-vNg" style="IBUITableViewCellStyleDefault" id="dAx-eg-4t9">
-                                                    <rect key="frame" x="0.0" y="22" width="232" height="24"/>
+                                                    <rect key="frame" x="0.0" y="27" width="232" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dAx-eg-4t9" id="TKc-7v-bZq">
                                                         <rect key="frame" x="0.0" y="0.0" width="232" height="24"/>
@@ -591,7 +591,7 @@
                                                     </tableViewCellContentView>
                                                 </tableViewCell>
                                                 <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SalesSummaryLine" textLabel="mKQ-ZB-Ibn" detailTextLabel="2HA-MK-twg" style="IBUITableViewCellStyleValue1" id="S1S-hp-hmX">
-                                                    <rect key="frame" x="0.0" y="46" width="232" height="24"/>
+                                                    <rect key="frame" x="0.0" y="51" width="232" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S1S-hp-hmX" id="5kc-3A-Zt7">
                                                         <rect key="frame" x="0.0" y="0.0" width="232" height="24"/>
@@ -647,9 +647,15 @@
                                     <constraint firstAttribute="bottom" secondItem="Mf2-sg-b3J" secondAttribute="bottom" id="VPl-kI-khK"/>
                                     <constraint firstItem="Mf2-sg-b3J" firstAttribute="top" secondItem="i9V-a8-ntO" secondAttribute="top" id="vTT-bw-4Sj"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="ticketHeaderLabel" destination="450-8g-UhG" id="aGl-Vy-dWg"/>
+                                    <outlet property="ticketNameLabel" destination="2bt-7e-uQJ" id="nIB-pk-VwP"/>
+                                    <outlet property="ticketPriceLabel" destination="bFV-at-tjT" id="3Jl-OY-HZ5"/>
+                                    <outlet property="upgradesTableView" destination="Mf2-sg-b3J" id="3Sp-yo-S0d"/>
+                                </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TXHSalesSummaryExtraProductsCell" id="fcF-SV-RAO" customClass="TXHSalesSummaryExtraProductsCell">
-                                <rect key="frame" x="440" y="51" width="237" height="112"/>
+                                <rect key="frame" x="440" y="50" width="237" height="112"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="237" height="112"/>
@@ -746,11 +752,11 @@
                             </connections>
                         </collectionReusableView>
                         <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TXHSalesUpgradeFooter" id="hZh-5X-O1X">
-                            <rect key="frame" x="0.0" y="164" width="1024" height="10"/>
+                            <rect key="frame" x="0.0" y="162" width="1024" height="1"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7GU-gZ-dRA">
-                                    <rect key="frame" x="0.0" y="1" width="1024" height="1"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="1"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -761,7 +767,7 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="7GU-gZ-dRA" secondAttribute="trailing" id="BUU-Ex-ovA"/>
                                 <constraint firstItem="7GU-gZ-dRA" firstAttribute="leading" secondItem="hZh-5X-O1X" secondAttribute="leading" id="osR-Aj-79Z"/>
-                                <constraint firstItem="7GU-gZ-dRA" firstAttribute="top" secondItem="hZh-5X-O1X" secondAttribute="top" constant="1" id="qnf-Qo-rai"/>
+                                <constraint firstItem="7GU-gZ-dRA" firstAttribute="top" secondItem="hZh-5X-O1X" secondAttribute="top" id="qnf-Qo-rai"/>
                             </constraints>
                         </collectionReusableView>
                         <connections>
