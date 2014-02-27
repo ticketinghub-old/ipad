@@ -186,8 +186,7 @@
         self.userInput[ticketID][fieldType] = userInput;
     }
     else
-        [self.userInput removeObjectForKey:ticketID];
-    
+        [self.userInput[ticketID] removeObjectForKey:fieldType];
     
     self.valid = [self hasAllfieldsFilled];
 }

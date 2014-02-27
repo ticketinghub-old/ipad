@@ -131,4 +131,12 @@
     [self.delegate txhSalesInformationTextCellDidChangeText:self];
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    [textField setText:[textField.text stringByReplacingCharactersInRange:range withString:string]];
+    [self.delegate txhSalesInformationTextCellDidChangeText:self];
+    
+    return NO;
+}
+
 @end
