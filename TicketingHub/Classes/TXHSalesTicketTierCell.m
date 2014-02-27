@@ -9,7 +9,6 @@
 #import "TXHSalesTicketTierCell.h"
 
 #import "TXHProductsManager.h"
-#import <iOS-api/TXHTier+PriceFormatter.h>
 
 @interface TXHSalesTicketTierCell ()
 

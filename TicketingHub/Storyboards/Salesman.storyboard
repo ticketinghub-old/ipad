@@ -189,6 +189,9 @@
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="T0G-a3-rT4" id="P84-XA-l3P"/>
+                                    </connections>
                                 </textField>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coupon Code" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56B-3j-L2o">
                                     <rect key="frame" x="20" y="19" width="119" height="23"/>
@@ -302,6 +305,9 @@
                             <outlet property="delegate" destination="T0G-a3-rT4" id="P7e-Bp-MYm"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="couponTextField" destination="cVv-Jb-O6g" id="yUb-on-wkK"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S9w-b7-Ge4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

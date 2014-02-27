@@ -12,13 +12,21 @@
 #import "TXHProductsManager.h"
 #import "TXHOrderManager.h"
 
+#import "TXHProductsManager.h"
+#import "TXHTicketingHubManager.h"
+
 @interface TXHSalesTicketTiersViewController () <UITextFieldDelegate, TXHSalesTicketTierCellDelegate>
+
+@property (assign, nonatomic) BOOL checkingCoupon;
+
+@property (weak, nonatomic) IBOutlet UITextField *couponTextField;
 
 @property (assign, nonatomic, getter = isValid) BOOL valid;
 
 @property (strong, nonatomic) NSArray *tiers; // to keep tiers ordered
 @property (strong, nonatomic) TXHAvailability *availability;
 @property (strong, nonatomic) NSMutableDictionary *quantities;
+
 
 @end
 
@@ -55,7 +63,37 @@
     
     self.tiers = [availability.tiers allObjects];
     
+    self.couponTextField.text = availability.coupon;
+    
     [self.tableView reloadData];
+}
+
+- (void)setCheckingCoupon:(BOOL)checkingCoupon
+{
+    _checkingCoupon = checkingCoupon;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (checkingCoupon)
+        {
+            [self showLoadingIndicator];
+        }
+        else
+        {
+            [self hideLoadingIndicator];
+        }
+    });
+}
+
+#pragma mark - private methods
+
+- (void)showLoadingIndicator
+{
+    
+}
+
+- (void)hideLoadingIndicator
+{
+    
 }
 
 #pragma mark - Table view data source
@@ -93,6 +131,40 @@
         [self.quantities setObject:dic[key] forKey:key];
     }
     self.valid = [self hasQuantitiesSelected];
+}
+
+- (void)updateWithCoupon:(NSString *)couponString
+{
+    __block typeof(self) wself = self;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSDate *date = [dateFormat dateFromString:[[TXHPRODUCTSMANAGER selectedAvailability] dateString]];
+    
+    self.checkingCoupon = YES;
+    
+    [TXHTICKETINHGUBCLIENT availabilitiesForProduct:[TXHPRODUCTSMANAGER selectedProduct]
+                                           fromDate:date
+                                             toDate:nil
+                                             coupon:couponString
+                                         completion:^(NSArray *availabilities, NSError *error) {
+                                             
+                                             TXHAvailability *availability = [TXHPRODUCTSMANAGER selectedAvailability];
+
+                                             for (TXHAvailability *newAvilability in availabilities)
+                                             {
+                                                 if ([newAvilability.dateString isEqualToString:[availability dateString]] &&
+                                                     [newAvilability.timeString isEqualToString:[availability timeString]])
+                                                 {
+                                                     newAvilability.coupon = couponString;
+                                                     [TXHPRODUCTSMANAGER setSelectedAvailability:newAvilability];
+                                                     break;
+                                                 }
+                                             }
+                                             
+                                             wself.checkingCoupon = NO;
+
+                                             }];
 }
 
 #pragma mark - validation
@@ -140,4 +212,18 @@
                                            }];
     
 }
+
+#pragma mark - UITextFieldDelegat
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+
+    if ([textField.text length])
+    {
+        [self updateWithCoupon:textField.text];
+    }
+    
+    return YES;
+}
+
 @end

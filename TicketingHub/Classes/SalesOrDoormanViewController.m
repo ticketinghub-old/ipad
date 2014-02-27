@@ -167,6 +167,7 @@
     [TXHTICKETINHGUBCLIENT availabilitiesForProduct:[TXHPRODUCTSMANAGER selectedProduct]
                                            fromDate:date
                                              toDate:nil
+                                             coupon:nil
                                          completion:^(NSArray *availabilities, NSError *error) {
                                              
                                              for (TXHAvailability *newAvilability in availabilities)
@@ -174,7 +175,7 @@
                                                  if ([newAvilability.dateString isEqualToString:[availability dateString]] &&
                                                      [newAvilability.timeString isEqualToString:[availability timeString]])
                                                  {
-                                                     [TXHPRODUCTSMANAGER setSelectedAvailability:availability];
+                                                     [TXHPRODUCTSMANAGER setSelectedAvailability:newAvilability];
                                                      break;
                                                  }
                                              }
@@ -236,6 +237,7 @@
         [TXHTICKETINHGUBCLIENT availabilitiesForProduct:self.selectedProduct
                                                fromDate:[NSDate date]
                                                  toDate:[[NSDate date] dateByAddingDays:60]
+                                                 coupon:nil
                                              completion:^(NSArray *availabilities, NSError *error) {
                                                  [wself selectFirstAvailabilitiesFrom:availabilities];
                                              }];

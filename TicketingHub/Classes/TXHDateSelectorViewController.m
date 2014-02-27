@@ -121,6 +121,7 @@
     [TXHTICKETINHGUBCLIENT availabilitiesForProduct:[TXHPRODUCTSMANAGER selectedProduct]
                                            fromDate:startDate
                                              toDate:lastDate
+                                             coupon:nil
                                          completion:^(NSArray *availabilities, NSError *error) {
                                              
                                              if (error)
