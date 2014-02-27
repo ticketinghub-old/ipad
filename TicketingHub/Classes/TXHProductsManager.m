@@ -10,6 +10,7 @@
 
 #import "TXHTicketingHubManager.h"
 #import "NSDate+Additions.h"
+#import <iOS-api/TXHNumberFormatterCache.h>
 
 // Declaration of strings declared in ProductListControllerNotifications.h
 NSString * const TXHProductChangedNotification      = @"TXHProductChangedNotification";
@@ -56,6 +57,22 @@ NSString * const TXHSelectedAvailability            = @"TXHSelectedProduct";
     
     return fetchedResultsController;
 }
+
+- (NSString *)priceStringForPrice:(NSNumber *)price
+{
+    if (price == nil)
+        return nil;
+    
+    if ([price isEqualToNumber:@0])
+        return @"Free";
+    
+    TXHSupplier *suplier = self.selectedProduct.supplier;
+    NSNumberFormatter *formatter = [TXHNUMBERFORMATTERCACHE formatterForSuplier:suplier];
+    
+    return [formatter stringFromNumber:@([price integerValue] / 100)];
+}
+
+#pragma mark - accessors
 
 - (void)setSelectedProduct:(TXHProduct *)selectedProduct
 {

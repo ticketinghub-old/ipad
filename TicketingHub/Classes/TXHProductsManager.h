@@ -21,4 +21,6 @@
 + (instancetype)sharedManager;
 + (NSFetchedResultsController *)productsFetchedResultsController;
 
+- (NSString *)priceStringForPrice:(NSNumber *)price;
+
 @end
