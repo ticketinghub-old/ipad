@@ -33,7 +33,7 @@
 
 -(void)setItems:(id)items
 {
-    self.items = items;
+    _items = items;
     self.tableViewDataSource = [self dataSourceForItems:items
                                      configureCellBlock:^(id cell, id item) {
                                          [self configureCell:cell withItem:item];
