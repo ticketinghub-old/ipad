@@ -22,19 +22,26 @@ extern NSString * const TXHOrderDidExpireNotification;
 
 - (void)resetOrder;
 
-- (TXHTicket *)ticketFromOrderWithID:(NSString *)ticketID;
+// helpers
 
+- (TXHTicket *)ticketFromOrderWithID:(NSString *)ticketID;
 - (NSDictionary *)customerErrorsForTicketId:(NSString *)ticketId;
 
-// fething data
+// reserving tickets
 
-- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities
-                            availability:(TXHAvailability *)availability
-                              completion:(void(^)(TXHOrder *order, NSError *error))completion;
+- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability completion:(void(^)(TXHOrder *order, NSError *error))completion;
+
+
+// fields (customers info)
 
 - (void)fieldsForCurrentOrderWithCompletion:(void(^)(NSDictionary *fields, NSError *error))completion;
-
 - (void)updateOrderWithCustomersInfo:(NSDictionary *)customersInfo completion:(void (^)(TXHOrder *, NSError *))completion;
+
+
+// upgrades
+
+- (void)upgradesForCurrentOrderWithCompletion:(void(^)(NSDictionary *upgrades, NSError *error))completion;
+- (void)updateOrderWithUpgradesInfo:(NSDictionary *)upgradesInfo completion:(void (^)(TXHOrder *order, NSError *error))completion;
 
 
 @end

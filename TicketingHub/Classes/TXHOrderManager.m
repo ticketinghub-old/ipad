@@ -178,12 +178,67 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
     });
 }
 
+- (void)upgradesForCurrentOrderWithCompletion:(void(^)(NSDictionary *upgrades, NSError *error))completion
+{
+    __weak typeof(self) wself = self;
+    __block NSError *bError;
+    __block NSMutableDictionary *upgradesDictionary = [NSMutableDictionary dictionary];
+    __block NSInteger loadedItems = 0;
+    NSInteger itemsToLoad = [self.order.tickets count];
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for (TXHTicket *ticket in wself.order.tickets)
+        {
+            [TXHTICKETINHGUBCLIENT upgradesForTicket:ticket completion:^(NSArray *upgrades, NSError *error) {
+                upgradesDictionary[ticket.ticketId] = upgrades;
+                loadedItems++;
+                
+                if (error) // any error should be enough
+                    bError = error;
+                
+                if (loadedItems == itemsToLoad)
+                    dispatch_semaphore_signal(semaphore);
+    
+            }];
+        }
+        
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        
+        if (completion)
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(upgradesDictionary, bError);
+            });
+        }
+    });
+}
+
+
 - (void)updateOrderWithCustomersInfo:(NSDictionary *)customersInfo completion:(void (^)(TXHOrder *order, NSError *error))completion
 {
     __weak typeof(self) wself = self;
     
     [TXHTICKETINHGUBCLIENT updateOrder:self.order
                      withCustomersInfo:customersInfo
+                            completion:^(TXHOrder *order, NSError *error) {
+                                if (order)
+                                {
+                                    wself.order = order;
+                                }
+                                
+                                if (completion)
+                                    completion(order,error);
+                            }];
+}
+
+- (void)updateOrderWithUpgradesInfo:(NSDictionary *)upgradesInfo completion:(void (^)(TXHOrder *order, NSError *error))completion
+{
+    __weak typeof(self) wself = self;
+    
+    [TXHTICKETINHGUBCLIENT updateOrder:self.order
+                      withUpgradesInfo:upgradesInfo
                             completion:^(TXHOrder *order, NSError *error) {
                                 if (order)
                                 {
