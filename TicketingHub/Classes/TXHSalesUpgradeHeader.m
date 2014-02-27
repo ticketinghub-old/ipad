@@ -58,25 +58,29 @@
     return self.headerTitle.attributedText;
 }
 
--(void)setTicketTitle:(NSAttributedString *)ticketTitle {
-    NSAttributedString *title = ticketTitle;
-    CGSize size = [title size];
-    CGRect bounds = self.headerTitle.bounds;
-    bounds.size = size;
-    self.headerTitle.bounds = bounds;
-    self.headerTitle.attributedText = ticketTitle;
-    [self layoutIfNeeded];
+-(void)setTicketTitle:(NSString *)ticketTitle {
+//    NSAttributedString *title = ticketTitle;
+//    CGSize size = [title size];
+//    CGRect bounds = self.headerTitle.bounds;
+//    bounds.size = size;
+//    self.headerTitle.bounds = bounds;
+//    self.headerTitle.attributedText = ticketTitle;
+//    [self layoutIfNeeded];
+    
+    self.headerTitle.text = ticketTitle;
 }
 
-- (void)setIsExpanded:(BOOL)isExpanded {
-    _isExpanded = isExpanded;
-    self.expandedCollapsedImageView.image = isExpanded ? self.collapseImage : self.expandImage;
+- (void)setExpanded:(BOOL)expanded {
+    _expanded = expanded;
+    self.expandedCollapsedImageView.image = expanded ? self.collapseImage : self.expandImage;
 }
 
-- (void)toggleMode:(UITapGestureRecognizer *)gesture {
-    if (gesture.state == UIGestureRecognizerStateEnded) {
-        self.isExpanded = !self.isExpanded;
-        [[UIApplication sharedApplication] sendAction:@selector(toggleSection:) to:nil from:self forEvent:nil];
+- (void)toggleMode:(UITapGestureRecognizer *)gesture
+{
+    if (gesture.state == UIGestureRecognizerStateEnded)
+    {
+        self.expanded = !self.expanded;
+        [self.delegate txhSalesUpgradeHeaderIsExpandedDidChange:self];
     }
 }
 

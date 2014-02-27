@@ -13,87 +13,89 @@
 @property (weak, nonatomic) IBOutlet UILabel *upgradeNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *upgradePriceLabel;
 @property (weak, nonatomic) IBOutlet UITextView *upgradeDescriptionTextView;
-@property (weak, nonatomic) IBOutlet UIImageView *selectedImageView;
 
-@property (strong, nonatomic) UIImage *selectedImage;
-@property (strong, nonatomic) UIImage *unselectedImage;
+@property (weak, nonatomic) IBOutlet UIView *emptyCircleView;
+@property (weak, nonatomic) IBOutlet UIImageView *selectedImageView;
 
 @end
 
 @implementation TXHSalesUpgradeCell
 
-- (id)initWithFrame:(CGRect)frame
+- (void)awakeFromNib
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self setup];
-    }
-    return self;
+    [super awakeFromNib];
+
+    [self setup];
+    
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self setup];
-    }
-    return self;
+- (void)setup
+{
+    [self setupEmptyCircle];
 }
 
-- (void)setup {
-    self.selectedImage = [UIImage imageNamed:@"item-check"];
-    self.unselectedImage = [[UIImage imageNamed:@"EmptyCircle"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.selectedImageView.image = self.unselectedImage;
-
-    // add a gesture recogniser to handle toggling between selected & unselected
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleSelected:)];
-    [self addGestureRecognizer:tapGesture];
+- (void)setupEmptyCircle
+{
+    self.emptyCircleView.layer.cornerRadius = self.emptyCircleView.width * 0.5;
+    self.emptyCircleView.layer.borderWidth = 1.5;
+    self.emptyCircleView.layer.borderColor = [UIColor lightGrayColor].CGColor;
 }
 
-- (NSString *)upgradeDescription {
+
+#pragma mark accessors
+
+- (NSString *)upgradeDescription
+{
     return self.upgradeDescriptionTextView.text;
 }
 
-- (void)setUpgradeDescription:(NSString *)upgradeDescription {
+
+- (void)setUpgradeDescription:(NSString *)upgradeDescription
+{
+    self.upgradeDescriptionTextView.selectable = YES;
     self.upgradeDescriptionTextView.text = upgradeDescription;
+    self.upgradeDescriptionTextView.selectable = NO;
 }
 
-- (NSString *)upgradeName {
+
+- (NSString *)upgradeName
+{
     return self.upgradeNameLabel.text;
 }
 
-- (void)setUpgradeName:(NSString *)upgradeName {
+
+- (void)setUpgradeName:(NSString *)upgradeName
+{
     self.upgradeNameLabel.text = upgradeName;
 }
 
-- (void)setUpgradePrice:(NSNumber *)upgradePrice {
-    _upgradePrice = upgradePrice;
-    if (upgradePrice.doubleValue == 0.0f) {
-        self.upgradePriceLabel.text = @"Free";
-    } else {
-        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        // TODO: Currency ultimately comes from the venue for which the order is placed
-        formatter.currencyCode = @"GBP";
-        formatter.numberStyle = kCFNumberFormatterCurrencyStyle;
-        self.upgradePriceLabel.text = [formatter stringFromNumber:upgradePrice];
-    }
+
+- (NSString *)upgradePrice
+{
+    return self.upgradePriceLabel.text;
 }
 
-- (void)setIsSelected:(BOOL)isSelected {
-    _isSelected = isSelected;
-    self.selectedImageView.image = isSelected ? self.selectedImage : self.unselectedImage;
+
+- (void)setUpgradePrice:(NSString *)upgradePrice
+{
+    self.upgradePriceLabel.text = upgradePrice;
 }
 
-- (void)prepareForReuse {
+
+- (void)setChosen:(BOOL)chosen
+{
+    chosen = chosen;
+    self.selectedImageView.alpha = chosen ? 1.0 : 0.0;
+}
+
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    
     self.upgradeDescriptionTextView.text = @"";
-    self.upgradeNameLabel.text = @"";
-    self.upgradePriceLabel.text = @"";
-    self.selectedImageView.image = self.unselectedImage;
-}
-
-- (void)toggleSelected:(UITapGestureRecognizer *)gesture {
-    if (gesture.state == UIGestureRecognizerStateEnded) {
-        self.isSelected = !self.isSelected;
-    }
+    self.upgradeNameLabel.text           = @"";
+    self.upgradePriceLabel.text          = @"";
+    self.chosen                          = NO;
 }
 
 @end

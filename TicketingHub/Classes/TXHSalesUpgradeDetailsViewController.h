@@ -10,8 +10,7 @@
 
 @interface TXHSalesUpgradeDetailsViewController : UICollectionViewController
 
-@property (assign, nonatomic, getter = isValid) BOOL valid;
-
+@property (readonly, nonatomic, getter = isValid) BOOL valid;
 
 @end
 
