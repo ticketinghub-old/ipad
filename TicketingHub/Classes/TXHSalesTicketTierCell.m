@@ -8,48 +8,49 @@
 
 #import "TXHSalesTicketTierCell.h"
 
+#import "TXHProductsManager.h"
 #import <iOS-api/TXHTier+PriceFormatter.h>
 
 @interface TXHSalesTicketTierCell ()
 
-@property (weak, nonatomic) IBOutlet UILabel *tierName;
-@property (weak, nonatomic) IBOutlet UITextView *tierDescription;
-@property (weak, nonatomic) IBOutlet UILabel *price;
+@property (weak, nonatomic) IBOutlet UILabel     *tierName;
+@property (weak, nonatomic) IBOutlet UITextView  *tierDescription;
+@property (weak, nonatomic) IBOutlet UILabel     *price;
 @property (weak, nonatomic) IBOutlet UITextField *quantity;
-@property (weak, nonatomic) IBOutlet UIStepper *stepper;
+@property (weak, nonatomic) IBOutlet UIStepper   *stepper;
 
 @end
 
 @implementation TXHSalesTicketTierCell
 
-- (void)setTier:(TXHTier *)tier {
+- (void)setTier:(TXHTier *)tier
+{
     _tier = tier;
     [self configureTierDetails];
     [self layoutIfNeeded];
 }
 
-- (void)configureTierDetails {
-    self.tierName.text = self.tier.name;
-    self.tierDescription.text = self.tier.tierDescription;
+- (void)configureTierDetails
+{
+    self.tierName.text         = self.tier.name;
+    self.tierDescription.text  = self.tier.tierDescription;
     self.quantity.keyboardType = UIKeyboardTypeNumberPad;
-    // TODO: this is bad after changing to to many relationship
-    self.price.text = [self.tier priceStringForProduct:[(TXHAvailability *)[self.tier.availabilities anyObject] product]];
+    self.price.text            = [TXHPRODUCTSMANAGER priceStringForPrice:self.tier.price];
 }
 
-- (void)quantityDidChange {
-    if (self.quantityChangedHandler) {
+- (void)quantityDidChange
+{
+    if (self.quantityChangedHandler)
         self.quantityChangedHandler(@{self.tier.internalTierId : [NSNumber numberWithInteger:self.quantity.text.integerValue]});
-    }
 }
 
 #pragma mark - Quantity Value Changed action
-- (IBAction)quantityChanged:(id)sender {
+- (IBAction)quantityChanged:(id)sender
+{
     NSInteger maxValue = [self.delegate maximumQuantityForTier:self.tier];
     
     NSUInteger quantity = [self.quantity.text integerValue];
-    if (quantity > maxValue) {
-        quantity = maxValue;
-    }
+    quantity = quantity > maxValue ? maxValue : quantity;
     self.stepper.value = quantity;
     self.quantity.text = [NSString stringWithFormat:@"%d", quantity];
     [self quantityDidChange];
@@ -58,7 +59,8 @@
 
 #pragma mark - Stepper Value Changed action
 
-- (IBAction)stepChanged:(id)sender {
+- (IBAction)stepChanged:(id)sender
+{
     UIStepper *stepper = sender;
     [self.quantity setText:[NSString stringWithFormat:@"%.0f", stepper.value]];
     [self quantityChanged:sender];
