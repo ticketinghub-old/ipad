@@ -10,6 +10,6 @@
 
 @interface TXHSalesTicketTiersViewController : UITableViewController
 
-@property (nonatomic, readonly, getter = isValid) BOOL valid;
+@property (readonly, readonly, getter = isValid) BOOL valid;
 
 @end
