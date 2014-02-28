@@ -207,6 +207,11 @@
                                          availability:self.availability
                                            completion:^(TXHOrder *order, NSError *error) {
                                            
+                                               if (error)
+                                               {
+                                                   // TODO: handle error
+                                               }
+                                               
                                                blockName(error);
                                           
                                            }];

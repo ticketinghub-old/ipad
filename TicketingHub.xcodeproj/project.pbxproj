@@ -24,6 +24,7 @@
 		3ECE132418B4C8A800E7148F /* TXHProductsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE132318B4C8A800E7148F /* TXHProductsManager.m */; };
 		3ECE137418B63A6900E7148F /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE137318B63A6900E7148F /* NSDate+Additions.m */; };
 		3ECE137718B689CE00E7148F /* NSDate+CupertinoYankee.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE137618B689CE00E7148F /* NSDate+CupertinoYankee.m */; };
+		3ECE452C18C0B57F00DD1F7B /* AFNetworkActivityLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE452B18C0B57F00DD1F7B /* AFNetworkActivityLogger.m */; };
 		3ED7561818BDD96500D8F60B /* TXHOrderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7561718BDD96500D8F60B /* TXHOrderManager.m */; };
 		4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */; };
 		4D586DE11797E51E00E40534 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D586DE01797E51E00E40534 /* Images.xcassets */; };
@@ -149,6 +150,8 @@
 		3ECE137318B63A6900E7148F /* NSDate+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Additions.m"; sourceTree = "<group>"; };
 		3ECE137518B689CE00E7148F /* NSDate+CupertinoYankee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CupertinoYankee.h"; sourceTree = "<group>"; };
 		3ECE137618B689CE00E7148F /* NSDate+CupertinoYankee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CupertinoYankee.m"; sourceTree = "<group>"; };
+		3ECE452A18C0B57F00DD1F7B /* AFNetworkActivityLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityLogger.h; sourceTree = "<group>"; };
+		3ECE452B18C0B57F00DD1F7B /* AFNetworkActivityLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityLogger.m; sourceTree = "<group>"; };
 		3ED7561618BDD96500D8F60B /* TXHOrderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHOrderManager.h; path = TicketingHub/Classes/TXHOrderManager.h; sourceTree = SOURCE_ROOT; };
 		3ED7561718BDD96500D8F60B /* TXHOrderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHOrderManager.m; path = TicketingHub/Classes/TXHOrderManager.m; sourceTree = SOURCE_ROOT; };
 		416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
@@ -687,6 +690,8 @@
 		58E4FB481760AE5500E328A0 = {
 			isa = PBXGroup;
 			children = (
+				3ECE452A18C0B57F00DD1F7B /* AFNetworkActivityLogger.h */,
+				3ECE452B18C0B57F00DD1F7B /* AFNetworkActivityLogger.m */,
 				3E0DAB9018AA41510045697C /* iOS-api.podspec */,
 				58E4FB5C1760AE5500E328A0 /* TicketingHub */,
 				58E4FB7E1760AE5500E328A0 /* TicketingHubTests */,
@@ -1079,6 +1084,7 @@
 				EEB1847D17D114B30025530A /* TXHDoorMainController.m in Sources */,
 				EEB1847E17D114B30025530A /* TXHDoorTimeController.m in Sources */,
 				EEB1849017D115640025530A /* TXHEmbeddingSegue.m in Sources */,
+				3ECE452C18C0B57F00DD1F7B /* AFNetworkActivityLogger.m in Sources */,
 				EEB1847F17D114B30025530A /* TXHFlowLayout.m in Sources */,
 				EEB1848017D114B30025530A /* TXHGroupCell.m in Sources */,
 				EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */,

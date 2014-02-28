@@ -8,6 +8,8 @@
 
 #import "TXHAppDelegate.h"
 #import "TXHTicketingHubManager.h"
+#import "AFNetworkActivityLogger.h"
+#import <AFNetworking.h>
 
 @interface TXHAppDelegate ()
 
@@ -17,6 +19,10 @@
 @implementation TXHAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    [[AFNetworkActivityLogger sharedLogger] startLogging];
+    [[AFNetworkActivityLogger sharedLogger] setLevel:AFLoggerLevelDebug];
+
 
     // We want a light status bar style as the launch screen and nav bars are dark
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
