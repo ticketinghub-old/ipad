@@ -84,7 +84,6 @@
 		EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1844E17D114390025530A /* TXHSelectionEntryTableViewCell.m */; };
 		EEB1846617D114390025530A /* TXHTextEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1845217D114390025530A /* TXHTextEntryTableViewCell.m */; };
 		EEB1846717D114390025530A /* TXHTextEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1845417D114390025530A /* TXHTextEntryView.m */; };
-		EEB1846817D114390025530A /* TXHTimeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1845617D114390025530A /* TXHTimeFormatter.m */; };
 		EEB1847A17D114B30025530A /* TXHDoorDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1846B17D114B30025530A /* TXHDoorDateCell.m */; };
 		EEB1847B17D114B30025530A /* TXHDoorDateController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1846D17D114B30025530A /* TXHDoorDateController.m */; };
 		EEB1847C17D114B30025530A /* TXHDoorGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1846F17D114B30025530A /* TXHDoorGroupController.m */; };
@@ -254,8 +253,6 @@
 		EEB1845217D114390025530A /* TXHTextEntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTextEntryTableViewCell.m; sourceTree = "<group>"; };
 		EEB1845317D114390025530A /* TXHTextEntryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTextEntryView.h; sourceTree = "<group>"; };
 		EEB1845417D114390025530A /* TXHTextEntryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTextEntryView.m; sourceTree = "<group>"; };
-		EEB1845517D114390025530A /* TXHTimeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTimeFormatter.h; sourceTree = "<group>"; };
-		EEB1845617D114390025530A /* TXHTimeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTimeFormatter.m; sourceTree = "<group>"; };
 		EEB1845717D114390025530A /* TXHUserDefaultsKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHUserDefaultsKeys.h; sourceTree = "<group>"; };
 		EEB1846A17D114B30025530A /* TXHDoorDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorDateCell.h; sourceTree = "<group>"; };
 		EEB1846B17D114B30025530A /* TXHDoorDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorDateCell.m; sourceTree = "<group>"; };
@@ -418,8 +415,6 @@
 		3E3A5B0718AA64EA00A54812 /* Formatters */ = {
 			isa = PBXGroup;
 			children = (
-				EEB1845517D114390025530A /* TXHTimeFormatter.h */,
-				EEB1845617D114390025530A /* TXHTimeFormatter.m */,
 			);
 			name = Formatters;
 			sourceTree = "<group>";
@@ -1120,7 +1115,6 @@
 				3ECE137718B689CE00E7148F /* NSDate+CupertinoYankee.m in Sources */,
 				EEB1848117D114B30025530A /* TXHTimeCell.m in Sources */,
 				3E44157018AB80EA00C4AE1C /* TXHTicketingHubManager.m in Sources */,
-				EEB1846817D114390025530A /* TXHTimeFormatter.m in Sources */,
 				3E6F479718AFD6A300E644F7 /* TXHBorderedButton.m in Sources */,
 				EEB1849417D115640025530A /* TXHTransitionSegue.m in Sources */,
 			);
