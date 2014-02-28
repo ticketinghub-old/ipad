@@ -592,7 +592,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="550" height="112"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="24" sectionHeaderHeight="27" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Mf2-sg-b3J">
+                                        <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="24" sectionHeaderHeight="27" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Mf2-sg-b3J">
                                             <rect key="frame" x="318" y="0.0" width="232" height="112"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -600,7 +600,7 @@
                                                 <constraint firstAttribute="width" constant="232" id="Ebp-c5-sxu"/>
                                             </constraints>
                                             <prototypes>
-                                                <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SalesSummaryLineHeader" textLabel="oZo-Yj-vNg" style="IBUITableViewCellStyleDefault" id="dAx-eg-4t9">
+                                                <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SalesSummaryLineHeader" textLabel="oZo-Yj-vNg" style="IBUITableViewCellStyleDefault" id="dAx-eg-4t9">
                                                     <rect key="frame" x="0.0" y="27" width="232" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dAx-eg-4t9" id="TKc-7v-bZq">
@@ -617,7 +617,7 @@
                                                         </subviews>
                                                     </tableViewCellContentView>
                                                 </tableViewCell>
-                                                <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SalesSummaryLine" textLabel="mKQ-ZB-Ibn" detailTextLabel="2HA-MK-twg" style="IBUITableViewCellStyleValue1" id="S1S-hp-hmX">
+                                                <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SalesSummaryLine" textLabel="mKQ-ZB-Ibn" detailTextLabel="2HA-MK-twg" style="IBUITableViewCellStyleValue1" id="S1S-hp-hmX">
                                                     <rect key="frame" x="0.0" y="51" width="232" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S1S-hp-hmX" id="5kc-3A-Zt7">
