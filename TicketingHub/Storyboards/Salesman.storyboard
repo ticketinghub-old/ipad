@@ -756,13 +756,13 @@
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Expand" translatesAutoresizingMaskIntoConstraints="NO" id="woJ-ek-0cz">
-                                    <rect key="frame" x="678" y="26" width="14" height="8"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Expand" translatesAutoresizingMaskIntoConstraints="NO" id="woJ-ek-0cz">
+                                    <rect key="frame" x="990" y="26" width="14" height="8"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="tintColor" red="0.10980392160000001" green="0.23529411759999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 </imageView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8SC-hu-kkn">
-                                    <rect key="frame" x="558" y="19" width="94" height="21"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8SC-hu-kkn">
+                                    <rect key="frame" x="876" y="19" width="81" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -771,8 +771,12 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="woJ-ek-0cz" firstAttribute="leading" secondItem="8SC-hu-kkn" secondAttribute="trailing" constant="33" id="8Da-NT-iVu"/>
+                                <constraint firstAttribute="centerY" secondItem="8SC-hu-kkn" secondAttribute="centerY" id="9YH-xM-khc"/>
                                 <constraint firstItem="kc9-Kn-fud" firstAttribute="leading" secondItem="W6C-0m-usC" secondAttribute="leading" id="BfJ-LY-kJn"/>
+                                <constraint firstAttribute="trailing" secondItem="woJ-ek-0cz" secondAttribute="trailing" constant="20" id="LyM-OC-ihM"/>
                                 <constraint firstAttribute="bottom" secondItem="kc9-Kn-fud" secondAttribute="bottom" id="Pcf-87-YHc"/>
+                                <constraint firstAttribute="centerY" secondItem="woJ-ek-0cz" secondAttribute="centerY" id="avC-O1-fwl"/>
                                 <constraint firstAttribute="trailing" secondItem="kc9-Kn-fud" secondAttribute="trailing" id="jC5-VJ-hg3"/>
                             </constraints>
                             <connections>
