@@ -181,7 +181,7 @@
 {
     BOOL expanded = [self isSectionExpanded:indexPath.section];
     
-    CGSize size = CGSizeMake(440.0f, expanded ? 112.0f : 0.0f);
+    CGSize size = CGSizeMake(550.0f, expanded ? 112.0f : 0.0f);
     return size;
 }
 
