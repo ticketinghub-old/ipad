@@ -6,12 +6,11 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import "TXHBaseDataEntryTableViewCell.h"
+@interface TXHTextEntryTableViewCell : UITableViewCell
 
-#import "TXHTextEntryView.h"
-
-@interface TXHTextEntryTableViewCell : TXHBaseDataEntryTableViewCell
-
-@property (readonly, nonatomic) TXHTextEntryView *textField;
+@property (copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *text;
+@property (copy, nonatomic) NSString *placeholder;
+@property (copy, nonatomic) NSString *errorMessage;
 
 @end

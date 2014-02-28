@@ -14,6 +14,8 @@
 
 @interface TXHSalesPaymentViewController () <UICollectionViewDelegateFlowLayout>
 
+@property (readwrite, nonatomic, getter = isValid) BOOL valid;
+
 // A mutable collection of sections indicating their expanded status.
 @property (strong, nonatomic) NSMutableDictionary *sections;
 
@@ -43,8 +45,10 @@
 
 
 #pragma mark - Payment method changed
--(void)didChangePaymentMethod:(id)sender {
-    [self.paymentDetailsController didChangePaymentMethod:sender];
+
+- (IBAction)didChangePaymentMethod:(UISegmentedControl *)sender
+{
+    [self.paymentDetailsController setPaymentMethodType:(TXHPaymentMethodType)sender.selectedSegmentIndex];
 }
 
 @end

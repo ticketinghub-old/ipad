@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, TXHPaymentMethodType)
+{
+    TXHPaymentMethodTypeCard,
+    TXHPaymentMethodTypeCash,
+    TXHPaymentMethodTypeCreditCard
+};
+
 @interface TXHSalesPaymentPaymentDetailsViewController : UIViewController
 
-- (void)didChangePaymentMethod:(id)sender;
+- (void)setPaymentMethodType:(TXHPaymentMethodType)paymentType;
 
 @end

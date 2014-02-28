@@ -81,22 +81,24 @@
     }
 }
 
-- (void)didChangePaymentMethod:(id)sender {
-    UISegmentedControl *paymentControl = sender;
-    NSString *paymentMethod = @"Card";
-    switch (paymentControl.selectedSegmentIndex) {
-        case 1:     // Cash
-            paymentMethod = @"Cash";
+- (void)setPaymentMethodType:(TXHPaymentMethodType)paymentType
+{
+    NSString *paymentMethodKey;
+    switch (paymentType)
+    {
+        default:
+        case TXHPaymentMethodTypeCard:
+            paymentMethodKey = @"Card";
             break;
-            
-        case 2:     // Credit
-            paymentMethod = @"Credit";
+        case TXHPaymentMethodTypeCash:
+            paymentMethodKey = @"Cash";
             break;
-            
-        default:    // Card, set above
+        case TXHPaymentMethodTypeCreditCard:
+            paymentMethodKey = @"Credit";
             break;
     }
-    [self performSegueWithIdentifier:[NSString stringWithFormat:@"TXHSalesPayment%@DetailsViewController", paymentMethod] sender:self];
+    
+    [self performSegueWithIdentifier:[NSString stringWithFormat:@"TXHSalesPayment%@DetailsViewController", paymentMethodKey] sender:self];
 }
 
 @end

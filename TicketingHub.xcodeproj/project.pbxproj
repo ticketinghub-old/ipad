@@ -74,7 +74,6 @@
 		EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9AC17D112C4009ADCD8 /* TXHLoginViewController.m */; };
 		EE75D9B317D11311009ADCD8 /* ProductListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B017D11311009ADCD8 /* ProductListController.m */; };
 		EE75D9B417D11311009ADCD8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B217D11311009ADCD8 /* MainViewController.m */; };
-		EEB1845917D114390025530A /* TXHBaseDataEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843717D114390025530A /* TXHBaseDataEntryTableViewCell.m */; };
 		EEB1845A17D114390025530A /* TXHBaseDataEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843917D114390025530A /* TXHBaseDataEntryView.m */; };
 		EEB1845B17D114390025530A /* TXHCreditCardNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843C17D114390025530A /* TXHCreditCardNumberView.m */; };
 		EEB1845C17D114390025530A /* TXHCurrencyEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843E17D114390025530A /* TXHCurrencyEntryView.m */; };
@@ -234,8 +233,6 @@
 		EE75D9B117D11311009ADCD8 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MainViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		EE75D9B217D11311009ADCD8 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MainViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EE935E7417B3EB630080A1C2 /* CommonMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonMacros.h; sourceTree = "<group>"; };
-		EEB1843617D114390025530A /* TXHBaseDataEntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBaseDataEntryTableViewCell.h; sourceTree = "<group>"; };
-		EEB1843717D114390025530A /* TXHBaseDataEntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBaseDataEntryTableViewCell.m; sourceTree = "<group>"; };
 		EEB1843817D114390025530A /* TXHBaseDataEntryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBaseDataEntryView.h; sourceTree = "<group>"; };
 		EEB1843917D114390025530A /* TXHBaseDataEntryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBaseDataEntryView.m; sourceTree = "<group>"; };
 		EEB1843A17D114390025530A /* TXHCommonNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHCommonNames.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -377,8 +374,6 @@
 		3E3A5B0418AA5CBC00A54812 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				EEB1843617D114390025530A /* TXHBaseDataEntryTableViewCell.h */,
-				EEB1843717D114390025530A /* TXHBaseDataEntryTableViewCell.m */,
 				EEB1845117D114390025530A /* TXHTextEntryTableViewCell.h */,
 				EEB1845217D114390025530A /* TXHTextEntryTableViewCell.m */,
 				EEB1844D17D114390025530A /* TXHSelectionEntryTableViewCell.h */,
@@ -1064,7 +1059,6 @@
 				EE75D9B317D11311009ADCD8 /* ProductListController.m in Sources */,
 				EEB1849217D115640025530A /* SalesOrDoormanViewController.m in Sources */,
 				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
-				EEB1845917D114390025530A /* TXHBaseDataEntryTableViewCell.m in Sources */,
 				3E3D46EE18ACBB8500275ACF /* UIColor+TicketingHub.m in Sources */,
 				3ED7561818BDD96500D8F60B /* TXHOrderManager.m in Sources */,
 				EEB1845A17D114390025530A /* TXHBaseDataEntryView.m in Sources */,

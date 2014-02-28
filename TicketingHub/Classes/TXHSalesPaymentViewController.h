@@ -10,4 +10,6 @@
 
 @interface TXHSalesPaymentViewController : UIViewController
 
+@property (readonly, nonatomic, getter = isValid) BOOL valid;
+
 @end

@@ -68,13 +68,13 @@
     
     if (self.hidden)
         return;
-    
-    NSDictionary *attributesDict = @{NSFontAttributeName: self.messageLabel.font};
-    NSAttributedString *attributedMessage = [[NSAttributedString alloc] initWithString:message attributes:attributesDict];
-    CGSize size = [attributedMessage size];
-    CGRect bounds = self.messageLabel.bounds;
-    bounds.size = size;
-    self.messageLabel.bounds = bounds;
+//    
+//    NSDictionary *attributesDict = @{NSFontAttributeName: self.messageLabel.font};
+//    NSAttributedString *attributedMessage = [[NSAttributedString alloc] initWithString:message attributes:attributesDict];
+//    CGSize size = [attributedMessage size];
+//    CGRect bounds = self.messageLabel.bounds;
+//    bounds.size = size;
+//    self.messageLabel.bounds = bounds;
     self.messageLabel.text = message;
     [self layoutIfNeeded];
 }

@@ -7,37 +7,134 @@
 //
 
 #import "TXHTextEntryTableViewCell.h"
+#import "TXHDataEntryFieldErrorView.h"
 
 @interface TXHTextEntryTableViewCell () <UITextFieldDelegate>
 
-@property TXHTextEntryView *placeholder;
+@property (weak, nonatomic) IBOutlet UIView *backingView;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+
+@property (weak, nonatomic) IBOutlet TXHDataEntryFieldErrorView *dataErrorView;
 
 @end
 
 @implementation TXHTextEntryTableViewCell
 
-- (void)setupDataContent {
-    [super setupDataContent];
-    self.placeholder = [[TXHTextEntryView alloc] initWithFrame:CGRectInset(self.bounds, 8.0f, 0.0f)];
-    [self.contentView addSubview:self.placeholder];
++ (UIColor *)errorBackgroundColor
+{
+    static UIColor *_errorBackgroundColor;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _errorBackgroundColor = [UIColor colorWithRed:255.0f / 255.0f
+                                                green:213.0f / 255.0f
+                                                 blue:216.0f / 255.0f
+                                                alpha:1.0f];
+    });
+    return _errorBackgroundColor;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    [[UIApplication sharedApplication] sendAction:@selector(makeCellVisible:) to:nil from:self forEvent:nil];
++ (UIColor *)normalBackgroundColor
+{
+    static UIColor *_normalBackgroundColor;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _normalBackgroundColor = [UIColor colorWithRed:238.0f / 255.0f
+                                                 green:241.0f / 255.0f
+                                                  blue:243.0f / 255.0f
+                                                 alpha:1.0f];
+    });
+    return _normalBackgroundColor;
+}
+
++ (UIColor *)errorTextColor
+{
+    static UIColor *_errorTextColor;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _errorTextColor = [UIColor redColor];
+    });
+    return _errorTextColor;
+}
+
++ (UIColor *)normalTextColor
+{
+    static UIColor *_normalTextColor;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _normalTextColor = [UIColor colorWithRed:37.0f / 255.0f
+                                           green:16.0f / 255.0f
+                                            blue:87.0f / 255.0f
+                                           alpha:1.0f];
+    });
+    return _normalTextColor;
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
     
-    if (self.errorMessage.length) {
-        // If there is an error message associated with this data item, clear it when editing occurs.
-        self.errorMessage = @"";
-    }
+    self.backingView.layer.cornerRadius = 4.0;
+    self.dataErrorView.layer.cornerRadius = 3.0;
+    
+    self.textField.delegate = self;
 }
 
-- (TXHTextEntryView *)textField {
-    return self.placeholder;
+- (void)setPlaceholder:(NSString *)placeholder
+{
+    self.textField.placeholder = placeholder;
+}
+
+- (void)setText:(NSString *)text
+{
+    self.textField.text = text;
+}
+
+- (NSString *)text
+{
+    return self.textField.text;
+}
+
+- (void)setErrorMessage:(NSString *)errorMessage
+{
+    self.dataErrorView.message = errorMessage;
+    [self updateColors];
+}
+
+- (void)updateColors
+{
+    BOOL hasError = [self hasErrors];
+    
+    self.textField.backgroundColor   = hasError ? [[self class] errorBackgroundColor] : [[self class] normalBackgroundColor];
+    self.backingView.backgroundColor = self.textField.backgroundColor;
+    self.textField.textColor         = hasError ? [[self class] errorTextColor] : [[self class] normalTextColor];
+}
+
+- (BOOL)hasErrors
+{
+    return (self.dataErrorView.message.length > 0);
 }
 
 - (void)prepareForReuse {
     [super prepareForReuse];
-    [self.textField reset];
+    
+    self.dataErrorView.message = @"";
+    self.textField.text = @"";
 }
+
+#pragma mark UITextFieldDelegate
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+//    [self.delegate txhSalesInformationTextCellDidChangeText:self];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    [textField setText:[textField.text stringByReplacingCharactersInRange:range withString:string]];
+//    [self.delegate txhSalesInformationTextCellDidChangeText:self];
+    
+    return NO;
+}
+
 
 @end

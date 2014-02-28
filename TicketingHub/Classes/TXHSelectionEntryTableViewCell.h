@@ -6,12 +6,12 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import "TXHBaseDataEntryTableViewCell.h"
-
 @class TXHDataSelectionView;
 
-@interface TXHSelectionEntryTableViewCell : TXHBaseDataEntryTableViewCell
+@interface TXHSelectionEntryTableViewCell : UITableViewCell
 
-@property (readonly, nonatomic) TXHDataSelectionView *field;
+@property (copy, nonatomic) NSString *text;
+@property (copy, nonatomic) NSString *errorMessage;
+
 
 @end

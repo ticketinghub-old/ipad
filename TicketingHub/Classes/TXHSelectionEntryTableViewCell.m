@@ -8,30 +8,109 @@
 
 #import "TXHSelectionEntryTableViewCell.h"
 
-#import "TXHDataSelectionView.h"
+#import "TXHDataEntryFieldErrorView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface TXHSelectionEntryTableViewCell ()
 
-@property TXHDataSelectionView *placeholder;
+@property (weak, nonatomic) IBOutlet TXHDataEntryFieldErrorView *errorMessageView;
+@property (weak, nonatomic) IBOutlet UIButton *selectionField;
 
 @end
 
 @implementation TXHSelectionEntryTableViewCell
 
-- (void)setupDataContent {
-    [super setupDataContent];
-    self.placeholder = [[TXHDataSelectionView alloc] initWithFrame:self.bounds];
-    [self.contentView addSubview:self.placeholder];
-    self.placeholder.tintColor = self.contentView.tintColor;
++ (UIColor *)errorBackgroundColor
+{
+    static UIColor *_errorBackgroundColor;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _errorBackgroundColor = [UIColor colorWithRed:255.0f / 255.0f
+                                                green:213.0f / 255.0f
+                                                 blue:216.0f / 255.0f
+                                                alpha:1.0f];
+    });
+    return _errorBackgroundColor;
 }
 
-- (TXHDataSelectionView *)field {
-    return self.placeholder;
++ (UIColor *)normalBackgroundColor
+{
+    static UIColor *_normalBackgroundColor;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _normalBackgroundColor = [UIColor colorWithRed:238.0f / 255.0f
+                                                 green:241.0f / 255.0f
+                                                  blue:243.0f / 255.0f
+                                                 alpha:1.0f];
+    });
+    return _normalBackgroundColor;
+}
+
++ (UIColor *)errorTextColor
+{
+    static UIColor *_errorTextColor;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _errorTextColor = [UIColor redColor];
+    });
+    return _errorTextColor;
+}
+
++ (UIColor *)normalTextColor
+{
+    static UIColor *_normalTextColor;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _normalTextColor = [UIColor colorWithRed:37.0f / 255.0f
+                                           green:16.0f / 255.0f
+                                            blue:87.0f / 255.0f
+                                           alpha:1.0f];
+    });
+    return _normalTextColor;
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    [self setupSeletionField];
+}
+
+
+- (void)setupSeletionField
+{
+    self.selectionField.layer.borderColor  = self.selectionField.tintColor.CGColor;
+    self.selectionField.layer.cornerRadius = 5.0;
+    self.selectionField.layer.borderWidth  = 1.0;
+}
+
+- (BOOL)hasErrors
+{
+    return (self.errorMessageView.message.length > 0);
 }
 
 - (void)prepareForReuse {
     [super prepareForReuse];
-    [self.field reset];
+}
+
+- (void)setText:(NSString *)text
+{
+    [self.selectionField setTitle:text forState:UIControlStateNormal];
+}
+
+- (NSString *)text
+{
+    return self.selectionField.titleLabel.text;
+}
+
+- (void)setErrorMessage:(NSString *)errorMessage
+{
+    self.errorMessageView.message = errorMessage;
+    [self updateColors];
+}
+
+- (void)updateColors
+{
 }
 
 @end
