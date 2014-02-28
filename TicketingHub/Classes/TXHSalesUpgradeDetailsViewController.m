@@ -136,7 +136,8 @@
                 [selectedUpgrades addObject:upgrade.upgradeId];
             }
         }
-        upgradesInfo[ticketId] = selectedUpgrades;
+        if ([selectedUpgrades count])
+            upgradesInfo[ticketId] = selectedUpgrades;
     }
     
     return upgradesInfo;
@@ -267,6 +268,13 @@
 - (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
 {
     NSDictionary *upgradesInfo = [self buildUpgradesInfo];
+    
+    if (![upgradesInfo count])
+    {
+        blockName(nil);
+        return;
+    } 
+    
     
     [TXHORDERMANAGER updateOrderWithUpgradesInfo:upgradesInfo
                                        completion:^(TXHOrder *order, NSError *error) {
