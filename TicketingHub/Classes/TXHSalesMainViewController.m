@@ -44,21 +44,6 @@ static void * ContentValidContext = &ContentValidContext;
 
 @implementation TXHSalesMainViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)dealloc
-{
-    // remove observer
-    self.stepCompletionController = nil;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -100,6 +85,14 @@ static void * ContentValidContext = &ContentValidContext;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(orderDidExpire:)
                                                  name:TXHOrderDidExpireNotification object:nil];
+}
+
+- (void)dealloc
+{
+    // remove observer
+    self.stepCompletionController = nil;
+    [self unregisterForProductAndAvailabilityChanges];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHOrderDidExpireNotification object:nil];
 }
 
 - (void)orderDidExpire:(NSNotification *)note
@@ -166,6 +159,13 @@ static void * ContentValidContext = &ContentValidContext;
                                              selector:@selector(availabilityDidChange:)
                                                  name:TXHAvailabilityChangedNotification
                                                object:nil];
+}
+
+- (void)unregisterForProductAndAvailabilityChanges
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];
+
 }
 
 #pragma mark notifications

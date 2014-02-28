@@ -106,6 +106,7 @@
         segue.containerView = self.contentDetailView;
         [segue perform];
     }
+    self.selectedAvailability = nil;
 }
 
 #pragma mark - Setters / Getters
