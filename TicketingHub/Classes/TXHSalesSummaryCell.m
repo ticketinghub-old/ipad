@@ -40,7 +40,7 @@
 - (void)updateTicketInfo
 {
     self.ticketNameLabel.text = self.ticket.tier.name;
-    self.ticketPriceLabel.text = [TXHPRODUCTSMANAGER priceStringForPrice:self.ticket.tier.price];
+    self.ticketPriceLabel.text = [TXHPRODUCTSMANAGER priceStringForPrice:self.ticket.price];
     
     self.orderedUpgrades = [self.ticket.upgrades allObjects];
     

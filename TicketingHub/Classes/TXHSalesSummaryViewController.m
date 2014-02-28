@@ -14,6 +14,7 @@
 #import "TXHSalesSummaryHeader.h"
 #import "TXHSalesTimerViewController.h"
 
+#import "TXHProductsManager.h"
 #import "TXHOrderManager.h"
 #import <iOS-api/TXHOrder.h>
 #import <iOS-api/TXHTier.h>
@@ -158,11 +159,12 @@
 - (void)configureHeader:(TXHSalesSummaryHeader *)header atIndexPath:(NSIndexPath *)indexPath
 {
     TXHTicket *ticket = [self ticketAtIndex:indexPath.section];
-//
-    header.delegate    = self;
-    header.ticketTitle = [self titleForTicket:ticket];
-    header.expanded    = [self isSectionExpanded:indexPath.section];
-    header.section     = indexPath.section;
+
+    header.delegate         = self;
+    header.ticketTitle      = [self titleForTicket:ticket];
+    header.ticketTotalPrice = [TXHPRODUCTSMANAGER priceStringForPrice:[ticket totalPrice]];
+    header.expanded         = [self isSectionExpanded:indexPath.section];
+    header.section          = indexPath.section;
 }
 
 #pragma mark - TXHSalesSummaryHeaderDelegate
