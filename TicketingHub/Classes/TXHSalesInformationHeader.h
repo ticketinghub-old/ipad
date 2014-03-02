@@ -22,6 +22,7 @@
 @property (weak, nonatomic) id<TXHSalesInformationHeaderDelegate> delegate;
 @property (assign, nonatomic,getter = isExpanded) BOOL expanded;
 @property (strong, nonatomic) NSString *tierTitle;
+@property (strong, nonatomic) NSString *subTitle;
 @property (assign, nonatomic) NSUInteger section;
 
 

@@ -91,6 +91,11 @@
     self.expandedSections[sectionIndex] = @(expanded);
 }
 
+- (NSInteger)numberOfFieldsForTicketID:(NSString *)ticketID
+{
+    return [self.fields[ticketID] count];
+}
+
 #pragma mark accessors
 
 - (void)setFields:(NSDictionary *)fields
@@ -133,7 +138,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.fields[self.ticketIds[section]] count];
+    return [self numberOfFieldsForTicketID:self.ticketIds[section]];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -190,6 +195,7 @@
         TXHTicket *ticket  = [TXHORDERMANAGER ticketFromOrderWithID:ticketID];
 
         header.tierTitle = ticket.tier.name;
+        header.subTitle  = [self numberOfFieldsForTicketID:ticketID] > 0 ? @"" : NSLocalizedString(@"No extra information is required ", nil);
         header.delegate  = self;
         header.section   = indexPath.section;
         header.expanded  = [self isSectionExpanded:indexPath.section];

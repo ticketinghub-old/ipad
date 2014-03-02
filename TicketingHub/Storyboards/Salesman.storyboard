@@ -1015,9 +1015,12 @@
                             <rect key="frame" x="0.0" y="0.0" width="1024" height="60"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;Tier>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQc-ak-HPy">
-                                    <rect key="frame" x="20" y="18" width="684" height="23"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Tier>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQc-ak-HPy">
+                                    <rect key="frame" x="20" y="19" width="54" height="23"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="23" id="6Br-IF-G1P"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                     <color key="textColor" red="0.10196078431372549" green="0.23529411764705882" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -1036,14 +1039,29 @@
                                         <constraint firstAttribute="height" constant="8" id="luB-kk-woR"/>
                                     </constraints>
                                 </imageView>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2W-ix-rnS">
+                                    <rect key="frame" x="96" y="18" width="36" height="23"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="23" id="KT3-Dm-iuP"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstAttribute="centerY" secondItem="W2W-ix-rnS" secondAttribute="centerY" id="G8h-uy-PWr"/>
+                                <constraint firstItem="W2W-ix-rnS" firstAttribute="leading" secondItem="oQc-ak-HPy" secondAttribute="trailing" constant="22" id="QpX-xr-Po6"/>
                                 <constraint firstAttribute="trailing" secondItem="bSr-Yl-A4V" secondAttribute="trailing" constant="20" id="ZxR-Ea-Slf"/>
+                                <constraint firstAttribute="centerY" secondItem="oQc-ak-HPy" secondAttribute="centerY" id="mua-oq-qhs"/>
+                                <constraint firstItem="oQc-ak-HPy" firstAttribute="leading" secondItem="h3S-Tc-eEI" secondAttribute="leading" constant="20" id="nD6-Ck-vvK"/>
                                 <constraint firstAttribute="centerY" secondItem="bSr-Yl-A4V" secondAttribute="centerY" id="qNR-dL-A4e"/>
                             </constraints>
                             <connections>
                                 <outlet property="expandedCollapsedImageView" destination="bSr-Yl-A4V" id="9Ka-Bc-rb5"/>
+                                <outlet property="headerSubtitle" destination="W2W-ix-rnS" id="v9X-4C-gz9"/>
                                 <outlet property="headerTitle" destination="oQc-ak-HPy" id="OPR-9X-zx8"/>
                             </connections>
                         </collectionReusableView>

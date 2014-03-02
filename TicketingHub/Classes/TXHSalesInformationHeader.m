@@ -12,6 +12,7 @@
 @interface TXHSalesInformationHeader ()
 
 @property (weak, nonatomic) IBOutlet UILabel *headerTitle;
+@property (weak, nonatomic) IBOutlet UILabel *headerSubtitle;
 @property (weak, nonatomic) IBOutlet UIImageView *expandedCollapsedImageView;
 
 @property (strong, nonatomic) UIImage *expandImage;
@@ -21,24 +22,14 @@
 
 @implementation TXHSalesInformationHeader
 
-- (id)initWithFrame:(CGRect)frame
+- (void)awakeFromNib
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self setup];
-    }
-    return self;
+    [super awakeFromNib];
+    [self setup];
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self setup];
-    }
-    return self;
-}
-
-- (void)setup {
+- (void)setup
+{
     // Create images for expanded and collapsed modes
     self.expandImage = [[UIImage imageNamed:@"Expand"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     self.collapseImage = [[UIImage imageNamed:@"Collapse"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
@@ -55,8 +46,14 @@
     [self addGestureRecognizer:tapGesture];
 }
 
-- (void)setTierTitle:(NSString *)tierTitle {
+- (void)setTierTitle:(NSString *)tierTitle
+{
     self.headerTitle.text = tierTitle;
+}
+
+- (void)setSubTitle:(NSString *)subTitle
+{
+    self.headerSubtitle.text = subTitle;
 }
 
 - (void)setExpanded:(BOOL)expanded {
