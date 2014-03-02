@@ -897,7 +897,7 @@
                             <inset key="sectionInset" minX="40" minY="0.0" maxX="40" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="textCell" id="9RA-0I-vI9" customClass="TXHSalesInformationTextCell">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="textCell" id="9RA-0I-vI9" customClass="TXHSalesInformationTextCell">
                                 <rect key="frame" x="40" y="60" width="200" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -923,6 +923,7 @@
                                                 <constraint firstAttribute="centerX" secondItem="uJ0-re-dln" secondAttribute="centerX" id="6Cs-qL-IBc"/>
                                                 <constraint firstAttribute="centerY" secondItem="uJ0-re-dln" secondAttribute="centerY" id="GaA-nt-Kil"/>
                                                 <constraint firstItem="uJ0-re-dln" firstAttribute="top" secondItem="TLk-Tv-18q" secondAttribute="top" constant="5" id="SX6-Ip-q1b"/>
+                                                <constraint firstAttribute="height" constant="40" id="e4g-F5-mwd"/>
                                                 <constraint firstAttribute="bottom" secondItem="uJ0-re-dln" secondAttribute="bottom" constant="5" id="tKa-dk-v8K"/>
                                             </constraints>
                                         </view>
@@ -941,14 +942,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="TLk-Tv-18q" secondAttribute="trailing" id="0Ed-5y-ksc"/>
-                                    <constraint firstAttribute="bottom" secondItem="TLk-Tv-18q" secondAttribute="bottom" constant="10" id="FGI-m6-6Er"/>
-                                    <constraint firstAttribute="bottom" secondItem="TLk-Tv-18q" secondAttribute="bottom" constant="10" id="J5i-bZ-kmU"/>
                                     <constraint firstAttribute="trailing" secondItem="jK1-hc-2Ov" secondAttribute="trailing" constant="10" id="LNC-y4-0JJ"/>
-                                    <constraint firstItem="TLk-Tv-18q" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9RA-0I-vI9" secondAttribute="top" constant="20" id="UsO-fD-y7F"/>
                                     <constraint firstItem="jK1-hc-2Ov" firstAttribute="top" secondItem="9RA-0I-vI9" secondAttribute="top" constant="10" id="f9F-qx-cGJ"/>
-                                    <constraint firstItem="TLk-Tv-18q" firstAttribute="top" secondItem="9RA-0I-vI9" secondAttribute="top" constant="20" id="jfu-Wx-3NI"/>
                                     <constraint firstItem="TLk-Tv-18q" firstAttribute="leading" secondItem="9RA-0I-vI9" secondAttribute="leading" id="q9I-K6-hHS"/>
                                     <constraint firstItem="TLk-Tv-18q" firstAttribute="leading" secondItem="9RA-0I-vI9" secondAttribute="leading" id="tdD-jj-8PW"/>
+                                    <constraint firstItem="TLk-Tv-18q" firstAttribute="top" secondItem="9RA-0I-vI9" secondAttribute="top" constant="20" id="yJg-Zu-XNA"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="backingView" destination="TLk-Tv-18q" id="0dQ-DJ-dtB"/>
@@ -956,7 +954,7 @@
                                     <outlet property="textField" destination="uJ0-re-dln" id="6Jn-ml-wrl"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="selectionCell" id="DI0-fB-q1P" customClass="TXHSalesInformationSelectionCell">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="selectionCell" id="DI0-fB-q1P" customClass="TXHSalesInformationSelectionCell">
                                 <rect key="frame" x="288" y="60" width="200" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1003,7 +1001,7 @@
                                     <constraint firstItem="fDh-dI-Acl" firstAttribute="leading" secondItem="DI0-fB-q1P" secondAttribute="leading" id="Nhb-md-U9H"/>
                                     <constraint firstAttribute="trailing" secondItem="fDh-dI-Acl" secondAttribute="trailing" id="RKq-xg-18x"/>
                                     <constraint firstItem="fDh-dI-Acl" firstAttribute="trailing" secondItem="kfN-Ta-UzZ" secondAttribute="trailing" constant="10" id="TYb-1s-m0t"/>
-                                    <constraint firstAttribute="bottom" secondItem="fDh-dI-Acl" secondAttribute="bottom" constant="10" id="k0a-Rq-ef5"/>
+                                    <constraint firstItem="fDh-dI-Acl" firstAttribute="top" secondItem="DI0-fB-q1P" secondAttribute="top" constant="20" id="j1o-Mg-LvX"/>
                                     <constraint firstItem="fDh-dI-Acl" firstAttribute="trailing" secondItem="KHb-dd-vBd" secondAttribute="trailing" constant="10" id="lwW-Xs-XRz"/>
                                     <constraint firstItem="fDh-dI-Acl" firstAttribute="top" secondItem="kfN-Ta-UzZ" secondAttribute="top" constant="10" id="tBW-xA-jDN"/>
                                 </constraints>
@@ -1029,9 +1027,23 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.97647058823529409" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Expand" translatesAutoresizingMaskIntoConstraints="NO" id="bSr-Yl-A4V">
+                                    <rect key="frame" x="990" y="26" width="14" height="8"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" red="0.10980392160000001" green="0.23529411759999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="14" id="ilL-nr-zdZ"/>
+                                        <constraint firstAttribute="height" constant="8" id="luB-kk-woR"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="bSr-Yl-A4V" secondAttribute="trailing" constant="20" id="ZxR-Ea-Slf"/>
+                                <constraint firstAttribute="centerY" secondItem="bSr-Yl-A4V" secondAttribute="centerY" id="qNR-dL-A4e"/>
+                            </constraints>
                             <connections>
+                                <outlet property="expandedCollapsedImageView" destination="bSr-Yl-A4V" id="9Ka-Bc-rb5"/>
                                 <outlet property="headerTitle" destination="oQc-ak-HPy" id="OPR-9X-zx8"/>
                             </connections>
                         </collectionReusableView>

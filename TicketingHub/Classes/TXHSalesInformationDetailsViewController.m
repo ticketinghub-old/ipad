@@ -18,12 +18,13 @@
 #import <iOS-api/TXHTicket.h>
 #import <iOS-api/TXHCustomer.h>
 
-@interface TXHSalesInformationDetailsViewController () <TXHSalesInformationTextCellDelegate, TXHSalesInformationSelectionCellDelegate>
+@interface TXHSalesInformationDetailsViewController () <TXHSalesInformationTextCellDelegate, TXHSalesInformationSelectionCellDelegate, TXHSalesInformationHeaderDelegate>
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
 
 @property (nonatomic, strong) NSArray *ticketIds; // to keep data sorted
 @property (nonatomic, strong) NSDictionary *fields;
+@property (strong, nonatomic) NSMutableArray *expandedSections;
 
 @property (nonatomic, strong) NSMutableDictionary *userInput;
 
@@ -35,6 +36,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self loadFields];
 }
 
@@ -68,11 +70,34 @@
     
 }
 
+- (void)setupExpandedSectionsInfo
+{
+    self.expandedSections = [NSMutableArray array];
+    
+    for (int i = 0; i < [self.fields count]; i++)
+    {
+        NSNumber *value = (i == 0) ? @YES : @NO;
+        [self.expandedSections addObject:value];
+    }
+}
+
+- (BOOL)isSectionExpanded:(NSInteger)sectionIndex
+{
+    return [self.expandedSections[sectionIndex] boolValue];
+}
+
+- (void)setSection:(NSInteger)sectionIndex expanded:(BOOL)expanded
+{
+    self.expandedSections[sectionIndex] = @(expanded);
+}
+
 #pragma mark accessors
 
 - (void)setFields:(NSDictionary *)fields
 {
     _fields = fields;
+    
+    [self setupExpandedSectionsInfo];
     
     self.ticketIds = [self.fields allKeys];
     
@@ -101,11 +126,13 @@
 
 #pragma mark - Collection View Datasource & Delegate methods
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return [self.ticketIds count];
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return self.expandedSections.count;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
     return [self.fields[self.ticketIds[section]] count];
 }
 
@@ -160,8 +187,12 @@
         TXHSalesInformationHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"TXHSalesInformationHeader" forIndexPath:indexPath];
         
         NSString *ticketID = [self ticketIdForIndexPath:indexPath];
-        TXHTicket *ticket = [TXHORDERMANAGER ticketFromOrderWithID:ticketID];
+        TXHTicket *ticket  = [TXHORDERMANAGER ticketFromOrderWithID:ticketID];
+
         header.tierTitle = ticket.tier.name;
+        header.delegate  = self;
+        header.section   = indexPath.section;
+        header.expanded  = [self isSectionExpanded:indexPath.section];
        
         return header;
     } else if (kind == UICollectionElementKindSectionFooter) {
@@ -169,6 +200,14 @@
         return footer;
     }
     return nil;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    BOOL expanded = [self isSectionExpanded:indexPath.section];
+    
+    CGSize size = CGSizeMake(220.0f, expanded ? 70.0f : 0.0f);
+    return size;
 }
 
 - (void)makeCellVisible:(id)sender {
@@ -289,6 +328,14 @@
     NSString *ticketId = [self ticketIdForIndexPath:indexPath];
     
     [self setUserInput:cell.value withType:cell.name forTicketID:ticketId];
+}
+
+#pragma mark - TXHSalesInformationHeaderDelegate
+
+- (void)txhSalesInformationHeaderIsExpandedDidChange:(TXHSalesInformationHeader *)header
+{
+    [self setSection:header.section expanded:header.isExpanded];
+    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:header.section]];
 }
 
 #pragma mark - TXHSalesContentsViewControllerProtocol
