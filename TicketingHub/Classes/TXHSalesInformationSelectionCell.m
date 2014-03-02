@@ -1,18 +1,17 @@
 //
-//  TXHSelectionEntryTableViewCell.m
+//  TXHSalesInformationSelectionCell.m
 //  TicketingHub
 //
-//  Created by Mark on 20/08/2013.
-//  Copyright (c) 2013 TicketingHub. All rights reserved.
+//  Created by Bartek Hugo Trzcinski on 02/03/14.
+//  Copyright (c) 2014 TicketingHub. All rights reserved.
 //
 
-#import "TXHSelectionEntryTableViewCell.h"
-
+#import "TXHSalesInformationSelectionCell.h"
 #import "TXHDataEntryFieldErrorView.h"
 #import "TXHDataSelectionViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface TXHSelectionEntryTableViewCell () <TXHDataSelectionDelegate>
+@interface TXHSalesInformationSelectionCell () <TXHDataSelectionDelegate>
 
 @property (weak, nonatomic) IBOutlet TXHDataEntryFieldErrorView *errorMessageView;
 @property (weak, nonatomic) IBOutlet UIButton *selectionField;
@@ -21,7 +20,7 @@
 
 @end
 
-@implementation TXHSelectionEntryTableViewCell
+@implementation TXHSalesInformationSelectionCell
 
 + (UIColor *)errorBackgroundColor
 {
@@ -93,6 +92,15 @@
     [self.selectionField addTarget:self action:@selector(chooseItem:) forControlEvents:UIControlEventTouchUpInside];
 }
 
+
+- (void)setupSeletionField
+{
+    self.selectionField.layer.borderColor  = self.selectionField.tintColor.CGColor;
+    self.selectionField.layer.cornerRadius = 5.0;
+    self.selectionField.layer.borderWidth  = 1.0;
+}
+
+
 - (void)chooseItem:(id)sender {
     if (self.selectionPopover.isPopoverVisible) {
         [self.selectionPopover dismissPopoverAnimated:YES];
@@ -104,13 +112,6 @@
     self.selectionPopover = [[UIPopoverController alloc] initWithContentViewController:dataSelector];
     self.selectionPopover.popoverContentSize = CGSizeMake(210.0f, (MIN(4,[self.options count]) * 44.0f));
     [self.selectionPopover presentPopoverFromRect:self.selectionField.frame inView:self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-}
-
-- (void)setupSeletionField
-{
-    self.selectionField.layer.borderColor  = self.selectionField.tintColor.CGColor;
-    self.selectionField.layer.cornerRadius = 5.0;
-    self.selectionField.layer.borderWidth  = 1.0;
 }
 
 - (BOOL)hasErrors
@@ -173,7 +174,7 @@
         else
             textColor = [[self class] placeholderTextColor];
     }
-
+    
     [self.selectionField setTitleColor:textColor forState:UIControlStateNormal];
     [self.selectionField setBackgroundColor:backgroundColor];
 }
@@ -186,8 +187,8 @@
     self.value = selectedValue;
     
     [self.selectionPopover dismissPopoverAnimated:YES];
-    
+    [self.delegate txhSalesInformationSelectionCellDidChangeOption:self];
 }
 
-@end
 
+@end

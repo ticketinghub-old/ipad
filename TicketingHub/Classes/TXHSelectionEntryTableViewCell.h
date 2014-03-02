@@ -10,8 +10,10 @@
 
 @interface TXHSelectionEntryTableViewCell : UITableViewCell
 
-@property (copy, nonatomic) NSString *text;
+@property (copy, nonatomic) NSString *placeholder;
+@property (copy, nonatomic) NSString *value;
 @property (copy, nonatomic) NSString *errorMessage;
+@property (strong, nonatomic) id options;
 
 
 @end

@@ -10,6 +10,7 @@
 
 #import "TXHSalesInformationHeader.h"
 #import "TXHSalesInformationTextCell.h"
+#import "TXHSalesInformationSelectionCell.h"
 
 #import "TXHOrderManager.h"
 #import <iOS-api/TXHOrder.h>
@@ -17,7 +18,7 @@
 #import <iOS-api/TXHTicket.h>
 #import <iOS-api/TXHCustomer.h>
 
-@interface TXHSalesInformationDetailsViewController () <TXHSalesInformationTextCellDelegate>
+@interface TXHSalesInformationDetailsViewController () <TXHSalesInformationTextCellDelegate, TXHSalesInformationSelectionCellDelegate>
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
 
@@ -111,24 +112,36 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     TXHField *field = [self fieldForIndexPath:indexPath];
+    NSString *ticketID     = [self ticketIdForIndexPath:indexPath];
+    NSString *fieldType    = field.name;
+    NSString *userInput    = [self userInputWithType:fieldType forTicketID:ticketID];
+    NSString *errorMessage = [self errorMessageForFieldType:fieldType withTicketID:ticketID];
     
     UICollectionViewCell *cell;
     
     // TODO improve this shit
     if ([field.inputType isEqualToString:@"select"])
     {
-        TXHSalesInformationTextCell *selectCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"textCell" forIndexPath:indexPath];
-
+        TXHSalesInformationSelectionCell *selectCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"selectionCell" forIndexPath:indexPath];
+        
+        NSMutableArray *ar = [NSMutableArray array];
+        for (NSArray  *a in field.options)
+        {
+            [ar addObject:[a firstObject]];
+        }
+        
+        selectCell.delegate     = self;
+        selectCell.placeholder  = field.label;
+        selectCell.value        = userInput;
+        selectCell.options      = ar;
+        selectCell.errorMessage = errorMessage;
+        selectCell.name         = field.name;
+        
         cell = selectCell;
     }
     else
     {
         TXHSalesInformationTextCell *textCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"textCell" forIndexPath:indexPath];
-        
-        NSString *ticketID     = [self ticketIdForIndexPath:indexPath];
-        NSString *fieldType    = field.name;
-        NSString *userInput    = [self userInputWithType:fieldType forTicketID:ticketID];
-        NSString *errorMessage = [self errorMessageForFieldType:fieldType withTicketID:ticketID];
         
         textCell.delegate     = self;
         textCell.name         = field.name;
@@ -268,6 +281,15 @@
     [self setUserInput:cell.text withType:cell.name forTicketID:ticketId];
 }
 
+#pragma mark - TXHSalesInformationSelectionCellDelegate
+
+- (void)txhSalesInformationSelectionCellDidChangeOption:(TXHSalesInformationSelectionCell *)cell
+{
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    NSString *ticketId = [self ticketIdForIndexPath:indexPath];
+    
+    [self setUserInput:cell.value withType:cell.name forTicketID:ticketId];
+}
 
 #pragma mark - TXHSalesContentsViewControllerProtocol
 

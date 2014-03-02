@@ -16,6 +16,7 @@ static NSString * const kUserInfoPlaceholderKey = @"kUserInfoPlaceholderKey";
 static NSString * const kUserInfoLabelKey       = @"kUserInfoLabelKey";
 static NSString * const kUserInfoTypeKey        = @"kUserInfoTypeKey";
 static NSString * const kUserInfoValueKey       = @"kUserInfoValueKey";
+static NSString * const kUserInfoValuesArrayKey = @"kUserInfoValuesArrayKey";
 static NSString * const kUserInfoErrorKey       = @"kUserInfoErrorKey";
 
 @interface TXHSalesPaymentCustomerDetailViewController ()
@@ -45,7 +46,7 @@ static NSString * const kUserInfoErrorKey       = @"kUserInfoErrorKey";
                         kUserInfoTypeKey : @"text"}.mutableCopy,
                       
                       @{kUserInfoPlaceholderKey : @"Country",
-                        kUserInfoValueKey : @[@"1", @"2"],
+                        kUserInfoValuesArrayKey : @[@"United Kingdom", @"Poland"],
                         kUserInfoTypeKey : @"select"}.mutableCopy,
                       ];
 }
@@ -77,7 +78,10 @@ static NSString * const kUserInfoErrorKey       = @"kUserInfoErrorKey";
     {
         TXHSelectionEntryTableViewCell *selectionCell = [tableView dequeueReusableCellWithIdentifier:@"TXHSalesPaymentCustomerDetailsSelectionCell" forIndexPath:indexPath];
         
-        selectionCell.text = cellInfo[kUserInfoPlaceholderKey];
+        selectionCell.placeholder  = cellInfo[kUserInfoPlaceholderKey];
+        selectionCell.value        = cellInfo[kUserInfoValueKey];
+        selectionCell.errorMessage = cellInfo[kUserInfoErrorKey];
+        selectionCell.options      = cellInfo[kUserInfoValuesArrayKey];
         
         cell = selectionCell;
     }
