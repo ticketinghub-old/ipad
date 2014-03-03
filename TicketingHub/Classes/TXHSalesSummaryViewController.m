@@ -10,7 +10,6 @@
 
 #import "TXHSalesCompletionViewController.h"
 #import "TXHSalesSummaryCell.h"
-#import "TXHSalesSummaryExtraProductsCell.h"
 #import "TXHSalesSummaryHeader.h"
 #import "TXHSalesTimerViewController.h"
 

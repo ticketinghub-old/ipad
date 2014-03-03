@@ -63,7 +63,6 @@
 		EE75D99817D11048009ADCD8 /* TXHSalesPaymentPaymentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D96517D11048009ADCD8 /* TXHSalesPaymentPaymentDetailsViewController.m */; };
 		EE75D99917D11048009ADCD8 /* TXHSalesPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D96717D11048009ADCD8 /* TXHSalesPaymentViewController.m */; };
 		EE75D99C17D11048009ADCD8 /* TXHSalesSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D96D17D11048009ADCD8 /* TXHSalesSummaryCell.m */; };
-		EE75D99D17D11048009ADCD8 /* TXHSalesSummaryExtraProductsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D96F17D11048009ADCD8 /* TXHSalesSummaryExtraProductsCell.m */; };
 		EE75D99E17D11048009ADCD8 /* TXHSalesSummaryHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D97117D11048009ADCD8 /* TXHSalesSummaryHeader.m */; };
 		EE75D99F17D11048009ADCD8 /* TXHSalesSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D97317D11048009ADCD8 /* TXHSalesSummaryViewController.m */; };
 		EE75D9A017D11048009ADCD8 /* TXHSalesTicketCompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D97517D11048009ADCD8 /* TXHSalesTicketCompletionViewController.m */; };
@@ -212,8 +211,6 @@
 		EE75D96717D11048009ADCD8 /* TXHSalesPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesPaymentViewController.m; path = TicketingHub/Classes/TXHSalesPaymentViewController.m; sourceTree = SOURCE_ROOT; };
 		EE75D96C17D11048009ADCD8 /* TXHSalesSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesSummaryCell.h; path = TicketingHub/Classes/TXHSalesSummaryCell.h; sourceTree = SOURCE_ROOT; };
 		EE75D96D17D11048009ADCD8 /* TXHSalesSummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesSummaryCell.m; path = TicketingHub/Classes/TXHSalesSummaryCell.m; sourceTree = SOURCE_ROOT; };
-		EE75D96E17D11048009ADCD8 /* TXHSalesSummaryExtraProductsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesSummaryExtraProductsCell.h; path = TicketingHub/Classes/TXHSalesSummaryExtraProductsCell.h; sourceTree = SOURCE_ROOT; };
-		EE75D96F17D11048009ADCD8 /* TXHSalesSummaryExtraProductsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesSummaryExtraProductsCell.m; path = TicketingHub/Classes/TXHSalesSummaryExtraProductsCell.m; sourceTree = SOURCE_ROOT; };
 		EE75D97017D11048009ADCD8 /* TXHSalesSummaryHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesSummaryHeader.h; path = TicketingHub/Classes/TXHSalesSummaryHeader.h; sourceTree = SOURCE_ROOT; };
 		EE75D97117D11048009ADCD8 /* TXHSalesSummaryHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesSummaryHeader.m; path = TicketingHub/Classes/TXHSalesSummaryHeader.m; sourceTree = SOURCE_ROOT; };
 		EE75D97217D11048009ADCD8 /* TXHSalesSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesSummaryViewController.h; path = TicketingHub/Classes/TXHSalesSummaryViewController.h; sourceTree = SOURCE_ROOT; };
@@ -535,8 +532,6 @@
 				EE75D97117D11048009ADCD8 /* TXHSalesSummaryHeader.m */,
 				EE75D96C17D11048009ADCD8 /* TXHSalesSummaryCell.h */,
 				EE75D96D17D11048009ADCD8 /* TXHSalesSummaryCell.m */,
-				EE75D96E17D11048009ADCD8 /* TXHSalesSummaryExtraProductsCell.h */,
-				EE75D96F17D11048009ADCD8 /* TXHSalesSummaryExtraProductsCell.m */,
 				EE75D97217D11048009ADCD8 /* TXHSalesSummaryViewController.h */,
 				EE75D97317D11048009ADCD8 /* TXHSalesSummaryViewController.m */,
 			);
@@ -1109,7 +1104,6 @@
 				3E22139B18AA791000DE35A6 /* ArrayDataSource.m in Sources */,
 				3EC8845B18C4984B00CE0597 /* UIResponder+FirstResponder.m in Sources */,
 				EE75D99C17D11048009ADCD8 /* TXHSalesSummaryCell.m in Sources */,
-				EE75D99D17D11048009ADCD8 /* TXHSalesSummaryExtraProductsCell.m in Sources */,
 				3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */,
 				EE75D99E17D11048009ADCD8 /* TXHSalesSummaryHeader.m in Sources */,
 				EE75D99F17D11048009ADCD8 /* TXHSalesSummaryViewController.m in Sources */,
