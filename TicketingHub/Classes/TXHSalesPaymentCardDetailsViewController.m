@@ -11,11 +11,13 @@
 #import "PKTextField.h"
 #import "PKView.h"
 #import "STPView.h"
-#import "TXHCreditCardNumberView.h"
+
+#import "TXHOrderManager.h"
+#import "TXHProductsManager.h"
 
 @interface TXHSalesPaymentCardDetailsViewController ()  <STPViewDelegate, PKViewDelegate, UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet TXHCreditCardNumberView *creditCardNumber;
+@property (weak, nonatomic) IBOutlet UILabel *totalAmountLabel;
 @property (weak, nonatomic) IBOutlet STPView *stripeCreditCardView;
 
 @property (weak, nonatomic) IBOutlet UILabel *cardErrorMessage;
@@ -44,20 +46,14 @@
 {
     [super viewDidLoad];
     
-    self.creditCardNumber.delegate = self;
-    self.stripeCreditCardView.delegate = self;
+    NSNumber *totalAmount = [TXHORDERMANAGER totalOrderPrice];
 
-    // Stripe publishable key will come from the venue & be managed by the API
-    self.stripeCreditCardView.key = @"pk_test_czwzkTp2tactuLOEOqbMTRzG";
+    self.totalAmountLabel.text = [TXHPRODUCTSMANAGER priceStringForPrice:totalAmount];
 }
+
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    self.creditCardNumber.cardNumber = @"4242424242424242";
-    self.creditCardNumber.cardType = @"visa";
-    
-    self.cardErrorMessage.text = @"";
 }
 
 - (void)didReceiveMemoryWarning
@@ -111,67 +107,5 @@
     [numberField resignFirstResponder];
 }
 
-#pragma mark - Stripe STPView Delegate methods
-
-- (void)stripeView:(STPView *)view withCard:(PKCard *)card isValid:(BOOL)valid {
-    NSLog(@"%s %@%@%@", __FUNCTION__,
-          [self.stripeCreditCardView.paymentView.cardNumber formattedStringWithTrail],
-          [self.stripeCreditCardView.paymentView.cardExpiry formattedStringWithTrail],
-          [self.stripeCreditCardView.paymentView.cardCVC string]
-          );
-    if (valid == NO) {
-        self.cardErrorMessage.text = @"There's a problem with the data";
-    } else {
-        self.cardErrorMessage.text = @"Woohoo - you scanned a valid card!";
-        [self.stripeCreditCardView createToken:^(STPToken *token, NSError *error) {
-            NSLog(@"Token : %@", token.tokenId);
-        }];
-    }
-}
-
-#pragma mark - PKView Delegate methods
-
-- (void)paymentView:(PKView *)paymentView withCard:(PKCard *)card isValid:(BOOL)valid {
-    NSLog(@"%s - %@ - %@%@%@", __FUNCTION__, valid ? @"valid" : @"invalid",
-          [self.stripeCreditCardView.paymentView.cardNumber formattedStringWithTrail],
-          [self.stripeCreditCardView.paymentView.cardExpiry formattedStringWithTrail],
-          [self.stripeCreditCardView.paymentView.cardCVC string]
-          );
-}
-
-#pragma mark - UITextField Delegate methods
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    NSLog(@"%s - %@", __FUNCTION__, string);
-    return YES;
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    NSLog(@"%s - %@", __FUNCTION__, textField.text);
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    NSLog(@"%s - %@", __FUNCTION__, textField.text);
-}
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    NSLog(@"%s - %@", __FUNCTION__, textField.text);
-    return YES;
-}
-
-- (BOOL)textFieldShouldClear:(UITextField *)textField {
-    NSLog(@"%s - %@", __FUNCTION__, textField.text);
-    return YES;
-}
-
--(BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    NSLog(@"%s - %@", __FUNCTION__, textField.text);
-    return YES;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSLog(@"%s - %@", __FUNCTION__, textField.text);
-    return YES;
-}
 
 @end

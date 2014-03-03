@@ -8,7 +8,13 @@
 
 #import "TXHSalesPaymentCashDetailsViewController.h"
 
+#import "TXHOrderManager.h"
+#import "TXHProductsManager.h"
+
 @interface TXHSalesPaymentCashDetailsViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *totalAmountLabel;
+@property (strong, nonatomic) NSNumber *totalAmount;
 
 @end
 
@@ -27,27 +33,9 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-#pragma unused (tableView, indexPath)
-    return NO;
-}
-
-- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath {
-#pragma unused (tableView, indexPath)
-    return NO;
+    self.totalAmount = [TXHORDERMANAGER totalOrderPrice];
+    
+    self.totalAmountLabel.text = [TXHPRODUCTSMANAGER priceStringForPrice:self.totalAmount];
 }
 
 
