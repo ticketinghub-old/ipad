@@ -28,6 +28,8 @@
 
 @property (nonatomic, strong) NSMutableDictionary *userInput;
 
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
+
 @end
 
 @implementation TXHSalesInformationDetailsViewController
@@ -38,20 +40,6 @@
     [super viewDidLoad];
     
     [self loadFields];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShown:) name:UIKeyboardWillShowNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)loadFields
@@ -117,16 +105,31 @@
     [self.collectionView reloadData];
 }
 
-#pragma mark UI
+- (UIActivityIndicatorView *)activityIndicator
+{
+    if (!_activityIndicator)
+    {
+        UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:self.view.bounds];
+        indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+        indicatorView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        indicatorView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.5];
+        indicatorView.hidesWhenStopped = YES;
+        [self.view addSubview:indicatorView];
+        _activityIndicator = indicatorView;
+    }
+    return _activityIndicator;
+}
+
+#pragma mark - private methods
 
 - (void)showLoadingIndicator
 {
-
+    [self.activityIndicator startAnimating];
 }
 
 - (void)hideLoadingIndicator
 {
-    
+    [self.activityIndicator stopAnimating];
 }
 
 #pragma mark - Collection View Datasource & Delegate methods
@@ -298,26 +301,6 @@
     return infoDic;
 }
 
-//#pragma mark - Keyboard notifications
-//
-//- (void)keyboardWillShown:(NSNotification *)notification {
-//    NSDictionary *info = [notification userInfo];
-//    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-//
-//    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0f, 0.0f, keyboardSize.width, 0.0f);
-//    self.collectionView.contentInset = contentInsets;
-//}
-//
-//- (void)keyboardWillHide:(NSNotification *)notification {
-//    NSDictionary *keyboardAnimationDetail = [notification userInfo];
-//    UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-//    CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
-//    [UIView animateWithDuration:duration delay:0.0 options:(animationCurve << 16) animations:^{
-//        self.collectionView.contentInset = UIEdgeInsetsZero;
-//        [self.collectionView layoutIfNeeded];
-//    } completion:nil];
-//}
-
 #pragma mark - TXHSalesInformationTextCellDelegate
 
 - (void)txhSalesInformationTextCellDidChangeText:(TXHSalesInformationTextCell *)cell
@@ -352,16 +335,19 @@
 {
     NSDictionary *customersInfo = [self buildCustomersInfo];
     
+    [self showLoadingIndicator];
+    
     [TXHORDERMANAGER updateOrderWithCustomersInfo:customersInfo
                                        completion:^(TXHOrder *order, NSError *error) {
                                            
-                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                           [self hideLoadingIndicator];
+
+                                           if (error)
+                                           {
+                                               [self.collectionView reloadData];
+                                           }
                                            
-                                               if (error) {
-                                                   [self.collectionView reloadData];
-                                               }
-                                               blockName(error);
-                                           });
+                                           blockName(error);
                                        }];
     
 }
