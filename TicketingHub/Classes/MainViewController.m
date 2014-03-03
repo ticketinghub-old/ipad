@@ -8,25 +8,27 @@
 
 #import "MainViewController.h"
 
-#import "SalesOrDoormanViewController.h"
-#import "TXHCommonNames.h"
-#import "TXHLoginViewController.h"
 #import "ProductListController.h"
 #import "ProductListControllerNotifications.h"
+
+#import "SalesOrDoormanViewController.h"
+
+#import "TXHCommonNames.h"
+#import "TXHLoginViewController.h"
+#import "TXHSensorView.h"
 
 // Segue Identifiers
 static NSString * const VenueListContainerEmbedSegue = @"VenueListContainerEmbed";
 static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanContainerEmbed";
 
-@interface MainViewController ()
+@interface MainViewController () <TXHSensorViewDelegate>
 
-@property (strong, nonatomic) UITapGestureRecognizer  *tapRecogniser;
 @property (strong, nonatomic) SalesOrDoormanViewController *salesOrDoormanViewController;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftHandSpace;
 @property (weak, nonatomic) IBOutlet UIView *venueListContainer;
 @property (weak, nonatomic) IBOutlet UIView *salesOrDoormanContainer;
-
+@property (weak, nonatomic) IBOutlet TXHSensorView *sensorView;
 
 @end
 
@@ -38,10 +40,8 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.tapRecogniser = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     self.leftHandSpace.constant = -self.venueListContainer.bounds.size.width;
-
-//    [self presentLoginViewControllerAnimated:NO completion:nil];
+    self.sensorView.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -111,22 +111,54 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 #pragma mark - Private methods
 
 
-- (void)tap:(UITapGestureRecognizer *)recogniser {
-    [self showOrHideVenueList:nil];
-}
-
 #pragma mark Actions
 
 - (IBAction)showOrHideVenueList:(id)sender {
-    [UIView animateWithDuration:0.30f animations:^{
-        if (self.leftHandSpace.constant == 0.0f) {
-            self.leftHandSpace.constant = -self.venueListContainer.bounds.size.width;
-        } else {
-            self.leftHandSpace.constant = 0.0f;
-        }
-        [self.view layoutIfNeeded];
-    }];
+    if (self.leftHandSpace.constant == 0.0f) {
+        [self hideVenueListAnimated];
+    } else {
+        [self showVenueListAnimated];
+    }
 }
 
+- (IBAction)hideVenueList:(id)sender
+{
+    [self hideVenueListAnimated];
+}
+
+- (void)showVenueListAnimated
+{
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         self.leftHandSpace.constant = 0.0f;
+                         [self.view layoutIfNeeded];
+                     }
+                     completion:^(BOOL finished) {
+                         
+                     }];
+}
+
+- (void)hideVenueListAnimated
+{
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         self.leftHandSpace.constant = -self.venueListContainer.bounds.size.width;
+                         [self.view layoutIfNeeded];
+                     }
+                     completion:^(BOOL finished) {
+                         
+                     }];
+}
+
+#pragma mark - TXHSensorViewDelegate
+
+- (void)sensorViewDidRecognizeTap:(TXHSensorView *)view
+{
+    [self hideVenueListAnimated];
+}
 
 @end

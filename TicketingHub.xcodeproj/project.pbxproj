@@ -15,6 +15,7 @@
 		3E44157018AB80EA00C4AE1C /* TXHTicketingHubManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E44156F18AB80EA00C4AE1C /* TXHTicketingHubManager.m */; };
 		3E488BD918BE850600E90BE6 /* RMDisplayLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E488BD618BE850600E90BE6 /* RMDisplayLabel.m */; };
 		3E488BDA18BE850600E90BE6 /* RMDownloadIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E488BD818BE850600E90BE6 /* RMDownloadIndicator.m */; };
+		3E6A422518C483870053EF34 /* TXHSensorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6A422418C483870053EF34 /* TXHSensorView.m */; };
 		3E6F479718AFD6A300E644F7 /* TXHBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F479618AFD6A300E644F7 /* TXHBorderedButton.m */; };
 		3EA36B8018AFDF5C008F8C59 /* TXHProductListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA36B7F18AFDF5C008F8C59 /* TXHProductListCell.m */; };
 		3EA36B8318B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA36B8218B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m */; };
@@ -130,6 +131,8 @@
 		3E488BD618BE850600E90BE6 /* RMDisplayLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDisplayLabel.m; sourceTree = "<group>"; };
 		3E488BD718BE850600E90BE6 /* RMDownloadIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDownloadIndicator.h; sourceTree = "<group>"; };
 		3E488BD818BE850600E90BE6 /* RMDownloadIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDownloadIndicator.m; sourceTree = "<group>"; };
+		3E6A422318C483870053EF34 /* TXHSensorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSensorView.h; sourceTree = "<group>"; };
+		3E6A422418C483870053EF34 /* TXHSensorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSensorView.m; sourceTree = "<group>"; };
 		3E6F479518AFD6A300E644F7 /* TXHBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBorderedButton.h; sourceTree = "<group>"; };
 		3E6F479618AFD6A300E644F7 /* TXHBorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBorderedButton.m; sourceTree = "<group>"; };
 		3EA36B7E18AFDF5C008F8C59 /* TXHProductListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHProductListCell.h; sourceTree = "<group>"; };
@@ -399,6 +402,8 @@
 				EEB1843B17D114390025530A /* TXHCreditCardNumberView.h */,
 				EEB1843C17D114390025530A /* TXHCreditCardNumberView.m */,
 				3E3A5B0218AA5CA600A54812 /* Cells */,
+				3E6A422318C483870053EF34 /* TXHSensorView.h */,
+				3E6A422418C483870053EF34 /* TXHSensorView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1089,6 +1094,7 @@
 				EE75D98E17D11048009ADCD8 /* TXHSalesInformationTextCell.m in Sources */,
 				EE75D99017D11048009ADCD8 /* TXHSalesMainViewController.m in Sources */,
 				EE75D99317D11048009ADCD8 /* TXHSalesPaymentCardDetailsViewController.m in Sources */,
+				3E6A422518C483870053EF34 /* TXHSensorView.m in Sources */,
 				EE75D99417D11048009ADCD8 /* TXHSalesPaymentCashDetailsViewController.m in Sources */,
 				EE75D99517D11048009ADCD8 /* TXHSalesPaymentCreditDetailsViewController.m in Sources */,
 				EE75D99617D11048009ADCD8 /* TXHSalesPaymentCustomerDetailViewController.m in Sources */,
