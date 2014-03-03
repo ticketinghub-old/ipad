@@ -27,6 +27,7 @@
 @property (strong, nonatomic) TXHAvailability *availability;
 @property (strong, nonatomic) NSMutableDictionary *quantities;
 
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -89,16 +90,31 @@
     return self.tiers[indexPath.row];
 }
 
+- (UIActivityIndicatorView *)activityIndicator
+{
+    if (!_activityIndicator)
+    {
+        UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:self.view.bounds];
+        indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+        indicatorView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        indicatorView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.5];
+        indicatorView.hidesWhenStopped = YES;
+        [self.view addSubview:indicatorView];
+        _activityIndicator = indicatorView;
+    }
+    return _activityIndicator;
+}
+
 #pragma mark - private methods
 
 - (void)showLoadingIndicator
 {
-    
+    [self.activityIndicator startAnimating];
 }
 
 - (void)hideLoadingIndicator
 {
-    
+    [self.activityIndicator stopAnimating];
 }
 
 #pragma mark - Table view data source
@@ -173,9 +189,22 @@
                                                  if ([newAvilability.dateString isEqualToString:[availability dateString]] &&
                                                      [newAvilability.timeString isEqualToString:[availability timeString]])
                                                  {
-                                                     newAvilability.coupon = couponString;
-                                                     [TXHPRODUCTSMANAGER setSelectedAvailability:newAvilability];
-                                                     break;
+                                                     // checking if any of tiers has discount set to determin if coupon worked
+                                                     BOOL hasDiscount;
+                                                     for (TXHTier  *tier in availability.tiers)
+                                                         if ([tier.discount integerValue] > 0)
+                                                             hasDiscount = YES;
+
+                                                     if (hasDiscount)
+                                                     {
+                                                         newAvilability.coupon = couponString;
+                                                         [TXHPRODUCTSMANAGER setSelectedAvailability:newAvilability];
+                                                         break;
+                                                     }
+                                                     else
+                                                     {
+                                                         self.couponTextField.text = @"";
+                                                     }
                                                  }
                                              }
                                              
@@ -236,6 +265,11 @@
                                           
                                            }];
     
+}
+
+- (void)setOffsetBottomBy:(CGFloat)offset
+{
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, offset, 0);
 }
 
 #pragma mark - UITextFieldDelegat
