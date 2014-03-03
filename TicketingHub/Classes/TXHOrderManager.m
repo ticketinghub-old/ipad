@@ -96,6 +96,20 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
 
 #pragma mark public methods
 
+- (NSNumber *)totalOrderPrice
+{
+    TXHOrder *order = self.order;
+    
+    NSInteger totalAmount = 0;
+    
+    for (TXHTicket *ticket in order.tickets)
+    {
+        totalAmount += [[ticket totalPrice] integerValue];
+    }
+    
+    return @(totalAmount);
+}
+
 - (void)resetOrder
 {
     self.order = nil;

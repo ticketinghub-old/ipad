@@ -21,6 +21,7 @@ extern NSString * const TXHOrderDidExpireNotification;
 + (instancetype)sharedManager;
 
 - (void)resetOrder;
+- (NSNumber *)totalOrderPrice;
 
 // helpers
 
