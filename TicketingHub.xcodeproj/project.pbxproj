@@ -829,22 +829,22 @@
 		EEB1843317D113FB0025530A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				EEB1845717D114390025530A /* TXHUserDefaultsKeys.h */,
+				EEB1843A17D114390025530A /* TXHCommonNames.h */,
 				3E488BD518BE850600E90BE6 /* RMDisplayLabel.h */,
 				3E488BD618BE850600E90BE6 /* RMDisplayLabel.m */,
 				3E488BD718BE850600E90BE6 /* RMDownloadIndicator.h */,
 				3E488BD818BE850600E90BE6 /* RMDownloadIndicator.m */,
+				3E44156E18AB80EA00C4AE1C /* TXHTicketingHubManager.h */,
+				3E44156F18AB80EA00C4AE1C /* TXHTicketingHubManager.m */,
+				3ECE132218B4C8A800E7148F /* TXHProductsManager.h */,
+				3ECE132318B4C8A800E7148F /* TXHProductsManager.m */,
 				3E3D46EB18ACBB6E00275ACF /* Categories */,
-				EEB1845717D114390025530A /* TXHUserDefaultsKeys.h */,
-				EEB1843A17D114390025530A /* TXHCommonNames.h */,
 				3E22139818AA78DB00DE35A6 /* TableViewDataSources */,
 				3E3A5B0718AA64EA00A54812 /* Formatters */,
 				3E3A5B0618AA624500A54812 /* Selection Controllers */,
 				3E3A5B0118AA5C1F00A54812 /* Seques */,
 				3E3A5B0518AA5D4000A54812 /* Views */,
-				3E44156E18AB80EA00C4AE1C /* TXHTicketingHubManager.h */,
-				3E44156F18AB80EA00C4AE1C /* TXHTicketingHubManager.m */,
-				3ECE132218B4C8A800E7148F /* TXHProductsManager.h */,
-				3ECE132318B4C8A800E7148F /* TXHProductsManager.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";

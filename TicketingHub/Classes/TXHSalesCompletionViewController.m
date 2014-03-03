@@ -27,6 +27,11 @@ static NSInteger const kCancelAlertTag = 123;
     self.continueButton.alpha = enabled ? 1.0 : 0.5;
 }
 
+- (void)setCancelButtonHidden:(BOOL)hidden
+{
+    self.cancelButton.hidden = hidden;
+}
+
 #pragma mark - Button Actions
 
 - (IBAction)cancelAction:(id)sender

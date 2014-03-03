@@ -11,6 +11,7 @@
 extern NSString * const kWizardStepTitleKey;
 extern NSString * const kWizardStepDescriptionKey;
 extern NSString * const kWizardStepControllerSegueID;
+extern NSString * const kWizardStepHidesCancelButton;
 
 @interface TXHSalesStepAbstract : NSObject
 

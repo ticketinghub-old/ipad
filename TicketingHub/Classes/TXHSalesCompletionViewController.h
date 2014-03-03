@@ -22,5 +22,6 @@
 @property (weak, nonatomic) id<TXHSalesCompletionViewControllerDelegate> delegate;
 
 - (void)setContinueButtonEnabled:(BOOL)enabled;
+- (void)setCancelButtonHidden:(BOOL)hidden;
 
 @end

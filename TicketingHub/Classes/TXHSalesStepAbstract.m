@@ -11,6 +11,7 @@
 NSString * const kWizardStepTitleKey          = @"kWizardStepTitleKey";
 NSString * const kWizardStepDescriptionKey    = @"kWizardStepDescriptionKey";
 NSString * const kWizardStepControllerSegueID = @"kWizardStepControllerSegueID";
+NSString * const kWizardStepHidesCancelButton = @"kWizardStepHasCancelButton";
 
 @implementation TXHSalesStepAbstract
 

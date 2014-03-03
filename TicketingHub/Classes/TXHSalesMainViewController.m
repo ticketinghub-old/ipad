@@ -50,7 +50,8 @@ static void * ContentValidContext = &ContentValidContext;
     
     self.stepsManager = [[TXHSaleStepsManager alloc] initWithSteps:@[@{kWizardStepTitleKey  : NSLocalizedString(@"Tickets", @"Tickets"),
                                                                        kWizardStepDescriptionKey : NSLocalizedString(@"Select Type & Quantity", @"Select Type & Quantity"),
-                                                                       kWizardStepControllerSegueID : @"Tickets Quantity"},
+                                                                       kWizardStepControllerSegueID : @"Tickets Quantity",
+                                                                       kWizardStepHidesCancelButton : @YES},
 
                                                                      @{kWizardStepTitleKey  : NSLocalizedString(@"Information", @"Information"),
                                                                        kWizardStepDescriptionKey : NSLocalizedString(@"Customer details", @"Customer details"),
@@ -245,7 +246,9 @@ static void * ContentValidContext = &ContentValidContext;
     [self.timeController setTimerEndDate:[TXHORDERMANAGER expirationDate]];
 
     // update footer
+    [self.stepCompletionController setCancelButtonHidden:[step[kWizardStepHidesCancelButton] boolValue]];
     [self.stepCompletionController setContinueButtonEnabled:[self.stepsManager hasNextStep]];
+    
     
     // update content
     [self showStepContentControllerWithSegueID:step[kWizardStepControllerSegueID]];
