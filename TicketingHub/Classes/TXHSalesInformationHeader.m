@@ -18,6 +18,8 @@
 @property (strong, nonatomic) UIImage *expandImage;
 @property (strong, nonatomic) UIImage *collapseImage;
 
+@property (weak, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
+
 @end
 
 @implementation TXHSalesInformationHeader
@@ -44,6 +46,7 @@
     // add a gesture recogniser to handle toggling between expanded & collapsed
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleMode:)];
     [self addGestureRecognizer:tapGesture];
+    self.tapGestureRecognizer = tapGesture;
 }
 
 - (void)setTierTitle:(NSString *)tierTitle
@@ -56,9 +59,17 @@
     self.headerSubtitle.text = subTitle;
 }
 
-- (void)setExpanded:(BOOL)expanded {
+- (void)setExpanded:(BOOL)expanded
+{
     _expanded = expanded;
     self.expandedCollapsedImageView.image = expanded ? self.collapseImage : self.expandImage;
+}
+
+- (void)setExpandable:(BOOL)expandable
+{
+    _expandable = expandable;
+    self.tapGestureRecognizer.enabled = expandable;
+    self.expandedCollapsedImageView.hidden = !expandable;
 }
 
 - (void)toggleMode:(UITapGestureRecognizer *)gesture

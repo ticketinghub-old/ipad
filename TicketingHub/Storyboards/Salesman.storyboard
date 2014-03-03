@@ -1160,8 +1160,8 @@
                                 <rect key="frame" x="20" y="15" width="200" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Sgv-tQ-5SI"/>
-                                    <constraint firstAttribute="width" constant="200" id="Yhi-ob-KnU"/>
+                                    <constraint firstAttribute="width" constant="200" id="ppP-Fv-2Ma"/>
+                                    <constraint firstAttribute="height" constant="40" id="zUR-ix-7X9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1189,7 +1189,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25098040699958801" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="68i-Zk-n0t"/>
+                                    <constraint firstAttribute="height" constant="40" id="O71-g0-IZC"/>
                                     <constraint firstAttribute="width" constant="200" id="pKx-QC-GPI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -1215,12 +1215,12 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="8AU-qh-5zk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GP7-Ss-ICN" secondAttribute="trailing" constant="20" id="5CW-cp-GKp"/>
-                            <constraint firstItem="GP7-Ss-ICN" firstAttribute="width" secondItem="8AU-qh-5zk" secondAttribute="width" id="6tp-qt-nNf"/>
                             <constraint firstAttribute="trailing" secondItem="8AU-qh-5zk" secondAttribute="trailing" constant="20" id="Boz-Ph-AxL"/>
                             <constraint firstItem="GP7-Ss-ICN" firstAttribute="leading" secondItem="5wJ-Ua-TG0" secondAttribute="leading" constant="20" id="FfV-qb-pqm"/>
                             <constraint firstItem="yZI-8j-M21" firstAttribute="leading" secondItem="5wJ-Ua-TG0" secondAttribute="leading" id="JEa-bf-hWy"/>
                             <constraint firstAttribute="centerY" secondItem="GP7-Ss-ICN" secondAttribute="centerY" id="Pyf-ci-2rq"/>
                             <constraint firstAttribute="trailing" secondItem="yZI-8j-M21" secondAttribute="trailing" id="UR7-ig-EZV"/>
+                            <constraint firstItem="8AU-qh-5zk" firstAttribute="width" secondItem="GP7-Ss-ICN" secondAttribute="width" id="Xa0-Xe-4SJ"/>
                             <constraint firstItem="yZI-8j-M21" firstAttribute="top" secondItem="KnN-mc-Frs" secondAttribute="bottom" id="mPo-a1-DLr"/>
                             <constraint firstAttribute="centerY" secondItem="8AU-qh-5zk" secondAttribute="centerY" id="ulV-w0-Rve"/>
                         </constraints>

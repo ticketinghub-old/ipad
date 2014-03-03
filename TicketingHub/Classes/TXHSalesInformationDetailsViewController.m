@@ -193,12 +193,14 @@
         
         NSString *ticketID = [self ticketIdForIndexPath:indexPath];
         TXHTicket *ticket  = [TXHORDERMANAGER ticketFromOrderWithID:ticketID];
+        BOOL hasFields = [self numberOfFieldsForTicketID:ticketID] > 0;
 
-        header.tierTitle = ticket.tier.name;
-        header.subTitle  = [self numberOfFieldsForTicketID:ticketID] > 0 ? @"" : NSLocalizedString(@"No extra information is required ", nil);
-        header.delegate  = self;
-        header.section   = indexPath.section;
-        header.expanded  = [self isSectionExpanded:indexPath.section];
+        header.tierTitle  = ticket.tier.name;
+        header.subTitle   = hasFields ? @"" : NSLocalizedString(@"No extra information is required ", nil);
+        header.delegate   = self;
+        header.section    = indexPath.section;
+        header.expanded   = [self isSectionExpanded:indexPath.section];
+        header.expandable = hasFields;
        
         return header;
     } else if (kind == UICollectionElementKindSectionFooter) {
