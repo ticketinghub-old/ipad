@@ -32,6 +32,8 @@
 @property (strong, nonatomic) TXHAvailability *selectedAvailability;
 
 @property (strong, nonatomic) IBOutlet UIView *loadingView;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
 @property (assign, nonatomic) BOOL loadingAvailabilitesDetails;
 
 @end
@@ -322,6 +324,7 @@
 
 - (void)showLoadingView
 {
+    [self.activityIndicator startAnimating];
     [UIView animateKeyframesWithDuration:0.2
                                    delay:0.0
                                  options:UIViewKeyframeAnimationOptionBeginFromCurrentState
@@ -333,6 +336,7 @@
 
 - (void)hideLoadingView
 {
+    [self.activityIndicator stopAnimating];
     [UIView animateKeyframesWithDuration:0.2
                                    delay:0.0
                                  options:UIViewKeyframeAnimationOptionBeginFromCurrentState
