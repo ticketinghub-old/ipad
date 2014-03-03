@@ -115,11 +115,10 @@
 
 - (void)setSelectedProduct:(TXHProduct *)selectedProduct
 {
-    if (_selectedProduct == selectedProduct)
-        return;
-
     _selectedProduct = selectedProduct;
 
+    self.selectedAvailability = nil;
+    
     [self updateUI];
 }
 
