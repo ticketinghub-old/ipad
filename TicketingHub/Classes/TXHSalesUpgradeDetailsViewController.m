@@ -27,6 +27,8 @@
 @property (strong, nonatomic) NSMutableArray *expandedSections;
 @property (strong, nonatomic) NSMutableSet   *selectedUpgrades;
 
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
+
 @end
 
 @implementation TXHSalesUpgradeDetailsViewController
@@ -53,7 +55,32 @@
     [self.collectionView reloadData];
 }
 
+- (UIActivityIndicatorView *)activityIndicator
+{
+    if (!_activityIndicator)
+    {
+        UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:self.view.bounds];
+        indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+        indicatorView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        indicatorView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.5];
+        indicatorView.hidesWhenStopped = YES;
+        [self.view addSubview:indicatorView];
+        _activityIndicator = indicatorView;
+    }
+    return _activityIndicator;
+}
+
 #pragma mark - private methods
+
+- (void)showLoadingIndicator
+{
+    [self.activityIndicator startAnimating];
+}
+
+- (void)hideLoadingIndicator
+{
+    [self.activityIndicator stopAnimating];
+}
 
 - (void)loadUpgrades
 {
@@ -217,35 +244,6 @@
     [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
 }
 
-//- (void)makeCellVisible:(id)sender {
-//    UICollectionViewCell *cell = sender;
-//    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
-//    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
-//}
-
-#pragma mark - Action methods
-
-//#pragma mark - Keyboard notifications
-//
-//- (void)keyboardWillShown:(NSNotification *)notification {
-//    NSDictionary *info = [notification userInfo];
-//    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-//    
-//    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0f, 0.0f, keyboardSize.width, 0.0f);
-//    self.collectionView.contentInset = contentInsets;
-//}
-//
-//- (void)keyboardWillHide:(NSNotification *)notification {
-//    NSDictionary *keyboardAnimationDetail = [notification userInfo];
-//    UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-//
-//    CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
-//    [UIView animateWithDuration:duration delay:0.0 options:(animationCurve << 16) animations:^{
-//        self.collectionView.contentInset = UIEdgeInsetsZero;
-//        [self.collectionView layoutIfNeeded];
-//    } completion:nil];
-//}
-
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     BOOL expanded = [self isSectionExpanded:indexPath.section];
@@ -275,17 +273,17 @@
         return;
     } 
     
+    [self showLoadingIndicator];
     
     [TXHORDERMANAGER updateOrderWithUpgradesInfo:upgradesInfo
                                        completion:^(TXHOrder *order, NSError *error) {
                                            
-                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                               
-                                               if (error) {
-                                                   [self.collectionView reloadData];
-                                               }
-                                               blockName(error);
-                                           });
+                                           [self hideLoadingIndicator];
+                                           
+                                           if (error) {
+                                               [self.collectionView reloadData];
+                                           }
+                                           blockName(error);
                                        }];
     
 }
