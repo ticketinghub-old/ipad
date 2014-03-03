@@ -16,9 +16,9 @@
     static UIColor *customBackgroundColour = nil;
     
     if (!customBackgroundColour) {
-        customBackgroundColour = [UIColor colorWithRed:14.0f / 255.0f
-                                                 green:47.0f / 255.0f
-                                                  blue:67.0f / 255.0f
+        customBackgroundColour = [UIColor colorWithRed:38.0f / 255.0f
+                                                 green:67.0f / 255.0f
+                                                  blue:90.0f / 255.0f
                                                  alpha:1.0f];
     }
     
