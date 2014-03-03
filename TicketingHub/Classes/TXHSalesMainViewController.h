@@ -14,6 +14,10 @@
 
 - (void)finishStepWithCompletion:(void (^)(NSError *error))blockName;
 
+@optional
+
+- (void)setOffsetBottomBy:(CGFloat)offset;
+
 @end
 
 @interface TXHSalesMainViewController : UIViewController

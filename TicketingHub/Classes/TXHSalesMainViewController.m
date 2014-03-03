@@ -81,6 +81,7 @@ static void * ContentValidContext = &ContentValidContext;
     [self resetData];
     
     [self registerForProductAndAvailabilityChanges];
+    [self registerForKeyboardNotifications];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(orderDidExpire:)
@@ -92,6 +93,7 @@ static void * ContentValidContext = &ContentValidContext;
     // remove observer
     self.stepCompletionController = nil;
     [self unregisterForProductAndAvailabilityChanges];
+    [self unregisterFromKeyboardNotifications];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHOrderDidExpireNotification object:nil];
 }
 
@@ -168,6 +170,19 @@ static void * ContentValidContext = &ContentValidContext;
 
 }
 
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)unregisterFromKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+
+}
+
 #pragma mark notifications
 
 - (void)productDidChange:(NSNotification *)note
@@ -178,6 +193,36 @@ static void * ContentValidContext = &ContentValidContext;
 - (void)availabilityDidChange:(NSNotification *)note
 {
     [self resetData];
+}
+
+#pragma mark - Keyboard notifications
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect keyboardFrame = [kbFrame CGRectValue];
+    
+    CGFloat height = keyboardFrame.size.width - self.stepCompletionController.view.height;
+
+    if ([self.stepContentController respondsToSelector:@selector(setOffsetBottomBy:)])
+    {
+        [UIView animateWithDuration:animationDuration animations:^{
+            [self.stepContentController setOffsetBottomBy:height];
+        }];
+    }
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+
+    if ([self.stepContentController respondsToSelector:@selector(setOffsetBottomBy:)])
+    {
+        [UIView animateWithDuration:animationDuration animations:^{
+            [self.stepContentController setOffsetBottomBy:0];
+        }];
+    }
 }
 
 

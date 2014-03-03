@@ -51,4 +51,15 @@
     [self.paymentDetailsController setPaymentMethodType:(TXHPaymentMethodType)sender.selectedSegmentIndex];
 }
 
+- (void)setOffsetBottomBy:(CGFloat)offset
+{
+//    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, offset, 0);
+}
+
+- (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
+{
+    
+}
+
+
 @end

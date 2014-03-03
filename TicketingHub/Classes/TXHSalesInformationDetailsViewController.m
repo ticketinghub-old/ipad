@@ -366,5 +366,9 @@
     
 }
 
+- (void)setOffsetBottomBy:(CGFloat)offset
+{
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, offset, 0);
+}
 
 @end
