@@ -122,7 +122,7 @@
     TXHGroupCell *cell = (TXHGroupCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-  cell.groupTitle.text = [NSString stringWithFormat:@"{%d, %d}", indexPath.section, indexPath.row];
+  cell.groupTitle.text = [NSString stringWithFormat:@"{%ld, %ld}", (long)indexPath.section, (long)indexPath.row];
   cell.accessoryType = (indexPath.row % 2) == 0 ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone
   ;
     

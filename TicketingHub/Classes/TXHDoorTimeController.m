@@ -97,7 +97,7 @@
     formatter.dateStyle = NSDateFormatterShortStyle;
     formatter.timeStyle = NSDateFormatterNoStyle;
   }
-  cell.timeFrame.text = [NSString stringWithFormat:@"%@ - %d:00 to %d:00", [formatter stringFromDate:self.selectedDate], start++, start];
+  cell.timeFrame.text = [NSString stringWithFormat:@"%@ - %ld:00 to %ld:00", [formatter stringFromDate:self.selectedDate], (long)start++, (long)start];
     
   return cell;
 }

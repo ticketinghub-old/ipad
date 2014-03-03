@@ -60,7 +60,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
     
     // If this row is for the currently selected quantity put a checkmark in the cell
     cell.accessoryType = (indexPath.row == self.currentQuantitySelected) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;

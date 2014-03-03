@@ -50,7 +50,7 @@
 
 - (void)setSelectedQuantity:(NSInteger)selectedQuantity
 {
-    self.quantity.text = [NSString stringWithFormat:@"%d",selectedQuantity];
+    self.quantity.text = [NSString stringWithFormat:@"%ld",(long)selectedQuantity];
 }
 
 
@@ -69,7 +69,7 @@
     quantity = quantity > maxValue ? maxValue : quantity;
     
     self.stepper.value = quantity;
-    self.quantity.text = [NSString stringWithFormat:@"%d", quantity];
+    self.quantity.text = [NSString stringWithFormat:@"%ld", (long)quantity];
 
     [self quantityDidChange];
 }

@@ -123,8 +123,9 @@
     NSInteger minutes = floor((current/60));
     NSInteger seconds = floor(current - (minutes * 60));
     
-    self.timerLabel.text = [NSString stringWithFormat:@"%d:%.2d",minutes,seconds];
-    [self.timerIndicator updateWithTotalBytes:total downloadedBytes:total-current];
+    self.timerLabel.text = [NSString stringWithFormat:@"%ld:%.2ld",(long)minutes,(long)seconds];
+    
+    [self.timerIndicator updateWithTotalBytes:total downloadedBytes:current];
 }
 
 @end
