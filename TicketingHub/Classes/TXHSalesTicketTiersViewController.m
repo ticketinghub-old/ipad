@@ -84,6 +84,11 @@
     });
 }
 
+- (TXHTier *)tierAtIndexPath:(NSIndexPath *)indexPath
+{
+    return self.tiers[indexPath.row];
+}
+
 #pragma mark - private methods
 
 - (void)showLoadingIndicator
@@ -115,8 +120,13 @@
 
 - (void)configureCell:(TXHSalesTicketTierCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    TXHTier *tier = self.tiers[indexPath.row];
-    cell.tier = tier;
+    TXHTier *tier = [self tierAtIndexPath:indexPath];
+
+    cell.title            = tier.name;
+    cell.subtitle         = tier.tierDescription;
+    cell.priceString      = [TXHPRODUCTSMANAGER priceStringForPrice:tier.price];
+    cell.tierIdentifier   = tier.internalTierId;
+    cell.selectedQuantity = [self quantityForTicketIdentifier:tier.internalTierId];
     cell.delegate = self;
     
     cell.quantityChangedHandler = ^(NSDictionary *quantity) {
@@ -131,6 +141,13 @@
         [self.quantities setObject:dic[key] forKey:key];
     }
     self.valid = [self hasQuantitiesSelected];
+}
+
+- (NSInteger)quantityForTicketIdentifier:(NSString *)ticketIdentifier
+{
+    NSNumber *quantity = self.quantities[ticketIdentifier];
+    
+    return [quantity integerValue];
 }
 
 - (void)updateWithCoupon:(NSString *)couponString
@@ -182,8 +199,11 @@
 
 #pragma mark - TXHSalesTicketTierCellDelegate
 
-- (NSInteger)maximumQuantityForTier:(TXHTier*)tier
+- (NSInteger)maximumQuantityForCell:(TXHSalesTicketTierCell *)cell
 {
+    NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+    TXHTier *tier = [self tierAtIndexPath:cellIndexPath];
+    
     if (!self.availability.limitValue)
         return tier.limitValue;
     
@@ -222,11 +242,11 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-
     if ([textField.text length])
     {
         [self updateWithCoupon:textField.text];
     }
+    [textField resignFirstResponder];
     
     return YES;
 }

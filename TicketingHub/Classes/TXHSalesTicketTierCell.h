@@ -8,15 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
+@class TXHSalesTicketTierCell;
+
 @protocol TXHSalesTicketTierCellDelegate <NSObject>
 
-- (NSInteger)maximumQuantityForTier:(TXHTier*)tier;
+- (NSInteger)maximumQuantityForCell:(TXHSalesTicketTierCell *)cell;
 
 @end
 
-@interface TXHSalesTicketTierCell : UITableViewCell
+@interface TXHSalesTicketTierCell : UITableViewCell 
 
-@property (strong, nonatomic) TXHTier *tier;
+@property (copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *subtitle;
+@property (copy, nonatomic) NSString *priceString;
+
+@property (copy, nonatomic) NSString *tierIdentifier;
+
+@property (assign, nonatomic) NSInteger selectedQuantity;
+
 @property (weak, nonatomic) id<TXHSalesTicketTierCellDelegate> delegate;
 
 @property (copy) void (^quantityChangedHandler)(NSDictionary *);
