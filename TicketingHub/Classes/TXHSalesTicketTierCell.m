@@ -50,17 +50,20 @@
 
 - (void)setSelectedQuantity:(NSInteger)selectedQuantity
 {
+    _selectedQuantity = selectedQuantity;
     self.quantity.text = [NSString stringWithFormat:@"%ld",(long)selectedQuantity];
 }
 
 
 - (void)quantityDidChange
 {
+    
     if (self.quantityChangedHandler)
         self.quantityChangedHandler(@{self.tierIdentifier : [NSNumber numberWithInteger:self.quantity.text.integerValue]});
 }
 
 #pragma mark - Quantity Value Changed action
+
 - (IBAction)quantityChanged:(id)sender
 {
     NSInteger maxValue = [self.delegate maximumQuantityForCell:self];
@@ -69,8 +72,8 @@
     quantity = quantity > maxValue ? maxValue : quantity;
     
     self.stepper.value = quantity;
-    self.quantity.text = [NSString stringWithFormat:@"%ld", (long)quantity];
-
+    self.selectedQuantity = quantity;
+    
     [self quantityDidChange];
 }
 
@@ -80,6 +83,7 @@
 {
     UIStepper *stepper = sender;
     [self.quantity setText:[NSString stringWithFormat:@"%.0f", stepper.value]];
+    
     [self quantityChanged:sender];
 }
 
@@ -94,7 +98,7 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     if (![textField.text length]) {
-        self.selectedQuantity = 0;
+        self.selectedQuantity = self.selectedQuantity;
     }
 }
 
