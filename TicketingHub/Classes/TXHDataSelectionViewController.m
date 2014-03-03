@@ -25,6 +25,7 @@
     [super viewDidLoad];
 
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellIdentifier"];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 -(void)setItems:(id)items
@@ -60,7 +61,8 @@
 - (void)configureCell:(UITableViewCell *)cell withItem:(id)item
 {
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
-
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    
     if ([item isKindOfClass:[NSString class]])
     {
         cell.textLabel.text = item;
@@ -73,7 +75,8 @@
 
 #pragma mark UItableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     [self.delegate dataSelectionViewController:self didSelectItemAtIndexPath:indexPath];
 }
 

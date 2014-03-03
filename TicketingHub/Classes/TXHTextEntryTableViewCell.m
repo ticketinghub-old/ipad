@@ -121,19 +121,17 @@
     self.textField.text = @"";
 }
 
-#pragma mark UITextFieldDelegate
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
+- (IBAction)textDidChange:(id)sender
 {
-//    [self.delegate txhSalesInformationTextCellDidChangeText:self];
+    //    [self.delegate txhSalesInformationTextCellDidChangeText:self];
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+#pragma mark UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField setText:[textField.text stringByReplacingCharactersInRange:range withString:string]];
-//    [self.delegate txhSalesInformationTextCellDidChangeText:self];
-    
-    return NO;
+    [textField resignFirstResponder];
+    return YES;
 }
 
 

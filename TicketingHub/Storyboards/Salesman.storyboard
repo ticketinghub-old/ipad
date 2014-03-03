@@ -251,7 +251,7 @@
                                                 <action selector="stepChanged:" destination="7qP-mI-xwg" eventType="valueChanged" id="nTl-uX-cqk"/>
                                             </connections>
                                         </stepper>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h5F-k5-KQX">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h5F-k5-KQX">
                                             <rect key="frame" x="803" y="35" width="99" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.91372549020000005" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -914,6 +914,9 @@
                                                     <color key="backgroundColor" red="0.91372549020000005" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textValueChanged:" destination="9RA-0I-vI9" eventType="editingChanged" id="H3O-EP-Tkb"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" red="0.9137254901960784" green="0.93333333333333335" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
@@ -1220,7 +1223,6 @@
                             <constraint firstItem="yZI-8j-M21" firstAttribute="leading" secondItem="5wJ-Ua-TG0" secondAttribute="leading" id="JEa-bf-hWy"/>
                             <constraint firstAttribute="centerY" secondItem="GP7-Ss-ICN" secondAttribute="centerY" id="Pyf-ci-2rq"/>
                             <constraint firstAttribute="trailing" secondItem="yZI-8j-M21" secondAttribute="trailing" id="UR7-ig-EZV"/>
-                            <constraint firstItem="8AU-qh-5zk" firstAttribute="width" secondItem="GP7-Ss-ICN" secondAttribute="width" id="Xa0-Xe-4SJ"/>
                             <constraint firstItem="yZI-8j-M21" firstAttribute="top" secondItem="KnN-mc-Frs" secondAttribute="bottom" id="mPo-a1-DLr"/>
                             <constraint firstAttribute="centerY" secondItem="8AU-qh-5zk" secondAttribute="centerY" id="ulV-w0-Rve"/>
                         </constraints>
@@ -1263,6 +1265,9 @@
                                                     <color key="backgroundColor" red="0.91372549020000005" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textDidChange:" destination="lhx-tu-v2V" eventType="editingChanged" id="ZdF-4k-gsp"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" red="0.91372549020000005" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1740,14 +1745,6 @@
                     </tableView>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eVp-mi-uRC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Expand" translatesAutoresizingMaskIntoConstraints="NO" id="359-Eb-GLf">
-                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="14" id="Knp-cn-pPf"/>
-                        <constraint firstAttribute="height" constant="8" id="YNU-r2-Opv"/>
-                    </constraints>
-                </imageView>
             </objects>
             <point key="canvasLocation" x="6613" y="2695"/>
         </scene>

@@ -117,7 +117,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
     if (self.leftHandSpace.constant == 0.0f) {
         [self hideVenueListAnimated];
     } else {
-        [self showVenueListAnimated];
+        [self showVenueListAnimated ];
     }
 }
 

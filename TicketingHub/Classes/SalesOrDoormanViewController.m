@@ -16,6 +16,7 @@
 #import "TXHEmbeddingSegue.h"
 #import "TXHTransitionSegue.h"
 
+#import "UIResponder+FirstResponder.h"
 #import "ProductListControllerNotifications.h"
 
 @interface SalesOrDoormanViewController () <TXHDateSelectorViewDelegate>
@@ -82,6 +83,7 @@
 - (IBAction)selectMode:(id)__unused sender
 {
     [self dismissVisiblePopover];
+    [[UIResponder currentFirstResponder] resignFirstResponder];
     if (self.modeSelector.selectedSegmentIndex == 1)
     {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Doorman" bundle:nil];
@@ -187,7 +189,8 @@
 
 #pragma mark - Private
 
-- (void)setup {
+- (void)setup
+{
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:38.0f / 255.0f
                                                                              green:65.0f / 255.0f
                                                                               blue:87.0f / 255.0f
@@ -208,8 +211,10 @@
     [self.navigationItem setLeftBarButtonItems:@[self.navigationItem.leftBarButtonItem, self.dateButton]];
 }
 
--(void)selectDate:(id)__unused sender {
+-(void)selectDate:(id)__unused sender
+{
     [self dismissVisiblePopover];
+    [[UIResponder currentFirstResponder] resignFirstResponder];
 
     TXHDateSelectorViewController *dateViewController = [[TXHDateSelectorViewController alloc] initWithSunday:NO];
     dateViewController.delegate = self;
@@ -220,8 +225,10 @@
     [self.popover presentPopoverFromBarButtonItem:self.dateButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
-- (IBAction)toggleMenu:(id)__unused sender {
+- (IBAction)toggleMenu:(id)__unused sender
+{
     [self dismissVisiblePopover];
+    [[UIResponder currentFirstResponder] resignFirstResponder];
     [[UIApplication sharedApplication] sendAction:@selector(showOrHideVenueList:) to:nil from:self forEvent:nil];
 }
 
