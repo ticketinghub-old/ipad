@@ -23,6 +23,7 @@
 		3EA7634818C396D2001175F1 /* TXHSalesInformationSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7634718C396D2001175F1 /* TXHSalesInformationSelectionCell.m */; };
 		3EC63E0218B36E7A00B091A0 /* TXHSaleStepsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0118B36E7A00B091A0 /* TXHSaleStepsManager.m */; };
 		3EC63E0818B3721600B091A0 /* TXHSalesStepAbstract.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0718B3721600B091A0 /* TXHSalesStepAbstract.m */; };
+		3EC8845B18C4984B00CE0597 /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC8845A18C4984B00CE0597 /* UIResponder+FirstResponder.m */; };
 		3ECE132418B4C8A800E7148F /* TXHProductsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE132318B4C8A800E7148F /* TXHProductsManager.m */; };
 		3ECE137418B63A6900E7148F /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE137318B63A6900E7148F /* NSDate+Additions.m */; };
 		3ECE137718B689CE00E7148F /* NSDate+CupertinoYankee.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE137618B689CE00E7148F /* NSDate+CupertinoYankee.m */; };
@@ -148,6 +149,8 @@
 		3EC63E0318B36EAB00B091A0 /* TXHSalesWizardViewControllerDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TXHSalesWizardViewControllerDataSource.h; path = TicketingHub/Classes/TXHSalesWizardViewControllerDataSource.h; sourceTree = SOURCE_ROOT; };
 		3EC63E0618B3721600B091A0 /* TXHSalesStepAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesStepAbstract.h; path = TicketingHub/Classes/TXHSalesStepAbstract.h; sourceTree = SOURCE_ROOT; };
 		3EC63E0718B3721600B091A0 /* TXHSalesStepAbstract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesStepAbstract.m; path = TicketingHub/Classes/TXHSalesStepAbstract.m; sourceTree = SOURCE_ROOT; };
+		3EC8845918C4984B00CE0597 /* UIResponder+FirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+FirstResponder.h"; sourceTree = "<group>"; };
+		3EC8845A18C4984B00CE0597 /* UIResponder+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+FirstResponder.m"; sourceTree = "<group>"; };
 		3ECE132218B4C8A800E7148F /* TXHProductsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHProductsManager.h; sourceTree = "<group>"; };
 		3ECE132318B4C8A800E7148F /* TXHProductsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHProductsManager.m; sourceTree = "<group>"; };
 		3ECE137218B63A6900E7148F /* NSDate+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Additions.h"; sourceTree = "<group>"; };
@@ -622,6 +625,8 @@
 				3ECE137318B63A6900E7148F /* NSDate+Additions.m */,
 				3ECE137518B689CE00E7148F /* NSDate+CupertinoYankee.h */,
 				3ECE137618B689CE00E7148F /* NSDate+CupertinoYankee.m */,
+				3EC8845918C4984B00CE0597 /* UIResponder+FirstResponder.h */,
+				3EC8845A18C4984B00CE0597 /* UIResponder+FirstResponder.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1102,6 +1107,7 @@
 				3ECE132418B4C8A800E7148F /* TXHProductsManager.m in Sources */,
 				EE75D99917D11048009ADCD8 /* TXHSalesPaymentViewController.m in Sources */,
 				3E22139B18AA791000DE35A6 /* ArrayDataSource.m in Sources */,
+				3EC8845B18C4984B00CE0597 /* UIResponder+FirstResponder.m in Sources */,
 				EE75D99C17D11048009ADCD8 /* TXHSalesSummaryCell.m in Sources */,
 				EE75D99D17D11048009ADCD8 /* TXHSalesSummaryExtraProductsCell.m in Sources */,
 				3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */,
@@ -1254,6 +1260,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1294,6 +1301,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1418,6 +1426,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
