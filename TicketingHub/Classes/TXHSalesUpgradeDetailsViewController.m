@@ -25,7 +25,7 @@
 
 @property (strong, nonatomic) NSDictionary   *upgrades;
 @property (strong, nonatomic) NSMutableArray *expandedSections;
-@property (strong, nonatomic) NSMutableSet   *selectedUpgrades;
+@property (strong, nonatomic) NSMutableDictionary   *selectedUpgrades;
 
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 
@@ -48,7 +48,7 @@
 {
     _upgrades = upgrades;
     
-    self.selectedUpgrades = [NSMutableSet set];
+    self.selectedUpgrades = [NSMutableDictionary dictionary];
     
     [self setupExpandedSectionsInfo];
     
@@ -114,17 +114,22 @@
     return [TXHORDERMANAGER ticketFromOrderWithID:ticketID];
 }
 
-- (BOOL)isUpgradeSelected:(TXHUpgrade *)upgrade
+- (BOOL)isUpgradeSelected:(TXHUpgrade *)upgrade forTicketID:(NSString *)ticketId
 {
-    return [self.selectedUpgrades containsObject:upgrade];
+    return [self.selectedUpgrades[ticketId] containsObject:upgrade];
 }
 
-- (void)toggleUpgradeSelection:(TXHUpgrade *)upgrade
+- (void)toggleUpgradeSelection:(TXHUpgrade *)upgrade forTicketID:(NSString *)ticketID
 {
-    if ([self.selectedUpgrades containsObject:upgrade])
-        [self.selectedUpgrades removeObject:upgrade];
+    if ([self.selectedUpgrades[ticketID] containsObject:upgrade])
+        [self.selectedUpgrades[ticketID] removeObject:upgrade];
     else
-        [self.selectedUpgrades addObject:upgrade];
+    {
+        if (!self.selectedUpgrades[ticketID])
+            self.selectedUpgrades[ticketID] = [NSMutableSet set];
+
+        [self.selectedUpgrades[ticketID] addObject:upgrade];
+    }
 }
 
 - (BOOL)isSectionExpanded:(NSInteger)sectionIndex
@@ -159,7 +164,7 @@
         NSMutableArray *selectedUpgrades = [NSMutableArray array];
         for (TXHUpgrade *upgrade in self.upgrades[ticketId])
         {
-            if ([self isUpgradeSelected:upgrade]) {
+            if ([self isUpgradeSelected:upgrade forTicketID:ticketId]) {
                 [selectedUpgrades addObject:upgrade.upgradeId];
             }
         }
@@ -217,12 +222,13 @@
 
 - (void)configureCell:(TXHSalesUpgradeCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
+    TXHTicket *ticket = [self ticketForIndexPath:indexPath];
     TXHUpgrade *upgrade = [self upgreadeAtIndexPath:indexPath];
 
     cell.upgradeName        = upgrade.name;
     cell.upgradeDescription = upgrade.upgradeDescription;
     cell.upgradePrice       = [TXHPRODUCTSMANAGER priceStringForPrice:upgrade.price];
-    cell.chosen             = [self isUpgradeSelected:upgrade];
+    cell.chosen             = [self isUpgradeSelected:upgrade forTicketID:ticket.ticketId];
 }
 
 - (void)configureHeader:(TXHSalesUpgradeHeader *)header atIndexPath:(NSIndexPath *)indexPath
@@ -237,9 +243,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    TXHTicket *ticket = [self ticketForIndexPath:indexPath];
     TXHUpgrade *upgrade = [self upgreadeAtIndexPath:indexPath];
     
-    [self toggleUpgradeSelection:upgrade];
+    [self toggleUpgradeSelection:upgrade forTicketID:ticket.ticketId];
     
     [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
 }
