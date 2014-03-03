@@ -252,10 +252,14 @@
 
 - (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
 {
+    [self showLoadingIndicator];
+    
     [TXHORDERMANAGER reserveTicketsWithTierQuantities:self.quantities
                                          availability:self.availability
                                            completion:^(TXHOrder *order, NSError *error) {
                                            
+                                               [self hideLoadingIndicator];
+                                               
                                                if (error)
                                                {
                                                    // TODO: handle error
