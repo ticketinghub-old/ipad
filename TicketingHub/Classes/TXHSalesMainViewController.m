@@ -266,7 +266,6 @@ static void * ContentValidContext = &ContentValidContext;
 
 - (void)salesCompletionViewControllerDidCancel:(TXHSalesCompletionViewController *)controller
 {
-    //TODO: show alertview to confirm
     [self resetData];
 }
 
