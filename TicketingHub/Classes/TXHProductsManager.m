@@ -102,5 +102,10 @@ NSString * const TXHSelectedAvailability            = @"TXHSelectedProduct";
                                                       userInfo:userInfo];
 }
 
+- (void)fetchSelectedProductAvailabilitiesFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate withCoupon:(NSString *)coupon completion:(void(^)(NSArray *availabilities, NSError *error))completion
+{
+    [TXHTICKETINHGUBCLIENT availabilitiesForProduct:self.selectedProduct fromDate:fromDate toDate:toDate coupon:coupon completion:completion];
+}
+
 
 @end

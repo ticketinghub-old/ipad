@@ -177,41 +177,40 @@
     
     self.checkingCoupon = YES;
     
-    [TXHTICKETINHGUBCLIENT availabilitiesForProduct:[TXHPRODUCTSMANAGER selectedProduct]
-                                           fromDate:date
-                                             toDate:nil
-                                             coupon:couponString
-                                         completion:^(NSArray *availabilities, NSError *error) {
-                                             
-                                             TXHAvailability *availability = [TXHPRODUCTSMANAGER selectedAvailability];
-
-                                             for (TXHAvailability *newAvilability in availabilities)
-                                             {
-                                                 if ([newAvilability.dateString isEqualToString:[availability dateString]] &&
-                                                     [newAvilability.timeString isEqualToString:[availability timeString]])
-                                                 {
-                                                     // checking if any of tiers has discount set to determin if coupon worked
-                                                     BOOL hasDiscount;
-                                                     for (TXHTier  *tier in availability.tiers)
-                                                         if ([tier.discount integerValue] > 0)
-                                                             hasDiscount = YES;
-
-                                                     if (hasDiscount)
-                                                     {
-                                                         newAvilability.coupon = couponString;
-                                                         [TXHPRODUCTSMANAGER setSelectedAvailability:newAvilability];
-                                                         break;
-                                                     }
-                                                     else
-                                                     {
-                                                         self.couponTextField.text = @"";
-                                                     }
-                                                 }
-                                             }
-                                             
-                                             wself.checkingCoupon = NO;
-
-                                             }];
+    [TXHPRODUCTSMANAGER fetchSelectedProductAvailabilitiesFromDate:date
+                                                            toDate:nil
+                                                        withCoupon:couponString
+                                                        completion:^(NSArray *availabilities, NSError *error) {
+                                                            
+                                                            TXHAvailability *availability = [TXHPRODUCTSMANAGER selectedAvailability];
+                                                            
+                                                            for (TXHAvailability *newAvilability in availabilities)
+                                                            {
+                                                                if ([newAvilability.dateString isEqualToString:[availability dateString]] &&
+                                                                    [newAvilability.timeString isEqualToString:[availability timeString]])
+                                                                {
+                                                                    // checking if any of tiers has discount set to determin if coupon worked
+                                                                    BOOL hasDiscount;
+                                                                    for (TXHTier  *tier in availability.tiers)
+                                                                        if ([tier.discount integerValue] > 0)
+                                                                            hasDiscount = YES;
+                                                                    
+                                                                    if (hasDiscount)
+                                                                    {
+                                                                        newAvilability.coupon = couponString;
+                                                                        [TXHPRODUCTSMANAGER setSelectedAvailability:newAvilability];
+                                                                        break;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        self.couponTextField.text = @"";
+                                                                    }
+                                                                }
+                                                            }
+                                                            
+                                                            wself.checkingCoupon = NO;
+                                                            
+                                                        }];
 }
 
 #pragma mark - validation

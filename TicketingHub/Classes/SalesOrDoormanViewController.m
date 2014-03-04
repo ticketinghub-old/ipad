@@ -169,24 +169,24 @@
     self.loadingAvailabilitesDetails = YES;
     __block typeof(self) wself = self;
     
-    [TXHTICKETINHGUBCLIENT availabilitiesForProduct:[TXHPRODUCTSMANAGER selectedProduct]
-                                           fromDate:date
-                                             toDate:nil
-                                             coupon:nil
-                                         completion:^(NSArray *availabilities, NSError *error) {
-                                             
-                                             for (TXHAvailability *newAvilability in availabilities)
-                                             {
-                                                 if ([newAvilability.dateString isEqualToString:[availability dateString]] &&
-                                                     [newAvilability.timeString isEqualToString:[availability timeString]])
-                                                 {
-                                                     [TXHPRODUCTSMANAGER setSelectedAvailability:newAvilability];
-                                                     break;
-                                                 }
-                                             }
-                                             wself.loadingAvailabilitesDetails = NO;
-                                             [wself updateUI];
-                                         }];
+    [TXHPRODUCTSMANAGER fetchSelectedProductAvailabilitiesFromDate:date
+                                                            toDate:nil
+                                                        withCoupon:nil
+                                                        completion:^(NSArray *availabilities, NSError *error) {
+                                                            
+                                                            for (TXHAvailability *newAvilability in availabilities)
+                                                            {
+                                                                if ([newAvilability.dateString isEqualToString:[availability dateString]] &&
+                                                                    [newAvilability.timeString isEqualToString:[availability timeString]])
+                                                                {
+                                                                    [TXHPRODUCTSMANAGER setSelectedAvailability:newAvilability];
+                                                                    break;
+                                                                }
+                                                            }
+                                                            wself.loadingAvailabilitesDetails = NO;
+                                                            [wself updateUI];
+                                                        }];
+    
 }
 
 #pragma mark - Private
@@ -242,13 +242,12 @@
     __weak typeof(self) wself = self;
 
     if (self.selectedProduct)
-        [TXHTICKETINHGUBCLIENT availabilitiesForProduct:self.selectedProduct
-                                               fromDate:[NSDate date]
-                                                 toDate:[[NSDate date] dateByAddingDays:60]
-                                                 coupon:nil
-                                             completion:^(NSArray *availabilities, NSError *error) {
-                                                 [wself selectFirstAvailabilitiesFrom:availabilities];
-                                             }];
+        [TXHPRODUCTSMANAGER fetchSelectedProductAvailabilitiesFromDate:[NSDate date]
+                                                                toDate:[[NSDate date] dateByAddingDays:60]
+                                                            withCoupon:nil
+                                                            completion:^(NSArray *availabilities, NSError *error) {
+                                                                [wself selectFirstAvailabilitiesFrom:availabilities];
+                                                            }];
 }
 
 - (void)selectFirstAvailabilitiesFrom:(NSArray *)availabilities

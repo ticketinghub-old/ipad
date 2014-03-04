@@ -23,4 +23,7 @@
 
 - (NSString *)priceStringForPrice:(NSNumber *)price;
 
+- (void)fetchSelectedProductAvailabilitiesFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate withCoupon:(NSString *)coupon completion:(void(^)(NSArray *availabilities, NSError *error))completion;
+
+
 @end

@@ -153,24 +153,25 @@
     [self showLoadingIndicator];
     __weak typeof(self) wself = self;
     
-    [TXHTICKETINHGUBCLIENT availabilitiesForProduct:[TXHPRODUCTSMANAGER selectedProduct]
-                                           fromDate:startDate
-                                             toDate:lastDate
-                                             coupon:nil
-                                         completion:^(NSArray *availabilities, NSError *error) {
-                                             
-                                             if (error)
-                                             {
-                                                 wself.dataDictionary[monthYearKey] = nil;
-                                             }
-                                             else
-                                             {
-                                                 [wself addAvailabilities:availabilities fromDate:startDate toDate:lastDate];
-                                                 [wself.monthView reloadData];
-                                             }
-                                             
-                                             [wself hideLoadingIndicator];
-                                         }];
+    
+    [TXHPRODUCTSMANAGER fetchSelectedProductAvailabilitiesFromDate:startDate
+                                                            toDate:lastDate
+                                                        withCoupon:nil
+                                                        completion:^(NSArray *availabilities, NSError *error) {
+                                                            
+                                                            if (error)
+                                                            {
+                                                                wself.dataDictionary[monthYearKey] = nil;
+                                                            }
+                                                            else
+                                                            {
+                                                                [wself addAvailabilities:availabilities fromDate:startDate toDate:lastDate];
+                                                                [wself.monthView reloadData];
+                                                            }
+                                                            
+                                                            [wself hideLoadingIndicator];
+                                                        }];
+    
 }
 
 - (void)addAvailabilities:(NSArray *)availabilities fromDate:(NSDate*)startDate toDate:(NSDate*)lastDate
