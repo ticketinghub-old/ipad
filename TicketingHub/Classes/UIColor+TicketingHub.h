@@ -12,4 +12,10 @@
 
 + (UIColor *)txhDarkBlueColor;
 
++ (UIColor *)txhFieldErrorBackgroundColor;
++ (UIColor *)txhFieldNormalBackgroundColor;
++ (UIColor *)txhFieldErrorTextColor;
++ (UIColor *)txhFieldNormalTextColor;
++ (UIColor *)txhFieldPlaceholderTextColor;
+
 @end

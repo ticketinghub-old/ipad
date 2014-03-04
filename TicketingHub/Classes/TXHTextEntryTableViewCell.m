@@ -8,6 +8,7 @@
 
 #import "TXHTextEntryTableViewCell.h"
 #import "TXHDataEntryFieldErrorView.h"
+#import "UIColor+TicketingHub.h"
 
 @interface TXHTextEntryTableViewCell () <UITextFieldDelegate>
 
@@ -19,55 +20,6 @@
 @end
 
 @implementation TXHTextEntryTableViewCell
-
-+ (UIColor *)errorBackgroundColor
-{
-    static UIColor *_errorBackgroundColor;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _errorBackgroundColor = [UIColor colorWithRed:255.0f / 255.0f
-                                                green:213.0f / 255.0f
-                                                 blue:216.0f / 255.0f
-                                                alpha:1.0f];
-    });
-    return _errorBackgroundColor;
-}
-
-+ (UIColor *)normalBackgroundColor
-{
-    static UIColor *_normalBackgroundColor;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _normalBackgroundColor = [UIColor colorWithRed:238.0f / 255.0f
-                                                 green:241.0f / 255.0f
-                                                  blue:243.0f / 255.0f
-                                                 alpha:1.0f];
-    });
-    return _normalBackgroundColor;
-}
-
-+ (UIColor *)errorTextColor
-{
-    static UIColor *_errorTextColor;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _errorTextColor = [UIColor redColor];
-    });
-    return _errorTextColor;
-}
-
-+ (UIColor *)normalTextColor
-{
-    static UIColor *_normalTextColor;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _normalTextColor = [UIColor colorWithRed:37.0f / 255.0f
-                                           green:16.0f / 255.0f
-                                            blue:87.0f / 255.0f
-                                           alpha:1.0f];
-    });
-    return _normalTextColor;
-}
 
 - (void)awakeFromNib
 {
@@ -104,9 +56,9 @@
 {
     BOOL hasError = [self hasErrors];
     
-    self.textField.backgroundColor   = hasError ? [[self class] errorBackgroundColor] : [[self class] normalBackgroundColor];
+    self.textField.backgroundColor   = hasError ? [[self class] txhFieldErrorBackgroundColor] : [[self class] txhFieldNormalBackgroundColor];
     self.backingView.backgroundColor = self.textField.backgroundColor;
-    self.textField.textColor         = hasError ? [[self class] errorTextColor] : [[self class] normalTextColor];
+    self.textField.textColor         = hasError ? [[self class] txhFieldErrorTextColor] : [[self class] txhFieldNormalTextColor];
 }
 
 - (BOOL)hasErrors

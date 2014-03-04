@@ -262,7 +262,7 @@
                                                
                                                if (error)
                                                {
-                                                   // TODO: handle error
+                                                   // TODO: handle cloupon error
                                                }
                                                
                                                blockName(error);
