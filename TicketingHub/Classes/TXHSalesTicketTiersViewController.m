@@ -12,9 +12,12 @@
 #import "TXHProductsManager.h"
 #import "TXHOrderManager.h"
 
+#import <iOS-api/TXHOrder.h>
+
 #import "TXHProductsManager.h"
 #import "TXHTicketingHubManager.h"
 #import "UIColor+TicketingHub.h"
+
 @interface TXHSalesTicketTiersViewController () <UITextFieldDelegate, TXHSalesTicketTierCellDelegate>
 
 @property (assign, nonatomic) BOOL checkingCoupon;
@@ -262,7 +265,8 @@
                                                
                                                if (error)
                                                {
-                                                   // TODO: handle cloupon error
+                                                   // shouldnt be code error as it was validated before
+                                                   DLog(@"%@", [error localizedDescription]);
                                                }
                                                
                                                blockName(error);
