@@ -24,6 +24,7 @@
 @property (nonatomic,strong) NSMutableDictionary *dataDictionary;
 
 @property (nonatomic,strong) NSDate *selectedDate;
+@property (nonatomic,assign) NSInteger lodingMonthsCount;
 
 @end
 
@@ -50,6 +51,39 @@
     [self.monthView reloadData];
 }
 
+- (UIActivityIndicatorView *)indicatorView
+{
+    if (!_indicatorView)
+    {
+        UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:self.view.bounds];
+        indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+        indicatorView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        indicatorView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.8];
+        indicatorView.hidesWhenStopped = YES;
+        indicatorView.color = [UIColor txhDarkBlueColor];
+        [self.view addSubview:indicatorView];
+        _indicatorView = indicatorView;
+    }
+    return _indicatorView;
+}
+
+#pragma mark - private methods
+
+- (void)showLoadingIndicator
+{
+    self.lodingMonthsCount++;
+    [self.indicatorView startAnimating];
+}
+
+- (void)hideLoadingIndicator
+{
+    self.lodingMonthsCount--;
+    if (!self.lodingMonthsCount)
+    {
+        [self.indicatorView stopAnimating];
+    }
+}
+
 #pragma mark MonthView Delegate & DataSource
 
 - (NSArray*)calendarMonthView:(TKCalendarMonthView*)monthView marksFromDate:(NSDate*)startDate toDate:(NSDate*)lastDate
@@ -64,7 +98,7 @@
     // try las date - might be next month
     [possibleMonthsDates addObject:lastDate];
     
-    
+
     for (NSDate *monthDate in possibleMonthsDates)
     {
         [self fetchAvailabilitiesForMonth:monthDate];
@@ -115,7 +149,8 @@
         
     //self.dotsDataDictionary[monthYearKey] = [NSMutableArray array];
     self.dataDictionary[monthYearKey] = [NSMutableDictionary dictionary];
-    
+
+    [self showLoadingIndicator];
     __weak typeof(self) wself = self;
     
     [TXHTICKETINHGUBCLIENT availabilitiesForProduct:[TXHPRODUCTSMANAGER selectedProduct]
@@ -133,6 +168,8 @@
                                                  [wself addAvailabilities:availabilities fromDate:startDate toDate:lastDate];
                                                  [wself.monthView reloadData];
                                              }
+                                             
+                                             [wself hideLoadingIndicator];
                                          }];
 }
 

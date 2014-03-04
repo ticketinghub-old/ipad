@@ -18,6 +18,7 @@
 
 #import "UIResponder+FirstResponder.h"
 #import "ProductListControllerNotifications.h"
+#import "UIColor+TicketingHub.h"
 
 @interface SalesOrDoormanViewController () <TXHDateSelectorViewDelegate>
 
@@ -192,14 +193,12 @@
 
 - (void)setup
 {
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:38.0f / 255.0f
-                                                                             green:65.0f / 255.0f
-                                                                              blue:87.0f / 255.0f
-                                                                             alpha:1.0f]];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor txhDarkBlueColor]];
     self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:24.0f],
                                                                     NSForegroundColorAttributeName: [UIColor whiteColor]};
 
 
+    self.activityIndicator.color = [UIColor txhDarkBlueColor];
     self.dateButton = [[UIBarButtonItem alloc] initWithTitle:nil style:UIBarButtonItemStyleBordered target:self action:@selector(selectDate:)];
 
     UIBarButtonItem *handleItem = self.navigationItem.leftBarButtonItem;

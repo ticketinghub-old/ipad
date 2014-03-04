@@ -18,6 +18,7 @@
 #import <iOS-api/TXHUpgrade.h>
 #import <iOS-api/TXHTicket.h>
 #import <iOS-api/TXHCustomer.h>
+#import "UIColor+TicketingHub.h"
 
 @interface TXHSalesUpgradeDetailsViewController () <UICollectionViewDelegateFlowLayout, TXHSalesUpgradeHeaderDelegate>
 
@@ -60,10 +61,11 @@
     if (!_activityIndicator)
     {
         UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:self.view.bounds];
-        indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+        indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
         indicatorView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        indicatorView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.5];
+        indicatorView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.8];
         indicatorView.hidesWhenStopped = YES;
+        indicatorView.color = [UIColor txhDarkBlueColor];
         [self.view addSubview:indicatorView];
         _activityIndicator = indicatorView;
     }
