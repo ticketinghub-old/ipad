@@ -19,17 +19,19 @@
 #import <iOS-api/TXHCustomer.h>
 #import "UIColor+TicketingHub.h"
 
+static NSString * const kStoredUserInputsKey = @"kStoredFieldsInformationsUserInputsKey";
+
 @interface TXHSalesInformationDetailsViewController () <TXHSalesInformationTextCellDelegate, TXHSalesInformationSelectionCellDelegate, TXHSalesInformationHeaderDelegate>
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
 
 @property (nonatomic, strong) NSArray *ticketIds; // to keep data sorted
 @property (nonatomic, strong) NSDictionary *fields;
-@property (strong, nonatomic) NSMutableArray *expandedSections;
+@property (nonatomic, strong) NSMutableArray *expandedSections;
 
 @property (nonatomic, strong) NSMutableDictionary *userInput;
 
-@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -70,6 +72,24 @@
     }
 }
 
+- (void)setupUserInput
+{
+    NSMutableDictionary *storedUserInput = [TXHORDERMANAGER storedValueForKey:kStoredUserInputsKey];
+    
+    if (storedUserInput)
+    {
+        self.userInput = storedUserInput;
+    }
+    else
+    {
+        self.userInput = [NSMutableDictionary dictionary];
+        for (NSString *ticketID in self.ticketIds)
+        {
+            self.userInput[ticketID] = [NSMutableDictionary dictionary];
+        }
+    }
+}
+
 - (BOOL)isSectionExpanded:(NSInteger)sectionIndex
 {
     return [self.expandedSections[sectionIndex] boolValue];
@@ -95,11 +115,7 @@
     
     self.ticketIds = [self.fields allKeys];
     
-    self.userInput = [NSMutableDictionary dictionary];
-    for (NSString *ticketID in self.ticketIds)
-    {
-        self.userInput[ticketID] = [NSMutableDictionary dictionary];
-    }
+    [self setupUserInput];
     
     self.valid = [self hasAllfieldsFilled];
     
@@ -343,11 +359,13 @@
                                        completion:^(TXHOrder *order, NSError *error) {
                                            
                                            [self hideLoadingIndicator];
-
+                                           
                                            if (error)
                                            {
                                                [self.collectionView reloadData];
                                            }
+                                           
+                                           [TXHORDERMANAGER storeValue:self.userInput forKey:kStoredUserInputsKey];
                                            
                                            blockName(error);
                                        }];
