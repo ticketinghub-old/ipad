@@ -23,6 +23,10 @@ extern NSString * const TXHOrderDidExpireNotification;
 - (void)resetOrder;
 - (NSNumber *)totalOrderPrice;
 
+// stpring data
+- (void)storeValue:(id)value forKey:(NSString *)key;
+- (id)storedValueForKey:(NSString *)key;
+
 // helpers
 
 - (TXHTicket *)ticketFromOrderWithID:(NSString *)ticketID;
@@ -43,6 +47,7 @@ extern NSString * const TXHOrderDidExpireNotification;
 
 - (void)upgradesForCurrentOrderWithCompletion:(void(^)(NSDictionary *upgrades, NSError *error))completion;
 - (void)updateOrderWithUpgradesInfo:(NSDictionary *)upgradesInfo completion:(void (^)(TXHOrder *order, NSError *error))completion;
+
 
 
 @end

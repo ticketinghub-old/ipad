@@ -20,6 +20,8 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
 @property (strong, nonatomic) NSDate *expirationDate;
 @property (strong, nonatomic) NSTimer *expirationTimer;
 
+@property (strong, nonatomic) NSMutableDictionary *storedData;
+
 @end
 
 @implementation TXHOrderManager
@@ -48,6 +50,7 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
     else if (!order)
     {
         self.expirationDate = nil;
+        [self clearStoredData];
     }
     
     _order = order;
@@ -69,6 +72,18 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
     }
 }
 
+- (NSMutableDictionary *)storedData
+{
+    if (!_storedData) {
+        _storedData = [NSMutableDictionary dictionary];
+    }
+    return _storedData;
+}
+
+- (void)clearStoredData
+{
+    [self.storedData removeAllObjects];
+}
 
 - (void)sheduleExpirationTimer
 {
@@ -95,6 +110,16 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
 }
 
 #pragma mark public methods
+
+- (void)storeValue:(id)value forKey:(NSString *)key
+{
+    [self.storedData setObject:value forKey:key];
+}
+
+- (id)storedValueForKey:(NSString *)key
+{
+    return self.storedData[key];
+}
 
 - (NSNumber *)totalOrderPrice
 {
