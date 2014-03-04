@@ -20,6 +20,8 @@
 #import <iOS-api/TXHCustomer.h>
 #import "UIColor+TicketingHub.h"
 
+static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
+
 @interface TXHSalesUpgradeDetailsViewController () <UICollectionViewDelegateFlowLayout, TXHSalesUpgradeHeaderDelegate>
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
@@ -49,7 +51,7 @@
 {
     _upgrades = upgrades;
     
-    self.selectedUpgrades = [NSMutableDictionary dictionary];
+    [self setupSelectedUpgrades];
     
     [self setupExpandedSectionsInfo];
     
@@ -102,6 +104,20 @@
     {
         NSNumber *value = (i == 0) ? @YES : @NO;
         [self.expandedSections addObject:value];
+    }
+}
+
+- (void)setupSelectedUpgrades
+{
+    NSMutableDictionary *storedUserInput = [TXHORDERMANAGER storedValueForKey:kStoredUserInputsKey];
+    
+    if (storedUserInput)
+    {
+        self.selectedUpgrades = storedUserInput;
+    }
+    else
+    {
+        self.selectedUpgrades = [NSMutableDictionary dictionary];
     }
 }
 
@@ -292,6 +308,9 @@
                                            if (error) {
                                                [self.collectionView reloadData];
                                            }
+                                           
+                                           [TXHORDERMANAGER storeValue:self.selectedUpgrades forKey:kStoredUserInputsKey];
+                                           
                                            blockName(error);
                                        }];
     
