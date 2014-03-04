@@ -133,7 +133,7 @@ static void * ContentValidContext = &ContentValidContext;
     }
 }
 
-// TODO: rethink that idea (or sorry if not good enough and i forgot)
+// observer vs delegation ??? used KVO...
 - (void)setStepContentController:(UIViewController<TXHSalesContentsViewControllerProtocol> *)stepContentController
 {
     id observer = self;

@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 TicketingHub. All rights reserved.
 //
 
-// TODO: perform a bit more check if item at path exists
-
 #import "DictionaryDataSource.h"
 
 @interface DictionaryDataSource ()

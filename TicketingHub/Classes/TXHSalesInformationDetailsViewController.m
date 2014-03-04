@@ -172,21 +172,20 @@ static NSString * const kStoredUserInputsKey = @"kStoredFieldsInformationsUserIn
     
     UICollectionViewCell *cell;
     
-    // TODO improve this shit
     if ([field.inputType isEqualToString:@"select"])
     {
         TXHSalesInformationSelectionCell *selectCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"selectionCell" forIndexPath:indexPath];
         
-        NSMutableArray *ar = [NSMutableArray array];
-        for (NSArray  *a in field.options)
+        NSMutableArray *options = [NSMutableArray array];
+        for (NSArray  *option in field.options)
         {
-            [ar addObject:[a firstObject]];
+            [options addObject:[option firstObject]];
         }
         
         selectCell.delegate     = self;
         selectCell.placeholder  = field.label;
         selectCell.value        = userInput;
-        selectCell.options      = ar;
+        selectCell.options      = options;
         selectCell.errorMessage = errorMessage;
         selectCell.name         = field.name;
         
