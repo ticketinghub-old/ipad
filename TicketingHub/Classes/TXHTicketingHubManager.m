@@ -17,8 +17,6 @@
 
 @implementation TXHTicketingHubManager
 
-// TODO: could be done better
-
 static TXHTicketingHubManager * _sharedManager;
 
 + (TXHTicketingHubManager *)sharedManager
@@ -37,10 +35,7 @@ static TXHTicketingHubManager * _sharedManager;
     [[self class] txh_resetDefaultStoreURL];
 
     if (_sharedManager)
-    {
-        // if there is a manager set up recreate client
         [self setupDefaultClient];
-    }
 }
 
 + (void)setupDefaultClient
