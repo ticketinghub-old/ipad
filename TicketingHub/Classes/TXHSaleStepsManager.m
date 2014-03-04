@@ -56,6 +56,7 @@
 
 #pragma mark TXHSalesWizardViewControllerDataSource
 
+
 - (NSUInteger)currentStepIndex
 {
     return _currentStep;
@@ -66,7 +67,7 @@
     return [self.steps count];
 }
 
-- (NSUInteger)indexOfStep:(id)step
+- (NSInteger)indexOfStep:(id)step;
 {
     return [self.steps indexOfObject:step];
 }

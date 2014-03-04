@@ -186,8 +186,7 @@ static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
                 [selectedUpgrades addObject:upgrade.upgradeId];
             }
         }
-        if ([selectedUpgrades count])
-            upgradesInfo[ticketId] = selectedUpgrades;
+        upgradesInfo[ticketId] = selectedUpgrades;
     }
     
     return upgradesInfo;

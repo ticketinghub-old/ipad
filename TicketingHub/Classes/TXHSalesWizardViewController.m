@@ -50,7 +50,6 @@
     return cell;
 }
 
-// TODO: fixt that when proper step object introduced
 - (void)configureCell:(TXHSalesWizardTabelViewCell *)cell withItem:(id)item
 {
     [cell setTite:item[kWizardStepTitleKey]];
