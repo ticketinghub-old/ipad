@@ -84,14 +84,6 @@
 		EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1844E17D114390025530A /* TXHSelectionEntryTableViewCell.m */; };
 		EEB1846617D114390025530A /* TXHTextEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1845217D114390025530A /* TXHTextEntryTableViewCell.m */; };
 		EEB1846717D114390025530A /* TXHTextEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1845417D114390025530A /* TXHTextEntryView.m */; };
-		EEB1847A17D114B30025530A /* TXHDoorDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1846B17D114B30025530A /* TXHDoorDateCell.m */; };
-		EEB1847B17D114B30025530A /* TXHDoorDateController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1846D17D114B30025530A /* TXHDoorDateController.m */; };
-		EEB1847C17D114B30025530A /* TXHDoorGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1846F17D114B30025530A /* TXHDoorGroupController.m */; };
-		EEB1847D17D114B30025530A /* TXHDoorMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1847117D114B30025530A /* TXHDoorMainController.m */; };
-		EEB1847E17D114B30025530A /* TXHDoorTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1847317D114B30025530A /* TXHDoorTimeController.m */; };
-		EEB1847F17D114B30025530A /* TXHFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1847517D114B30025530A /* TXHFlowLayout.m */; };
-		EEB1848017D114B30025530A /* TXHGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1847717D114B30025530A /* TXHGroupCell.m */; };
-		EEB1848117D114B30025530A /* TXHTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1847917D114B30025530A /* TXHTimeCell.m */; };
 		EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848417D115640025530A /* TXHDateSelectorViewController.m */; };
 		EEB1849017D115640025530A /* TXHEmbeddingSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848617D115640025530A /* TXHEmbeddingSegue.m */; };
 		EEB1849217D115640025530A /* SalesOrDoormanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848A17D115640025530A /* SalesOrDoormanViewController.m */; };
@@ -254,22 +246,6 @@
 		EEB1845317D114390025530A /* TXHTextEntryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTextEntryView.h; sourceTree = "<group>"; };
 		EEB1845417D114390025530A /* TXHTextEntryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTextEntryView.m; sourceTree = "<group>"; };
 		EEB1845717D114390025530A /* TXHUserDefaultsKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHUserDefaultsKeys.h; sourceTree = "<group>"; };
-		EEB1846A17D114B30025530A /* TXHDoorDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorDateCell.h; sourceTree = "<group>"; };
-		EEB1846B17D114B30025530A /* TXHDoorDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorDateCell.m; sourceTree = "<group>"; };
-		EEB1846C17D114B30025530A /* TXHDoorDateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorDateController.h; sourceTree = "<group>"; };
-		EEB1846D17D114B30025530A /* TXHDoorDateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorDateController.m; sourceTree = "<group>"; };
-		EEB1846E17D114B30025530A /* TXHDoorGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorGroupController.h; sourceTree = "<group>"; };
-		EEB1846F17D114B30025530A /* TXHDoorGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorGroupController.m; sourceTree = "<group>"; };
-		EEB1847017D114B30025530A /* TXHDoorMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorMainController.h; sourceTree = "<group>"; };
-		EEB1847117D114B30025530A /* TXHDoorMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorMainController.m; sourceTree = "<group>"; };
-		EEB1847217D114B30025530A /* TXHDoorTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorTimeController.h; sourceTree = "<group>"; };
-		EEB1847317D114B30025530A /* TXHDoorTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorTimeController.m; sourceTree = "<group>"; };
-		EEB1847417D114B30025530A /* TXHFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHFlowLayout.h; sourceTree = "<group>"; };
-		EEB1847517D114B30025530A /* TXHFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHFlowLayout.m; sourceTree = "<group>"; };
-		EEB1847617D114B30025530A /* TXHGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHGroupCell.h; sourceTree = "<group>"; };
-		EEB1847717D114B30025530A /* TXHGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHGroupCell.m; sourceTree = "<group>"; };
-		EEB1847817D114B30025530A /* TXHTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTimeCell.h; sourceTree = "<group>"; };
-		EEB1847917D114B30025530A /* TXHTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTimeCell.m; sourceTree = "<group>"; };
 		EEB1848317D115640025530A /* TXHDateSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDateSelectorViewController.h; sourceTree = "<group>"; };
 		EEB1848417D115640025530A /* TXHDateSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDateSelectorViewController.m; sourceTree = "<group>"; };
 		EEB1848517D115640025530A /* TXHEmbeddingSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHEmbeddingSegue.h; sourceTree = "<group>"; };
@@ -867,22 +843,6 @@
 				3E87023B18C72A50008F4EAD /* Tickets List */,
 				3E87023A18C72A41008F4EAD /* Searching Area */,
 				3E3A5B0B18AA681900A54812 /* Barcode Scaner */,
-				EEB1846A17D114B30025530A /* TXHDoorDateCell.h */,
-				EEB1846B17D114B30025530A /* TXHDoorDateCell.m */,
-				EEB1846C17D114B30025530A /* TXHDoorDateController.h */,
-				EEB1846D17D114B30025530A /* TXHDoorDateController.m */,
-				EEB1846E17D114B30025530A /* TXHDoorGroupController.h */,
-				EEB1846F17D114B30025530A /* TXHDoorGroupController.m */,
-				EEB1847017D114B30025530A /* TXHDoorMainController.h */,
-				EEB1847117D114B30025530A /* TXHDoorMainController.m */,
-				EEB1847217D114B30025530A /* TXHDoorTimeController.h */,
-				EEB1847317D114B30025530A /* TXHDoorTimeController.m */,
-				EEB1847417D114B30025530A /* TXHFlowLayout.h */,
-				EEB1847517D114B30025530A /* TXHFlowLayout.m */,
-				EEB1847617D114B30025530A /* TXHGroupCell.h */,
-				EEB1847717D114B30025530A /* TXHGroupCell.m */,
-				EEB1847817D114B30025530A /* TXHTimeCell.h */,
-				EEB1847917D114B30025530A /* TXHTimeCell.m */,
 			);
 			name = Door;
 			sourceTree = "<group>";
@@ -1090,15 +1050,8 @@
 				3EA36B8018AFDF5C008F8C59 /* TXHProductListCell.m in Sources */,
 				EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */,
 				3E3D46EA18ACB89A00275ACF /* FetchedResultsControllerDataSource.m in Sources */,
-				EEB1847A17D114B30025530A /* TXHDoorDateCell.m in Sources */,
-				EEB1847B17D114B30025530A /* TXHDoorDateController.m in Sources */,
-				EEB1847C17D114B30025530A /* TXHDoorGroupController.m in Sources */,
-				EEB1847D17D114B30025530A /* TXHDoorMainController.m in Sources */,
-				EEB1847E17D114B30025530A /* TXHDoorTimeController.m in Sources */,
 				EEB1849017D115640025530A /* TXHEmbeddingSegue.m in Sources */,
 				3ECE452C18C0B57F00DD1F7B /* AFNetworkActivityLogger.m in Sources */,
-				EEB1847F17D114B30025530A /* TXHFlowLayout.m in Sources */,
-				EEB1848017D114B30025530A /* TXHGroupCell.m in Sources */,
 				EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */,
 				EE75D98917D11048009ADCD8 /* TXHSalesCompletionViewController.m in Sources */,
 				EE75D98C17D11048009ADCD8 /* TXHSalesInformationDetailsViewController.m in Sources */,
@@ -1137,7 +1090,6 @@
 				3ECE137418B63A6900E7148F /* NSDate+Additions.m in Sources */,
 				EEB1846717D114390025530A /* TXHTextEntryView.m in Sources */,
 				3ECE137718B689CE00E7148F /* NSDate+CupertinoYankee.m in Sources */,
-				EEB1848117D114B30025530A /* TXHTimeCell.m in Sources */,
 				3E44157018AB80EA00C4AE1C /* TXHTicketingHubManager.m in Sources */,
 				3E6F479718AFD6A300E644F7 /* TXHBorderedButton.m in Sources */,
 				EEB1849417D115640025530A /* TXHTransitionSegue.m in Sources */,
