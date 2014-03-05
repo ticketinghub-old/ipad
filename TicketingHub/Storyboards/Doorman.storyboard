@@ -16,14 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FoJ-VX-QpB">
-                                <rect key="frame" x="0.0" y="0.0" width="350" height="262"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="NQD-R7-1q3" kind="embed" id="H90-e8-Ie2"/>
-                                </connections>
-                            </containerView>
                             <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6yX-jp-zA5">
                                 <rect key="frame" x="349" y="0.0" width="675" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -33,7 +25,7 @@
                                 </connections>
                             </containerView>
                             <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Pf-YJ-qp2">
-                                <rect key="frame" x="0.0" y="261" width="350" height="507"/>
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
@@ -67,48 +59,99 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qOw-L2-zfB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2296" y="-152"/>
+            <point key="canvasLocation" x="1875" y="-152"/>
         </scene>
-        <!--Barcode View Controller-->
-        <scene sceneID="e2L-hH-hab">
-            <objects>
-                <viewController id="NQD-R7-1q3" customClass="BarcodeViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="pOt-dd-Gze"/>
-                        <viewControllerLayoutGuide type="bottom" id="TaM-JW-Jb6"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7Ew-qf-mxJ">
-                        <rect key="frame" x="0.0" y="0.0" width="350" height="262"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9F5-bZ-HoQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1789" y="-138"/>
-        </scene>
-        <!--View Controller-->
+        <!--Door Search View Controller-->
         <scene sceneID="Bt1-C8-bbK">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Lzd-lE-Kx5" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Lzd-lE-Kx5" customClass="TXHDoorSearchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gxy-68-05t"/>
                         <viewControllerLayoutGuide type="bottom" id="NN8-ch-y0z"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bsH-Ro-HAB">
-                        <rect key="frame" x="0.0" y="0.0" width="350" height="507"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rI2-xu-3eB">
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="300"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.89411764709999997" green="0.91764705879999997" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="r3F-Gr-IMA"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgR-4h-bXO">
+                                <rect key="frame" x="0.0" y="300" width="350" height="468"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="juE-qh-d83">
+                                        <rect key="frame" x="20" y="20" width="310" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TSc-sI-cGF">
+                                                <rect key="frame" x="0.0" y="0.0" width="290" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="izY-W5-X1b">
+                                                <rect key="frame" x="291" y="12" width="9" height="16"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="9" id="SWC-iR-TIy"/>
+                                                    <constraint firstAttribute="height" constant="16" id="w9O-n5-bl4"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="TSc-sI-cGF" firstAttribute="top" secondItem="juE-qh-d83" secondAttribute="top" id="2uk-uA-M1s"/>
+                                            <constraint firstAttribute="bottom" secondItem="TSc-sI-cGF" secondAttribute="bottom" id="Cci-OC-59t"/>
+                                            <constraint firstAttribute="centerY" secondItem="izY-W5-X1b" secondAttribute="centerY" id="KMT-Is-Af6"/>
+                                            <constraint firstAttribute="height" constant="40" id="QLZ-tj-c5r"/>
+                                            <constraint firstAttribute="trailing" secondItem="TSc-sI-cGF" secondAttribute="trailing" constant="20" id="ZKu-EZ-bCs"/>
+                                            <constraint firstItem="TSc-sI-cGF" firstAttribute="leading" secondItem="juE-qh-d83" secondAttribute="leading" id="jnp-fE-D4p"/>
+                                            <constraint firstAttribute="trailing" secondItem="izY-W5-X1b" secondAttribute="trailing" constant="10" id="r0H-Kh-Klb"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.89411764705882346" green="0.91764705882352937" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="juE-qh-d83" firstAttribute="leading" secondItem="cgR-4h-bXO" secondAttribute="leading" constant="20" id="HWs-eM-HPj"/>
+                                    <constraint firstItem="juE-qh-d83" firstAttribute="top" secondItem="cgR-4h-bXO" secondAttribute="top" constant="20" id="RKX-oz-av5"/>
+                                    <constraint firstAttribute="trailing" secondItem="juE-qh-d83" secondAttribute="trailing" constant="20" id="h3B-pY-4Sc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cgR-4h-bXO" firstAttribute="top" secondItem="rI2-xu-3eB" secondAttribute="bottom" id="5bq-G4-oeE"/>
+                            <constraint firstAttribute="trailing" secondItem="cgR-4h-bXO" secondAttribute="trailing" id="6Gl-LH-zm4"/>
+                            <constraint firstAttribute="trailing" secondItem="rI2-xu-3eB" secondAttribute="trailing" id="BQ7-qO-L7u"/>
+                            <constraint firstItem="rI2-xu-3eB" firstAttribute="leading" secondItem="bsH-Ro-HAB" secondAttribute="leading" id="KUh-Oe-knp"/>
+                            <constraint firstItem="cgR-4h-bXO" firstAttribute="leading" secondItem="bsH-Ro-HAB" secondAttribute="leading" id="Rta-I7-dK7"/>
+                            <constraint firstItem="NN8-ch-y0z" firstAttribute="top" secondItem="cgR-4h-bXO" secondAttribute="bottom" id="Vly-3C-kqq"/>
+                            <constraint firstItem="rI2-xu-3eB" firstAttribute="top" secondItem="Gxy-68-05t" secondAttribute="bottom" id="cqp-vs-X4g"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="cameraPreviewView" destination="rI2-xu-3eB" id="Xcs-TP-0VK"/>
+                        <outlet property="cameraPreviewViewHeightConstraint" destination="r3F-Gr-IMA" id="KVK-cj-IqV"/>
+                        <outlet property="searchView" destination="cgR-4h-bXO" id="79h-kp-QMi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iN5-Aw-Y0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1789" y="276"/>
+            <point key="canvasLocation" x="1419" y="-152"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="right-arrow" width="9" height="16"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
         <simulatedOrientationMetrics key="orientation"/>

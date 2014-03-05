@@ -8,18 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
-@class BarcodeViewController;
+@class TXHBarcodeScanner;
 
 @protocol BarcodeViewControllerDelegate <NSObject>
 
-@optional
-
-- (void) scanViewController:(BarcodeViewController *)barcodeScaner didSuccessfullyScan:(NSString *)scannedValue;
+- (void) scanViewController:(TXHBarcodeScanner *)barcodeScaner didSuccessfullyScan:(NSString *)scannedValue;
 
 @end
 
-@interface BarcodeViewController : UIViewController
+@interface TXHBarcodeScanner : NSObject
 
 @property (nonatomic, weak) id<BarcodeViewControllerDelegate> delegate;
+
+- (BOOL)isCameraAvailable;
+- (void)startScanning;
+- (void)stopScanning;
+
+- (void)showPreviewInView:(UIView *)view;
 
 @end

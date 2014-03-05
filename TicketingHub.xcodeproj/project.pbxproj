@@ -17,6 +17,7 @@
 		3E488BDA18BE850600E90BE6 /* RMDownloadIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E488BD818BE850600E90BE6 /* RMDownloadIndicator.m */; };
 		3E6A422518C483870053EF34 /* TXHSensorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6A422418C483870053EF34 /* TXHSensorView.m */; };
 		3E6F479718AFD6A300E644F7 /* TXHBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F479618AFD6A300E644F7 /* TXHBorderedButton.m */; };
+		3E8FD59318C74CD70066FA50 /* TXHDoorSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8FD59218C74CD70066FA50 /* TXHDoorSearchViewController.m */; };
 		3EA36B8018AFDF5C008F8C59 /* TXHProductListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA36B7F18AFDF5C008F8C59 /* TXHProductListCell.m */; };
 		3EA36B8318B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA36B8218B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m */; };
 		3EA36B8618B237BF008F8C59 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA36B8518B237BF008F8C59 /* UIView+Additions.m */; };
@@ -91,7 +92,7 @@
 		EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */; };
 		EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */; };
 		EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC4017B272F700F226BC /* Security.framework */; };
-		EEF6BA4717D1192B005B1B20 /* BarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6BA4617D1192B005B1B20 /* BarcodeViewController.m */; };
+		EEF6BA4717D1192B005B1B20 /* TXHBarcodeScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6BA4617D1192B005B1B20 /* TXHBarcodeScanner.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,8 @@
 		3E6A422418C483870053EF34 /* TXHSensorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSensorView.m; sourceTree = "<group>"; };
 		3E6F479518AFD6A300E644F7 /* TXHBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBorderedButton.h; sourceTree = "<group>"; };
 		3E6F479618AFD6A300E644F7 /* TXHBorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBorderedButton.m; sourceTree = "<group>"; };
+		3E8FD59118C74CD70066FA50 /* TXHDoorSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorSearchViewController.h; sourceTree = "<group>"; };
+		3E8FD59218C74CD70066FA50 /* TXHDoorSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorSearchViewController.m; sourceTree = "<group>"; };
 		3EA36B7E18AFDF5C008F8C59 /* TXHProductListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHProductListCell.h; sourceTree = "<group>"; };
 		3EA36B7F18AFDF5C008F8C59 /* TXHProductListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHProductListCell.m; sourceTree = "<group>"; };
 		3EA36B8118B21F42008F8C59 /* TXHSalesWizardTabelViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesWizardTabelViewCell.h; path = TicketingHub/Classes/TXHSalesWizardTabelViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -257,8 +260,8 @@
 		EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EEB4FC4017B272F700F226BC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		EEF6BA4517D1192B005B1B20 /* BarcodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeViewController.h; sourceTree = "<group>"; };
-		EEF6BA4617D1192B005B1B20 /* BarcodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeViewController.m; sourceTree = "<group>"; };
+		EEF6BA4517D1192B005B1B20 /* TXHBarcodeScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBarcodeScanner.h; sourceTree = "<group>"; };
+		EEF6BA4617D1192B005B1B20 /* TXHBarcodeScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBarcodeScanner.m; sourceTree = "<group>"; };
 		F162CF42C7D94DB9B5422913 /* libPods-test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -390,8 +393,8 @@
 		3E3A5B0B18AA681900A54812 /* Barcode Scaner */ = {
 			isa = PBXGroup;
 			children = (
-				EEF6BA4517D1192B005B1B20 /* BarcodeViewController.h */,
-				EEF6BA4617D1192B005B1B20 /* BarcodeViewController.m */,
+				EEF6BA4517D1192B005B1B20 /* TXHBarcodeScanner.h */,
+				EEF6BA4617D1192B005B1B20 /* TXHBarcodeScanner.m */,
 			);
 			name = "Barcode Scaner";
 			sourceTree = "<group>";
@@ -599,6 +602,8 @@
 			isa = PBXGroup;
 			children = (
 				3E3A5B0B18AA681900A54812 /* Barcode Scaner */,
+				3E8FD59118C74CD70066FA50 /* TXHDoorSearchViewController.h */,
+				3E8FD59218C74CD70066FA50 /* TXHDoorSearchViewController.m */,
 			);
 			name = "Searching Area";
 			sourceTree = "<group>";
@@ -1032,7 +1037,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEF6BA4717D1192B005B1B20 /* BarcodeViewController.m in Sources */,
+				EEF6BA4717D1192B005B1B20 /* TXHBarcodeScanner.m in Sources */,
 				58E4FB631760AE5500E328A0 /* main.m in Sources */,
 				EE75D9B417D11311009ADCD8 /* MainViewController.m in Sources */,
 				EE75D9B317D11311009ADCD8 /* ProductListController.m in Sources */,
@@ -1065,6 +1070,7 @@
 				EE75D99617D11048009ADCD8 /* TXHSalesPaymentCustomerDetailViewController.m in Sources */,
 				EE75D99817D11048009ADCD8 /* TXHSalesPaymentPaymentDetailsViewController.m in Sources */,
 				3ECE132418B4C8A800E7148F /* TXHProductsManager.m in Sources */,
+				3E8FD59318C74CD70066FA50 /* TXHDoorSearchViewController.m in Sources */,
 				EE75D99917D11048009ADCD8 /* TXHSalesPaymentViewController.m in Sources */,
 				3E22139B18AA791000DE35A6 /* ArrayDataSource.m in Sources */,
 				3EC8845B18C4984B00CE0597 /* UIResponder+FirstResponder.m in Sources */,
