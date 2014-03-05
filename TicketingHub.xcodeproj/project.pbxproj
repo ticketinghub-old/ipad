@@ -598,6 +598,7 @@
 		3E87023A18C72A41008F4EAD /* Searching Area */ = {
 			isa = PBXGroup;
 			children = (
+				3E3A5B0B18AA681900A54812 /* Barcode Scaner */,
 			);
 			name = "Searching Area";
 			sourceTree = "<group>";
@@ -842,7 +843,6 @@
 			children = (
 				3E87023B18C72A50008F4EAD /* Tickets List */,
 				3E87023A18C72A41008F4EAD /* Searching Area */,
-				3E3A5B0B18AA681900A54812 /* Barcode Scaner */,
 			);
 			name = Door;
 			sourceTree = "<group>";
@@ -1245,7 +1245,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "DDF105E3-E878-46D9-AB46-D883F1DBE546";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
 					"-Wno-objc-missing-property-synthesis",

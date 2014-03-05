@@ -12,146 +12,150 @@
 
 @interface BarcodeViewController () <AVCaptureMetadataOutputObjectsDelegate>
 
+@property (strong, nonatomic) AVCaptureDevice* device;
+@property (strong, nonatomic) AVCaptureDeviceInput* input;
+@property (strong, nonatomic) AVCaptureMetadataOutput* output;
 @property (strong, nonatomic) AVCaptureSession* session;
-@property (strong, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
-@property (strong,nonatomic) AVCaptureMetadataOutput *metadataOutput;
+@property (strong, nonatomic) AVCaptureVideoPreviewLayer* preview;
 
 @end
 
+
 @implementation BarcodeViewController
 
-- (void)viewDidLoad {
-  [super viewDidLoad];
-  
-  self.session = [AVCaptureSession new];
-  [self.session setSessionPreset:AVCaptureSessionPresetPhoto];
-  
-  [self updateCameraSelection];
-  
-  // For displaying live feed to screen
-  CALayer *rootLayer = self.view.layer;
-  [rootLayer setMasksToBounds:YES];
-  self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
-  [self.previewLayer setBackgroundColor:[[UIColor blackColor] CGColor]];
-  [self.previewLayer setVideoGravity:AVLayerVideoGravityResizeAspect];
-  [self.previewLayer setFrame:[rootLayer bounds]];
-  [rootLayer addSublayer:self.previewLayer];
-  
-  [self setupBarcodeDetection];
-  
-  [self.session startRunning];
-}
-
-- (void)teardownBarcodeDetection {
-  if ( self.metadataOutput ) {
-    [self.session removeOutput:self.metadataOutput];
-  }
-}
-
-- (void)setupBarcodeDetection {
-  self.metadataOutput = [AVCaptureMetadataOutput new];
-  if ( ! [self.session canAddOutput:self.metadataOutput] ) {
-    [self teardownBarcodeDetection];
-    return;
-  }
-  
-  // Metadata processing will be fast, and mostly updating UI which should be done on the main thread
-  // So just use the main dispatch queue instead of creating a separate one
-  [self.metadataOutput setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
-  [self.session addOutput:self.metadataOutput];
-  
-  if ( ! [self.metadataOutput.availableMetadataObjectTypes containsObject:AVMetadataObjectTypeEAN13Code] ) {
-    [self teardownBarcodeDetection];
-    return;
-  }
-  
-  self.metadataOutput.metadataObjectTypes = @[AVMetadataObjectTypeQRCode];
-}
-
-- (void) captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)faces fromConnection:(AVCaptureConnection *)connection {
-#pragma unused (captureOutput)
-#pragma unused (connection)
-  for (AVMetadataMachineReadableCodeObject *object in faces) {
-    NSLog(@"Found barcode: %@: %@", object.type, object.stringValue);
-  }
-}
-
-- (AVCaptureDeviceInput*) pickCamera {
-  AVCaptureDevicePosition desiredPosition = AVCaptureDevicePositionBack;
-  BOOL hadError = NO;
-  
-  for (AVCaptureDevice *d in [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo]) {
-    if ([d position] == desiredPosition) {
-      NSError *error = nil;
-      AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:d error:&error];
-      if (error) {
-        hadError = YES;
-        displayErrorOnMainQueue(error, @"Could not initialize for AVMediaTypeVideo");
-      } else if ( [self.session canAddInput:input] ) {
-        return input;
-      }
-    }
-  }
-  
-  if ( ! hadError ) {
-    // no errors, simply couldn't find a matching camera
-    displayErrorOnMainQueue(nil, @"No camera found for requested orientation");
-  }
-  
-  return nil;
-}
-
-- (void) updateCameraSelection {
-  // Changing the camera device will reset connection state, so we call the
-  // update*Detection functions to resync them.  When making multiple
-  // session changes, wrap in a beginConfiguration / commitConfiguration.
-  // This will avoid consecutive session restarts for each configuration
-  // change (noticeable delay and camera flickering)
-  
-  [self.session beginConfiguration];
-  
-  // have to remove old inputs before we test if we can add a new input
-  NSArray* oldInputs = [self.session inputs];
-  
-  for (AVCaptureInput *oldInput in oldInputs)
-    [self.session removeInput:oldInput];
-  
-  AVCaptureDeviceInput* input = [self pickCamera];
-  if ( ! input ) {
-    // failed, restore old inputs
-    for (AVCaptureInput *oldInput in oldInputs)
-      [self.session addInput:oldInput];
-  } else {
-    // succeeded, set input and update connection states
-    [self.session addInput:input];
-  }
-  
-  [self.session commitConfiguration];
-}
-
-- (void)dealloc {
-  [self.session stopRunning];
-  
-  [self.previewLayer removeFromSuperlayer];
-  self.previewLayer = nil;
-  
-  self.session = nil;
-}
-
-void displayErrorOnMainQueue(NSError *error, NSString *message)
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-  dispatch_async(dispatch_get_main_queue(), ^(void) {
-    UIAlertView* alert = [UIAlertView new];
-    if(error) {
-      alert.title = [NSString stringWithFormat:@"%@ (%zd)", message, error.code];
-      alert.message = [error localizedDescription];
-    } else {
-      alert.title = message;
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
     }
+    return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated;
+{
+    [super viewWillAppear:animated];
+}
+
+- (void) viewDidAppear:(BOOL)animated;
+{
+    [super viewDidAppear:animated];
+    [self startScanning];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    if([self isCameraAvailable]) {
+        [self setupScanner];
+    }
+}
+
+- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)evt
+{
+    UITouch *touch=[touches anyObject];
+    CGPoint pt= [touch locationInView:self.view];
+    [self focus:pt];
+}
+
+
+#pragma mark -
+#pragma mark AVFoundationSetup
+
+- (void) setupScanner;
+{
+    self.device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
-    [alert addButtonWithTitle:@"Dismiss"];
-    [alert show];
-  });
+    self.input = [AVCaptureDeviceInput deviceInputWithDevice:self.device error:nil];
+    
+    self.session = [[AVCaptureSession alloc] init];
+    
+    self.output = [[AVCaptureMetadataOutput alloc] init];
+    [self.session addOutput:self.output];
+    [self.session addInput:self.input];
+    
+    [self.output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
+
+    self.output.metadataObjectTypes = @[AVMetadataObjectTypeQRCode];
+    
+    self.preview = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
+    self.preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    self.preview.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    
+    AVCaptureConnection *con = self.preview.connection;
+    con.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
+    
+    [self.view.layer insertSublayer:self.preview atIndex:0];
+}
+
+#pragma mark -
+#pragma mark Helper Methods
+
+- (BOOL) isCameraAvailable;
+{
+    NSArray *videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    return [videoDevices count] > 0;
+}
+
+- (void)startScanning;
+{
+    [self.session startRunning];
+    
+}
+
+- (void) stopScanning;
+{
+    [self.session stopRunning];
+}
+
+- (void) setTourch:(BOOL) aStatus;
+{
+  	AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    [device lockForConfiguration:nil];
+    if ( [device hasTorch] ) {
+        if ( aStatus ) {
+            [device setTorchMode:AVCaptureTorchModeOn];
+        } else {
+            [device setTorchMode:AVCaptureTorchModeOff];
+        }
+    }
+    [device unlockForConfiguration];
+}
+
+- (void) focus:(CGPoint) aPoint;
+{
+    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if([device isFocusPointOfInterestSupported] &&
+       [device isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
+        double screenWidth = self.view.width;
+        double screenHeight = self.view.height;
+        double focus_x = aPoint.x/screenWidth;
+        double focus_y = aPoint.y/screenHeight;
+        if([device lockForConfiguration:nil]) {
+            [device setFocusPointOfInterest:CGPointMake(focus_x,focus_y)];
+            [device setFocusMode:AVCaptureFocusModeAutoFocus];
+            if ([device isExposureModeSupported:AVCaptureExposureModeAutoExpose]){
+                [device setExposureMode:AVCaptureExposureModeAutoExpose];
+            }
+            [device unlockForConfiguration];
+        }
+    }
+}
+
+#pragma mark -
+#pragma mark AVCaptureMetadataOutputObjectsDelegate
+
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects
+       fromConnection:(AVCaptureConnection *)connection
+{
+    for(AVMetadataObject *current in metadataObjects) {
+        if([current isKindOfClass:[AVMetadataMachineReadableCodeObject class]]) {
+            if([self.delegate respondsToSelector:@selector(scanViewController:didSuccessfullyScan:)]) {
+                NSString *scannedValue = [((AVMetadataMachineReadableCodeObject *) current) stringValue];
+            NSLog(@"scaned: %@",scannedValue);
+                [self.delegate scanViewController:self didSuccessfullyScan:scannedValue];
+            }
+        }
+    }
 }
 
 @end
