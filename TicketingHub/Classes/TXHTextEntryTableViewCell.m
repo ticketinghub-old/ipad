@@ -56,9 +56,9 @@
 {
     BOOL hasError = [self hasErrors];
     
-    self.textField.backgroundColor   = hasError ? [[self class] txhFieldErrorBackgroundColor] : [[self class] txhFieldNormalBackgroundColor];
+    self.textField.backgroundColor   = hasError ? [UIColor txhFieldErrorBackgroundColor] : [UIColor txhFieldNormalBackgroundColor];
     self.backingView.backgroundColor = self.textField.backgroundColor;
-    self.textField.textColor         = hasError ? [[self class] txhFieldErrorTextColor] : [[self class] txhFieldNormalTextColor];
+    self.textField.textColor         = hasError ? [UIColor txhFieldErrorTextColor] : [UIColor txhFieldNormalTextColor];
 }
 
 - (BOOL)hasErrors

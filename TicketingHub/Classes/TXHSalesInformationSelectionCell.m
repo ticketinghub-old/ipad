@@ -102,17 +102,17 @@
     
     if ([self hasErrors])
     {
-        textColor       = [[self class] txhFieldErrorTextColor];
-        backgroundColor = [[self class] txhFieldErrorBackgroundColor];
+        textColor       = [UIColor txhFieldErrorTextColor];
+        backgroundColor = [UIColor txhFieldErrorBackgroundColor];
     }
     else
     {
-        backgroundColor = [[self class] txhFieldNormalBackgroundColor];
+        backgroundColor = [UIColor txhFieldNormalBackgroundColor];
         
         if ([self.value length])
-            textColor = [[self class] txhFieldNormalTextColor];
+            textColor = [UIColor txhFieldNormalTextColor];
         else
-            textColor = [[self class] txhFieldPlaceholderTextColor];
+            textColor = [UIColor txhFieldPlaceholderTextColor];
     }
     
     [self.selectionField setTitleColor:textColor forState:UIControlStateNormal];
