@@ -42,6 +42,12 @@
     [self startScanning];
 }
 
+- (void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self stopScanning];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -99,26 +105,11 @@
 - (void)startScanning;
 {
     [self.session startRunning];
-    
 }
 
 - (void) stopScanning;
 {
     [self.session stopRunning];
-}
-
-- (void) setTourch:(BOOL) aStatus;
-{
-  	AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    [device lockForConfiguration:nil];
-    if ( [device hasTorch] ) {
-        if ( aStatus ) {
-            [device setTorchMode:AVCaptureTorchModeOn];
-        } else {
-            [device setTorchMode:AVCaptureTorchModeOff];
-        }
-    }
-    [device unlockForConfiguration];
 }
 
 - (void) focus:(CGPoint) aPoint;
