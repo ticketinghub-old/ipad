@@ -20,7 +20,8 @@
 
 @property (nonatomic, weak) id<BarcodeViewControllerDelegate> delegate;
 
-- (BOOL)isCameraAvailable;
++ (BOOL)isCameraAvailable;
+
 - (void)startScanning;
 - (void)stopScanning;
 

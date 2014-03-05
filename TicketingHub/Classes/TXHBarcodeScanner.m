@@ -55,7 +55,7 @@
 
 #pragma mark - Methods
 
-- (BOOL)isCameraAvailable;
++ (BOOL)isCameraAvailable;
 {
     NSArray *videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     return [videoDevices count] > 0;
