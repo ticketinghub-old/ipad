@@ -203,27 +203,35 @@ static void * ContentValidContext = &ContentValidContext;
     NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
     NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     CGRect keyboardFrame = [kbFrame CGRectValue];
+    NSInteger curve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue] << 16;
     
     CGFloat height = keyboardFrame.size.width - self.stepCompletionController.view.height;
 
     if ([self.stepContentController respondsToSelector:@selector(setOffsetBottomBy:)])
-    {
-        [UIView animateWithDuration:animationDuration animations:^{
-            [self.stepContentController setOffsetBottomBy:height];
-        }];
-    }
+        [UIView animateWithDuration:animationDuration
+                              delay:0.0
+                            options:curve
+                         animations:^{
+                             [self.stepContentController setOffsetBottomBy:height];
+
+                         }
+                         completion:nil];
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
     NSDictionary *info = [notification userInfo];
     NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-
+    NSInteger curve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue] << 16;
+    
     if ([self.stepContentController respondsToSelector:@selector(setOffsetBottomBy:)])
-    {
-        [UIView animateWithDuration:animationDuration animations:^{
-            [self.stepContentController setOffsetBottomBy:0];
-        }];
-    }
+        [UIView animateWithDuration:animationDuration
+                              delay:0.0
+                            options:curve
+                         animations:^{
+                             [self.stepContentController setOffsetBottomBy:0];
+
+                         }
+                         completion:nil];
 }
 
 
