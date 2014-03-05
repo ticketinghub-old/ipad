@@ -76,7 +76,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rI2-xu-3eB">
                                 <rect key="frame" x="0.0" y="0.0" width="350" height="300"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.89411764709999997" green="0.91764705879999997" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="r3F-Gr-IMA"/>
                                 </constraints>
@@ -90,7 +90,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TSc-sI-cGF">
-                                                <rect key="frame" x="0.0" y="0.0" width="290" height="40"/>
+                                                <rect key="frame" x="10" y="0.0" width="280" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -112,16 +112,40 @@
                                             <constraint firstAttribute="centerY" secondItem="izY-W5-X1b" secondAttribute="centerY" id="KMT-Is-Af6"/>
                                             <constraint firstAttribute="height" constant="40" id="QLZ-tj-c5r"/>
                                             <constraint firstAttribute="trailing" secondItem="TSc-sI-cGF" secondAttribute="trailing" constant="20" id="ZKu-EZ-bCs"/>
-                                            <constraint firstItem="TSc-sI-cGF" firstAttribute="leading" secondItem="juE-qh-d83" secondAttribute="leading" id="jnp-fE-D4p"/>
+                                            <constraint firstItem="TSc-sI-cGF" firstAttribute="leading" secondItem="juE-qh-d83" secondAttribute="leading" constant="10" id="jnp-fE-D4p"/>
                                             <constraint firstAttribute="trailing" secondItem="izY-W5-X1b" secondAttribute="trailing" constant="10" id="r0H-Kh-Klb"/>
                                         </constraints>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifying-glass" translatesAutoresizingMaskIntoConstraints="NO" id="lRN-Se-hfB">
+                                        <rect key="frame" x="149" y="239" width="52" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cant'y find a booking?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Hr-sU-27W">
+                                        <rect key="frame" x="87" y="313" width="177" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.30196078430000001" green="0.39607843139999999" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can search by email, name, credit card or scan the tickets QR Code." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="188" translatesAutoresizingMaskIntoConstraints="NO" id="gP2-GM-AT8">
+                                        <rect key="frame" x="81" y="342" width="188" height="46"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.89411764705882346" green="0.91764705882352937" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="9Hr-sU-27W" secondAttribute="centerX" id="5rp-du-cW3"/>
                                     <constraint firstItem="juE-qh-d83" firstAttribute="leading" secondItem="cgR-4h-bXO" secondAttribute="leading" constant="20" id="HWs-eM-HPj"/>
+                                    <constraint firstAttribute="bottom" secondItem="gP2-GM-AT8" secondAttribute="bottom" constant="80" id="R1C-tb-PBO"/>
                                     <constraint firstItem="juE-qh-d83" firstAttribute="top" secondItem="cgR-4h-bXO" secondAttribute="top" constant="20" id="RKX-oz-av5"/>
+                                    <constraint firstItem="gP2-GM-AT8" firstAttribute="top" secondItem="9Hr-sU-27W" secondAttribute="bottom" constant="8" id="Wbd-9v-5oK"/>
                                     <constraint firstAttribute="trailing" secondItem="juE-qh-d83" secondAttribute="trailing" constant="20" id="h3B-pY-4Sc"/>
+                                    <constraint firstAttribute="centerX" secondItem="lRN-Se-hfB" secondAttribute="centerX" id="ihp-Pk-omb"/>
+                                    <constraint firstItem="9Hr-sU-27W" firstAttribute="top" secondItem="lRN-Se-hfB" secondAttribute="bottom" constant="20" id="oew-RD-ydX"/>
+                                    <constraint firstAttribute="centerX" secondItem="gP2-GM-AT8" secondAttribute="centerX" id="wzX-fb-m9x"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -139,6 +163,7 @@
                     </view>
                     <toolbarItems/>
                     <connections>
+                        <outlet property="bottomConstraint" destination="Vly-3C-kqq" id="XBf-iG-Qda"/>
                         <outlet property="cameraPreviewView" destination="rI2-xu-3eB" id="Xcs-TP-0VK"/>
                         <outlet property="cameraPreviewViewHeightConstraint" destination="r3F-Gr-IMA" id="KVK-cj-IqV"/>
                         <outlet property="searchView" destination="cgR-4h-bXO" id="79h-kp-QMi"/>
@@ -150,6 +175,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="magnifying-glass" width="52" height="54"/>
         <image name="right-arrow" width="9" height="16"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

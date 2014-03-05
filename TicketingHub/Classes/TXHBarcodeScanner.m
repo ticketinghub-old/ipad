@@ -99,14 +99,20 @@
 
 - (void)showPreviewInView:(UIView *)view
 {
-    self.preview = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
-    self.preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    self.preview.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
+    [self.preview removeFromSuperlayer];
+    self.preview = nil;
     
-    AVCaptureConnection *con = self.preview.connection;
-    con.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
-    
-    [view.layer insertSublayer:self.preview atIndex:0];
+    if (view)
+    {
+        self.preview = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
+        self.preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        self.preview.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
+        
+        AVCaptureConnection *con = self.preview.connection;
+        con.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
+        
+        [view.layer insertSublayer:self.preview atIndex:0];
+    }
     
     [self.tapRecognizer.view removeGestureRecognizer:self.tapRecognizer];
     [view addGestureRecognizer:self.tapRecognizer];
