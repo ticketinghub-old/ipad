@@ -12,8 +12,6 @@
 #import "TXHProductsManager.h"
 #import "TXHOrderManager.h"
 
-#import <iOS-api/TXHOrder.h>
-
 #import "TXHProductsManager.h"
 #import "TXHTicketingHubManager.h"
 #import "UIColor+TicketingHub.h"

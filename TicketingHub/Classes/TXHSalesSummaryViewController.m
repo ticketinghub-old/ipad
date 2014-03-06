@@ -15,10 +15,6 @@
 
 #import "TXHProductsManager.h"
 #import "TXHOrderManager.h"
-#import <iOS-api/TXHOrder.h>
-#import <iOS-api/TXHTier.h>
-#import <iOS-api/TXHTicket.h>
-#import <iOS-api/TXHCustomer.h>
 
 @interface TXHSalesSummaryViewController () <UICollectionViewDelegateFlowLayout, TXHSalesSummaryHeaderDelegate>
 

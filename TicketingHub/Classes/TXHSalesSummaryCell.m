@@ -8,7 +8,6 @@
 
 #import "TXHSalesSummaryCell.h"
 #import "TXHProductsManager.h"
-#import <iOS-api/TXHTicket.h>
 
 @interface TXHSalesSummaryCell () <UITableViewDataSource, UITableViewDelegate>
 

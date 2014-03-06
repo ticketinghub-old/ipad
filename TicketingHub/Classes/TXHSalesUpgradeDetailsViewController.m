@@ -15,9 +15,6 @@
 
 #import "TXHOrderManager.h"
 #import "TXHProductsManager.h"
-#import <iOS-api/TXHUpgrade.h>
-#import <iOS-api/TXHTicket.h>
-#import <iOS-api/TXHCustomer.h>
 #import "UIColor+TicketingHub.h"
 
 static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";

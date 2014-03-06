@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <iOS-api/TXHProduct.h>
 
 #import "ProductListControllerNotifications.h"
 

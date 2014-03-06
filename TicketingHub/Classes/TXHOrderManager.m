@@ -8,9 +8,6 @@
 
 #import "TXHOrderManager.h"
 #import "TXHTicketingHubManager.h"
-#import <iOS-api/TXHOrder.h>
-#import <iOS-api/TXHTicket.h>
-#import <iOS-api/TXHCustomer.h>
 
 NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification";
 

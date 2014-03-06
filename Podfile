@@ -6,10 +6,9 @@ link_with 'TicketingHub', 'TicketingHubTests'
 
 pod 'iOS-api', :podspec => '.'
 pod 'Stripe', '~> 1.0.2'
+pod 'SevenSwitch', '~> 1.3.0'
 pod 'TapkuLibrary', :git => 'https://github.com/Hubbub/tapkulibrary.git', :branch => 'ios7'
 pod 'dyci', :git => 'https://github.com/DyCI/dyci-main.git'
-
-
 
 target :test, :exclusive => true do
     

@@ -13,10 +13,6 @@
 #import "TXHSalesInformationSelectionCell.h"
 
 #import "TXHOrderManager.h"
-#import <iOS-api/TXHOrder.h>
-#import <iOS-api/TXHField.h>
-#import <iOS-api/TXHTicket.h>
-#import <iOS-api/TXHCustomer.h>
 #import "UIColor+TicketingHub.h"
 
 static NSString * const kStoredUserInputsKey = @"kStoredFieldsInformationsUserInputsKey";

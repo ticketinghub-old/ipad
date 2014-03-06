@@ -14,7 +14,6 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <iOS-api/TXHTicketingHubClient.h>
 
 #define TXHTICKETINHGUBCLIENT [[TXHTicketingHubManager sharedManager] client]
 
