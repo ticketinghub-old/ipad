@@ -110,18 +110,18 @@
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifying-glass" translatesAutoresizingMaskIntoConstraints="NO" id="lRN-Se-hfB">
-                                        <rect key="frame" x="149" y="267" width="52" height="54"/>
+                                        <rect key="frame" x="149" y="219" width="52" height="54"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cant'y find a booking?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Hr-sU-27W">
-                                        <rect key="frame" x="87" y="341" width="177" height="21"/>
+                                        <rect key="frame" x="87" y="293" width="177" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.30196078430000001" green="0.39607843139999999" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can search by email, name, credit card or scan the tickets QR Code." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="188" translatesAutoresizingMaskIntoConstraints="NO" id="gP2-GM-AT8">
-                                        <rect key="frame" x="81" y="370" width="188" height="46"/>
+                                        <rect key="frame" x="81" y="322" width="188" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -136,7 +136,7 @@
                                     <constraint firstItem="gP2-GM-AT8" firstAttribute="top" secondItem="9Hr-sU-27W" secondAttribute="bottom" constant="8" id="Wbd-9v-5oK"/>
                                     <constraint firstAttribute="trailing" secondItem="juE-qh-d83" secondAttribute="trailing" constant="20" id="h3B-pY-4Sc"/>
                                     <constraint firstAttribute="centerX" secondItem="lRN-Se-hfB" secondAttribute="centerX" id="ihp-Pk-omb"/>
-                                    <constraint firstAttribute="bottom" secondItem="gP2-GM-AT8" secondAttribute="bottom" constant="52" id="n3F-ja-0Pr"/>
+                                    <constraint firstAttribute="bottom" secondItem="gP2-GM-AT8" secondAttribute="bottom" constant="100" id="n3F-ja-0Pr"/>
                                     <constraint firstItem="9Hr-sU-27W" firstAttribute="top" secondItem="lRN-Se-hfB" secondAttribute="bottom" constant="20" id="oew-RD-ydX"/>
                                     <constraint firstAttribute="centerX" secondItem="gP2-GM-AT8" secondAttribute="centerX" id="wzX-fb-m9x"/>
                                 </constraints>
@@ -229,6 +229,10 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.79607664233576647" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="t6V-OP-LNH">
+                                            <rect key="frame" x="8" y="16" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="Sh5-vn-QYe" secondAttribute="bottom" id="4Pb-jT-Mas"/>
@@ -245,6 +249,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="activityIndicator" destination="t6V-OP-LNH" id="apv-rb-scW"/>
                                     <outlet property="attendedSwitch" destination="Idb-If-Goe" id="vAl-EP-UTG"/>
                                     <outlet property="bottomSeparatorLeadingConstraint" destination="9o4-IS-Hfp" id="S2w-5i-5Ow"/>
                                     <outlet property="chevronImageView" destination="dZo-Gc-v5J" id="JmC-Ph-8ft"/>

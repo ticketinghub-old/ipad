@@ -67,7 +67,8 @@ NSString *const kRecognizedQRCodeNotification = @"kRecognizedQRCodeNotification"
 
 - (TXHBarcodeScanner *)scanner
 {
-    if (!_scanner) {
+    if (!_scanner && [self shouldUseBuiltInCamera])
+    {
         _scanner = [TXHBarcodeScanner new];
         _scanner.delegate = self;
     }
@@ -123,7 +124,7 @@ NSString *const kRecognizedQRCodeNotification = @"kRecognizedQRCodeNotification"
 
                          [self hideCameraPreviewAnimated:NO];
                          
-                         self.bottomLabelConstraint.constant = 20;
+                         self.bottomLabelConstraint.constant = 30;
                          self.bottomConstraint.constant = height;
                          [self.view layoutIfNeeded];
                      }
@@ -144,13 +145,12 @@ NSString *const kRecognizedQRCodeNotification = @"kRecognizedQRCodeNotification"
                               [self showCameraPreviewAnimated:NO];
                         
                           self.bottomConstraint.constant = 0;
-                          self.bottomLabelConstraint.constant = 52;
+                          self.bottomLabelConstraint.constant = 100;
 
                           [self.view layoutIfNeeded];
                       }
                      completion:^(BOOL finished) {
-                         if ([self shouldUseBuiltInCamera])
-                             [self startScanningWithBuiltInCamera];
+                         [self startScanningWithBuiltInCamera];
                      }];
 }
 
