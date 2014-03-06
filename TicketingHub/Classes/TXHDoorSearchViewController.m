@@ -10,12 +10,15 @@
 
 #import "TXHBarcodeScanner.h"
 
+NSString *const kRecognizedQRCodeNotification = @"kRecognizedQRCodeNotification";
+
 #define CAMERA_PREVIEW_ANIMATION_DURATION 0.3
 
-@interface TXHDoorSearchViewController ()
+@interface TXHDoorSearchViewController () <BarcodeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *cameraPreviewViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomLabelConstraint;
 @property (weak, nonatomic) IBOutlet UIView *cameraPreviewView;
 @property (weak, nonatomic) IBOutlet UIView *searchView;
 
@@ -66,6 +69,7 @@
 {
     if (!_scanner) {
         _scanner = [TXHBarcodeScanner new];
+        _scanner.delegate = self;
     }
     return _scanner;
 }
@@ -119,6 +123,7 @@
 
                          [self hideCameraPreviewAnimated:NO];
                          
+                         self.bottomLabelConstraint.constant = 20;
                          self.bottomConstraint.constant = height;
                          [self.view layoutIfNeeded];
                      }
@@ -139,6 +144,8 @@
                               [self showCameraPreviewAnimated:NO];
                         
                           self.bottomConstraint.constant = 0;
+                          self.bottomLabelConstraint.constant = 52;
+
                           [self.view layoutIfNeeded];
                       }
                      completion:^(BOOL finished) {
@@ -176,5 +183,13 @@
         self.cameraPreviewViewHeightConstraint.constant = 0.0;
     }
 }
+
+#pragma mark - BarcodeViewControllerDelegate
+
+- (void)scanViewController:(TXHBarcodeScanner *)barcodeScaner didSuccessfullyScan:(NSString *)scannedValue
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRecognizedQRCodeNotification object:scannedValue];
+}
+
 
 @end

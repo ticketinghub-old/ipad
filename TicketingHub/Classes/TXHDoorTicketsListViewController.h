@@ -1,5 +1,5 @@
 //
-//  TXHDoorSearchViewController.h
+//  TXHDoorTicketsListViewController.h
 //  TicketingHub
 //
 //  Created by Bartek Hugo Trzcinski on 05/03/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString *const kRecognizedQRCodeNotification;
-
-@interface TXHDoorSearchViewController : UIViewController
+@interface TXHDoorTicketsListViewController : UITableViewController
 
 @end

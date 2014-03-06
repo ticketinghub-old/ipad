@@ -18,4 +18,5 @@
 + (UIColor *)txhFieldNormalTextColor;
 + (UIColor *)txhFieldPlaceholderTextColor;
 
++ (UIColor *)colorFromHexString:(NSString *)hexString alpha:(CGFloat)alpha;
 @end

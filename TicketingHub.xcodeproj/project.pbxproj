@@ -10,6 +10,7 @@
 		3E0DAB9118AA41510045697C /* iOS-api.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3E0DAB9018AA41510045697C /* iOS-api.podspec */; };
 		3E22139B18AA791000DE35A6 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E22139A18AA791000DE35A6 /* ArrayDataSource.m */; };
 		3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E22139D18AA794C00DE35A6 /* DictionaryDataSource.m */; };
+		3E3C50C218C7823500A9285C /* TXHDoorTicketsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C50C118C7823500A9285C /* TXHDoorTicketsListViewController.m */; };
 		3E3D46EA18ACB89A00275ACF /* FetchedResultsControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D46E918ACB89A00275ACF /* FetchedResultsControllerDataSource.m */; };
 		3E3D46EE18ACBB8500275ACF /* UIColor+TicketingHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D46ED18ACBB8500275ACF /* UIColor+TicketingHub.m */; };
 		3E44157018AB80EA00C4AE1C /* TXHTicketingHubManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E44156F18AB80EA00C4AE1C /* TXHTicketingHubManager.m */; };
@@ -30,6 +31,8 @@
 		3ECE137718B689CE00E7148F /* NSDate+CupertinoYankee.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE137618B689CE00E7148F /* NSDate+CupertinoYankee.m */; };
 		3ECE452C18C0B57F00DD1F7B /* AFNetworkActivityLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE452B18C0B57F00DD1F7B /* AFNetworkActivityLogger.m */; };
 		3ED7561818BDD96500D8F60B /* TXHOrderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7561718BDD96500D8F60B /* TXHOrderManager.m */; };
+		3EE8E21118C8799D006E8F5E /* TXHDoorTicketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8E21018C8799C006E8F5E /* TXHDoorTicketCell.m */; };
+		3EE8E21418C890F5006E8F5E /* UIImage+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8E21318C890F5006E8F5E /* UIImage+String.m */; };
 		4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */; };
 		4D586DE11797E51E00E40534 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D586DE01797E51E00E40534 /* Images.xcassets */; };
 		4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D68DAAA178B0A5400743227 /* AVFoundation.framework */; };
@@ -112,6 +115,8 @@
 		3E22139C18AA794C00DE35A6 /* DictionaryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryDataSource.h; sourceTree = "<group>"; };
 		3E22139D18AA794C00DE35A6 /* DictionaryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryDataSource.m; sourceTree = "<group>"; };
 		3E22139F18AA799700DE35A6 /* TableViewConfigurationBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewConfigurationBlock.h; sourceTree = "<group>"; };
+		3E3C50C018C7823500A9285C /* TXHDoorTicketsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorTicketsListViewController.h; sourceTree = "<group>"; };
+		3E3C50C118C7823500A9285C /* TXHDoorTicketsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorTicketsListViewController.m; sourceTree = "<group>"; };
 		3E3D46E818ACB89A00275ACF /* FetchedResultsControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedResultsControllerDataSource.h; sourceTree = "<group>"; };
 		3E3D46E918ACB89A00275ACF /* FetchedResultsControllerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedResultsControllerDataSource.m; sourceTree = "<group>"; };
 		3E3D46EC18ACBB8500275ACF /* UIColor+TicketingHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TicketingHub.h"; sourceTree = "<group>"; };
@@ -153,6 +158,10 @@
 		3ECE452B18C0B57F00DD1F7B /* AFNetworkActivityLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityLogger.m; sourceTree = "<group>"; };
 		3ED7561618BDD96500D8F60B /* TXHOrderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHOrderManager.h; path = TicketingHub/Classes/TXHOrderManager.h; sourceTree = SOURCE_ROOT; };
 		3ED7561718BDD96500D8F60B /* TXHOrderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHOrderManager.m; path = TicketingHub/Classes/TXHOrderManager.m; sourceTree = SOURCE_ROOT; };
+		3EE8E20F18C8799C006E8F5E /* TXHDoorTicketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorTicketCell.h; sourceTree = "<group>"; };
+		3EE8E21018C8799C006E8F5E /* TXHDoorTicketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorTicketCell.m; sourceTree = "<group>"; };
+		3EE8E21218C890F5006E8F5E /* UIImage+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+String.h"; sourceTree = "<group>"; };
+		3EE8E21318C890F5006E8F5E /* UIImage+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+String.m"; sourceTree = "<group>"; };
 		416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
 		4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCurrencyEntryViewSpec.m; sourceTree = "<group>"; };
 		4D586DE01797E51E00E40534 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -585,6 +594,8 @@
 				3ECE137618B689CE00E7148F /* NSDate+CupertinoYankee.m */,
 				3EC8845918C4984B00CE0597 /* UIResponder+FirstResponder.h */,
 				3EC8845A18C4984B00CE0597 /* UIResponder+FirstResponder.m */,
+				3EE8E21218C890F5006E8F5E /* UIImage+String.h */,
+				3EE8E21318C890F5006E8F5E /* UIImage+String.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -611,6 +622,10 @@
 		3E87023B18C72A50008F4EAD /* Tickets List */ = {
 			isa = PBXGroup;
 			children = (
+				3E3C50C018C7823500A9285C /* TXHDoorTicketsListViewController.h */,
+				3E3C50C118C7823500A9285C /* TXHDoorTicketsListViewController.m */,
+				3EE8E20F18C8799C006E8F5E /* TXHDoorTicketCell.h */,
+				3EE8E21018C8799C006E8F5E /* TXHDoorTicketCell.m */,
 			);
 			name = "Tickets List";
 			sourceTree = "<group>";
@@ -1058,10 +1073,12 @@
 				EEB1849017D115640025530A /* TXHEmbeddingSegue.m in Sources */,
 				3ECE452C18C0B57F00DD1F7B /* AFNetworkActivityLogger.m in Sources */,
 				EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */,
+				3E3C50C218C7823500A9285C /* TXHDoorTicketsListViewController.m in Sources */,
 				EE75D98917D11048009ADCD8 /* TXHSalesCompletionViewController.m in Sources */,
 				EE75D98C17D11048009ADCD8 /* TXHSalesInformationDetailsViewController.m in Sources */,
 				EE75D98D17D11048009ADCD8 /* TXHSalesInformationHeader.m in Sources */,
 				EE75D98E17D11048009ADCD8 /* TXHSalesInformationTextCell.m in Sources */,
+				3EE8E21118C8799D006E8F5E /* TXHDoorTicketCell.m in Sources */,
 				EE75D99017D11048009ADCD8 /* TXHSalesMainViewController.m in Sources */,
 				EE75D99317D11048009ADCD8 /* TXHSalesPaymentCardDetailsViewController.m in Sources */,
 				3E6A422518C483870053EF34 /* TXHSensorView.m in Sources */,
@@ -1089,6 +1106,7 @@
 				EE75D9A617D11048009ADCD8 /* TXHSalesUpgradeDetailsViewController.m in Sources */,
 				3E488BD918BE850600E90BE6 /* RMDisplayLabel.m in Sources */,
 				EE75D9A717D11048009ADCD8 /* TXHSalesUpgradeHeader.m in Sources */,
+				3EE8E21418C890F5006E8F5E /* UIImage+String.m in Sources */,
 				3EC63E0818B3721600B091A0 /* TXHSalesStepAbstract.m in Sources */,
 				EE75D9A917D11048009ADCD8 /* TXHSalesWizardViewController.m in Sources */,
 				EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */,
