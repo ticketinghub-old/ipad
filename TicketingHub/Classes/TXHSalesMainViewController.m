@@ -168,7 +168,6 @@ static void * ContentValidContext = &ContentValidContext;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];
-
 }
 
 - (void)registerForKeyboardNotifications
@@ -252,6 +251,13 @@ static void * ContentValidContext = &ContentValidContext;
     NSInteger index = [manager indexOfStep:step];
     if (index == 0) {
         [TXHORDERMANAGER resetOrder];
+    }
+    
+    if (index == NSNotFound)
+    {
+        [self.stepCompletionController setCancelButtonHidden:YES];
+        [self.stepCompletionController setContinueButtonEnabled:NO];
+        return;
     }
     
     // update header
