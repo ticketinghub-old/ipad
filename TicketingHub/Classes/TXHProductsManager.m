@@ -108,4 +108,13 @@ NSString * const TXHSelectedAvailability            = @"TXHSelectedProduct";
 }
 
 
+- (void)ticketRecordsForAvailability:(TXHAvailability *)availability andQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion;
+{
+    [TXHTICKETINHGUBCLIENT ticketRecordsForProduct:self.selectedProduct
+                                      availability:availability
+                                         withQuery:query
+                                        completion:completion];
+}
+
 @end
+
