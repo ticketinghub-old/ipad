@@ -11,6 +11,8 @@
 @interface UIColor (TicketingHub)
 
 + (UIColor *)txhDarkBlueColor;
++ (UIColor *)txhGreenColor;
+
 
 + (UIColor *)txhFieldErrorBackgroundColor;
 + (UIColor *)txhFieldNormalBackgroundColor;

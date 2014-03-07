@@ -13,16 +13,28 @@
 
 + (UIColor *)txhDarkBlueColor
 {
-    static UIColor *customBackgroundColour = nil;
+    static UIColor *color = nil;
     
-    if (!customBackgroundColour) {
-        customBackgroundColour = [UIColor colorWithRed:38.0f / 255.0f
-                                                 green:67.0f / 255.0f
-                                                  blue:90.0f / 255.0f
-                                                 alpha:1.0f];
-    }
+    if (!color)
+        color = [UIColor colorWithRed:38.0f / 255.0f
+                                green:67.0f / 255.0f
+                                 blue:90.0f / 255.0f
+                                alpha:1.0f];
     
-    return customBackgroundColour;
+    return color;
+}
+
++ (UIColor *)txhGreenColor
+{
+    static UIColor *color = nil;
+    
+    if (!color)
+        color = [UIColor colorWithRed:24.0f / 255.0f
+                                green:166.0f / 255.0f
+                                 blue:81.0f / 255.0f
+                                alpha:1.0f];
+    
+    return color;
 }
 
 + (UIColor *)txhFieldErrorBackgroundColor

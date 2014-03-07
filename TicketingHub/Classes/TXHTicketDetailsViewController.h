@@ -19,5 +19,6 @@
 @interface TXHTicketDetailsViewController : UIViewController
 
 @property (nonatomic, weak) id<TXHTicketDetailsViewControllerDelegate> delegate;
+@property (nonatomic, strong) TXHTicket *ticket;
 
 @end

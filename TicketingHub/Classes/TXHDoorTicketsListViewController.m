@@ -25,6 +25,7 @@
 @property (strong, nonatomic) UILabel *infolabel;
 
 @property (strong, nonatomic) NSString *searchQuery;
+@property (weak, nonatomic)   TXHTicket *selectedTicket;
 
 @end
 
@@ -56,6 +57,21 @@
     _tickets = tickets;
     
     [self applyTicketFilter];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"TicketDetail"])
+    {
+        TXHTicketDetailsViewController *detailController = segue.destinationViewController;
+        detailController.delegate = self;
+        detailController.ticket   = self.selectedTicket;
+    }
+}
+
+- (TXHTicket *)ticketAtIndexPath:(NSIndexPath *)indexPath
+{
+    return self.filteredTickets[indexPath.row];
 }
 
 #pragma mark - Info Label
@@ -100,15 +116,6 @@
     else
     {
         [self hideInfoLabel];
-    }
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"TicketDetail"])
-    {
-        TXHTicketDetailsViewController *detailController = segue.destinationViewController;
-        detailController.delegate = self;
     }
 }
 
@@ -247,9 +254,7 @@
     [TXHPRODUCTSMANAGER ticketRecordsForAvailability:availability
                                             andQuery:nil
                                           completion:^(NSArray *ticketRecords, NSError *error) {
-                                              
-                                              DLog(@"%@ %@",ticketRecords, error);
-
+                                        
                                               wself.tickets = ticketRecords;
                                           }];
 }
@@ -267,9 +272,12 @@
     
     [cell setIsFirstRow:indexPath.row == 0];
     [cell setIsLastRow:indexPath.row == [self.filteredTickets count] - 1];
-    [cell setTitle:@"John Appleseed"];
-    [cell setSubtitle:@"Adult"];
-    [cell setAttendedAt:[NSDate date]];
+    
+    TXHTicket *ticket = [self ticketAtIndexPath:indexPath];
+    
+    [cell setTitle:ticket.customer.fullName];
+    [cell setSubtitle:ticket.tier.name];
+    [cell setAttendedAt:ticket.attendedAt];
     
     return cell;
 }
@@ -280,6 +288,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    self.selectedTicket = [self ticketAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"TicketDetail" sender:self];
 }
 

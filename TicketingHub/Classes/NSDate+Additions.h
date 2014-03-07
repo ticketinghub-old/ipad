@@ -14,5 +14,7 @@
 
 - (NSString *)isoDateString;
 
+- (NSString *)daySuffix;
+
 @end
 

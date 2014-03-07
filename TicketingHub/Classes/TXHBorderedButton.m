@@ -58,20 +58,24 @@
     UIColor *textColor       = self.isHighlighted ? self.fillColor : self.tintColor;
     
     self.backgroundColor     = backgroundColor;
-    self.layer.borderColor   = textColor.CGColor;
+    self.layer.borderColor   = self.fillColor.CGColor;
     self.imageView.tintColor = textColor;
     
     [self setTitleColor:textColor forState:UIControlStateNormal];
 }
 
-#define INSET 20
+#define INSET 15
 
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     
-    self.imageView.right = self.width - INSET;
+    self.imageView.right = self.width - self.contentEdgeInsets.right;
+    
+    //something moves it right...
+    if (self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentLeft)
+        self.titleLabel.left = self.contentEdgeInsets.left;
 }
 
 @end
