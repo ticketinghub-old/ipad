@@ -10,6 +10,7 @@
 
 @interface TXHSalesTicketCompletionViewController : UIViewController
 
+@property (readonly, nonatomic, getter = isValid) BOOL valid;
 @property (weak, nonatomic) id delegate;
 
 @end

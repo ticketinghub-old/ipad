@@ -7,6 +7,7 @@
 //
 
 #import "TXHSalesTicketCompletionViewController.h"
+#import "TXHOrderManager.h"
 
 @interface TXHSalesTicketCompletionViewController () <UITextFieldDelegate>
 
@@ -15,31 +16,19 @@
 
 @property (assign, nonatomic) BOOL editingCoupon;
 
+@property (readwrite, nonatomic, getter = isValid) BOOL valid;
+
 @end
 
 @implementation TXHSalesTicketCompletionViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    self.valid = YES;
 }
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 - (IBAction)continueAction:(id)sender {
 #pragma unused (sender)
@@ -66,6 +55,16 @@
     if ([self.delegate respondsToSelector:@selector(decreaseHeight)]) {
         [self.delegate performSelector:@selector(decreaseHeight)];
     }
+}
+
+- (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
+{
+    [TXHORDERMANAGER confirmOrderWithCompletion:^(TXHOrder *order, NSError *error) {
+
+        if (blockName)
+            blockName(error);
+        
+    }];
 }
 
 @end
