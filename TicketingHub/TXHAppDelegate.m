@@ -22,10 +22,6 @@
 
     [[AFNetworkActivityLogger sharedLogger] startLogging];
     [[AFNetworkActivityLogger sharedLogger] setLevel:AFLoggerLevelDebug];
-
-
-    // We want a light status bar style as the launch screen and nav bars are dark
-    [application setStatusBarStyle:UIStatusBarStyleLightContent];
     
     // Remove all local data when launching app
     [TXHTicketingHubManager clearLocalData];
@@ -35,9 +31,6 @@
     return YES;
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

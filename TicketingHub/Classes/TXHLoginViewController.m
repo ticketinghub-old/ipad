@@ -75,9 +75,6 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
 
 #pragma mark - Superclass overrides
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
 
 #pragma mark - Notification Handlers
 
