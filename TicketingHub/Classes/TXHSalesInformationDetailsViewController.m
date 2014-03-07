@@ -47,7 +47,7 @@ static NSString * const kStoredUserInputsKey = @"kStoredFieldsInformationsUserIn
     
     __weak typeof(self) wself = self;
     
-    [TXHORDERMANAGER fieldsForCurrentOrderWithCompletion:^(NSDictionary *fields, NSError *error) {
+    [TXHORDERMANAGER userInfoFieldsForCurrentOrderTicketsWithCompletion:^(NSDictionary *fields, NSError *error) {
 
         wself.fields = fields;
 
