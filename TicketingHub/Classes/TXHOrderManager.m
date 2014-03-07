@@ -178,7 +178,7 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
 
 }
 
-- (void)fieldsForCurrentOrderWithCompletion:(void(^)(NSDictionary *fields, NSError *error))completion
+- (void)userInfoFieldsForCurrentOrderTicketsWithCompletion:(void(^)(NSDictionary *fields, NSError *error))completion
 {
     __weak typeof(self) wself = self;
     __block NSError *bError;
@@ -286,6 +286,65 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
                             }];
 }
 
+- (void)fieldsForCurrentOrderOwnerWithCompletion:(void(^)(NSArray *fields, NSError *error))completion
+{
+    [TXHTICKETINHGUBCLIENT fieldsForOrderOwner:self.order
+                                    completion:^(NSArray *fields, NSError *error) {
+                                        completion(fields, error);
+                                    }];
+
+}
+
+- (void)updateOrderWithOwnerInfo:(NSDictionary *)customersInfo completion:(void (^)(TXHOrder *, NSError *))completion
+{
+    __weak typeof(self) wself = self;
+
+    [TXHTICKETINHGUBCLIENT updateOrder:self.order
+                         withOwnerInfo:customersInfo
+                            completion:^(TXHOrder *order, NSError *error) {
+                                if (order)
+                                {
+                                    wself.order = order;
+                                }
+                                
+                                if (completion)
+                                    completion(order,error);
+                            }];
+}
+
+
+- (void)updateOrderWithPaymentMethod:(NSString *)paymentMethod completion:(void (^)(TXHOrder *, NSError *))completion
+{
+    __weak typeof(self) wself = self;
+    
+    [TXHTICKETINHGUBCLIENT updateOrder:self.order
+                     withPaymentMethod:paymentMethod
+                            completion:^(TXHOrder *order, NSError *error) {
+                                if (order)
+                                {
+                                    wself.order = order;
+                                }
+                                
+                                if (completion)
+                                    completion(order,error);
+                            }];
+}
+
+- (void)confirmOrderWithCompletion:(void (^)(TXHOrder *, NSError *))completion
+{
+    __weak typeof(self) wself = self;
+    
+    [TXHTICKETINHGUBCLIENT confirmOrder:self.order
+                             completion:^(TXHOrder *order, NSError *error) {
+                                 if (order)
+                                 {
+                                     wself.order = order;
+                                 }
+                                 
+                                 if (completion)
+                                     completion(order,error);
+                             }];
+}
 
 #pragma mark private methods
 

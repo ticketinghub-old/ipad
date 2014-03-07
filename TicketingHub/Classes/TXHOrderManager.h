@@ -12,6 +12,10 @@ extern NSString * const TXHOrderDidExpireNotification;
 
 #define TXHORDERMANAGER [TXHOrderManager sharedManager]
 
+typedef void (^TXHOrderCompletion)(TXHOrder *order, NSError *error);
+typedef void (^TXXDictionaryCompletion)(NSDictionary *dictionary, NSError *error);
+typedef void (^TXHArrayCompletion)(NSArray *array, NSError *error);
+
 @interface TXHOrderManager : NSObject
 
 @property (readonly, nonatomic) TXHOrder *order;
@@ -34,20 +38,29 @@ extern NSString * const TXHOrderDidExpireNotification;
 
 // reserving tickets
 
-- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability completion:(void(^)(TXHOrder *order, NSError *error))completion;
-
+- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability completion:(TXHOrderCompletion)completion;
 
 // fields (customers info)
 
-- (void)fieldsForCurrentOrderWithCompletion:(void(^)(NSDictionary *fields, NSError *error))completion;
-- (void)updateOrderWithCustomersInfo:(NSDictionary *)customersInfo completion:(void (^)(TXHOrder *, NSError *))completion;
-
+- (void)userInfoFieldsForCurrentOrderTicketsWithCompletion:(TXXDictionaryCompletion)completion;
+- (void)updateOrderWithCustomersInfo:(NSDictionary *)customersInfo completion:(TXHOrderCompletion)completion;
 
 // upgrades
 
-- (void)upgradesForCurrentOrderWithCompletion:(void(^)(NSDictionary *upgrades, NSError *error))completion;
-- (void)updateOrderWithUpgradesInfo:(NSDictionary *)upgradesInfo completion:(void (^)(TXHOrder *order, NSError *error))completion;
+- (void)upgradesForCurrentOrderWithCompletion:(TXXDictionaryCompletion)completion;
+- (void)updateOrderWithUpgradesInfo:(NSDictionary *)upgradesInfo completion:(TXHOrderCompletion)completion;
 
+// owner info
 
+- (void)fieldsForCurrentOrderOwnerWithCompletion:(TXHArrayCompletion)completion;
+- (void)updateOrderWithOwnerInfo:(NSDictionary *)customersInfo completion:(TXHOrderCompletion)completion;
+
+// Payment
+
+- (void)updateOrderWithPaymentMethod:(NSString *)paymentMethod completion:(TXHOrderCompletion)completion;
+
+// confirmation
+
+- (void)confirmOrderWithCompletion:(TXHOrderCompletion)completion;
 
 @end
