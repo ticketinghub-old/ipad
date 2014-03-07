@@ -33,6 +33,8 @@
 		3ED7561818BDD96500D8F60B /* TXHOrderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7561718BDD96500D8F60B /* TXHOrderManager.m */; };
 		3EE8E21118C8799D006E8F5E /* TXHDoorTicketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8E21018C8799C006E8F5E /* TXHDoorTicketCell.m */; };
 		3EE8E21418C890F5006E8F5E /* UIImage+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8E21318C890F5006E8F5E /* UIImage+String.m */; };
+		3EE8E21818CA23C8006E8F5E /* TXHTicketDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8E21718CA23C8006E8F5E /* TXHTicketDetailsViewController.m */; };
+		3EE8E21B18CA2645006E8F5E /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8E21A18CA2645006E8F5E /* UIImage+ImageEffects.m */; };
 		4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */; };
 		4D586DE11797E51E00E40534 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D586DE01797E51E00E40534 /* Images.xcassets */; };
 		4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D68DAAA178B0A5400743227 /* AVFoundation.framework */; };
@@ -162,6 +164,10 @@
 		3EE8E21018C8799C006E8F5E /* TXHDoorTicketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorTicketCell.m; sourceTree = "<group>"; };
 		3EE8E21218C890F5006E8F5E /* UIImage+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+String.h"; sourceTree = "<group>"; };
 		3EE8E21318C890F5006E8F5E /* UIImage+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+String.m"; sourceTree = "<group>"; };
+		3EE8E21618CA23C8006E8F5E /* TXHTicketDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketDetailsViewController.h; sourceTree = "<group>"; };
+		3EE8E21718CA23C8006E8F5E /* TXHTicketDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketDetailsViewController.m; sourceTree = "<group>"; };
+		3EE8E21918CA2645006E8F5E /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		3EE8E21A18CA2645006E8F5E /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
 		4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCurrencyEntryViewSpec.m; sourceTree = "<group>"; };
 		4D586DE01797E51E00E40534 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -584,6 +590,8 @@
 		3E3D46EB18ACBB6E00275ACF /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				3EE8E21918CA2645006E8F5E /* UIImage+ImageEffects.h */,
+				3EE8E21A18CA2645006E8F5E /* UIImage+ImageEffects.m */,
 				3E3D46EC18ACBB8500275ACF /* UIColor+TicketingHub.h */,
 				3E3D46ED18ACBB8500275ACF /* UIColor+TicketingHub.m */,
 				3EA36B8418B237BF008F8C59 /* UIView+Additions.h */,
@@ -622,6 +630,7 @@
 		3E87023B18C72A50008F4EAD /* Tickets List */ = {
 			isa = PBXGroup;
 			children = (
+				3EE8E21518CA23A4006E8F5E /* Ticket Details */,
 				3E3C50C018C7823500A9285C /* TXHDoorTicketsListViewController.h */,
 				3E3C50C118C7823500A9285C /* TXHDoorTicketsListViewController.m */,
 				3EE8E20F18C8799C006E8F5E /* TXHDoorTicketCell.h */,
@@ -693,6 +702,15 @@
 				3EC63E0118B36E7A00B091A0 /* TXHSaleStepsManager.m */,
 			);
 			name = Managers;
+			sourceTree = "<group>";
+		};
+		3EE8E21518CA23A4006E8F5E /* Ticket Details */ = {
+			isa = PBXGroup;
+			children = (
+				3EE8E21618CA23C8006E8F5E /* TXHTicketDetailsViewController.h */,
+				3EE8E21718CA23C8006E8F5E /* TXHTicketDetailsViewController.m */,
+			);
+			name = "Ticket Details";
 			sourceTree = "<group>";
 		};
 		4DF3F59B17C63E070045299B /* Smoke Tests */ = {
@@ -1087,6 +1105,7 @@
 				EE75D99617D11048009ADCD8 /* TXHSalesPaymentCustomerDetailViewController.m in Sources */,
 				EE75D99817D11048009ADCD8 /* TXHSalesPaymentPaymentDetailsViewController.m in Sources */,
 				3ECE132418B4C8A800E7148F /* TXHProductsManager.m in Sources */,
+				3EE8E21B18CA2645006E8F5E /* UIImage+ImageEffects.m in Sources */,
 				3E8FD59318C74CD70066FA50 /* TXHDoorSearchViewController.m in Sources */,
 				EE75D99917D11048009ADCD8 /* TXHSalesPaymentViewController.m in Sources */,
 				3E22139B18AA791000DE35A6 /* ArrayDataSource.m in Sources */,
@@ -1100,6 +1119,7 @@
 				EE75D9A117D11048009ADCD8 /* TXHSalesTicketTierCell.m in Sources */,
 				EE75D9A217D11048009ADCD8 /* TXHSalesTicketTiersViewController.m in Sources */,
 				EE75D9A417D11048009ADCD8 /* TXHSalesTimerViewController.m in Sources */,
+				3EE8E21818CA23C8006E8F5E /* TXHTicketDetailsViewController.m in Sources */,
 				3EA7634818C396D2001175F1 /* TXHSalesInformationSelectionCell.m in Sources */,
 				3EC63E0218B36E7A00B091A0 /* TXHSaleStepsManager.m in Sources */,
 				EE75D9A517D11048009ADCD8 /* TXHSalesUpgradeCell.m in Sources */,

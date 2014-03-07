@@ -13,11 +13,12 @@
 
 #import "TXHDoorSearchViewController.h"
 #import "TXHDoorTicketCell.h"
+#import "TXHTicketDetailsViewController.h"
 
 #import "UIColor+TicketingHub.h"
 #import "UIView+Additions.h"
 
-@interface TXHDoorTicketsListViewController ()
+@interface TXHDoorTicketsListViewController () <TXHTicketDetailsViewControllerDelegate>
 
 @property (strong, nonatomic) NSArray *tickets;
 @property (strong, nonatomic) NSArray *filteredTickets;
@@ -99,6 +100,15 @@
     else
     {
         [self hideInfoLabel];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"TicketDetail"])
+    {
+        TXHTicketDetailsViewController *detailController = segue.destinationViewController;
+        detailController.delegate = self;
     }
 }
 
@@ -269,6 +279,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [self performSegueWithIdentifier:@"TicketDetail" sender:self];
+}
+
+#pragma mark - TXHTicketDetailsViewControllerDelegate
+
+- (void)txhTicketDetailsViewControllerShouldDismiss:(TXHTicketDetailsViewController *)controller
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 
