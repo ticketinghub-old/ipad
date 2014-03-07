@@ -542,10 +542,10 @@
             </objects>
             <point key="canvasLocation" x="3731" y="2695"/>
         </scene>
-        <!--Sales Wizard Details Base View Controller-->
+        <!--Sales Ticket Completion View Controller-->
         <scene sceneID="u9B-5r-zro">
             <objects>
-                <viewController id="8RN-Pr-hoD" customClass="TXHSalesWizardDetailsBaseViewController" sceneMemberID="viewController">
+                <viewController id="8RN-Pr-hoD" customClass="TXHSalesTicketCompletionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="f0y-6Y-5ul"/>
                         <viewControllerLayoutGuide type="bottom" id="Afu-jc-Leo"/>
