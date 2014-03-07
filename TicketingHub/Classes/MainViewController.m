@@ -39,9 +39,10 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.leftHandSpace.constant = -self.venueListContainer.bounds.size.width;
+    
     self.sensorView.delegate = self;
+    
+    [self showVenueListAnimated];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -50,21 +51,10 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productChanged:) name:TXHProductChangedNotification object:nil];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    self.leftHandSpace.constant = -self.venueListContainer.bounds.size.width;
-    [self.view layoutIfNeeded];
-
-    [UIView animateWithDuration:0.4f delay:0.15f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.leftHandSpace.constant = 0.0f;
-        [self.view layoutIfNeeded];
-    } completion:nil];
-}
-
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
 }
 
 
@@ -112,7 +102,7 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
     if (self.leftHandSpace.constant == 0.0f) {
         [self hideVenueListAnimated];
     } else {
-        [self showVenueListAnimated ];
+        [self showVenueListAnimated];
     }
 }
 

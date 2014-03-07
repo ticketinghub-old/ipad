@@ -42,6 +42,10 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedProductChanged:) name:TXHProductChangedNotification object:nil];
     
     self.user = [TXHTICKETINHGUBCLIENT currentUser];
+    [self.user addObserver:self
+                forKeyPath:@"fullName"
+                   options:NSKeyValueObservingOptionNew
+                   context:kUserFullNameKVOContext];
 
     [self setHeaderTitle:NSLocalizedString(@"Venues", @"Title for the list of venues")];
     [self setLogoutButtonTitle:self.user.fullName];
@@ -50,25 +54,10 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
     [self reloadData];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self.user addObserver:self
-                  forKeyPath:@"fullName"
-                     options:NSKeyValueObservingOptionNew
-                     context:kUserFullNameKVOContext];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    [[TXHTICKETINHGUBCLIENT currentUser] removeObserver:self forKeyPath:@"fullName" context:@"user.fullName"];
-}
-
 - (void)dealloc
 {
+    [self.user removeObserver:self forKeyPath:@"fullName" context:@"user.fullName"];
+
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
 }
 

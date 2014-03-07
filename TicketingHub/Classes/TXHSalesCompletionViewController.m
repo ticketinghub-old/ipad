@@ -32,6 +32,15 @@ static NSInteger const kCancelAlertTag = 123;
     self.cancelButton.hidden = hidden;
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    UIImage *arrow = [UIImage imageNamed:@"right-arrow"];
+    arrow = [arrow imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.continueButton setImage:arrow forState:UIControlStateNormal];
+}
+
 #pragma mark - Button Actions
 
 - (IBAction)cancelAction:(id)sender

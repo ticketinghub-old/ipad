@@ -8,6 +8,7 @@
 
 #import "TXHBorderedButton.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIView+Additions.h"
 
 @implementation TXHBorderedButton
 
@@ -56,9 +57,21 @@
     UIColor *backgroundColor = self.isHighlighted ? self.tintColor : self.fillColor;
     UIColor *textColor       = self.isHighlighted ? self.fillColor : self.tintColor;
     
-    self.backgroundColor                 = backgroundColor;
-    self.titleLabel.textColor            = textColor;
-    self.layer.borderColor               = textColor.CGColor;
+    self.backgroundColor     = backgroundColor;
+    self.layer.borderColor   = textColor.CGColor;
+    self.imageView.tintColor = textColor;
+    
+    [self setTitleColor:textColor forState:UIControlStateNormal];
+}
+
+#define INSET 20
+
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    self.imageView.right = self.width - INSET;
 }
 
 @end
