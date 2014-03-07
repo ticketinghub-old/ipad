@@ -17,6 +17,7 @@
 @interface TXHDoorTicketsListViewController ()
 
 @property (strong, nonatomic) NSArray *tickets;
+@property (strong, nonatomic) NSArray *filteredTickets;
 
 @end
 
@@ -26,20 +27,56 @@
 {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gueryFor:) name:kRecognizedQRCodeNotification object:nil];
+    [self registerForSearchViewNotification];
     [self registerForProductAndAvailabilityChanges];
 }
 
 - (void)dealloc
 {
+    [self unregisterFromSearchViewNotification];
     [self unregisterForProductAndAvailabilityChanges];
 }
 
-- (void)gueryFor:(NSNotification *)note
+- (void)barcodeRecognized:(NSNotification *)note
 {
-    NSString *text = note.object;
+    NSString *barcode = note.object;
     
-    DLog(@"%@",text);
+    DLog(@"%@",barcode);
+}
+
+- (void)searchQueryDidChange:(NSNotification *)note
+{
+    NSString *query = note.object;
+    
+    DLog(@"%@",query);
+    [self applyTicketFilter];
+}
+
+- (void)applyTicketFilter
+{
+    //TODO: apply filter in background
+    self.filteredTickets = self.tickets;
+
+    [self.tableView reloadData];
+}
+
+- (void)setTickets:(NSArray *)tickets
+{
+    _tickets = tickets;
+    
+    [self applyTicketFilter];
+}
+
+- (void)registerForSearchViewNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barcodeRecognized:) name:TXHRecognizedQRCodeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchQueryDidChange:) name:TXHSearchQueryDidChangeNotification object:nil];
+}
+
+- (void)unregisterFromSearchViewNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHSearchQueryDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHRecognizedQRCodeNotification object:nil];
 }
 
 - (void)registerForProductAndAvailabilityChanges
@@ -65,11 +102,13 @@
 
 - (void)productDidChange:(NSNotification *)note
 {
-    
+    self.tickets = nil;
 }
 
 - (void)availabilityDidChange:(NSNotification *)note
 {
+    __weak typeof(self) wself = self;
+    
     TXHAvailability *availability = note.userInfo[TXHSelectedAvailability];
     
     [TXHPRODUCTSMANAGER ticketRecordsForAvailability:availability
@@ -78,9 +117,7 @@
                                               
                                               DLog(@"%@ %@",ticketRecords, error);
 
-                                              self.tickets = ticketRecords;
-                                              
-                                              [self.tableView reloadData];
+                                              wself.tickets = ticketRecords;
                                           }];
 }
 
@@ -88,7 +125,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.tickets count];
+    return [self.filteredTickets count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -96,7 +133,7 @@
     TXHDoorTicketCell *cell = (TXHDoorTicketCell *)[tableView dequeueReusableCellWithIdentifier:@"ticketCell" forIndexPath:indexPath];
     
     [cell setIsFirstRow:indexPath.row == 0];
-    [cell setIsLastRow:indexPath.row == [self.tickets count] - 1];
+    [cell setIsLastRow:indexPath.row == [self.filteredTickets count] - 1];
     [cell setTitle:@"John Appleseed"];
     [cell setSubtitle:@"Adult"];
     [cell setAttendedAt:[NSDate date]];

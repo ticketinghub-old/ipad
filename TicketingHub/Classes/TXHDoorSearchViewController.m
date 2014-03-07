@@ -10,17 +10,19 @@
 
 #import "TXHBarcodeScanner.h"
 
-NSString *const kRecognizedQRCodeNotification = @"kRecognizedQRCodeNotification";
+NSString *const TXHRecognizedQRCodeNotification     = @"TXHRecognizedQRCodeNotification";
+NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeNotification";
 
 #define CAMERA_PREVIEW_ANIMATION_DURATION 0.3
 
-@interface TXHDoorSearchViewController () <BarcodeViewControllerDelegate>
+@interface TXHDoorSearchViewController () <BarcodeViewControllerDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *cameraPreviewViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomLabelConstraint;
 @property (weak, nonatomic) IBOutlet UIView *cameraPreviewView;
 @property (weak, nonatomic) IBOutlet UIView *searchView;
+@property (weak, nonatomic) IBOutlet UITextField *searchField;
 
 @property (strong, nonatomic) TXHBarcodeScanner *scanner;
 @property (assign, nonatomic) BOOL hasExternalScannerConnected;
@@ -32,6 +34,8 @@ NSString *const kRecognizedQRCodeNotification = @"kRecognizedQRCodeNotification"
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.searchField.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -188,8 +192,22 @@ NSString *const kRecognizedQRCodeNotification = @"kRecognizedQRCodeNotification"
 
 - (void)scanViewController:(TXHBarcodeScanner *)barcodeScaner didSuccessfullyScan:(NSString *)scannedValue
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kRecognizedQRCodeNotification object:scannedValue];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TXHRecognizedQRCodeNotification object:scannedValue];
 }
 
+
+#pragma mark - textField
+
+- (IBAction)searchFieldEditingChanged:(id)sender
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:TXHSearchQueryDidChangeNotification object:self.searchField.text];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
+}
 
 @end

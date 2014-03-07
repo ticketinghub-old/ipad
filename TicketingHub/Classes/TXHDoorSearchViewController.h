@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString *const kRecognizedQRCodeNotification;
+extern NSString *const TXHRecognizedQRCodeNotification;
+extern NSString *const TXHSearchQueryDidChangeNotification;
+
 
 @interface TXHDoorSearchViewController : UIViewController
 

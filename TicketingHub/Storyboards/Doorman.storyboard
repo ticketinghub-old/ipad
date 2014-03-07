@@ -82,12 +82,15 @@
                                         <rect key="frame" x="20" y="20" width="310" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TSc-sI-cGF">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="TSc-sI-cGF">
                                                 <rect key="frame" x="10" y="0.0" width="280" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="searchFieldEditingChanged:" destination="Lzd-lE-Kx5" eventType="editingChanged" id="iLC-ud-ogd"/>
+                                                </connections>
                                             </textField>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="izY-W5-X1b">
                                                 <rect key="frame" x="291" y="12" width="9" height="16"/>
@@ -160,6 +163,7 @@
                         <outlet property="bottomLabelConstraint" destination="n3F-ja-0Pr" id="Dbf-Wf-d29"/>
                         <outlet property="cameraPreviewView" destination="rI2-xu-3eB" id="cSm-ul-iVA"/>
                         <outlet property="cameraPreviewViewHeightConstraint" destination="cRf-0l-zdb" id="9XV-AX-sNw"/>
+                        <outlet property="searchField" destination="TSc-sI-cGF" id="k8x-aj-ueG"/>
                         <outlet property="searchView" destination="cgR-4h-bXO" id="79h-kp-QMi"/>
                     </connections>
                 </viewController>
