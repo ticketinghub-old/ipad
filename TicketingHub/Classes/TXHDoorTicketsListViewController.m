@@ -8,6 +8,9 @@
 
 #import "TXHDoorTicketsListViewController.h"
 
+#import "TXHTicketingHubManager.h"
+#import "TXHProductsManager.h"
+
 #import "TXHDoorSearchViewController.h"
 #import "TXHDoorTicketCell.h"
 
@@ -19,22 +22,17 @@
 
 @implementation TXHDoorTicketsListViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.tickets = @[@"",@"",@"",@"",@"",@""];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gueryFor:) name:kRecognizedQRCodeNotification object:nil];
+    [self registerForProductAndAvailabilityChanges];
+}
+
+- (void)dealloc
+{
+    [self unregisterForProductAndAvailabilityChanges];
 }
 
 - (void)gueryFor:(NSNotification *)note
@@ -42,6 +40,48 @@
     NSString *text = note.object;
     
     DLog(@"%@",text);
+}
+
+- (void)registerForProductAndAvailabilityChanges
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(productDidChange:)
+                                                 name:TXHProductChangedNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(availabilityDidChange:)
+                                                 name:TXHAvailabilityChangedNotification
+                                               object:nil];
+}
+
+- (void)unregisterForProductAndAvailabilityChanges
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];
+}
+
+#pragma mark notifications
+
+- (void)productDidChange:(NSNotification *)note
+{
+    
+}
+
+- (void)availabilityDidChange:(NSNotification *)note
+{
+    TXHAvailability *availability = note.userInfo[TXHSelectedAvailability];
+    
+    [TXHPRODUCTSMANAGER ticketRecordsForAvailability:availability
+                                            andQuery:nil
+                                          completion:^(NSArray *ticketRecords, NSError *error) {
+                                              
+                                              DLog(@"%@ %@",ticketRecords, error);
+
+                                              self.tickets = ticketRecords;
+                                              
+                                              [self.tableView reloadData];
+                                          }];
 }
 
 #pragma mark - UITableViewDataSource

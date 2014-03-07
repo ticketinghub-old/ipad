@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView        *chevronImageView;
 @property (weak, nonatomic) IBOutlet UIView             *topSeparatorView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSeparatorLeadingConstraint;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -80,10 +81,20 @@
                                         font:[UIFont fontWithName:@"Helvetica" size:14]
                                        color:[UIColor whiteColor]];
         
-        self.attendedSwitch.on = YES;
     }
     
+    self.attendedSwitch.on = (attendedAt != nil);
     self.attendedSwitch.onImage = dateImage;
+}
+
+- (void)setIsLoading:(BOOL)loading
+{
+    self.attendedSwitch.enabled = !loading;
+
+    if (loading)
+        [self.activityIndicator startAnimating];
+    else
+        [self.activityIndicator stopAnimating];
 }
 
 @end
