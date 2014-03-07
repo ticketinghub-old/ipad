@@ -11,6 +11,7 @@
 #import "TXHSalesCompletionViewController.h"
 #import "TXHSalesPaymentPaymentDetailsViewController.h"
 #import "TXHSalesTimerViewController.h"
+#import "TXHOrderManager.h"
 
 @interface TXHSalesPaymentViewController () <UICollectionViewDelegateFlowLayout>
 
@@ -49,6 +50,9 @@
 - (IBAction)didChangePaymentMethod:(UISegmentedControl *)sender
 {
     [self.paymentDetailsController setPaymentMethodType:(TXHPaymentMethodType)sender.selectedSegmentIndex];
+
+    // TODO: temporary
+    self.valid = (TXHPaymentMethodType)sender.selectedSegmentIndex == 2;
 }
 
 - (void)setOffsetBottomBy:(CGFloat)offset
@@ -56,10 +60,28 @@
 //    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, offset, 0);
 }
 
+#pragma mark - TXHSalesContentsViewControllerProtocol
+
 - (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
 {
+    NSDictionary *ownerInfo = @{@"first_name" : @"Bartek",
+                                @"last_name"  : @"Hugo",
+                                @"email"      : @"bartekhugo@me.com",
+                                @"telephone"  : @"+447534463225",
+                                @"country"    : @"GB"};
+    
+    [TXHORDERMANAGER updateOrderWithOwnerInfo:ownerInfo
+                                   completion:^(TXHOrder *order, NSError *error) {
+                                       [TXHORDERMANAGER updateOrderWithPaymentMethod:@"credit"
+                                                                          completion:^(TXHOrder *order2, NSError *error2) {
+                                                                              if (blockName)
+                                                                                  blockName(error2);
+                                                                          }];
+                                   }];
     
 }
+
+
 
 
 @end
