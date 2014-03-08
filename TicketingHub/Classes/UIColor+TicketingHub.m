@@ -24,6 +24,20 @@
     return color;
 }
 
++ (UIColor *)txhButtonBlueColor
+{
+    static UIColor *color = nil;
+    
+    if (!color)
+        color = [UIColor colorWithRed:41.0f / 255.0f
+                                green:122.0f / 255.0f
+                                 blue:183.0f / 255.0f
+                                alpha:1.0f];
+    
+    return color;
+}
+
+
 + (UIColor *)txhGreenColor
 {
     static UIColor *color = nil;

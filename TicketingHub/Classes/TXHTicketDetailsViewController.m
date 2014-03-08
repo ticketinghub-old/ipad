@@ -86,7 +86,12 @@
     if (self.ticket.attendedAt)
     {
         [self.attendedButton setTitle:@"Attended at" forState:UIControlStateNormal];
-        self.attendedButton.fillColor = [UIColor txhGreenColor];
+        self.attendedButton.borderColor          = [UIColor txhGreenColor];
+        self.attendedButton.normalFillColor      = [UIColor txhGreenColor];
+        self.attendedButton.highlightedFillColor = self.attendedButton.superview.backgroundColor;
+        self.attendedButton.normalTextColor      = [UIColor whiteColor];
+        self.attendedButton.highlightedTextColor = [UIColor txhGreenColor];
+
         
         UIImage *icon = [UIImage imageNamed:@"small-checkmark"];
         icon = [icon imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -95,8 +100,12 @@
     else
     {
         [self.attendedButton setTitle:@"Mark as attended" forState:UIControlStateNormal];
-        self.attendedButton.fillColor = self.orderButton.fillColor;
-        
+        self.attendedButton.borderColor          = [UIColor txhButtonBlueColor];
+        self.attendedButton.normalFillColor      = [UIColor txhButtonBlueColor];
+        self.attendedButton.highlightedFillColor = self.attendedButton.superview.backgroundColor;
+        self.attendedButton.normalTextColor      = [UIColor whiteColor];
+        self.attendedButton.highlightedTextColor = [UIColor txhButtonBlueColor];
+
         UIImage *icon = [UIImage imageNamed:@"empty-circle"];
         icon = [icon imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [self.attendedButton setImage:icon forState:UIControlStateNormal];

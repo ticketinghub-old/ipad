@@ -28,12 +28,6 @@
     [self updateColors];
 }
 
-- (void)setFillColor:(UIColor *)fillColor
-{
-    _fillColor = [fillColor copy];
-    [self updateColors];
-}
-
 - (void)setBorderWidth:(CGFloat)borderWidth
 {
     _borderWidth = borderWidth;
@@ -46,26 +40,45 @@
     self.layer.cornerRadius = cornerRadius;
 }
 
-- (void)setTintColor:(UIColor *)tintColor
+- (void)setBorderColor:(UIColor *)borderColor
 {
-    [super setTintColor:tintColor];
+    _borderColor  = borderColor;
+    self.layer.borderColor = borderColor.CGColor;
+}
+
+- (void)setNormalFillColor:(UIColor *)normalFillColor
+{
+    _normalFillColor = normalFillColor;
+    [self updateColors];
+}
+
+- (void)setHighlightedFillColor:(UIColor *)highlightedFillColor
+{
+    _highlightedFillColor = highlightedFillColor;
+    [self updateColors];
+}
+
+- (void)setNormalTextColor:(UIColor *)normalTextColor
+{
+    _normalTextColor = normalTextColor;
+    [self setTitleColor:normalTextColor forState:UIControlStateNormal];
+    [self updateColors];
+}
+
+- (void)setHighlightedTextColor:(UIColor *)highlightedTextColor
+{
+    _highlightedTextColor = highlightedTextColor;
+    [self setTitleColor:highlightedTextColor forState:UIControlStateHighlighted];
     [self updateColors];
 }
 
 - (void)updateColors
 {
-    UIColor *backgroundColor = self.isHighlighted ? self.tintColor : self.fillColor;
-    UIColor *textColor       = self.isHighlighted ? self.fillColor : self.tintColor;
-    
-    self.backgroundColor     = backgroundColor;
-    self.layer.borderColor   = self.fillColor.CGColor;
-    self.imageView.tintColor = textColor;
-    
-    [self setTitleColor:textColor forState:UIControlStateNormal];
+    self.backgroundColor     = self.highlighted ? self.highlightedFillColor : self.normalFillColor;
+    self.imageView.tintColor = self.highlighted ? self.highlightedTextColor : self.normalTextColor;
 }
 
 #define INSET 15
-
 
 - (void)layoutSubviews
 {
