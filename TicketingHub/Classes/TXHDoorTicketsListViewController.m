@@ -45,11 +45,45 @@
 
 - (void)applyTicketFilter
 {
-    //TODO: apply filter in background
-    self.filteredTickets = self.tickets;
+    static NSInteger queryCounter = 0;
+    queryCounter++;
     
-    [self updateInfoLabel];
-    [self.tableView reloadData];
+    if (!self.searchQuery.length)
+    {
+        self.filteredTickets = self.tickets;
+        return;
+    }
+    
+    NSInteger bQueryCounter = queryCounter;
+    __weak typeof(self) wself = self;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSPredicate *predicate = [self predicateForQuery:self.searchQuery];
+        NSArray *filteredTickets = [self.tickets filteredArrayUsingPredicate:predicate];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (bQueryCounter == queryCounter)
+                wself.filteredTickets = filteredTickets;
+        });
+    });
+}
+
+// TODO: could go o model as test method
+- (NSPredicate *)predicateForQuery:(NSString *)queryString
+{
+    NSString *predicateFormat =
+    @"(customer.fullName CONTAINS[cd] '%1$@') OR "
+    @"(customer.firstName CONTAINS[cd] '%1$@') OR "
+    @"(customer.lastName CONTAINS[cd] '%1$@') OR "
+    @"(customer.email CONTAINS[cd] '%1$@') OR "
+    @"(customer.country CONTAINS[cd] '%1$@') OR "
+    @"(customer.telephone CONTAINS[cd] '%1$@') OR"
+    @"(tier.name CONTAINS[cd] '%1$@') OR"
+    @"(tier.tierDescription CONTAINS[cd] '%1$@')";
+    
+    NSString *format = [NSString stringWithFormat:predicateFormat, queryString];
+    
+    return [NSPredicate predicateWithFormat:format];
 }
 
 - (void)setTickets:(NSArray *)tickets
@@ -57,6 +91,13 @@
     _tickets = tickets;
     
     [self applyTicketFilter];
+}
+
+- (void)setFilteredTickets:(NSArray *)filteredTickets
+{
+    _filteredTickets = filteredTickets;
+    [self updateInfoLabel];
+    [self.tableView reloadData];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -178,7 +219,7 @@
     NSString *query = note.object;
     
     self.searchQuery = query;
-    DLog(@"%@",query);
+    
     [self applyTicketFilter];
 }
 
