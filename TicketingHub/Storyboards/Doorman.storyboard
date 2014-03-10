@@ -263,6 +263,7 @@
         <!--Ticket Details View Controller-->
         <scene sceneID="08Y-eQ-5eT">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w1a-eo-tMY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="o2r-d6-8fe" customClass="TXHTicketDetailsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xmG-F6-qpn"/>
@@ -272,7 +273,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XkD-3K-xAp">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z6R-wx-NFg">
+                                <rect key="frame" x="192" y="160" width="640" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VoA-r8-bhd">
+                                        <rect key="frame" x="0.0" y="43" width="640" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzq-0b-rIU">
+                                        <rect key="frame" x="20" y="14" width="600" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XkD-3K-xAp">
                                 <rect key="frame" x="192" y="204" width="640" height="360"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -467,7 +487,10 @@
                     </view>
                     <connections>
                         <outlet property="attendedButton" destination="mYo-6D-GyY" id="OPk-W8-ChE"/>
+                        <outlet property="contentView" destination="XkD-3K-xAp" id="ZrQ-DH-dFW"/>
                         <outlet property="countryLabel" destination="XtM-3P-YZ0" id="vUm-Gq-3pq"/>
+                        <outlet property="errorLabel" destination="Nzq-0b-rIU" id="4re-ZM-kdr"/>
+                        <outlet property="errorView" destination="z6R-wx-NFg" id="ilG-t1-MgZ"/>
                         <outlet property="fullNameLabel" destination="6Pq-wg-uM4" id="NDI-Fv-V1D"/>
                         <outlet property="orderButton" destination="DFD-Y5-RnF" id="zzx-MD-lOn"/>
                         <outlet property="phoneLabel" destination="x1l-P6-eIe" id="dtV-OP-OZW"/>
@@ -478,7 +501,6 @@
                         <outlet property="validUntilLabel" destination="SgY-8C-2bM" id="1gN-T1-zna"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w1a-eo-tMY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2821" y="-164"/>
         </scene>

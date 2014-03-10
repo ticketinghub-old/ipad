@@ -16,5 +16,12 @@
 
 - (NSString *)daySuffix;
 
+- (BOOL)isInThePast;
+
+- (NSInteger)daysFromNow;
+- (NSInteger)hoursFromNow;
+- (NSInteger)minutesFromNow;
+
+
 @end
 

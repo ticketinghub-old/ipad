@@ -56,4 +56,63 @@
     }
 }
 
+- (BOOL)isInThePast
+{
+    return ([self timeIntervalSinceNow] < 0);
+}
+
+- (NSInteger)daysFromNow
+{
+    NSDate *fromDate;
+    NSDate *toDate;
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&fromDate
+                 interval:NULL forDate:self];
+    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&toDate
+                 interval:NULL forDate:[NSDate date]];
+    
+    NSDateComponents *difference = [calendar components:NSDayCalendarUnit
+                                               fromDate:fromDate toDate:toDate options:0];
+    
+    return [difference day];
+}
+
+- (NSInteger)hoursFromNow
+{
+    NSDate *fromDate;
+    NSDate *toDate;
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    [calendar rangeOfUnit:NSHourCalendarUnit startDate:&fromDate
+                 interval:NULL forDate:self];
+    [calendar rangeOfUnit:NSHourCalendarUnit startDate:&toDate
+                 interval:NULL forDate:[NSDate date]];
+    
+    NSDateComponents *difference = [calendar components:NSHourCalendarUnit
+                                               fromDate:fromDate toDate:toDate options:0];
+    
+    return [difference hour];
+}
+
+- (NSInteger)minutesFromNow
+{
+    NSDate *fromDate;
+    NSDate *toDate;
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    [calendar rangeOfUnit:NSMinuteCalendarUnit startDate:&fromDate
+                 interval:NULL forDate:self];
+    [calendar rangeOfUnit:NSMinuteCalendarUnit startDate:&toDate
+                 interval:NULL forDate:[NSDate date]];
+    
+    NSDateComponents *difference = [calendar components:NSMinuteCalendarUnit
+                                               fromDate:fromDate toDate:toDate options:0];
+    
+    return [difference minute];
+}
+
 @end
