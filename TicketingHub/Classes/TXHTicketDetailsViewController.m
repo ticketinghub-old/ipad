@@ -112,8 +112,17 @@
     }
 }
 
+- (IBAction)closeButtonAction:(id)sender
+{
+    [self dismissSelf];
+}
 
 - (void)tapRecognized:(UITapGestureRecognizer *)recognizer
+{
+    [self dismissSelf];
+}
+
+- (void)dismissSelf
 {
     [self.delegate txhTicketDetailsViewControllerShouldDismiss:self];
 }
