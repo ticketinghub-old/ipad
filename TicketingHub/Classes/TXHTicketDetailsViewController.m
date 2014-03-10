@@ -11,6 +11,7 @@
 #import "UIColor+TicketingHub.h"
 #import "NSDate+Additions.h"
 #import "TXHBorderedButton.h"
+#import <iOS-api/NSDate+ISO.h>
 
 @interface TXHTicketDetailsViewController ()
 
@@ -85,32 +86,60 @@
 {
     if (self.ticket.attendedAt)
     {
-        [self.attendedButton setTitle:@"Attended at" forState:UIControlStateNormal];
-        self.attendedButton.borderColor          = [UIColor txhGreenColor];
-        self.attendedButton.normalFillColor      = [UIColor txhGreenColor];
-        self.attendedButton.highlightedFillColor = self.attendedButton.superview.backgroundColor;
-        self.attendedButton.normalTextColor      = [UIColor whiteColor];
-        self.attendedButton.highlightedTextColor = [UIColor txhGreenColor];
-
-        
-        UIImage *icon = [UIImage imageNamed:@"small-checkmark"];
-        icon = [icon imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        [self.attendedButton setImage:icon forState:UIControlStateNormal];
+        [self configureAttendedButtonWhenAttended];
     }
     else
     {
-        [self.attendedButton setTitle:@"Mark as attended" forState:UIControlStateNormal];
-        self.attendedButton.borderColor          = [UIColor txhButtonBlueColor];
-        self.attendedButton.normalFillColor      = [UIColor txhButtonBlueColor];
-        self.attendedButton.highlightedFillColor = self.attendedButton.superview.backgroundColor;
-        self.attendedButton.normalTextColor      = [UIColor whiteColor];
-        self.attendedButton.highlightedTextColor = [UIColor txhButtonBlueColor];
-
-        UIImage *icon = [UIImage imageNamed:@"empty-circle"];
-        icon = [icon imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        [self.attendedButton setImage:icon forState:UIControlStateNormal];
+        [self configureAttendedButtonWhenNotAttended];
     }
 }
+
+- (void)configureAttendedButtonWhenAttended
+{
+    NSString *dateString = [self.ticket.attendedAt isoTimeString];
+    NSString *title      = [NSString stringWithFormat:@"Attended at %@",dateString];
+    NSRange timeRange    = [title rangeOfString:dateString];
+    
+    NSMutableAttributedString *attributedTitle =
+    [[NSMutableAttributedString alloc] initWithString:title];
+    
+    [attributedTitle addAttribute:NSFontAttributeName
+                            value:[UIFont boldSystemFontOfSize:15]
+                            range:timeRange];
+    
+    [attributedTitle addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, [title length])];
+    [self.attendedButton setAttributedTitle:attributedTitle forState:UIControlStateNormal];
+    
+    NSMutableAttributedString *highlightedAttributedTitle = [attributedTitle mutableCopy];
+    [highlightedAttributedTitle addAttribute:NSForegroundColorAttributeName value:[UIColor txhGreenColor] range:NSMakeRange(0, [title length])];
+    [self.attendedButton setAttributedTitle:highlightedAttributedTitle forState:UIControlStateHighlighted];
+    
+    self.attendedButton.borderColor          = [UIColor txhGreenColor];
+    self.attendedButton.normalFillColor      = [UIColor txhGreenColor];
+    self.attendedButton.highlightedFillColor = self.attendedButton.superview.backgroundColor;
+    self.attendedButton.normalTextColor      = [UIColor whiteColor];
+    self.attendedButton.highlightedTextColor = [UIColor txhGreenColor];
+    
+    
+    UIImage *icon = [UIImage imageNamed:@"small-checkmark"];
+    icon = [icon imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [self.attendedButton setImage:icon forState:UIControlStateNormal];
+}
+
+- (void)configureAttendedButtonWhenNotAttended
+{
+    [self.attendedButton setTitle:@"Mark as attended" forState:UIControlStateNormal];
+    self.attendedButton.borderColor          = [UIColor txhButtonBlueColor];
+    self.attendedButton.normalFillColor      = [UIColor txhButtonBlueColor];
+    self.attendedButton.highlightedFillColor = self.attendedButton.superview.backgroundColor;
+    self.attendedButton.normalTextColor      = [UIColor whiteColor];
+    self.attendedButton.highlightedTextColor = [UIColor txhButtonBlueColor];
+    
+    UIImage *icon = [UIImage imageNamed:@"empty-circle"];
+    icon = [icon imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.attendedButton setImage:icon forState:UIControlStateNormal];
+}
+
 
 - (IBAction)closeButtonAction:(id)sender
 {
