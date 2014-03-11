@@ -157,17 +157,17 @@
 
 - (NSString *)errorForMinutes:(NSInteger)minutes
 {
-    return [NSString stringWithFormat:@"This Ticket expired %d minutes ago.",minutes];
+    return [NSString stringWithFormat:@"This Ticket expired %ld minutes ago.",(long)minutes];
 }
 
 - (NSString *)errorForHours:(NSInteger)hours
 {
-    return [NSString stringWithFormat:@"This Ticket expired %d hours ago.",hours];
+    return [NSString stringWithFormat:@"This Ticket expired %ld hours ago.",(long)hours];
 }
 
 - (NSString *)errorForDays:(NSInteger)days
 {
-    return [NSString stringWithFormat:@"This Ticket expired %d days ago.", days];
+    return [NSString stringWithFormat:@"This Ticket expired %ld days ago.", (long)days];
 }
 
 - (NSString *)errorMessageConstant

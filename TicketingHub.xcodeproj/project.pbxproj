@@ -23,6 +23,7 @@
 		3EA36B8318B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA36B8218B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m */; };
 		3EA36B8618B237BF008F8C59 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA36B8518B237BF008F8C59 /* UIView+Additions.m */; };
 		3EA7634818C396D2001175F1 /* TXHSalesInformationSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7634718C396D2001175F1 /* TXHSalesInformationSelectionCell.m */; };
+		3EAA200218CF7C52003EC924 /* TXHTicket+Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */; };
 		3EC63E0218B36E7A00B091A0 /* TXHSaleStepsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0118B36E7A00B091A0 /* TXHSaleStepsManager.m */; };
 		3EC63E0818B3721600B091A0 /* TXHSalesStepAbstract.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0718B3721600B091A0 /* TXHSalesStepAbstract.m */; };
 		3EC8845B18C4984B00CE0597 /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC8845A18C4984B00CE0597 /* UIResponder+FirstResponder.m */; };
@@ -35,7 +36,6 @@
 		3EE8E21418C890F5006E8F5E /* UIImage+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8E21318C890F5006E8F5E /* UIImage+String.m */; };
 		3EE8E21818CA23C8006E8F5E /* TXHTicketDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8E21718CA23C8006E8F5E /* TXHTicketDetailsViewController.m */; };
 		3EE8E21B18CA2645006E8F5E /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8E21A18CA2645006E8F5E /* UIImage+ImageEffects.m */; };
-		4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */; };
 		4D586DE11797E51E00E40534 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D586DE01797E51E00E40534 /* Images.xcassets */; };
 		4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D68DAAA178B0A5400743227 /* AVFoundation.framework */; };
 		4D8FCCB617A28A8C008B4227 /* Doorman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */; };
@@ -143,6 +143,8 @@
 		3EA36B8518B237BF008F8C59 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
 		3EA7634618C396D2001175F1 /* TXHSalesInformationSelectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesInformationSelectionCell.h; path = TicketingHub/Classes/TXHSalesInformationSelectionCell.h; sourceTree = SOURCE_ROOT; };
 		3EA7634718C396D2001175F1 /* TXHSalesInformationSelectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesInformationSelectionCell.m; path = TicketingHub/Classes/TXHSalesInformationSelectionCell.m; sourceTree = SOURCE_ROOT; };
+		3EAA200018CF7C52003EC924 /* TXHTicket+Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHTicket+Filter.h"; sourceTree = "<group>"; };
+		3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHTicket+Filter.m"; sourceTree = "<group>"; };
 		3EC63E0018B36E7A00B091A0 /* TXHSaleStepsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSaleStepsManager.h; path = TicketingHub/Classes/TXHSaleStepsManager.h; sourceTree = SOURCE_ROOT; };
 		3EC63E0118B36E7A00B091A0 /* TXHSaleStepsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSaleStepsManager.m; path = TicketingHub/Classes/TXHSaleStepsManager.m; sourceTree = SOURCE_ROOT; };
 		3EC63E0318B36EAB00B091A0 /* TXHSalesWizardViewControllerDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TXHSalesWizardViewControllerDataSource.h; path = TicketingHub/Classes/TXHSalesWizardViewControllerDataSource.h; sourceTree = SOURCE_ROOT; };
@@ -169,7 +171,6 @@
 		3EE8E21918CA2645006E8F5E /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		3EE8E21A18CA2645006E8F5E /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
-		4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCurrencyEntryViewSpec.m; sourceTree = "<group>"; };
 		4D586DE01797E51E00E40534 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4D68DAAA178B0A5400743227 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Doorman.storyboard; sourceTree = "<group>"; };
@@ -604,6 +605,8 @@
 				3EC8845A18C4984B00CE0597 /* UIResponder+FirstResponder.m */,
 				3EE8E21218C890F5006E8F5E /* UIImage+String.h */,
 				3EE8E21318C890F5006E8F5E /* UIImage+String.m */,
+				3EAA200018CF7C52003EC924 /* TXHTicket+Filter.h */,
+				3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -794,7 +797,6 @@
 			children = (
 				4DF3F59B17C63E070045299B /* Smoke Tests */,
 				58E4FB7F1760AE5500E328A0 /* Supporting Files */,
-				4D063E8217C668D700253ED7 /* TXHCurrencyEntryViewSpec.m */,
 			);
 			path = TicketingHubTests;
 			sourceTree = "<group>";
@@ -944,7 +946,8 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TXH;
-				LastUpgradeCheck = 0460;
+				LastTestingUpgradeCheck = 0510;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = TicketingHub;
 			};
 			buildConfigurationList = 58E4FB4C1760AE5500E328A0 /* Build configuration list for PBXProject "TicketingHub" */;
@@ -1120,6 +1123,7 @@
 				EE75D9A217D11048009ADCD8 /* TXHSalesTicketTiersViewController.m in Sources */,
 				EE75D9A417D11048009ADCD8 /* TXHSalesTimerViewController.m in Sources */,
 				3EE8E21818CA23C8006E8F5E /* TXHTicketDetailsViewController.m in Sources */,
+				3EAA200218CF7C52003EC924 /* TXHTicket+Filter.m in Sources */,
 				3EA7634818C396D2001175F1 /* TXHSalesInformationSelectionCell.m in Sources */,
 				3EC63E0218B36E7A00B091A0 /* TXHSaleStepsManager.m in Sources */,
 				EE75D9A517D11048009ADCD8 /* TXHSalesUpgradeCell.m in Sources */,
@@ -1146,7 +1150,6 @@
 			files = (
 				4DF3F59E17C63E070045299B /* MockingTest.m in Sources */,
 				4DF3F59F17C63E070045299B /* SmokeSpec.m in Sources */,
-				4D063E8317C668D700253ED7 /* TXHCurrencyEntryViewSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1217,6 +1220,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "738354CF-28D7-43A0-9F06-071DDCE9C343";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -1252,6 +1256,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "738354CF-28D7-43A0-9F06-071DDCE9C343";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -1262,13 +1267,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bartlomiej Trzcinski (MN97PJ9HT5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -1289,7 +1293,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "DDF105E3-E878-46D9-AB46-D883F1DBE546";
+				PROVISIONING_PROFILE = "83E5B7A7-D15E-4BD7-96A3-7A6A384B0648";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
 					"-Wno-objc-missing-property-synthesis",
@@ -1303,13 +1307,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bartlomiej Trzcinski (RMWJY79MA5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -1344,7 +1348,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TicketingHub.app/TicketingHub";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1368,7 +1371,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TicketingHub.app/TicketingHub";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1401,8 +1403,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1418,6 +1420,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "738354CF-28D7-43A0-9F06-071DDCE9C343";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -1428,7 +1431,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1456,7 +1458,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F4723C77-9F17-462F-BD03-5BA629563733";
+				PROVISIONING_PROFILE = "738354CF-28D7-43A0-9F06-071DDCE9C343";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
 					"-Wno-objc-missing-property-synthesis",
@@ -1470,7 +1472,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TicketingHub.app/TicketingHub";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (

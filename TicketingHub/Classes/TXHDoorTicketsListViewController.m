@@ -14,9 +14,12 @@
 #import "TXHDoorSearchViewController.h"
 #import "TXHDoorTicketCell.h"
 #import "TXHTicketDetailsViewController.h"
+#import "TXHTicket+Filter.h"
 
 #import "UIColor+TicketingHub.h"
 #import "UIView+Additions.h"
+#import <iOS-api/NSDateFormatter+TicketingHubFormat.h>
+
 
 @interface TXHDoorTicketsListViewController () <TXHTicketDetailsViewControllerDelegate>
 
@@ -58,9 +61,7 @@
     __weak typeof(self) wself = self;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSPredicate *predicate = [self predicateForQuery:self.searchQuery];
-        NSArray *filteredTickets = [self.tickets filteredArrayUsingPredicate:predicate];
-        
+        NSArray *filteredTickets = [TXHTicket filterTickets:self.tickets withQuery:self.searchQuery];
         dispatch_async(dispatch_get_main_queue(), ^{
             if (bQueryCounter == queryCounter)
                 wself.filteredTickets = filteredTickets;
@@ -68,27 +69,16 @@
     });
 }
 
-// TODO: could go o model as test method
-- (NSPredicate *)predicateForQuery:(NSString *)queryString
-{
-    NSString *predicateFormat =
-    @"(customer.fullName CONTAINS[cd] '%1$@') OR "
-    @"(customer.firstName CONTAINS[cd] '%1$@') OR "
-    @"(customer.lastName CONTAINS[cd] '%1$@') OR "
-    @"(customer.email CONTAINS[cd] '%1$@') OR "
-    @"(customer.country CONTAINS[cd] '%1$@') OR "
-    @"(customer.telephone CONTAINS[cd] '%1$@') OR"
-    @"(tier.name CONTAINS[cd] '%1$@') OR"
-    @"(tier.tierDescription CONTAINS[cd] '%1$@')";
-    
-    NSString *format = [NSString stringWithFormat:predicateFormat, queryString];
-    
-    return [NSPredicate predicateWithFormat:format];
-}
-
 - (void)setTickets:(NSArray *)tickets
 {
     _tickets = tickets;
+    
+    [self applyTicketFilter];
+}
+
+- (void)setSearchQuery:(NSString *)searchQuery
+{
+    _searchQuery = searchQuery;
     
     [self applyTicketFilter];
 }
@@ -160,6 +150,15 @@
     }
 }
 
+- (void)showDetailsForTicket:(TXHTicket *)ticket
+{
+    if (!ticket)
+        return;
+        
+    self.selectedTicket = ticket;
+    [self performSegueWithIdentifier:@"TicketDetail" sender:self];
+}
+
 #pragma mark - Notyfications
 
 - (void)registerForNotifications
@@ -211,7 +210,16 @@
 {
     NSString *barcode = note.object;
     
-    DLog(@"%@",barcode);
+    if (![barcode length])
+        return;
+    
+    NSArray *filteredTickets = [TXHTicket filterTickets:self.tickets withQuery:barcode];
+    
+    if ([filteredTickets count])
+    {
+        TXHTicket *scannedTicket = [filteredTickets firstObject];
+        [self showDetailsForTicket:scannedTicket];
+    }
 }
 
 - (void)searchQueryDidChange:(NSNotification *)note
@@ -219,9 +227,8 @@
     NSString *query = note.object;
     
     self.searchQuery = query;
-    
-    [self applyTicketFilter];
 }
+
 
 #pragma mark - keyboard notification
 
@@ -329,8 +336,9 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    self.selectedTicket = [self ticketAtIndexPath:indexPath];
-    [self performSegueWithIdentifier:@"TicketDetail" sender:self];
+    TXHTicket *ticket = [self ticketAtIndexPath:indexPath];
+
+    [self showDetailsForTicket:ticket];
 }
 
 #pragma mark - TXHTicketDetailsViewControllerDelegate
