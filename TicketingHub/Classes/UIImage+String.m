@@ -18,7 +18,8 @@
     NSDictionary *attributes = @{NSFontAttributeName: font,
                                  NSForegroundColorAttributeName : color};
 
-    CGSize size = [string sizeWithAttributes:attributes];
+    // would have to round to even number to avaoid misalligned image in 3rd party lib
+    CGSize size = CGSizeMake(38,16);// [string sizeWithAttributes:attributes];
 
     CGFloat scale = 1.0;
     if([[UIScreen mainScreen]respondsToSelector:@selector(scale)]) {
