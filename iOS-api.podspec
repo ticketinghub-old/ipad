@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   s.name                  = 'iOS-api'
   
-  s.version               = '0.0.42'
+  s.version               = '0.0.45'
   s.summary               = 'A library for interacting with the TicketingHub Developer API from an iOS device.'
   s.homepage              = 'https: //github.com/ticketinghub/ios-api'
   s.author                = { 'Bartek Hugo' => 'bartekhugo@me.com' }

@@ -8,7 +8,6 @@
 
 #import "TXHDoorTicketsListViewController.h"
 
-#import "TXHTicketingHubManager.h"
 #import "TXHProductsManager.h"
 
 #import "TXHDoorSearchViewController.h"
@@ -21,7 +20,7 @@
 #import <iOS-api/NSDateFormatter+TicketingHubFormat.h>
 
 
-@interface TXHDoorTicketsListViewController () <TXHTicketDetailsViewControllerDelegate>
+@interface TXHDoorTicketsListViewController () <TXHTicketDetailsViewControllerDelegate, TXHDoorTicketCellDelegate>
 
 @property (strong, nonatomic) NSArray *tickets;
 @property (strong, nonatomic) NSArray *filteredTickets;
@@ -29,6 +28,8 @@
 
 @property (strong, nonatomic) NSString *searchQuery;
 @property (weak, nonatomic)   TXHTicket *selectedTicket;
+
+@property (strong, nonatomic) NSMutableSet *ticketsDisabled;
 
 @end
 
@@ -38,6 +39,7 @@
 {
     [super viewDidLoad];
     
+    self.ticketsDisabled = [NSMutableSet set];
     [self registerForNotifications];
 }
 
@@ -283,7 +285,6 @@
                      }];
 }
 
-
 #pragma mark notifications
 
 - (void)productDidChange:(NSNotification *)note
@@ -317,15 +318,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TXHDoorTicketCell *cell = (TXHDoorTicketCell *)[tableView dequeueReusableCellWithIdentifier:@"ticketCell" forIndexPath:indexPath];
+    [cell setDelegate:self];
     
     [cell setIsFirstRow:indexPath.row == 0];
     [cell setIsLastRow:indexPath.row == [self.filteredTickets count] - 1];
     
     TXHTicket *ticket = [self ticketAtIndexPath:indexPath];
+    BOOL isTicketDisabled = [self.ticketsDisabled containsObject:ticket.ticketId];
     
     [cell setTitle:ticket.customer.fullName];
     [cell setSubtitle:ticket.tier.name];
-    [cell setAttendedAt:ticket.attendedAt];
+    [cell setAttendedAt:ticket.attendedAt animated:NO];
+    [cell setIsLoading:isTicketDisabled];
     
     return cell;
 }
@@ -348,5 +352,25 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)txhTicketDetailsViewController:(TXHTicketDetailsViewController *)controller didChangeTicket:(TXHTicket *)ticket
+{
+    [self.tableView reloadData];
+}
+
+#pragma mark - TXHdo
+
+- (void)txhDoorTicketCelldidChangeSwitch:(TXHDoorTicketCell *)cell
+{
+    TXHTicket *cellTicket = [self ticketAtIndexPath:[self.tableView indexPathForCell:cell]];
+    
+    [self.ticketsDisabled addObject:cellTicket.ticketId];
+
+    [TXHPRODUCTSMANAGER setTicket:cellTicket
+                         attended:cell.switchValue
+                       completion:^(TXHTicket *ticket, NSError *error) {
+                           [self.ticketsDisabled removeObject:cellTicket.ticketId];
+                           [cell setAttendedAt:cellTicket.attendedAt animated:YES];
+                       }];
+}
 
 @end

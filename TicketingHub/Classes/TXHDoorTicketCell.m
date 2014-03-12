@@ -48,6 +48,13 @@
     self.attendedSwitch.inactiveColor  = [UIColor whiteColor];
     self.attendedSwitch.onTintColor    = [UIColor colorFromHexString:@"#18a651" alpha:1.0];
     self.attendedSwitch.borderColor    = [UIColor colorFromHexString:@"#dce5ec" alpha:1.0];
+    
+    [self.attendedSwitch addTarget:self action:@selector(switchDidChange:) forControlEvents:UIControlEventValueChanged];
+}
+
+- (BOOL)switchValue
+{
+    return self.attendedSwitch.on;
 }
 
 - (void)setIsFirstRow:(BOOL)isFirst
@@ -70,7 +77,7 @@
     self.secondaryLabel.text = subtitle;
 }
 
-- (void)setAttendedAt:(NSDate *)attendedAt
+- (void)setAttendedAt:(NSDate *)attendedAt animated:(BOOL)animated
 {
     UIImage *dateImage = nil;
     
@@ -83,7 +90,7 @@
         
     }
     
-    self.attendedSwitch.on = (attendedAt != nil);
+    [self.attendedSwitch setOn:(attendedAt != nil) animated:animated];
     self.attendedSwitch.onImage = dateImage;
 }
 
@@ -95,6 +102,11 @@
         [self.activityIndicator startAnimating];
     else
         [self.activityIndicator stopAnimating];
+}
+
+- (void)switchDidChange:(id)sender
+{
+    [self.delegate txhDoorTicketCelldidChangeSwitch:self];
 }
 
 @end

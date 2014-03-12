@@ -49,7 +49,6 @@
 		58E4FB611760AE5500E328A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB5F1760AE5500E328A0 /* InfoPlist.strings */; };
 		58E4FB631760AE5500E328A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB621760AE5500E328A0 /* main.m */; };
 		58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB661760AE5500E328A0 /* TXHAppDelegate.m */; };
-		58E4FB781760AE5500E328A0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB771760AE5500E328A0 /* SenTestingKit.framework */; };
 		58E4FB791760AE5500E328A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB541760AE5500E328A0 /* UIKit.framework */; };
 		58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB561760AE5500E328A0 /* Foundation.framework */; };
 		58E4FB831760AE5500E328A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB811760AE5500E328A0 /* InfoPlist.strings */; };
@@ -188,8 +187,7 @@
 		58E4FB641760AE5500E328A0 /* TicketingHub-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TicketingHub-Prefix.pch"; sourceTree = "<group>"; };
 		58E4FB651760AE5500E328A0 /* TXHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHAppDelegate.h; sourceTree = "<group>"; };
 		58E4FB661760AE5500E328A0 /* TXHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TXHAppDelegate.m; sourceTree = "<group>"; };
-		58E4FB761760AE5500E328A0 /* TicketingHubTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicketingHubTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		58E4FB771760AE5500E328A0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		58E4FB761760AE5500E328A0 /* TicketingHubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicketingHubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E4FB801760AE5500E328A0 /* TicketingHubTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TicketingHubTests-Info.plist"; sourceTree = "<group>"; };
 		58E4FB821760AE5500E328A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58E4FB911760AEF300E328A0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
@@ -303,7 +301,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */,
-				58E4FB781760AE5500E328A0 /* SenTestingKit.framework in Frameworks */,
 				58E4FB791760AE5500E328A0 /* UIKit.framework in Frameworks */,
 				CF019832248E4EA59EA0E4E7 /* libPods.a in Frameworks */,
 				AE2DFA468AA749E4AA6D795E /* libPods-test.a in Frameworks */,
@@ -744,7 +741,7 @@
 			isa = PBXGroup;
 			children = (
 				58E4FB511760AE5500E328A0 /* TicketingHub.app */,
-				58E4FB761760AE5500E328A0 /* TicketingHubTests.octest */,
+				58E4FB761760AE5500E328A0 /* TicketingHubTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -758,7 +755,6 @@
 				EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */,
 				5860E8571762175B0046DFD3 /* QuartzCore.framework */,
 				EEB4FC4017B272F700F226BC /* Security.framework */,
-				58E4FB771760AE5500E328A0 /* SenTestingKit.framework */,
 				EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */,
 				58E4FB541760AE5500E328A0 /* UIKit.framework */,
 				8ED64DB9D6E348A7B2A040BE /* libPods.a */,
@@ -936,8 +932,8 @@
 			);
 			name = TicketingHubTests;
 			productName = TicketingHubTests;
-			productReference = 58E4FB761760AE5500E328A0 /* TicketingHubTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 58E4FB761760AE5500E328A0 /* TicketingHubTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -1363,7 +1359,6 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -1386,7 +1381,6 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -1487,7 +1481,6 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = AdHoc;
 		};

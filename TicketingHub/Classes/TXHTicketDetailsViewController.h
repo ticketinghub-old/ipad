@@ -13,6 +13,7 @@
 @protocol TXHTicketDetailsViewControllerDelegate
 
 - (void)txhTicketDetailsViewControllerShouldDismiss:(TXHTicketDetailsViewController *)controller;
+- (void)txhTicketDetailsViewController:(TXHTicketDetailsViewController *)controller didChangeTicket:(TXHTicket *)ticket;
 
 @end
 

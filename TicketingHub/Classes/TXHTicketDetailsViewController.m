@@ -13,6 +13,8 @@
 #import "TXHBorderedButton.h"
 #import <QuartzCore/QuartzCore.h>
 #import <iOS-api/NSDate+ISO.h>
+#import <iOS-api/NSDateFormatter+TicketingHubFormat.h>
+#import "TXHProductsManager.h"
 
 @interface TXHTicketDetailsViewController ()
 
@@ -195,6 +197,9 @@
     [highlightedAttributedTitle addAttribute:NSForegroundColorAttributeName value:[UIColor txhGreenColor] range:NSMakeRange(0, [title length])];
     [self.attendedButton setAttributedTitle:highlightedAttributedTitle forState:UIControlStateHighlighted];
     
+    [self.attendedButton setTitle:nil
+                         forState:UIControlStateNormal];
+    
     self.attendedButton.borderColor          = [UIColor txhGreenColor];
     self.attendedButton.normalFillColor      = [UIColor txhGreenColor];
     self.attendedButton.highlightedFillColor = self.attendedButton.superview.backgroundColor;
@@ -209,6 +214,8 @@
 
 - (void)configureAttendedButtonWhenNotAttended
 {
+    [self.attendedButton setAttributedTitle:nil forState:UIControlStateNormal];
+    [self.attendedButton setAttributedTitle:nil forState:UIControlStateHighlighted];
     [self.attendedButton setTitle:@"Mark as attended" forState:UIControlStateNormal];
     self.attendedButton.borderColor          = [UIColor txhButtonBlueColor];
     self.attendedButton.normalFillColor      = [UIColor txhButtonBlueColor];
@@ -221,6 +228,25 @@
     [self.attendedButton setImage:icon forState:UIControlStateNormal];
 }
 
+- (IBAction)orderButtonAction:(id)sender
+{
+}
+
+- (IBAction)attendedButtonAction:(id)sender
+{
+    [self blockAttenededButton];
+    
+    [TXHPRODUCTSMANAGER setTicket:self.ticket
+                         attended:(self.ticket.attendedAt == nil)
+                       completion:^(TXHTicket *ticket, NSError *error) {
+                           if (!error)
+                               [self.delegate txhTicketDetailsViewController:self
+                                                             didChangeTicket:self.ticket];
+                           
+                           [self unblockAttenededButton];
+                           [self updateButtons];
+                       }];
+}
 
 - (IBAction)closeButtonAction:(id)sender
 {
@@ -275,7 +301,6 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         self.titleLabel.text      = [NSString stringWithFormat:@"%@ Ticket",self.ticket.tier.name];
-//        self.subtitleLabel.text = //TODO
         self.validFromLabel.text  = [self dateStringForDate:self.ticket.validFrom];
         self.validUntilLabel.text = [self dateStringForDate:self.ticket.expiresAt];
         self.upgradesLabel.text   = [upgrades count] ? [upgrades componentsJoinedByString:@", "] : @"-";
@@ -285,6 +310,16 @@
 
         [self updateButtons];
     });
+}
+
+- (void)blockAttenededButton
+{
+    self.attendedButton.enabled = NO;
+}
+
+- (void)unblockAttenededButton
+{
+    self.attendedButton.enabled = YES;
 }
 
 @end
