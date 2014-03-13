@@ -124,5 +124,12 @@ NSString * const TXHSelectedAvailability            = @"TXHSelectedProduct";
                           completion:completion];
 }
 
+- (void)searchForTicketWithSeqID:(NSNumber *)seqID completion:(void(^)(TXHTicket *ticket, NSError *error))completion
+{
+    [TXHTICKETINHGUBCLIENT searchForTicketWithSeqId:seqID
+                                        withProduct:self.selectedProduct
+                                         completion:completion];
+}
+
 @end
 

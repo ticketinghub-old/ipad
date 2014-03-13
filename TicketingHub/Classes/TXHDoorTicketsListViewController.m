@@ -20,7 +20,7 @@
 #import <iOS-api/NSDateFormatter+TicketingHubFormat.h>
 
 
-@interface TXHDoorTicketsListViewController () <TXHTicketDetailsViewControllerDelegate, TXHDoorTicketCellDelegate>
+@interface TXHDoorTicketsListViewController () <TXHTicketDetailsViewControllerDelegate, TXHDoorTicketCellDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSArray *tickets;
 @property (strong, nonatomic) NSArray *filteredTickets;
@@ -30,6 +30,9 @@
 @property (weak, nonatomic)   TXHTicket *selectedTicket;
 
 @property (strong, nonatomic) NSMutableSet *ticketsDisabled;
+@property (assign, nonatomic, getter = isLoadingData) BOOL loadingData;
+@property (assign, nonatomic, getter = isErrorShown) BOOL errorShown;
+
 
 @end
 
@@ -92,6 +95,13 @@
     [self.tableView reloadData];
 }
 
+- (void)setLoadingData:(BOOL)loadingData
+{
+    _loadingData = loadingData;
+    
+    [self updateInfoLabel];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"TicketDetail"])
@@ -146,6 +156,10 @@
     {
         [self showInfolabelWithText:[NSString stringWithFormat:@"No Tickets for: %@",self.searchQuery]];
     }
+    else if (self.loadingData)
+    {
+        [self showInfolabelWithText:@"Looking up ticket"];
+    }
     else
     {
         [self hideInfoLabel];
@@ -159,6 +173,24 @@
         
     self.selectedTicket = ticket;
     [self performSegueWithIdentifier:@"TicketDetail" sender:self];
+}
+
+- (void)showErrorWithMessage:(NSString *)message
+{
+    self.errorShown = YES;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                    message:message
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
+#pragma mark UIalertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    self.errorShown = NO;
 }
 
 #pragma mark - Notyfications
@@ -212,8 +244,10 @@
 {
     NSString *barcode = note.object;
     
-    if (![barcode length])
+    if (![barcode length] || ![self canSearch])
         return;
+    
+    DLog(@"search for ticket with barcode: %@",barcode);
     
     NSArray *filteredTickets = [TXHTicket filterTickets:self.tickets withQuery:barcode];
     
@@ -222,15 +256,40 @@
         TXHTicket *scannedTicket = [filteredTickets firstObject];
         [self showDetailsForTicket:scannedTicket];
     }
+    else
+    {
+        NSDictionary *decodedBarcode = [TXHTicket decodeBarcode:barcode];
+        NSNumber *ticketSeqID = decodedBarcode[kTXHBarcodeTicketSeqIdKey];
+        
+        self.loadingData = YES;
+        
+        __weak typeof(self) wself = self;
+        
+        [TXHPRODUCTSMANAGER searchForTicketWithSeqID:ticketSeqID
+                                          completion:^(TXHTicket *ticket, NSError *error) {
+                                              wself.loadingData = NO;
+                                              if (!error)
+                                                  [wself showDetailsForTicket:ticket];
+                                              else
+                                                  [wself showErrorWithMessage:@"Couldn't find ticket data."];
+                                          }];
+    }
 }
 
 - (void)searchQueryDidChange:(NSNotification *)note
 {
     NSString *query = note.object;
     
+    if (![self canSearch])
+        return;
+    
     self.searchQuery = query;
 }
 
+- (BOOL)canSearch
+{
+    return !(self.isLoadingData || self.errorShown);
+}
 
 #pragma mark - keyboard notification
 
@@ -372,5 +431,8 @@
                            [cell setAttendedAt:cellTicket.attendedAt animated:YES];
                        }];
 }
+
+
+
 
 @end

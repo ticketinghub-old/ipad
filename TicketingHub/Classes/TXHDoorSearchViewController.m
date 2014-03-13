@@ -23,6 +23,7 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 @property (weak, nonatomic) IBOutlet UIView *cameraPreviewView;
 @property (weak, nonatomic) IBOutlet UIView *searchView;
 @property (weak, nonatomic) IBOutlet UITextField *searchField;
+@property (strong, nonatomic) NSDate *lastScanTimestamp;
 
 @property (strong, nonatomic) TXHBarcodeScanner *scanner;
 @property (assign, nonatomic) BOOL hasExternalScannerConnected;
@@ -192,9 +193,25 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 
 - (void)scanViewController:(TXHBarcodeScanner *)barcodeScaner didSuccessfullyScan:(NSString *)scannedValue
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:TXHRecognizedQRCodeNotification object:scannedValue];
+    @synchronized (self)
+    {
+        if ([self canMakeNextScan])
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:TXHRecognizedQRCodeNotification object:scannedValue];
+            [self recordBarcodeScan];
+        }
+    }
 }
 
+- (BOOL)canMakeNextScan
+{
+    return (!self.lastScanTimestamp || [self.lastScanTimestamp timeIntervalSinceNow] < -2.0);
+}
+
+- (void)recordBarcodeScan
+{
+    self.lastScanTimestamp = [NSDate date];
+}
 
 #pragma mark - textField
 
