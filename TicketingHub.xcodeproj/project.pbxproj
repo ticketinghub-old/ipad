@@ -247,7 +247,6 @@
 		EE935E7417B3EB630080A1C2 /* CommonMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonMacros.h; sourceTree = "<group>"; };
 		EEB1843817D114390025530A /* TXHBaseDataEntryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBaseDataEntryView.h; sourceTree = "<group>"; };
 		EEB1843917D114390025530A /* TXHBaseDataEntryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBaseDataEntryView.m; sourceTree = "<group>"; };
-		EEB1843A17D114390025530A /* TXHCommonNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHCommonNames.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		EEB1843D17D114390025530A /* TXHCurrencyEntryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHCurrencyEntryView.h; sourceTree = "<group>"; };
 		EEB1843E17D114390025530A /* TXHCurrencyEntryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCurrencyEntryView.m; sourceTree = "<group>"; };
 		EEB1844117D114390025530A /* TXHDataEntryFieldErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDataEntryFieldErrorView.h; sourceTree = "<group>"; };
@@ -863,7 +862,6 @@
 			isa = PBXGroup;
 			children = (
 				EEB1845717D114390025530A /* TXHUserDefaultsKeys.h */,
-				EEB1843A17D114390025530A /* TXHCommonNames.h */,
 				3EB60EE518C66F9000B56182 /* Managers */,
 				3E3D46EB18ACBB6E00275ACF /* Categories */,
 				3E22139818AA78DB00DE35A6 /* TableViewDataSources */,

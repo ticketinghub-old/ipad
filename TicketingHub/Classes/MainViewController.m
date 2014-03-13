@@ -13,7 +13,6 @@
 
 #import "SalesOrDoormanViewController.h"
 
-#import "TXHCommonNames.h"
 #import "TXHLoginViewController.h"
 #import "TXHSensorView.h"
 

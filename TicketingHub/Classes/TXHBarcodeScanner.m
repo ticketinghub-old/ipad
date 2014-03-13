@@ -127,9 +127,7 @@
     {
         if ([current isKindOfClass:[AVMetadataMachineReadableCodeObject class]])
         {
-            NSString *scannedValue = [((AVMetadataMachineReadableCodeObject *) current) stringValue];
-            DLog(@"scaned: %@",scannedValue);
-            
+            NSString *scannedValue = [((AVMetadataMachineReadableCodeObject *) current) stringValue];            
             if ([self.delegate respondsToSelector:@selector(scanViewController:didSuccessfullyScan:)])
             {
                 [self.delegate scanViewController:self didSuccessfullyScan:scannedValue];

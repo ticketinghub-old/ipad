@@ -10,7 +10,6 @@
 
 #import "ProductListControllerNotifications.h"
 
-#import "TXHCommonNames.h"
 #import "TXHProductsManager.h"
 #import "TXHTicketingHubManager.h"
 #import "FetchedResultsControllerDataSource.h"
