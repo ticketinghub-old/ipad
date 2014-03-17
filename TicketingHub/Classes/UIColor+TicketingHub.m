@@ -24,6 +24,16 @@
     return color;
 }
 
++ (UIColor *)txhBlueColor
+{
+    static UIColor *color = nil;
+    
+    if (!color)
+        color = [UIColor colorFromHexString:@"#2A7BB7" alpha:1.0];
+    
+    return color;
+}
+
 + (UIColor *)txhButtonBlueColor
 {
     static UIColor *color = nil;

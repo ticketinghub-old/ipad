@@ -17,6 +17,7 @@
 
 - (NSUInteger)indexOfStep:(id)step;
 - (BOOL)isStepCompleted:(id)step;
+- (BOOL)isStepCurrent:(id)step;
 
 - (void)salesWizardViewController:(TXHSalesWizardViewController *)wizard didSelectStepAtIndex:(NSUInteger)stepIndex; // could go to delegate
 

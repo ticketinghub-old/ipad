@@ -77,6 +77,11 @@
     return [self indexOfStep:step] < self.currentStep;
 }
 
+- (BOOL)isStepCurrent:(id)step
+{
+    return [self indexOfStep:step] == self.currentStep;
+}
+
 - (id)stepAtIndex:(NSUInteger)stepIndex
 {
     if (stepIndex >= [self numberOfsteps])

@@ -56,6 +56,7 @@
     [cell setDetails:item[kWizardStepDescriptionKey]];
     [cell setNumber:[self.dataSource indexOfStep:item]];
     [cell setCompleted:[self.dataSource isStepCompleted:item]];
+    [cell setIsCurrent:[self.dataSource isStepCurrent:item]];
 }
 
 #pragma mark - Public methods
