@@ -80,7 +80,7 @@
 
 - (void)addTimerIndicator
 {
-    RMDownloadIndicator *timerIndicator = [[RMDownloadIndicator alloc]initWithFrame:CGRectMake(0, 0, 35, 35) type:kRMMixedIndictor];
+    RMDownloadIndicator *timerIndicator = [[RMDownloadIndicator alloc]initWithFrame:CGRectMake(0, 0, 30, 30) type:kRMMixedIndictor];
     timerIndicator.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
     timerIndicator.center = CGPointMake(0 , self.view.height / 2.0);
     timerIndicator.right = self.timerLabel.left - 10;
@@ -103,7 +103,7 @@
     timerLabel.right = self.view.width - 10;
     
     timerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:30];
-    timerLabel.textColor = [UIColor blackColor];
+    timerLabel.textColor = [UIColor txhDarkBlueColor];
 
     [self.view addSubview:timerLabel];
     self.timerLabel = timerLabel;
