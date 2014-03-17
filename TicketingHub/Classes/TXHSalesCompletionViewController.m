@@ -21,6 +21,11 @@ static NSInteger const kCancelAlertTag = 123;
 
 @implementation TXHSalesCompletionViewController
 
+- (void)setContinueButtonTitle:(NSString *)continueButtonTitle
+{
+    [self.continueButton setTitle:continueButtonTitle forState:UIControlStateNormal];
+}
+
 - (void)setContinueButtonEnabled:(BOOL)enabled
 {
     self.continueButton.enabled = enabled;

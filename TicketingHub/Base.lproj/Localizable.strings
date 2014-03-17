@@ -1,0 +1,26 @@
+/* Localized versions of strings*/
+
+/* Salesman steps titles */
+
+"SALESMAN_STEPS_TICKET_QUANTITY_TITLE" = "Tickets";
+"SALESMAN_STEPS_TICKET_UPGRADES_TITLE" = "Upgrades";
+"SALESMAN_STEPS_ORDER_SUMMARY_TITLE"   = "Summary";
+"SALESMAN_STEPS_PAYMENT_TITLE"         = "Payment";
+"SALESMAN_STEPS_SUMMARY_TITLE"         = "Completed";
+
+/* Salesman steps descriptions */
+
+"SALESMAN_STEPS_TICKET_QUANTITY_DESC" = "Select Type & Quantity";
+"SALESMAN_STEPS_TICKET_UPGRADES_DESC" = "Add ticket extras";
+"SALESMAN_STEPS_ORDER_SUMMARY_DESC"   = "Review the order";
+"SALESMAN_STEPS_PAYMENT_DESC"         = "By card, cash or credit";
+"SALESMAN_STEPS_SUMMARY_DESC"         = "Print tickets and recipt";
+
+/* Salesman steps continue button titles */
+
+"SALESMAN_STEPS_TICKET_QUANTITY_FULL_TITLE" = "Ticket Quantities";
+"SALESMAN_STEPS_TICKET_UPGRADES_FULL_TITLE" = "Ticket Upgrades";
+"SALESMAN_STEPS_ORDER_SUMMARY_FULL_TITLE"   = "Order Summary";
+"SALESMAN_STEPS_PAYMENT_FULL_TITLE"         = "Payment";
+"SALESMAN_STEPS_SUMMARY_FULL_TITLE"         = "Order Summary";
+"SALESMAN_STEPS_FINISH_PROCESS_TITLE"       = "Confirm Order";

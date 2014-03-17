@@ -13,6 +13,7 @@
 @protocol TXHSalesWizardViewControllerDataSource <NSObject>
 
 - (NSUInteger)numberOfsteps;
+- (NSUInteger)currentStepIndex;
 - (id)stepAtIndex:(NSUInteger)stepIndex;
 
 - (NSUInteger)indexOfStep:(id)step;
@@ -23,7 +24,6 @@
 
 @optional
 
-- (NSUInteger)currentStepIndex;
 - (BOOL)salesWizardViewController:(TXHSalesWizardViewController *)wizard canSelectStepAtIndex:(NSUInteger)stepIndex; // could go to delegate
 
 @end

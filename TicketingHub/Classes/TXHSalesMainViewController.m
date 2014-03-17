@@ -48,26 +48,31 @@ static void * ContentValidContext = &ContentValidContext;
 {
     [super viewDidLoad];
     
-    self.stepsManager = [[TXHSaleStepsManager alloc] initWithSteps:@[@{kWizardStepTitleKey  : NSLocalizedString(@"Tickets", @"Tickets"),
-                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"Select Type & Quantity", @"Select Type & Quantity"),
+    self.stepsManager = [[TXHSaleStepsManager alloc] initWithSteps:@[@{kWizardStepTitleKey  : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_TITLE",nil),
+                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_DESC",nil),
                                                                        kWizardStepControllerSegueID : @"Tickets Quantity",
-                                                                       kWizardStepHidesCancelButton : @YES},
+                                                                       kWizardStepHidesCancelButton : @YES,
+                                                                       kWizardStepContinueButtonTitle : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_FULL_TITLE",nil)},
 
-                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"Upgrades", @"Upgrades"),
-                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"Add ticket extras", @"Add ticket extras"),
-                                                                       kWizardStepControllerSegueID : @"Tickets Upgrades"},
+                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_TITLE",nil),
+                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_DESC",nil),
+                                                                       kWizardStepControllerSegueID : @"Tickets Upgrades",
+                                                                       kWizardStepContinueButtonTitle : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_FULL_TITLE",nil)},
 
-                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"Summary", @"Summary"),
-                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"Review the order", @"Review the order"),
-                                                                       kWizardStepControllerSegueID : @"Order Summary"},
+                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"SALESMAN_STEPS_ORDER_SUMMARY_TITLE",nil),
+                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"SALESMAN_STEPS_ORDER_SUMMARY_DESC",nil),
+                                                                       kWizardStepControllerSegueID : @"Order Summary",
+                                                                       kWizardStepContinueButtonTitle : NSLocalizedString(@"SALESMAN_STEPS_ORDER_SUMMARY_FULL_TITLE",nil)},
 
-                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"Payment", @"Payment"),
-                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"By card, cash or credit", @"By card, cash or credit"),
-                                                                       kWizardStepControllerSegueID : @"Payment"},
+                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"SALESMAN_STEPS_PAYMENT_TITLE",nil),
+                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"SALESMAN_STEPS_PAYMENT_DESC",nil),
+                                                                       kWizardStepControllerSegueID : @"Payment",
+                                                                       kWizardStepContinueButtonTitle : NSLocalizedString(@"SALESMAN_STEPS_PAYMENT_FULL_TITLE",nil)},
 
-                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"Completed", @"Completed"),
-                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"Print tickets and recipt", @"Print tickets and recipt"),
-                                                                       kWizardStepControllerSegueID : @"Order Completion"}
+                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"SALESMAN_STEPS_SUMMARY_TITLE",nil),
+                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"SALESMAN_STEPS_SUMMARY_DESC",nil),
+                                                                       kWizardStepControllerSegueID : @"Order Completion",
+                                                                       kWizardStepContinueButtonTitle : NSLocalizedString(@"SALESMAN_STEPS_SUMMARY_FULL_TITLE",nil)}
                                                                      ]];
 
     self.stepsManager.delegate = self;
@@ -255,7 +260,6 @@ static void * ContentValidContext = &ContentValidContext;
         [self.stepCompletionController setContinueButtonEnabled:NO];
         return;
     }
-    
     // update header
     [self.timeController setTitleText:step[kWizardStepTitleKey]];
     [self.timeController setTimerEndDate:[TXHORDERMANAGER expirationDate]];
@@ -263,13 +267,26 @@ static void * ContentValidContext = &ContentValidContext;
     // update footer
     [self.stepCompletionController setCancelButtonHidden:[step[kWizardStepHidesCancelButton] boolValue]];
     [self.stepCompletionController setContinueButtonEnabled:[self.stepsManager hasNextStep]];
-    
+    [self.stepCompletionController setContinueButtonTitle:[self  continueButtonTitleForStep:step fromManger:manager]];
     
     // update content
     [self showStepContentControllerWithSegueID:step[kWizardStepControllerSegueID]];
     
     // update list
     [self.wizardSteps reloadWizard];
+}
+
+- (NSString *)continueButtonTitleForStep:(id)step fromManger:(TXHSaleStepsManager *)manager
+{
+    NSInteger index = [manager indexOfStep:step];
+    id nextStep = [manager stepAtIndex:index + 1];
+    
+    NSString *nextStepFullTitle = nextStep[kWizardStepContinueButtonTitle];
+
+    if (![nextStepFullTitle length])
+        nextStepFullTitle = NSLocalizedString(@"SALESMAN_STEPS_FINISH_PROCESS_TITLE", nil);
+
+    return nextStepFullTitle;
 }
 
 - (void)showStepContentControllerWithSegueID:(NSString *)segueID

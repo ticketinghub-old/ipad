@@ -18,6 +18,9 @@
 		3E488BDA18BE850600E90BE6 /* RMDownloadIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E488BD818BE850600E90BE6 /* RMDownloadIndicator.m */; };
 		3E6A422518C483870053EF34 /* TXHSensorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6A422418C483870053EF34 /* TXHSensorView.m */; };
 		3E6F479718AFD6A300E644F7 /* TXHBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F479618AFD6A300E644F7 /* TXHBorderedButton.m */; };
+		3E87704218D710D100585FFA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E87704018D710D100585FFA /* Localizable.strings */; };
+		3E87704718D711C900585FFA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E87704518D711C900585FFA /* InfoPlist.strings */; };
+		3E87709118D72DAB00585FFA /* Salesman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E87709018D72DAB00585FFA /* Salesman.storyboard */; };
 		3E8FD59318C74CD70066FA50 /* TXHDoorSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8FD59218C74CD70066FA50 /* TXHDoorSearchViewController.m */; };
 		3E9D734518D1EEF60087121B /* TXHDoorOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D734418D1EEF60087121B /* TXHDoorOrderViewController.m */; };
 		3E9D734818D1EF110087121B /* TXHDoorOrderTicketsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D734718D1EF110087121B /* TXHDoorOrderTicketsListViewController.m */; };
@@ -45,19 +48,16 @@
 		4D586DE11797E51E00E40534 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D586DE01797E51E00E40534 /* Images.xcassets */; };
 		4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D68DAAA178B0A5400743227 /* AVFoundation.framework */; };
 		4D8FCCB617A28A8C008B4227 /* Doorman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */; };
-		4DB23D6E17A169D8002B7B11 /* Salesman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */; };
 		4DF3F59E17C63E070045299B /* MockingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3F59C17C63E070045299B /* MockingTest.m */; };
 		4DF3F59F17C63E070045299B /* SmokeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3F59D17C63E070045299B /* SmokeSpec.m */; };
 		5860E8581762175B0046DFD3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5860E8571762175B0046DFD3 /* QuartzCore.framework */; };
 		58E4FB551760AE5500E328A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB541760AE5500E328A0 /* UIKit.framework */; };
 		58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB561760AE5500E328A0 /* Foundation.framework */; };
 		58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB581760AE5500E328A0 /* CoreGraphics.framework */; };
-		58E4FB611760AE5500E328A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB5F1760AE5500E328A0 /* InfoPlist.strings */; };
 		58E4FB631760AE5500E328A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB621760AE5500E328A0 /* main.m */; };
 		58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E4FB661760AE5500E328A0 /* TXHAppDelegate.m */; };
 		58E4FB791760AE5500E328A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB541760AE5500E328A0 /* UIKit.framework */; };
 		58E4FB7A1760AE5500E328A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E4FB561760AE5500E328A0 /* Foundation.framework */; };
-		58E4FB831760AE5500E328A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB811760AE5500E328A0 /* InfoPlist.strings */; };
 		58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E4FB911760AEF300E328A0 /* Storyboard.storyboard */; };
 		AE2DFA468AA749E4AA6D795E /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F162CF42C7D94DB9B5422913 /* libPods-test.a */; };
 		CEA4926CD193447DAE8A8A56 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED64DB9D6E348A7B2A040BE /* libPods.a */; };
@@ -135,6 +135,11 @@
 		3E6A422418C483870053EF34 /* TXHSensorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSensorView.m; sourceTree = "<group>"; };
 		3E6F479518AFD6A300E644F7 /* TXHBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBorderedButton.h; sourceTree = "<group>"; };
 		3E6F479618AFD6A300E644F7 /* TXHBorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBorderedButton.m; sourceTree = "<group>"; };
+		3E87704618D711C900585FFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3E87704B18D72B8600585FFA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3E87709018D72DAB00585FFA /* Salesman.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Salesman.storyboard; sourceTree = "<group>"; };
+		3E87709218D72EB800585FFA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3E87709318D72EBF00585FFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3E8FD59118C74CD70066FA50 /* TXHDoorSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorSearchViewController.h; sourceTree = "<group>"; };
 		3E8FD59218C74CD70066FA50 /* TXHDoorSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorSearchViewController.m; sourceTree = "<group>"; };
 		3E9D734318D1EEF60087121B /* TXHDoorOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorOrderViewController.h; sourceTree = "<group>"; };
@@ -187,7 +192,6 @@
 		4D586DE01797E51E00E40534 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4D68DAAA178B0A5400743227 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Doorman.storyboard; sourceTree = "<group>"; };
-		4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Salesman.storyboard; sourceTree = "<group>"; };
 		4DF3F59C17C63E070045299B /* MockingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockingTest.m; sourceTree = "<group>"; };
 		4DF3F59D17C63E070045299B /* SmokeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmokeSpec.m; sourceTree = "<group>"; };
 		5860E8571762175B0046DFD3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -196,14 +200,12 @@
 		58E4FB561760AE5500E328A0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		58E4FB581760AE5500E328A0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		58E4FB5E1760AE5500E328A0 /* TicketingHub-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TicketingHub-Info.plist"; sourceTree = "<group>"; };
-		58E4FB601760AE5500E328A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58E4FB621760AE5500E328A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		58E4FB641760AE5500E328A0 /* TicketingHub-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TicketingHub-Prefix.pch"; sourceTree = "<group>"; };
 		58E4FB651760AE5500E328A0 /* TXHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHAppDelegate.h; sourceTree = "<group>"; };
 		58E4FB661760AE5500E328A0 /* TXHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TXHAppDelegate.m; sourceTree = "<group>"; };
 		58E4FB761760AE5500E328A0 /* TicketingHubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicketingHubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E4FB801760AE5500E328A0 /* TicketingHubTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TicketingHubTests-Info.plist"; sourceTree = "<group>"; };
-		58E4FB821760AE5500E328A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58E4FB911760AEF300E328A0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		7082BAD3DAB74253A99F8290 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		8ED64DB9D6E348A7B2A040BE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -814,8 +816,9 @@
 		58E4FB5D1760AE5500E328A0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3E87704518D711C900585FFA /* InfoPlist.strings */,
+				3E87704018D710D100585FFA /* Localizable.strings */,
 				EE935E7417B3EB630080A1C2 /* CommonMacros.h */,
-				58E4FB5F1760AE5500E328A0 /* InfoPlist.strings */,
 				58E4FB621760AE5500E328A0 /* main.m */,
 				58E4FB5E1760AE5500E328A0 /* TicketingHub-Info.plist */,
 				58E4FB641760AE5500E328A0 /* TicketingHub-Prefix.pch */,
@@ -835,7 +838,6 @@
 		58E4FB7F1760AE5500E328A0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				58E4FB811760AE5500E328A0 /* InfoPlist.strings */,
 				58E4FB801760AE5500E328A0 /* TicketingHubTests-Info.plist */,
 			);
 			name = "Supporting Files";
@@ -845,7 +847,7 @@
 			isa = PBXGroup;
 			children = (
 				4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */,
-				4DB23D6D17A169D8002B7B11 /* Salesman.storyboard */,
+				3E87709018D72DAB00585FFA /* Salesman.storyboard */,
 				58E4FB911760AEF300E328A0 /* Storyboard.storyboard */,
 			);
 			path = Storyboards;
@@ -987,6 +989,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 58E4FB481760AE5500E328A0;
 			productRefGroup = 58E4FB521760AE5500E328A0 /* Products */;
@@ -1005,11 +1008,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D8FCCB617A28A8C008B4227 /* Doorman.storyboard in Resources */,
+				3E87704718D711C900585FFA /* InfoPlist.strings in Resources */,
 				3E0DAB9118AA41510045697C /* iOS-api.podspec in Resources */,
 				4D586DE11797E51E00E40534 /* Images.xcassets in Resources */,
 				3EF8EE3A18D3148400586283 /* TicketListHeaders.xib in Resources */,
-				58E4FB611760AE5500E328A0 /* InfoPlist.strings in Resources */,
-				4DB23D6E17A169D8002B7B11 /* Salesman.storyboard in Resources */,
+				3E87704218D710D100585FFA /* Localizable.strings in Resources */,
+				3E87709118D72DAB00585FFA /* Salesman.storyboard in Resources */,
 				58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1018,7 +1022,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58E4FB831760AE5500E328A0 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1198,18 +1201,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		58E4FB5F1760AE5500E328A0 /* InfoPlist.strings */ = {
+		3E87704018D710D100585FFA /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				58E4FB601760AE5500E328A0 /* en */,
+				3E87709218D72EB800585FFA /* en */,
+				3E87709318D72EBF00585FFA /* Base */,
 			);
-			name = InfoPlist.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		58E4FB811760AE5500E328A0 /* InfoPlist.strings */ = {
+		3E87704518D711C900585FFA /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				58E4FB821760AE5500E328A0 /* en */,
+				3E87704618D711C900585FFA /* Base */,
+				3E87704B18D72B8600585FFA /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

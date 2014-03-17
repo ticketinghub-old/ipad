@@ -8,10 +8,11 @@
 
 #import "TXHSalesStepAbstract.h"
 
-NSString * const kWizardStepTitleKey          = @"kWizardStepTitleKey";
-NSString * const kWizardStepDescriptionKey    = @"kWizardStepDescriptionKey";
-NSString * const kWizardStepControllerSegueID = @"kWizardStepControllerSegueID";
-NSString * const kWizardStepHidesCancelButton = @"kWizardStepHasCancelButton";
+NSString * const kWizardStepTitleKey            = @"kWizardStepTitleKey";
+NSString * const kWizardStepDescriptionKey      = @"kWizardStepDescriptionKey";
+NSString * const kWizardStepControllerSegueID   = @"kWizardStepControllerSegueID";
+NSString * const kWizardStepContinueButtonTitle = @"kWizardStepContinueButtonTitle";
+NSString * const kWizardStepHidesCancelButton   = @"kWizardStepHasCancelButton";
 
 @implementation TXHSalesStepAbstract
 
