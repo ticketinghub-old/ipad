@@ -20,7 +20,7 @@
 		3E6F479718AFD6A300E644F7 /* TXHBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F479618AFD6A300E644F7 /* TXHBorderedButton.m */; };
 		3E87704218D710D100585FFA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E87704018D710D100585FFA /* Localizable.strings */; };
 		3E87704718D711C900585FFA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E87704518D711C900585FFA /* InfoPlist.strings */; };
-		3E87709118D72DAB00585FFA /* Salesman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E87709018D72DAB00585FFA /* Salesman.storyboard */; };
+		3E87709818D7355600585FFA /* Salesman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E87709A18D7355600585FFA /* Salesman.storyboard */; };
 		3E8FD59318C74CD70066FA50 /* TXHDoorSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8FD59218C74CD70066FA50 /* TXHDoorSearchViewController.m */; };
 		3E9D734518D1EEF60087121B /* TXHDoorOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D734418D1EEF60087121B /* TXHDoorOrderViewController.m */; };
 		3E9D734818D1EF110087121B /* TXHDoorOrderTicketsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D734718D1EF110087121B /* TXHDoorOrderTicketsListViewController.m */; };
@@ -135,11 +135,9 @@
 		3E6A422418C483870053EF34 /* TXHSensorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSensorView.m; sourceTree = "<group>"; };
 		3E6F479518AFD6A300E644F7 /* TXHBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBorderedButton.h; sourceTree = "<group>"; };
 		3E6F479618AFD6A300E644F7 /* TXHBorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBorderedButton.m; sourceTree = "<group>"; };
-		3E87704618D711C900585FFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3E87704B18D72B8600585FFA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3E87709018D72DAB00585FFA /* Salesman.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Salesman.storyboard; sourceTree = "<group>"; };
 		3E87709218D72EB800585FFA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		3E87709318D72EBF00585FFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3E87709B18D7356100585FFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Salesman.storyboard; sourceTree = "<group>"; };
 		3E8FD59118C74CD70066FA50 /* TXHDoorSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorSearchViewController.h; sourceTree = "<group>"; };
 		3E8FD59218C74CD70066FA50 /* TXHDoorSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorSearchViewController.m; sourceTree = "<group>"; };
 		3E9D734318D1EEF60087121B /* TXHDoorOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorOrderViewController.h; sourceTree = "<group>"; };
@@ -847,7 +845,7 @@
 			isa = PBXGroup;
 			children = (
 				4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */,
-				3E87709018D72DAB00585FFA /* Salesman.storyboard */,
+				3E87709A18D7355600585FFA /* Salesman.storyboard */,
 				58E4FB911760AEF300E328A0 /* Storyboard.storyboard */,
 			);
 			path = Storyboards;
@@ -990,6 +988,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 58E4FB481760AE5500E328A0;
 			productRefGroup = 58E4FB521760AE5500E328A0 /* Products */;
@@ -1013,7 +1012,7 @@
 				4D586DE11797E51E00E40534 /* Images.xcassets in Resources */,
 				3EF8EE3A18D3148400586283 /* TicketListHeaders.xib in Resources */,
 				3E87704218D710D100585FFA /* Localizable.strings in Resources */,
-				3E87709118D72DAB00585FFA /* Salesman.storyboard in Resources */,
+				3E87709818D7355600585FFA /* Salesman.storyboard in Resources */,
 				58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1205,7 +1204,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				3E87709218D72EB800585FFA /* en */,
-				3E87709318D72EBF00585FFA /* Base */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1213,10 +1211,17 @@
 		3E87704518D711C900585FFA /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3E87704618D711C900585FFA /* Base */,
 				3E87704B18D72B8600585FFA /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3E87709A18D7355600585FFA /* Salesman.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E87709B18D7356100585FFA /* Base */,
+			);
+			name = Salesman.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
