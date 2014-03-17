@@ -16,7 +16,7 @@
 
 @end
 
-@interface TXHSalesTicketTierCell : UITableViewCell 
+@interface TXHSalesTicketTierCell : UICollectionViewCell
 
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *subtitle;

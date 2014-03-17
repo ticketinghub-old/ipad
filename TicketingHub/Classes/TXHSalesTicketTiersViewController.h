@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TXHSalesTicketTiersViewController : UITableViewController
+@interface TXHSalesTicketTiersViewController : UICollectionViewController
 
 @property (readonly, readonly, getter = isValid) BOOL valid;
 

@@ -48,7 +48,7 @@ static void * ContentValidContext = &ContentValidContext;
 {
     [super viewDidLoad];
     
-    self.stepsManager = [[TXHSaleStepsManager alloc] initWithSteps:@[@{kWizardStepTitleKey  : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_TITLE",nil),
+    self.stepsManager = [[TXHSaleStepsManager alloc] initWithSteps:@[@{kWizardStepTitleKey  : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_TITLE",nil),
                                                                        kWizardStepDescriptionKey : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_DESC",nil),
                                                                        kWizardStepControllerSegueID : @"Tickets Quantity",
                                                                        kWizardStepHidesCancelButton : @YES,

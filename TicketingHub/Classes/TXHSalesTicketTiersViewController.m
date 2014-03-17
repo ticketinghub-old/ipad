@@ -24,8 +24,8 @@
 
 @property (assign, nonatomic, getter = isValid) BOOL valid;
 
-@property (strong, nonatomic) NSArray *tiers; // to keep tiers ordered
-@property (strong, nonatomic) TXHAvailability *availability;
+@property (strong, nonatomic) NSArray             *tiers; // to keep tiers ordered
+@property (strong, nonatomic) TXHAvailability     *availability;
 @property (strong, nonatomic) NSMutableDictionary *quantities;
 
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
@@ -66,8 +66,8 @@
     self.tiers = [availability.tiers allObjects];
     
     self.couponTextField.text = availability.coupon;
-    
-    [self.tableView reloadData];
+
+    [self.collectionView reloadData];
 }
 
 - (void)setCheckingCoupon:(BOOL)checkingCoupon
@@ -88,7 +88,7 @@
 
 - (TXHTier *)tierAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.tiers[indexPath.row];
+    return nil;//self.tiers[indexPath.row];
 }
 
 - (UIActivityIndicatorView *)activityIndicator
@@ -119,33 +119,40 @@
     [self.activityIndicator stopAnimating];
 }
 
-#pragma mark - Table view data source
+#pragma mark UICollectionViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.tiers count];
+    return [self.tiers count] * 10;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"TXHSalesTicketTierCell";
-    TXHSalesTicketTierCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    TXHSalesTicketTierCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TicketCell" forIndexPath:indexPath];
     
     [self configureCell:cell forRowAtIndexPath:indexPath];
     
     return cell;
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"CouponHeader" forIndexPath:indexPath];
+    
+    return view;
+}
+
 - (void)configureCell:(TXHSalesTicketTierCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
 
     TXHTier *tier = [self tierAtIndexPath:indexPath];
 
+    cell.delegate = self;
+    
     cell.title            = tier.name;
     cell.subtitle         = tier.tierDescription;
     cell.priceString      = [TXHPRODUCTSMANAGER priceStringForPrice:tier.price];
     cell.tierIdentifier   = tier.internalTierId;
     cell.selectedQuantity = [self quantityForTicketIdentifier:tier.internalTierId];
-    cell.delegate = self;
     
     cell.quantityChangedHandler = ^(NSDictionary *quantity) {
         [self updateQuantitiesWithDictionary:quantity];
@@ -231,7 +238,7 @@
 
 - (NSInteger)maximumQuantityForCell:(TXHSalesTicketTierCell *)cell
 {
-    NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+    NSIndexPath *cellIndexPath = [self.collectionView indexPathForCell:cell];
     TXHTier *tier = [self tierAtIndexPath:cellIndexPath];
     
     if (!self.availability.limitValue)
@@ -275,7 +282,7 @@
 
 - (void)setOffsetBottomBy:(CGFloat)offset
 {
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, offset, 0);
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, offset, 0);
 }
 
 #pragma mark - UITextFieldDelegat

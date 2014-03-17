@@ -10,7 +10,7 @@
 
 /* Salesman steps descriptions */
 
-"SALESMAN_STEPS_TICKET_QUANTITY_DESC" = "E Select Type & Quantity";
+"SALESMAN_STEPS_TICKET_QUANTITY_DESC" = "Select Type & Quantity";
 "SALESMAN_STEPS_TICKET_UPGRADES_DESC" = "Add ticket extras";
 "SALESMAN_STEPS_ORDER_SUMMARY_DESC"   = "Review the order";
 "SALESMAN_STEPS_PAYMENT_DESC"         = "By card, cash or credit";

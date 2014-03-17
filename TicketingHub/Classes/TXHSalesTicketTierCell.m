@@ -7,16 +7,19 @@
 //
 
 #import "TXHSalesTicketTierCell.h"
+#import "UIResponder+FirstResponder.h"
 
+#import <QuartzCore/QuartzCore.h>
 #import "TXHProductsManager.h"
 
 @interface TXHSalesTicketTierCell () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel     *tierName;
-@property (weak, nonatomic) IBOutlet UITextView  *tierDescription;
+@property (weak, nonatomic) IBOutlet UILabel     *tierDescription;
 @property (weak, nonatomic) IBOutlet UILabel     *price;
 @property (weak, nonatomic) IBOutlet UITextField *quantity;
-@property (weak, nonatomic) IBOutlet UIStepper   *stepper;
+@property (weak, nonatomic) IBOutlet UIButton    *decreaseButton;
+@property (weak, nonatomic) IBOutlet UIButton    *increaseButton;
 
 @end
 
@@ -26,8 +29,18 @@
 {
     [super awakeFromNib];
     
-    self.quantity.delegate = self;
-    self.quantity.keyboardType = UIKeyboardTypeNumberPad;
+    self.quantity.delegate         = self;
+    self.quantity.keyboardType     = UIKeyboardTypeNumberPad;
+    self.contentView.clipsToBounds = YES;
+    self.contentView.layer.cornerRadius = 5;
+    self.contentView.layer.borderWidth  = 1.0;
+    self.contentView.layer.borderColor  = [UIColor lightGrayColor].CGColor;
+    self.contentView.backgroundColor    = [UIColor whiteColor];
+    self.layer.masksToBounds = NO;
+    self.layer.shadowOpacity = 1.0;
+    self.layer.shadowRadius  = 2;
+    self.layer.shadowOffset  = CGSizeMake(1, 1);
+    self.layer.shadowColor   = [UIColor lightGrayColor].CGColor;
 }
 
 - (void)setTitle:(NSString *)title
@@ -50,41 +63,46 @@
 
 - (void)setSelectedQuantity:(NSInteger)selectedQuantity
 {
-    _selectedQuantity = selectedQuantity;
-    self.quantity.text = [NSString stringWithFormat:@"%ld",(long)selectedQuantity];
-}
+    NSInteger maxValue = [self.delegate maximumQuantityForCell:self];
 
+    NSUInteger quantity = selectedQuantity;
+    quantity = quantity > maxValue ? maxValue : quantity;
+
+    self.increaseButton.enabled = selectedQuantity < maxValue;
+    self.decreaseButton.enabled = selectedQuantity > 0;
+    
+    _selectedQuantity  = quantity;
+    self.quantity.text = [NSString stringWithFormat:@"%ld",(long)quantity];
+    
+    
+    [self quantityDidChange];
+}
 
 - (void)quantityDidChange
 {
-    
     if (self.quantityChangedHandler)
-        self.quantityChangedHandler(@{self.tierIdentifier : [NSNumber numberWithInteger:self.quantity.text.integerValue]});
+        self.quantityChangedHandler(self.tierIdentifier ? @{self.tierIdentifier : [NSNumber numberWithInteger:self.quantity.text.integerValue]} : nil);
 }
 
 #pragma mark - Quantity Value Changed action
 
 - (IBAction)quantityChanged:(id)sender
 {
-    NSInteger maxValue = [self.delegate maximumQuantityForCell:self];
-    
-    NSUInteger quantity = [self.quantity.text integerValue];
-    quantity = quantity > maxValue ? maxValue : quantity;
-    
-    self.stepper.value = quantity;
-    self.selectedQuantity = quantity;
-    
-    [self quantityDidChange];
+    self.selectedQuantity = [self.quantity.text integerValue];
 }
 
 #pragma mark - Stepper Value Changed action
 
-- (IBAction)stepChanged:(id)sender
+- (IBAction)increaseButtonAction:(id)sender
 {
-    UIStepper *stepper = sender;
-    [self.quantity setText:[NSString stringWithFormat:@"%.0f", stepper.value]];
-    
-    [self quantityChanged:sender];
+    self.selectedQuantity++;
+    [[UIResponder currentFirstResponder] resignFirstResponder];
+}
+
+- (IBAction)decreaseButtonAction:(id)sender
+{
+    self.selectedQuantity--;
+    [[UIResponder currentFirstResponder] resignFirstResponder];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -101,5 +119,4 @@
         self.selectedQuantity = self.selectedQuantity;
     }
 }
-
 @end
