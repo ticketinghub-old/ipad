@@ -230,6 +230,7 @@
 
 - (IBAction)orderButtonAction:(id)sender
 {
+    [self.delegate txhTicketDetailsViewController:self wantsToPresentOrderForTicket:self.ticket];
 }
 
 - (IBAction)attendedButtonAction:(id)sender

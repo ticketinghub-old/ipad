@@ -49,7 +49,7 @@
  
     [self setup];
     [self selectMode:nil];
-    
+ 
     self.selectedProduct = [TXHPRODUCTSMANAGER selectedProduct];
     self.selectedAvailability = [TXHPRODUCTSMANAGER selectedAvailability];
     
@@ -197,7 +197,12 @@
     self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:24.0f],
                                                                     NSForegroundColorAttributeName: [UIColor whiteColor]};
 
-
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                                                 style:UIBarButtonItemStylePlain
+                                                                target:nil
+                                                                action:nil];
+    self.navigationItem.backBarButtonItem = backItem;
+    
     self.activityIndicator.color = [UIColor txhDarkBlueColor];
     self.dateButton = [[UIBarButtonItem alloc] initWithTitle:nil style:UIBarButtonItemStyleBordered target:self action:@selector(selectDate:)];
 

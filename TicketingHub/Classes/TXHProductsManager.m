@@ -131,5 +131,12 @@ NSString * const TXHSelectedAvailability            = @"TXHSelectedProduct";
                                          completion:completion];
 }
 
+- (void)getOrderForTicket:(TXHTicket *)ticket completion:(void(^)(TXHOrder *order, NSError *error))completion
+{
+    [TXHTICKETINHGUBCLIENT getOrderForTicekt:ticket
+                                 withProduct:self.selectedProduct
+                                  completion:completion];
+}
+
 @end
 

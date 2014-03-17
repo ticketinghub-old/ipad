@@ -14,6 +14,7 @@
 
 - (void)txhTicketDetailsViewControllerShouldDismiss:(TXHTicketDetailsViewController *)controller;
 - (void)txhTicketDetailsViewController:(TXHTicketDetailsViewController *)controller didChangeTicket:(TXHTicket *)ticket;
+- (void)txhTicketDetailsViewController:(TXHTicketDetailsViewController *)controller wantsToPresentOrderForTicket:(TXHTicket *)ticket;
 
 @end
 

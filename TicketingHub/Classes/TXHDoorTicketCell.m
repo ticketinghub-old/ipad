@@ -13,14 +13,15 @@
 
 @interface TXHDoorTicketCell ()
 
-@property (weak, nonatomic) IBOutlet SevenSwitch        *attendedSwitch;
-@property (weak, nonatomic) IBOutlet UILabel            *mainLabel;
-@property (weak, nonatomic) IBOutlet UILabel            *secondaryLabel;
-@property (weak, nonatomic) IBOutlet UIImageView        *chevronImageView;
-@property (weak, nonatomic) IBOutlet UIView             *topSeparatorView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSeparatorLeadingConstraint;
+@property (weak, nonatomic) IBOutlet SevenSwitch             *attendedSwitch;
+@property (weak, nonatomic) IBOutlet UILabel                 *mainLabel;
+@property (weak, nonatomic) IBOutlet UILabel                 *secondaryLabel;
+@property (weak, nonatomic) IBOutlet UILabel                 *pricetagLabel;
+@property (weak, nonatomic) IBOutlet UIImageView             *chevronImageView;
+@property (weak, nonatomic) IBOutlet UIView                  *topSeparatorView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint      *bottomSeparatorLeadingConstraint;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-
+    
 @end
 
 @implementation TXHDoorTicketCell
@@ -92,6 +93,11 @@
     
     [self.attendedSwitch setOn:(attendedAt != nil) animated:animated];
     self.attendedSwitch.onImage = dateImage;
+}
+
+- (void)setPriceTag:(NSString *)priceTag
+{
+    self.pricetagLabel.text = [priceTag length] ? priceTag : @"";
 }
 
 - (void)setIsLoading:(BOOL)loading

@@ -31,4 +31,6 @@
 - (void)setAttendedAt:(NSDate *)attendedAt animated:(BOOL)animated;
 - (void)setIsLoading:(BOOL)loading;
 
+- (void)setPriceTag:(NSString *)priceTag;
+
 @end

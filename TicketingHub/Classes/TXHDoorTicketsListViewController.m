@@ -14,9 +14,9 @@
 #import "TXHDoorTicketCell.h"
 #import "TXHTicketDetailsViewController.h"
 #import "TXHTicket+Filter.h"
+#import "TXHDoorOrderViewController.h"
 
 #import "UIColor+TicketingHub.h"
-#import "UIView+Additions.h"
 #import <iOS-api/NSDateFormatter+TicketingHubFormat.h>
 
 
@@ -110,6 +110,12 @@
         detailController.delegate = self;
         detailController.ticket   = self.selectedTicket;
     }
+    else if ([segue.identifier isEqualToString:@"TicketOrder"])
+    {
+        TXHDoorOrderViewController *orderViewController = segue.destinationViewController;
+        orderViewController.ticket = self.selectedTicket;
+         
+    }
 }
 
 - (TXHTicket *)ticketAtIndexPath:(NSIndexPath *)indexPath
@@ -173,6 +179,15 @@
         
     self.selectedTicket = ticket;
     [self performSegueWithIdentifier:@"TicketDetail" sender:self];
+}
+
+- (void)showOrderForTicekt:(TXHTicket *)ticket
+{
+    if (!ticket)
+        return;
+    
+    self.selectedTicket = ticket;
+    [self performSegueWithIdentifier:@"TicketOrder" sender:self];
 }
 
 - (void)showErrorWithMessage:(NSString *)message
@@ -408,7 +423,7 @@
 
 - (void)txhTicketDetailsViewControllerShouldDismiss:(TXHTicketDetailsViewController *)controller
 {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self dismissDetailViewController:controller completion:nil];
 }
 
 - (void)txhTicketDetailsViewController:(TXHTicketDetailsViewController *)controller didChangeTicket:(TXHTicket *)ticket
@@ -416,7 +431,20 @@
     [self.tableView reloadData];
 }
 
-#pragma mark - TXHdo
+- (void)txhTicketDetailsViewController:(TXHTicketDetailsViewController *)controller wantsToPresentOrderForTicket:(TXHTicket *)ticket
+{
+    [self dismissDetailViewController:controller completion:^{
+        [self showOrderForTicekt:ticket];
+    }];
+}
+
+- (void)dismissDetailViewController:(TXHTicketDetailsViewController *)controller completion: (void (^)(void))completion
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:completion];
+}
+
+
+#pragma mark - TXHDoorTicketCellDelegate
 
 - (void)txhDoorTicketCelldidChangeSwitch:(TXHDoorTicketCell *)cell
 {
@@ -431,8 +459,5 @@
                            [cell setAttendedAt:cellTicket.attendedAt animated:YES];
                        }];
 }
-
-
-
 
 @end
