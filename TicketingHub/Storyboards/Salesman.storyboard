@@ -82,7 +82,6 @@
                     <size key="freeformSize" width="1024" height="768"/>
                     <connections>
                         <outlet property="contentsContainer" destination="Ee0-R6-44p" id="cVE-5v-zwJ"/>
-                        <segue destination="uAI-bG-hdz" kind="custom" identifier="Tickets Details" customClass="TXHTransitionSegue" id="HNJ-pf-Swm"/>
                         <segue destination="2iF-it-Qwa" kind="custom" identifier="Tickets Upgrades" customClass="TXHTransitionSegue" id="n4W-1F-JWS"/>
                         <segue destination="FmA-Tp-fAD" kind="custom" identifier="Order Summary" customClass="TXHTransitionSegue" id="2O4-LG-WgR"/>
                         <segue destination="2z9-so-MKI" kind="custom" identifier="Payment" customClass="TXHTransitionSegue" id="FY2-hM-zEj"/>
@@ -167,7 +166,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GoJ-Ob-adv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1172" y="764"/>
+            <point key="canvasLocation" x="1364" y="-1292"/>
         </scene>
         <!--Sales Ticket Tiers View Controller-->
         <scene sceneID="hw0-RF-QwV">
@@ -314,7 +313,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S9w-b7-Ge4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3731" y="-1801"/>
+            <point key="canvasLocation" x="3731" y="-905"/>
         </scene>
         <!--Sales Upgrade Details View Controller-->
         <scene sceneID="st8-cX-cuO">
@@ -542,7 +541,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D4R-hu-YO5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3731" y="2695"/>
+            <point key="canvasLocation" x="3739" y="1799"/>
         </scene>
         <!--Sales Ticket Completion View Controller-->
         <scene sceneID="u9B-5r-zro">
@@ -569,7 +568,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9LC-iM-iKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3731" y="3619"/>
+            <point key="canvasLocation" x="3739" y="2723"/>
         </scene>
         <!--Sales Summary View Controller-->
         <scene sceneID="5OD-nP-mUg">
@@ -814,224 +813,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uO1-sx-oOZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3723" y="1346"/>
-        </scene>
-        <!--Sales Information Details View Controller-->
-        <scene sceneID="nDQ-vP-fDX">
-            <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="uAI-bG-hdz" customClass="TXHSalesInformationDetailsViewController" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="qTZ-VF-iJm">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="15" id="kFO-Rs-ywl">
-                            <size key="itemSize" width="200" height="70"/>
-                            <size key="headerReferenceSize" width="500" height="60"/>
-                            <size key="footerReferenceSize" width="500" height="1"/>
-                            <inset key="sectionInset" minX="40" minY="0.0" maxX="40" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="textCell" id="9RA-0I-vI9" customClass="TXHSalesInformationTextCell">
-                                <rect key="frame" x="40" y="60" width="200" height="70"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="70"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TLk-Tv-18q">
-                                            <rect key="frame" x="0.0" y="20" width="200" height="40"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uJ0-re-dln">
-                                                    <rect key="frame" x="5" y="0.0" width="190" height="40"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.91372549020000005" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="textValueChanged:" destination="9RA-0I-vI9" eventType="editingChanged" id="H3O-EP-Tkb"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.9137254901960784" green="0.93333333333333335" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="uJ0-re-dln" secondAttribute="trailing" constant="5" id="11M-oT-wkF"/>
-                                                <constraint firstItem="uJ0-re-dln" firstAttribute="leading" secondItem="TLk-Tv-18q" secondAttribute="leading" constant="5" id="29v-OH-dyi"/>
-                                                <constraint firstAttribute="centerX" secondItem="uJ0-re-dln" secondAttribute="centerX" id="6Cs-qL-IBc"/>
-                                                <constraint firstAttribute="centerY" secondItem="uJ0-re-dln" secondAttribute="centerY" id="GaA-nt-Kil"/>
-                                                <constraint firstItem="uJ0-re-dln" firstAttribute="top" secondItem="TLk-Tv-18q" secondAttribute="top" id="SX6-Ip-q1b"/>
-                                                <constraint firstAttribute="height" constant="40" id="e4g-F5-mwd"/>
-                                                <constraint firstAttribute="bottom" secondItem="uJ0-re-dln" secondAttribute="bottom" id="tKa-dk-v8K"/>
-                                            </constraints>
-                                        </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jK1-hc-2Ov" customClass="TXHDataEntryFieldErrorView">
-                                            <rect key="frame" x="90" y="10" width="100" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="20" id="8m0-ve-qe0"/>
-                                                <constraint firstAttribute="width" constant="100" placeholder="YES" id="Lym-lM-rr4"/>
-                                            </constraints>
-                                        </view>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="TLk-Tv-18q" secondAttribute="trailing" id="0Ed-5y-ksc"/>
-                                    <constraint firstAttribute="trailing" secondItem="jK1-hc-2Ov" secondAttribute="trailing" constant="10" id="LNC-y4-0JJ"/>
-                                    <constraint firstItem="jK1-hc-2Ov" firstAttribute="top" secondItem="9RA-0I-vI9" secondAttribute="top" constant="10" id="f9F-qx-cGJ"/>
-                                    <constraint firstItem="TLk-Tv-18q" firstAttribute="leading" secondItem="9RA-0I-vI9" secondAttribute="leading" id="q9I-K6-hHS"/>
-                                    <constraint firstItem="TLk-Tv-18q" firstAttribute="leading" secondItem="9RA-0I-vI9" secondAttribute="leading" id="tdD-jj-8PW"/>
-                                    <constraint firstItem="TLk-Tv-18q" firstAttribute="top" secondItem="9RA-0I-vI9" secondAttribute="top" constant="20" id="yJg-Zu-XNA"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="backingView" destination="TLk-Tv-18q" id="0dQ-DJ-dtB"/>
-                                    <outlet property="dataErrorView" destination="jK1-hc-2Ov" id="bgC-do-gTt"/>
-                                    <outlet property="textField" destination="uJ0-re-dln" id="6Jn-ml-wrl"/>
-                                </connections>
-                            </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="selectionCell" id="DI0-fB-q1P" customClass="TXHSalesInformationSelectionCell">
-                                <rect key="frame" x="288" y="60" width="200" height="70"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="70"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fDh-dI-Acl">
-                                            <rect key="frame" x="0.0" y="20" width="200" height="40"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="n68-8l-Ood"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="tintColor" red="0.10980392160000001" green="0.23529411759999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                            <inset key="contentEdgeInsets" minX="7" minY="0.0" maxX="7" maxY="0.0"/>
-                                            <state key="normal" title="Button">
-                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfN-Ta-UzZ" customClass="TXHDataEntryFieldErrorView">
-                                            <rect key="frame" x="90" y="10" width="100" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="20" id="UjW-Pq-4gV"/>
-                                                <constraint firstAttribute="width" constant="100" placeholder="YES" id="zWQ-cB-T0e"/>
-                                            </constraints>
-                                        </view>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Expand" translatesAutoresizingMaskIntoConstraints="NO" id="KHb-dd-vBd">
-                                            <rect key="frame" x="176" y="36" width="14" height="8"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="8" id="e7F-aj-UpG"/>
-                                                <constraint firstAttribute="width" constant="14" id="xfv-1H-gwE"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="fDh-dI-Acl" firstAttribute="centerY" secondItem="KHb-dd-vBd" secondAttribute="centerY" id="8Oc-5e-GoA"/>
-                                    <constraint firstItem="fDh-dI-Acl" firstAttribute="leading" secondItem="DI0-fB-q1P" secondAttribute="leading" id="Nhb-md-U9H"/>
-                                    <constraint firstAttribute="trailing" secondItem="fDh-dI-Acl" secondAttribute="trailing" id="RKq-xg-18x"/>
-                                    <constraint firstItem="fDh-dI-Acl" firstAttribute="trailing" secondItem="kfN-Ta-UzZ" secondAttribute="trailing" constant="10" id="TYb-1s-m0t"/>
-                                    <constraint firstItem="fDh-dI-Acl" firstAttribute="top" secondItem="DI0-fB-q1P" secondAttribute="top" constant="20" id="j1o-Mg-LvX"/>
-                                    <constraint firstItem="fDh-dI-Acl" firstAttribute="trailing" secondItem="KHb-dd-vBd" secondAttribute="trailing" constant="10" id="lwW-Xs-XRz"/>
-                                    <constraint firstItem="fDh-dI-Acl" firstAttribute="top" secondItem="kfN-Ta-UzZ" secondAttribute="top" constant="10" id="tBW-xA-jDN"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="errorMessageView" destination="kfN-Ta-UzZ" id="eak-2z-11D"/>
-                                    <outlet property="selectionField" destination="fDh-dI-Acl" id="S17-On-bpB"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TXHSalesInformationHeader" id="h3S-Tc-eEI" customClass="TXHSalesInformationHeader">
-                            <rect key="frame" x="0.0" y="0.0" width="1024" height="60"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Tier>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQc-ak-HPy">
-                                    <rect key="frame" x="20" y="19" width="54" height="23"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="23" id="6Br-IF-G1P"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                    <color key="textColor" red="0.10196078431372549" green="0.23529411764705882" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wn5-sV-b8m">
-                                    <rect key="frame" x="20" y="59" width="1004" height="1"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.97647058823529409" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
-                                </view>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Expand" translatesAutoresizingMaskIntoConstraints="NO" id="bSr-Yl-A4V">
-                                    <rect key="frame" x="990" y="26" width="14" height="8"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="tintColor" red="0.10980392160000001" green="0.23529411759999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="14" id="ilL-nr-zdZ"/>
-                                        <constraint firstAttribute="height" constant="8" id="luB-kk-woR"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2W-ix-rnS">
-                                    <rect key="frame" x="96" y="18" width="36" height="23"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="23" id="KT3-Dm-iuP"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="centerY" secondItem="W2W-ix-rnS" secondAttribute="centerY" id="G8h-uy-PWr"/>
-                                <constraint firstItem="W2W-ix-rnS" firstAttribute="leading" secondItem="oQc-ak-HPy" secondAttribute="trailing" constant="22" id="QpX-xr-Po6"/>
-                                <constraint firstAttribute="trailing" secondItem="bSr-Yl-A4V" secondAttribute="trailing" constant="20" id="ZxR-Ea-Slf"/>
-                                <constraint firstAttribute="centerY" secondItem="oQc-ak-HPy" secondAttribute="centerY" id="mua-oq-qhs"/>
-                                <constraint firstItem="oQc-ak-HPy" firstAttribute="leading" secondItem="h3S-Tc-eEI" secondAttribute="leading" constant="20" id="nD6-Ck-vvK"/>
-                                <constraint firstAttribute="centerY" secondItem="bSr-Yl-A4V" secondAttribute="centerY" id="qNR-dL-A4e"/>
-                            </constraints>
-                            <connections>
-                                <outlet property="expandedCollapsedImageView" destination="bSr-Yl-A4V" id="9Ka-Bc-rb5"/>
-                                <outlet property="headerSubtitle" destination="W2W-ix-rnS" id="v9X-4C-gz9"/>
-                                <outlet property="headerTitle" destination="oQc-ak-HPy" id="OPR-9X-zx8"/>
-                            </connections>
-                        </collectionReusableView>
-                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TXHSalesInformationFooter" id="JP6-Yw-HLt">
-                            <rect key="frame" x="0.0" y="130" width="1024" height="1"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8tQ-nj-TBH">
-                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="1"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="1" id="QSj-85-Yfc"/>
-                                    </constraints>
-                                </view>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="8tQ-nj-TBH" secondAttribute="trailing" id="K3n-CQ-kHh"/>
-                                <constraint firstItem="8tQ-nj-TBH" firstAttribute="top" secondItem="JP6-Yw-HLt" secondAttribute="top" id="Qym-pq-aXP"/>
-                                <constraint firstItem="8tQ-nj-TBH" firstAttribute="leading" secondItem="JP6-Yw-HLt" secondAttribute="leading" id="kZk-Js-CLi"/>
-                            </constraints>
-                        </collectionReusableView>
-                        <connections>
-                            <outlet property="dataSource" destination="uAI-bG-hdz" id="aTt-MW-pF4"/>
-                            <outlet property="delegate" destination="uAI-bG-hdz" id="Xa4-Zh-QbU"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ghg-IN-KzA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3731" y="-879"/>
+            <point key="canvasLocation" x="3731" y="906"/>
         </scene>
         <!--Sales Timer View Controller-->
         <scene sceneID="5Ia-FO-LRu">
@@ -1072,7 +854,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSc-tg-v0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1574" y="-247"/>
+            <point key="canvasLocation" x="1862" y="-1463"/>
         </scene>
         <!--Sales Completion View Controller-->
         <scene sceneID="9zM-iI-1Uh">
@@ -1196,7 +978,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bj5-Ga-t15" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1574" y="678"/>
+            <point key="canvasLocation" x="1862" y="-482"/>
         </scene>
         <!--Sales Payment Customer Detail View Controller-->
         <scene sceneID="cCb-UP-9y2">
@@ -1328,7 +1110,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7H7-mw-pIt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5122" y="2743"/>
+            <point key="canvasLocation" x="5130" y="1847"/>
         </scene>
         <!--Sales Payment Payment Details View Controller-->
         <scene sceneID="Cqk-w3-mdl">
@@ -1368,7 +1150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3C1-MJ-j2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5495" y="2695"/>
+            <point key="canvasLocation" x="5503" y="1799"/>
         </scene>
         <!--Sales Payment Card Details View Controller-->
         <scene sceneID="Fiy-yu-4Ym">
@@ -1553,7 +1335,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FxX-k1-IaY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6613" y="1814"/>
+            <point key="canvasLocation" x="6621" y="918"/>
         </scene>
         <!--Sales Payment Credit Details View Controller-->
         <scene sceneID="9jw-O0-HvR">
@@ -1582,7 +1364,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hJs-Ct-TSa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6613" y="3669"/>
+            <point key="canvasLocation" x="6621" y="2773"/>
         </scene>
         <!--Sales Payment Cash Details View Controller-->
         <scene sceneID="ywA-rD-aOq">
@@ -1698,7 +1480,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eVp-mi-uRC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6613" y="2695"/>
+            <point key="canvasLocation" x="6621" y="1799"/>
         </scene>
     </scenes>
     <resources>

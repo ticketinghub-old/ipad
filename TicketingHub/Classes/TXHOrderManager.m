@@ -165,6 +165,8 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
     
     [TXHTICKETINHGUBCLIENT reserveTicketsWithTierQuantities:tierQuantities
                                                availability:availability
+                                                    isGroup:YES
+                                               shouldNotify:NO
                                                  completion:^(TXHOrder *order, NSError *error) {
                                                      
                                                      if (order)
