@@ -70,6 +70,12 @@
                      completion:nil];
 }
 
+- (void)setCanExpand:(BOOL)canExpand
+{
+    _canExpand = canExpand;
+    self.expandedCollapsedImageView.hidden = !canExpand;
+}
+
 - (void)toggleMode:(UITapGestureRecognizer *)gesture
 {
     if (gesture.state == UIGestureRecognizerStateEnded)

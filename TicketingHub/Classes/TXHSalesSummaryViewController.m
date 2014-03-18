@@ -9,8 +9,9 @@
 #import "TXHSalesSummaryViewController.h"
 
 #import "TXHSalesCompletionViewController.h"
-#import "TXHSalesSummaryCell.h"
+#import "TXHSalesSummaryItemCell.h"
 #import "TXHSalesSummaryHeader.h"
+#import "TXHSalesSummaryFooter.h"
 #import "TXHSalesTimerViewController.h"
 
 #import "TXHProductsManager.h"
@@ -104,12 +105,14 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 1;
+    TXHTicket *ticket = [self ticketAtIndex:section];
+    
+    return [ticket.upgrades count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
-    TXHSalesSummaryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TXHSalesSummaryCell" forIndexPath:indexPath];
+    TXHSalesSummaryItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SummaryItemCell" forIndexPath:indexPath];
     
     [self configureCell:cell atIndexPath:indexPath];
     
@@ -121,7 +124,7 @@
     if (kind == UICollectionElementKindSectionHeader)
     {
         TXHSalesSummaryHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind
-                                                                           withReuseIdentifier:@"TXHSalesSummaryHeader"
+                                                                           withReuseIdentifier:@"SalesSummaryHeader"
                                                                                   forIndexPath:indexPath];
         [self configureHeader:header atIndexPath:indexPath];
         
@@ -130,25 +133,48 @@
     }
     else if (kind == UICollectionElementKindSectionFooter)
     {
-        UICollectionReusableView *footer = [collectionView dequeueReusableSupplementaryViewOfKind:kind
-                                                                              withReuseIdentifier:@"TXHSalesUpgradeFooter"
-                                                                                     forIndexPath:indexPath];
+        TXHSalesSummaryFooter *footer = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                                           withReuseIdentifier:@"SalesSummaryFooter"
+                                                                                  forIndexPath:indexPath];
+        
+        if ([collectionView numberOfSections] - 1 == indexPath.section)
+        {
+            TXHOrder *order = [TXHORDERMANAGER order];
+            
+            [footer setTaxPriceText:[TXHPRODUCTSMANAGER priceStringForPrice:[order tax]]];
+            [footer setTotalPriceText:[TXHPRODUCTSMANAGER priceStringForPrice:[order total]]];
+        }
         return footer;
     }
     
     return nil;
 }
 
-- (void)makeCellVisible:(id)sender {
+// TODO: fucked a bit, make it better!
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+{
+    if ([collectionView numberOfSections] - 1 == section)
+    {
+        return CGSizeMake(collectionView.width, 60);
+    }
+    
+    return CGSizeMake(collectionView.width, 1);
+}
+
+- (void)makeCellVisible:(id)sender
+{
     UICollectionViewCell *cell = sender;
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
     [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
 }
 
-- (void)configureCell:(TXHSalesSummaryCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(TXHSalesSummaryItemCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     TXHTicket *ticket = [self ticketAtIndex:indexPath.section];
-    cell.ticket = ticket;
+    TXHUpgrade *upgrade = [ticket.upgrades allObjects][indexPath.item];
+    
+    [cell setTitle:upgrade.name];
+    [cell setPrice:[TXHPRODUCTSMANAGER priceStringForPrice:[upgrade price]]];
 }
 
 - (void)configureHeader:(TXHSalesSummaryHeader *)header atIndexPath:(NSIndexPath *)indexPath
@@ -160,6 +186,7 @@
     header.ticketTotalPrice = [TXHPRODUCTSMANAGER priceStringForPrice:[ticket totalPrice]];
     header.expanded         = [self isSectionExpanded:indexPath.section];
     header.section          = indexPath.section;
+    header.canExpand        = ([ticket.upgrades count] > 0);
 }
 
 #pragma mark - TXHSalesSummaryHeaderDelegate
@@ -170,15 +197,27 @@
     [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:header.section]];
 }
 
-#pragma mark - Action methods
+#pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     BOOL expanded = [self isSectionExpanded:indexPath.section];
     
-    CGSize size = CGSizeMake(550.0f, expanded ? 112.0f : 0.0f);
+    CGSize size = CGSizeMake(collectionView.width, expanded ? 20.0 : 0.0f);
     return size;
 }
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    TXHTicket *ticket = [self ticketAtIndex:section];
+
+    if ([ticket.upgrades count] && [self isSectionExpanded:section])
+        return UIEdgeInsetsMake(0, 0, 10, 0);
+    
+    return UIEdgeInsetsZero;
+}
+
+#pragma mark - TXHSalesContentsViewControllerProtocol
 
 - (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
 {

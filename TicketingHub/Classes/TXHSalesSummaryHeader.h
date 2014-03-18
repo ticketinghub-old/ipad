@@ -27,4 +27,6 @@
 
 @property (assign, nonatomic) NSUInteger section;
 
+@property (assign, nonatomic) BOOL canExpand;
+
 @end

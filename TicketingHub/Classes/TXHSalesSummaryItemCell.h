@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TXHSalesSummaryCell : UICollectionViewCell
+@interface TXHSalesSummaryItemCell : UICollectionViewCell
 
-@property (nonatomic, weak) TXHTicket *ticket;
+- (void)setTitle:(NSString *)title;
+- (void)setPrice:(NSString *)price;
 
 @end
