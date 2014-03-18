@@ -88,7 +88,7 @@
 
 - (TXHTier *)tierAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;//self.tiers[indexPath.row];
+    return self.tiers[indexPath.row];
 }
 
 - (UIActivityIndicatorView *)activityIndicator
@@ -123,7 +123,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.tiers count] * 10;
+    return [self.tiers count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
