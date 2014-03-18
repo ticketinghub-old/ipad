@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TXHSalesPaymentCardDetailsViewController : UITableViewController
+@interface TXHSalesPaymentCardDetailsViewController : UIViewController
 
 @end

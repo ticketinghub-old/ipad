@@ -54,7 +54,7 @@
 {
     [cell setTite:item[kWizardStepTitleKey]];
     [cell setDetails:item[kWizardStepDescriptionKey]];
-    [cell setNumber:[self.dataSource indexOfStep:item]];
+    [cell setNumber:[self.dataSource indexOfStep:item]+1];
     [cell setCompleted:[self.dataSource isStepCompleted:item]];
     [cell setIsCurrent:[self.dataSource isStepCurrent:item]];
 }

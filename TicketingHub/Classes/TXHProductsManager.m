@@ -69,7 +69,7 @@ NSString * const TXHSelectedAvailability            = @"TXHSelectedProduct";
     TXHSupplier *suplier = self.selectedProduct.supplier;
     NSNumberFormatter *formatter = [TXHNUMBERFORMATTERCACHE formatterForSuplier:suplier];
     
-    return [formatter stringFromNumber:@([price integerValue] / 100)];
+    return [formatter stringFromNumber:@([price floatValue] / 100.0)];
 }
 
 #pragma mark - accessors

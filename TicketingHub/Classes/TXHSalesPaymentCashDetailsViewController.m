@@ -11,32 +11,39 @@
 #import "TXHOrderManager.h"
 #import "TXHProductsManager.h"
 
-@interface TXHSalesPaymentCashDetailsViewController ()
+@interface TXHSalesPaymentCashDetailsViewController () <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *totalAmountLabel;
 @property (strong, nonatomic) NSNumber *totalAmount;
+
+@property (weak, nonatomic) IBOutlet UILabel     *totalAmountValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel     *changeValueLabel;
+@property (weak, nonatomic) IBOutlet UITextField *givenAmountValueField;
 
 @end
 
 @implementation TXHSalesPaymentCashDetailsViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     self.totalAmount = [TXHORDERMANAGER totalOrderPrice];
+    self.totalAmountValueLabel.text = [TXHPRODUCTSMANAGER priceStringForPrice:self.totalAmount];
     
-    self.totalAmountLabel.text = [TXHPRODUCTSMANAGER priceStringForPrice:self.totalAmount];
+    [self givenAmountValueChanged:self.givenAmountValueField];
 }
 
+- (IBAction)givenAmountValueChanged:(id)sender
+{
+    CGFloat givenAmount  = [self.givenAmountValueField.text floatValue];
+    CGFloat changeAmount = [self.totalAmount floatValue] - givenAmount * 100;
+
+    NSString *changeString = [TXHPRODUCTSMANAGER priceStringForPrice:@(fabs(changeAmount))];
+    if (changeAmount < 0)
+        changeString = [@"-" stringByAppendingString:changeString];
+    
+    self.changeValueLabel.text = changeString;
+}
 
 @end

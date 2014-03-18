@@ -23,9 +23,9 @@ static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
 
-@property (strong, nonatomic) NSDictionary   *upgrades;
-@property (strong, nonatomic) NSMutableArray *expandedSections;
-@property (strong, nonatomic) NSMutableDictionary   *selectedUpgrades;
+@property (strong, nonatomic) NSDictionary        *upgrades;
+@property (strong, nonatomic) NSMutableArray      *expandedSections;
+@property (strong, nonatomic) NSMutableDictionary *selectedUpgrades;
 
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 
