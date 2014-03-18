@@ -12,11 +12,13 @@
 
 #import "TXHDoorOrderDetailsViewController.h"
 #import "TXHDoorOrderTicketsListViewController.h"
+#import "TXHPrintButtonsViewController.h"
 
-@interface TXHDoorOrderViewController ()
+@interface TXHDoorOrderViewController () <TXHPrintButtonsViewControllerDelegate>
 
-@property (nonatomic, weak) TXHDoorOrderDetailsViewController *orderDetailsViewController;
+@property (nonatomic, weak) TXHDoorOrderDetailsViewController     *orderDetailsViewController;
 @property (nonatomic, weak) TXHDoorOrderTicketsListViewController *orderTicketsListViewController;
+@property (nonatomic, weak) TXHPrintButtonsViewController         *printButtonsViewController;
 
 @property (nonatomic, strong) TXHOrder *order;
 
@@ -105,7 +107,31 @@
     {
         self.orderTicketsListViewController = segue.destinationViewController;
     }
+    else if ([segue.identifier isEqualToString:@"PrintButtons"])
+    {
+        self.printButtonsViewController = segue.destinationViewController;
+        self.printButtonsViewController.delegate = self;
+    }
 }
+
+#pragma mark - TXHPrintButtonsViewControllerDelegate
+
+
+- (void)txhPrintButtonsViewControllerCustomButtonAction:(TXHBorderedButton *)button
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)txhPrintButtonsViewControllerPrintReciptAction:(TXHBorderedButton *)button
+{
+
+}
+
+- (void)txhPrintButtonsViewControllerPrintTicketsAction:(TXHBorderedButton *)button
+{
+
+}
+
 
 
 @end
