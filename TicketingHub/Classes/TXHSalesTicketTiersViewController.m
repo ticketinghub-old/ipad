@@ -20,8 +20,6 @@
 
 @property (assign, nonatomic) BOOL checkingCoupon;
 
-@property (weak, nonatomic) IBOutlet UITextField *couponTextField;
-
 @property (assign, nonatomic, getter = isValid) BOOL valid;
 
 @property (strong, nonatomic) NSArray             *tiers; // to keep tiers ordered
@@ -65,8 +63,6 @@
     
     self.tiers = [availability.tiers allObjects];
     
-    self.couponTextField.text = availability.coupon;
-
     [self.collectionView reloadData];
 }
 
@@ -208,10 +204,6 @@
                                                                         newAvilability.coupon = couponString;
                                                                         [TXHPRODUCTSMANAGER setSelectedAvailability:newAvilability];
                                                                         break;
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        self.couponTextField.text = @"";
                                                                     }
                                                                 }
                                                             }

@@ -275,6 +275,9 @@
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="GbN-hu-Q3v" id="2k8-yz-9oA"/>
+                                    </connections>
                                 </textField>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coupon Code" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVS-rE-Aat">
                                     <rect key="frame" x="20" y="18" width="119" height="23"/>
@@ -306,7 +309,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZAf-90-vgo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3731" y="-1828"/>
+            <point key="canvasLocation" x="3731" y="-864"/>
         </scene>
         <!--Sales Upgrade Details View Controller-->
         <scene sceneID="st8-cX-cuO">
@@ -1487,6 +1490,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="bvg-gg-53w"/>
-        <segue reference="RZa-D6-ATJ"/>
+        <segue reference="1rc-r4-K8Y"/>
     </inferredMetricsTieBreakers>
 </document>
