@@ -11,9 +11,6 @@
 
 @interface TXHDoorTicketsAttendedHeaderView ()
 
-@property (strong, nonatomic) UIImage *expandImage;
-@property (strong, nonatomic) UIImage *collapseImage;
-
 @end
 
 @implementation TXHDoorTicketsAttendedHeaderView
@@ -23,10 +20,6 @@
     [super awakeFromNib];
     
     self.ticketCountLabel.layer.cornerRadius = self.ticketCountLabel.height / 2.0;
-    
-    self.expandImage = [[UIImage imageNamed:@"Expand"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.collapseImage = [[UIImage imageNamed:@"Collapse"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    
     // add a gesture recogniser to handle toggling between expanded & collapsed
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleMode:)];
     [self addGestureRecognizer:tapGesture];
@@ -44,7 +37,14 @@
 
 - (void)setExpanded:(BOOL)expanded {
     _expanded = expanded;
-    self.arrowImage.image = expanded ? self.collapseImage : self.expandImage;
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         self.arrowImage.transform = CGAffineTransformMakeRotation(expanded ? M_PI : 0);
+                     }
+                     completion:nil];
+
 }
 
 - (void)toggleMode:(UITapGestureRecognizer *)gesture

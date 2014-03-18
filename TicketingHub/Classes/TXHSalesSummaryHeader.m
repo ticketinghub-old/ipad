@@ -14,9 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *headerTotalPrice;
 @property (weak, nonatomic) IBOutlet UIImageView *expandedCollapsedImageView;
 
-@property (strong, nonatomic) UIImage *expandImage;
-@property (strong, nonatomic) UIImage *collapseImage;
-
 @end
 
 @implementation TXHSalesSummaryHeader
@@ -30,7 +27,8 @@
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
     self = [super initWithCoder:aDecoder];
     if (self) {
         [self setup];
@@ -38,13 +36,8 @@
     return self;
 }
 
-- (void)setup {
-    // Create images for expanded and collapsed modes
-    self.expandImage = [[UIImage imageNamed:@"Expand"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.collapseImage = [[UIImage imageNamed:@"Collapse"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    
-    // Assign the collapsed mode at startup
-    self.expandedCollapsedImageView.image = self.collapseImage;
+- (void)setup
+{
     self.expandedCollapsedImageView.tintColor = [UIColor colorWithRed:77.0f / 255.0f
                                                                 green:134.0f / 255.0f
                                                                  blue:180.0f / 255.0f
@@ -65,9 +58,16 @@
     self.headerTotalPrice.text = ticketTotalPrice;
 }
 
-- (void)setExpanded:(BOOL)expanded {
+- (void)setExpanded:(BOOL)expanded
+{
     _expanded = expanded;
-    self.expandedCollapsedImageView.image = expanded ? self.collapseImage : self.expandImage;
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         self.expandedCollapsedImageView.transform = CGAffineTransformMakeRotation(expanded ? M_PI : 0);
+                     }
+                     completion:nil];
 }
 
 - (void)toggleMode:(UITapGestureRecognizer *)gesture
