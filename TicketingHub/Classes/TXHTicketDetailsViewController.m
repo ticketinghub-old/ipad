@@ -302,6 +302,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         self.titleLabel.text      = [NSString stringWithFormat:@"%@ Ticket",self.ticket.tier.name];
+        self.subtitleLabel.text   = [self.ticket.reference length] > 0 ? self.ticket.reference : @"";
         self.validFromLabel.text  = [self dateStringForDate:self.ticket.validFrom];
         self.validUntilLabel.text = [self dateStringForDate:self.ticket.expiresAt];
         self.upgradesLabel.text   = [upgrades count] ? [upgrades componentsJoinedByString:@", "] : @"-";

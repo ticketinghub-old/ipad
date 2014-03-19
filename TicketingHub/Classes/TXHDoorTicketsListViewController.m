@@ -22,6 +22,9 @@
 
 @interface TXHDoorTicketsListViewController () <TXHTicketDetailsViewControllerDelegate, TXHDoorTicketCellDelegate, UIAlertViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
+
 @property (strong, nonatomic) NSArray *tickets;
 @property (strong, nonatomic) NSArray *filteredTickets;
 @property (strong, nonatomic) UILabel *infolabel;
@@ -44,6 +47,7 @@
     
     self.ticketsDisabled = [NSMutableSet set];
     [self registerForNotifications];
+    [self updateHeader];
 }
 
 - (void)dealloc
@@ -79,6 +83,7 @@
     _tickets = tickets;
     
     [self applyTicketFilter];
+    [self updateHeader];
 }
 
 - (void)setSearchQuery:(NSString *)searchQuery
@@ -100,6 +105,12 @@
     _loadingData = loadingData;
     
     [self updateInfoLabel];
+}
+
+- (NSUInteger)attendingTickets
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"attendedAt != NULL"];
+    return [[self.tickets filteredArrayUsingPredicate:predicate] count];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -170,6 +181,12 @@
     {
         [self hideInfoLabel];
     }
+}
+
+- (void)updateHeader
+{
+    self.titleLabel.text    = [NSString stringWithFormat:@"%d Attendees",[self.tickets count]];
+    self.subtitleLabel.text = [NSString stringWithFormat:@"%d Attending",[self attendingTickets]];
 }
 
 - (void)showDetailsForTicket:(TXHTicket *)ticket
@@ -457,6 +474,7 @@
                        completion:^(TXHTicket *ticket, NSError *error) {
                            [self.ticketsDisabled removeObject:cellTicket.ticketId];
                            [cell setAttendedAt:cellTicket.attendedAt animated:YES];
+                           [self updateHeader];
                        }];
 }
 

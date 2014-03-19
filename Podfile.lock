@@ -20,7 +20,7 @@ PODS:
     - AFNetworking/NSURLSession
   - DCTCoreDataStack (1.1)
   - Expecta (0.2.4)
-  - iOS-api (0.0.52):
+  - iOS-api (0.0.53):
     - AFNetworking (~> 2.2.0)
     - DCTCoreDataStack (~> 1.1)
   - OCMock (2.2.3)
@@ -51,7 +51,7 @@ SPEC CHECKSUMS:
   AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
   DCTCoreDataStack: 4090bc1d6819fda813c7cc45119d1fa8fd8b8b3c
   Expecta: 5c147dedfea5fbcf773995f7e65020abcc936ce5
-  iOS-api: 22413841c92511e9ed34d97d977aecb33e26f4ad
+  iOS-api: f5745440506e13f4daf92fc2af1dfff15ba8ea71
   OCMock: 74e4ddbcef134170dcc844f91c691f13868075d7
   PaymentKit: be75a5398a9465edd84f7249a9e57d707da025fb
   SevenSwitch: f1ae106a4fcb459829ba5a6a3265e7e9f873f80c

@@ -27,7 +27,7 @@
 
 - (void)setAttendedCount:(NSNumber *)count
 {
-    self.attendedLabel.text = [NSString stringWithFormat:@"%d Attended", [count integerValue]];
+    self.attendedLabel.text = [NSString stringWithFormat:@"%d Attending", [count integerValue]];
 }
 
 - (void)setTotalCount:(NSNumber *)count
