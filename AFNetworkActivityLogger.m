@@ -21,8 +21,7 @@
 // THE SOFTWARE.
 
 #import "AFNetworkActivityLogger.h"
-#import "AFURLConnectionOperation.h"
-#import "AFURLSessionManager.h"
+#import <AFNetworking/AFNetworking.h>
 
 #import <objc/runtime.h>
 
@@ -140,10 +139,7 @@ static void * AFNetworkRequestStartDate = &AFNetworkRequestStartDate;
         responseHeaderFields = [(NSHTTPURLResponse *)response allHeaderFields];
     }
 
-    NSString *responseString = nil;
-    if ([[notification object] respondsToSelector:@selector(responseString)]) {
-        responseString = [[notification object] responseString];
-    }
+    NSString *responseString = notification.userInfo[AFNetworkingTaskDidCompleteSerializedResponseKey];
 
     NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceDate:objc_getAssociatedObject(notification.object, AFNetworkRequestStartDate)];
 
