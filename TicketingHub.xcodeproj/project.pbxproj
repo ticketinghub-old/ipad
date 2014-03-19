@@ -17,6 +17,7 @@
 		3E488BD918BE850600E90BE6 /* RMDisplayLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E488BD618BE850600E90BE6 /* RMDisplayLabel.m */; };
 		3E488BDA18BE850600E90BE6 /* RMDownloadIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E488BD818BE850600E90BE6 /* RMDownloadIndicator.m */; };
 		3E4ADF7318D8C17400D2C508 /* TXHPrintButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4ADF7218D8C17400D2C508 /* TXHPrintButtonsViewController.m */; };
+		3E4ADF7618D9ED2800D2C508 /* TXHSignaturePadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4ADF7518D9ED2800D2C508 /* TXHSignaturePadViewController.m */; };
 		3E6A422518C483870053EF34 /* TXHSensorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6A422418C483870053EF34 /* TXHSensorView.m */; };
 		3E6F479718AFD6A300E644F7 /* TXHBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F479618AFD6A300E644F7 /* TXHBorderedButton.m */; };
 		3E87704218D710D100585FFA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E87704018D710D100585FFA /* Localizable.strings */; };
@@ -134,6 +135,8 @@
 		3E488BD818BE850600E90BE6 /* RMDownloadIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDownloadIndicator.m; sourceTree = "<group>"; };
 		3E4ADF7118D8C17400D2C508 /* TXHPrintButtonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHPrintButtonsViewController.h; sourceTree = "<group>"; };
 		3E4ADF7218D8C17400D2C508 /* TXHPrintButtonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHPrintButtonsViewController.m; sourceTree = "<group>"; };
+		3E4ADF7418D9ED2800D2C508 /* TXHSignaturePadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSignaturePadViewController.h; path = TicketingHub/Classes/TXHSignaturePadViewController.h; sourceTree = SOURCE_ROOT; };
+		3E4ADF7518D9ED2800D2C508 /* TXHSignaturePadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSignaturePadViewController.m; path = TicketingHub/Classes/TXHSignaturePadViewController.m; sourceTree = SOURCE_ROOT; };
 		3E6A422318C483870053EF34 /* TXHSensorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSensorView.h; sourceTree = "<group>"; };
 		3E6A422418C483870053EF34 /* TXHSensorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSensorView.m; sourceTree = "<group>"; };
 		3E6F479518AFD6A300E644F7 /* TXHBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBorderedButton.h; sourceTree = "<group>"; };
@@ -567,6 +570,8 @@
 				EE75D95D17D11047009ADCD8 /* TXHSalesPaymentCashDetailsViewController.m */,
 				EE75D95E17D11047009ADCD8 /* TXHSalesPaymentCreditDetailsViewController.h */,
 				EE75D95F17D11047009ADCD8 /* TXHSalesPaymentCreditDetailsViewController.m */,
+				3E4ADF7418D9ED2800D2C508 /* TXHSignaturePadViewController.h */,
+				3E4ADF7518D9ED2800D2C508 /* TXHSignaturePadViewController.m */,
 			);
 			name = "Concrete Content";
 			sourceTree = "<group>";
@@ -1156,6 +1161,7 @@
 				3EC8845B18C4984B00CE0597 /* UIResponder+FirstResponder.m in Sources */,
 				EE75D99C17D11048009ADCD8 /* TXHSalesSummaryItemCell.m in Sources */,
 				3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */,
+				3E4ADF7618D9ED2800D2C508 /* TXHSignaturePadViewController.m in Sources */,
 				EE75D99E17D11048009ADCD8 /* TXHSalesSummaryHeader.m in Sources */,
 				EE75D99F17D11048009ADCD8 /* TXHSalesSummaryViewController.m in Sources */,
 				3EA36B8318B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m in Sources */,
