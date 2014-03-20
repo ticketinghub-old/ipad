@@ -54,8 +54,6 @@
     [super viewWillAppear:animated];
     
     [self setupBackground];
-    [self setupDismissRecognizer];
-    
     [self updateButtons];
     [self updateErrorView];
 }
@@ -77,12 +75,6 @@
     
     UIColor *bgImgColor = [UIColor colorWithPatternImage:bgImage];
     self.view.backgroundColor = bgImgColor;
-}
-
-- (void)setupDismissRecognizer
-{
-    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)];
-    [self.view addGestureRecognizer:recognizer];
 }
 
 - (void)updateButtons
@@ -250,11 +242,6 @@
 }
 
 - (IBAction)closeButtonAction:(id)sender
-{
-    [self dismissSelf];
-}
-
-- (void)tapRecognized:(UITapGestureRecognizer *)recognizer
 {
     [self dismissSelf];
 }

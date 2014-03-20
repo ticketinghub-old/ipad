@@ -45,7 +45,6 @@
  
     [self customizeContentView];
     [self setupBackground];
-    [self setupDismissRecognizer];
     [self updateLabels];
 }
 
@@ -67,12 +66,6 @@
     self.view.backgroundColor = bgImgColor;
 }
 
-- (void)setupDismissRecognizer
-{
-    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)];
-    [self.view addGestureRecognizer:recognizer];
-}
-
 
 - (IBAction)acceptSignatureAction:(id)sender
 {
@@ -81,12 +74,6 @@
 
 
 - (IBAction)closeButtonAction:(id)sender
-{
-    [self dismissSelf];
-}
-
-
-- (void)tapRecognized:(UITapGestureRecognizer *)recognizer
 {
     [self dismissSelf];
 }
