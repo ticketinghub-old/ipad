@@ -8,13 +8,12 @@
 
 #import "TXHSalesTicketCompletionViewController.h"
 #import "TXHOrderManager.h"
+#import "TXHProductsManager.h"
 
 @interface TXHSalesTicketCompletionViewController () <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *coupon;
-@property (weak, nonatomic) IBOutlet UIButton *continueButton;
-
-@property (assign, nonatomic) BOOL editingCoupon;
+@property (weak, nonatomic) IBOutlet UILabel *summaryDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *summaryTotalLabel;
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
 
@@ -27,39 +26,14 @@
 {
     [super viewDidLoad];
     
-    self.valid = YES;
-}
-
-- (IBAction)continueAction:(id)sender {
-#pragma unused (sender)
-    [[UIApplication sharedApplication] sendAction:@selector(completeWizardStep) to:nil from:self forEvent:nil];
-}
-
-#pragma mark - UITextField delegate
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-#pragma unused (textField)
+    TXHOrder *order = [TXHORDERMANAGER order];
+    NSNumber *totalPrice = [order total];
+    NSDate *validFromDate = [(TXHTicket *)[order.tickets anyObject] validFrom];
     
-    // Set a flag used when the keyboard appears whilst editing the coupon
-    self.editingCoupon = YES;
-    if ([self.delegate respondsToSelector:@selector(increaseHeight)]) {
-        [self.delegate performSelector:@selector(increaseHeight)];
-    }
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-#pragma unused (textField)
-
-    // Clear the flag used when the keyboard appears whilst editing the coupon
-    self.editingCoupon = NO;
-    if ([self.delegate respondsToSelector:@selector(decreaseHeight)]) {
-        [self.delegate performSelector:@selector(decreaseHeight)];
-    }
-}
-
-- (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
-{
- 
+    self.summaryTotalLabel.text = [TXHPRODUCTSMANAGER priceStringForPrice:totalPrice];
+    self.summaryDateLabel.text  = [validFromDate description];
+    
+    self.valid = YES;
 }
 
 @end
