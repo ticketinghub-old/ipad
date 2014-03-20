@@ -185,8 +185,8 @@
 
 - (void)updateHeader
 {
-    self.titleLabel.text    = [NSString stringWithFormat:@"%d Attendees",[self.tickets count]];
-    self.subtitleLabel.text = [NSString stringWithFormat:@"%d Attending",[self attendingTickets]];
+    self.titleLabel.text    = [NSString stringWithFormat:@"%lu Attendees",(unsigned long)[self.tickets count]];
+    self.subtitleLabel.text = [NSString stringWithFormat:@"%lu Attending",(unsigned long)[self attendingTickets]];
 }
 
 - (void)showDetailsForTicket:(TXHTicket *)ticket

@@ -27,12 +27,12 @@
 
 - (void)setAttendedCount:(NSNumber *)count
 {
-    self.attendedLabel.text = [NSString stringWithFormat:@"%d Attending", [count integerValue]];
+    self.attendedLabel.text = [NSString stringWithFormat:@"%ld Attending", (long)[count integerValue]];
 }
 
 - (void)setTotalCount:(NSNumber *)count
 {
-    self.ticketCountLabel.text = [NSString stringWithFormat:@"  %d  ",[count integerValue]];
+    self.ticketCountLabel.text = [NSString stringWithFormat:@"  %ld  ",(long)[count integerValue]];
 }
 
 - (void)setExpanded:(BOOL)expanded {
