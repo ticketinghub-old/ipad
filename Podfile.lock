@@ -1,4 +1,5 @@
 PODS:
+  - ACEDrawingView (1.1.0)
   - AFNetworking (2.2.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
@@ -32,6 +33,7 @@ PODS:
   - TapkuLibrary (0.2.4)
 
 DEPENDENCIES:
+  - ACEDrawingView (~> 1.1.0)
   - Expecta (~> 0.2.3)
   - iOS-api (from `.`)
   - OCMock (~> 2.2.3)
@@ -48,6 +50,7 @@ EXTERNAL SOURCES:
     :git: https://github.com/Hubbub/tapkulibrary.git
 
 SPEC CHECKSUMS:
+  ACEDrawingView: c11f95c576d5d0ae81f1c17d0ecbf81007f7034d
   AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
   DCTCoreDataStack: 4090bc1d6819fda813c7cc45119d1fa8fd8b8b3c
   Expecta: 5c147dedfea5fbcf773995f7e65020abcc936ce5

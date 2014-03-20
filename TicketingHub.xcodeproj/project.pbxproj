@@ -617,6 +617,13 @@
 			name = Buttons;
 			sourceTree = "<group>";
 		};
+		3E7F87C818DAD14A0046DD7A /* External */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
 		3E87023A18C72A41008F4EAD /* Searching Area */ = {
 			isa = PBXGroup;
 			children = (
@@ -864,6 +871,7 @@
 		58E4FB971760D3C800E328A0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3E7F87C818DAD14A0046DD7A /* External */,
 				EEB1843317D113FB0025530A /* Common */,
 				EEB1846917D1148A0025530A /* Door */,
 				EE75D9AA17D112AC009ADCD8 /* Login */,
