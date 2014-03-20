@@ -72,16 +72,18 @@
     
     [TXHORDERMANAGER updateOrderWithOwnerInfo:ownerInfo
                                    completion:^(TXHOrder *order, NSError *error) {
-                                       [TXHORDERMANAGER updateOrderWithPaymentMethod:@"credit"
-                                                                          completion:^(TXHOrder *order2, NSError *error2) {
-                                                                              if (blockName)
-                                                                                  blockName(error2);
-                                                                          }];
+                                       if (!error)
+                                           [TXHORDERMANAGER updateOrderWithPaymentMethod:@"credit"
+                                                                              completion:^(TXHOrder *order2, NSError *error2) {
+                                                                                  if (!error)
+                                                                                      [TXHORDERMANAGER confirmOrderWithCompletion:^(TXHOrder *order3, NSError *error3) {
+                                                                                          if (blockName)
+                                                                                              blockName(error3);
+                                                                                      }];
+                                                                              }];
                                    }];
     
 }
-
-
 
 
 @end

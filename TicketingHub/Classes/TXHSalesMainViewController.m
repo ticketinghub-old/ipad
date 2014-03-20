@@ -23,6 +23,8 @@
 #import "TXHSaleStepsManager.h"
 #import "TXHOrderManager.h"
 
+#import "UIColor+TicketingHub.h"
+
 // defines
 #import "ProductListControllerNotifications.h"
 
@@ -48,31 +50,60 @@ static void * ContentValidContext = &ContentValidContext;
 {
     [super viewDidLoad];
     
-    self.stepsManager = [[TXHSaleStepsManager alloc] initWithSteps:@[@{kWizardStepTitleKey  : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_TITLE",nil),
-                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_DESC",nil),
+    
+//    NSString * const kWizardStepLeftButtonBlock      = @"kWizardStepLeftButtonCustomActionBlock";
+//    NSString * const kWizardStepMiddleButtonBlock    = @"kWizardStepMiddleButtonCustomActionBlock";
+//    NSString * const kWizardStepRightButtonBlock     = @"kWizardStepRightButtonCustomActionBlock";
+
+    
+    self.stepsManager = [[TXHSaleStepsManager alloc] initWithSteps:@[@{kWizardStepTitleKey          : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_TITLE",nil),
+                                                                       kWizardStepDescriptionKey    : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_DESC",nil),
+                                                                       kWizardStepLeftButtonTitle   : NSLocalizedString(@"SALESMAN_STEPS_CANCEL_ORDER_BUTTON_TITLE",nil),
+                                                                       kWizardStepRightButtonTitle  : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_RIGHT_BUTTON_TITLE",nil),
                                                                        kWizardStepControllerSegueID : @"Tickets Quantity",
-                                                                       kWizardStepHidesCancelButton : @YES,
-                                                                       kWizardStepContinueButtonTitle : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_FULL_TITLE",nil)},
+                                                                       kWizardStepHidesLeftButton   : @YES,
+                                                                       kWizardStepHidesMiddleButton : @YES,
+                                                                       kWizardStepLeftButtonColor   : [UIColor redColor],
+                                                                       kWizardStepRightButtonImage  : [UIImage imageNamed:@"right-arrow"]},
 
-                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_TITLE",nil),
-                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_DESC",nil),
+                                                                     @{kWizardStepTitleKey          : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_TITLE",nil),
+                                                                       kWizardStepDescriptionKey    : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_DESC",nil),
+                                                                       kWizardStepLeftButtonTitle   : NSLocalizedString(@"SALESMAN_STEPS_CANCEL_ORDER_BUTTON_TITLE",nil),
+                                                                       kWizardStepRightButtonTitle  : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_RIGHT_BUTTON_TITLE",nil),
                                                                        kWizardStepControllerSegueID : @"Tickets Upgrades",
-                                                                       kWizardStepContinueButtonTitle : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_FULL_TITLE",nil)},
+                                                                       kWizardStepHidesMiddleButton : @YES,
+                                                                       kWizardStepLeftButtonColor   : [UIColor redColor],
+                                                                       kWizardStepRightButtonImage  : [UIImage imageNamed:@"right-arrow"]},
 
-                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"SALESMAN_STEPS_ORDER_SUMMARY_TITLE",nil),
-                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"SALESMAN_STEPS_ORDER_SUMMARY_DESC",nil),
+                                                                     @{kWizardStepTitleKey          : NSLocalizedString(@"SALESMAN_STEPS_ORDER_SUMMARY_TITLE",nil),
+                                                                       kWizardStepDescriptionKey    : NSLocalizedString(@"SALESMAN_STEPS_ORDER_SUMMARY_DESC",nil),
+                                                                       kWizardStepLeftButtonTitle   : NSLocalizedString(@"SALESMAN_STEPS_CANCEL_ORDER_BUTTON_TITLE",nil),
+                                                                       kWizardStepRightButtonTitle  : NSLocalizedString(@"SALESMAN_STEPS_ORDER_SUMMARY_RIGHT_BUTTON_TITLE",nil),
                                                                        kWizardStepControllerSegueID : @"Order Summary",
-                                                                       kWizardStepContinueButtonTitle : NSLocalizedString(@"SALESMAN_STEPS_ORDER_SUMMARY_FULL_TITLE",nil)},
+                                                                       kWizardStepHidesMiddleButton : @YES,
+                                                                       kWizardStepLeftButtonColor   : [UIColor redColor],
+                                                                       kWizardStepRightButtonImage  : [UIImage imageNamed:@"right-arrow"]},
 
-                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"SALESMAN_STEPS_PAYMENT_TITLE",nil),
-                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"SALESMAN_STEPS_PAYMENT_DESC",nil),
+                                                                     @{kWizardStepTitleKey          : NSLocalizedString(@"SALESMAN_STEPS_PAYMENT_TITLE",nil),
+                                                                       kWizardStepDescriptionKey    : NSLocalizedString(@"SALESMAN_STEPS_PAYMENT_DESC",nil),
+                                                                       kWizardStepLeftButtonTitle   : NSLocalizedString(@"SALESMAN_STEPS_CANCEL_ORDER_BUTTON_TITLE",nil),
+                                                                       kWizardStepRightButtonTitle  : NSLocalizedString(@"SALESMAN_STEPS_PAYMENT_RIGHT_BUTTON_TITLE",nil),
                                                                        kWizardStepControllerSegueID : @"Payment",
-                                                                       kWizardStepContinueButtonTitle : NSLocalizedString(@"SALESMAN_STEPS_PAYMENT_FULL_TITLE",nil)},
+                                                                       kWizardStepHidesMiddleButton : @YES,
+                                                                       kWizardStepLeftButtonColor   : [UIColor redColor],
+                                                                       kWizardStepRightButtonImage  : [UIImage imageNamed:@"right-arrow"]},
 
-                                                                     @{kWizardStepTitleKey  : NSLocalizedString(@"SALESMAN_STEPS_SUMMARY_TITLE",nil),
-                                                                       kWizardStepDescriptionKey : NSLocalizedString(@"SALESMAN_STEPS_SUMMARY_DESC",nil),
+                                                                     @{kWizardStepTitleKey          : NSLocalizedString(@"SALESMAN_STEPS_SUMMARY_TITLE",nil),
+                                                                       kWizardStepDescriptionKey    : NSLocalizedString(@"SALESMAN_STEPS_SUMMARY_DESC",nil),
+                                                                       kWizardStepLeftButtonTitle   : NSLocalizedString(@"SALESMAN_STEPS_SUMMARY_LEFT_BUTTON_TITLE",nil),
+                                                                       kWizardStepMiddleButtonTitle : NSLocalizedString(@"SALESMAN_STEPS_SUMMARY_MIDDLE_BUTTON_TITLE",nil),
+                                                                       kWizardStepRightButtonTitle  : NSLocalizedString(@"SALESMAN_STEPS_SUMMARY_RIGHT_BUTTON_TITLE",nil),
                                                                        kWizardStepControllerSegueID : @"Order Completion",
-                                                                       kWizardStepContinueButtonTitle : NSLocalizedString(@"SALESMAN_STEPS_SUMMARY_FULL_TITLE",nil)}
+                                                                       kWizardStepLeftButtonColor   : [UIColor txhBlueColor],
+                                                                       kWizardStepMiddleButtonImage : [UIImage imageNamed:@"printer-icon"],
+                                                                       kWizardStepRightButtonImage  : [UIImage imageNamed:@"printer-icon"],
+                                                                       kWizardStepMiddleButtonBlock : ^{},
+                                                                       kWizardStepRightButtonBlock  : ^{}}
                                                                      ]];
 
     self.stepsManager.delegate = self;
@@ -240,9 +271,7 @@ static void * ContentValidContext = &ContentValidContext;
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if (context == ContentValidContext)
-    {
-        [self.stepCompletionController setContinueButtonEnabled:[self.stepContentController isValid]];
-    }
+        [self.stepCompletionController setRightButtonDisabled:![self.stepContentController isValid]];
 }
 
 #pragma mark - TXHSaleStepsManagerDelegate
@@ -254,20 +283,27 @@ static void * ContentValidContext = &ContentValidContext;
         [TXHORDERMANAGER resetOrder];
     }
     
-    if (index == NSNotFound)
-    {
-        [self.stepCompletionController setCancelButtonHidden:YES];
-        [self.stepCompletionController setContinueButtonEnabled:NO];
-        return;
-    }
     // update header
     [self.timeController setTitleText:step[kWizardStepTitleKey]];
     [self.timeController setTimerEndDate:[TXHORDERMANAGER expirationDate]];
-
+    
     // update footer
-    [self.stepCompletionController setCancelButtonHidden:[step[kWizardStepHidesCancelButton] boolValue]];
-    [self.stepCompletionController setContinueButtonEnabled:[self.stepsManager hasNextStep]];
-    [self.stepCompletionController setContinueButtonTitle:[self  continueButtonTitleForStep:step fromManger:manager]];
+    [self.stepCompletionController setLeftButtonHidden:[step[kWizardStepHidesLeftButton] boolValue]];
+    [self.stepCompletionController setMiddleButtonHidden:[step[kWizardStepHidesMiddleButton] boolValue]];
+    [self.stepCompletionController setRightButtonHidden:[step[kWizardStepHidesRightButton] boolValue]];
+    
+    [self.stepCompletionController setLeftButtonDisabled:[step[kWizardStepLeftButtonDisabled] boolValue]];
+    [self.stepCompletionController setMiddleButtonDisabled:[step[kWizardStepMiddleButtonDisabled] boolValue]];
+    [self.stepCompletionController setRightButtonDisabled:[step[kWizardStepRightButtonDisabled] boolValue]];
+    
+    [self.stepCompletionController setLeftButtonTitle:step[kWizardStepLeftButtonTitle]];
+    [self.stepCompletionController setMiddleButtonTitle:step[kWizardStepMiddleButtonTitle]];
+    [self.stepCompletionController setRightButtonTitle:step[kWizardStepRightButtonTitle]];
+    
+    [self.stepCompletionController setMiddleButtonImage:step[kWizardStepMiddleButtonImage]];
+    [self.stepCompletionController setRightButtonImage:step[kWizardStepRightButtonImage]];
+    
+    [self.stepCompletionController setLeftBarButtonColor:step[kWizardStepLeftButtonColor]];
     
     // update content
     [self showStepContentControllerWithSegueID:step[kWizardStepControllerSegueID]];
@@ -281,10 +317,7 @@ static void * ContentValidContext = &ContentValidContext;
     NSInteger index = [manager indexOfStep:step];
     id nextStep = [manager stepAtIndex:index + 1];
     
-    NSString *nextStepFullTitle = nextStep[kWizardStepContinueButtonTitle];
-
-    if (![nextStepFullTitle length])
-        nextStepFullTitle = NSLocalizedString(@"SALESMAN_STEPS_FINISH_PROCESS_TITLE", nil);
+    NSString *nextStepFullTitle = nextStep[kWizardStepRightButtonTitle];
 
     return nextStepFullTitle;
 }
@@ -296,22 +329,62 @@ static void * ContentValidContext = &ContentValidContext;
 
 #pragma mark - TXHSalesCompletionViewControllerDelegate
 
-- (void)salesCompletionViewControllerDidCancel:(TXHSalesCompletionViewController *)controller
-{
-    [self resetData];
-}
-
 - (void)salesCompletionViewControllerDidContinue:(TXHSalesCompletionViewController *)controller
 {
-    self.stepCompletionController.view.userInteractionEnabled = NO;
-    [self.stepContentController finishStepWithCompletion:^(NSError *error) {
-        if (!error)
-        {
-            [self.stepsManager continueToNextStep];
-        }
-        self.stepCompletionController.view.userInteractionEnabled = YES;
-    }];
+
 }
+
+- (void)salesCompletionViewController:(TXHSalesCompletionViewController *)controller didDidSelectLeftButton:(TXHBorderedButton *)button
+{
+    NSDictionary *step = [self.stepsManager currentStep];
+    
+    void (^block)(void) = step[kWizardStepLeftButtonBlock];
+    if (block) {
+        block();
+    }
+    else
+    {
+        // default
+        [self resetData];
+    }
+}
+
+- (void)salesCompletionViewController:(TXHSalesCompletionViewController *)controller didDidSelectMiddleButton:(TXHBorderedButton *)button
+{
+    NSDictionary *step = [self.stepsManager currentStep];
+    
+    void (^block)(void) = step[kWizardStepMiddleButtonBlock];
+    if (block) {
+        block();
+    }
+    else
+    {
+        // default
+    }
+}
+
+- (void)salesCompletionViewController:(TXHSalesCompletionViewController *)controller didDidSelectRightButton:(TXHBorderedButton *)button
+{
+    NSDictionary *step = [self.stepsManager currentStep];
+    
+    void (^block)(void) = step[kWizardStepRightButtonBlock];
+    if (block) {
+        block();
+    }
+    else
+    {
+        // default
+        self.stepCompletionController.view.userInteractionEnabled = NO;
+        [self.stepContentController finishStepWithCompletion:^(NSError *error) {
+            if (!error)
+            {
+                [self.stepsManager continueToNextStep];
+            }
+            self.stepCompletionController.view.userInteractionEnabled = YES;
+        }];
+    }
+}
+
 
 
 @end

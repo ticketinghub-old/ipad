@@ -10,81 +10,130 @@
 
 #import "TXHBorderedButton.h"
 
-static NSInteger const kCancelAlertTag = 123;
-
 @interface TXHSalesCompletionViewController () <UIAlertViewDelegate>
 
-@property (weak, nonatomic) IBOutlet TXHBorderedButton *continueButton;
-@property (weak, nonatomic) IBOutlet TXHBorderedButton *cancelButton;
+@property (weak, nonatomic) IBOutlet TXHBorderedButton *rightButton;
+@property (weak, nonatomic) IBOutlet TXHBorderedButton *middleButton;
+@property (weak, nonatomic) IBOutlet TXHBorderedButton *leftButton;
 
 @end
 
 @implementation TXHSalesCompletionViewController
 
-- (void)setContinueButtonTitle:(NSString *)continueButtonTitle
+#pragma mark Buttons Image
+
+
+- (void)setRightButtonImage:(UIImage *)rightButtonImage
 {
-    [self.continueButton setTitle:continueButtonTitle forState:UIControlStateNormal];
+    [self setImage:rightButtonImage forButton:self.rightButton];
 }
 
-- (void)setContinueButtonEnabled:(BOOL)enabled
+- (void)setMiddleButtonImage:(UIImage *)middleButtonImage
 {
-    self.continueButton.enabled = enabled;
-    self.continueButton.alpha = enabled ? 1.0 : 0.5;
+    [self setImage:middleButtonImage forButton:self.middleButton];
 }
 
-- (void)setCancelButtonHidden:(BOOL)hidden
+- (void)setImage:(UIImage *)image forButton:(TXHBorderedButton *)button
 {
-    self.cancelButton.hidden = hidden;
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [button setImage:image forState:UIControlStateNormal];
 }
 
-- (void)viewDidLoad
+#pragma mark Buttons Title
+
+- (void)setLeftButtonTitle:(NSString *)continueButtonTitle
 {
-    [super viewDidLoad];
-    
-    UIImage *arrow = [UIImage imageNamed:@"right-arrow"];
-    arrow = [arrow imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [self.continueButton setImage:arrow forState:UIControlStateNormal];
+    [self setTitle:continueButtonTitle forButton:self.leftButton];
+}
+
+- (void)setMiddleButtonTitle:(NSString *)continueButtonTitle
+{
+    [self setTitle:continueButtonTitle forButton:self.middleButton];
+}
+
+- (void)setRightButtonTitle:(NSString *)continueButtonTitle
+{
+    [self setTitle:continueButtonTitle forButton:self.rightButton];
+}
+
+- (void)setTitle:(NSString *)title forButton:(TXHBorderedButton *)button
+{
+    if (![title length])
+        title = @"";
+
+    [button setTitle:title forState:UIControlStateNormal];
+}
+
+#pragma mark Buttons Enable
+
+- (void)setLeftButtonDisabled:(BOOL)disabled
+{
+    [self setButton:self.leftButton disabled:disabled];
+}
+
+- (void)setMiddleButtonDisabled:(BOOL)disabled
+{
+    [self setButton:self.middleButton disabled:disabled];
+}
+
+- (void)setRightButtonDisabled:(BOOL)disabled
+{
+    [self setButton:self.rightButton disabled:disabled];
+}
+
+- (void)setButton:(TXHBorderedButton *)button disabled:(BOOL)disabled
+{
+    button.enabled = !disabled;
+    button.alpha   = !disabled ? 1.0 : 0.5;
+}
+
+#pragma mark Buttons Hide
+
+- (void)setLeftButtonHidden:(BOOL)hidden
+{
+    [self setButton:self.leftButton hidden:hidden];
+}
+
+- (void)setMiddleButtonHidden:(BOOL)hidden
+{
+    [self setButton:self.middleButton hidden:hidden];
+}
+
+- (void)setRightButtonHidden:(BOOL)hidden
+{
+    [self setButton:self.rightButton hidden:hidden];
+}
+
+- (void)setButton:(TXHBorderedButton *)button hidden:(BOOL)hidden
+{
+    button.hidden = hidden;
 }
 
 #pragma mark - Button Actions
 
-- (IBAction)cancelAction:(id)sender
+- (IBAction)leftButtonAction:(id)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Cancel Reservation", nil)
-                                                    message:@"Are you sure want to cancel ticket reservation?"
-                                                   delegate:self
-                                          cancelButtonTitle:@"No"
-                                          otherButtonTitles:@"Yes", nil];
-    alert.tag = kCancelAlertTag;
-    
-    [alert show];
+    [self.delegate salesCompletionViewController:self didDidSelectLeftButton:sender];
 }
 
-- (IBAction)continueAction:(id)sender
+- (IBAction)middleButtonAction:(id)sender
 {
-    [self.delegate salesCompletionViewControllerDidContinue:self];
+    [self.delegate salesCompletionViewController:self didDidSelectMiddleButton:sender];
 }
 
-#pragma mark - UITextField delegate
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    [[UIApplication sharedApplication] sendAction:@selector(increaseCompletionContainerHeight:) to:nil from:self forEvent:nil];
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    [[UIApplication sharedApplication] sendAction:@selector(decreaseCompletionContainerHeight:) to:nil from:self forEvent:nil];
-}
-
-#pragma mark UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+- (IBAction)rightButtonAction:(id)sender
 {
-    if (alertView.tag == kCancelAlertTag)
-    {
-        if (buttonIndex == 1) {
-            [self.delegate salesCompletionViewControllerDidCancel:self];
-        }
-    }
+    [self.delegate salesCompletionViewController:self didDidSelectRightButton:sender];
+}
+
+
+#pragma mark - Button Color
+
+- (void)setLeftBarButtonColor:(UIColor *)color;
+{
+    self.leftButton.borderColor          = color;
+    self.leftButton.normalTextColor      = color;
+    self.leftButton.highlightedFillColor = color;
 }
 
 @end

@@ -12,7 +12,7 @@
 @interface TXHSaleStepsManager ()
 
 @property (strong, nonatomic) NSArray *steps;
-@property (assign, nonatomic) NSUInteger currentStep;
+@property (assign, nonatomic) NSUInteger currentStepIndex;
 
 @end
 
@@ -30,36 +30,31 @@
 
 - (void)continueToNextStep;
 {
-    self.currentStep++;
+    self.currentStepIndex++;
 }
 
 - (BOOL)hasNextStep
 {
-    return self.currentStep + 1 < [self numberOfsteps];
+    return self.currentStepIndex + 1 < [self numberOfsteps];
 }
 
 - (void)resetProcess
 {
-    _currentStep = -1;
-    self.currentStep = 0;
+    self.currentStepIndex = 0;
 }
 
--(void)setCurrentStep:(NSUInteger)currentStep
+- (void)setCurrentStepIndex:(NSUInteger)currentStepIndex
 {
-    if (_currentStep != currentStep)
-    {
-        _currentStep = currentStep;
+        _currentStepIndex = currentStepIndex;
         
-        [self.delegate saleStepsManager:self didChangeToStep:[self stepAtIndex:_currentStep]];
-    }
+        [self.delegate saleStepsManager:self didChangeToStep:[self stepAtIndex:_currentStepIndex]];
 }
 
 #pragma mark TXHSalesWizardViewControllerDataSource
 
-
-- (NSUInteger)currentStepIndex
+- (id)currentStep
 {
-    return _currentStep;
+    return [self stepAtIndex:self.currentStepIndex];
 }
 
 - (NSUInteger)numberOfsteps
@@ -74,12 +69,12 @@
 
 - (BOOL)isStepCompleted:(id)step
 {
-    return [self indexOfStep:step] < self.currentStep;
+    return [self indexOfStep:step] < self.currentStepIndex;
 }
 
 - (BOOL)isStepCurrent:(id)step
 {
-    return [self indexOfStep:step] == self.currentStep;
+    return [self indexOfStep:step] == self.currentStepIndex;
 }
 
 - (id)stepAtIndex:(NSUInteger)stepIndex
@@ -92,7 +87,7 @@
 
 - (void)salesWizardViewController:(TXHSalesWizardViewController *)wizard didSelectStepAtIndex:(NSUInteger)stepIndex
 {
-    self.currentStep = stepIndex;
+    self.currentStepIndex = stepIndex;
 }
 
 - (BOOL)salesWizardViewController:(TXHSalesWizardViewController *)wizard canSelectStepAtIndex:(NSUInteger)stepIndex

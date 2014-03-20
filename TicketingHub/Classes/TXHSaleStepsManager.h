@@ -28,6 +28,7 @@
 
 - (instancetype)initWithSteps:(NSArray *)steps;
 - (NSInteger)indexOfStep:(id)step;
+- (id)currentStep;
 - (void)continueToNextStep;
 - (void)resetProcess;
 - (BOOL)hasNextStep;

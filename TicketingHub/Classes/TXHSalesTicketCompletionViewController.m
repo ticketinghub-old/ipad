@@ -59,12 +59,7 @@
 
 - (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
 {
-    [TXHORDERMANAGER confirmOrderWithCompletion:^(TXHOrder *order, NSError *error) {
-
-        if (blockName)
-            blockName(error);
-        
-    }];
+ 
 }
 
 @end
