@@ -1272,15 +1272,10 @@
                                             <action selector="closeButtonAction:" destination="X77-oU-xTm" eventType="touchUpInside" id="o2g-Jz-buS"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lqT-OQ-mWw" customClass="ACEDrawingView">
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lqT-OQ-mWw" customClass="PPSSignatureView">
                                         <rect key="frame" x="20" y="80" width="600" height="205"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                                <integer key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Customer Signature" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYV-dk-t1A">
                                         <rect key="frame" x="20" y="20" width="379" height="52"/>
@@ -1381,7 +1376,9 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="acceptButton" destination="T1i-M9-B5g" id="tcS-xF-tTP"/>
                         <outlet property="contentView" destination="qwF-YL-ol3" id="KVT-vZ-XbF"/>
+                        <outlet property="signatureView" destination="lqT-OQ-mWw" id="mEh-VY-SzZ"/>
                         <outlet property="totalPriceValueLabel" destination="KQJ-zF-Wph" id="i9j-86-s5f"/>
                         <outlet property="userNameLabel" destination="N9a-OH-bmH" id="urg-1b-cor"/>
                     </connections>

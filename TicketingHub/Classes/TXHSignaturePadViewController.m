@@ -10,12 +10,18 @@
 #import "TXHSignaturePadViewController.h"
 #import "UIImage+ImageEffects.h"
 #import "UIColor+TicketingHub.h"
+#import "TXHBorderedButton.h"
+#import <PPSSignatureView/PPSSignatureView.h>
+
+static void * kSIgnatureViewHasSignatureContext = &kSIgnatureViewHasSignatureContext;
 
 @interface TXHSignaturePadViewController ()
 
+@property (weak, nonatomic) IBOutlet TXHBorderedButton *acceptButton;
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UIView  *contentView;
+@property (weak, nonatomic) IBOutlet PPSSignatureView *signatureView;
 
 @end
 
@@ -46,6 +52,7 @@
     [self customizeContentView];
     [self setupBackground];
     [self updateLabels];
+    [self observeSignatureView];
 }
 
 - (void)customizeContentView
@@ -66,6 +73,28 @@
     self.view.backgroundColor = bgImgColor;
 }
 
+- (void)observeSignatureView
+{
+    [self.signatureView addObserver:self
+                         forKeyPath:@"hasSignature"
+                            options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
+                            context:kSIgnatureViewHasSignatureContext];
+}
+
+- (void)stopObservingSignatureView
+{
+    [self.signatureView removeObserver:self
+                            forKeyPath:@"hasSignature"
+                               context:kSIgnatureViewHasSignatureContext];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (context == kSIgnatureViewHasSignatureContext)
+    {
+        self.acceptButton.enabled = self.signatureView.hasSignature;
+    }
+}
 
 - (IBAction)acceptSignatureAction:(id)sender
 {
@@ -82,6 +111,11 @@
 - (void)dismissSelf
 {
     [self.delegate txhSignaturePadViewControllerShouldDismiss:self];
+}
+
+- (void)dealloc
+{
+    [self stopObservingSignatureView];
 }
 
 
