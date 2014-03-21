@@ -10,6 +10,7 @@
 #import "UIImage+ImageEffects.h"
 #import "UIColor+TicketingHub.h"
 #import "NSDate+Additions.h"
+#import "NSDateFormatter+DisplayFormat.h"
 #import "TXHBorderedButton.h"
 #import <QuartzCore/QuartzCore.h>
 #import <iOS-api/NSDate+ISO.h>
@@ -262,14 +263,7 @@
 
 - (NSString *)dateStringForDate:(NSDate *)date
 {
-    NSString *dateString;
-    @synchronized (self)
-    {
-        self.dateFormatter.dateFormat = [NSString stringWithFormat:@"d'%@' MMM HH:MM", [date daySuffix]];
-        dateString = [self.dateFormatter stringFromDate:date];
-    }
-    
-    return dateString;
+    return [NSDateFormatter txh_fullDateStringFromDate:date];
 }
 
 - (void)setTicket:(TXHTicket *)ticket

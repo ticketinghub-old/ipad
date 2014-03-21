@@ -7,6 +7,9 @@
 //
 
 #import "TXHSalesTicketCompletionViewController.h"
+#import "NSDateFormatter+DisplayFormat.h"
+
+
 #import "TXHOrderManager.h"
 #import "TXHProductsManager.h"
 
@@ -31,7 +34,7 @@
     NSDate *validFromDate = [(TXHTicket *)[order.tickets anyObject] validFrom];
     
     self.summaryTotalLabel.text = [TXHPRODUCTSMANAGER priceStringForPrice:totalPrice];
-    self.summaryDateLabel.text  = [validFromDate description];
+    self.summaryDateLabel.text  = [NSDateFormatter txh_fullDateStringFromDate:validFromDate];
     
     self.valid = YES;
 }

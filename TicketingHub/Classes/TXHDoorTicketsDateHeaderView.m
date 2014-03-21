@@ -7,12 +7,9 @@
 //
 
 #import "TXHDoorTicketsDateHeaderView.h"
-#import "NSDate+Additions.h"
-
+#import "NSDateFormatter+DisplayFormat.h"
 
 @interface TXHDoorTicketsDateHeaderView ()
-
-@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 @end
 
@@ -20,17 +17,7 @@
 
 - (void)setDate:(NSDate *)date
 {
-    self.dateFormatter.dateFormat = [NSString stringWithFormat:@"d'%@' MMMM YYYY, HH:MM", [date daySuffix]];
-    NSString *dateString = [self.dateFormatter stringFromDate:date];
-    self.dateValueLabel.text = dateString;
-}
-
-- (NSDateFormatter *)dateFormatter
-{
-    if (!_dateFormatter) {
-        _dateFormatter = [[NSDateFormatter alloc] init];
-    }
-    return _dateFormatter;
+    self.dateValueLabel.text = [NSDateFormatter txh_fullDateStringFromDate:date];
 }
 
 @end

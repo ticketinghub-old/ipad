@@ -20,6 +20,7 @@
 		3E4ADF7618D9ED2800D2C508 /* TXHSignaturePadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4ADF7518D9ED2800D2C508 /* TXHSignaturePadViewController.m */; };
 		3E6A422518C483870053EF34 /* TXHSensorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6A422418C483870053EF34 /* TXHSensorView.m */; };
 		3E6F479718AFD6A300E644F7 /* TXHBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F479618AFD6A300E644F7 /* TXHBorderedButton.m */; };
+		3E7F87D418DC59070046DD7A /* NSDateFormatter+DisplayFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F87D318DC59060046DD7A /* NSDateFormatter+DisplayFormat.m */; };
 		3E87704218D710D100585FFA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E87704018D710D100585FFA /* Localizable.strings */; };
 		3E87704718D711C900585FFA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E87704518D711C900585FFA /* InfoPlist.strings */; };
 		3E87709818D7355600585FFA /* Salesman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E87709A18D7355600585FFA /* Salesman.storyboard */; };
@@ -141,6 +142,8 @@
 		3E6A422418C483870053EF34 /* TXHSensorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSensorView.m; sourceTree = "<group>"; };
 		3E6F479518AFD6A300E644F7 /* TXHBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBorderedButton.h; sourceTree = "<group>"; };
 		3E6F479618AFD6A300E644F7 /* TXHBorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBorderedButton.m; sourceTree = "<group>"; };
+		3E7F87D218DC59060046DD7A /* NSDateFormatter+DisplayFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+DisplayFormat.h"; sourceTree = "<group>"; };
+		3E7F87D318DC59060046DD7A /* NSDateFormatter+DisplayFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+DisplayFormat.m"; sourceTree = "<group>"; };
 		3E87704B18D72B8600585FFA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3E87709218D72EB800585FFA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3E87709B18D7356100585FFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Salesman.storyboard; sourceTree = "<group>"; };
@@ -595,6 +598,8 @@
 				3EE8E21318C890F5006E8F5E /* UIImage+String.m */,
 				3EAA200018CF7C52003EC924 /* TXHTicket+Filter.h */,
 				3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */,
+				3E7F87D218DC59060046DD7A /* NSDateFormatter+DisplayFormat.h */,
+				3E7F87D318DC59060046DD7A /* NSDateFormatter+DisplayFormat.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1143,6 +1148,7 @@
 				EEB1845F17D114390025530A /* TXHDataSelectionView.m in Sources */,
 				EEB1846017D114390025530A /* TXHDataSelectionViewController.m in Sources */,
 				3E8770B018D8685D00585FFA /* TXHSalesSummaryFooter.m in Sources */,
+				3E7F87D418DC59070046DD7A /* NSDateFormatter+DisplayFormat.m in Sources */,
 				3EA36B8018AFDF5C008F8C59 /* TXHProductListCell.m in Sources */,
 				EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */,
 				3E3D46EA18ACB89A00275ACF /* FetchedResultsControllerDataSource.m in Sources */,
