@@ -92,6 +92,9 @@
 
 - (BOOL)salesWizardViewController:(TXHSalesWizardViewController *)wizard canSelectStepAtIndex:(NSUInteger)stepIndex
 {
+    if (self.currentStepIndex == [self.steps count] - 1)
+        return NO;
+    
     return stepIndex < self.currentStepIndex;
 }
 
