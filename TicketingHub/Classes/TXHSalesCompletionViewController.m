@@ -84,7 +84,6 @@
 - (void)setButton:(TXHBorderedButton *)button disabled:(BOOL)disabled
 {
     button.enabled = !disabled;
-    button.alpha   = !disabled ? 1.0 : 0.5;
 }
 
 #pragma mark Buttons Hide
