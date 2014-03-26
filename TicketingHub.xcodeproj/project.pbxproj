@@ -18,6 +18,7 @@
 		3E488BDA18BE850600E90BE6 /* RMDownloadIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E488BD818BE850600E90BE6 /* RMDownloadIndicator.m */; };
 		3E4ADF7318D8C17400D2C508 /* TXHPrintButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4ADF7218D8C17400D2C508 /* TXHPrintButtonsViewController.m */; };
 		3E4ADF7618D9ED2800D2C508 /* TXHSignaturePadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4ADF7518D9ED2800D2C508 /* TXHSignaturePadViewController.m */; };
+		3E53C53D18E343FD00FF6F9B /* TXHPrinterSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E53C53C18E343FD00FF6F9B /* TXHPrinterSelectionViewController.m */; };
 		3E6A422518C483870053EF34 /* TXHSensorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6A422418C483870053EF34 /* TXHSensorView.m */; };
 		3E6F479718AFD6A300E644F7 /* TXHBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F479618AFD6A300E644F7 /* TXHBorderedButton.m */; };
 		3E7F87D418DC59070046DD7A /* NSDateFormatter+DisplayFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F87D318DC59060046DD7A /* NSDateFormatter+DisplayFormat.m */; };
@@ -32,6 +33,16 @@
 		3EA36B8018AFDF5C008F8C59 /* TXHProductListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA36B7F18AFDF5C008F8C59 /* TXHProductListCell.m */; };
 		3EA36B8318B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA36B8218B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m */; };
 		3EA36B8618B237BF008F8C59 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA36B8518B237BF008F8C59 /* UIView+Additions.m */; };
+		3EA52BEE18E2D18900FEA0CA /* TXHPrintersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52BED18E2D18900FEA0CA /* TXHPrintersManager.m */; };
+		3EA52BF118E2D22000FEA0CA /* TXHPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52BF018E2D22000FEA0CA /* TXHPrinter.m */; };
+		3EA52BF518E2EEC600FEA0CA /* StarIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA52BF418E2EEC600FEA0CA /* StarIO.framework */; };
+		3EA52BF718E2EFF000FEA0CA /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA52BF618E2EFF000FEA0CA /* ExternalAccessory.framework */; };
+		3EA52BFB18E2F06600FEA0CA /* TXHStarIOPrintersEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52BFA18E2F06600FEA0CA /* TXHStarIOPrintersEngine.m */; };
+		3EA52C0018E2F19D00FEA0CA /* MiniPrinterFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52BFD18E2F19D00FEA0CA /* MiniPrinterFunctions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3EA52C0118E2F19D00FEA0CA /* PrinterFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52BFF18E2F19D00FEA0CA /* PrinterFunctions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3EA52C0518E3176100FEA0CA /* RasterDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52C0418E3176100FEA0CA /* RasterDocument.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3EA52C0818E3177600FEA0CA /* StarBitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52C0718E3177600FEA0CA /* StarBitmap.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3EA52C0C18E31BDC00FEA0CA /* TXHStarIOPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52C0B18E31BDC00FEA0CA /* TXHStarIOPrinter.m */; };
 		3EAA200218CF7C52003EC924 /* TXHTicket+Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */; };
 		3EC63E0218B36E7A00B091A0 /* TXHSaleStepsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0118B36E7A00B091A0 /* TXHSaleStepsManager.m */; };
 		3EC63E0818B3721600B091A0 /* TXHSalesStepAbstract.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0718B3721600B091A0 /* TXHSalesStepAbstract.m */; };
@@ -138,6 +149,8 @@
 		3E4ADF7218D8C17400D2C508 /* TXHPrintButtonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHPrintButtonsViewController.m; sourceTree = "<group>"; };
 		3E4ADF7418D9ED2800D2C508 /* TXHSignaturePadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSignaturePadViewController.h; path = TicketingHub/Classes/TXHSignaturePadViewController.h; sourceTree = SOURCE_ROOT; };
 		3E4ADF7518D9ED2800D2C508 /* TXHSignaturePadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSignaturePadViewController.m; path = TicketingHub/Classes/TXHSignaturePadViewController.m; sourceTree = SOURCE_ROOT; };
+		3E53C53B18E343FD00FF6F9B /* TXHPrinterSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHPrinterSelectionViewController.h; sourceTree = "<group>"; };
+		3E53C53C18E343FD00FF6F9B /* TXHPrinterSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHPrinterSelectionViewController.m; sourceTree = "<group>"; };
 		3E6A422318C483870053EF34 /* TXHSensorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSensorView.h; sourceTree = "<group>"; };
 		3E6A422418C483870053EF34 /* TXHSensorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSensorView.m; sourceTree = "<group>"; };
 		3E6F479518AFD6A300E644F7 /* TXHBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBorderedButton.h; sourceTree = "<group>"; };
@@ -163,6 +176,26 @@
 		3EA36B8218B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesWizardTabelViewCell.m; path = TicketingHub/Classes/TXHSalesWizardTabelViewCell.m; sourceTree = SOURCE_ROOT; };
 		3EA36B8418B237BF008F8C59 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
 		3EA36B8518B237BF008F8C59 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
+		3EA52BEC18E2D18900FEA0CA /* TXHPrintersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHPrintersManager.h; sourceTree = "<group>"; };
+		3EA52BED18E2D18900FEA0CA /* TXHPrintersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHPrintersManager.m; sourceTree = "<group>"; };
+		3EA52BEF18E2D22000FEA0CA /* TXHPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHPrinter.h; sourceTree = "<group>"; };
+		3EA52BF018E2D22000FEA0CA /* TXHPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHPrinter.m; sourceTree = "<group>"; };
+		3EA52BF418E2EEC600FEA0CA /* StarIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = StarIO.framework; sourceTree = "<group>"; };
+		3EA52BF618E2EFF000FEA0CA /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		3EA52BF918E2F06600FEA0CA /* TXHStarIOPrintersEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHStarIOPrintersEngine.h; sourceTree = "<group>"; };
+		3EA52BFA18E2F06600FEA0CA /* TXHStarIOPrintersEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHStarIOPrintersEngine.m; sourceTree = "<group>"; };
+		3EA52BFC18E2F19D00FEA0CA /* MiniPrinterFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniPrinterFunctions.h; sourceTree = "<group>"; };
+		3EA52BFD18E2F19D00FEA0CA /* MiniPrinterFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniPrinterFunctions.m; sourceTree = "<group>"; };
+		3EA52BFE18E2F19D00FEA0CA /* PrinterFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrinterFunctions.h; sourceTree = "<group>"; };
+		3EA52BFF18E2F19D00FEA0CA /* PrinterFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrinterFunctions.m; sourceTree = "<group>"; };
+		3EA52C0218E2F1B700FEA0CA /* CommonEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonEnum.h; sourceTree = "<group>"; };
+		3EA52C0318E3176100FEA0CA /* RasterDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RasterDocument.h; sourceTree = "<group>"; };
+		3EA52C0418E3176100FEA0CA /* RasterDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RasterDocument.m; sourceTree = "<group>"; };
+		3EA52C0618E3177600FEA0CA /* StarBitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarBitmap.h; sourceTree = "<group>"; };
+		3EA52C0718E3177600FEA0CA /* StarBitmap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarBitmap.m; sourceTree = "<group>"; };
+		3EA52C0A18E31BDC00FEA0CA /* TXHStarIOPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHStarIOPrinter.h; sourceTree = "<group>"; };
+		3EA52C0B18E31BDC00FEA0CA /* TXHStarIOPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHStarIOPrinter.m; sourceTree = "<group>"; };
+		3EA52C0D18E325A000FEA0CA /* TXHPrintersEngineProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHPrintersEngineProtocol.h; sourceTree = "<group>"; };
 		3EAA200018CF7C52003EC924 /* TXHTicket+Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHTicket+Filter.h"; sourceTree = "<group>"; };
 		3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHTicket+Filter.m"; sourceTree = "<group>"; };
 		3EC63E0018B36E7A00B091A0 /* TXHSaleStepsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSaleStepsManager.h; path = TicketingHub/Classes/TXHSaleStepsManager.h; sourceTree = SOURCE_ROOT; };
@@ -300,12 +333,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EA52BF718E2EFF000FEA0CA /* ExternalAccessory.framework in Frameworks */,
 				CEA4926CD193447DAE8A8A56 /* libPods.a in Frameworks */,
 				4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */,
 				58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */,
 				58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */,
 				EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */,
 				5860E8581762175B0046DFD3 /* QuartzCore.framework in Frameworks */,
+				3EA52BF518E2EEC600FEA0CA /* StarIO.framework in Frameworks */,
 				EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */,
 				EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */,
 				58E4FB551760AE5500E328A0 /* UIKit.framework in Frameworks */,
@@ -694,6 +729,57 @@
 			name = "Products List";
 			sourceTree = "<group>";
 		};
+		3EA52BEB18E2D17300FEA0CA /* Printers */ = {
+			isa = PBXGroup;
+			children = (
+				3EA52BF218E2E81200FEA0CA /* PrinterEngines */,
+				3EA52C0D18E325A000FEA0CA /* TXHPrintersEngineProtocol.h */,
+				3EA52BEC18E2D18900FEA0CA /* TXHPrintersManager.h */,
+				3EA52BED18E2D18900FEA0CA /* TXHPrintersManager.m */,
+				3EA52BEF18E2D22000FEA0CA /* TXHPrinter.h */,
+				3EA52BF018E2D22000FEA0CA /* TXHPrinter.m */,
+				3E53C53B18E343FD00FF6F9B /* TXHPrinterSelectionViewController.h */,
+				3E53C53C18E343FD00FF6F9B /* TXHPrinterSelectionViewController.m */,
+			);
+			name = Printers;
+			sourceTree = "<group>";
+		};
+		3EA52BF218E2E81200FEA0CA /* PrinterEngines */ = {
+			isa = PBXGroup;
+			children = (
+				3EA52BF818E2F01900FEA0CA /* StarIO Engine */,
+			);
+			name = PrinterEngines;
+			sourceTree = "<group>";
+		};
+		3EA52BF818E2F01900FEA0CA /* StarIO Engine */ = {
+			isa = PBXGroup;
+			children = (
+				3EA52C0918E3177F00FEA0CA /* StarIO classes */,
+				3EA52BF918E2F06600FEA0CA /* TXHStarIOPrintersEngine.h */,
+				3EA52BFA18E2F06600FEA0CA /* TXHStarIOPrintersEngine.m */,
+				3EA52C0A18E31BDC00FEA0CA /* TXHStarIOPrinter.h */,
+				3EA52C0B18E31BDC00FEA0CA /* TXHStarIOPrinter.m */,
+			);
+			name = "StarIO Engine";
+			sourceTree = "<group>";
+		};
+		3EA52C0918E3177F00FEA0CA /* StarIO classes */ = {
+			isa = PBXGroup;
+			children = (
+				3EA52C0618E3177600FEA0CA /* StarBitmap.h */,
+				3EA52C0718E3177600FEA0CA /* StarBitmap.m */,
+				3EA52C0318E3176100FEA0CA /* RasterDocument.h */,
+				3EA52C0418E3176100FEA0CA /* RasterDocument.m */,
+				3EA52C0218E2F1B700FEA0CA /* CommonEnum.h */,
+				3EA52BFC18E2F19D00FEA0CA /* MiniPrinterFunctions.h */,
+				3EA52BFD18E2F19D00FEA0CA /* MiniPrinterFunctions.m */,
+				3EA52BFE18E2F19D00FEA0CA /* PrinterFunctions.h */,
+				3EA52BFF18E2F19D00FEA0CA /* PrinterFunctions.m */,
+			);
+			name = "StarIO classes";
+			sourceTree = "<group>";
+		};
 		3EB60EE418C66F6A00B56182 /* RMDownloadIndicator */ = {
 			isa = PBXGroup;
 			children = (
@@ -806,6 +892,8 @@
 		58E4FB531760AE5500E328A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3EA52BF618E2EFF000FEA0CA /* ExternalAccessory.framework */,
+				3EA52BF418E2EEC600FEA0CA /* StarIO.framework */,
 				4D68DAAA178B0A5400743227 /* AVFoundation.framework */,
 				58E4FB581760AE5500E328A0 /* CoreGraphics.framework */,
 				58E4FB561760AE5500E328A0 /* Foundation.framework */,
@@ -876,6 +964,7 @@
 		58E4FB971760D3C800E328A0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3EA52BEB18E2D17300FEA0CA /* Printers */,
 				3E7F87C818DAD14A0046DD7A /* External */,
 				EEB1843317D113FB0025530A /* Common */,
 				EEB1846917D1148A0025530A /* Door */,
@@ -1131,6 +1220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEF6BA4717D1192B005B1B20 /* TXHBarcodeScanner.m in Sources */,
+				3E53C53D18E343FD00FF6F9B /* TXHPrinterSelectionViewController.m in Sources */,
 				58E4FB631760AE5500E328A0 /* main.m in Sources */,
 				3EF8EE3E18D332F200586283 /* TXHDoorTicketsDateHeaderView.m in Sources */,
 				EE75D9B417D11311009ADCD8 /* MainViewController.m in Sources */,
@@ -1140,6 +1230,7 @@
 				3E3D46EE18ACBB8500275ACF /* UIColor+TicketingHub.m in Sources */,
 				3ED7561818BDD96500D8F60B /* TXHOrderManager.m in Sources */,
 				EEB1845A17D114390025530A /* TXHBaseDataEntryView.m in Sources */,
+				3EA52C0118E2F19D00FEA0CA /* PrinterFunctions.m in Sources */,
 				3EA36B8618B237BF008F8C59 /* UIView+Additions.m in Sources */,
 				3E9D734818D1EF110087121B /* TXHDoorOrderTicketsListViewController.m in Sources */,
 				3E488BDA18BE850600E90BE6 /* RMDownloadIndicator.m in Sources */,
@@ -1153,6 +1244,7 @@
 				EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */,
 				3E3D46EA18ACB89A00275ACF /* FetchedResultsControllerDataSource.m in Sources */,
 				EEB1849017D115640025530A /* TXHEmbeddingSegue.m in Sources */,
+				3EA52BEE18E2D18900FEA0CA /* TXHPrintersManager.m in Sources */,
 				3ECE452C18C0B57F00DD1F7B /* AFNetworkActivityLogger.m in Sources */,
 				3E9D734B18D1EF260087121B /* TXHDoorOrderDetailsViewController.m in Sources */,
 				EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */,
@@ -1160,6 +1252,7 @@
 				EE75D98917D11048009ADCD8 /* TXHSalesCompletionViewController.m in Sources */,
 				3EE8E21118C8799D006E8F5E /* TXHDoorTicketCell.m in Sources */,
 				EE75D99017D11048009ADCD8 /* TXHSalesMainViewController.m in Sources */,
+				3EA52BF118E2D22000FEA0CA /* TXHPrinter.m in Sources */,
 				EE75D99317D11048009ADCD8 /* TXHSalesPaymentCardDetailsViewController.m in Sources */,
 				3E6A422518C483870053EF34 /* TXHSensorView.m in Sources */,
 				3EF8EE4118D3330900586283 /* TXHDoorTicketsAttendedHeaderView.m in Sources */,
@@ -1176,6 +1269,7 @@
 				EE75D99C17D11048009ADCD8 /* TXHSalesSummaryItemCell.m in Sources */,
 				3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */,
 				3E4ADF7618D9ED2800D2C508 /* TXHSignaturePadViewController.m in Sources */,
+				3EA52C0018E2F19D00FEA0CA /* MiniPrinterFunctions.m in Sources */,
 				EE75D99E17D11048009ADCD8 /* TXHSalesSummaryHeader.m in Sources */,
 				EE75D99F17D11048009ADCD8 /* TXHSalesSummaryViewController.m in Sources */,
 				3EA36B8318B21F42008F8C59 /* TXHSalesWizardTabelViewCell.m in Sources */,
@@ -1187,7 +1281,9 @@
 				3EE8E21818CA23C8006E8F5E /* TXHTicketDetailsViewController.m in Sources */,
 				3EAA200218CF7C52003EC924 /* TXHTicket+Filter.m in Sources */,
 				3EC63E0218B36E7A00B091A0 /* TXHSaleStepsManager.m in Sources */,
+				3EA52C0C18E31BDC00FEA0CA /* TXHStarIOPrinter.m in Sources */,
 				EE75D9A517D11048009ADCD8 /* TXHSalesUpgradeCell.m in Sources */,
+				3EA52C0818E3177600FEA0CA /* StarBitmap.m in Sources */,
 				EE75D9A617D11048009ADCD8 /* TXHSalesUpgradeDetailsViewController.m in Sources */,
 				3E488BD918BE850600E90BE6 /* RMDisplayLabel.m in Sources */,
 				3EF8EE4418D3332300586283 /* TXHDoorTicketsTotalHeaderView.m in Sources */,
@@ -1195,6 +1291,8 @@
 				3EE8E21418C890F5006E8F5E /* UIImage+String.m in Sources */,
 				3EC63E0818B3721600B091A0 /* TXHSalesStepAbstract.m in Sources */,
 				EE75D9A917D11048009ADCD8 /* TXHSalesWizardViewController.m in Sources */,
+				3EA52C0518E3176100FEA0CA /* RasterDocument.m in Sources */,
+				3EA52BFB18E2F06600FEA0CA /* TXHStarIOPrintersEngine.m in Sources */,
 				EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */,
 				EEB1846617D114390025530A /* TXHTextEntryTableViewCell.m in Sources */,
 				3ECE137418B63A6900E7148F /* NSDate+Additions.m in Sources */,
@@ -1346,6 +1444,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
@@ -1387,6 +1486,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
@@ -1509,6 +1609,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";

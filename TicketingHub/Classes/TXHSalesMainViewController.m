@@ -25,19 +25,31 @@
 
 #import "UIColor+TicketingHub.h"
 
+#import "TXHPrintersManager.h"
+#import "TXHPrinterSelectionViewController.h"
+
 // defines
 #import "ProductListControllerNotifications.h"
 
+typedef NS_ENUM(NSUInteger, TXHPrintTarget) {
+    TXHPrintTargetNone,
+    TXHPrintTargetTickets,
+    TXHPrintTargetRecipt
+};
+
 static void * ContentValidContext = &ContentValidContext;
 
-@interface TXHSalesMainViewController ()  <TXHSaleStepsManagerDelegate, TXHSalesCompletionViewControllerDelegate>
+@interface TXHSalesMainViewController ()  <TXHSaleStepsManagerDelegate, TXHSalesCompletionViewControllerDelegate, TXHPrinterSelectionViewControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIView *contentsContainer;
 
 @property (strong, nonatomic) TXHSalesWizardViewController           *wizardSteps;
 @property (strong, nonatomic) TXHSalesTimerViewController            *timeController;
 @property (strong, nonatomic) TXHSalesCompletionViewController       *stepCompletionController;
 @property (strong, nonatomic) UIViewController<TXHSalesContentsViewControllerProtocol> *stepContentController;
 
-@property (weak, nonatomic) IBOutlet UIView *contentsContainer;
+@property (assign, nonatomic) TXHPrintTarget       printTarget;
+@property (strong, nonatomic) UIPopoverController *printerSelectorPopover;
 
 // data
 @property (strong, nonatomic) TXHSaleStepsManager *stepsManager;
@@ -49,12 +61,6 @@ static void * ContentValidContext = &ContentValidContext;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-//    NSString * const kWizardStepLeftButtonBlock      = @"kWizardStepLeftButtonCustomActionBlock";
-//    NSString * const kWizardStepMiddleButtonBlock    = @"kWizardStepMiddleButtonCustomActionBlock";
-//    NSString * const kWizardStepRightButtonBlock     = @"kWizardStepRightButtonCustomActionBlock";
-
     
     self.stepsManager = [[TXHSaleStepsManager alloc] initWithSteps:@[@{kWizardStepTitleKey          : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_TITLE",nil),
                                                                        kWizardStepDescriptionKey    : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_DESC",nil),
@@ -102,8 +108,8 @@ static void * ContentValidContext = &ContentValidContext;
                                                                        kWizardStepLeftButtonColor   : [UIColor txhBlueColor],
                                                                        kWizardStepMiddleButtonImage : [UIImage imageNamed:@"printer-icon"],
                                                                        kWizardStepRightButtonImage  : [UIImage imageNamed:@"printer-icon"],
-                                                                       kWizardStepMiddleButtonBlock : ^{},
-                                                                       kWizardStepRightButtonBlock  : ^{}}
+                                                                       kWizardStepMiddleButtonBlock : ^(UIButton *button){[self showPrinterSelectorFromButton:button]; self.printTarget = TXHPrintTargetRecipt;},
+                                                                       kWizardStepRightButtonBlock  : ^(UIButton *button){[self showPrinterSelectorFromButton:button]; self.printTarget = TXHPrintTargetTickets;}}
                                                                      ]];
 
     self.stepsManager.delegate = self;
@@ -128,6 +134,20 @@ static void * ContentValidContext = &ContentValidContext;
     [self unregisterForProductAndAvailabilityChanges];
     [self unregisterFromKeyboardNotifications];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHOrderDidExpireNotification object:nil];
+}
+
+- (void)showPrinterSelectorFromButton:(UIButton *)button
+{
+    TXHPrinterSelectionViewController *printerSelector = [[TXHPrinterSelectionViewController alloc] init];
+    printerSelector.delegate = self;
+    
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:printerSelector];
+    popover.popoverContentSize = CGSizeMake(200, 110);
+    
+    CGRect fromRect = [button.superview convertRect:button.frame toView:self.view];
+    [popover presentPopoverFromRect:fromRect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
+    
+    self.printerSelectorPopover = popover;
 }
 
 - (void)orderDidExpire:(NSNotification *)note
@@ -338,9 +358,9 @@ static void * ContentValidContext = &ContentValidContext;
 {
     NSDictionary *step = [self.stepsManager currentStep];
     
-    void (^block)(void) = step[kWizardStepLeftButtonBlock];
+    void (^block)(UIButton *button) = step[kWizardStepLeftButtonBlock];
     if (block) {
-        block();
+        block((UIButton *)button);
     }
     else
     {
@@ -353,9 +373,9 @@ static void * ContentValidContext = &ContentValidContext;
 {
     NSDictionary *step = [self.stepsManager currentStep];
     
-    void (^block)(void) = step[kWizardStepMiddleButtonBlock];
+    void (^block)(UIButton *button) = step[kWizardStepMiddleButtonBlock];
     if (block) {
-        block();
+        block((UIButton *)button);
     }
     else
     {
@@ -367,9 +387,9 @@ static void * ContentValidContext = &ContentValidContext;
 {
     NSDictionary *step = [self.stepsManager currentStep];
     
-    void (^block)(void) = step[kWizardStepRightButtonBlock];
+    void (^block)(UIButton *buttton) = step[kWizardStepRightButtonBlock];
     if (block) {
-        block();
+        block((UIButton *)button);
     }
     else
     {
@@ -385,6 +405,31 @@ static void * ContentValidContext = &ContentValidContext;
     }
 }
 
+#pragma mark - TXHPrinterSelectionViewControllerDelegate
+
+- (void)txhPrinterSelectionViewController:(TXHPrinterSelectionViewController *)controller
+                         didSelectPrinter:(TXHPrinter *)printer
+{
+    [self.printerSelectorPopover dismissPopoverAnimated:YES];
+    self.printerSelectorPopover = nil;
+    
+    [self printSelectedTargetWithPrinter:printer];
+}
+
+- (void)printSelectedTargetWithPrinter:(TXHPrinter *)printer
+{
+    switch (self.printTarget) {
+        case TXHPrintTargetRecipt:
+            NSLog(@"Printing Recipt with %@",printer.displayName);
+            break;
+        case TXHPrintTargetTickets:
+            NSLog(@"Printing Tickets with %@",printer.displayName);
+            break;
+
+        default:
+            break;
+    }
+}
 
 
 @end

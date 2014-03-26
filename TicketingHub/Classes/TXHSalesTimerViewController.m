@@ -18,7 +18,7 @@
 @property (strong, nonatomic) RMDownloadIndicator *timerIndicator;
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-@property (strong, nonatomic) IBOutlet UILabel *timerLabel;
+@property (strong, nonatomic) UILabel *timerLabel;
 
 @property (strong, nonatomic) NSDate *endDate;
 @property (strong, nonatomic) NSDate *starDate;
