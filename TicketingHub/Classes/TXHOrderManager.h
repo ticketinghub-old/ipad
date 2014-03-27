@@ -63,4 +63,7 @@ typedef void (^TXHArrayCompletion)(NSArray *array, NSError *error);
 
 - (void)confirmOrderWithCompletion:(TXHOrderCompletion)completion;
 
+//
+
+- (void)downloadReciptWithWidth:(NSUInteger)width dpi:(NSUInteger)dpi completion:(void(^)(NSURL *url, NSError *error))completion;
 @end

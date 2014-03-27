@@ -44,4 +44,14 @@
                          completionBlock:completion];
 }
 
+- (NSUInteger)paperWidth
+{
+    return 0;
+}
+
+- (NSUInteger)dpi
+{
+    return 0;
+}
+
 @end

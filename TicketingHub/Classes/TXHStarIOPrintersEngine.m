@@ -1,3 +1,4 @@
+
 //
 //  TXHStarIOPrintersEngine.m
 //  TicketingHub
@@ -8,6 +9,9 @@
 
 #import "TXHStarIOPrintersEngine.h"
 #import "TXHStarIOPrinter.h"
+
+#import "MiniPrinterFunctions.h"
+#import "PrinterFunctions.h"
 
 @implementation TXHStarIOPrintersEngine
 
@@ -21,20 +25,41 @@
     
     for (PortInfo *portInfo in printers)
     {
-        TXHStarIOPrinter *printer = [[TXHStarIOPrinter alloc] initWithPrintersEngine:self andName:portInfo.modelName];
-        printer.portInfo = portInfo;
+        TXHStarIOPrinter *printer = [[TXHStarIOPrinter alloc] initWithPrintersEngine:self andPortInfo:portInfo];
         [starPrinters addObject:printer];
     }
     
     completion([starPrinters copy], nil);
 }
 
-- (void)printPDFDocument:(id)document
+- (void)printPDFDocument:(id)documentURL
              withPrinter:(TXHPrinter *)printer
            continueBlock:(TXHPrinterContinueBlock)continueBlock
          completionBlock:(TXHPrinterCompletionBlock)completionBlock
 {
-
+    TXHStarIOPrinter *starPrinter = (TXHStarIOPrinter *)printer;
+    
+    NSData * imgData = [NSData dataWithContentsOfURL:(NSURL *)documentURL];
+    UIImage *img = [UIImage imageWithData:imgData];
+    
+    if (starPrinter.printerType == TXHStarPortablePrinterTypePortable)
+    {
+        [MiniPrinterFunctions PrintBitmapWithPortName:starPrinter.portInfo.portName
+                                         portSettings:@"mini"
+                                          imageSource:img
+                                         printerWidth:576
+                                    compressionEnable:YES
+                                       pageModeEnable:NO];
+    }
+    else if (starPrinter.printerType == TXHStarPortablePrinterTypePOS)
+    {
+        [PrinterFunctions PrintImageWithPortname:starPrinter.portInfo.portName
+                                    portSettings:@""
+                                    imageToPrint:img
+                                        maxWidth:576
+                               compressionEnable:YES
+                                  withDrawerKick:NO];
+    }
 }
 
 @end

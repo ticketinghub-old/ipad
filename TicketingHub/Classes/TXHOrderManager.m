@@ -348,6 +348,15 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
                              }];
 }
 
+- (void)downloadReciptWithWidth:(NSUInteger)width dpi:(NSUInteger)dpi completion:(void(^)(NSURL *url, NSError *error))completion
+{
+    [TXHTICKETINHGUBCLIENT getReciptForOrder:self.order
+                                      format:TXHDocumentFormatPNG
+                                       width:width
+                                         dpi:dpi
+                                  completion:completion];
+}
+
 #pragma mark private methods
 
 

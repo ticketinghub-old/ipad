@@ -17,6 +17,10 @@ typedef void (^TXHPrinterContinueBlock)(void (^continuePrintingBlock)());
 
 @property (nonatomic, readonly, copy) NSString *displayName;
 
+@property (nonatomic, readonly, assign) NSUInteger paperWidth; // in mm
+@property (nonatomic, readonly, assign) NSUInteger dpi;
+
+
 - (instancetype)initWithPrintersEngine:(id<TXHPrintersEngineProtocol>)engine
                                andName:(NSString *)printerName;
 

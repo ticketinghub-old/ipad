@@ -20,7 +20,7 @@ PODS:
     - AFNetworking/NSURLSession
   - DCTCoreDataStack (1.1)
   - Expecta (0.2.4)
-  - iOS-api (0.0.53):
+  - iOS-api (0.0.54):
     - AFNetworking (~> 2.2.0)
     - DCTCoreDataStack (~> 1.1)
   - OCMock (2.2.3)
@@ -28,8 +28,8 @@ PODS:
   - PPSSignatureView (0.1.0)
   - SevenSwitch (1.3.0)
   - Specta (0.2.1)
-  - Stripe (1.0.2):
-    - PaymentKit
+  - Stripe (1.0.4):
+    - PaymentKit (~> 1.0.4)
   - TapkuLibrary (0.2.4)
   - UIImage+PDF (1.1.3)
 
@@ -55,13 +55,13 @@ SPEC CHECKSUMS:
   AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
   DCTCoreDataStack: 4090bc1d6819fda813c7cc45119d1fa8fd8b8b3c
   Expecta: 5c147dedfea5fbcf773995f7e65020abcc936ce5
-  iOS-api: f5745440506e13f4daf92fc2af1dfff15ba8ea71
+  iOS-api: 9269e4fb4aa09f444f87ed9d24023d1f21218251
   OCMock: 74e4ddbcef134170dcc844f91c691f13868075d7
   PaymentKit: 92df7c2fb4fb3b4e0c3f5fb8c8e75cc528025126
   PPSSignatureView: 83ffa630306afc93ad595e5a6e98a0dba1c8a49b
   SevenSwitch: f1ae106a4fcb459829ba5a6a3265e7e9f873f80c
   Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
-  Stripe: 8ce5fe9eca204058d325fcf08d4835585ab8d23b
+  Stripe: 8b8e92a001b63707eb73e5e0b4256a06e5feb816
   TapkuLibrary: 9429b4702b3fb1c58669490e2d301cf37f76a766
   UIImage+PDF: d11cf573422930295467a9867fd1a6bda11421a0
 

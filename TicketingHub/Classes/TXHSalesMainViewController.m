@@ -420,7 +420,22 @@ static void * ContentValidContext = &ContentValidContext;
 {
     switch (self.printTarget) {
         case TXHPrintTargetRecipt:
-            NSLog(@"Printing Recipt with %@",printer.displayName);
+        {
+            [TXHORDERMANAGER downloadReciptWithWidth:printer.paperWidth
+                                                 dpi:printer.dpi
+                                          completion:^(NSURL *url, NSError *error) {
+                                              if (!error)
+                                              {
+                                                  [printer printPDFDocument:url completion:^(NSError *error2) {
+                                                  
+                                                  }];
+                                              }
+                                              else
+                                              {
+                                                  
+                                              }
+                                          }];
+        }
             break;
         case TXHPrintTargetTickets:
             NSLog(@"Printing Tickets with %@",printer.displayName);
@@ -430,6 +445,8 @@ static void * ContentValidContext = &ContentValidContext;
             break;
     }
 }
+
+
 
 
 @end
