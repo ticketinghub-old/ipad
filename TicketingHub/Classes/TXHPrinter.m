@@ -40,7 +40,7 @@
 {
     [self.printerEngine printPDFDocument:document
                              withPrinter:self
-                                continueBlock:self.printingContinue
+                           continueBlock:self.printingContinue
                          completionBlock:completion];
 }
 

@@ -427,12 +427,17 @@ static void * ContentValidContext = &ContentValidContext;
                                               if (!error)
                                               {
                                                   [printer printPDFDocument:url completion:^(NSError *error2) {
-                                                  
+                                                      if (error2)
+                                                      {
+                                                          [self showErrorWithTitle:NSLocalizedString(@"PRINTER_ERROR_TITLE", nil)
+                                                                           message:error2.localizedDescription];
+                                                      }
                                                   }];
                                               }
                                               else
                                               {
-                                                  
+                                                  [self showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
+                                                                   message:error.localizedDescription];
                                               }
                                           }];
         }
@@ -444,6 +449,17 @@ static void * ContentValidContext = &ContentValidContext;
         default:
             break;
     }
+}
+
+- (void)showErrorWithTitle:(NSString *)title message:(NSString *)message
+{
+    UIAlertView *alertView =
+    [[UIAlertView alloc] initWithTitle:title
+                               message:message
+                              delegate:nil
+                     cancelButtonTitle:@"OK"
+                     otherButtonTitles:nil];
+    [alertView show];
 }
 
 
