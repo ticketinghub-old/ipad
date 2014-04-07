@@ -67,7 +67,7 @@
     return _printerModel;
 }
 
--(TXHStarPortablePrinterType)printerType
+- (TXHStarPortablePrinterType)printerType
 {
     switch (self.printerModel)
     {
@@ -80,6 +80,19 @@
     }
     
     return TXHStarPortablePrinterTypeUnknown;
+}
+
+- (BOOL)hasCutter
+{
+    switch (self.printerModel)
+    {
+        case TXHStarPortablePrinterTSP650II:    return YES;
+        case TXHStarPortablePrinterSM300i:      return NO;
+        case TXHStarPortablePrinterUnknown:
+            break;
+    }
+
+    return [super hasCutter];
 }
 
 @end

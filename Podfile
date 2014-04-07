@@ -10,6 +10,7 @@ pod 'SevenSwitch', '~> 1.3.0'
 pod 'TapkuLibrary', :git => 'https://github.com/Hubbub/tapkulibrary.git', :branch => 'ios7'
 pod 'PPSSignatureView', '~> 0.1.0'
 pod 'UIImage+PDF', '~> 1.1.2'
+pod 'UIAlertView-Blocks', '~> 1.0'
 
 target :test, :exclusive => true do
     

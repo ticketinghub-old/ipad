@@ -29,7 +29,7 @@
 
 /* Printer errors */
 
-"PRINTER_ERROR_FAIL_TO_OPEN_PORT_DESC"          = "Fail to Open Port";
+"PRINTER_ERROR_FAIL_TO_OPEN_PORT_DESC"          = "Fail to open port";
 "PRINTER_ERROR_PRINTER_OFFLINE_DESC"            = "Printer is offline";
 "PRINTER_ERROR_TIMED_OUT_DESC"                  = "Write port timed out";
 "PRINTER_ERROR_UNKNOWN_DESC"                    = "Unknown printer error";
@@ -53,13 +53,20 @@
 "LOADING_TICKETS_LABEL"     = "Preparing Tickets";
 
 "PRINTING_RECEIPT_LABEL"    = "Printing Receipt";
-"PRINTING_TICKETS_LABEL"    = "Printing Ticket";
+"PRINTING_TICKETS_LABEL"    = "Printing Tickets";
 
-"TICKET_TEMPLATES_SELECTION_TITLE"                  = "Select Ticket Temlpate";
-"TICKET_TEMPLATES_SELECTION_CANCEL_BUTTON_TITLE"    = "Cancel";
+"TICKET_TEMPLATES_SELECTION_TITLE"                  = "Select ticket type";
+"TICKET_TEMPLATES_SELECTION_CANCEL_BUTTON_TITLE"    = "Cancel printing";
+
+"CONTINUE_PRINTING_TITLE"            = "Print next ticket?";
+"CONTINUE_PRINTING_YES_BUTTON_TITLE" = "Print";
+"CONTINUE_PRINTING_NO_BUTTON_TITLE"  = "Stop printing";
 
 /* Activity labels - Doorman Salesman */
 
 "SD_LOADING_AVAILABILITIES_LABEL"          = "Loading";
 "SD_LOADING_AVAILABILITY_DETAILS_LABEL"    = "Loading";
 "SD_NO_AVAILABILITIES_LABEL"               = "No Availabilities";
+
+
+

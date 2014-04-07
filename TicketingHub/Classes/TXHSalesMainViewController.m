@@ -24,15 +24,17 @@
 #import "TXHOrderManager.h"
 
 #import "UIColor+TicketingHub.h"
+#import "TXHActivityLabelView.h"
 
 #import "TXHPrintersManager.h"
 #import "TXHPrinterSelectionViewController.h"
+
+#import <UIAlertView-Blocks/UIAlertView+Blocks.h>
 
 // defines
 #import "ProductListControllerNotifications.h"
 
 typedef NS_ENUM(NSUInteger, TXHPrintTarget) {
-    TXHPrintTargetNone,
     TXHPrintTargetTickets,
     TXHPrintTargetRecipt
 };
@@ -51,6 +53,10 @@ static void * ContentValidContext = &ContentValidContext;
 @property (assign, nonatomic) TXHPrintTarget       printTarget;
 @property (strong, nonatomic) UIPopoverController *printerSelectorPopover;
 
+@property (strong, nonatomic) TXHActivityLabelView *activityView;
+
+@property (strong, nonatomic) NSArray *ticketTemplates;// TODO: move this away from here
+@property (strong, nonatomic) TXHPrinter *selectedPrinter;// TODO: move this away from here
 // data
 @property (strong, nonatomic) TXHSaleStepsManager *stepsManager;
 
@@ -203,6 +209,22 @@ static void * ContentValidContext = &ContentValidContext;
                                     context:ContentValidContext];
 }
 
+- (TXHActivityLabelView *)activityView
+{
+    if (!_activityView) {
+        TXHActivityLabelView *activityView = [TXHActivityLabelView getInstance];
+        activityView.frame = self.navigationController.view.bounds;
+        activityView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        [activityView hide];
+        
+        [self.navigationController.view addSubview:activityView];
+        _activityView = activityView;
+    }
+    return _activityView;
+}
+
+#pragma mark - notifications
+
 - (void)registerForProductAndAvailabilityChanges
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -249,7 +271,8 @@ static void * ContentValidContext = &ContentValidContext;
 
 #pragma mark - Keyboard notifications
 
-- (void)keyboardWillShow:(NSNotification *)notification {
+- (void)keyboardWillShow:(NSNotification *)notification
+{
     NSDictionary *info = [notification userInfo];
     NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
     NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
@@ -303,7 +326,7 @@ static void * ContentValidContext = &ContentValidContext;
         [TXHORDERMANAGER resetOrder];
     
     if (![manager hasNextStep])
-        [TXHORDERMANAGER stopExpirationTimer];x
+        [TXHORDERMANAGER stopExpirationTimer];
     
     // update header
     [self.timeController setTitleText:step[kWizardStepTitleKey]];
@@ -418,40 +441,123 @@ static void * ContentValidContext = &ContentValidContext;
     [self printSelectedTargetWithPrinter:printer];
 }
 
+
+
 - (void)printSelectedTargetWithPrinter:(TXHPrinter *)printer
 {
-    switch (self.printTarget) {
+    switch (self.printTarget)
+    {
         case TXHPrintTargetRecipt:
-        {
-            [TXHORDERMANAGER downloadReciptWithWidth:printer.paperWidth
-                                                 dpi:printer.dpi
-                                          completion:^(NSURL *url, NSError *error) {
-                                              if (!error)
-                                              {
-                                                  [printer printPDFDocument:url completion:^(NSError *error2) {
-                                                      if (error2)
-                                                      {
-                                                          [self showErrorWithTitle:NSLocalizedString(@"PRINTER_ERROR_TITLE", nil)
-                                                                           message:error2.localizedDescription];
-                                                      }
-                                                  }];
-                                              }
-                                              else
-                                              {
-                                                  [self showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
-                                                                   message:error.localizedDescription];
-                                              }
-                                          }];
-        }
+            [self getAndPrintReceiptWithPrinter:printer];
             break;
         case TXHPrintTargetTickets:
-            NSLog(@"Printing Tickets with %@",printer.displayName);
-            break;
-
-        default:
+            [self getAndPrintTicketsWithPrinter:printer];
             break;
     }
 }
+
+- (void)getAndPrintReceiptWithPrinter:(TXHPrinter *)printer
+{
+    [self.activityView showWithText:NSLocalizedString(@"LOADING_RECEIPT_LABEL", nil) activityIndicatorHidden:NO];
+    [TXHORDERMANAGER downloadReciptWithWidth:printer.paperWidth
+                                         dpi:printer.dpi
+                                  completion:^(NSURL *url, NSError *error) {
+                                      [self.activityView hide];
+                                      if (!error)
+                                      {
+                                          [self printReceiptWithURL:url onPrinter:printer];
+                                      }
+                                      else
+                                      {
+                                          [self showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
+                                                           message:error.localizedDescription];
+                                      }
+                                  }];
+}
+
+- (void)setSelectedPrinter:(TXHPrinter *)selectedPrinter
+{
+    _selectedPrinter = selectedPrinter;
+    
+    if (!selectedPrinter.hasCutter)
+        [_selectedPrinter setPrintingContinueBlock:^(void (^continuePrinting)(BOOL shallContinue))
+        {
+            RIButtonItem *yesButton = [RIButtonItem itemWithLabel:NSLocalizedString(@"CONTINUE_PRINTING_YES_BUTTON_TITLE", nil)
+                                                           action:^{ continuePrinting(YES); }];
+            
+            RIButtonItem *noButton = [RIButtonItem itemWithLabel:NSLocalizedString(@"CONTINUE_PRINTING_NO_BUTTON_TITLE", nil)
+                                                          action:^{ continuePrinting(NO); }];
+            
+            
+            UIAlertView *continueAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"CONTINUE_PRINTING_TITLE", nil)
+                                                                    message:nil
+                                                           cancelButtonItem:nil
+                                                           otherButtonItems:noButton, yesButton, nil];
+            [continueAlert show];
+        }];
+}
+
+- (void)getAndPrintTicketsWithPrinter:(TXHPrinter *)printer
+{
+    [self.activityView showWithText:NSLocalizedString(@"LOADING_TICKETS_LABEL", nil) activityIndicatorHidden:NO];
+
+    self.selectedPrinter = printer;
+    
+    __weak typeof(self) wself = self;
+    
+    [TXHORDERMANAGER getTicketTemplatesWithCompletion:^(NSArray *templates, NSError *error) {
+        if (error)
+        {
+            [wself.activityView hide];
+            [wself showErrorWithTitle:NSLocalizedString(@"PRINTER_ERROR_TITLE", nil)
+                              message:error.localizedDescription];
+        }
+        else
+        {
+            [wself.activityView showWithText:@"" activityIndicatorHidden:YES];
+            [wself selectTemplateFromTemplates:templates];
+        }
+    }];
+}
+
+- (void)selectTemplateFromTemplates:(NSArray *)templates
+{
+    __weak typeof(self) wself = self;
+
+    RIButtonItem *cancelButton = [RIButtonItem itemWithLabel:NSLocalizedString(@"TICKET_TEMPLATES_SELECTION_CANCEL_BUTTON_TITLE", nil)
+                                                      action:^{ [wself.activityView hide]; }];
+    
+    UIAlertView *templatesAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TICKET_TEMPLATES_SELECTION_TITLE", nil)
+                                                             message:nil
+                                                    cancelButtonItem:cancelButton
+                                                    otherButtonItems:nil];
+    for (TXHTicketTemplate *template in templates)
+    {
+        RIButtonItem *item =
+        [RIButtonItem itemWithLabel:template.name
+                             action:^{
+                                 [wself printTicketWithTemplate:template];
+                             }];
+        [templatesAlert addButtonItem:item];
+    }
+    
+    [templatesAlert show];
+}
+
+- (void)printReceiptWithURL:(NSURL *)fileURL onPrinter:(TXHPrinter *)printer
+{
+    [self.activityView showWithText:NSLocalizedString(@"PRINTING_RECEIPT_LABEL", nil) activityIndicatorHidden:NO];
+    [printer printPDFDocument:fileURL completion:^(NSError *error) {
+        [self.activityView hide];
+        if (error)
+        {
+            [self showErrorWithTitle:NSLocalizedString(@"PRINTER_ERROR_TITLE", nil)
+                             message:error.localizedDescription];
+        }
+    }];
+}
+
+#pragma mark - alert views
 
 - (void)showErrorWithTitle:(NSString *)title message:(NSString *)message
 {
@@ -465,6 +571,37 @@ static void * ContentValidContext = &ContentValidContext;
 }
 
 
-
+- (void)printTicketWithTemplate:(TXHTicketTemplate *)template
+{
+    [self.activityView showWithText:NSLocalizedString(@"LOADING_TICKETS_LABEL", nil)
+            activityIndicatorHidden:NO];
+    
+    [TXHORDERMANAGER downloadTicketWithTemplate:template
+                                     completion:^(NSURL *url, NSError *error){
+                                         
+                                         if (error)
+                                         {
+                                             [self showErrorWithTitle:NSLocalizedString(@"PRINTER_ERROR_TITLE", nil)
+                                                              message:error.localizedDescription];
+                                         }
+                                         else
+                                         {
+                                             [self.activityView showWithText:NSLocalizedString(@"PRINTING_TICKETS_LABEL", nil) activityIndicatorHidden:NO];
+                                             
+                                             [self.selectedPrinter printPDFDocument:url completion:^(NSError *err) {
+                                                 
+                                                 if (err)
+                                                 {
+                                                     [self showErrorWithTitle:NSLocalizedString(@"PRINTER_ERROR_TITLE", nil)
+                                                                      message:err.localizedDescription];
+                                                 }
+                                                 else
+                                                 {
+                                                     [self.activityView hide];
+                                                 }
+                                             }];
+                                         }
+                                     }];
+}
 
 @end

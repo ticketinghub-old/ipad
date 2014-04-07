@@ -68,4 +68,9 @@ typedef void (^TXHArrayCompletion)(NSArray *array, NSError *error);
 //
 
 - (void)downloadReciptWithWidth:(NSUInteger)width dpi:(NSUInteger)dpi completion:(void(^)(NSURL *url, NSError *error))completion;
+
+- (void)getTicketTemplatesWithCompletion:(TXHArrayCompletion)completion;
+- (void)downloadTicketWithTemplate:(TXHTicketTemplate *)template completion:(void(^)(NSURL *url, NSError *error))completion;
+
+
 @end

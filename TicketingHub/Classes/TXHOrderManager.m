@@ -356,10 +356,23 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
 - (void)downloadReciptWithWidth:(NSUInteger)width dpi:(NSUInteger)dpi completion:(void(^)(NSURL *url, NSError *error))completion
 {
     [TXHTICKETINHGUBCLIENT getReciptForOrder:self.order
-                                      format:TXHDocumentFormatPNG
+                                      format:TXHDocumentFormatPDF
                                        width:width
                                          dpi:dpi
                                   completion:completion];
+}
+
+- (void)getTicketTemplatesWithCompletion:(TXHArrayCompletion)completion
+{
+    [TXHTICKETINHGUBCLIENT getTicketTemplatesCompletion:completion];
+}
+
+- (void)downloadTicketWithTemplate:(TXHTicketTemplate *)template completion:(void(^)(NSURL *url, NSError *error))completion
+{
+    [TXHTICKETINHGUBCLIENT getTicketToPrintForOrder:self.order
+                                        withTemplet:template
+                                             format:TXHDocumentFormatPDF
+                                         completion:completion];
 }
 
 #pragma mark private methods

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef void (^TXHPrinterCompletionBlock)( NSError * );
-typedef void (^TXHPrinterContinueBlock)(void (^continuePrintingBlock)());
+typedef void (^TXHPrinterContinueBlock)(void (^continuePrintingBlock)(BOOL continuePrinting));
 
 @protocol TXHPrintersEngineProtocol;
 
@@ -19,6 +19,7 @@ typedef void (^TXHPrinterContinueBlock)(void (^continuePrintingBlock)());
 
 @property (nonatomic, readonly, assign) NSUInteger paperWidth; // in mm
 @property (nonatomic, readonly, assign) NSUInteger dpi;
+@property (nonatomic, readonly, assign, getter = hasCutter) BOOL cutter;
 
 
 - (instancetype)initWithPrintersEngine:(id<TXHPrintersEngineProtocol>)engine

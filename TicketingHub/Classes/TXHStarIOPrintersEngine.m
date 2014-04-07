@@ -10,7 +10,10 @@
 #import "TXHStarIOPrintersEngine.h"
 #import "TXHStarIOPrinter.h"
 
+#import <UIImage+PDF/UIImage+PDF.h>
 #import "NSError+TXHPrinters.h"
+
+#import "UIImage+ImageEffects.h"
 
 #import "RasterDocument.h"
 #import "StarBitmap.h"
@@ -48,10 +51,63 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
            continueBlock:(TXHPrinterContinueBlock)continueBlock
          completionBlock:(TXHPrinterCompletionBlock)completionBlock
 {
-    TXHStarIOPrinter *starPrinter = (TXHStarIOPrinter *)printer;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        CGPDFDocumentRef pdf = CGPDFDocumentCreateWithURL((CFURLRef)documentURL);
+        size_t pageCount = CGPDFDocumentGetNumberOfPages(pdf);
+        
+        for (int page = 0; page < pageCount; page++)
+        {
+            __block BOOL printNextPage = YES;
+            
+            dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+            TXHPrinterCompletionBlock askToContinueBlock =
+            ^(NSError *error) {
+                
+                if (continueBlock && page + 1 < pageCount)
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        continueBlock(^(BOOL continuePrinting)
+                                      {
+                                          printNextPage = continuePrinting;
+                                          dispatch_semaphore_signal(semaphore);
+                                      });
+                    });
+                else
+                    dispatch_semaphore_signal(semaphore);
+                
+            };
+            
+            [self printPage:page+1
+               formDocument:documentURL
+                withPrinter:printer
+            completionBlock:askToContinueBlock];
+            
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            
+            if (!printNextPage)
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionBlock(nil); // TODO: should return something to inform that process was cancelled
+                });
+                return;
+            }
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionBlock(nil);
+        });
+    });
+}
+
+- (void)printPage:(int)page formDocument:(NSURL *)documentURL withPrinter:(TXHPrinter *)printer completionBlock:(TXHPrinterCompletionBlock)completionBlock
+{
     
-    NSData * imgData = [NSData dataWithContentsOfURL:(NSURL *)documentURL];
-    UIImage *img = [UIImage imageWithData:imgData];
+    TXHStarIOPrinter *starPrinter = (TXHStarIOPrinter *)printer;
+
+    UIImage *img = [UIImage imageWithPDFURL:documentURL atWidth:STAR_PRINTER_MAXWIDTH atPage:page];
+    
+    img = [img imageWithBackground:[UIColor whiteColor]];
     
     if (starPrinter.printerType == TXHStarPortablePrinterTypePortable)
     {
@@ -106,7 +162,7 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
                               length:sizeof(POS_OPEN_DRAWER_COMMAND) - 1];
     }
     
-    [self sendCommand:commandsToPrint portName:portName portSettings:portSettings timeoutMillis:10000 completion:nil];
+    [self sendCommand:commandsToPrint portName:portName portSettings:portSettings timeoutMillis:10000 completion:completion];
 }
 
 // portable printers
@@ -116,7 +172,7 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
     StarBitmap *starbitmap = [[StarBitmap alloc] initWithUIImage:source :maxWidth :false];
     NSData *commands = [starbitmap getImageMiniDataForPrinting:compressionEnable pageModeEnable:pageModeEnable];
     
-    [self sendCommand:commands portName:portName portSettings:portSettings timeoutMillis:30000 completion:completion];
+    [self sendCommand:commands portName:portName portSettings:portSettings timeoutMillis:10000 completion:completion];
 }
 
 // universal method
@@ -199,6 +255,5 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
         return;
     }
 }
-
 
 @end

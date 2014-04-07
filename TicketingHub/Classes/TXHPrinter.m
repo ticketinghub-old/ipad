@@ -54,4 +54,9 @@
     return 0;
 }
 
+- (BOOL)hasCutter
+{
+    return NO;
+}
+
 @end
