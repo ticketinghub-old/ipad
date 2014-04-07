@@ -152,7 +152,6 @@
 		3E4ADF7518D9ED2800D2C508 /* TXHSignaturePadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSignaturePadViewController.m; path = TicketingHub/Classes/TXHSignaturePadViewController.m; sourceTree = SOURCE_ROOT; };
 		3E53C53B18E343FD00FF6F9B /* TXHPrinterSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHPrinterSelectionViewController.h; sourceTree = "<group>"; };
 		3E53C53C18E343FD00FF6F9B /* TXHPrinterSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHPrinterSelectionViewController.m; sourceTree = "<group>"; };
-		3E53C54218E567B400FF6F9B /* TXHPrinterErrorDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHPrinterErrorDefines.h; sourceTree = "<group>"; };
 		3E53C54318E5693600FF6F9B /* NSError+TXHPrinters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+TXHPrinters.h"; sourceTree = "<group>"; };
 		3E53C54418E5693600FF6F9B /* NSError+TXHPrinters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+TXHPrinters.m"; sourceTree = "<group>"; };
 		3E53C54918E58FB400FF6F9B /* TXHActivityLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHActivityLabelView.h; sourceTree = "<group>"; };
@@ -746,7 +745,6 @@
 				3EA52BF018E2D22000FEA0CA /* TXHPrinter.m */,
 				3E53C53B18E343FD00FF6F9B /* TXHPrinterSelectionViewController.h */,
 				3E53C53C18E343FD00FF6F9B /* TXHPrinterSelectionViewController.m */,
-				3E53C54218E567B400FF6F9B /* TXHPrinterErrorDefines.h */,
 				3E53C54318E5693600FF6F9B /* NSError+TXHPrinters.h */,
 				3E53C54418E5693600FF6F9B /* NSError+TXHPrinters.m */,
 			);
