@@ -310,4 +310,23 @@
     return image;
 }
 
+- (UIImage *)imageWithBackground:(UIColor *)bgColor
+{
+    CGRect rect = CGRectMake(0.0f, 0.0f, self.size.width, self.size.height);
+    
+    UIGraphicsBeginImageContextWithOptions(self.size, YES, 1.0);
+    
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(ctx, bgColor.CGColor);
+    CGContextFillRect(ctx, rect);
+    [self drawInRect:rect];
+    
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
 @end
