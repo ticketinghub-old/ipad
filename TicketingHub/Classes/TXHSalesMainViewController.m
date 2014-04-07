@@ -299,9 +299,11 @@ static void * ContentValidContext = &ContentValidContext;
 - (void)saleStepsManager:(TXHSaleStepsManager *)manager didChangeToStep:(id)step
 {
     NSInteger index = [manager indexOfStep:step];
-    if (index == 0) {
+    if (index == 0)
         [TXHORDERMANAGER resetOrder];
-    }
+    
+    if (![manager hasNextStep])
+        [TXHORDERMANAGER stopExpirationTimer];x
     
     // update header
     [self.timeController setTitleText:step[kWizardStepTitleKey]];

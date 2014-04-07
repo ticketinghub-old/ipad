@@ -27,6 +27,8 @@ typedef void (^TXHArrayCompletion)(NSArray *array, NSError *error);
 - (void)resetOrder;
 - (NSNumber *)totalOrderPrice;
 
+- (void)stopExpirationTimer;
+
 // stpring data
 - (void)storeValue:(id)value forKey:(NSString *)key;
 - (id)storedValueForKey:(NSString *)key;

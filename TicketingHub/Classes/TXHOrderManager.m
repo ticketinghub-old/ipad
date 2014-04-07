@@ -82,6 +82,11 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
     [self.storedData removeAllObjects];
 }
 
+- (void)stopExpirationTimer
+{
+    self.expirationDate = nil;
+}
+
 - (void)sheduleExpirationTimer
 {
     [self invalidateExpirationTimer];
