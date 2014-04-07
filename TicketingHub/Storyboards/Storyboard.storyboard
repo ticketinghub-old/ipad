@@ -374,32 +374,13 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.91372549020000005" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FmL-4s-GXt">
-                                <rect key="frame" x="0.0" y="-44" width="694" height="768"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="e9e-Ke-INw">
-                                        <rect key="frame" x="329" y="366" width="37" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="centerY" secondItem="e9e-Ke-INw" secondAttribute="centerY" id="fBB-D6-3df"/>
-                                    <constraint firstAttribute="centerX" secondItem="e9e-Ke-INw" secondAttribute="centerX" id="l4M-jd-UuY"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.91372549020000005" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="qJZ-sp-l0P" firstAttribute="top" secondItem="qbE-3C-n6H" secondAttribute="bottom" id="9JO-wX-e2y"/>
-                            <constraint firstAttribute="trailing" secondItem="FmL-4s-GXt" secondAttribute="trailing" id="E5T-m6-flW"/>
                             <constraint firstItem="qJZ-sp-l0P" firstAttribute="leading" secondItem="yyH-az-Kwz" secondAttribute="leading" id="Ou1-F3-hcE"/>
                             <constraint firstItem="AXN-QQ-Qrz" firstAttribute="top" secondItem="qJZ-sp-l0P" secondAttribute="bottom" id="aav-mD-qkw"/>
-                            <constraint firstItem="FmL-4s-GXt" firstAttribute="top" secondItem="yyH-az-Kwz" secondAttribute="top" constant="-44" id="egc-2c-hKX"/>
                             <constraint firstAttribute="trailing" secondItem="qJZ-sp-l0P" secondAttribute="trailing" id="egj-hB-CDE"/>
-                            <constraint firstItem="FmL-4s-GXt" firstAttribute="leading" secondItem="yyH-az-Kwz" secondAttribute="leading" id="nYA-VZ-gEK"/>
-                            <constraint firstItem="AXN-QQ-Qrz" firstAttribute="top" secondItem="FmL-4s-GXt" secondAttribute="bottom" id="uQm-Cd-qg1"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -425,9 +406,7 @@
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="e9e-Ke-INw" id="l9c-Zz-BK5"/>
                         <outlet property="contentDetailView" destination="qJZ-sp-l0P" id="S5h-GX-A7j"/>
-                        <outlet property="loadingView" destination="FmL-4s-GXt" id="XKS-Wk-63U"/>
                         <outlet property="modeSelector" destination="I90-f6-15I" id="fgG-Ug-m3L"/>
                     </connections>
                 </viewController>

@@ -8,24 +8,51 @@
 
 #import "TXHActivityLabelView.h"
 
+@interface TXHActivityLabelView ()
+
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicator;
+@property (nonatomic, weak) IBOutlet UILabel *label;
+
+@end
+
 @implementation TXHActivityLabelView
 
-- (id)initWithFrame:(CGRect)frame
++ (instancetype)getInstance
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+    NSArray *content = [[NSBundle mainBundle] loadNibNamed:@"TXHActivityLabelView" owner:nil options:nil];
+    TXHActivityLabelView *view = [content firstObject];
+    return view;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)showWithText:(NSString *)text activityIndicatorHidden:(BOOL)hidden
 {
-    // Drawing code
+    self.label.text = text;
+    
+    if (hidden)
+        [self.indicator stopAnimating];
+    else
+        [self.indicator startAnimating];
+    
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         self.alpha = 1.0;
+                     }
+                     completion:nil];
 }
-*/
+
+- (void)hide
+{
+    [self.indicator stopAnimating];
+    
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         self.alpha = 0.0;
+                     }
+                     completion:nil];
+}
 
 @end

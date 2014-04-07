@@ -19,6 +19,7 @@
 #import "UIResponder+FirstResponder.h"
 #import "ProductListControllerNotifications.h"
 #import "UIColor+TicketingHub.h"
+#import "TXHActivityLabelView.h"
 
 @interface SalesOrDoormanViewController () <TXHDateSelectorViewDelegate>
 
@@ -33,9 +34,11 @@
 @property (strong, nonatomic) TXHAvailability *selectedAvailability;
 
 @property (strong, nonatomic) IBOutlet UIView *loadingView;
-@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) IBOutlet TXHActivityLabelView *activityView;
 
-@property (assign, nonatomic) BOOL loadingAvailabilitesDetails;
+@property (assign, nonatomic, getter = isLoadingAvailabilites)          BOOL loadingAvailabilites;
+@property (assign, nonatomic, getter = isLoadingAvailabilitesDetails)   BOOL loadingAvailabilitesDetails;
+
 
 @end
 
@@ -97,9 +100,7 @@
                                                                      destination:destinationController];
         segue.containerView = self.contentDetailView;
         [segue perform];
-        
     }
-    
     else
     {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Salesman" bundle:nil];
@@ -111,7 +112,9 @@
         segue.containerView = self.contentDetailView;
         [segue perform];
     }
+
     self.selectedAvailability = nil;
+    [self fetchAvailability];
 }
 
 #pragma mark - Setters / Getters
@@ -121,6 +124,7 @@
     _selectedProduct = selectedProduct;
 
     self.selectedAvailability = nil;
+    [self fetchAvailability];
     
     [self updateUI];
 }
@@ -128,13 +132,19 @@
 - (void)setSelectedAvailability:(TXHAvailability *)selectedAvailability
 {
     _selectedAvailability = selectedAvailability;
-    
     [self updateUI];
+}
 
-    if (!selectedAvailability && self.selectedProduct)
-    {
-        [self fetchAvailability];
-    }
+- (void)setLoadingAvailabilites:(BOOL)loadingAvailabilites
+{
+    _loadingAvailabilites = loadingAvailabilites;
+    [self updateUI];
+}
+
+- (void)setLoadingAvailabilitesDetails:(BOOL)loadingAvailabilitesDetails
+{
+    _loadingAvailabilitesDetails = loadingAvailabilitesDetails;
+    [self updateUI];
 }
 
 #pragma mark - Notification handlers
@@ -184,7 +194,6 @@
                                                                 }
                                                             }
                                                             wself.loadingAvailabilitesDetails = NO;
-                                                            [wself updateUI];
                                                         }];
     
 }
@@ -203,7 +212,6 @@
                                                                 action:nil];
     self.navigationItem.backBarButtonItem = backItem;
     
-    self.activityIndicator.color = [UIColor txhDarkBlueColor];
     self.dateButton = [[UIBarButtonItem alloc] initWithTitle:nil style:UIBarButtonItemStyleBordered target:self action:@selector(selectDate:)];
 
     UIBarButtonItem *handleItem = self.navigationItem.leftBarButtonItem;
@@ -246,11 +254,14 @@
 {
     __weak typeof(self) wself = self;
 
+    self.loadingAvailabilites = YES;
+    
     if (self.selectedProduct)
         [TXHPRODUCTSMANAGER fetchSelectedProductAvailabilitiesFromDate:[NSDate date]
                                                                 toDate:[[NSDate date] dateByAddingDays:60]
                                                             withCoupon:nil
                                                             completion:^(NSArray *availabilities, NSError *error) {
+                                                                wself.loadingAvailabilites = NO;
                                                                 [wself selectFirstAvailabilitiesFrom:availabilities];
                                                             }];
 }
@@ -285,14 +296,14 @@
 
 - (void)updateActivityIndicator
 {
-    if (!self.selectedProduct || !self.selectedAvailability || self.loadingAvailabilitesDetails)
-    {
-        [self showLoadingView];
-    }
+    if (self.loadingAvailabilites)
+        [self.activityView showWithText:NSLocalizedString(@"SD_LOADING_AVAILABILITIES_LABEL", nil) activityIndicatorHidden:NO];
+    else if (self.loadingAvailabilitesDetails)
+        [self.activityView showWithText:NSLocalizedString(@"SD_LOADING_AVAILABILITY_DETAILS_LABEL", nil) activityIndicatorHidden:NO];
+    else if (!self.selectedProduct || !self.selectedAvailability)
+        [self.activityView showWithText:NSLocalizedString(@"SD_NO_AVAILABILITIES_LABEL", nil) activityIndicatorHidden:YES];
     else
-    {
-        [self hideLoadingView];
-    }
+        [self.activityView hide];
 }
 
 - (void)updateTitle
@@ -325,28 +336,18 @@
 
 #pragma mark - loading view
 
-- (void)showLoadingView
+- (TXHActivityLabelView *)activityView
 {
-    [self.activityIndicator startAnimating];
-    [UIView animateKeyframesWithDuration:0.2
-                                   delay:0.0
-                                 options:UIViewKeyframeAnimationOptionBeginFromCurrentState
-                              animations:^{
-                                  self.loadingView.alpha = 1.0;
-                              }
-                              completion:nil];
-}
-
-- (void)hideLoadingView
-{
-    [self.activityIndicator stopAnimating];
-    [UIView animateKeyframesWithDuration:0.2
-                                   delay:0.0
-                                 options:UIViewKeyframeAnimationOptionBeginFromCurrentState
-                              animations:^{
-                                  self.loadingView.alpha = 0.0;
-                              }
-                              completion:nil];
+    if (!_activityView) {
+        TXHActivityLabelView *activityView = [TXHActivityLabelView getInstance];
+        activityView.frame = self.view.bounds;
+        activityView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        [activityView hide];
+    
+        [self.view addSubview:activityView];
+        _activityView = activityView;
+    }
+    return _activityView;
 }
 
 @end

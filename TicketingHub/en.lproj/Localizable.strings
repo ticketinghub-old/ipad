@@ -27,7 +27,6 @@
 "SALESMAN_STEPS_SUMMARY_MIDDLE_BUTTON_TITLE"        = "Print Recipt";
 "SALESMAN_STEPS_SUMMARY_RIGHT_BUTTON_TITLE"         = "Print Tickets";
 
-
 /* Printer errors */
 
 "PRINTER_ERROR_FAIL_TO_OPEN_PORT_DESC"          = "Fail to Open Port";
@@ -47,3 +46,20 @@
 
 "ERROR_TITLE"               = "Error";
 "PRINTER_ERROR_TITLE"       = "Printer Error";
+
+/* Activity labels - Printers */
+
+"LOADING_RECEIPT_LABEL"     = "Preparing Receipt";
+"LOADING_TICKETS_LABEL"     = "Preparing Tickets";
+
+"PRINTING_RECEIPT_LABEL"    = "Printing Receipt";
+"PRINTING_TICKETS_LABEL"    = "Printing Ticket";
+
+"TICKET_TEMPLATES_SELECTION_TITLE"                  = "Select Ticket Temlpate";
+"TICKET_TEMPLATES_SELECTION_CANCEL_BUTTON_TITLE"    = "Cancel";
+
+/* Activity labels - Doorman Salesman */
+
+"SD_LOADING_AVAILABILITIES_LABEL"          = "Loading";
+"SD_LOADING_AVAILABILITY_DETAILS_LABEL"    = "Loading";
+"SD_NO_AVAILABILITIES_LABEL"               = "No Availabilities";
