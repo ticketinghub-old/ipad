@@ -9,6 +9,7 @@
 #import "TXHDoorOrderViewController.h"
 #import "TXHProductsManager.h"
 #import "UIColor+TicketingHub.h"
+#import <UIAlertView-Blocks/UIAlertView+Blocks.h>
 
 #import "TXHDoorOrderDetailsViewController.h"
 #import "TXHDoorOrderTicketsListViewController.h"
@@ -62,9 +63,31 @@
     [self showLoadingIndicator];
     [TXHPRODUCTSMANAGER getOrderForTicket:self.ticket
                                completion:^(TXHOrder *order, NSError *error) {
-                                   wself.order = order;
                                    [wself hideLoadingIndicator];
+                                   
+                                   if (error)
+                                       [wself dismissWithError:error];
+                                   else
+                                       wself.order = order;
                                }];
+}
+
+- (void)dismissWithError:(NSError *)error
+{
+    [self showLoadingIndicator];
+    
+    RIButtonItem *confirmItem = [RIButtonItem itemWithLabel:NSLocalizedString(@"", nil)
+                                                     action:^{
+                                                         [self hideLoadingIndicator];
+                                                         //TODO: this should be done with delegation
+                                                         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+                                                     }];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"", nil)
+                                                    message:error.localizedDescription
+                                           cancelButtonItem:confirmItem
+                                           otherButtonItems:nil];
+    [alert show];
 }
 
 - (UIActivityIndicatorView *)activityIndicator
