@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^TXHPrinterCompletionBlock)( NSError * );
-typedef void (^TXHPrinterContinueBlock)(void (^continuePrintingBlock)(BOOL continuePrinting));
+typedef void (^TXHPrinterCompletionBlock)(NSError *error, BOOL cancelled);
+typedef void (^TXHPrinterContinueBlock)(void (^continuePrintingBlock)(BOOL continuePrinting, BOOL printAll));
 
 @protocol TXHPrintersEngineProtocol;
 

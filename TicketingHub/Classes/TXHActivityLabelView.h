@@ -12,7 +12,7 @@
 
 + (instancetype)getInstance;
 
-- (void)showWithText:(NSString *)text activityIndicatorHidden:(BOOL)hidden;
+- (void)showWithMessage:(NSString *)text indicatorHidden:(BOOL)hidden;
 
 - (void)hide;
 

@@ -41,22 +41,22 @@ typedef NS_ENUM(NSUInteger, TXHPrintTarget) {
 
 static void * ContentValidContext = &ContentValidContext;
 
+
 @interface TXHSalesMainViewController ()  <TXHSaleStepsManagerDelegate, TXHSalesCompletionViewControllerDelegate, TXHPrinterSelectionViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *contentsContainer;
+
+@property (strong, nonatomic) TXHActivityLabelView *activityView;
 
 @property (strong, nonatomic) TXHSalesWizardViewController           *wizardSteps;
 @property (strong, nonatomic) TXHSalesTimerViewController            *timeController;
 @property (strong, nonatomic) TXHSalesCompletionViewController       *stepCompletionController;
 @property (strong, nonatomic) UIViewController<TXHSalesContentsViewControllerProtocol> *stepContentController;
 
-@property (assign, nonatomic) TXHPrintTarget       printTarget;
+@property (assign, nonatomic) TXHPrintTarget      printTarget;
+@property (strong, nonatomic) TXHPrinter          *selectedPrinter;
 @property (strong, nonatomic) UIPopoverController *printerSelectorPopover;
 
-@property (strong, nonatomic) TXHActivityLabelView *activityView;
-
-@property (strong, nonatomic) NSArray *ticketTemplates;// TODO: move this away from here
-@property (strong, nonatomic) TXHPrinter *selectedPrinter;// TODO: move this away from here
 // data
 @property (strong, nonatomic) TXHSaleStepsManager *stepsManager;
 
@@ -77,7 +77,7 @@ static void * ContentValidContext = &ContentValidContext;
                                                                        kWizardStepHidesMiddleButton : @YES,
                                                                        kWizardStepLeftButtonColor   : [UIColor redColor],
                                                                        kWizardStepRightButtonImage  : [UIImage imageNamed:@"right-arrow"]},
-
+                                                                     
                                                                      @{kWizardStepTitleKey          : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_TITLE",nil),
                                                                        kWizardStepDescriptionKey    : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_DESC",nil),
                                                                        kWizardStepLeftButtonTitle   : NSLocalizedString(@"SALESMAN_STEPS_CANCEL_ORDER_BUTTON_TITLE",nil),
@@ -86,7 +86,7 @@ static void * ContentValidContext = &ContentValidContext;
                                                                        kWizardStepHidesMiddleButton : @YES,
                                                                        kWizardStepLeftButtonColor   : [UIColor redColor],
                                                                        kWizardStepRightButtonImage  : [UIImage imageNamed:@"right-arrow"]},
-
+                                                                     
                                                                      @{kWizardStepTitleKey          : NSLocalizedString(@"SALESMAN_STEPS_ORDER_SUMMARY_TITLE",nil),
                                                                        kWizardStepDescriptionKey    : NSLocalizedString(@"SALESMAN_STEPS_ORDER_SUMMARY_DESC",nil),
                                                                        kWizardStepLeftButtonTitle   : NSLocalizedString(@"SALESMAN_STEPS_CANCEL_ORDER_BUTTON_TITLE",nil),
@@ -95,7 +95,7 @@ static void * ContentValidContext = &ContentValidContext;
                                                                        kWizardStepHidesMiddleButton : @YES,
                                                                        kWizardStepLeftButtonColor   : [UIColor redColor],
                                                                        kWizardStepRightButtonImage  : [UIImage imageNamed:@"right-arrow"]},
-
+                                                                     
                                                                      @{kWizardStepTitleKey          : NSLocalizedString(@"SALESMAN_STEPS_PAYMENT_TITLE",nil),
                                                                        kWizardStepDescriptionKey    : NSLocalizedString(@"SALESMAN_STEPS_PAYMENT_DESC",nil),
                                                                        kWizardStepLeftButtonTitle   : NSLocalizedString(@"SALESMAN_STEPS_CANCEL_ORDER_BUTTON_TITLE",nil),
@@ -104,7 +104,7 @@ static void * ContentValidContext = &ContentValidContext;
                                                                        kWizardStepHidesMiddleButton : @YES,
                                                                        kWizardStepLeftButtonColor   : [UIColor redColor],
                                                                        kWizardStepRightButtonImage  : [UIImage imageNamed:@"right-arrow"]},
-
+                                                                     
                                                                      @{kWizardStepTitleKey          : NSLocalizedString(@"SALESMAN_STEPS_SUMMARY_TITLE",nil),
                                                                        kWizardStepDescriptionKey    : NSLocalizedString(@"SALESMAN_STEPS_SUMMARY_DESC",nil),
                                                                        kWizardStepLeftButtonTitle   : NSLocalizedString(@"SALESMAN_STEPS_SUMMARY_LEFT_BUTTON_TITLE",nil),
@@ -117,9 +117,8 @@ static void * ContentValidContext = &ContentValidContext;
                                                                        kWizardStepMiddleButtonBlock : ^(UIButton *button){[self showPrinterSelectorFromButton:button]; self.printTarget = TXHPrintTargetRecipt;},
                                                                        kWizardStepRightButtonBlock  : ^(UIButton *button){[self showPrinterSelectorFromButton:button]; self.printTarget = TXHPrintTargetTickets;}}
                                                                      ]];
-
+    
     self.stepsManager.delegate = self;
-    self.wizardSteps.dataSource = self.stepsManager;
     
     [self performSegueWithIdentifier:@"Embed Step1" sender:self];
     
@@ -127,38 +126,16 @@ static void * ContentValidContext = &ContentValidContext;
     
     [self registerForProductAndAvailabilityChanges];
     [self registerForKeyboardNotifications];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(orderDidExpire:)
-                                                 name:TXHOrderDidExpireNotification object:nil];
+    [self registerForOrderExpirationNotifications];
 }
 
 - (void)dealloc
 {
-    // remove observer
-    self.stepCompletionController = nil;
+    self.stepCompletionController = nil; // removing KVO observer
+    
     [self unregisterForProductAndAvailabilityChanges];
     [self unregisterFromKeyboardNotifications];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHOrderDidExpireNotification object:nil];
-}
-
-- (void)showPrinterSelectorFromButton:(UIButton *)button
-{
-    TXHPrinterSelectionViewController *printerSelector = [[TXHPrinterSelectionViewController alloc] init];
-    printerSelector.delegate = self;
-    
-    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:printerSelector];
-    popover.popoverContentSize = CGSizeMake(200, 110);
-    
-    CGRect fromRect = [button.superview convertRect:button.frame toView:self.view];
-    [popover presentPopoverFromRect:fromRect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
-    
-    self.printerSelectorPopover = popover;
-}
-
-- (void)orderDidExpire:(NSNotification *)note
-{
-    [self resetData];
+    [self unregisterFromOrderExpirationNotifications];
 }
 
 - (void)resetData
@@ -191,7 +168,59 @@ static void * ContentValidContext = &ContentValidContext;
     }
 }
 
-// observer vs delegation ??? used KVO...
+#pragma mark - Accessors
+
+-(void)setStepsManager:(TXHSaleStepsManager *)stepsManager
+{
+    _stepsManager = stepsManager;
+    
+    self.wizardSteps.dataSource = self.stepsManager;
+}
+
+- (TXHActivityLabelView *)activityView
+{
+    if (!_activityView)
+    {
+        TXHActivityLabelView *activityView = [TXHActivityLabelView getInstance];
+        activityView.frame = self.navigationController.view.bounds;
+        activityView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        
+        [self.navigationController.view addSubview:activityView];
+        _activityView = activityView;
+    }
+    return _activityView;
+}
+
+- (void)setSelectedPrinter:(TXHPrinter *)selectedPrinter
+{
+    _selectedPrinter = selectedPrinter;
+    
+    if (!selectedPrinter.hasCutter)
+        [self setSelectedPrinterContinuePrintingBlock];
+}
+
+- (void)setSelectedPrinterContinuePrintingBlock
+{
+    [self.selectedPrinter setPrintingContinueBlock:^(void (^continuePrinting)(BOOL shallContinue, BOOL printALl))
+     {
+         RIButtonItem *allButton = [RIButtonItem itemWithLabel:NSLocalizedString(@"CONTINUE_PRINTING_ALL_BUTTON_TITLE", nil)
+                                                        action:^{ continuePrinting(YES, YES); }];
+         
+         RIButtonItem *nextButton = [RIButtonItem itemWithLabel:NSLocalizedString(@"CONTINUE_PRINTING_NEXT_BUTTON_TITLE", nil)
+                                                         action:^{ continuePrinting(YES, NO); }];
+         
+         RIButtonItem *stopButton = [RIButtonItem itemWithLabel:NSLocalizedString(@"CONTINUE_PRINTING_STOP_BUTTON_TITLE", nil)
+                                                         action:^{ continuePrinting(NO, NO); }];
+         
+         
+         UIAlertView *continueAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"CONTINUE_PRINTING_TITLE", nil)
+                                                                 message:nil
+                                                        cancelButtonItem:nil
+                                                        otherButtonItems:stopButton, allButton, nextButton, nil];
+         [continueAlert show];
+     }];
+}
+
 - (void)setStepContentController:(UIViewController<TXHSalesContentsViewControllerProtocol> *)stepContentController
 {
     id observer = self;
@@ -209,18 +238,12 @@ static void * ContentValidContext = &ContentValidContext;
                                     context:ContentValidContext];
 }
 
-- (TXHActivityLabelView *)activityView
+#pragma mark - KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if (!_activityView) {
-        TXHActivityLabelView *activityView = [TXHActivityLabelView getInstance];
-        activityView.frame = self.navigationController.view.bounds;
-        activityView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        [activityView hide];
-        
-        [self.navigationController.view addSubview:activityView];
-        _activityView = activityView;
-    }
-    return _activityView;
+    if (context == ContentValidContext)
+        [self.stepCompletionController setRightButtonDisabled:![self.stepContentController isValid]];
 }
 
 #pragma mark - notifications
@@ -254,10 +277,21 @@ static void * ContentValidContext = &ContentValidContext;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-
 }
 
-#pragma mark notifications
+- (void)registerForOrderExpirationNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(orderDidExpire:)
+                                                 name:TXHOrderDidExpireNotification object:nil];
+}
+
+- (void)unregisterFromOrderExpirationNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHOrderDidExpireNotification object:nil];
+}
+
+#pragma mark product/availability notifications
 
 - (void)productDidChange:(NSNotification *)note
 {
@@ -265,6 +299,13 @@ static void * ContentValidContext = &ContentValidContext;
 }
 
 - (void)availabilityDidChange:(NSNotification *)note
+{
+    [self resetData];
+}
+
+#pragma mark - order expiration notification
+
+- (void)orderDidExpire:(NSNotification *)note
 {
     [self resetData];
 }
@@ -280,14 +321,14 @@ static void * ContentValidContext = &ContentValidContext;
     NSInteger curve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue] << 16;
     
     CGFloat height = keyboardFrame.size.width - self.stepCompletionController.view.height;
-
+    
     if ([self.stepContentController respondsToSelector:@selector(setOffsetBottomBy:)])
         [UIView animateWithDuration:animationDuration
                               delay:0.0
                             options:curve
                          animations:^{
                              [self.stepContentController setOffsetBottomBy:height];
-
+                             
                          }
                          completion:nil];
 }
@@ -303,19 +344,11 @@ static void * ContentValidContext = &ContentValidContext;
                             options:curve
                          animations:^{
                              [self.stepContentController setOffsetBottomBy:0];
-
+                             
                          }
                          completion:nil];
 }
 
-
-#pragma mark - KVO
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if (context == ContentValidContext)
-        [self.stepCompletionController setRightButtonDisabled:![self.stepContentController isValid]];
-}
 
 #pragma mark - TXHSaleStepsManagerDelegate
 
@@ -363,7 +396,7 @@ static void * ContentValidContext = &ContentValidContext;
     id nextStep = [manager stepAtIndex:index + 1];
     
     NSString *nextStepFullTitle = nextStep[kWizardStepRightButtonTitle];
-
+    
     return nextStepFullTitle;
 }
 
@@ -372,24 +405,31 @@ static void * ContentValidContext = &ContentValidContext;
     [self performSegueWithIdentifier:segueID sender:self];
 }
 
-#pragma mark - TXHSalesCompletionViewControllerDelegate
-
-- (void)salesCompletionViewControllerDidContinue:(TXHSalesCompletionViewController *)controller
+- (void)showPrinterSelectorFromButton:(UIButton *)button
 {
-
+    TXHPrinterSelectionViewController *printerSelector = [[TXHPrinterSelectionViewController alloc] init];
+    printerSelector.delegate = self;
+    
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:printerSelector];
+    popover.popoverContentSize = CGSizeMake(200, 110);
+    
+    CGRect fromRect = [button.superview convertRect:button.frame toView:self.view];
+    [popover presentPopoverFromRect:fromRect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
+    
+    self.printerSelectorPopover = popover;
 }
+
+#pragma mark - TXHSalesCompletionViewControllerDelegate
 
 - (void)salesCompletionViewController:(TXHSalesCompletionViewController *)controller didDidSelectLeftButton:(TXHBorderedButton *)button
 {
     NSDictionary *step = [self.stepsManager currentStep];
     
     void (^block)(UIButton *button) = step[kWizardStepLeftButtonBlock];
-    if (block) {
+    if (block)
         block((UIButton *)button);
-    }
     else
     {
-        // default
         [self resetData];
     }
 }
@@ -399,12 +439,10 @@ static void * ContentValidContext = &ContentValidContext;
     NSDictionary *step = [self.stepsManager currentStep];
     
     void (^block)(UIButton *button) = step[kWizardStepMiddleButtonBlock];
-    if (block) {
+    if (block)
         block((UIButton *)button);
-    }
     else
     {
-        // default
     }
 }
 
@@ -412,20 +450,20 @@ static void * ContentValidContext = &ContentValidContext;
 {
     NSDictionary *step = [self.stepsManager currentStep];
     
+    __weak typeof(self) wself = self;
     void (^block)(UIButton *buttton) = step[kWizardStepRightButtonBlock];
-    if (block) {
+    
+    if (block)
         block((UIButton *)button);
-    }
     else
     {
-        // default
         self.stepCompletionController.view.userInteractionEnabled = NO;
         [self.stepContentController finishStepWithCompletion:^(NSError *error) {
             if (!error)
             {
-                [self.stepsManager continueToNextStep];
+                [wself.stepsManager continueToNextStep];
             }
-            self.stepCompletionController.view.userInteractionEnabled = YES;
+            wself.stepCompletionController.view.userInteractionEnabled = YES;
         }];
     }
 }
@@ -438,170 +476,153 @@ static void * ContentValidContext = &ContentValidContext;
     [self.printerSelectorPopover dismissPopoverAnimated:YES];
     self.printerSelectorPopover = nil;
     
-    [self printSelectedTargetWithPrinter:printer];
+    self.selectedPrinter = printer;
+    
+    [self printSelectedTarget];
 }
 
-
-
-- (void)printSelectedTargetWithPrinter:(TXHPrinter *)printer
+- (void)printSelectedTarget
 {
     switch (self.printTarget)
     {
         case TXHPrintTargetRecipt:
-            [self getAndPrintReceiptWithPrinter:printer];
+            [self getAndPrintReceipt];
             break;
         case TXHPrintTargetTickets:
-            [self getAndPrintTicketsWithPrinter:printer];
+            [self getAndPrintTickets];
             break;
     }
 }
 
-- (void)getAndPrintReceiptWithPrinter:(TXHPrinter *)printer
+- (void)getAndPrintReceipt
 {
-    [self.activityView showWithText:NSLocalizedString(@"LOADING_RECEIPT_LABEL", nil) activityIndicatorHidden:NO];
-    [TXHORDERMANAGER downloadReciptWithWidth:printer.paperWidth
-                                         dpi:printer.dpi
+    [self.activityView showWithMessage:NSLocalizedString(@"LOADING_RECEIPT_LABEL", nil) indicatorHidden:NO];
+    
+    __weak typeof(self) wself = self;
+    [TXHORDERMANAGER downloadReciptWithWidth:self.selectedPrinter.paperWidth
+                                         dpi:self.selectedPrinter.dpi
+                                      format:TXHDocumentFormatPDF
                                   completion:^(NSURL *url, NSError *error) {
-                                      [self.activityView hide];
+                                      
+                                      [wself.activityView hide];
                                       if (!error)
-                                      {
-                                          [self printReceiptWithURL:url onPrinter:printer];
-                                      }
+                                          [wself printPDFDocumentWithURL:url];
                                       else
-                                      {
-                                          [self showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
-                                                           message:error.localizedDescription];
-                                      }
+                                          [wself showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
+                                                            message:error.localizedDescription];
                                   }];
 }
 
-- (void)setSelectedPrinter:(TXHPrinter *)selectedPrinter
+- (void)getAndPrintTickets
 {
-    _selectedPrinter = selectedPrinter;
-    
-    if (!selectedPrinter.hasCutter)
-        [_selectedPrinter setPrintingContinueBlock:^(void (^continuePrinting)(BOOL shallContinue))
-        {
-            RIButtonItem *yesButton = [RIButtonItem itemWithLabel:NSLocalizedString(@"CONTINUE_PRINTING_YES_BUTTON_TITLE", nil)
-                                                           action:^{ continuePrinting(YES); }];
-            
-            RIButtonItem *noButton = [RIButtonItem itemWithLabel:NSLocalizedString(@"CONTINUE_PRINTING_NO_BUTTON_TITLE", nil)
-                                                          action:^{ continuePrinting(NO); }];
-            
-            
-            UIAlertView *continueAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"CONTINUE_PRINTING_TITLE", nil)
-                                                                    message:nil
-                                                           cancelButtonItem:nil
-                                                           otherButtonItems:noButton, yesButton, nil];
-            [continueAlert show];
-        }];
-}
-
-- (void)getAndPrintTicketsWithPrinter:(TXHPrinter *)printer
-{
-    [self.activityView showWithText:NSLocalizedString(@"LOADING_TICKETS_LABEL", nil) activityIndicatorHidden:NO];
-
-    self.selectedPrinter = printer;
+    [self.activityView showWithMessage:NSLocalizedString(@"LOADING_TICKETS_LABEL", nil) indicatorHidden:NO];
     
     __weak typeof(self) wself = self;
-    
     [TXHORDERMANAGER getTicketTemplatesWithCompletion:^(NSArray *templates, NSError *error) {
+        
+        [wself.activityView hide];
         if (error)
-        {
-            [wself.activityView hide];
             [wself showErrorWithTitle:NSLocalizedString(@"PRINTER_ERROR_TITLE", nil)
                               message:error.localizedDescription];
-        }
         else
-        {
-            [wself.activityView showWithText:@"" activityIndicatorHidden:YES];
             [wself selectTemplateFromTemplates:templates];
-        }
     }];
 }
 
 - (void)selectTemplateFromTemplates:(NSArray *)templates
 {
+    [self.activityView showWithMessage:@"" indicatorHidden:YES];
+    
     __weak typeof(self) wself = self;
-
+    
     RIButtonItem *cancelButton = [RIButtonItem itemWithLabel:NSLocalizedString(@"TICKET_TEMPLATES_SELECTION_CANCEL_BUTTON_TITLE", nil)
-                                                      action:^{ [wself.activityView hide]; }];
+                                                      action:^{[wself.activityView hide];}];
     
     UIAlertView *templatesAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TICKET_TEMPLATES_SELECTION_TITLE", nil)
                                                              message:nil
                                                     cancelButtonItem:cancelButton
                                                     otherButtonItems:nil];
+    
     for (TXHTicketTemplate *template in templates)
     {
-        RIButtonItem *item =
-        [RIButtonItem itemWithLabel:template.name
-                             action:^{
-                                 [wself printTicketWithTemplate:template];
-                             }];
+        RIButtonItem *item = [RIButtonItem itemWithLabel:template.name
+                                                  action:^{[wself printTicketsWithTemplate:template];}];
         [templatesAlert addButtonItem:item];
     }
     
     [templatesAlert show];
 }
 
-- (void)printReceiptWithURL:(NSURL *)fileURL onPrinter:(TXHPrinter *)printer
+- (void)printPDFDocumentWithURL:(NSURL *)fileURL
 {
-    [self.activityView showWithText:NSLocalizedString(@"PRINTING_RECEIPT_LABEL", nil) activityIndicatorHidden:NO];
-    [printer printPDFDocument:fileURL completion:^(NSError *error) {
-        [self.activityView hide];
+    [self.activityView showWithMessage:[self loadingLabelForTarget:self.printTarget]
+                       indicatorHidden:NO];
+    
+    __weak typeof(self) wself = self;
+    
+    [self.selectedPrinter printPDFDocument:fileURL completion:^(NSError *error, BOOL canceled){
+        [wself.activityView hide];
+        
         if (error)
         {
-            [self showErrorWithTitle:NSLocalizedString(@"PRINTER_ERROR_TITLE", nil)
-                             message:error.localizedDescription];
+            [wself showErrorWithTitle:NSLocalizedString(@"PRINTER_ERROR_TITLE", nil)
+                              message:error.localizedDescription];
         }
     }];
 }
 
-#pragma mark - alert views
+
+- (NSString *)loadingLabelForTarget:(TXHPrintTarget)target
+{
+    switch (target)
+    {
+        case TXHPrintTargetTickets:
+            return NSLocalizedString(@"PRINTING_TICKETS_LABEL", nil);
+        case TXHPrintTargetRecipt:
+            return NSLocalizedString(@"PRINTING_RECEIPT_LABEL", nil);
+    }
+    
+    return nil;
+}
 
 - (void)showErrorWithTitle:(NSString *)title message:(NSString *)message
 {
-    UIAlertView *alertView =
-    [[UIAlertView alloc] initWithTitle:title
-                               message:message
-                              delegate:nil
-                     cancelButtonTitle:@"OK"
-                     otherButtonTitles:nil];
+    [self.activityView showWithMessage:@""
+                       indicatorHidden:YES];
+    
+    RIButtonItem *cancelItem = [RIButtonItem itemWithLabel:NSLocalizedString(@"ERROR_DISMISS_BUTTON_TITLE", nil)
+                                                    action:^{
+                                                        [self.activityView hide];
+                                                    }];
+    
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                        message:message
+                                               cancelButtonItem:cancelItem
+                                               otherButtonItems:nil];
     [alertView show];
 }
 
 
-- (void)printTicketWithTemplate:(TXHTicketTemplate *)template
+- (void)printTicketsWithTemplate:(TXHTicketTemplate *)template
 {
-    [self.activityView showWithText:NSLocalizedString(@"LOADING_TICKETS_LABEL", nil)
-            activityIndicatorHidden:NO];
+    [self.activityView showWithMessage:NSLocalizedString(@"LOADING_TICKETS_LABEL", nil)
+                       indicatorHidden:NO];
     
-    [TXHORDERMANAGER downloadTicketWithTemplate:template
-                                     completion:^(NSURL *url, NSError *error){
-                                         
-                                         if (error)
-                                         {
-                                             [self showErrorWithTitle:NSLocalizedString(@"PRINTER_ERROR_TITLE", nil)
-                                                              message:error.localizedDescription];
-                                         }
-                                         else
-                                         {
-                                             [self.activityView showWithText:NSLocalizedString(@"PRINTING_TICKETS_LABEL", nil) activityIndicatorHidden:NO];
-                                             
-                                             [self.selectedPrinter printPDFDocument:url completion:^(NSError *err) {
-                                                 
-                                                 if (err)
-                                                 {
-                                                     [self showErrorWithTitle:NSLocalizedString(@"PRINTER_ERROR_TITLE", nil)
-                                                                      message:err.localizedDescription];
-                                                 }
-                                                 else
-                                                 {
-                                                     [self.activityView hide];
-                                                 }
-                                             }];
-                                         }
-                                     }];
+    __weak typeof(self) wself = self;
+    [TXHORDERMANAGER downloadTicketsWithTemplate:template
+                                          format:TXHDocumentFormatPDF
+                                      completion:^(NSURL *url, NSError *error){
+                                          
+                                          [wself.activityView hide];
+                                          
+                                          if (error)
+                                              [wself showErrorWithTitle:NSLocalizedString(@"PRINTER_ERROR_TITLE", nil)
+                                                                message:error.localizedDescription];
+                                          else
+                                              [wself printPDFDocumentWithURL:url];
+                                          
+                                      }];
 }
 
 @end

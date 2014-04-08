@@ -58,7 +58,7 @@ SPEC CHECKSUMS:
   DCTCoreDataStack: 4090bc1d6819fda813c7cc45119d1fa8fd8b8b3c
   Expecta: 5c147dedfea5fbcf773995f7e65020abcc936ce5
   iOS-api: d18c7fa06b9a59a15491c83f5e7e5b0f5f974766
-  OCMock: 74e4ddbcef134170dcc844f91c691f13868075d7
+  OCMock: ea7fe30ee99e4e3186ad47d032a301fa7e8793ec
   PaymentKit: 92df7c2fb4fb3b4e0c3f5fb8c8e75cc528025126
   PPSSignatureView: 83ffa630306afc93ad595e5a6e98a0dba1c8a49b
   SevenSwitch: f1ae106a4fcb459829ba5a6a3265e7e9f873f80c

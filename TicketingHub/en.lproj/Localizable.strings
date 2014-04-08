@@ -32,20 +32,24 @@
 "PRINTER_ERROR_FAIL_TO_OPEN_PORT_DESC"          = "Fail to open port";
 "PRINTER_ERROR_PRINTER_OFFLINE_DESC"            = "Printer is offline";
 "PRINTER_ERROR_TIMED_OUT_DESC"                  = "Write port timed out";
+"PRINTER_ERROR_INCONSISTENCY_DESC"              = "Missing Parameter";
 "PRINTER_ERROR_UNKNOWN_DESC"                    = "Unknown printer error";
 
 "PRINTER_ERROR_FAIL_TO_OPEN_PORT_REASON"        = "";
 "PRINTER_ERROR_PRINTER_OFFLINE_REASON"          = "";
 "PRINTER_ERROR_TIMED_OUT_REASON"                = "";
+"PRINTER_ERROR_INCONSISTENCY_REASON"            = "";
 "PRINTER_ERROR_UNKNOWN_REASON"                  = "";
 
 "PRINTER_ERROR_FAIL_TO_OPEN_PORT_RECOVERY"      = "";
 "PRINTER_ERROR_PRINTER_OFFLINE_RECOVER"         = "";
 "PRINTER_ERROR_TIMED_OUT_RECOVER"               = "";
+"PRINTER_ERROR_INCONSISTENCY_RECOVER"           = "";
 "PRINTER_ERROR_UNKNOWN_RECOVERY"                = "";
 
-"ERROR_TITLE"               = "Error";
-"PRINTER_ERROR_TITLE"       = "Printer Error";
+"ERROR_TITLE"                   = "Error";
+"PRINTER_ERROR_TITLE"           = "Printer Error";
+"ERROR_DISMISS_BUTTON_TITLE"    = "OK";
 
 /* Activity labels - Printers */
 
@@ -58,9 +62,12 @@
 "TICKET_TEMPLATES_SELECTION_TITLE"                  = "Select ticket type";
 "TICKET_TEMPLATES_SELECTION_CANCEL_BUTTON_TITLE"    = "Cancel printing";
 
-"CONTINUE_PRINTING_TITLE"            = "Print next ticket?";
-"CONTINUE_PRINTING_YES_BUTTON_TITLE" = "Print";
-"CONTINUE_PRINTING_NO_BUTTON_TITLE"  = "Stop printing";
+
+"CONTINUE_PRINTING_TITLE"             = "Print next ticket?";
+"CONTINUE_PRINTING_NEXT_BUTTON_TITLE" = "Print next";
+"CONTINUE_PRINTING_STOP_BUTTON_TITLE" = "Cancel printing";
+"CONTINUE_PRINTING_ALL_BUTTON_TITLE"  = "Print all";
+
 
 /* Activity labels - Doorman Salesman */
 
@@ -70,3 +77,4 @@
 
 
 
+"CONTINUE_PRINTING_ALL_BUTTON_TITLE" = "Print All";

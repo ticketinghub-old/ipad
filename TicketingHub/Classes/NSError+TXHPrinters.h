@@ -13,6 +13,8 @@ typedef NS_ENUM(NSInteger, TXHPrinterErrorCode)
     kTXHPrinterFailToOpenPortError = 10000,
     kTXHPrinterOfflineError,
     kTXHPrinterTimedOutError,
+    kTXHPrinterArgsInconsistencyError,
+    
 };
 
 extern NSString * const TXHPrinterErrorDomain;

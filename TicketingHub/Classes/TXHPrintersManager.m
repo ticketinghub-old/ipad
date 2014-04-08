@@ -7,6 +7,7 @@
 //
 
 #import "TXHPrintersManager.h"
+#import "NSError+TXHPrinters.h"
 
 @interface TXHPrintersManager ()
 
@@ -40,43 +41,39 @@
 
 - (void)fetchAvailablePrinters:(void(^)(NSSet *printers, NSError *error))completion
 {
-    NSParameterAssert(completion);
+    if (!completion) return;
     
-    if (![self.engines count]) {
-        completion(nil,[NSError errorWithDomain:@"No engines set" code:1 userInfo:nil]);
-    }
-    
-    __block NSError *bError;
-    __block NSMutableSet *availablePrinter = [NSMutableSet set];
-    __block NSInteger loadedEngines = 0;
-
-    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-    NSInteger enginesToLoad = [self.engines count];
-    
-    //TODO: would be better with operation queues
-    for (id<TXHPrintersEngineProtocol> engine in self.engines)
-    {
-        [engine fetchAvailablePrinters:^(NSArray *printers, NSError *error) {
-
-            loadedEngines++;
-            if (!error)
-            {
-                [availablePrinter addObjectsFromArray:printers];
-            }
-            else
-            {
-                bError = error;
-            }
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        if (![self.engines count])
+            completion(nil,[NSError printerErrorWithCode:1]);
+        
+        __block NSError *bError;
+        __block NSMutableSet *availablePrinters = [NSMutableSet set];
+        
+        dispatch_group_t group = dispatch_group_create();
+        
+        for (id<TXHPrintersEngineProtocol> engine in self.engines)
+        {
+            dispatch_group_enter(group);
             
-            if (loadedEngines == enginesToLoad)
-                dispatch_semaphore_signal(semaphore);
-
-        }];
-    }
-    
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    
-    completion([availablePrinter copy],bError);
+            [engine fetchAvailablePrinters:^(NSArray *printers, NSError *error) {
+                if (!error)
+                    [availablePrinters addObjectsFromArray:printers];
+                else
+                    bError = error;
+                
+                dispatch_group_leave(group);
+            }];
+        }
+        
+        dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion([availablePrinters copy],bError);
+        });
+        
+    });
 }
 
 - (void)addPrinterEngine:(id<TXHPrintersEngineProtocol>)engine

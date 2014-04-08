@@ -24,7 +24,7 @@
     return view;
 }
 
-- (void)showWithText:(NSString *)text activityIndicatorHidden:(BOOL)hidden
+- (void)showWithMessage:(NSString *)text indicatorHidden:(BOOL)hidden
 {
     self.label.text = text;
     

@@ -38,6 +38,9 @@ NSString * const TXHPrinterErrorDomain = @"TXHPrinterErrorDomain";
             return NSLocalizedString(@"PRINTER_ERROR_PRINTER_OFFLINE_DESC", nil);
         case kTXHPrinterTimedOutError:
             return NSLocalizedString(@"PRINTER_ERROR_TIMED_OUT_DESC", nil);
+        case kTXHPrinterArgsInconsistencyError:
+            return NSLocalizedString(@"PRINTER_ERROR_INCONSISTENCY_DESC", nil);
+
     }
     
     return NSLocalizedString(@"PRINTER_ERROR_UNKNOWN_DESC", nil);
@@ -53,6 +56,9 @@ NSString * const TXHPrinterErrorDomain = @"TXHPrinterErrorDomain";
             return NSLocalizedString(@"PRINTER_ERROR_PRINTER_OFFLINE_REASON", nil);
         case kTXHPrinterTimedOutError:
             return NSLocalizedString(@"PRINTER_ERROR_TIMED_OUT_REASON", nil);
+        case kTXHPrinterArgsInconsistencyError:
+            return NSLocalizedString(@"PRINTER_ERROR_INCONSISTENCY_REASON", nil);
+
     }
 
     return NSLocalizedString(@"PRINTER_ERROR_UNKNOWN_REASON", nil);
@@ -68,6 +74,9 @@ NSString * const TXHPrinterErrorDomain = @"TXHPrinterErrorDomain";
             return NSLocalizedString(@"PRINTER_ERROR_PRINTER_OFFLINE_RECOVER", nil);
         case kTXHPrinterTimedOutError:
             return NSLocalizedString(@"PRINTER_ERROR_TIMED_OUT_RECOVER", nil);
+        case kTXHPrinterArgsInconsistencyError:
+            return NSLocalizedString(@"PRINTER_ERROR_INCONSISTENCY_RECOVER", nil);
+
     }
 
     return NSLocalizedString(@"PRINTER_ERROR_UNKNOWN_RECOVERY", nil);

@@ -104,13 +104,6 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
     }
 }
 
-- (void)orderDidExpire:(NSTimer *)timer
-{
-    [self invalidateExpirationTimer];
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:TXHOrderDidExpireNotification object:nil];
-}
-
 #pragma mark public methods
 
 - (void)storeValue:(id)value forKey:(NSString *)key
@@ -187,74 +180,71 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
 
 - (void)userInfoFieldsForCurrentOrderTicketsWithCompletion:(void(^)(NSDictionary *fields, NSError *error))completion
 {
+    if (!completion) return;
+    
     __weak typeof(self) wself = self;
     __block NSError *bError;
     __block NSMutableDictionary *fieldsDictionary = [NSMutableDictionary dictionary];
-    __block NSInteger loadedItems = 0;
-    NSInteger itemsToLoad = [self.order.tickets count];
-    
-    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+    dispatch_group_t group = dispatch_group_create();
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (TXHTicket *ticket in wself.order.tickets)
         {
+            dispatch_group_enter(group);
+
             [TXHTICKETINHGUBCLIENT fieldsForTicket:ticket completion:^(NSArray *fields, NSError *error) {
-                fieldsDictionary[ticket.ticketId] = fields;
-                loadedItems++;
+            
+                if (fields)
+                    fieldsDictionary[ticket.ticketId] = fields;
                 
                 if (error) // any error should be enough
                     bError = error;
-                
-                if (loadedItems == itemsToLoad)
-                    dispatch_semaphore_signal(semaphore);
+            
+                    dispatch_group_leave(group);
             }];
         }
     
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
         
-        if (completion)
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completion(fieldsDictionary, bError);
-            });
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(fieldsDictionary, bError);
+        });
     });
 }
 
 - (void)upgradesForCurrentOrderWithCompletion:(void(^)(NSDictionary *upgrades, NSError *error))completion
 {
+    if (!completion) return;
+    
     __weak typeof(self) wself = self;
     __block NSError *bError;
     __block NSMutableDictionary *upgradesDictionary = [NSMutableDictionary dictionary];
-    __block NSInteger loadedItems = 0;
-    NSInteger itemsToLoad = [self.order.tickets count];
     
-    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    dispatch_group_t group = dispatch_group_create();
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (TXHTicket *ticket in wself.order.tickets)
         {
+            dispatch_group_enter(group);
+
             [TXHTICKETINHGUBCLIENT upgradesForTicket:ticket completion:^(NSArray *upgrades, NSError *error) {
-                upgradesDictionary[ticket.ticketId] = upgrades;
-                loadedItems++;
+                if (upgrades)
+                    upgradesDictionary[ticket.ticketId] = upgrades;
                 
                 if (error) // any error should be enough
                     bError = error;
                 
-                if (loadedItems == itemsToLoad)
-                    dispatch_semaphore_signal(semaphore);
+                dispatch_group_leave(group);
     
             }];
         }
         
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
         
-        if (completion)
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completion(upgradesDictionary, bError);
-            });
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(upgradesDictionary, bError);
+        });
     });
 }
 
@@ -353,10 +343,10 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
                              }];
 }
 
-- (void)downloadReciptWithWidth:(NSUInteger)width dpi:(NSUInteger)dpi completion:(void(^)(NSURL *url, NSError *error))completion
+- (void)downloadReciptWithWidth:(NSUInteger)width dpi:(NSUInteger)dpi format:(TXHDocumentFormat)format completion:(void(^)(NSURL *url, NSError *error))completion
 {
     [TXHTICKETINHGUBCLIENT getReciptForOrder:self.order
-                                      format:TXHDocumentFormatPDF
+                                      format:format
                                        width:width
                                          dpi:dpi
                                   completion:completion];
@@ -367,11 +357,11 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
     [TXHTICKETINHGUBCLIENT getTicketTemplatesCompletion:completion];
 }
 
-- (void)downloadTicketWithTemplate:(TXHTicketTemplate *)template completion:(void(^)(NSURL *url, NSError *error))completion
+- (void)downloadTicketsWithTemplate:(TXHTicketTemplate *)template format:(TXHDocumentFormat)format completion:(void(^)(NSURL *url, NSError *error))completion
 {
     [TXHTICKETINHGUBCLIENT getTicketToPrintForOrder:self.order
                                         withTemplet:template
-                                             format:TXHDocumentFormatPDF
+                                             format:format
                                          completion:completion];
 }
 

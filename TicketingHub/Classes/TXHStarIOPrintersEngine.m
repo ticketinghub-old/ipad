@@ -10,15 +10,15 @@
 #import "TXHStarIOPrintersEngine.h"
 #import "TXHStarIOPrinter.h"
 
-#import <UIImage+PDF/UIImage+PDF.h>
-#import "NSError+TXHPrinters.h"
 
+#import "NSError+TXHPrinters.h"
+#import <UIImage+PDF/UIImage+PDF.h>
 #import "UIImage+ImageEffects.h"
 
 #import "RasterDocument.h"
 #import "StarBitmap.h"
 #import <sys/time.h>
-#include <unistd.h>
+#import <unistd.h>
 
 static char * const POS_OPEN_DRAWER_COMMAND = "\x07";
 
@@ -33,28 +33,49 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
 
 - (void)fetchAvailablePrinters:(void(^)(NSArray *printers, NSError *error))completion
 {
-    NSArray *printers = [SMPort searchPrinter:@"BT:"];
+    if (!completion) return;
     
-    NSMutableArray *starPrinters = @[].mutableCopy;
-    
-    for (PortInfo *portInfo in printers)
-    {
-        TXHStarIOPrinter *printer = [[TXHStarIOPrinter alloc] initWithPrintersEngine:self andPortInfo:portInfo];
-        [starPrinters addObject:printer];
-    }
-    
-    completion([starPrinters copy], nil);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        NSArray *printers = [SMPort searchPrinter:@"BT:"];
+        NSMutableArray *starPrinters = @[].mutableCopy;
+        
+        for (PortInfo *portInfo in printers)
+        {
+            TXHStarIOPrinter *printer = [[TXHStarIOPrinter alloc] initWithPrintersEngine:self andPortInfo:portInfo];
+            [starPrinters addObject:printer];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion([starPrinters copy], nil);
+        });
+    });
 }
 
+/**
+ 
+ 
+ 
+ */
 - (void)printPDFDocument:(id)documentURL
              withPrinter:(TXHPrinter *)printer
            continueBlock:(TXHPrinterContinueBlock)continueBlock
          completionBlock:(TXHPrinterCompletionBlock)completionBlock
 {
+    if (!printer)
+    {
+        if (completionBlock)
+            completionBlock([NSError printerErrorWithCode:kTXHPrinterArgsInconsistencyError],YES);
+
+        return;
+    }
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         CGPDFDocumentRef pdf = CGPDFDocumentCreateWithURL((CFURLRef)documentURL);
         size_t pageCount = CGPDFDocumentGetNumberOfPages(pdf);
+        
+        __block BOOL printAllPages = (continueBlock == nil);
         
         for (int page = 0; page < pageCount; page++)
         {
@@ -62,13 +83,15 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
             
             dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 
-            TXHPrinterCompletionBlock askToContinueBlock =
+            void(^askToContinueBlock)(NSError *error) =
+
             ^(NSError *error) {
                 
-                if (continueBlock && page + 1 < pageCount)
+                if (!printAllPages && page + 1 < pageCount)
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        continueBlock(^(BOOL continuePrinting)
+                        continueBlock(^(BOOL continuePrinting, BOOL printAll)
                                       {
+                                          printAllPages = printAll;
                                           printNextPage = continuePrinting;
                                           dispatch_semaphore_signal(semaphore);
                                       });
@@ -88,25 +111,25 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
             if (!printNextPage)
             {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    completionBlock(nil); // TODO: should return something to inform that process was cancelled
+                    if (completionBlock)
+                        completionBlock(nil, YES);
                 });
                 return;
             }
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            completionBlock(nil);
+            if (completionBlock)
+                completionBlock(nil, NO);
         });
     });
 }
 
-- (void)printPage:(int)page formDocument:(NSURL *)documentURL withPrinter:(TXHPrinter *)printer completionBlock:(TXHPrinterCompletionBlock)completionBlock
+- (void)printPage:(int)page formDocument:(NSURL *)documentURL withPrinter:(TXHPrinter *)printer completionBlock:(void(^)(NSError *error))completion
 {
-    
     TXHStarIOPrinter *starPrinter = (TXHStarIOPrinter *)printer;
 
     UIImage *img = [UIImage imageWithPDFURL:documentURL atWidth:STAR_PRINTER_MAXWIDTH atPage:page];
-    
     img = [img imageWithBackground:[UIColor whiteColor]];
     
     if (starPrinter.printerType == TXHStarPortablePrinterTypePortable)
@@ -117,7 +140,7 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
                          printerWidth:STAR_PRINTER_MAXWIDTH
                     compressionEnable:YES
                        pageModeEnable:NO
-                           completion:completionBlock];
+                           completion:completion];
     }
     else if (starPrinter.printerType == TXHStarPortablePrinterTypePOS)
     {
@@ -127,12 +150,12 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
                             maxWidth:STAR_PRINTER_MAXWIDTH
                    compressionEnable:YES
                       withDrawerKick:NO
-                          completion:completionBlock];
+                          completion:completion];
     }
 }
 
 
-// POS printers
+#pragma mark - POS printers
 
 - (void)printImageWithPortname:(NSString *)portName portSettings:(NSString*)portSettings imageToPrint:(UIImage*)imageToPrint maxWidth:(int)maxWidth compressionEnable:(BOOL)compressionEnable withDrawerKick:(BOOL)drawerKick completion:(void(^)(NSError *error))completion
 {
@@ -165,7 +188,7 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
     [self sendCommand:commandsToPrint portName:portName portSettings:portSettings timeoutMillis:10000 completion:completion];
 }
 
-// portable printers
+#pragma mark - portable printer
 
 - (void)printBitmapWithPortName:(NSString*)portName portSettings:(NSString*)portSettings imageSource:(UIImage*)source printerWidth:(int)maxWidth compressionEnable:(BOOL)compressionEnable pageModeEnable:(BOOL)pageModeEnable completion:(void(^)(NSError *error))completion
 {
@@ -175,7 +198,7 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
     [self sendCommand:commands portName:portName portSettings:portSettings timeoutMillis:10000 completion:completion];
 }
 
-// universal method
+#pragma mark - Printer Communication
 
 - (void)sendCommand:(NSData *)commandsToPrint portName:(NSString *)portName portSettings:(NSString *)portSettings timeoutMillis:(u_int32_t)timeoutMillis completion:(void(^)(NSError *error))completion
 {

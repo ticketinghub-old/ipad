@@ -297,11 +297,11 @@
 - (void)updateActivityIndicator
 {
     if (self.loadingAvailabilites)
-        [self.activityView showWithText:NSLocalizedString(@"SD_LOADING_AVAILABILITIES_LABEL", nil) activityIndicatorHidden:NO];
+        [self.activityView showWithMessage:NSLocalizedString(@"SD_LOADING_AVAILABILITIES_LABEL", nil) indicatorHidden:NO];
     else if (self.loadingAvailabilitesDetails)
-        [self.activityView showWithText:NSLocalizedString(@"SD_LOADING_AVAILABILITY_DETAILS_LABEL", nil) activityIndicatorHidden:NO];
+        [self.activityView showWithMessage:NSLocalizedString(@"SD_LOADING_AVAILABILITY_DETAILS_LABEL", nil) indicatorHidden:NO];
     else if (!self.selectedProduct || !self.selectedAvailability)
-        [self.activityView showWithText:NSLocalizedString(@"SD_NO_AVAILABILITIES_LABEL", nil) activityIndicatorHidden:YES];
+        [self.activityView showWithMessage:NSLocalizedString(@"SD_NO_AVAILABILITIES_LABEL", nil) indicatorHidden:YES];
     else
         [self.activityView hide];
 }
