@@ -478,7 +478,7 @@
                                     <segment title="By Cash"/>
                                     <segment title="Credit"/>
                                 </segments>
-                                <color key="tintColor" red="0.14901960784313725" green="0.2627450980392157" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.16078431369999999" green="0.47843137250000001" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="didChangePaymentMethod:" destination="2z9-so-MKI" eventType="valueChanged" id="HVk-aV-YKC"/>
                                 </connections>
