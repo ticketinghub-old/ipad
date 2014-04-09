@@ -7,23 +7,38 @@
 //
 
 #import "TXHDoorOrderViewController.h"
+
+#import <iOS-api/TXHTicketingHubClient.h>
 #import "TXHProductsManager.h"
-#import "UIColor+TicketingHub.h"
-#import <UIAlertView-Blocks/UIAlertView+Blocks.h>
 
 #import "TXHDoorOrderDetailsViewController.h"
 #import "TXHDoorOrderTicketsListViewController.h"
+
 #import "TXHPrintButtonsViewController.h"
 
-@interface TXHDoorOrderViewController () <TXHPrintButtonsViewControllerDelegate>
+#import "TXHPrinterSelectionViewController.h"
+#import "TXHPrintersUtility.h"
 
-@property (nonatomic, weak) TXHDoorOrderDetailsViewController     *orderDetailsViewController;
-@property (nonatomic, weak) TXHDoorOrderTicketsListViewController *orderTicketsListViewController;
-@property (nonatomic, weak) TXHPrintButtonsViewController         *printButtonsViewController;
+#import "TXHActivityLabelPrintersUtilityDelegate.h"
+#import "TXHActivityLabelView.h"
 
-@property (nonatomic, strong) TXHOrder *order;
+#import "UIColor+TicketingHub.h"
+#import <UIAlertView-Blocks/UIAlertView+Blocks.h>
 
-@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
+@interface TXHDoorOrderViewController () <TXHPrintButtonsViewControllerDelegate, TXHPrinterSelectionViewControllerDelegate>
+
+@property (weak, nonatomic) TXHDoorOrderDetailsViewController     *orderDetailsViewController;
+@property (weak, nonatomic) TXHDoorOrderTicketsListViewController *orderTicketsListViewController;
+@property (weak, nonatomic) TXHPrintButtonsViewController         *printButtonsViewController;
+
+@property (strong, nonatomic) TXHActivityLabelView *activityView;
+
+@property (strong, nonatomic) TXHOrder *order;
+
+@property (assign, nonatomic) TXHPrintType selectedPrintType;
+@property (strong, nonatomic) TXHPrintersUtility *printingUtility;
+@property (strong, nonatomic) TXHActivityLabelPrintersUtilityDelegate *printingUtilityDelegate;
+@property (strong, nonatomic) UIPopoverController *printerSelectionPopover;
 
 @end
 
@@ -34,6 +49,14 @@
     [super viewDidLoad];
     
     [self setup];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    // fix for preapre for segue
+    [self.activityView removeFromSuperview];
+    self.activityView.frame = self.navigationController.view.bounds;
+    [self.navigationController.view addSubview:self.activityView];
 }
 
 - (void)setup
@@ -90,32 +113,47 @@
     [alert show];
 }
 
-- (UIActivityIndicatorView *)activityIndicator
+- (TXHActivityLabelView *)activityView
 {
-    if (!_activityIndicator)
+    if (!_activityView)
     {
-        UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:self.view.bounds];
-        indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-        indicatorView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        indicatorView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.8];
-        indicatorView.hidesWhenStopped = YES;
-        indicatorView.color = [UIColor txhDarkBlueColor];
-        [self.view addSubview:indicatorView];
-        _activityIndicator = indicatorView;
+        TXHActivityLabelView *activityView = [TXHActivityLabelView getInstance];
+        activityView.frame = self.view.bounds;
+        activityView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        
+        [self.view addSubview:activityView];
+        _activityView = activityView;
     }
-    return _activityIndicator;
+    return _activityView;
+}
+
+- (TXHPrintersUtility *)printingUtility
+{
+    if (!_printingUtility)
+    {
+        TXHActivityLabelPrintersUtilityDelegate *printingUtilityDelegate =
+        [TXHActivityLabelPrintersUtilityDelegate new];
+        printingUtilityDelegate.activityView = self.activityView;
+        
+        TXHPrintersUtility *printingUtility = [[TXHPrintersUtility alloc] init];
+        printingUtility.delegate = printingUtilityDelegate;
+        
+        _printingUtility = printingUtility;
+        _printingUtilityDelegate = printingUtilityDelegate;
+    }
+    return _printingUtility;
 }
 
 #pragma mark - private methods
 
 - (void)showLoadingIndicator
 {
-    [self.activityIndicator startAnimating];
+    [self.activityView showWithMessage:@"" indicatorHidden:NO];
 }
 
 - (void)hideLoadingIndicator
 {
-    [self.activityIndicator stopAnimating];
+    [self.activityView hide];
 }
 
 #pragma mark - Navigation
@@ -147,14 +185,44 @@
 
 - (void)txhPrintButtonsViewControllerPrintReciptAction:(TXHBorderedButton *)button
 {
-
+    self.selectedPrintType = TXHPrintTypeRecipt;
+    [self showPrinterSelectorFromButton:(UIButton *)button];
 }
 
 - (void)txhPrintButtonsViewControllerPrintTicketsAction:(TXHBorderedButton *)button
 {
-
+    self.selectedPrintType = TXHPrintTypeTickets;
+    [self showPrinterSelectorFromButton:(UIButton *)button];
 }
 
+- (void)showPrinterSelectorFromButton:(UIButton *)button
+{
+    TXHPrinterSelectionViewController *printerSelector = [[TXHPrinterSelectionViewController alloc] init];
+    printerSelector.delegate = self;
+    
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:printerSelector];
+    popover.popoverContentSize = CGSizeMake(200, 110);
+    
+    CGRect fromRect = [button.superview convertRect:button.frame toView:self.view];
+    
+    [popover presentPopoverFromRect:fromRect
+                             inView:self.view
+           permittedArrowDirections:UIPopoverArrowDirectionAny
+                           animated:YES];
+    
+    self.printerSelectionPopover = popover;
+}
+
+#pragma mark - TXHPrinterSelectionViewControllerDelegate
+
+- (void)txhPrinterSelectionViewController:(TXHPrinterSelectionViewController *)controller
+                         didSelectPrinter:(TXHPrinter *)printer
+{
+    [self.printerSelectionPopover dismissPopoverAnimated:YES];
+    self.printerSelectionPopover = nil;
+    
+    [self.printingUtility startPrintingWithType:self.selectedPrintType onPrinter:printer withOrder:self.order];
+}
 
 
 @end

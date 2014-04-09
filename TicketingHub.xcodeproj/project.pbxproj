@@ -10,6 +10,7 @@
 		3E0DAB9118AA41510045697C /* iOS-api.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3E0DAB9018AA41510045697C /* iOS-api.podspec */; };
 		3E22139B18AA791000DE35A6 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E22139A18AA791000DE35A6 /* ArrayDataSource.m */; };
 		3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E22139D18AA794C00DE35A6 /* DictionaryDataSource.m */; };
+		3E2B085318F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B085218F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.m */; };
 		3E3C50C218C7823500A9285C /* TXHDoorTicketsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C50C118C7823500A9285C /* TXHDoorTicketsListViewController.m */; };
 		3E3D46EA18ACB89A00275ACF /* FetchedResultsControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D46E918ACB89A00275ACF /* FetchedResultsControllerDataSource.m */; };
 		3E3D46EE18ACBB8500275ACF /* UIColor+TicketingHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D46ED18ACBB8500275ACF /* UIColor+TicketingHub.m */; };
@@ -44,6 +45,7 @@
 		3EA52C0518E3176100FEA0CA /* RasterDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52C0418E3176100FEA0CA /* RasterDocument.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3EA52C0818E3177600FEA0CA /* StarBitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52C0718E3177600FEA0CA /* StarBitmap.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3EA52C0C18E31BDC00FEA0CA /* TXHStarIOPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52C0B18E31BDC00FEA0CA /* TXHStarIOPrinter.m */; };
+		3EA61BBC18F443A8004458B2 /* TXHPrintersUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA61BBB18F443A8004458B2 /* TXHPrintersUtility.m */; };
 		3EAA200218CF7C52003EC924 /* TXHTicket+Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */; };
 		3EC63E0218B36E7A00B091A0 /* TXHSaleStepsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0118B36E7A00B091A0 /* TXHSaleStepsManager.m */; };
 		3EC63E0818B3721600B091A0 /* TXHSalesStepAbstract.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0718B3721600B091A0 /* TXHSalesStepAbstract.m */; };
@@ -134,6 +136,8 @@
 		3E22139C18AA794C00DE35A6 /* DictionaryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryDataSource.h; sourceTree = "<group>"; };
 		3E22139D18AA794C00DE35A6 /* DictionaryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryDataSource.m; sourceTree = "<group>"; };
 		3E22139F18AA799700DE35A6 /* TableViewConfigurationBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewConfigurationBlock.h; sourceTree = "<group>"; };
+		3E2B085118F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHActivityLabelPrintersUtilityDelegate.h; sourceTree = "<group>"; };
+		3E2B085218F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHActivityLabelPrintersUtilityDelegate.m; sourceTree = "<group>"; };
 		3E3C50C018C7823500A9285C /* TXHDoorTicketsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorTicketsListViewController.h; sourceTree = "<group>"; };
 		3E3C50C118C7823500A9285C /* TXHDoorTicketsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorTicketsListViewController.m; sourceTree = "<group>"; };
 		3E3D46E818ACB89A00275ACF /* FetchedResultsControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedResultsControllerDataSource.h; sourceTree = "<group>"; };
@@ -198,6 +202,8 @@
 		3EA52C0A18E31BDC00FEA0CA /* TXHStarIOPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHStarIOPrinter.h; sourceTree = "<group>"; };
 		3EA52C0B18E31BDC00FEA0CA /* TXHStarIOPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHStarIOPrinter.m; sourceTree = "<group>"; };
 		3EA52C0D18E325A000FEA0CA /* TXHPrintersEngineProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHPrintersEngineProtocol.h; sourceTree = "<group>"; };
+		3EA61BBA18F443A8004458B2 /* TXHPrintersUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHPrintersUtility.h; sourceTree = "<group>"; };
+		3EA61BBB18F443A8004458B2 /* TXHPrintersUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHPrintersUtility.m; sourceTree = "<group>"; };
 		3EAA200018CF7C52003EC924 /* TXHTicket+Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHTicket+Filter.h"; sourceTree = "<group>"; };
 		3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHTicket+Filter.m"; sourceTree = "<group>"; };
 		3EC63E0018B36E7A00B091A0 /* TXHSaleStepsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSaleStepsManager.h; path = TicketingHub/Classes/TXHSaleStepsManager.h; sourceTree = SOURCE_ROOT; };
@@ -747,6 +753,10 @@
 				3E53C53C18E343FD00FF6F9B /* TXHPrinterSelectionViewController.m */,
 				3E53C54318E5693600FF6F9B /* NSError+TXHPrinters.h */,
 				3E53C54418E5693600FF6F9B /* NSError+TXHPrinters.m */,
+				3EA61BBA18F443A8004458B2 /* TXHPrintersUtility.h */,
+				3EA61BBB18F443A8004458B2 /* TXHPrintersUtility.m */,
+				3E2B085118F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.h */,
+				3E2B085218F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.m */,
 			);
 			name = Printers;
 			sourceTree = "<group>";
@@ -1262,10 +1272,12 @@
 				EE75D99417D11048009ADCD8 /* TXHSalesPaymentCashDetailsViewController.m in Sources */,
 				3E53C54518E5693600FF6F9B /* NSError+TXHPrinters.m in Sources */,
 				EE75D99517D11048009ADCD8 /* TXHSalesPaymentCreditDetailsViewController.m in Sources */,
+				3E2B085318F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.m in Sources */,
 				EE75D99817D11048009ADCD8 /* TXHSalesPaymentPaymentDetailsViewController.m in Sources */,
 				3ECE132418B4C8A800E7148F /* TXHProductsManager.m in Sources */,
 				3EE8E21B18CA2645006E8F5E /* UIImage+ImageEffects.m in Sources */,
 				3E8FD59318C74CD70066FA50 /* TXHDoorSearchViewController.m in Sources */,
+				3EA61BBC18F443A8004458B2 /* TXHPrintersUtility.m in Sources */,
 				EE75D99917D11048009ADCD8 /* TXHSalesPaymentViewController.m in Sources */,
 				3E22139B18AA791000DE35A6 /* ArrayDataSource.m in Sources */,
 				3E4ADF7318D8C17400D2C508 /* TXHPrintButtonsViewController.m in Sources */,

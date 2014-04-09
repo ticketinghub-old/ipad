@@ -53,8 +53,9 @@
 
 /* Activity labels - Printers */
 
-"LOADING_RECEIPT_LABEL"     = "Preparing Receipt";
-"LOADING_TICKETS_LABEL"     = "Preparing Tickets";
+"LOADING_RECEIPT_LABEL"           = "Preparing Receipt";
+"LOADING_TICKETS_LABEL"           = "Preparing Tickets";
+"LOADING_TICKETS_TEMPLATES_LABEL" = "Preparing Tickets";
 
 "PRINTING_RECEIPT_LABEL"    = "Printing Receipt";
 "PRINTING_TICKETS_LABEL"    = "Printing Tickets";
