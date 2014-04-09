@@ -11,6 +11,7 @@
 		3E22139B18AA791000DE35A6 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E22139A18AA791000DE35A6 /* ArrayDataSource.m */; };
 		3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E22139D18AA794C00DE35A6 /* DictionaryDataSource.m */; };
 		3E2B085318F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B085218F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.m */; };
+		3E2B085518F5719600F13214 /* StarIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2B085418F5719600F13214 /* StarIO.framework */; };
 		3E3C50C218C7823500A9285C /* TXHDoorTicketsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C50C118C7823500A9285C /* TXHDoorTicketsListViewController.m */; };
 		3E3D46EA18ACB89A00275ACF /* FetchedResultsControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D46E918ACB89A00275ACF /* FetchedResultsControllerDataSource.m */; };
 		3E3D46EE18ACBB8500275ACF /* UIColor+TicketingHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D46ED18ACBB8500275ACF /* UIColor+TicketingHub.m */; };
@@ -39,7 +40,6 @@
 		3EA36B8618B237BF008F8C59 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA36B8518B237BF008F8C59 /* UIView+Additions.m */; };
 		3EA52BEE18E2D18900FEA0CA /* TXHPrintersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52BED18E2D18900FEA0CA /* TXHPrintersManager.m */; };
 		3EA52BF118E2D22000FEA0CA /* TXHPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52BF018E2D22000FEA0CA /* TXHPrinter.m */; };
-		3EA52BF518E2EEC600FEA0CA /* StarIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA52BF418E2EEC600FEA0CA /* StarIO.framework */; };
 		3EA52BF718E2EFF000FEA0CA /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA52BF618E2EFF000FEA0CA /* ExternalAccessory.framework */; };
 		3EA52BFB18E2F06600FEA0CA /* TXHStarIOPrintersEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52BFA18E2F06600FEA0CA /* TXHStarIOPrintersEngine.m */; };
 		3EA52C0518E3176100FEA0CA /* RasterDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52C0418E3176100FEA0CA /* RasterDocument.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -138,6 +138,7 @@
 		3E22139F18AA799700DE35A6 /* TableViewConfigurationBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewConfigurationBlock.h; sourceTree = "<group>"; };
 		3E2B085118F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHActivityLabelPrintersUtilityDelegate.h; sourceTree = "<group>"; };
 		3E2B085218F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHActivityLabelPrintersUtilityDelegate.m; sourceTree = "<group>"; };
+		3E2B085418F5719600F13214 /* StarIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = StarIO.framework; sourceTree = "<group>"; };
 		3E3C50C018C7823500A9285C /* TXHDoorTicketsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorTicketsListViewController.h; sourceTree = "<group>"; };
 		3E3C50C118C7823500A9285C /* TXHDoorTicketsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorTicketsListViewController.m; sourceTree = "<group>"; };
 		3E3D46E818ACB89A00275ACF /* FetchedResultsControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedResultsControllerDataSource.h; sourceTree = "<group>"; };
@@ -190,7 +191,6 @@
 		3EA52BED18E2D18900FEA0CA /* TXHPrintersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHPrintersManager.m; sourceTree = "<group>"; };
 		3EA52BEF18E2D22000FEA0CA /* TXHPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHPrinter.h; sourceTree = "<group>"; };
 		3EA52BF018E2D22000FEA0CA /* TXHPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHPrinter.m; sourceTree = "<group>"; };
-		3EA52BF418E2EEC600FEA0CA /* StarIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = StarIO.framework; sourceTree = "<group>"; };
 		3EA52BF618E2EFF000FEA0CA /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		3EA52BF918E2F06600FEA0CA /* TXHStarIOPrintersEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHStarIOPrintersEngine.h; sourceTree = "<group>"; };
 		3EA52BFA18E2F06600FEA0CA /* TXHStarIOPrintersEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHStarIOPrintersEngine.m; sourceTree = "<group>"; };
@@ -343,12 +343,12 @@
 			files = (
 				3EA52BF718E2EFF000FEA0CA /* ExternalAccessory.framework in Frameworks */,
 				CEA4926CD193447DAE8A8A56 /* libPods.a in Frameworks */,
+				3E2B085518F5719600F13214 /* StarIO.framework in Frameworks */,
 				4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */,
 				58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */,
 				58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */,
 				EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */,
 				5860E8581762175B0046DFD3 /* QuartzCore.framework in Frameworks */,
-				3EA52BF518E2EEC600FEA0CA /* StarIO.framework in Frameworks */,
 				EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */,
 				EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */,
 				58E4FB551760AE5500E328A0 /* UIKit.framework in Frameworks */,
@@ -905,8 +905,8 @@
 		58E4FB531760AE5500E328A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3E2B085418F5719600F13214 /* StarIO.framework */,
 				3EA52BF618E2EFF000FEA0CA /* ExternalAccessory.framework */,
-				3EA52BF418E2EEC600FEA0CA /* StarIO.framework */,
 				4D68DAAA178B0A5400743227 /* AVFoundation.framework */,
 				58E4FB581760AE5500E328A0 /* CoreGraphics.framework */,
 				58E4FB561760AE5500E328A0 /* Foundation.framework */,
@@ -1520,7 +1520,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "83E5B7A7-D15E-4BD7-96A3-7A6A384B0648";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
 					"-Wno-objc-missing-property-synthesis",

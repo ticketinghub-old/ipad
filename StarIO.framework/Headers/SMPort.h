@@ -37,6 +37,7 @@
 @property(retain, readonly) NSString *macAddress;
 @property(retain, readonly) NSString *modelName;
 @property(readonly, getter=isConnected) BOOL connected;
+
 @end
 
 @interface SMPort : NSObject {
@@ -46,6 +47,8 @@
 	NSString * m_portName;
 	NSString * m_portSettings;
 	int m_ioTimeoutMillis;
+    
+    BOOL checkedBlockSupport;
 }
 
 @property(assign, readwrite) u_int32_t endCheckedBlockTimeoutMillis;
@@ -124,6 +127,13 @@
 - (void)getParsedStatus:(void *)starPrinterStatus :(u_int32_t)level;
 
 /*
+ getFirmwareInformation
+ --------
+ This function retrieves the device's firmware information.
+ */
+- (NSDictionary *)getFirmwareInformation;
+ 
+/*
  getOnlineStatus
  --------
  This function retreives the device's online status.
@@ -157,7 +167,7 @@
  If the starPrinterStatus_2 structure indicates that the printer is online upon return than all data was successfully printed.
  
    Parameters: starPrinterStatus - pointer to a StarPrinterStatus_n structure where the devices detailed status is written 
-                                   (either q, StarPrinterStatus_1, or StarPrinterStatus_2)
+                                   (either StarPrinterStatus_0, StarPrinterStatus_1, or StarPrinterStatus_2)
                level             - integer designating the level of status structure (either 0, 1, or 2)
    Returns:    none
    Notes:      throws PortException on failure

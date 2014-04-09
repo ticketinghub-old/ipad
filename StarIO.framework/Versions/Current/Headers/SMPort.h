@@ -37,6 +37,7 @@
 @property(retain, readonly) NSString *macAddress;
 @property(retain, readonly) NSString *modelName;
 @property(readonly, getter=isConnected) BOOL connected;
+
 @end
 
 @interface SMPort : NSObject {
@@ -46,6 +47,8 @@
 	NSString * m_portName;
 	NSString * m_portSettings;
 	int m_ioTimeoutMillis;
+    
+    BOOL checkedBlockSupport;
 }
 
 @property(assign, readwrite) u_int32_t endCheckedBlockTimeoutMillis;
@@ -123,6 +126,13 @@
  */
 - (void)getParsedStatus:(void *)starPrinterStatus :(u_int32_t)level;
 
+/*
+ getFirmwareInformation
+ --------
+ This function retrieves the device's firmware information.
+ */
+- (NSDictionary *)getFirmwareInformation;
+ 
 /*
  getOnlineStatus
  --------
