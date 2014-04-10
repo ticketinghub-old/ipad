@@ -70,14 +70,15 @@
 {
     _checkingCoupon = checkingCoupon;
     
+    __weak typeof(self) wself = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         if (checkingCoupon)
         {
-            [self showLoadingIndicator];
+            [wself showLoadingIndicator];
         }
         else
         {
-            [self hideLoadingIndicator];
+            [wself hideLoadingIndicator];
         }
     });
 }
@@ -150,8 +151,9 @@
     cell.tierIdentifier   = tier.internalTierId;
     cell.selectedQuantity = [self quantityForTicketIdentifier:tier.internalTierId];
     
+    __weak typeof(self) wself = self;
     cell.quantityChangedHandler = ^(NSDictionary *quantity) {
-        [self updateQuantitiesWithDictionary:quantity];
+        [wself updateQuantitiesWithDictionary:quantity];
     };
 }
 
@@ -254,11 +256,12 @@
 {
     [self showLoadingIndicator];
     
+    __weak typeof(self) wself = self;
     [TXHORDERMANAGER reserveTicketsWithTierQuantities:self.quantities
                                          availability:self.availability
                                            completion:^(TXHOrder *order, NSError *error) {
                                            
-                                               [self hideLoadingIndicator];
+                                               [wself hideLoadingIndicator];
                                                
                                                if (error)
                                                {

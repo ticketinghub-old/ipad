@@ -11,7 +11,7 @@
 
 @interface TXHSalesWizardViewController : UITableViewController
 
-@property (strong, nonatomic) id<TXHSalesWizardViewControllerDataSource> dataSource;
+@property (weak, nonatomic) id<TXHSalesWizardViewControllerDataSource> dataSource;
 
 - (void)reloadWizard;
 

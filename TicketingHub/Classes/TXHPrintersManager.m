@@ -43,9 +43,11 @@
 {
     if (!completion) return;
     
+    __weak typeof(self) wself = self;
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        if (![self.engines count])
+        if (![wself.engines count])
             completion(nil,[NSError printerErrorWithCode:1]);
         
         __block NSError *bError;

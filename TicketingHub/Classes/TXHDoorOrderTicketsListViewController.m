@@ -228,12 +228,14 @@
     
     [self.ticketsDisabled addObject:cellTicket.ticketId];
     
+    __weak typeof(self) wself = self;
+
     [TXHPRODUCTSMANAGER setTicket:cellTicket
                          attended:cell.switchValue
                        completion:^(TXHTicket *ticket, NSError *error) {
-                           [self.ticketsDisabled removeObject:cellTicket.ticketId];
+                           [wself.ticketsDisabled removeObject:cellTicket.ticketId];
                            [cell setAttendedAt:cellTicket.attendedAt animated:YES];
-                           [self.header2 setAttendedCount:@(self.order.attendedTickets)];
+                           [wself.header2 setAttendedCount:@(wself.order.attendedTickets)];
                        }];
 }
 

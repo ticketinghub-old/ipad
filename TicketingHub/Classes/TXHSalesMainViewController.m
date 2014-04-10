@@ -128,17 +128,19 @@ static void * ContentValidContext = &ContentValidContext;
 
 - (void (^)(UIButton *button))printReciptButtonActionBlock
 {
+    __weak typeof(self) wself = self;
     return ^(UIButton *button){
-        self.selectedPrintType = TXHPrintTypeRecipt;
-        [self showPrinterSelectorFromButton:button];
+        wself.selectedPrintType = TXHPrintTypeRecipt;
+        [wself showPrinterSelectorFromButton:button];
     };
 }
 
 - (void (^)(UIButton *button))printTicketsButtonActionBlock
 {
+    __weak typeof(self) wself = self;
     return ^(UIButton *button){
-        self.selectedPrintType = TXHPrintTypeTickets;
-        [self showPrinterSelectorFromButton:button];
+        wself.selectedPrintType = TXHPrintTypeTickets;
+        [wself showPrinterSelectorFromButton:button];
     };
 }
 

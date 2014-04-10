@@ -450,8 +450,10 @@
 
 - (void)txhTicketDetailsViewController:(TXHTicketDetailsViewController *)controller wantsToPresentOrderForTicket:(TXHTicket *)ticket
 {
+    __weak typeof(self) wself = self;
+
     [self dismissDetailViewController:controller completion:^{
-        [self showOrderForTicekt:ticket];
+        [wself showOrderForTicekt:ticket];
     }];
 }
 
@@ -469,12 +471,13 @@
     
     [self.ticketsDisabled addObject:cellTicket.ticketId];
 
+    __weak typeof(self) wself = self;
     [TXHPRODUCTSMANAGER setTicket:cellTicket
                          attended:cell.switchValue
                        completion:^(TXHTicket *ticket, NSError *error) {
-                           [self.ticketsDisabled removeObject:cellTicket.ticketId];
+                           [wself.ticketsDisabled removeObject:cellTicket.ticketId];
                            [cell setAttendedAt:cellTicket.attendedAt animated:YES];
-                           [self updateHeader];
+                           [wself updateHeader];
                        }];
 }
 

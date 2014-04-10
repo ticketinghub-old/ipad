@@ -31,9 +31,10 @@
 -(void)setItems:(id)items
 {
     _items = items;
+    __weak typeof(self) wself = self;
     self.tableViewDataSource = [self dataSourceForItems:items
                                      configureCellBlock:^(id cell, id item) {
-                                         [self configureCell:cell withItem:item];
+                                         [wself configureCell:cell withItem:item];
                                      }];
     
     self.tableView.dataSource = self.tableViewDataSource;

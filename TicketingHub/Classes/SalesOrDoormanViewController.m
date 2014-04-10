@@ -286,11 +286,13 @@
 
 - (void)updateUI
 {
+    __weak typeof(self) wself = self;
+
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self updateActivityIndicator];
-        [self updateTitle];
-        [self updateAvailabilityButton];
-        [self updateModeSelector];
+        [wself updateActivityIndicator];
+        [wself updateTitle];
+        [wself updateAvailabilityButton];
+        [wself updateModeSelector];
     });
 }
 

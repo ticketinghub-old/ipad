@@ -70,6 +70,7 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
         return;
     }
     
+    __weak typeof(self) wself = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         CGPDFDocumentRef pdf = CGPDFDocumentCreateWithURL((CFURLRef)documentURL);
@@ -101,10 +102,10 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
                 
             };
             
-            [self printPage:page+1
-               formDocument:documentURL
-                withPrinter:printer
-            completionBlock:askToContinueBlock];
+            [wself printPage:page+1
+                formDocument:documentURL
+                 withPrinter:printer
+             completionBlock:askToContinueBlock];
             
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
             

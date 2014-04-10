@@ -230,15 +230,16 @@
 {
     [self blockAttenededButton];
     
+    __weak typeof(self) wself = self;
     [TXHPRODUCTSMANAGER setTicket:self.ticket
                          attended:(self.ticket.attendedAt == nil)
                        completion:^(TXHTicket *ticket, NSError *error) {
                            if (!error)
-                               [self.delegate txhTicketDetailsViewController:self
-                                                             didChangeTicket:self.ticket];
+                               [wself.delegate txhTicketDetailsViewController:wself
+                                                              didChangeTicket:wself.ticket];
                            
-                           [self unblockAttenededButton];
-                           [self updateButtons];
+                           [wself unblockAttenededButton];
+                           [wself updateButtons];
                        }];
 }
 
@@ -281,17 +282,18 @@
     
     TXHCustomer *customer = self.ticket.customer;
     
+    __weak typeof(self) wself = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.titleLabel.text      = [NSString stringWithFormat:@"%@ Ticket",self.ticket.tier.name];
-        self.subtitleLabel.text   = [self.ticket.reference length] > 0 ? self.ticket.reference : @"";
-        self.validFromLabel.text  = [self dateStringForDate:self.ticket.validFrom];
-        self.validUntilLabel.text = [self dateStringForDate:self.ticket.expiresAt];
-        self.upgradesLabel.text   = [upgrades count] ? [upgrades componentsJoinedByString:@", "] : @"-";
-        self.fullNameLabel.text   = [customer.fullName length] ? customer.fullName : @"-";
-        self.phoneLabel.text      = [customer.telephone length] ? customer.telephone : @"-";
-        self.countryLabel.text    = [customer.country length] ? customer.country : @"-";
+        wself.titleLabel.text      = [NSString stringWithFormat:@"%@ Ticket",wself.ticket.tier.name];
+        wself.subtitleLabel.text   = [wself.ticket.reference length] > 0 ? wself.ticket.reference : @"";
+        wself.validFromLabel.text  = [wself dateStringForDate:wself.ticket.validFrom];
+        wself.validUntilLabel.text = [wself dateStringForDate:wself.ticket.expiresAt];
+        wself.upgradesLabel.text   = [upgrades count] ? [upgrades componentsJoinedByString:@", "] : @"-";
+        wself.fullNameLabel.text   = [customer.fullName length] ? customer.fullName : @"-";
+        wself.phoneLabel.text      = [customer.telephone length] ? customer.telephone : @"-";
+        wself.countryLabel.text    = [customer.country length] ? customer.country : @"-";
 
-        [self updateButtons];
+        [wself updateButtons];
     });
 }
 

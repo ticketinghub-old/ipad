@@ -13,7 +13,7 @@
 @interface TXHDataSelectionViewController : UITableViewController
 
 // A delegate receiving quantity selection
-@property (strong, nonatomic) id <TXHDataSelectionDelegate> delegate;
+@property (weak, nonatomic) id <TXHDataSelectionDelegate> delegate;
 
 @property (strong, nonatomic) NSIndexPath *currentIndexPath;
 

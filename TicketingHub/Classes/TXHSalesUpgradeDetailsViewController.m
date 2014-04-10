@@ -296,16 +296,17 @@ static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
     
     [self showLoadingIndicator];
     
+    __weak typeof(self) wself = self;
     [TXHORDERMANAGER updateOrderWithUpgradesInfo:upgradesInfo
                                        completion:^(TXHOrder *order, NSError *error) {
                                            
-                                           [self hideLoadingIndicator];
+                                           [wself hideLoadingIndicator];
                                            
                                            if (error) {
-                                               [self.collectionView reloadData];
+                                               [wself.collectionView reloadData];
                                            }
                                            
-                                           [TXHORDERMANAGER storeValue:self.selectedUpgrades forKey:kStoredUserInputsKey];
+                                           [TXHORDERMANAGER storeValue:wself.selectedUpgrades forKey:kStoredUserInputsKey];
                                            
                                            blockName(error);
                                        }];

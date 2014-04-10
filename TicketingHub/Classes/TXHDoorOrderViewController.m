@@ -99,11 +99,13 @@
 {
     [self showLoadingIndicator];
     
+    __weak typeof(self) wself = self;
+    
     RIButtonItem *confirmItem = [RIButtonItem itemWithLabel:NSLocalizedString(@"", nil)
                                                      action:^{
-                                                         [self hideLoadingIndicator];
+                                                         [wself hideLoadingIndicator];
                                                          //TODO: this should be done with delegation
-                                                         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+                                                         [wself.navigationController dismissViewControllerAnimated:YES completion:nil];
                                                      }];
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"", nil)

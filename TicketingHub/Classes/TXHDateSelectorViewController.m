@@ -161,7 +161,7 @@
                                                             
                                                             if (error)
                                                             {
-                                                                wself.dataDictionary[monthYearKey] = nil;
+                                                                [wself.dataDictionary removeObjectForKey:monthYearKey];
                                                             }
                                                             else
                                                             {

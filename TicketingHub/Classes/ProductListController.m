@@ -75,11 +75,12 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 - (void)setupDataSource
 {
     NSString *cellIdentifier = @"ProductCellIdentifier";
+    __weak typeof(self) wself = self;
     self.tableViewDataSource = [[FetchedResultsControllerDataSource alloc] initWithFetchedResultsController:[TXHProductsManager productsFetchedResultsController]
                                                                                                   tableView:self.tableView
                                                                                              cellIdentifier:cellIdentifier
                                                                                          configureCellBlock:^(id cell, id item) {
-                                                                                             [self configureCell:cell withItem:item];
+                                                                                             [wself configureCell:cell withItem:item];
                                                                                          }];
     self.tableView.dataSource = self.tableViewDataSource;
 }

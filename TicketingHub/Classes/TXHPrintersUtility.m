@@ -71,7 +71,7 @@
                                          dpi:self.selectedPrinter.dpi
                                   completion:^(NSURL *url, NSError *error) {
                                       
-                                      [self.delegate txhPrintersUtility:self didFinishLoadingType:TXHPrintTypeRecipt error:error];
+                                      [wself.delegate txhPrintersUtility:wself didFinishLoadingType:TXHPrintTypeRecipt error:error];
                                       
                                       if (!error)
                                           [wself printPDFDocumentWithURL:url];
@@ -86,7 +86,7 @@
     
     [TXHTICKETINHGUBCLIENT getTicketTemplatesCompletion:^(NSArray *templates, NSError *error) {
         
-        [self.delegate txhPrintersUtility:self didFinishLoadingType:TXHPrintTypeTickets error:error];
+        [wself.delegate txhPrintersUtility:wself didFinishLoadingType:TXHPrintTypeTickets error:error];
         
         if (!error)
             [wself selectTemplateFromTemplates:templates];
@@ -126,7 +126,7 @@
                                              format:TXHDocumentFormatPDF
                                          completion:^(NSURL *url, NSError *error){
                                              
-                                             [self.delegate txhPrintersUtility:self didFinishLoadingType:TXHPrintTypeTemplates error:error];
+                                             [wself.delegate txhPrintersUtility:wself didFinishLoadingType:TXHPrintTypeTemplates error:error];
                                              
                                              if (!error)
                                                  [wself printPDFDocumentWithURL:url];
