@@ -327,10 +327,10 @@
 {
     NSString *dateTimeButtonTitle;
     
-    if (availability)
+    if (availability && ([availability.dateString length] || [availability.timeString length]))
         dateTimeButtonTitle = [NSString stringWithFormat:@"%@ %@", availability.dateString, availability.timeString];
     else
-        dateTimeButtonTitle = NSLocalizedString(@"Select Date", nil);
+        dateTimeButtonTitle = NSLocalizedString(@"NAV_SELECT_DATE_BUTTON_TITLE", nil);
     
     return dateTimeButtonTitle;
 }
