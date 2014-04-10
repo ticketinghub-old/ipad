@@ -82,12 +82,11 @@
                     <size key="freeformSize" width="1024" height="768"/>
                     <connections>
                         <outlet property="contentsContainer" destination="Ee0-R6-44p" id="cVE-5v-zwJ"/>
-                        <segue destination="2iF-it-Qwa" kind="custom" identifier="Tickets Upgrades" customClass="TXHTransitionSegue" id="n4W-1F-JWS"/>
-                        <segue destination="FmA-Tp-fAD" kind="custom" identifier="Order Summary" customClass="TXHTransitionSegue" id="2O4-LG-WgR"/>
-                        <segue destination="2z9-so-MKI" kind="custom" identifier="Payment" customClass="TXHTransitionSegue" id="FY2-hM-zEj"/>
-                        <segue destination="8RN-Pr-hoD" kind="custom" identifier="Order Completion" customClass="TXHTransitionSegue" id="ANc-Tn-Zs5"/>
-                        <segue destination="GbN-hu-Q3v" kind="custom" identifier="Tickets Quantity" customClass="TXHTransitionSegue" id="RZa-D6-ATJ"/>
-                        <segue destination="GbN-hu-Q3v" kind="custom" identifier="Embed Step1" customClass="TXHEmbeddingSegue" id="1rc-r4-K8Y"/>
+                        <segue destination="2iF-it-Qwa" kind="custom" identifier="Tickets Upgrades" customClass="TXHEmbeddingSegue" id="n4W-1F-JWS"/>
+                        <segue destination="FmA-Tp-fAD" kind="custom" identifier="Order Summary" customClass="TXHEmbeddingSegue" id="2O4-LG-WgR"/>
+                        <segue destination="2z9-so-MKI" kind="custom" identifier="Payment" customClass="TXHEmbeddingSegue" id="FY2-hM-zEj"/>
+                        <segue destination="8RN-Pr-hoD" kind="custom" identifier="Order Completion" customClass="TXHEmbeddingSegue" id="ANc-Tn-Zs5"/>
+                        <segue destination="GbN-hu-Q3v" kind="custom" identifier="Tickets Quantity" customClass="TXHEmbeddingSegue" id="RZa-D6-ATJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMN-iG-JPu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1047,10 +1046,9 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="paymentContentView" destination="JGZ-Ai-liG" id="WVV-y1-GCL"/>
-                        <segue destination="QXG-6t-PVr" kind="custom" identifier="TXHSalesPaymentCreditDetailsViewController" customClass="TXHTransitionSegue" id="kAo-9i-GI8"/>
-                        <segue destination="QH0-TV-maE" kind="custom" identifier="TXHSalesPaymentCashDetailsViewController" customClass="TXHTransitionSegue" id="zhi-pf-aB7"/>
-                        <segue destination="IVP-nR-Uny" kind="custom" identifier="TXHSalesPaymentCardDetailsViewController" customClass="TXHTransitionSegue" id="86V-wC-Mt2"/>
-                        <segue destination="IVP-nR-Uny" kind="custom" identifier="Embed TXHSalesPaymentCardDetailsViewController" customClass="TXHEmbeddingSegue" id="J5E-bB-dus"/>
+                        <segue destination="QXG-6t-PVr" kind="custom" identifier="TXHSalesPaymentCreditDetailsViewController" customClass="TXHEmbeddingSegue" id="kAo-9i-GI8"/>
+                        <segue destination="QH0-TV-maE" kind="custom" identifier="TXHSalesPaymentCashDetailsViewController" customClass="TXHEmbeddingSegue" id="zhi-pf-aB7"/>
+                        <segue destination="IVP-nR-Uny" kind="custom" identifier="TXHSalesPaymentCardDetailsViewController" customClass="TXHEmbeddingSegue" id="86V-wC-Mt2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3C1-MJ-j2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1400,8 +1398,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="1rc-r4-K8Y"/>
-        <segue reference="J5E-bB-dus"/>
-    </inferredMetricsTieBreakers>
 </document>

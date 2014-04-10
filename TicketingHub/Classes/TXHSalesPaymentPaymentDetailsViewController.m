@@ -12,7 +12,6 @@
 #import "TXHSalesPaymentCardDetailsViewController.h"
 #import "TXHSalesPaymentCashDetailsViewController.h"
 #import "TXHSalesPaymentCreditDetailsViewController.h"
-#import "TXHTransitionSegue.h"
 
 @interface TXHSalesPaymentPaymentDetailsViewController ()
 
@@ -21,6 +20,8 @@
 @property (strong, nonatomic) TXHSalesPaymentCardDetailsViewController *cardController;
 @property (strong, nonatomic) TXHSalesPaymentCashDetailsViewController *cashController;
 @property (strong, nonatomic) TXHSalesPaymentCreditDetailsViewController *creditController;
+
+@property (weak, nonatomic) UIViewController *currentControler;
 
 @end
 
@@ -39,7 +40,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self performSegueWithIdentifier:@"Embed TXHSalesPaymentCardDetailsViewController" sender:self];
+    [self performSegueWithIdentifier:@"TXHSalesPaymentCardDetailsViewController" sender:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,18 +51,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 #pragma unused (sender)
-    if ([segue.identifier isEqualToString:@"Embed TXHSalesPaymentCardDetailsViewController"]) {
-        // Grab a handle to the credit card controller
-        self.cardController = segue.destinationViewController;
-        TXHEmbeddingSegue *embeddingSegue = (TXHEmbeddingSegue *)segue;
-        embeddingSegue.containerView = self.paymentContentView;
-        return;
-    }
-    
     // Transitioning between payment method view controllers
-    if ([segue isMemberOfClass:[TXHTransitionSegue class]]) {
-        TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
+    if ([segue isMemberOfClass:[TXHEmbeddingSegue class]]) {
+        TXHEmbeddingSegue *transitionSegue = (TXHEmbeddingSegue *)segue;
         transitionSegue.containerView = self.paymentContentView;
+        transitionSegue.previousController = self.currentControler;
     }
     
     if ([segue.identifier isEqualToString:@"TXHSalesPaymentCashDetailsViewController"]) {
@@ -79,6 +73,8 @@
         self.cardController = segue.destinationViewController;
         return;
     }
+    
+    self.currentControler = segue.destinationViewController;
 }
 
 - (void)setPaymentMethodType:(TXHPaymentMethodType)paymentType

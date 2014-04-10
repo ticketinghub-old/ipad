@@ -112,7 +112,6 @@
 		EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848417D115640025530A /* TXHDateSelectorViewController.m */; };
 		EEB1849017D115640025530A /* TXHEmbeddingSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848617D115640025530A /* TXHEmbeddingSegue.m */; };
 		EEB1849217D115640025530A /* SalesOrDoormanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848A17D115640025530A /* SalesOrDoormanViewController.m */; };
-		EEB1849417D115640025530A /* TXHTransitionSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848E17D115640025530A /* TXHTransitionSegue.m */; };
 		EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */; };
 		EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */; };
 		EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC4017B272F700F226BC /* Security.framework */; };
@@ -326,8 +325,6 @@
 		EEB1848617D115640025530A /* TXHEmbeddingSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHEmbeddingSegue.m; sourceTree = "<group>"; };
 		EEB1848917D115640025530A /* SalesOrDoormanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SalesOrDoormanViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		EEB1848A17D115640025530A /* SalesOrDoormanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SalesOrDoormanViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EEB1848D17D115640025530A /* TXHTransitionSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTransitionSegue.h; sourceTree = "<group>"; };
-		EEB1848E17D115640025530A /* TXHTransitionSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTransitionSegue.m; sourceTree = "<group>"; };
 		EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EEB4FC4017B272F700F226BC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -397,8 +394,6 @@
 			children = (
 				EEB1848517D115640025530A /* TXHEmbeddingSegue.h */,
 				EEB1848617D115640025530A /* TXHEmbeddingSegue.m */,
-				EEB1848D17D115640025530A /* TXHTransitionSegue.h */,
-				EEB1848E17D115640025530A /* TXHTransitionSegue.m */,
 			);
 			name = Seques;
 			sourceTree = "<group>";
@@ -1315,7 +1310,6 @@
 				3ECE137718B689CE00E7148F /* NSDate+CupertinoYankee.m in Sources */,
 				3E44157018AB80EA00C4AE1C /* TXHTicketingHubManager.m in Sources */,
 				3E6F479718AFD6A300E644F7 /* TXHBorderedButton.m in Sources */,
-				EEB1849417D115640025530A /* TXHTransitionSegue.m in Sources */,
 				3E53C54B18E58FB400FF6F9B /* TXHActivityLabelView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

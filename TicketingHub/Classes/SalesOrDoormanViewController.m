@@ -14,7 +14,6 @@
 #import "TXHDateSelectorViewController.h"
 
 #import "TXHEmbeddingSegue.h"
-#import "TXHTransitionSegue.h"
 
 #import "UIResponder+FirstResponder.h"
 #import "ProductListControllerNotifications.h"
@@ -36,6 +35,8 @@
 @property (strong, nonatomic) IBOutlet UIView *loadingView;
 @property (strong, nonatomic) IBOutlet TXHActivityLabelView *activityView;
 
+@property (weak, nonatomic) UIViewController *currentContentController;
+
 @property (assign, nonatomic, getter = isLoadingAvailabilites)          BOOL loadingAvailabilites;
 @property (assign, nonatomic, getter = isLoadingAvailabilitesDetails)   BOOL loadingAvailabilitesDetails;
 
@@ -51,6 +52,7 @@
     [super viewDidLoad];
  
     [self setup];
+    
     [self selectMode:nil];
  
     self.selectedProduct = [TXHPRODUCTSMANAGER selectedProduct];
@@ -65,53 +67,34 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];
 }
 
-#pragma mark - Superclass overrides
-
-- (void)prepareForSegue:(UIStoryboardSegue *)__unused segue sender:(id)__unused sender {
-    if ([segue isMemberOfClass:[TXHTransitionSegue class]]) {
-        TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
-
-        transitionSegue.containerView = self.view;
-
-        if ([segue.identifier isEqualToString:@"Flip To Salesman"]) {
-            transitionSegue.animationOptions = UIViewAnimationOptionTransitionCurlDown;
-        }
-        else
-        {
-            transitionSegue.animationOptions = UIViewAnimationOptionTransitionCurlUp;
-        }
-    }
-}
-
 #pragma mark Actions
 
 - (IBAction)selectMode:(id)__unused sender
 {
     [self dismissVisiblePopover];
     [[UIResponder currentFirstResponder] resignFirstResponder];
+
+    NSString *storyboardIdentifier = nil;
+    
     if (self.modeSelector.selectedSegmentIndex == 1)
-    {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Doorman" bundle:nil];
-        UIViewController *destinationController = [storyboard instantiateInitialViewController];
-        
-        TXHEmbeddingSegue *segue = [[TXHEmbeddingSegue alloc] initWithIdentifier:@"Doorman"
-                                                                          source:self
-                                                                     destination:destinationController];
-        segue.containerView = self.contentDetailView;
-        [segue perform];
-    }
+        storyboardIdentifier = @"Doorman";
     else
-    {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Salesman" bundle:nil];
-        UIViewController *destinationController = [storyboard instantiateInitialViewController];
+        storyboardIdentifier = @"Salesman";
 
-        TXHEmbeddingSegue *segue = [[TXHEmbeddingSegue alloc] initWithIdentifier:@"Salesman"
-                                                                          source:self
-                                                                     destination:destinationController];
-        segue.containerView = self.contentDetailView;
-        [segue perform];
-    }
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardIdentifier bundle:nil];
+    UIViewController *destinationController = [storyboard instantiateInitialViewController];
+    
+    TXHEmbeddingSegue *segue = [[TXHEmbeddingSegue alloc] initWithIdentifier:storyboardIdentifier
+                                                                      source:self
+                                                                 destination:destinationController];
+    
+    segue.containerView = self.contentDetailView;
+    segue.previousController = self.currentContentController;
+    
+    self.currentContentController = segue.destinationViewController;
 
+    [segue perform];
+    
     self.selectedAvailability = nil;
     [self fetchAvailability];
 }

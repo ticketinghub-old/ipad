@@ -10,7 +10,6 @@
 
 // segues
 #import "TXHEmbeddingSegue.h"
-#import "TXHTransitionSegue.h"
 
 
 // child controllers
@@ -117,8 +116,6 @@ static void * ContentValidContext = &ContentValidContext;
     
     self.stepsManager.delegate = self;
     
-    [self performSegueWithIdentifier:@"Embed Step1" sender:self];
-    
     [self resetData];
     
     [self registerForProductAndAvailabilityChanges];
@@ -192,11 +189,12 @@ static void * ContentValidContext = &ContentValidContext;
         self.stepCompletionController = segue.destinationViewController;
         self.stepCompletionController.delegate = self;
     }
-    else if (([segue isMemberOfClass:[TXHTransitionSegue class]]) ||
-             ([segue.identifier isEqualToString:@"Embed Step1"]))
+    else if (([segue isMemberOfClass:[TXHEmbeddingSegue class]]))
     {
-        TXHTransitionSegue *transitionSegue = (TXHTransitionSegue *)segue;
-        transitionSegue.containerView = self.contentsContainer;
+        TXHEmbeddingSegue *transitionSegue = (TXHEmbeddingSegue *)segue;
+        transitionSegue.containerView      = self.contentsContainer;
+        transitionSegue.previousController = self.stepContentController;
+        
         self.stepContentController = segue.destinationViewController;
     }
 }
@@ -218,7 +216,7 @@ static void * ContentValidContext = &ContentValidContext;
         activityView.frame = self.navigationController.view.bounds;
         activityView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         
-        [self.navigationController.view addSubview:activityView];
+        [self.view addSubview:activityView];
         _activityView = activityView;
     }
     return _activityView;
