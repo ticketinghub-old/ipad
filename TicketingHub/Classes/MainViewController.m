@@ -112,30 +112,32 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 - (void)showVenueListAnimated
 {
-    [UIView animateWithDuration:0.3
-                          delay:0.0
-                        options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^{
-                         self.leftHandSpace.constant = 0.0f;
-                         [self.view layoutIfNeeded];
-                     }
-                     completion:^(BOOL finished) {
-                         
-                     }];
+    if (self.leftHandSpace.constant != 0.0f)
+        [UIView animateWithDuration:0.3
+                              delay:0.0
+                            options:UIViewAnimationOptionBeginFromCurrentState
+                         animations:^{
+                             self.leftHandSpace.constant = 0.0f;
+                             [self.view layoutIfNeeded];
+                         }
+                         completion:^(BOOL finished) {
+                             
+                         }];
 }
 
 - (void)hideVenueListAnimated
 {
-    [UIView animateWithDuration:0.3
-                          delay:0.0
-                        options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^{
-                         self.leftHandSpace.constant = -self.venueListContainer.bounds.size.width;
-                         [self.view layoutIfNeeded];
-                     }
-                     completion:^(BOOL finished) {
-                         
-                     }];
+    if (self.leftHandSpace.constant != -self.venueListContainer.bounds.size.width)
+        [UIView animateWithDuration:0.3
+                              delay:0.0
+                            options:UIViewAnimationOptionBeginFromCurrentState
+                         animations:^{
+                             self.leftHandSpace.constant = -self.venueListContainer.bounds.size.width;
+                             [self.view layoutIfNeeded];
+                         }
+                         completion:^(BOOL finished) {
+                             
+                         }];
 }
 
 #pragma mark - TXHSensorViewDelegate
