@@ -54,7 +54,6 @@
     [self selectMode:nil];
  
     self.selectedProduct = [TXHPRODUCTSMANAGER selectedProduct];
-    self.selectedAvailability = [TXHPRODUCTSMANAGER selectedAvailability];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productChanged:) name:TXHProductChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availabilityChanged:) name:TXHAvailabilityChangedNotification object:nil];
