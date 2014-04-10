@@ -184,7 +184,7 @@
                             <inset key="sectionInset" minX="40" minY="40" maxX="40" maxY="40"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TicketCell" id="VuR-BB-U6I" customClass="TXHSalesTicketTierCell">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SalesTicketTierCell" id="VuR-BB-U6I" customClass="TXHSalesTicketTierCell">
                                 <rect key="frame" x="40" y="100" width="160" height="160"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
