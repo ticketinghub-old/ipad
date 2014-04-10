@@ -164,7 +164,7 @@ static void * ContentValidContext = &ContentValidContext;
 
 - (void)dealloc
 {
-    self.stepCompletionController = nil; // removing KVO observer
+    self.stepContentController = nil; // removing KVO observer
     
     [self unregisterForProductAndAvailabilityChanges];
     [self unregisterFromKeyboardNotifications];
