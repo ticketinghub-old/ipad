@@ -74,8 +74,9 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 {
     if (!_scanner && [self shouldUseBuiltInCamera])
     {
-        _scanner = [TXHBarcodeScanner new];
-        _scanner.delegate = self;
+        TXHBarcodeScanner *scanner = [TXHBarcodeScanner new];
+        scanner.delegate = self;
+        _scanner = scanner;
     }
     return _scanner;
 }

@@ -45,9 +45,9 @@
 
 - (void)setCurrentStepIndex:(NSUInteger)currentStepIndex
 {
-        _currentStepIndex = currentStepIndex;
-        
-        [self.delegate saleStepsManager:self didChangeToStep:[self stepAtIndex:_currentStepIndex]];
+    _currentStepIndex = currentStepIndex;
+    
+    [self.delegate saleStepsManager:self didChangeToStep:[self stepAtIndex:_currentStepIndex]];
 }
 
 #pragma mark TXHSalesWizardViewControllerDataSource

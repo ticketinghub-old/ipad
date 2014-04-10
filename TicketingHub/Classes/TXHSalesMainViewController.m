@@ -49,9 +49,9 @@ static void * ContentValidContext = &ContentValidContext;
 @property (strong, nonatomic) UIViewController<TXHSalesContentsViewControllerProtocol> *stepContentController;
 
 @property (strong, nonatomic) TXHActivityLabelPrintersUtilityDelegate *printingUtilityDelegate;
-@property (strong, nonatomic) TXHPrintersUtility *printingUtility;
-@property (assign, nonatomic) TXHPrintType selectedPrintType;
-@property (strong, nonatomic) UIPopoverController *printerSelectionPopover;
+@property (strong, nonatomic) TXHPrintersUtility                      *printingUtility;
+@property (assign, nonatomic) TXHPrintType                            selectedPrintType;
+@property (strong, nonatomic) UIPopoverController                     *printerSelectionPopover;
 
 // data
 @property (strong, nonatomic) TXHSaleStepsManager *stepsManager;
