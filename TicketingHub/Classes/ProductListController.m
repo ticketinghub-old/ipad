@@ -55,7 +55,7 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 
 - (void)dealloc
 {
-    [self.user removeObserver:self forKeyPath:@"fullName" context:@"user.fullName"];
+    [self.user removeObserver:self forKeyPath:@"fullName" context:kUserFullNameKVOContext];
 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
 }
