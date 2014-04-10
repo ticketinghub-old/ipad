@@ -20,6 +20,7 @@ typedef void (^TXHPrinterContinueBlock)(void (^continuePrintingBlock)(BOOL conti
 @property (nonatomic, readonly, assign) NSUInteger paperWidth; // in mm
 @property (nonatomic, readonly, assign) NSUInteger dpi;
 @property (nonatomic, readonly, assign, getter = hasCutter) BOOL cutter;
+@property (nonatomic, readonly, copy) TXHPrinterContinueBlock printingContinue;
 
 
 - (instancetype)initWithPrintersEngine:(id<TXHPrintersEngineProtocol>)engine
@@ -28,7 +29,7 @@ typedef void (^TXHPrinterContinueBlock)(void (^continuePrintingBlock)(BOOL conti
 /*  
     printingContinueBlock
     if printer doesnt support automatic cutter,
-    this block will be called between each page to give chance to rip it off,
+    this block will be called between each page to give chance to i.e rip it off,
     if block is nil all pages will be printed one after another without any interruptions 
  */
 - (void)setPrintingContinueBlock:(TXHPrinterContinueBlock)printContinueBlock;

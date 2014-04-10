@@ -15,6 +15,5 @@
 
 - (void)printPDFDocument:(id)document
              withPrinter:(TXHPrinter *)printer
-           continueBlock:(TXHPrinterContinueBlock)continueBlock
          completionBlock:(TXHPrinterCompletionBlock)completionBlock;
 @end

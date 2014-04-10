@@ -53,13 +53,13 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
 }
 
 /**
- 
- 
- 
+ * Prints given pdf document
+ * if provided printer has
+ *
+ *
  */
 - (void)printPDFDocument:(id)documentURL
              withPrinter:(TXHPrinter *)printer
-           continueBlock:(TXHPrinterContinueBlock)continueBlock
          completionBlock:(TXHPrinterCompletionBlock)completionBlock
 {
     if (!printer)
@@ -75,27 +75,28 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
         
         CGPDFDocumentRef pdf = CGPDFDocumentCreateWithURL((CFURLRef)documentURL);
         size_t pageCount = CGPDFDocumentGetNumberOfPages(pdf);
+        CGPDFDocumentRelease(pdf);
         
-        __block BOOL printAllPages = (continueBlock == nil);
+        __block BOOL printAllPages = (printer.printingContinue == nil);
         
         for (int page = 0; page < pageCount; page++)
         {
             __block BOOL printNextPage = YES;
             
             dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-
+            
             void(^askToContinueBlock)(NSError *error) =
-
+            
             ^(NSError *error) {
                 
                 if (!printAllPages && page + 1 < pageCount)
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        continueBlock(^(BOOL continuePrinting, BOOL printAll)
-                                      {
-                                          printAllPages = printAll;
-                                          printNextPage = continuePrinting;
-                                          dispatch_semaphore_signal(semaphore);
-                                      });
+                        printer.printingContinue(^(BOOL continuePrinting, BOOL printAll)
+                                                 {
+                                                     printAllPages = printAll;
+                                                     printNextPage = continuePrinting;
+                                                     dispatch_semaphore_signal(semaphore);
+                                                 });
                     });
                 else
                     dispatch_semaphore_signal(semaphore);
