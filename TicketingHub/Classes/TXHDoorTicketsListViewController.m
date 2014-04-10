@@ -70,7 +70,7 @@
     __weak typeof(self) wself = self;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSArray *filteredTickets = [TXHTicket filterTickets:self.tickets withQuery:self.searchQuery];
+        NSArray *filteredTickets = [TXHTicket filterTickets:wself.tickets withQuery:wself.searchQuery];
         dispatch_async(dispatch_get_main_queue(), ^{
             if (bQueryCounter == queryCounter)
                 wself.filteredTickets = filteredTickets;
