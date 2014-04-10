@@ -196,7 +196,7 @@
                                                                     [newAvilability.timeString isEqualToString:[availability timeString]])
                                                                 {
                                                                     // checking if any of tiers has discount set to determin if coupon worked
-                                                                    BOOL hasDiscount;
+                                                                    BOOL hasDiscount = NO;
                                                                     for (TXHTier  *tier in availability.tiers)
                                                                         if ([tier.discount integerValue] > 0)
                                                                             hasDiscount = YES;
@@ -219,7 +219,7 @@
 
 - (BOOL)hasQuantitiesSelected
 {
-    BOOL atLeastOneTicketSelected;
+    BOOL atLeastOneTicketSelected = NO;
     
     for (NSNumber *quantity in [self.quantities allValues])
         if ([quantity integerValue] > 0)

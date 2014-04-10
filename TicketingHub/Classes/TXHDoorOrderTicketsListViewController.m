@@ -132,7 +132,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    CGFloat height;
+    CGFloat height = 0.0f;
     switch (section) {
         case 0:
             height = self.header1.height;
