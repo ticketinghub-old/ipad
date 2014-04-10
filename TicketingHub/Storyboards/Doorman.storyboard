@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Door Main Controller-->
+        <!--View Controller-->
         <scene sceneID="K2O-fx-fD6">
             <objects>
-                <viewController id="kLH-fG-yaD" customClass="TXHDoorMainController" sceneMemberID="viewController">
+                <viewController id="kLH-fG-yaD" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5gs-DN-b9t"/>
                         <viewControllerLayoutGuide type="bottom" id="QA0-YU-Sm7"/>
