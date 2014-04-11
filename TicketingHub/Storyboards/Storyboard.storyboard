@@ -64,7 +64,6 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="leftHandSpace" destination="nU3-BT-f1O" id="GmU-xP-QHz"/>
-                        <outlet property="salesOrDoormanContainer" destination="KSo-1q-BaS" id="0Rg-pc-Cdv"/>
                         <outlet property="sensorView" destination="3sP-87-x2y" id="tJ3-tV-gD3"/>
                         <outlet property="venueListContainer" destination="Wmp-vt-FSg" id="tML-NU-yts"/>
                     </connections>

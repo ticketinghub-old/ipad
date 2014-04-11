@@ -18,15 +18,13 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 
 @interface ProductListController () <UITableViewDelegate>
 
-
+@property (strong, nonatomic) TXHUser *user;
 @property (strong, nonatomic) FetchedResultsControllerDataSource *tableViewDataSource;
 
-@property (weak, nonatomic) IBOutlet UIView *logoutView;
-@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
+@property (weak, nonatomic) IBOutlet UIView      *logoutView;
+@property (weak, nonatomic) IBOutlet UIButton    *logoutButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UILabel *headerViewLabel;
-
-@property (nonatomic, strong) TXHUser *user;
+@property (weak, nonatomic) IBOutlet UILabel     *headerViewLabel;
 
 @end
 
@@ -38,26 +36,46 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 {
     [super viewDidLoad];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedProductChanged:) name:TXHProductChangedNotification object:nil];
-    
     self.user = [TXHTICKETINHGUBCLIENT currentUser];
-    [self.user addObserver:self
-                forKeyPath:@"fullName"
-                   options:NSKeyValueObservingOptionNew
-                   context:kUserFullNameKVOContext];
+
+    
+    [self registerForProductChangesNotifications];
+    [self registerForCurrentUserFullNameChanges];
 
     [self setHeaderTitle:NSLocalizedString(@"Venues", @"Title for the list of venues")];
-    [self setLogoutButtonTitle:self.user.fullName];
-
+    [self updateLogoutButtonTitle];
     [self setupDataSource];
     [self reloadData];
 }
 
 - (void)dealloc
 {
+    [self unregisterFromCurrentUserFullNameChanges];
+    [self unregisterFromProductChangesNotifications];
+}
+
+- (void)registerForProductChangesNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedProductChanged:) name:TXHProductChangedNotification object:nil];
+}
+
+- (void)unregisterFromProductChangesNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
+}
+
+- (void)registerForCurrentUserFullNameChanges
+{
+    [self.user addObserver:self
+                forKeyPath:@"fullName"
+                   options:NSKeyValueObservingOptionNew
+                   context:kUserFullNameKVOContext];
+}
+
+- (void)unregisterFromCurrentUserFullNameChanges
+{
     [self.user removeObserver:self forKeyPath:@"fullName" context:kUserFullNameKVOContext];
 
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
 }
 
 #pragma mark - notifications
@@ -123,11 +141,16 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 {
     if (context == kUserFullNameKVOContext)
     {
-        [self setLogoutButtonTitle:change[NSKeyValueChangeNewKey]];
+        [self updateLogoutButtonTitle];
         return;
     }
 
     [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+}
+
+- (void)updateLogoutButtonTitle
+{
+    [self setLogoutButtonTitle:self.user.fullName];
 }
 
 #pragma mark Action methods

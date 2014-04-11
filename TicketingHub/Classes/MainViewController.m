@@ -10,23 +10,18 @@
 
 #import "ProductListControllerNotifications.h"
 
-#import "SalesOrDoormanViewController.h"
-
-#import "TXHLoginViewController.h"
 #import "TXHSensorView.h"
 
 @interface MainViewController () <TXHSensorViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView             *venueListContainer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftHandSpace;
 
-@property (weak, nonatomic) IBOutlet UIView *venueListContainer;
-
-@property (weak, nonatomic) IBOutlet TXHSensorView *sensorView;
+@property (weak, nonatomic) IBOutlet TXHSensorView      *sensorView;
 
 @end
 
 @implementation MainViewController
-
 
 #pragma mark - View lifecycle
 
@@ -77,9 +72,14 @@
     return (self.leftHandSpace.constant == 0.0f);
 }
 
+- (BOOL)isVenueListHidden
+{
+    return (self.leftHandSpace.constant == -self.venueListContainer.bounds.size.width);
+}
+
 - (IBAction)toggleVenueList
 {
-    if (self.leftHandSpace.constant == 0.0f)
+    if ([self isVenueListVisible])
         [self hideVenueListAnimated];
     else
         [self showVenueListAnimated];
@@ -92,22 +92,24 @@
 
 - (void)showVenueListAnimated
 {
-    if (self.leftHandSpace.constant != 0.0f)
-        [UIView animateWithDuration:0.3
-                              delay:0.0
-                            options:UIViewAnimationOptionBeginFromCurrentState
-                         animations:^{ [self showVenueList];}
-                         completion:nil];;
+    if (![self isVenueListVisible])
+        [self venueListAnimationwithBlock:^{[self showVenueList];}];
+
 }
 
 - (void)hideVenueListAnimated
 {
-    if (self.leftHandSpace.constant != -self.venueListContainer.bounds.size.width)
-        [UIView animateWithDuration:0.3
-                              delay:0.0
-                            options:UIViewAnimationOptionBeginFromCurrentState
-                         animations:^{[self hideVenueList];}
-                         completion:nil];
+    if (![self isVenueListHidden])
+        [self venueListAnimationwithBlock:^{[self hideVenueList];}];
+}
+
+- (void)venueListAnimationwithBlock:(void(^)(void))animationBlock
+{
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:animationBlock
+                     completion:nil];
 }
 
 - (void)hideVenueList
@@ -120,7 +122,6 @@
 {
     self.leftHandSpace.constant = 0.0f;
     [self.view layoutIfNeeded];
-
 }
 
 #pragma mark - TXHSensorViewDelegate

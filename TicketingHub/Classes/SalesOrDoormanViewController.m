@@ -223,8 +223,9 @@
 - (IBAction)toggleMenu:(id)__unused sender
 {
     [self dismissVisiblePopover];
+    
     [[UIResponder currentFirstResponder] resignFirstResponder];
-    [[UIApplication sharedApplication] sendAction:@selector(showOrHideVenueList:) to:nil from:self forEvent:nil];
+    [[UIApplication sharedApplication] sendAction:@selector(toggleVenueList) to:nil from:self forEvent:nil];
 }
 
 - (void)dismissVisiblePopover
