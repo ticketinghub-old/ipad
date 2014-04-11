@@ -8,7 +8,6 @@
 
 #import "MainViewController.h"
 
-#import "ProductListController.h"
 #import "ProductListControllerNotifications.h"
 
 #import "SalesOrDoormanViewController.h"
@@ -16,17 +15,12 @@
 #import "TXHLoginViewController.h"
 #import "TXHSensorView.h"
 
-// Segue Identifiers
-static NSString * const VenueListContainerEmbedSegue = @"VenueListContainerEmbed";
-static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanContainerEmbed";
-
 @interface MainViewController () <TXHSensorViewDelegate>
 
-@property (strong, nonatomic) SalesOrDoormanViewController *salesOrDoormanViewController;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftHandSpace;
+
 @property (weak, nonatomic) IBOutlet UIView *venueListContainer;
-@property (weak, nonatomic) IBOutlet UIView *salesOrDoormanContainer;
+
 @property (weak, nonatomic) IBOutlet TXHSensorView *sensorView;
 
 @end
@@ -36,7 +30,8 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     self.sensorView.delegate = self;
@@ -44,65 +39,50 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
     [self showVenueListAnimated];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
 
+    [self registerForProductChangesNotifications];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+
+    [self unregisterFromProductChangesNotifications];
+}
+
+- (void)registerForProductChangesNotifications
+{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productChanged:) name:TXHProductChangedNotification object:nil];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-
+- (void)unregisterFromProductChangesNotifications
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
 }
 
-
-#pragma mark - Superclass overrides
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSString *segueIdentifier = segue.identifier;
-    id destinationViewController = segue.destinationViewController;
-
-    if ([segueIdentifier isEqualToString:VenueListContainerEmbedSegue]) {
-        __unused ProductListController *productListController = (ProductListController *)destinationViewController;
-    }
-
-    if ([segueIdentifier isEqualToString:SalesOrDoormanContainerEmbedSegue]) {
-        // The storyboard has the this container loading a navigation controller, don't know why.
-        UINavigationController *navController = (UINavigationController *)destinationViewController;
-        self.salesOrDoormanViewController = [navController viewControllers][0];
-    }
-
-}
-
-#pragma mark - Public methods
-
-- (void)presentLoginViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completion {
-    TXHLoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:LoginViewControllerStoryboardIdentifier];
-
-    [self presentViewController:loginViewController animated:animated completion:completion];
-}
-
-#pragma mark - Delegate Methods
-
 #pragma mark - NotificationHandlers
 
-- (void)productChanged:(NSNotification *)notification {
-    
-    [self showOrHideVenueList:nil];
+- (void)productChanged:(NSNotification *)notification
+{
+    [self toggleVenueList];
 }
-
-#pragma mark - Private methods
-
 
 #pragma mark Actions
 
-- (IBAction)showOrHideVenueList:(id)sender {
-    if (self.leftHandSpace.constant == 0.0f) {
+- (BOOL)isVenueListVisible
+{
+    return (self.leftHandSpace.constant == 0.0f);
+}
+
+- (IBAction)toggleVenueList
+{
+    if (self.leftHandSpace.constant == 0.0f)
         [self hideVenueListAnimated];
-    } else {
+    else
         [self showVenueListAnimated];
-    }
 }
 
 - (IBAction)hideVenueList:(id)sender
@@ -116,13 +96,8 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
         [UIView animateWithDuration:0.3
                               delay:0.0
                             options:UIViewAnimationOptionBeginFromCurrentState
-                         animations:^{
-                             self.leftHandSpace.constant = 0.0f;
-                             [self.view layoutIfNeeded];
-                         }
-                         completion:^(BOOL finished) {
-                             
-                         }];
+                         animations:^{ [self showVenueList];}
+                         completion:nil];;
 }
 
 - (void)hideVenueListAnimated
@@ -131,13 +106,21 @@ static NSString * const SalesOrDoormanContainerEmbedSegue = @"SalesOrDoormanCont
         [UIView animateWithDuration:0.3
                               delay:0.0
                             options:UIViewAnimationOptionBeginFromCurrentState
-                         animations:^{
-                             self.leftHandSpace.constant = -self.venueListContainer.bounds.size.width;
-                             [self.view layoutIfNeeded];
-                         }
-                         completion:^(BOOL finished) {
-                             
-                         }];
+                         animations:^{[self hideVenueList];}
+                         completion:nil];
+}
+
+- (void)hideVenueList
+{
+    self.leftHandSpace.constant = -self.venueListContainer.bounds.size.width;
+    [self.view layoutIfNeeded];
+}
+
+- (void)showVenueList
+{
+    self.leftHandSpace.constant = 0.0f;
+    [self.view layoutIfNeeded];
+
 }
 
 #pragma mark - TXHSensorViewDelegate
