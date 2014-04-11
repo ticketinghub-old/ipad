@@ -85,12 +85,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="RQl-TU-usy">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="RQl-TU-usy">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="8SD-Da-J5a">
-                                <rect key="frame" x="325" y="173" width="396" height="143"/>
+                                <rect key="frame" x="326" y="263" width="396" height="143"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="143" id="L1v-E3-HdF"/>
@@ -98,21 +98,20 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhj-Za-1cP">
-                                <rect key="frame" x="38" y="368" width="948" height="158"/>
+                                <rect key="frame" x="0.0" y="501" width="1024" height="158"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aHd-4v-y35">
-                                        <rect key="frame" x="295" y="11" width="355" height="60"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHd-4v-y35">
+                                        <rect key="frame" x="335" y="11" width="355" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="agQ-1B-MLs">
-                                                <rect key="frame" x="20" y="15" width="288" height="30"/>
+                                                <rect key="frame" x="20" y="0.0" width="288" height="60"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.89019607840000003" green="0.92941176469999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 <connections>
-                                                    <action selector="editingChanged:" destination="Mja-t1-MrX" eventType="editingChanged" id="s6y-Ix-c5o"/>
                                                     <outlet property="delegate" destination="Mja-t1-MrX" id="Xcz-4L-vdz"/>
                                                 </connections>
                                             </textField>
@@ -123,9 +122,13 @@
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.89019607840000003" green="0.92941176469999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="355" id="JhM-kH-TZX"/>
+                                            <constraint firstAttribute="height" constant="60" id="ovL-0T-YEC"/>
+                                        </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p1M-41-8iP">
-                                        <rect key="frame" x="295" y="79" width="355" height="60"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p1M-41-8iP">
+                                        <rect key="frame" x="335" y="79" width="355" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="nTH-zJ-YxB">
@@ -133,43 +136,64 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jC8-oF-WY3">
-                                                <rect key="frame" x="20" y="15" width="288" height="30"/>
+                                                <rect key="frame" x="20" y="0.0" width="288" height="60"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.89019607840000003" green="0.92941176469999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                                                 <connections>
-                                                    <action selector="editingChanged:" destination="Mja-t1-MrX" eventType="editingChanged" id="whT-SU-AQJ"/>
                                                     <action selector="login:" destination="Mja-t1-MrX" eventType="editingDidEndOnExit" id="JZf-Eg-NPS"/>
                                                     <outlet property="delegate" destination="Mja-t1-MrX" id="HyP-gk-has"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="0.89019607840000003" green="0.92941176469999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="355" id="7nv-8W-Brs"/>
+                                            <constraint firstAttribute="height" constant="60" id="qfN-cN-KyJ"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="158" id="FsY-jm-y9I"/>
+                                    <constraint firstAttribute="width" constant="1024" id="Gsj-Yb-ImP"/>
+                                    <constraint firstAttribute="centerX" secondItem="p1M-41-8iP" secondAttribute="centerX" id="PWv-dY-FxG"/>
+                                    <constraint firstAttribute="centerX" secondItem="aHd-4v-y35" secondAttribute="centerX" id="XhO-uh-tNr"/>
+                                    <constraint firstItem="aHd-4v-y35" firstAttribute="top" secondItem="lhj-Za-1cP" secondAttribute="top" constant="11" id="iWe-BW-l78"/>
+                                    <constraint firstAttribute="bottom" secondItem="p1M-41-8iP" secondAttribute="bottom" constant="19" id="wFo-VP-AWt"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="VYr-as-6mR">
+                                <rect key="frame" x="494" y="441" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="8SD-Da-J5a" firstAttribute="top" secondItem="kS3-T9-8Fh" secondAttribute="bottom" constant="152.5" id="BaO-Nh-bfy"/>
-                            <constraint firstItem="8SD-Da-J5a" firstAttribute="leading" secondItem="Qhu-dC-Fvf" secondAttribute="leading" constant="325" id="a10-cz-HBv"/>
-                            <constraint firstItem="lhj-Za-1cP" firstAttribute="top" secondItem="8SD-Da-J5a" secondAttribute="bottom" constant="52" id="ddI-P5-sNf"/>
-                            <constraint firstItem="lhj-Za-1cP" firstAttribute="leading" secondItem="Qhu-dC-Fvf" secondAttribute="leading" constant="38" id="n1w-DA-MK4"/>
+                            <constraint firstAttribute="centerX" secondItem="RQl-TU-usy" secondAttribute="centerX" id="PZd-PE-prT"/>
+                            <constraint firstItem="8SD-Da-J5a" firstAttribute="leading" secondItem="Qhu-dC-Fvf" secondAttribute="leading" constant="326" id="a10-cz-HBv"/>
+                            <constraint firstAttribute="centerY" secondItem="8SD-Da-J5a" secondAttribute="centerY" constant="50" id="cfs-V8-fOn"/>
+                            <constraint firstItem="lhj-Za-1cP" firstAttribute="top" secondItem="8SD-Da-J5a" secondAttribute="bottom" constant="95" id="ddI-P5-sNf"/>
+                            <constraint firstAttribute="centerY" secondItem="RQl-TU-usy" secondAttribute="centerY" id="moy-BR-me4"/>
+                            <constraint firstItem="VYr-as-6mR" firstAttribute="top" secondItem="8SD-Da-J5a" secondAttribute="bottom" constant="35" id="s9n-C6-c16"/>
                             <constraint firstAttribute="centerX" secondItem="lhj-Za-1cP" secondAttribute="centerX" id="wDI-PJ-CYZ"/>
+                            <constraint firstAttribute="centerX" secondItem="VYr-as-6mR" secondAttribute="centerX" id="xH7-uN-qu4"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="VYr-as-6mR" id="2PL-Z1-piJ"/>
                         <outlet property="email" destination="zg8-rd-6pG" id="ds0-2l-0cW"/>
+                        <outlet property="emailXAlignmentConstrain" destination="XhO-uh-tNr" id="2Ge-Ah-XSL"/>
+                        <outlet property="fieldsContainerView" destination="lhj-Za-1cP" id="l51-T3-eR1"/>
+                        <outlet property="logoTofieldsContraint" destination="ddI-P5-sNf" id="Jwm-oL-edA"/>
                         <outlet property="passwordField" destination="jC8-oF-WY3" id="gbI-iA-8hh"/>
                         <outlet property="passwordIcon" destination="nTH-zJ-YxB" id="5Jd-wg-iMc"/>
+                        <outlet property="passwordXAllignmentConstraint" destination="PWv-dY-FxG" id="VcQ-9m-nhW"/>
                         <outlet property="userField" destination="agQ-1B-MLs" id="VWi-Ue-k61"/>
-                        <outlet property="verticalSpaceToLogo" destination="BaO-Nh-bfy" id="cy5-Ot-QJt"/>
+                        <outlet property="verticalLogoConstrain" destination="cfs-V8-fOn" id="UE7-ad-z20"/>
                         <segue destination="8S6-Gn-AeR" kind="unwind" identifier="loginUnwindSegue" unwindAction="mySegueHandler:" id="Y9b-aD-z3R"/>
                         <segue destination="noK-wq-0hO" kind="modal" identifier="Show Main Interface" modalTransitionStyle="flipHorizontal" id="F8W-1y-cwD"/>
                     </connections>
@@ -440,7 +464,7 @@
         <image name="background" width="1024" height="768"/>
         <image name="envelope" width="20" height="20"/>
         <image name="handle" width="22" height="16"/>
-        <image name="logo" width="396" height="144"/>
+        <image name="logo" width="396" height="143"/>
         <image name="right-arrow" width="9" height="16"/>
         <image name="shadow" width="8" height="1"/>
     </resources>

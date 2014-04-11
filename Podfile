@@ -11,6 +11,7 @@ pod 'TapkuLibrary', :git => 'https://github.com/Hubbub/tapkulibrary.git', :branc
 pod 'PPSSignatureView', '~> 0.1.0'
 pod 'UIImage+PDF', '~> 1.1.2'
 pod 'UIAlertView-Blocks', '~> 1.0'
+pod 'UIView+Shake', '~> 0.2'
 
 target :test, :exclusive => true do
     
