@@ -10,7 +10,9 @@
 
 #import "TXHTicketingHubManager.h"
 #import "TXHUserDefaultsKeys.h"
+
 #import <UIView+Shake/UIView+Shake.h>
+#import "UIColor+TicketingHub.h"
 
 // The storyboard identifier for this controller
 NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController";
@@ -21,9 +23,8 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoTofieldsContraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *emailXAlignmentConstrain;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *passwordXAllignmentConstraint;
+
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-
-
 
 @property (weak, nonatomic) IBOutlet UITextField *userField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
@@ -37,21 +38,22 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
 
 #pragma mark - Set up and tear down
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
     self.modalPresentationStyle = UIModalPresentationFullScreen;
     self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 }
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
     self.passwordIcon.image = [[UIImage imageNamed:@"right-arrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.passwordIcon.tintColor = [UIColor colorWithRed:28.0f / 255.0f
-                                                  green:60.0f / 255.0f
-                                                   blue:54.0f / 255.0f
-                                                  alpha:1.0f];
+    self.passwordIcon.tintColor = [UIColor txhBlueColor];
     
     [self updateFieldsConstraintsToOffScreen];
 }
@@ -60,9 +62,7 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
 {
     [super viewWillAppear:animated];
     
-    // Register for keyboard notifications, so that we can reposition the entry fields to keep them visible
     [self registerForKeyboardNotifications];
-    // Set up the user field with the last successfully logged on person
     [self setLastLoggedInUser];
 }
 
@@ -70,7 +70,6 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
 {
     [super viewWillDisappear:animated];
 
-    // Keyboard notifications.
     [self unregisterForKeyboardNotifications];
 }
 
@@ -85,9 +84,7 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
                         options:UIViewAnimationOptionAllowUserInteraction
                      animations:^{
                          [self  updateFieldsConstraintsToCenter];
-                     } completion:^(BOOL finished) {
-                         
-                     }];
+                     } completion:nil];
 }
 
 - (void)registerForKeyboardNotifications
@@ -98,7 +95,8 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
 
 - (void)unregisterForKeyboardNotifications
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)updateFieldsConstraintsToOffScreen
@@ -115,7 +113,6 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
     [self.view layoutIfNeeded];
 }
 
-
 - (void)setLastLoggedInUser
 {
     NSString *lastUser = [[NSUserDefaults standardUserDefaults] stringForKey:TXHUserDefaultsLastUserKey];
@@ -125,6 +122,11 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
         self.userField.text = @"";
     }
     
+    [self resetPasswordField];
+}
+
+- (void)resetPasswordField
+{
     self.passwordField.text = @"";
 }
 
@@ -179,12 +181,14 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
                                             password:self.passwordField.text
                                       withCompletion:^(NSArray *suppliers, NSError *error) {
                                           [wself.activityIndicator stopAnimating];                                          
-                                          if (error) {
+                                          if (error)
+                                          {
                                               [wself shakeFields];
+                                              [wself resetPasswordField];
                                               return;
                                           }
                                           
-                                          [self loginCompleted];
+                                          [wself loginCompleted];
                                       }];
 }
 
@@ -192,7 +196,6 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
 {
     [self.fieldsContainerView shake:3 withDelta:8 andSpeed:0.08 shakeDirection:ShakeDirectionHorizontal];
 }
-
 
 #pragma mark - unwind action
 
