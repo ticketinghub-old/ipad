@@ -52,7 +52,7 @@
 
 #pragma mark TXHSalesWizardViewControllerDataSource
 
-- (id)currentStep
+- (TXHSalesStep *)currentStep
 {
     return [self stepAtIndex:self.currentStepIndex];
 }
@@ -62,22 +62,22 @@
     return [self.steps count];
 }
 
-- (NSInteger)indexOfStep:(id)step;
+- (NSInteger)indexOfStep:(TXHSalesStep *)step;
 {
     return [self.steps indexOfObject:step];
 }
 
-- (BOOL)isStepCompleted:(id)step
+- (BOOL)isStepCompleted:(TXHSalesStep *)step
 {
     return [self indexOfStep:step] < self.currentStepIndex;
 }
 
-- (BOOL)isStepCurrent:(id)step
+- (BOOL)isStepCurrent:(TXHSalesStep *)step
 {
     return [self indexOfStep:step] == self.currentStepIndex;
 }
 
-- (id)stepAtIndex:(NSUInteger)stepIndex
+- (TXHSalesStep *)stepAtIndex:(NSUInteger)stepIndex
 {
     if (stepIndex >= [self numberOfsteps])
         return nil;

@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 
 #import "TXHSalesWizardViewControllerDataSource.h"
+#import "TXHSalesStep.h"
 
 @class TXHSalesStepsManager;
 
 // notifications are way to messy
 @protocol TXHSaleStepsManagerDelegate <NSObject>
 
-- (void)saleStepsManager:(TXHSalesStepsManager *)manager didChangeToStep:(id)step;
+- (void)saleStepsManager:(TXHSalesStepsManager *)manager didChangeToStep:(TXHSalesStep *)step;
 
 @end
 
@@ -27,8 +28,8 @@
 @property (weak, nonatomic) id<TXHSaleStepsManagerDelegate> delegate;
 
 - (instancetype)initWithSteps:(NSArray *)steps;
-- (NSInteger)indexOfStep:(id)step;
-- (id)currentStep;
+- (NSInteger)indexOfStep:(TXHSalesStep *)step;
+- (TXHSalesStep *)currentStep;
 - (void)continueToNextStep;
 - (void)resetProcess;
 - (BOOL)hasNextStep;
