@@ -9,7 +9,7 @@
         <!--Main View Controller-->
         <scene sceneID="8Br-8A-qHs">
             <objects>
-                <viewController storyboardIdentifier="MenuViewController" id="noK-wq-0hO" customClass="MainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuViewController" id="noK-wq-0hO" customClass="TXHMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Ab-ck-gWH"/>
                         <viewControllerLayoutGuide type="bottom" id="gAZ-2D-Pg4"/>
@@ -205,7 +205,7 @@
         <!--Product List Controller-->
         <scene sceneID="2z6-yd-k0i">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="UZq-wc-4TA" customClass="ProductListController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="UZq-wc-4TA" customClass="TXHProductListController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Iv-3d-WXC"/>
                         <viewControllerLayoutGuide type="bottom" id="hcn-rF-iNJ"/>

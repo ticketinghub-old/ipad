@@ -99,8 +99,8 @@
 		EE75D9A717D11048009ADCD8 /* TXHSalesUpgradeHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D98317D11048009ADCD8 /* TXHSalesUpgradeHeader.m */; };
 		EE75D9A917D11048009ADCD8 /* TXHSalesWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D98717D11048009ADCD8 /* TXHSalesWizardViewController.m */; };
 		EE75D9AD17D112C4009ADCD8 /* TXHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9AC17D112C4009ADCD8 /* TXHLoginViewController.m */; };
-		EE75D9B317D11311009ADCD8 /* ProductListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B017D11311009ADCD8 /* ProductListController.m */; };
-		EE75D9B417D11311009ADCD8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B217D11311009ADCD8 /* MainViewController.m */; };
+		EE75D9B317D11311009ADCD8 /* TXHProductListController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B017D11311009ADCD8 /* TXHProductListController.m */; };
+		EE75D9B417D11311009ADCD8 /* TXHMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE75D9B217D11311009ADCD8 /* TXHMainViewController.m */; };
 		EEB1845A17D114390025530A /* TXHBaseDataEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843917D114390025530A /* TXHBaseDataEntryView.m */; };
 		EEB1845C17D114390025530A /* TXHCurrencyEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843E17D114390025530A /* TXHCurrencyEntryView.m */; };
 		EEB1845E17D114390025530A /* TXHDataEntryFieldErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1844217D114390025530A /* TXHDataEntryFieldErrorView.m */; };
@@ -297,10 +297,10 @@
 		EE75D98717D11048009ADCD8 /* TXHSalesWizardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesWizardViewController.m; path = TicketingHub/Classes/TXHSalesWizardViewController.m; sourceTree = SOURCE_ROOT; };
 		EE75D9AB17D112C4009ADCD8 /* TXHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHLoginViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		EE75D9AC17D112C4009ADCD8 /* TXHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHLoginViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EE75D9AF17D11311009ADCD8 /* ProductListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ProductListController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		EE75D9B017D11311009ADCD8 /* ProductListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ProductListController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EE75D9B117D11311009ADCD8 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MainViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		EE75D9B217D11311009ADCD8 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MainViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EE75D9AF17D11311009ADCD8 /* TXHProductListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHProductListController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		EE75D9B017D11311009ADCD8 /* TXHProductListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHProductListController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EE75D9B117D11311009ADCD8 /* TXHMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHMainViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		EE75D9B217D11311009ADCD8 /* TXHMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHMainViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EE935E7417B3EB630080A1C2 /* CommonMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonMacros.h; sourceTree = "<group>"; };
 		EEB1843817D114390025530A /* TXHBaseDataEntryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBaseDataEntryView.h; sourceTree = "<group>"; };
 		EEB1843917D114390025530A /* TXHBaseDataEntryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBaseDataEntryView.m; sourceTree = "<group>"; };
@@ -726,8 +726,8 @@
 		3EA36B7D18AFDF3C008F8C59 /* Products List */ = {
 			isa = PBXGroup;
 			children = (
-				EE75D9AF17D11311009ADCD8 /* ProductListController.h */,
-				EE75D9B017D11311009ADCD8 /* ProductListController.m */,
+				EE75D9AF17D11311009ADCD8 /* TXHProductListController.h */,
+				EE75D9B017D11311009ADCD8 /* TXHProductListController.m */,
 				EE51C1EE180FED4F001AA88A /* ProductListControllerNotifications.h */,
 				3EA36B7E18AFDF5C008F8C59 /* TXHProductListCell.h */,
 				3EA36B7F18AFDF5C008F8C59 /* TXHProductListCell.m */,
@@ -1008,8 +1008,8 @@
 			isa = PBXGroup;
 			children = (
 				3EA36B7D18AFDF3C008F8C59 /* Products List */,
-				EE75D9B117D11311009ADCD8 /* MainViewController.h */,
-				EE75D9B217D11311009ADCD8 /* MainViewController.m */,
+				EE75D9B117D11311009ADCD8 /* TXHMainViewController.h */,
+				EE75D9B217D11311009ADCD8 /* TXHMainViewController.m */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -1232,8 +1232,8 @@
 				3E53C53D18E343FD00FF6F9B /* TXHPrinterSelectionViewController.m in Sources */,
 				58E4FB631760AE5500E328A0 /* main.m in Sources */,
 				3EF8EE3E18D332F200586283 /* TXHDoorTicketsDateHeaderView.m in Sources */,
-				EE75D9B417D11311009ADCD8 /* MainViewController.m in Sources */,
-				EE75D9B317D11311009ADCD8 /* ProductListController.m in Sources */,
+				EE75D9B417D11311009ADCD8 /* TXHMainViewController.m in Sources */,
+				EE75D9B317D11311009ADCD8 /* TXHProductListController.m in Sources */,
 				EEB1849217D115640025530A /* SalesOrDoormanViewController.m in Sources */,
 				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
 				3E3D46EE18ACBB8500275ACF /* UIColor+TicketingHub.m in Sources */,

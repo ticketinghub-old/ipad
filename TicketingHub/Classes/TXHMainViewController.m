@@ -1,18 +1,18 @@
 //
-//  MainViewController.m
+//  TXHMainViewController.m
 //  TicketingHub
 //
 //  Created by Mark on 10/07/2013.
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import "MainViewController.h"
+#import "TXHMainViewController.h"
 
 #import "ProductListControllerNotifications.h"
 
 #import "TXHSensorView.h"
 
-@interface MainViewController () <TXHSensorViewDelegate>
+@interface TXHMainViewController () <TXHSensorViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView             *venueListContainer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftHandSpace;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation MainViewController
+@implementation TXHMainViewController
 
 #pragma mark - View lifecycle
 

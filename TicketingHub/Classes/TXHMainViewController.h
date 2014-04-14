@@ -1,5 +1,5 @@
 //
-//  MainViewController.h
+//  TXHMainViewController.h
 //  TicketingHub
 //
 //  Created by Mark on 10/07/2013.
@@ -9,6 +9,6 @@
 
 @import UIKit;
 
-@interface MainViewController : UIViewController
+@interface TXHMainViewController : UIViewController
 
 @end

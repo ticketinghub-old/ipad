@@ -1,12 +1,12 @@
 //
-//  ProductListController.m
+//  TXHProductListController.m
 //  TicketingHub
 //
 //  Created by Mark on 10/07/2013.
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import "ProductListController.h"
+#import "TXHProductListController.h"
 
 #import "ProductListControllerNotifications.h"
 
@@ -16,7 +16,7 @@
 
 static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 
-@interface ProductListController () <UITableViewDelegate>
+@interface TXHProductListController () <UITableViewDelegate>
 
 @property (strong, nonatomic) TXHUser *user;
 @property (strong, nonatomic) FetchedResultsControllerDataSource *tableViewDataSource;
@@ -28,7 +28,7 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 
 @end
 
-@implementation ProductListController
+@implementation TXHProductListController
 
 #pragma mark - View lifecycle
 

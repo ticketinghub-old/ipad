@@ -1,5 +1,5 @@
 //
-//  ProductListController.h
+//  TXHProductListController.h
 //  TicketingHub
 //
 //  Created by Mark on 10/07/2013.
@@ -8,6 +8,6 @@
 
 @import UIKit;
 
-@interface ProductListController : UIViewController 
+@interface TXHProductListController : UIViewController 
 
 @end
