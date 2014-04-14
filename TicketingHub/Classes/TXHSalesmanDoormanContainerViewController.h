@@ -10,7 +10,7 @@
 
 @class TXHProduct;
 
-@interface SalesOrDoormanViewController : UIViewController
+@interface TXHSalesmanDoormanContainerViewController : UIViewController
 
 - (IBAction)selectMode:(id)sender;
 

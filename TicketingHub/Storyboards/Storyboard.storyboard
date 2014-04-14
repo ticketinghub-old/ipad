@@ -380,10 +380,10 @@
             </objects>
             <point key="canvasLocation" x="-1156" y="2275"/>
         </scene>
-        <!--Sales Or Doorman View Controller - tickethub.io-->
+        <!--Salesman Doorman Container View Controller - tickethub.io-->
         <scene sceneID="VBG-zP-iW6">
             <objects>
-                <viewController definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="formSheet" id="2do-rv-5Ha" customClass="SalesOrDoormanViewController" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="formSheet" id="2do-rv-5Ha" customClass="TXHSalesmanDoormanContainerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qbE-3C-n6H"/>
                         <viewControllerLayoutGuide type="bottom" id="AXN-QQ-Qrz"/>

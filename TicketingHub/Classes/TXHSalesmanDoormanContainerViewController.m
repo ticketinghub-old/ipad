@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import "SalesOrDoormanViewController.h"
+#import "TXHSalesmanDoormanContainerViewController.h"
 @import CoreData;
 
 #import "TXHProductsManager.h"
@@ -19,7 +19,7 @@
 #import "UIColor+TicketingHub.h"
 #import "TXHActivityLabelView.h"
 
-@interface SalesOrDoormanViewController () <TXHDateSelectorViewDelegate>
+@interface TXHSalesmanDoormanContainerViewController () <TXHDateSelectorViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelector;
 @property (weak, nonatomic) IBOutlet UIView             *contentDetailView;
@@ -42,7 +42,7 @@
 
 @end
 
-@implementation SalesOrDoormanViewController
+@implementation TXHSalesmanDoormanContainerViewController
 
 #pragma mark - View Lifecycle
 

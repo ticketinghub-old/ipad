@@ -111,7 +111,7 @@
 		EEB1846717D114390025530A /* TXHTextEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1845417D114390025530A /* TXHTextEntryView.m */; };
 		EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848417D115640025530A /* TXHDateSelectorViewController.m */; };
 		EEB1849017D115640025530A /* TXHEmbeddingSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848617D115640025530A /* TXHEmbeddingSegue.m */; };
-		EEB1849217D115640025530A /* SalesOrDoormanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848A17D115640025530A /* SalesOrDoormanViewController.m */; };
+		EEB1849217D115640025530A /* TXHSalesmanDoormanContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848A17D115640025530A /* TXHSalesmanDoormanContainerViewController.m */; };
 		EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */; };
 		EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */; };
 		EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC4017B272F700F226BC /* Security.framework */; };
@@ -323,8 +323,8 @@
 		EEB1848417D115640025530A /* TXHDateSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDateSelectorViewController.m; sourceTree = "<group>"; };
 		EEB1848517D115640025530A /* TXHEmbeddingSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHEmbeddingSegue.h; sourceTree = "<group>"; };
 		EEB1848617D115640025530A /* TXHEmbeddingSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHEmbeddingSegue.m; sourceTree = "<group>"; };
-		EEB1848917D115640025530A /* SalesOrDoormanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SalesOrDoormanViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		EEB1848A17D115640025530A /* SalesOrDoormanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SalesOrDoormanViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EEB1848917D115640025530A /* TXHSalesmanDoormanContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHSalesmanDoormanContainerViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		EEB1848A17D115640025530A /* TXHSalesmanDoormanContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHSalesmanDoormanContainerViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		EEB4FC3E17B272EF00F226BC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EEB4FC4017B272F700F226BC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -1041,8 +1041,8 @@
 		EEB1848217D1153B0025530A /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
-				EEB1848917D115640025530A /* SalesOrDoormanViewController.h */,
-				EEB1848A17D115640025530A /* SalesOrDoormanViewController.m */,
+				EEB1848917D115640025530A /* TXHSalesmanDoormanContainerViewController.h */,
+				EEB1848A17D115640025530A /* TXHSalesmanDoormanContainerViewController.m */,
 			);
 			name = MainScreen;
 			sourceTree = "<group>";
@@ -1234,7 +1234,7 @@
 				3EF8EE3E18D332F200586283 /* TXHDoorTicketsDateHeaderView.m in Sources */,
 				EE75D9B417D11311009ADCD8 /* TXHMainViewController.m in Sources */,
 				EE75D9B317D11311009ADCD8 /* TXHProductListController.m in Sources */,
-				EEB1849217D115640025530A /* SalesOrDoormanViewController.m in Sources */,
+				EEB1849217D115640025530A /* TXHSalesmanDoormanContainerViewController.m in Sources */,
 				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
 				3E3D46EE18ACBB8500275ACF /* UIColor+TicketingHub.m in Sources */,
 				3ED7561818BDD96500D8F60B /* TXHOrderManager.m in Sources */,
