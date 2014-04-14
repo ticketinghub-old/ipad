@@ -30,7 +30,7 @@
 #import "UIColor+TicketingHub.h"
 
 // defines
-#import "ProductListControllerNotifications.h"
+#import "TXHProductsManagerNotifications.h"
 
 
 static void * ContentValidContext = &ContentValidContext;
@@ -270,7 +270,7 @@ static void * ContentValidContext = &ContentValidContext;
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(productDidChange:)
-                                                 name:TXHProductChangedNotification
+                                                 name:TXHProductsChangedNotification
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -281,7 +281,7 @@ static void * ContentValidContext = &ContentValidContext;
 
 - (void)unregisterForProductAndAvailabilityChanges
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductsChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];
 }
 

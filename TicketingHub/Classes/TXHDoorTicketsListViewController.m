@@ -257,7 +257,7 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(productDidChange:)
-                                                 name:TXHProductChangedNotification
+                                                 name:TXHProductsChangedNotification
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -268,7 +268,7 @@
 
 - (void)unregisterForProductAndAvailabilityChanges
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductsChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];
 }
 
@@ -387,7 +387,7 @@
 {
     __weak typeof(self) wself = self;
     
-    TXHAvailability *availability = note.userInfo[TXHSelectedAvailability];
+    TXHAvailability *availability = note.userInfo[TXHSelectedAvailabilityKey];
     
     [self showInfolabelWithText:@"Loading tickets"];
     

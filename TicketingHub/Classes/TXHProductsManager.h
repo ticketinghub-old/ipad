@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "ProductListControllerNotifications.h"
+#import "TXHProductsManagerNotifications.h"
 
 #define TXHPRODUCTSMANAGER [TXHProductsManager sharedManager]
 

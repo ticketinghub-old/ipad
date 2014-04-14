@@ -16,7 +16,6 @@
 #import "TXHEmbeddingSegue.h"
 
 #import "UIResponder+FirstResponder.h"
-#import "ProductListControllerNotifications.h"
 #import "UIColor+TicketingHub.h"
 #import "TXHActivityLabelView.h"
 
@@ -57,13 +56,13 @@
  
     self.selectedProduct = [TXHPRODUCTSMANAGER selectedProduct];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productChanged:) name:TXHProductChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productChanged:) name:TXHProductsChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availabilityChanged:) name:TXHAvailabilityChangedNotification object:nil];
 }
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductsChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];
 }
 
@@ -133,12 +132,12 @@
 
 - (void)productChanged:(NSNotification *)notification
 {
-    self.selectedProduct = [notification userInfo][TXHSelectedProduct];
+    self.selectedProduct = [notification userInfo][TXHSelectedProductKey];
 }
 
 - (void)availabilityChanged:(NSNotification *)notification
 {
-    self.selectedAvailability = [notification userInfo][TXHSelectedAvailability];
+    self.selectedAvailability = [notification userInfo][TXHSelectedAvailabilityKey];
 }
 
 #pragma mark - TXHDateSelectorViewController delegate methods

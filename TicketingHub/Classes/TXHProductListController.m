@@ -8,17 +8,13 @@
 
 #import "TXHProductListController.h"
 
-#import "ProductListControllerNotifications.h"
-
 #import "TXHProductsManager.h"
-#import "TXHTicketingHubManager.h"
 #import "FetchedResultsControllerDataSource.h"
 
 static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 
 @interface TXHProductListController () <UITableViewDelegate>
 
-@property (strong, nonatomic) TXHUser *user;
 @property (strong, nonatomic) FetchedResultsControllerDataSource *tableViewDataSource;
 
 @property (weak, nonatomic) IBOutlet UIView      *logoutView;
@@ -36,16 +32,12 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 {
     [super viewDidLoad];
 
-    self.user = [TXHTICKETINHGUBCLIENT currentUser];
-
-    
     [self registerForProductChangesNotifications];
-    [self registerForCurrentUserFullNameChanges];
 
     [self setHeaderTitle:NSLocalizedString(@"Venues", @"Title for the list of venues")];
+    
     [self updateLogoutButtonTitle];
     [self setupDataSource];
-    [self reloadData];
 }
 
 - (void)dealloc
@@ -54,14 +46,28 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
     [self unregisterFromProductChangesNotifications];
 }
 
+#pragma mark - accessors
+
+- (void)setUser:(TXHUser *)user
+{
+    [self unregisterFromCurrentUserFullNameChanges];
+    
+    _user = user;
+    
+    if (_user)
+        [self registerForCurrentUserFullNameChanges];
+}
+
+#pragma mark - notyfications
+
 - (void)registerForProductChangesNotifications
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedProductChanged:) name:TXHProductChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedProductChanged:) name:TXHProductsChangedNotification object:nil];
 }
 
 - (void)unregisterFromProductChangesNotifications
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductsChangedNotification object:nil];
 }
 
 - (void)registerForCurrentUserFullNameChanges
@@ -75,14 +81,13 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 - (void)unregisterFromCurrentUserFullNameChanges
 {
     [self.user removeObserver:self forKeyPath:@"fullName" context:kUserFullNameKVOContext];
-
 }
 
 #pragma mark - notifications
 
 - (void)selectedProductChanged:(NSNotification *)note
 {
-    TXHProduct *product = [note userInfo][TXHSelectedProduct];
+    TXHProduct *product = [note userInfo][TXHSelectedProductKey];
     
     NSIndexPath *indexPath = [self.tableViewDataSource indexPathForItem:product];
     [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
@@ -101,6 +106,8 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
                                                                                              [wself configureCell:cell withItem:item];
                                                                                          }];
     self.tableView.dataSource = self.tableViewDataSource;
+    
+    [self reloadData];
 }
 
 - (void)reloadData
@@ -155,18 +162,22 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 
 #pragma mark Action methods
     
-- (IBAction)logout:(id)sender {
+- (IBAction)logout:(id)sender
+{
     [[UIApplication sharedApplication] sendAction:@selector(logOut:) to:nil from:self forEvent:nil];
 }
 
 #pragma mark - Private methods
 
-- (void)setHeaderTitle:(NSString *)title {
+- (void)setHeaderTitle:(NSString *)title
+{
     self.headerViewLabel.text = title;
 }
 
-- (void)setLogoutButtonTitle:(NSString *)title {
-    [self.logoutButton setTitle:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Logout", @"Logout the current user"), title]
+- (void)setLogoutButtonTitle:(NSString *)title
+{
+    NSString *logoutTitle = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Logout", nil), title];
+    [self.logoutButton setTitle:logoutTitle
                        forState:UIControlStateNormal];
 }
 

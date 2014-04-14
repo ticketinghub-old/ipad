@@ -8,7 +8,9 @@
 
 #import "TXHMainViewController.h"
 
-#import "ProductListControllerNotifications.h"
+#import "TXHProductsManagerNotifications.h"
+#import "TXHProductListController.h"
+#import "TXHTicketingHubManager.h"
 
 #import "TXHSensorView.h"
 
@@ -50,12 +52,21 @@
 
 - (void)registerForProductChangesNotifications
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productChanged:) name:TXHProductChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productChanged:) name:TXHProductsChangedNotification object:nil];
 }
 
 - (void)unregisterFromProductChangesNotifications
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductsChangedNotification object:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"VenueListContainerEmbed"])
+    {
+        TXHProductListController *productList = segue.destinationViewController;
+        productList.user = [TXHTICKETINHGUBCLIENT currentUser];
+    }
 }
 
 #pragma mark - NotificationHandlers

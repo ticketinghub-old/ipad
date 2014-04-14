@@ -258,7 +258,7 @@
 		58E4FB911760AEF300E328A0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		7082BAD3DAB74253A99F8290 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		8ED64DB9D6E348A7B2A040BE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE51C1EE180FED4F001AA88A /* ProductListControllerNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ProductListControllerNotifications.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		EE51C1EE180FED4F001AA88A /* TXHProductsManagerNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHProductsManagerNotifications.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		EE75D94517D11047009ADCD8 /* TXHSalesCompletionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesCompletionViewController.h; path = TicketingHub/Classes/TXHSalesCompletionViewController.h; sourceTree = SOURCE_ROOT; };
 		EE75D94617D11047009ADCD8 /* TXHSalesCompletionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesCompletionViewController.m; path = TicketingHub/Classes/TXHSalesCompletionViewController.m; sourceTree = SOURCE_ROOT; };
 		EE75D95417D11047009ADCD8 /* TXHSalesMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesMainViewController.h; path = TicketingHub/Classes/TXHSalesMainViewController.h; sourceTree = SOURCE_ROOT; };
@@ -728,7 +728,6 @@
 			children = (
 				EE75D9AF17D11311009ADCD8 /* TXHProductListController.h */,
 				EE75D9B017D11311009ADCD8 /* TXHProductListController.m */,
-				EE51C1EE180FED4F001AA88A /* ProductListControllerNotifications.h */,
 				3EA36B7E18AFDF5C008F8C59 /* TXHProductListCell.h */,
 				3EA36B7F18AFDF5C008F8C59 /* TXHProductListCell.m */,
 			);
@@ -806,6 +805,7 @@
 				3E44156F18AB80EA00C4AE1C /* TXHTicketingHubManager.m */,
 				3ECE132218B4C8A800E7148F /* TXHProductsManager.h */,
 				3ECE132318B4C8A800E7148F /* TXHProductsManager.m */,
+				EE51C1EE180FED4F001AA88A /* TXHProductsManagerNotifications.h */,
 			);
 			name = Managers;
 			sourceTree = "<group>";

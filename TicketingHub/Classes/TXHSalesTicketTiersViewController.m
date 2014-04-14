@@ -54,7 +54,7 @@
 
 - (void)availabilityChanged:(NSNotification *)note
 {
-    self.availability = note.userInfo[TXHSelectedAvailability];
+    self.availability = note.userInfo[TXHSelectedAvailabilityKey];
 }
 
 - (void)setAvailability:(TXHAvailability *)availability

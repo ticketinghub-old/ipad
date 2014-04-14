@@ -12,11 +12,11 @@
 #import "NSDate+Additions.h"
 #import <iOS-api/TXHNumberFormatterCache.h>
 
-// Declaration of strings declared in ProductListControllerNotifications.h
-NSString * const TXHProductChangedNotification      = @"TXHProductChangedNotification";
-NSString * const TXHSelectedProduct                 = @"TXHSelectedProduct";
+// Declaration of strings declared in TXHProductsManagerNotifications.h
+NSString * const TXHProductsChangedNotification     = @"TXHProductsChangedNotification";
+NSString * const TXHSelectedProductKey              = @"TXHSelectedProductKey";
 NSString * const TXHAvailabilityChangedNotification = @"TXHAvailabilityChangedNotification";
-NSString * const TXHSelectedAvailability            = @"TXHSelectedProduct";
+NSString * const TXHSelectedAvailabilityKey         = @"TXHSelectedProductKey";
 
 
 @interface TXHProductsManager ()
@@ -81,11 +81,11 @@ NSString * const TXHSelectedAvailability            = @"TXHSelectedProduct";
     NSDictionary *userInfo;
     
     if (selectedProduct)
-        userInfo = @{TXHSelectedProduct: selectedProduct};
+        userInfo = @{TXHSelectedProductKey: selectedProduct};
     
     [TXHTICKETINHGUBCLIENT setAuthorizationTokenForSupplier:selectedProduct.supplier];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:TXHProductChangedNotification
+    [[NSNotificationCenter defaultCenter] postNotificationName:TXHProductsChangedNotification
                                                         object:self
                                                       userInfo:userInfo];
 }
@@ -97,7 +97,7 @@ NSString * const TXHSelectedAvailability            = @"TXHSelectedProduct";
     NSDictionary *userInfo;
     
     if (selectedAvailability)
-        userInfo = @{TXHSelectedAvailability: selectedAvailability};
+        userInfo = @{TXHSelectedAvailabilityKey: selectedAvailability};
     
     [[NSNotificationCenter defaultCenter] postNotificationName:TXHAvailabilityChangedNotification
                                                         object:self

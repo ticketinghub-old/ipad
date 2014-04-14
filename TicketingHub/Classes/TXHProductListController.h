@@ -10,4 +10,6 @@
 
 @interface TXHProductListController : UIViewController 
 
+@property (strong, nonatomic) TXHUser *user;
+
 @end
