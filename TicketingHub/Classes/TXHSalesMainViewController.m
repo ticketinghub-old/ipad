@@ -11,7 +11,6 @@
 // segues
 #import "TXHEmbeddingSegue.h"
 
-
 // child controllers
 #import "TXHSalesTimerViewController.h"
 #import "TXHSalesCompletionViewController.h"
@@ -19,7 +18,7 @@
 
 // steps data
 #import "TXHSalesStepAbstract.h"
-#import "TXHSaleStepsManager.h"
+#import "TXHSalesStepsManager.h"
 #import "TXHOrderManager.h"
 
 #import "TXHActivityLabelView.h"
@@ -53,7 +52,7 @@ static void * ContentValidContext = &ContentValidContext;
 @property (strong, nonatomic) UIPopoverController                     *printerSelectionPopover;
 
 // data
-@property (strong, nonatomic) TXHSaleStepsManager *stepsManager;
+@property (strong, nonatomic) TXHSalesStepsManager *stepsManager;
 
 @end
 
@@ -63,7 +62,7 @@ static void * ContentValidContext = &ContentValidContext;
 {
     [super viewDidLoad];
     
-    self.stepsManager = [[TXHSaleStepsManager alloc] initWithSteps:@[@{kWizardStepTitleKey          : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_TITLE",nil),
+    self.stepsManager = [[TXHSalesStepsManager alloc] initWithSteps:@[@{kWizardStepTitleKey          : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_TITLE",nil),
                                                                        kWizardStepDescriptionKey    : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_DESC",nil),
                                                                        kWizardStepLeftButtonTitle   : NSLocalizedString(@"SALESMAN_STEPS_CANCEL_ORDER_BUTTON_TITLE",nil),
                                                                        kWizardStepRightButtonTitle  : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_RIGHT_BUTTON_TITLE",nil),
@@ -201,7 +200,7 @@ static void * ContentValidContext = &ContentValidContext;
 
 #pragma mark - Accessors
 
--(void)setStepsManager:(TXHSaleStepsManager *)stepsManager
+-(void)setStepsManager:(TXHSalesStepsManager *)stepsManager
 {
     _stepsManager = stepsManager;
     
@@ -370,7 +369,7 @@ static void * ContentValidContext = &ContentValidContext;
 
 #pragma mark - TXHSaleStepsManagerDelegate
 
-- (void)saleStepsManager:(TXHSaleStepsManager *)manager didChangeToStep:(id)step
+- (void)saleStepsManager:(TXHSalesStepsManager *)manager didChangeToStep:(id)step
 {
     NSInteger index = [manager indexOfStep:step];
     if (index == 0)
@@ -408,7 +407,7 @@ static void * ContentValidContext = &ContentValidContext;
     [self.wizardSteps reloadWizard];
 }
 
-- (NSString *)continueButtonTitleForStep:(id)step fromManger:(TXHSaleStepsManager *)manager
+- (NSString *)continueButtonTitleForStep:(id)step fromManger:(TXHSalesStepsManager *)manager
 {
     NSInteger index = [manager indexOfStep:step];
     id nextStep = [manager stepAtIndex:index + 1];

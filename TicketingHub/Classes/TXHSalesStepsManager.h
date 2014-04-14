@@ -10,16 +10,16 @@
 
 #import "TXHSalesWizardViewControllerDataSource.h"
 
-@class TXHSaleStepsManager;
+@class TXHSalesStepsManager;
 
 // notifications are way to messy
 @protocol TXHSaleStepsManagerDelegate <NSObject>
 
-- (void)saleStepsManager:(TXHSaleStepsManager *)manager didChangeToStep:(id)step;
+- (void)saleStepsManager:(TXHSalesStepsManager *)manager didChangeToStep:(id)step;
 
 @end
 
-@interface TXHSaleStepsManager : NSObject <TXHSalesWizardViewControllerDataSource>
+@interface TXHSalesStepsManager : NSObject <TXHSalesWizardViewControllerDataSource>
 
 @property (readonly, nonatomic) NSArray *steps;
 @property (readonly, nonatomic) NSUInteger currentStepIndex;

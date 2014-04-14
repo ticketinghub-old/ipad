@@ -47,7 +47,7 @@
 		3EA52C0C18E31BDC00FEA0CA /* TXHStarIOPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52C0B18E31BDC00FEA0CA /* TXHStarIOPrinter.m */; };
 		3EA61BBC18F443A8004458B2 /* TXHPrintersUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA61BBB18F443A8004458B2 /* TXHPrintersUtility.m */; };
 		3EAA200218CF7C52003EC924 /* TXHTicket+Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */; };
-		3EC63E0218B36E7A00B091A0 /* TXHSaleStepsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0118B36E7A00B091A0 /* TXHSaleStepsManager.m */; };
+		3EC63E0218B36E7A00B091A0 /* TXHSalesStepsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0118B36E7A00B091A0 /* TXHSalesStepsManager.m */; };
 		3EC63E0818B3721600B091A0 /* TXHSalesStepAbstract.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0718B3721600B091A0 /* TXHSalesStepAbstract.m */; };
 		3EC8845B18C4984B00CE0597 /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC8845A18C4984B00CE0597 /* UIResponder+FirstResponder.m */; };
 		3ECE132418B4C8A800E7148F /* TXHProductsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE132318B4C8A800E7148F /* TXHProductsManager.m */; };
@@ -205,8 +205,8 @@
 		3EA61BBB18F443A8004458B2 /* TXHPrintersUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHPrintersUtility.m; sourceTree = "<group>"; };
 		3EAA200018CF7C52003EC924 /* TXHTicket+Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHTicket+Filter.h"; sourceTree = "<group>"; };
 		3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHTicket+Filter.m"; sourceTree = "<group>"; };
-		3EC63E0018B36E7A00B091A0 /* TXHSaleStepsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSaleStepsManager.h; path = TicketingHub/Classes/TXHSaleStepsManager.h; sourceTree = SOURCE_ROOT; };
-		3EC63E0118B36E7A00B091A0 /* TXHSaleStepsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSaleStepsManager.m; path = TicketingHub/Classes/TXHSaleStepsManager.m; sourceTree = SOURCE_ROOT; };
+		3EC63E0018B36E7A00B091A0 /* TXHSalesStepsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesStepsManager.h; path = TicketingHub/Classes/TXHSalesStepsManager.h; sourceTree = SOURCE_ROOT; };
+		3EC63E0118B36E7A00B091A0 /* TXHSalesStepsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesStepsManager.m; path = TicketingHub/Classes/TXHSalesStepsManager.m; sourceTree = SOURCE_ROOT; };
 		3EC63E0318B36EAB00B091A0 /* TXHSalesWizardViewControllerDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TXHSalesWizardViewControllerDataSource.h; path = TicketingHub/Classes/TXHSalesWizardViewControllerDataSource.h; sourceTree = SOURCE_ROOT; };
 		3EC63E0618B3721600B091A0 /* TXHSalesStepAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesStepAbstract.h; path = TicketingHub/Classes/TXHSalesStepAbstract.h; sourceTree = SOURCE_ROOT; };
 		3EC63E0718B3721600B091A0 /* TXHSalesStepAbstract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesStepAbstract.m; path = TicketingHub/Classes/TXHSalesStepAbstract.m; sourceTree = SOURCE_ROOT; };
@@ -835,8 +835,8 @@
 			children = (
 				3ED7561618BDD96500D8F60B /* TXHOrderManager.h */,
 				3ED7561718BDD96500D8F60B /* TXHOrderManager.m */,
-				3EC63E0018B36E7A00B091A0 /* TXHSaleStepsManager.h */,
-				3EC63E0118B36E7A00B091A0 /* TXHSaleStepsManager.m */,
+				3EC63E0018B36E7A00B091A0 /* TXHSalesStepsManager.h */,
+				3EC63E0118B36E7A00B091A0 /* TXHSalesStepsManager.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -1290,7 +1290,7 @@
 				EE75D9A417D11048009ADCD8 /* TXHSalesTimerViewController.m in Sources */,
 				3EE8E21818CA23C8006E8F5E /* TXHTicketDetailsViewController.m in Sources */,
 				3EAA200218CF7C52003EC924 /* TXHTicket+Filter.m in Sources */,
-				3EC63E0218B36E7A00B091A0 /* TXHSaleStepsManager.m in Sources */,
+				3EC63E0218B36E7A00B091A0 /* TXHSalesStepsManager.m in Sources */,
 				3EA52C0C18E31BDC00FEA0CA /* TXHStarIOPrinter.m in Sources */,
 				EE75D9A517D11048009ADCD8 /* TXHSalesUpgradeCell.m in Sources */,
 				3EA52C0818E3177600FEA0CA /* StarBitmap.m in Sources */,

@@ -6,17 +6,17 @@
 //  Copyright (c) 2014 TicketingHub. All rights reserved.
 //
 
-#import "TXHSaleStepsManager.h"
+#import "TXHSalesStepsManager.h"
 #import "TXHSalesWizardViewController.h"
 
-@interface TXHSaleStepsManager ()
+@interface TXHSalesStepsManager ()
 
 @property (strong, nonatomic) NSArray *steps;
 @property (assign, nonatomic) NSUInteger currentStepIndex;
 
 @end
 
-@implementation TXHSaleStepsManager
+@implementation TXHSalesStepsManager
 
 - (instancetype)initWithSteps:(NSArray *)steps
 {
