@@ -12,6 +12,7 @@
 #import "TXHProductsManager.h"
 #import "TXHTicketingHubManager.h"
 #import "TXHDateSelectorViewController.h"
+#import "TXHSalesMainViewController.h"
 
 #import "TXHEmbeddingSegue.h"
 
@@ -54,9 +55,13 @@
     
     [self selectMode:nil];
  
-    self.selectedProduct = [TXHPRODUCTSMANAGER selectedProduct];
-    
     [self registerForProductAndAvailabilityChanges];
+
+    [self updateUI];
+    
+    
+    // mhmm nav controller
+    self.productManager = TXHPRODUCTSMANAGER;
 }
 
 - (void)dealloc
@@ -120,6 +125,13 @@
     [self updateUI];
 }
 
+- (void)setProductManager:(TXHProductsManager *)productManager
+{
+    _productManager = productManager;
+    
+    self.selectedProduct = productManager.selectedProduct;
+}
+
 - (void)setSelectedAvailability:(TXHAvailability *)selectedAvailability
 {
     _selectedAvailability = selectedAvailability;
@@ -170,22 +182,22 @@
     self.loadingAvailabilitesDetails = YES;
     __block typeof(self) wself = self;
     
-    [TXHPRODUCTSMANAGER fetchSelectedProductAvailabilitiesFromDate:date
-                                                            toDate:nil
-                                                        withCoupon:nil
-                                                        completion:^(NSArray *availabilities, NSError *error) {
-                                                            
-                                                            for (TXHAvailability *newAvilability in availabilities)
-                                                            {
-                                                                if ([newAvilability.dateString isEqualToString:[availability dateString]] &&
-                                                                    [newAvilability.timeString isEqualToString:[availability timeString]])
-                                                                {
-                                                                    [TXHPRODUCTSMANAGER setSelectedAvailability:newAvilability];
-                                                                    break;
-                                                                }
-                                                            }
-                                                            wself.loadingAvailabilitesDetails = NO;
-                                                        }];
+    [self.productManager fetchSelectedProductAvailabilitiesFromDate:date
+                                                             toDate:nil
+                                                         withCoupon:nil
+                                                         completion:^(NSArray *availabilities, NSError *error) {
+                                                             
+                                                             for (TXHAvailability *newAvilability in availabilities)
+                                                             {
+                                                                 if ([newAvilability.dateString isEqualToString:[availability dateString]] &&
+                                                                     [newAvilability.timeString isEqualToString:[availability timeString]])
+                                                                 {
+                                                                     [wself.productManager setSelectedAvailability:newAvilability];
+                                                                     break;
+                                                                 }
+                                                             }
+                                                             wself.loadingAvailabilitesDetails = NO;
+                                                         }];
     
 }
 
@@ -245,17 +257,19 @@
 - (void)fetchAvailability
 {
     __weak typeof(self) wself = self;
-
-    self.loadingAvailabilites = YES;
     
     if (self.selectedProduct)
-        [TXHPRODUCTSMANAGER fetchSelectedProductAvailabilitiesFromDate:[NSDate date]
-                                                                toDate:[[NSDate date] dateByAddingDays:60]
-                                                            withCoupon:nil
-                                                            completion:^(NSArray *availabilities, NSError *error) {
-                                                                wself.loadingAvailabilites = NO;
-                                                                [wself selectFirstAvailabilitiesFrom:availabilities];
-                                                            }];
+    {
+        self.loadingAvailabilites = YES;
+
+        [self.productManager fetchSelectedProductAvailabilitiesFromDate:[NSDate date]
+                                                                 toDate:[[NSDate date] dateByAddingDays:60]
+                                                             withCoupon:nil
+                                                             completion:^(NSArray *availabilities, NSError *error) {
+                                                                 wself.loadingAvailabilites = NO;
+                                                                 [wself selectFirstAvailabilitiesFrom:availabilities];
+                                                             }];
+    }
 }
 
 - (void)selectFirstAvailabilitiesFrom:(NSArray *)availabilities

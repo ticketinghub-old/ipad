@@ -196,7 +196,7 @@
                                                          withCoupon:couponString
                                                          completion:^(NSArray *availabilities, NSError *error) {
                                                              
-                                                             TXHAvailability *availability = [TXHPRODUCTSMANAGER selectedAvailability];
+                                                             TXHAvailability *availability = [wself.productManager selectedAvailability];
                                                              
                                                              for (TXHAvailability *newAvilability in availabilities)
                                                              {
@@ -212,14 +212,12 @@
                                                                      if (hasDiscount)
                                                                      {
                                                                          newAvilability.coupon = couponString;
-                                                                         [TXHPRODUCTSMANAGER setSelectedAvailability:newAvilability];
+                                                                         [wself.productManager setSelectedAvailability:newAvilability];
                                                                          break;
                                                                      }
                                                                  }
                                                              }
-                                                             
                                                              wself.checkingCoupon = NO;
-                                                             
                                                          }];
 }
 

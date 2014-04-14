@@ -8,8 +8,11 @@
 
 @import UIKit;
 
+@class TXHProductsManager;
+
 @interface TXHProductListController : UIViewController 
 
 @property (strong, nonatomic) TXHUser *user;
+@property (strong, nonatomic) TXHProductsManager *productsManager;
 
 @end

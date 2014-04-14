@@ -27,11 +27,11 @@
 {
     if ([segue.identifier isEqualToString:@"ShowSignaturePad"])
     {
-        TXHOrder *order = [TXHORDERMANAGER order];
+        TXHOrder *order = [self.orderManager order];
         
         TXHSignaturePadViewController *signatureController = segue.destinationViewController;
 
-        signatureController.totalPriceString = [TXHPRODUCTSMANAGER priceStringForPrice:order.total];
+        signatureController.totalPriceString = [self.productManager priceStringForPrice:order.total];
         signatureController.ownerName        = order.customer.fullName;
         signatureController.delegate         = self;
     }

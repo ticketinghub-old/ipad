@@ -17,8 +17,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *paymentContentView;
 
-@property (strong, nonatomic) TXHSalesPaymentCardDetailsViewController *cardController;
-@property (strong, nonatomic) TXHSalesPaymentCashDetailsViewController *cashController;
+@property (strong, nonatomic) TXHSalesPaymentCardDetailsViewController   *cardController;
+@property (strong, nonatomic) TXHSalesPaymentCashDetailsViewController   *cashController;
 @property (strong, nonatomic) TXHSalesPaymentCreditDetailsViewController *creditController;
 
 @property (weak, nonatomic) UIViewController *currentControler;
@@ -49,27 +49,35 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-#pragma unused (sender)
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     // Transitioning between payment method view controllers
-    if ([segue isMemberOfClass:[TXHEmbeddingSegue class]]) {
+    if ([segue isMemberOfClass:[TXHEmbeddingSegue class]])
+    {
         TXHEmbeddingSegue *transitionSegue = (TXHEmbeddingSegue *)segue;
-        transitionSegue.containerView = self.paymentContentView;
+        transitionSegue.containerView      = self.paymentContentView;
         transitionSegue.previousController = self.currentControler;
     }
     
-    if ([segue.identifier isEqualToString:@"TXHSalesPaymentCashDetailsViewController"]) {
+    if ([segue.identifier isEqualToString:@"TXHSalesPaymentCashDetailsViewController"])
+    {
         self.cashController = segue.destinationViewController;
+        self.cashController.productManager = self.productManager;
+        self.cashController.orderManager   = self.orderManager;
         return;
     }
     
-    if ([segue.identifier isEqualToString:@"TXHSalesPaymentCreditDetailsViewController"]) {
+    if ([segue.identifier isEqualToString:@"TXHSalesPaymentCreditDetailsViewController"])
+    {
         self.creditController = segue.destinationViewController;
+        self.creditController.productManager = self.productManager;
+        self.creditController.orderManager   = self.orderManager;
         return;
     }
     
     // Card controller should already be set by the embedding segue
-    if ([segue.identifier isEqualToString:@"TXHSalesPaymentCardDetailsViewController"]) {
+    if ([segue.identifier isEqualToString:@"TXHSalesPaymentCardDetailsViewController"])
+    {
         self.cardController = segue.destinationViewController;
         return;
     }

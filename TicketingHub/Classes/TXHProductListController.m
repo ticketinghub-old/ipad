@@ -128,7 +128,7 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 
     TXHProduct *product = [self.tableViewDataSource itemAtIndexPath:indexPath];
 
-    [TXHPRODUCTSMANAGER setSelectedProduct:product];
+    [self.productsManager setSelectedProduct:product];
 }
 
 #pragma mark - Cell configuration
@@ -185,7 +185,7 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 {
     NSArray *allProducts = [self.tableViewDataSource allItems];
     TXHProduct *product = [allProducts firstObject];
-    TXHPRODUCTSMANAGER.selectedProduct = product;
+    self.productsManager.selectedProduct = product;
 }
 
 @end

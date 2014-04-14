@@ -11,6 +11,7 @@
 #import "TXHProductsManagerNotifications.h"
 #import "TXHProductListController.h"
 #import "TXHTicketingHubManager.h"
+#import "TXHProductsManager.h"
 
 #import "TXHSensorView.h"
 
@@ -65,6 +66,7 @@
     if ([segue.identifier isEqualToString:@"VenueListContainerEmbed"])
     {
         TXHProductListController *productList = segue.destinationViewController;
+        productList.productsManager = TXHPRODUCTSMANAGER;
         productList.user = [TXHTICKETINHGUBCLIENT currentUser];
     }
 }

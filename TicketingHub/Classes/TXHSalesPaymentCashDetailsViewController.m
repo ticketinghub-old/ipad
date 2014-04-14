@@ -28,8 +28,26 @@
 {
     [super viewDidLoad];
 
-    self.totalAmount = [TXHORDERMANAGER totalOrderPrice];
-    self.totalAmountValueLabel.text = [TXHPRODUCTSMANAGER priceStringForPrice:self.totalAmount];
+    [self updateView];
+}
+
+- (void)setProductManager:(TXHProductsManager *)productManager
+{
+    _productManager = productManager;
+    [self updateView];
+
+}
+
+- (void)setOrderManager:(TXHOrderManager *)orderManager
+{
+    _orderManager = orderManager;
+    [self updateView];
+}
+
+- (void)updateView
+{
+    self.totalAmount = [self.orderManager totalOrderPrice];
+    self.totalAmountValueLabel.text = [self.productManager priceStringForPrice:self.totalAmount];
     
     [self givenAmountValueChanged:self.givenAmountValueField];
 }
@@ -39,7 +57,7 @@
     CGFloat givenAmount  = [self.givenAmountValueField.text floatValue];
     CGFloat changeAmount = [self.totalAmount floatValue] - givenAmount * 100;
 
-    NSString *changeString = [TXHPRODUCTSMANAGER priceStringForPrice:@(fabs(changeAmount))];
+    NSString *changeString = [self.productManager priceStringForPrice:@(fabs(changeAmount))];
     if (changeAmount < 0)
         changeString = [@"-" stringByAppendingString:changeString];
     

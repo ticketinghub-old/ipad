@@ -111,7 +111,7 @@ static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
 
 - (void)setupSelectedUpgrades
 {
-    NSMutableDictionary *storedUserInput = [TXHORDERMANAGER storedValueForKey:kStoredUserInputsKey];
+    NSMutableDictionary *storedUserInput = [self.orderManager storedValueForKey:kStoredUserInputsKey];
     
     if (storedUserInput)
     {
@@ -246,7 +246,7 @@ static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
 
     cell.upgradeName        = upgrade.name;
     cell.upgradeDescription = upgrade.upgradeDescription;
-    cell.upgradePrice       = [TXHPRODUCTSMANAGER priceStringForPrice:upgrade.price];
+    cell.upgradePrice       = [self.productManager priceStringForPrice:upgrade.price];
     cell.chosen             = [self isUpgradeSelected:upgrade forTicketID:ticket.ticketId];
 }
 
@@ -311,7 +311,7 @@ static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
                                                 [wself.collectionView reloadData];
                                             }
                                             
-                                            [TXHORDERMANAGER storeValue:wself.selectedUpgrades forKey:kStoredUserInputsKey];
+                                            [wself.orderManager storeValue:wself.selectedUpgrades forKey:kStoredUserInputsKey];
                                             
                                             blockName(error);
                                         }];

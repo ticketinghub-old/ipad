@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class TXHOrderManager;
+@class TXHProductsManager;
+
 typedef NS_ENUM(NSInteger, TXHPaymentMethodType)
 {
     TXHPaymentMethodTypeCard,
@@ -16,6 +19,9 @@ typedef NS_ENUM(NSInteger, TXHPaymentMethodType)
 };
 
 @interface TXHSalesPaymentPaymentDetailsViewController : UIViewController
+
+@property (strong, nonatomic) TXHProductsManager *productManager;
+@property (strong, nonatomic) TXHOrderManager    *orderManager;
 
 - (void)setPaymentMethodType:(TXHPaymentMethodType)paymentType;
 

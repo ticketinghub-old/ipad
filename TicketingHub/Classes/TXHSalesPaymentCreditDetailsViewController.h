@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class TXHProductsManager;
+@class TXHOrderManager;
+
 @interface TXHSalesPaymentCreditDetailsViewController : UIViewController
+
+@property (strong, nonatomic) TXHProductsManager *productManager;
+@property (strong, nonatomic) TXHOrderManager    *orderManager;
 
 @end

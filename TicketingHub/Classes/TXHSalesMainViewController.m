@@ -53,6 +53,9 @@ static void * ContentValidContext = &ContentValidContext;
 // data
 @property (strong, nonatomic) TXHSalesStepsManager *stepsManager;
 
+@property (strong, nonatomic) TXHProductsManager *productManager;
+@property (strong, nonatomic) TXHOrderManager    *orderManager;
+
 @end
 
 @implementation TXHSalesMainViewController
@@ -60,6 +63,9 @@ static void * ContentValidContext = &ContentValidContext;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.productManager = TXHPRODUCTSMANAGER;
+    self.orderManager   = TXHORDERMANAGER;
     
     [self setupStepsManager];
     
@@ -72,6 +78,7 @@ static void * ContentValidContext = &ContentValidContext;
 
 - (void)setupStepsManager
 {
+    
     TXHSalesStep *step1 = [[TXHSalesStep alloc] initWithDictionary:
                            @{kWizardStepTitleKey          : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_TITLE",nil),
                              kWizardStepDescriptionKey    : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_DESC",nil),
@@ -178,7 +185,7 @@ static void * ContentValidContext = &ContentValidContext;
 
 - (void)resetData
 {
-    [TXHORDERMANAGER resetOrder];
+    [self.orderManager resetOrder];
     [self.stepsManager resetProcess];
 }
 
@@ -205,8 +212,8 @@ static void * ContentValidContext = &ContentValidContext;
         
         UIViewController<TXHSalesContentsViewControllerProtocol> *contentController = segue.destinationViewController;
         
-        contentController.productManager = TXHPRODUCTSMANAGER;
-        contentController.orderManager   = TXHORDERMANAGER;
+        contentController.productManager = self.productManager;
+        contentController.orderManager   = self.orderManager;
         
         self.stepContentController = contentController;
     }
@@ -389,17 +396,17 @@ static void * ContentValidContext = &ContentValidContext;
     NSString *rightButtonTitle = [self continueButtonTitleForStep:step fromManger:manager];
 
     if (index == 0)
-        [TXHORDERMANAGER resetOrder];
+        [self.orderManager resetOrder];
     
     if (![manager hasNextStep])
     {
-        [TXHORDERMANAGER stopExpirationTimer];
+        [self.orderManager stopExpirationTimer];
         rightButtonTitle = step.rightButtonTitle;
     }
     
     // update header
     [self.timeController setTitleText:step.title];
-    [self.timeController setTimerEndDate:[TXHORDERMANAGER expirationDate]];
+    [self.timeController setTimerEndDate:[self.orderManager expirationDate]];
     
     // update footer
     [self.stepCompletionController setLeftButtonHidden:step.hasLeftButtonHidden];
@@ -498,7 +505,7 @@ static void * ContentValidContext = &ContentValidContext;
     [self.printerSelectionPopover dismissPopoverAnimated:YES];
     self.printerSelectionPopover = nil;
 
-    [self.printingUtility startPrintingWithType:self.selectedPrintType onPrinter:printer withOrder:[TXHORDERMANAGER order]];
+    [self.printingUtility startPrintingWithType:self.selectedPrintType onPrinter:printer withOrder:[self.orderManager order]];
 }
 
 
