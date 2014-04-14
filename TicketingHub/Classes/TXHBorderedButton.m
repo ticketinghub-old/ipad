@@ -12,6 +12,16 @@
 
 @implementation TXHBorderedButton
 
+// fix for ios 7 content delay sometimes - might cause permanent highlight when i.e. showing control center from after highlighting button
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
+{
+    BOOL inside = [super pointInside:point withEvent:event];
+    
+    self.highlighted = inside;
+    
+    return inside;
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -25,6 +35,13 @@
 {
     [super setEnabled:enabled];
     self.alpha = enabled ? 1.0 : 0.5;
+}
+
+- (void)setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
+    
+    [self updateColors];
 }
 
 - (void)setHighlighted:(BOOL)highlighted
@@ -92,9 +109,9 @@
     
     self.imageView.right = self.width - self.contentEdgeInsets.right;
     
-    //something moves it right...
     if (self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentLeft)
         self.titleLabel.left = self.contentEdgeInsets.left;
 }
+
 
 @end
