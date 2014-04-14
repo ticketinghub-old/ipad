@@ -82,7 +82,9 @@ NSString * const TXHSelectedAvailability            = @"TXHSelectedProduct";
     
     if (selectedProduct)
         userInfo = @{TXHSelectedProduct: selectedProduct};
-        
+    
+    [TXHTICKETINHGUBCLIENT setAuthorizationTokenForSupplier:selectedProduct.supplier];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:TXHProductChangedNotification
                                                         object:self
                                                       userInfo:userInfo];
