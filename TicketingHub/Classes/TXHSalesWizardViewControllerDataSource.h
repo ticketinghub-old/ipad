@@ -8,17 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+@class TXHSalesStep;
 @class TXHSalesWizardViewController;
 
 @protocol TXHSalesWizardViewControllerDataSource <NSObject>
 
 - (NSUInteger)numberOfsteps;
 - (NSUInteger)currentStepIndex;
-- (id)stepAtIndex:(NSUInteger)stepIndex;
+- (TXHSalesStep *)stepAtIndex:(NSUInteger)stepIndex;
 
-- (NSUInteger)indexOfStep:(id)step;
-- (BOOL)isStepCompleted:(id)step;
-- (BOOL)isStepCurrent:(id)step;
+- (NSUInteger)indexOfStep:(TXHSalesStep *)step;
+- (BOOL)isStepCompleted:(TXHSalesStep *)step;
+- (BOOL)isStepCurrent:(TXHSalesStep *)step;
 
 - (void)salesWizardViewController:(TXHSalesWizardViewController *)wizard didSelectStepAtIndex:(NSUInteger)stepIndex; // could go to delegate
 

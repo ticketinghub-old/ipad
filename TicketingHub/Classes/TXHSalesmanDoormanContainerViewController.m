@@ -56,11 +56,21 @@
  
     self.selectedProduct = [TXHPRODUCTSMANAGER selectedProduct];
     
+    [self registerForProductAndAvailabilityChanges];
+}
+
+- (void)dealloc
+{
+    [self unregisterForProductAndAvailabilityChanges];
+}
+
+- (void)registerForProductAndAvailabilityChanges
+{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productChanged:) name:TXHProductsChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availabilityChanged:) name:TXHAvailabilityChangedNotification object:nil];
 }
 
-- (void)dealloc
+- (void)unregisterForProductAndAvailabilityChanges
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductsChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];

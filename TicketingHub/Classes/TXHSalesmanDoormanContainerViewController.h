@@ -8,7 +8,6 @@
 
 @import UIKit;
 
-@class TXHProduct;
 
 @interface TXHSalesmanDoormanContainerViewController : UIViewController
 

@@ -13,9 +13,10 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
 
 @interface TXHOrderManager ()
 
-@property (readwrite, strong, nonatomic) TXHOrder *order;
-@property (strong, nonatomic) NSDate *expirationDate;
-@property (strong, nonatomic) NSTimer *expirationTimer;
+@property (strong, nonatomic) TXHOrder *order;
+
+@property (strong, nonatomic) NSDate   *expirationDate;
+@property (strong, nonatomic) NSTimer  *expirationTimer;
 
 @property (strong, nonatomic) NSMutableDictionary *storedData;
 

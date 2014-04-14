@@ -29,6 +29,13 @@
 
 @implementation TXHSalesTimerViewController
 
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self setTitleText:nil];
+}
+
 - (void)setTitleText:(NSString *)title
 {
     self.titleLabel.text = title;

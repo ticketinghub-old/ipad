@@ -8,7 +8,7 @@
 
 #import "TXHSalesWizardViewController.h"
 
-#import "TXHSalesStepAbstract.h"
+#import "TXHSalesStep.h"
 #import "TXHSalesWizardTabelViewCell.h"
 
 @interface TXHSalesWizardViewController ()
@@ -44,19 +44,19 @@
     TXHSalesWizardTabelViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SalesWizardTabelViewCell"
                                                             forIndexPath:indexPath];
     
-    id item = [self.dataSource stepAtIndex:indexPath.row];
-    [self configureCell:cell withItem:item];
+    TXHSalesStep *item = [self.dataSource stepAtIndex:indexPath.row];
+    [self configureCell:cell withStep:item];
     
     return cell;
 }
 
-- (void)configureCell:(TXHSalesWizardTabelViewCell *)cell withItem:(id)item
+- (void)configureCell:(TXHSalesWizardTabelViewCell *)cell withStep:(TXHSalesStep *)step
 {
-    [cell setTite:item[kWizardStepTitleKey]];
-    [cell setDetails:item[kWizardStepDescriptionKey]];
-    [cell setNumber:[self.dataSource indexOfStep:item]+1];
-    [cell setCompleted:[self.dataSource isStepCompleted:item]];
-    [cell setIsCurrent:[self.dataSource isStepCurrent:item]];
+    [cell setTite:step.title];
+    [cell setDetails:step.description];
+    [cell setNumber:[self.dataSource indexOfStep:step]+1];
+    [cell setCompleted:[self.dataSource isStepCompleted:step]];
+    [cell setIsCurrent:[self.dataSource isStepCurrent:step]];
 }
 
 #pragma mark - Public methods

@@ -9,12 +9,11 @@
 #import "TXHSalesTicketTiersViewController.h"
 
 #import "TXHSalesTicketTierCell.h"
-#import "TXHProductsManager.h"
-#import "TXHOrderManager.h"
+#import "UIColor+TicketingHub.h"
 
+#import "TXHOrderManager.h"
 #import "TXHProductsManager.h"
 #import "TXHTicketingHubManager.h"
-#import "UIColor+TicketingHub.h"
 
 @interface TXHSalesTicketTiersViewController () <UITextFieldDelegate, TXHSalesTicketTierCellDelegate>
 
@@ -39,15 +38,20 @@
  
     self.quantities = [NSMutableDictionary dictionary];
     
-    if ([TXHPRODUCTSMANAGER selectedProduct] && [TXHPRODUCTSMANAGER selectedAvailability])
-    {
-        self.availability = [TXHPRODUCTSMANAGER selectedAvailability];
-    }
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availabilityChanged:) name:TXHAvailabilityChangedNotification object:nil];
+    [self registerForAvailabilityChangeNotification];
 }
 
 - (void)dealloc
+{
+    [self unregisterFromAvailabilityChangeNotification];
+}
+
+- (void)registerForAvailabilityChangeNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availabilityChanged:) name:TXHAvailabilityChangedNotification object:nil];
+}
+
+- (void)unregisterFromAvailabilityChangeNotification
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];
 }
@@ -71,15 +75,12 @@
     _checkingCoupon = checkingCoupon;
     
     __weak typeof(self) wself = self;
+
     dispatch_async(dispatch_get_main_queue(), ^{
         if (checkingCoupon)
-        {
             [wself showLoadingIndicator];
-        }
         else
-        {
             [wself hideLoadingIndicator];
-        }
     });
 }
 
