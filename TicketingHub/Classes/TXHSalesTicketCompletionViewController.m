@@ -29,14 +29,33 @@
 {
     [super viewDidLoad];
     
-    TXHOrder *order = [TXHORDERMANAGER order];
+    self.valid = YES;
+    
+    [self updateView];
+}
+
+- (void)setOrderManager:(TXHOrderManager *)orderManager
+{
+    _orderManager = orderManager;
+
+    [self updateView];
+}
+
+- (void)setProductManager:(TXHProductsManager *)productManager
+{
+    _productManager = productManager;
+    
+    [self updateView];
+}
+
+- (void)updateView
+{
+    TXHOrder *order = [self.orderManager order];
     NSNumber *totalPrice = [order total];
     NSDate *validFromDate = [(TXHTicket *)[order.tickets anyObject] validFrom];
     
-    self.summaryTotalLabel.text = [TXHPRODUCTSMANAGER priceStringForPrice:totalPrice];
+    self.summaryTotalLabel.text = [self.productManager priceStringForPrice:totalPrice];
     self.summaryDateLabel.text  = [NSDateFormatter txh_fullDateStringFromDate:validFromDate];
-    
-    self.valid = YES;
 }
 
 @end

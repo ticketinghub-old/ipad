@@ -70,13 +70,13 @@
                                 @"telephone"  : @"+447534463225",
                                 @"country"    : @"GB"};
     
-    [TXHORDERMANAGER updateOrderWithOwnerInfo:ownerInfo
+    [self.orderManager updateOrderWithOwnerInfo:ownerInfo
                                    completion:^(TXHOrder *order, NSError *error) {
                                        if (!error)
-                                           [TXHORDERMANAGER updateOrderWithPaymentMethod:@"credit"
+                                           [self.orderManager updateOrderWithPaymentMethod:@"credit"
                                                                               completion:^(TXHOrder *order2, NSError *error2) {
                                                                                   if (!error)
-                                                                                      [TXHORDERMANAGER confirmOrderWithCompletion:^(TXHOrder *order3, NSError *error3) {
+                                                                                      [self.orderManager confirmOrderWithCompletion:^(TXHOrder *order3, NSError *error3) {
                                                                                           if (blockName)
                                                                                               blockName(error3);
                                                                                       }];

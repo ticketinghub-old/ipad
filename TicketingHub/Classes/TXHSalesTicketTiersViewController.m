@@ -61,6 +61,13 @@
     self.availability = note.userInfo[TXHSelectedAvailabilityKey];
 }
 
+- (void)setProductManager:(TXHProductsManager *)productManager
+{
+    _productManager = productManager;
+    
+    self.availability = [productManager selectedAvailability];
+}
+
 - (void)setAvailability:(TXHAvailability *)availability
 {
     _availability = availability;
@@ -148,7 +155,7 @@
     
     cell.title            = tier.name;
     cell.subtitle         = tier.tierDescription;
-    cell.priceString      = [TXHPRODUCTSMANAGER priceStringForPrice:tier.price];
+    cell.priceString      = [self.productManager priceStringForPrice:tier.price];
     cell.tierIdentifier   = tier.internalTierId;
     cell.selectedQuantity = [self quantityForTicketIdentifier:tier.internalTierId];
     
@@ -180,40 +187,40 @@
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
-    NSDate *date = [dateFormat dateFromString:[[TXHPRODUCTSMANAGER selectedAvailability] dateString]];
+    NSDate *date = [dateFormat dateFromString:[[self.productManager selectedAvailability] dateString]];
     
     self.checkingCoupon = YES;
     
-    [TXHPRODUCTSMANAGER fetchSelectedProductAvailabilitiesFromDate:date
-                                                            toDate:nil
-                                                        withCoupon:couponString
-                                                        completion:^(NSArray *availabilities, NSError *error) {
-                                                            
-                                                            TXHAvailability *availability = [TXHPRODUCTSMANAGER selectedAvailability];
-                                                            
-                                                            for (TXHAvailability *newAvilability in availabilities)
-                                                            {
-                                                                if ([newAvilability.dateString isEqualToString:[availability dateString]] &&
-                                                                    [newAvilability.timeString isEqualToString:[availability timeString]])
-                                                                {
-                                                                    // checking if any of tiers has discount set to determin if coupon worked
-                                                                    BOOL hasDiscount = NO;
-                                                                    for (TXHTier  *tier in availability.tiers)
-                                                                        if ([tier.discount integerValue] > 0)
-                                                                            hasDiscount = YES;
-                                                                    
-                                                                    if (hasDiscount)
-                                                                    {
-                                                                        newAvilability.coupon = couponString;
-                                                                        [TXHPRODUCTSMANAGER setSelectedAvailability:newAvilability];
-                                                                        break;
-                                                                    }
-                                                                }
-                                                            }
-                                                            
-                                                            wself.checkingCoupon = NO;
-                                                            
-                                                        }];
+    [self.productManager fetchSelectedProductAvailabilitiesFromDate:date
+                                                             toDate:nil
+                                                         withCoupon:couponString
+                                                         completion:^(NSArray *availabilities, NSError *error) {
+                                                             
+                                                             TXHAvailability *availability = [TXHPRODUCTSMANAGER selectedAvailability];
+                                                             
+                                                             for (TXHAvailability *newAvilability in availabilities)
+                                                             {
+                                                                 if ([newAvilability.dateString isEqualToString:[availability dateString]] &&
+                                                                     [newAvilability.timeString isEqualToString:[availability timeString]])
+                                                                 {
+                                                                     // checking if any of tiers has discount set to determin if coupon worked
+                                                                     BOOL hasDiscount = NO;
+                                                                     for (TXHTier  *tier in availability.tiers)
+                                                                         if ([tier.discount integerValue] > 0)
+                                                                             hasDiscount = YES;
+                                                                     
+                                                                     if (hasDiscount)
+                                                                     {
+                                                                         newAvilability.coupon = couponString;
+                                                                         [TXHPRODUCTSMANAGER setSelectedAvailability:newAvilability];
+                                                                         break;
+                                                                     }
+                                                                 }
+                                                             }
+                                                             
+                                                             wself.checkingCoupon = NO;
+                                                             
+                                                         }];
 }
 
 #pragma mark - validation
@@ -258,7 +265,7 @@
     [self showLoadingIndicator];
     
     __weak typeof(self) wself = self;
-    [TXHORDERMANAGER reserveTicketsWithTierQuantities:self.quantities
+    [self.orderManager reserveTicketsWithTierQuantities:self.quantities
                                          availability:self.availability
                                            completion:^(TXHOrder *order, NSError *error) {
                                            

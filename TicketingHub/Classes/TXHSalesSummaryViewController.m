@@ -34,8 +34,6 @@
     [super viewDidLoad];
     
     self.valid = YES;
-    
-    [self loadTickets];
 }
 
 #pragma mark - accessors
@@ -47,6 +45,13 @@
     [self setupExpandedSectionsInfo];
     
     [self.collectionView reloadData];
+}
+
+- (void)setOrderManager:(TXHOrderManager *)orderManager
+{
+    _orderManager = orderManager;
+    
+    [self loadTickets];
 }
 
 - (void)setupExpandedSectionsInfo
@@ -64,7 +69,7 @@
 
 - (void)loadTickets
 {
-    self.tickets = [[[TXHORDERMANAGER order] tickets] allObjects];
+    self.tickets = [[[self.orderManager order] tickets] allObjects];
 }
 
 - (TXHTicket *)ticketAtIndex:(NSInteger )index
@@ -139,10 +144,10 @@
         
         if ([collectionView numberOfSections] - 1 == indexPath.section)
         {
-            TXHOrder *order = [TXHORDERMANAGER order];
+            TXHOrder *order = [self.orderManager order];
             
-            [footer setTaxPriceText:[TXHPRODUCTSMANAGER priceStringForPrice:[order tax]]];
-            [footer setTotalPriceText:[TXHPRODUCTSMANAGER priceStringForPrice:[order total]]];
+            [footer setTaxPriceText:[self.productManager priceStringForPrice:[order tax]]];
+            [footer setTotalPriceText:[self.productManager priceStringForPrice:[order total]]];
         }
         return footer;
     }
@@ -174,7 +179,7 @@
     TXHUpgrade *upgrade = [ticket.upgrades allObjects][indexPath.item];
     
     [cell setTitle:upgrade.name];
-    [cell setPrice:[TXHPRODUCTSMANAGER priceStringForPrice:[upgrade price]]];
+    [cell setPrice:[self.productManager priceStringForPrice:[upgrade price]]];
 }
 
 - (void)configureHeader:(TXHSalesSummaryHeader *)header atIndexPath:(NSIndexPath *)indexPath
@@ -183,7 +188,7 @@
 
     header.delegate         = self;
     header.ticketTitle      = [self titleForTicket:ticket];
-    header.ticketTotalPrice = [TXHPRODUCTSMANAGER priceStringForPrice:[ticket totalPrice]];
+    header.ticketTotalPrice = [self.productManager priceStringForPrice:[ticket totalPrice]];
     header.expanded         = [self isSectionExpanded:indexPath.section];
     header.section          = indexPath.section;
     header.canExpand        = ([ticket.upgrades count] > 0);

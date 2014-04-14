@@ -38,8 +38,6 @@ static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
     [super viewDidLoad];
     
     self.valid = YES;
-    
-    [self loadUpgrades];
 }
 
 #pragma mark - accessors
@@ -53,6 +51,13 @@ static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
     [self setupExpandedSectionsInfo];
     
     [self.collectionView reloadData];
+}
+
+- (void)setOrderManager:(TXHOrderManager *)orderManager
+{
+    _orderManager = orderManager;
+    
+    [self loadUpgrades];
 }
 
 - (UIActivityIndicatorView *)activityIndicator
@@ -87,7 +92,7 @@ static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
 {
     __weak typeof(self) wself = self;
     
-    [TXHORDERMANAGER upgradesForCurrentOrderWithCompletion:^(NSDictionary *upgrades, NSError *error) {
+    [self.orderManager upgradesForCurrentOrderWithCompletion:^(NSDictionary *upgrades, NSError *error) {
         wself.upgrades = upgrades;
     }];
 }
@@ -126,7 +131,7 @@ static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
 - (TXHTicket *)ticketForIndexPath:(NSIndexPath *)indexPath
 {
     NSString *ticketID = [self.upgrades allKeys][indexPath.section];
-    return [TXHORDERMANAGER ticketFromOrderWithID:ticketID];
+    return [self.orderManager ticketFromOrderWithID:ticketID];
 }
 
 - (BOOL)isUpgradeSelected:(TXHUpgrade *)upgrade forTicketID:(NSString *)ticketId
@@ -297,19 +302,19 @@ static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
     [self showLoadingIndicator];
     
     __weak typeof(self) wself = self;
-    [TXHORDERMANAGER updateOrderWithUpgradesInfo:upgradesInfo
-                                       completion:^(TXHOrder *order, NSError *error) {
-                                           
-                                           [wself hideLoadingIndicator];
-                                           
-                                           if (error) {
-                                               [wself.collectionView reloadData];
-                                           }
-                                           
-                                           [TXHORDERMANAGER storeValue:wself.selectedUpgrades forKey:kStoredUserInputsKey];
-                                           
-                                           blockName(error);
-                                       }];
+    [self.orderManager updateOrderWithUpgradesInfo:upgradesInfo
+                                        completion:^(TXHOrder *order, NSError *error) {
+                                            
+                                            [wself hideLoadingIndicator];
+                                            
+                                            if (error) {
+                                                [wself.collectionView reloadData];
+                                            }
+                                            
+                                            [TXHORDERMANAGER storeValue:wself.selectedUpgrades forKey:kStoredUserInputsKey];
+                                            
+                                            blockName(error);
+                                        }];
     
 }
 

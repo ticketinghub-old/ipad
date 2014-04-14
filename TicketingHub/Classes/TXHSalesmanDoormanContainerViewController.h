@@ -8,8 +8,11 @@
 
 @import UIKit;
 
+@class TXHProductsManager;
 
 @interface TXHSalesmanDoormanContainerViewController : UIViewController
+
+@property (strong, nonatomic) TXHProductsManager *productManager;
 
 - (IBAction)selectMode:(id)sender;
 

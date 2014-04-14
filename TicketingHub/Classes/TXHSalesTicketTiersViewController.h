@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class TXHOrderManager;
+@class TXHProductsManager;
+
 @interface TXHSalesTicketTiersViewController : UICollectionViewController
 
 @property (readonly, readonly, getter = isValid) BOOL valid;
+
+@property (strong, nonatomic) TXHProductsManager *productManager;
+@property (strong, nonatomic) TXHOrderManager    *orderManager;
 
 @end
