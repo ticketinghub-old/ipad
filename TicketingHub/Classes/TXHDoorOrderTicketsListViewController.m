@@ -11,6 +11,7 @@
 #import "TXHTicketDetailsViewController.h"
 #import "TXHProductsManager.h"
 #import "UIView+Additions.h"
+#import "TXHTicket+Title.h"
 
 #import "TXHDoorTicketsDateHeaderView.h"
 #import "TXHDoorTicketsTotalHeaderView.h"
@@ -122,7 +123,7 @@
     BOOL isTicketDisabled = [self.ticketsDisabled containsObject:ticket.ticketId];
     NSString *priceTag    = [self.productManager priceStringForPrice:ticket.price];
     
-    [cell setTitle:ticket.customer.fullName];
+    [cell setTitle:ticket.title];
     [cell setSubtitle:ticket.tier.name];
     [cell setAttendedAt:ticket.attendedAt animated:NO];
     [cell setIsLoading:isTicketDisabled];

@@ -14,6 +14,7 @@
 #import "TXHDoorTicketCell.h"
 #import "TXHTicketDetailsViewController.h"
 #import "TXHTicket+Filter.h"
+#import "TXHTicket+Title.h"
 #import "TXHDoorOrderViewController.h"
 
 #import "UIColor+TicketingHub.h"
@@ -417,8 +418,8 @@
     
     TXHTicket *ticket = [self ticketAtIndexPath:indexPath];
     BOOL isTicketDisabled = [self.ticketsDisabled containsObject:ticket.ticketId];
-    
-    [cell setTitle:ticket.customer.fullName];
+
+    [cell setTitle:ticket.title];
     [cell setSubtitle:ticket.tier.name];
     [cell setAttendedAt:ticket.attendedAt animated:NO];
     [cell setIsLoading:isTicketDisabled];

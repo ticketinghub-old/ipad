@@ -72,14 +72,17 @@
 "CONTINUE_PRINTING_STOP_BUTTON_TITLE" = "Cancel printing";
 "CONTINUE_PRINTING_ALL_BUTTON_TITLE"  = "Print all";
 
-
 /* Activity labels - Doorman Salesman */
 
 "SD_LOADING_AVAILABILITIES_LABEL"          = "Loading";
 "SD_LOADING_AVAILABILITY_DETAILS_LABEL"    = "Loading";
 "SD_NO_AVAILABILITIES_LABEL"               = "No Availabilities";
 
+/* Doorman Tickets list */
 
+"TICKET_REFERENCE_TITLE_FORMAT" = "Ticket %@";
+"TICKET_TITLE_DEFAULT"          = "Ticket";
 
-"CONTINUE_PRINTING_ALL_BUTTON_TITLE" = "Print All";
+/* Main navigation Bar */
+
 "NAV_SELECT_DATE_BUTTON_TITLE" = "Select date";
