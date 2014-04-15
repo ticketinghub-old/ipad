@@ -60,7 +60,6 @@
     [self registerForProductAndAvailabilityChanges];
 
     [self updateUI];
-
 }
 
 - (void)dealloc
@@ -120,6 +119,7 @@
     {
         TXHSalesMainViewController *salesMainController = (TXHSalesMainViewController *)initialController;
         salesMainController.productManager = self.productManager;
+        TXHORDERMANAGER.txhManager = self.productManager.txhManager;
         salesMainController.orderManager   = TXHORDERMANAGER;
     }
     

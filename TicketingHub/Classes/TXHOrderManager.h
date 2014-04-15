@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+@class TXHTicketingHubManager;
+
+
 extern NSString * const TXHOrderDidExpireNotification;
 
 #define TXHORDERMANAGER [TXHOrderManager sharedManager]
@@ -21,6 +24,7 @@ typedef void (^TXHArrayCompletion)(NSArray *array, NSError *error);
 @property (readonly, nonatomic) TXHOrder *order;
 @property (readonly, nonatomic) NSDate *expirationDate;
 
+@property (strong, nonatomic) TXHTicketingHubManager *txhManager;
 
 + (instancetype)sharedManager;
 

@@ -17,17 +17,27 @@
 @property (strong, nonatomic) TXHPrinter          *selectedPrinter;
 @property (strong, nonatomic) UIPopoverController *printerSelectorPopover;
 
-@property (strong, nonatomic) TXHOrder            *order;
+@property (strong, nonatomic) TXHOrder              *order;
+@property (strong, nonatomic) TXHTicketingHubClient *client;
 
 @end
 
 @implementation TXHPrintersUtility
 
+- (instancetype)initWithTicketingHubCLient:(TXHTicketingHubClient *)client
+{
+    if (!(self = [super init]))
+        return nil;
+    
+    self.client = client;
+    
+    return self;
+}
 
 - (void)setSelectedPrinter:(TXHPrinter *)selectedPrinter
 {
     _selectedPrinter = selectedPrinter;
-
+    
     if (!selectedPrinter.hasCutter)
     {
         TXHPrinterContinueBlock continueBlock = [self.delegate txhPrintersUtilityContinuePrintingBlock:self];
@@ -65,17 +75,17 @@
     
     __weak typeof(self) wself = self;
     
-    [TXHTICKETINHGUBCLIENT getReciptForOrder:self.order
-                                      format:TXHDocumentFormatPDF
-                                       width:self.selectedPrinter.paperWidth
-                                         dpi:self.selectedPrinter.dpi
-                                  completion:^(NSURL *url, NSError *error) {
-                                      
-                                      [wself.delegate txhPrintersUtility:wself didFinishLoadingType:TXHPrintTypeRecipt error:error];
-                                      
-                                      if (!error)
-                                          [wself printPDFDocumentWithURL:url];
-                                  }];
+    [self.client getReciptForOrder:self.order
+                            format:TXHDocumentFormatPDF
+                             width:self.selectedPrinter.paperWidth
+                               dpi:self.selectedPrinter.dpi
+                        completion:^(NSURL *url, NSError *error) {
+                            
+                            [wself.delegate txhPrintersUtility:wself didFinishLoadingType:TXHPrintTypeRecipt error:error];
+                            
+                            if (!error)
+                                [wself printPDFDocumentWithURL:url];
+                        }];
 }
 
 - (void)getAndPrintTickets
@@ -84,7 +94,7 @@
     
     __weak typeof(self) wself = self;
     
-    [TXHTICKETINHGUBCLIENT getTicketTemplatesCompletion:^(NSArray *templates, NSError *error) {
+    [self.client getTicketTemplatesCompletion:^(NSArray *templates, NSError *error) {
         
         [wself.delegate txhPrintersUtility:wself didFinishLoadingType:TXHPrintTypeTickets error:error];
         
@@ -96,7 +106,7 @@
 - (void)selectTemplateFromTemplates:(NSArray *)templates
 {
     __weak typeof(self) wself = self;
-
+    
     [self.delegate txhPrintersUtility:self
                  selectTicketTemplate:^(TXHTicketTemplate *selectedTemplate) { [wself printTicketsWithTemplate:selectedTemplate]; }
                         fromTemplates:templates];
@@ -121,16 +131,16 @@
     
     __weak typeof(self) wself = self;
     
-    [TXHTICKETINHGUBCLIENT getTicketToPrintForOrder:self.order
-                                        withTemplet:template
-                                             format:TXHDocumentFormatPDF
-                                         completion:^(NSURL *url, NSError *error){
-                                             
-                                             [wself.delegate txhPrintersUtility:wself didFinishLoadingType:TXHPrintTypeTemplates error:error];
-                                             
-                                             if (!error)
-                                                 [wself printPDFDocumentWithURL:url];
-                                         }];
+    [self.client getTicketToPrintForOrder:self.order
+                              withTemplet:template
+                                   format:TXHDocumentFormatPDF
+                               completion:^(NSURL *url, NSError *error){
+                                   
+                                   [wself.delegate txhPrintersUtility:wself didFinishLoadingType:TXHPrintTypeTemplates error:error];
+                                   
+                                   if (!error)
+                                       [wself printPDFDocumentWithURL:url];
+                               }];
 }
 
 @end

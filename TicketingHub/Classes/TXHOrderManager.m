@@ -162,21 +162,21 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
 {
     __weak typeof(self) wself = self;
     
-    [TXHTICKETINHGUBCLIENT reserveTicketsWithTierQuantities:tierQuantities
-                                               availability:availability
-                                                    isGroup:YES
-                                               shouldNotify:NO
-                                                 completion:^(TXHOrder *order, NSError *error) {
-                                                     
-                                                     if (order)
-                                                     {
-                                                         wself.order = order;
-                                                     }
-                                                     
-                                                     if (completion)
-                                                         completion(order,error);
-                                                 }];
-
+    [self.txhManager.client reserveTicketsWithTierQuantities:tierQuantities
+                                                availability:availability
+                                                     isGroup:YES
+                                                shouldNotify:NO
+                                                  completion:^(TXHOrder *order, NSError *error) {
+                                                      
+                                                      if (order)
+                                                      {
+                                                          wself.order = order;
+                                                      }
+                                                      
+                                                      if (completion)
+                                                          completion(order,error);
+                                                  }];
+    
 }
 
 - (void)userInfoFieldsForCurrentOrderTicketsWithCompletion:(void(^)(NSDictionary *fields, NSError *error))completion
@@ -186,26 +186,26 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
     __weak typeof(self) wself = self;
     __block NSError *bError;
     __block NSMutableDictionary *fieldsDictionary = [NSMutableDictionary dictionary];
-
+    
     dispatch_group_t group = dispatch_group_create();
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (TXHTicket *ticket in wself.order.tickets)
         {
             dispatch_group_enter(group);
-
-            [TXHTICKETINHGUBCLIENT fieldsForTicket:ticket completion:^(NSArray *fields, NSError *error) {
             
+            [self.txhManager.client fieldsForTicket:ticket completion:^(NSArray *fields, NSError *error) {
+                
                 if (fields)
                     fieldsDictionary[ticket.ticketId] = fields;
                 
                 if (error) // any error should be enough
                     bError = error;
-            
-                    dispatch_group_leave(group);
+                
+                dispatch_group_leave(group);
             }];
         }
-    
+        
         dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -228,8 +228,8 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
         for (TXHTicket *ticket in wself.order.tickets)
         {
             dispatch_group_enter(group);
-
-            [TXHTICKETINHGUBCLIENT upgradesForTicket:ticket completion:^(NSArray *upgrades, NSError *error) {
+            
+            [self.txhManager.client upgradesForTicket:ticket completion:^(NSArray *upgrades, NSError *error) {
                 if (upgrades)
                     upgradesDictionary[ticket.ticketId] = upgrades;
                 
@@ -237,7 +237,7 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
                     bError = error;
                 
                 dispatch_group_leave(group);
-    
+                
             }];
         }
         
@@ -254,85 +254,8 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
 {
     __weak typeof(self) wself = self;
     
-    [TXHTICKETINHGUBCLIENT updateOrder:self.order
-                     withCustomersInfo:customersInfo
-                            completion:^(TXHOrder *order, NSError *error) {
-                                if (order)
-                                {
-                                    wself.order = order;
-                                }
-                                
-                                if (completion)
-                                    completion(order,error);
-                            }];
-}
-
-- (void)updateOrderWithUpgradesInfo:(NSDictionary *)upgradesInfo completion:(void (^)(TXHOrder *order, NSError *error))completion
-{
-    __weak typeof(self) wself = self;
-    
-    [TXHTICKETINHGUBCLIENT updateOrder:self.order
-                      withUpgradesInfo:upgradesInfo
-                            completion:^(TXHOrder *order, NSError *error) {
-                                if (order)
-                                {
-                                    wself.order = order;
-                                }
-                                
-                                if (completion)
-                                    completion(order,error);
-                            }];
-}
-
-- (void)fieldsForCurrentOrderOwnerWithCompletion:(void(^)(NSArray *fields, NSError *error))completion
-{
-    [TXHTICKETINHGUBCLIENT fieldsForOrderOwner:self.order
-                                    completion:^(NSArray *fields, NSError *error) {
-                                        completion(fields, error);
-                                    }];
-
-}
-
-- (void)updateOrderWithOwnerInfo:(NSDictionary *)customersInfo completion:(void (^)(TXHOrder *, NSError *))completion
-{
-    __weak typeof(self) wself = self;
-
-    [TXHTICKETINHGUBCLIENT updateOrder:self.order
-                         withOwnerInfo:customersInfo
-                            completion:^(TXHOrder *order, NSError *error) {
-                                if (order)
-                                {
-                                    wself.order = order;
-                                }
-                                
-                                if (completion)
-                                    completion(order,error);
-                            }];
-}
-
-
-- (void)updateOrderWithPaymentMethod:(NSString *)paymentMethod completion:(void (^)(TXHOrder *, NSError *))completion
-{
-    __weak typeof(self) wself = self;
-    
-    [TXHTICKETINHGUBCLIENT updateOrder:self.order
-                     withPaymentMethod:paymentMethod
-                            completion:^(TXHOrder *order, NSError *error) {
-                                if (order)
-                                {
-                                    wself.order = order;
-                                }
-                                
-                                if (completion)
-                                    completion(order,error);
-                            }];
-}
-
-- (void)confirmOrderWithCompletion:(void (^)(TXHOrder *, NSError *))completion
-{
-    __weak typeof(self) wself = self;
-    
-    [TXHTICKETINHGUBCLIENT confirmOrder:self.order
+    [self.txhManager.client updateOrder:self.order
+                      withCustomersInfo:customersInfo
                              completion:^(TXHOrder *order, NSError *error) {
                                  if (order)
                                  {
@@ -344,26 +267,103 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
                              }];
 }
 
+- (void)updateOrderWithUpgradesInfo:(NSDictionary *)upgradesInfo completion:(void (^)(TXHOrder *order, NSError *error))completion
+{
+    __weak typeof(self) wself = self;
+    
+    [self.txhManager.client updateOrder:self.order
+                       withUpgradesInfo:upgradesInfo
+                             completion:^(TXHOrder *order, NSError *error) {
+                                 if (order)
+                                 {
+                                     wself.order = order;
+                                 }
+                                 
+                                 if (completion)
+                                     completion(order,error);
+                             }];
+}
+
+- (void)fieldsForCurrentOrderOwnerWithCompletion:(void(^)(NSArray *fields, NSError *error))completion
+{
+    [self.txhManager.client fieldsForOrderOwner:self.order
+                                     completion:^(NSArray *fields, NSError *error) {
+                                         completion(fields, error);
+                                     }];
+    
+}
+
+- (void)updateOrderWithOwnerInfo:(NSDictionary *)customersInfo completion:(void (^)(TXHOrder *, NSError *))completion
+{
+    __weak typeof(self) wself = self;
+    
+    [self.txhManager.client updateOrder:self.order
+                          withOwnerInfo:customersInfo
+                             completion:^(TXHOrder *order, NSError *error) {
+                                 if (order)
+                                 {
+                                     wself.order = order;
+                                 }
+                                 
+                                 if (completion)
+                                     completion(order,error);
+                             }];
+}
+
+
+- (void)updateOrderWithPaymentMethod:(NSString *)paymentMethod completion:(void (^)(TXHOrder *, NSError *))completion
+{
+    __weak typeof(self) wself = self;
+    
+    [self.txhManager.client updateOrder:self.order
+                      withPaymentMethod:paymentMethod
+                             completion:^(TXHOrder *order, NSError *error) {
+                                 if (order)
+                                 {
+                                     wself.order = order;
+                                 }
+                                 
+                                 if (completion)
+                                     completion(order,error);
+                             }];
+}
+
+- (void)confirmOrderWithCompletion:(void (^)(TXHOrder *, NSError *))completion
+{
+    __weak typeof(self) wself = self;
+    
+    [self.txhManager.client confirmOrder:self.order
+                              completion:^(TXHOrder *order, NSError *error) {
+                                  if (order)
+                                  {
+                                      wself.order = order;
+                                  }
+                                  
+                                  if (completion)
+                                      completion(order,error);
+                              }];
+}
+
 - (void)downloadReciptWithWidth:(NSUInteger)width dpi:(NSUInteger)dpi format:(TXHDocumentFormat)format completion:(void(^)(NSURL *url, NSError *error))completion
 {
-    [TXHTICKETINHGUBCLIENT getReciptForOrder:self.order
-                                      format:format
-                                       width:width
-                                         dpi:dpi
-                                  completion:completion];
+    [self.txhManager.client getReciptForOrder:self.order
+                                       format:format
+                                        width:width
+                                          dpi:dpi
+                                   completion:completion];
 }
 
 - (void)getTicketTemplatesWithCompletion:(TXHArrayCompletion)completion
 {
-    [TXHTICKETINHGUBCLIENT getTicketTemplatesCompletion:completion];
+    [self.txhManager.client getTicketTemplatesCompletion:completion];
 }
 
 - (void)downloadTicketsWithTemplate:(TXHTicketTemplate *)template format:(TXHDocumentFormat)format completion:(void(^)(NSURL *url, NSError *error))completion
 {
-    [TXHTICKETINHGUBCLIENT getTicketToPrintForOrder:self.order
-                                        withTemplet:template
-                                             format:format
-                                         completion:completion];
+    [self.txhManager.client getTicketToPrintForOrder:self.order
+                                         withTemplet:template
+                                              format:format
+                                          completion:completion];
 }
 
 #pragma mark private methods

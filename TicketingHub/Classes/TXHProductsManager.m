@@ -8,7 +8,6 @@
 
 #import "TXHProductsManager.h"
 
-#import "TXHTicketingHubManager.h"
 #import "NSDate+Additions.h"
 #import <iOS-api/TXHNumberFormatterCache.h>
 
@@ -40,20 +39,17 @@ NSString * const TXHSelectedAvailabilityKey         = @"TXHSelectedProductKey";
 }
 
 
-+ (NSFetchedResultsController *)productsFetchedResultsController
++ (NSFetchedResultsController *)productsFetchedResultsControllerWithManagedContext:(NSManagedObjectContext *)context
 {
     NSFetchedResultsController *fetchedResultsController;
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[TXHProduct entityName]];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:TXHProductAttributes.name ascending:YES];
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
     
-    if (!fetchedResultsController) {
-        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[TXHProduct entityName]];
-        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:TXHProductAttributes.name ascending:YES];
-        [fetchRequest setSortDescriptors:@[sortDescriptor]];
-        
-        fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                                                       managedObjectContext:TXHTICKETINHGUBCLIENT.managedObjectContext
-                                                                         sectionNameKeyPath:nil
-                                                                                  cacheName:nil];
-    }
+    fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                   managedObjectContext:context
+                                                                     sectionNameKeyPath:nil
+                                                                              cacheName:nil];
     
     return fetchedResultsController;
 }
@@ -83,7 +79,7 @@ NSString * const TXHSelectedAvailabilityKey         = @"TXHSelectedProductKey";
     if (selectedProduct)
         userInfo = @{TXHSelectedProductKey: selectedProduct};
     
-    [TXHTICKETINHGUBCLIENT setAuthorizationTokenForSupplier:selectedProduct.supplier];
+    [self.txhManager.client setAuthorizationTokenForSupplier:selectedProduct.supplier];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:TXHProductsChangedNotification
                                                         object:self
@@ -106,13 +102,13 @@ NSString * const TXHSelectedAvailabilityKey         = @"TXHSelectedProductKey";
 
 - (void)fetchSelectedProductAvailabilitiesFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate withCoupon:(NSString *)coupon completion:(void(^)(NSArray *availabilities, NSError *error))completion
 {
-    [TXHTICKETINHGUBCLIENT availabilitiesForProduct:self.selectedProduct fromDate:fromDate toDate:toDate coupon:coupon completion:completion];
+    [self.txhManager.client availabilitiesForProduct:self.selectedProduct fromDate:fromDate toDate:toDate coupon:coupon completion:completion];
 }
 
 
 - (void)ticketRecordsForAvailability:(TXHAvailability *)availability andQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion;
 {
-    [TXHTICKETINHGUBCLIENT ticketRecordsForProduct:self.selectedProduct
+    [self.txhManager.client ticketRecordsForProduct:self.selectedProduct
                                       availability:availability
                                          withQuery:query
                                         completion:completion];
@@ -120,7 +116,7 @@ NSString * const TXHSelectedAvailabilityKey         = @"TXHSelectedProductKey";
 
 - (void)setTicket:(TXHTicket *)ticket attended:(BOOL)attended completion:(void(^)(TXHTicket *ticket, NSError *error))completion
 {
-    [TXHTICKETINHGUBCLIENT setTicket:ticket
+    [self.txhManager.client setTicket:ticket
                             attended:attended
                          withProduct:self.selectedProduct
                           completion:completion];
@@ -128,14 +124,14 @@ NSString * const TXHSelectedAvailabilityKey         = @"TXHSelectedProductKey";
 
 - (void)searchForTicketWithSeqID:(NSNumber *)seqID completion:(void(^)(TXHTicket *ticket, NSError *error))completion
 {
-    [TXHTICKETINHGUBCLIENT searchForTicketWithSeqId:seqID
+    [self.txhManager.client searchForTicketWithSeqId:seqID
                                         withProduct:self.selectedProduct
                                          completion:completion];
 }
 
 - (void)getOrderForTicket:(TXHTicket *)ticket completion:(void(^)(TXHOrder *order, NSError *error))completion
 {
-    [TXHTICKETINHGUBCLIENT getOrderForTicekt:ticket
+    [self.txhManager.client getOrderForTicekt:ticket
                                  withProduct:self.selectedProduct
                                   completion:completion];
 }

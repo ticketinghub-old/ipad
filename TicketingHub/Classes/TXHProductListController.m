@@ -58,6 +58,13 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
         [self registerForCurrentUserFullNameChanges];
 }
 
+- (void)setProductsManager:(TXHProductsManager *)productsManager
+{
+    _productsManager = productsManager;
+    
+    [self setupDataSource];
+}
+
 #pragma mark - notyfications
 
 - (void)registerForProductChangesNotifications
@@ -97,9 +104,16 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 
 - (void)setupDataSource
 {
+    if (!self.productsManager)
+        return;
+    
     NSString *cellIdentifier = @"ProductCellIdentifier";
     __weak typeof(self) wself = self;
-    self.tableViewDataSource = [[FetchedResultsControllerDataSource alloc] initWithFetchedResultsController:[TXHProductsManager productsFetchedResultsController]
+    
+    NSManagedObjectContext *context = self.productsManager.txhManager.client.managedObjectContext;
+    NSFetchedResultsController *fetchedController = [TXHProductsManager productsFetchedResultsControllerWithManagedContext:context];
+    
+    self.tableViewDataSource = [[FetchedResultsControllerDataSource alloc] initWithFetchedResultsController:fetchedController
                                                                                                   tableView:self.tableView
                                                                                              cellIdentifier:cellIdentifier
                                                                                          configureCellBlock:^(id cell, id item) {

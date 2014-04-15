@@ -10,6 +10,8 @@
 
 #import "TXHProductsManagerNotifications.h"
 
+#import "TXHTicketingHubManager.h"
+
 #define TXHPRODUCTSMANAGER [TXHProductsManager sharedManager]
 
 @interface TXHProductsManager : NSObject
@@ -17,8 +19,10 @@
 @property (strong, nonatomic) TXHProduct *selectedProduct;
 @property (strong, nonatomic) TXHAvailability *selectedAvailability;
 
+@property (strong, nonatomic) TXHTicketingHubManager *txhManager;
+
 + (instancetype)sharedManager;
-+ (NSFetchedResultsController *)productsFetchedResultsController;
++ (NSFetchedResultsController *)productsFetchedResultsControllerWithManagedContext:(NSManagedObjectContext *)context;
 
 - (NSString *)priceStringForPrice:(NSNumber *)price;
 

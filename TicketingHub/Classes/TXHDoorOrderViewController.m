@@ -146,7 +146,7 @@
         [TXHActivityLabelPrintersUtilityDelegate new];
         printingUtilityDelegate.activityView = self.activityView;
         
-        TXHPrintersUtility *printingUtility = [[TXHPrintersUtility alloc] init];
+        TXHPrintersUtility *printingUtility = [[TXHPrintersUtility alloc] initWithTicketingHubCLient:self.productManager.txhManager.client];
         printingUtility.delegate = printingUtilityDelegate;
         
         _printingUtility = printingUtility;

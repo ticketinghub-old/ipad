@@ -38,6 +38,8 @@ typedef NS_ENUM(NSUInteger, TXHPrintType)
 
 @property (weak, nonatomic) id<TXHPrintersUtilityDelegate> delegate;
 
+- (instancetype)initWithTicketingHubCLient:(TXHTicketingHubClient *)client;
+
 - (void)startPrintingWithType:(TXHPrintType)type onPrinter:(TXHPrinter *)printer withOrder:(TXHOrder *)order;
 
 @end

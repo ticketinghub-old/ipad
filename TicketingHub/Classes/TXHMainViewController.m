@@ -24,6 +24,8 @@
 
 @property (weak, nonatomic) IBOutlet TXHSensorView      *sensorView;
 
+@property (strong, nonatomic) TXHProductsManager *productManager;
+
 @end
 
 @implementation TXHMainViewController
@@ -68,15 +70,25 @@
     if ([segue.identifier isEqualToString:@"VenueListContainerEmbed"])
     {
         TXHProductListController *productList = segue.destinationViewController;
-        productList.productsManager = TXHPRODUCTSMANAGER;
+        productList.productsManager = self.productManager;
         productList.user = [TXHTICKETINHGUBCLIENT currentUser];
     }
     else if ([segue.identifier isEqualToString:@"SalesOrDoormanContainerEmbed"])
     {
         UINavigationController *navController = segue.destinationViewController;
         TXHSalesmanDoormanContainerViewController *sdContainer = (TXHSalesmanDoormanContainerViewController *)navController.topViewController;
-        sdContainer.productManager = TXHPRODUCTSMANAGER;
+        sdContainer.productManager = self.productManager;
     }
+}
+
+- (TXHProductsManager *)productManager
+{
+    if (!_productManager)
+    {
+        _productManager = TXHPRODUCTSMANAGER;
+        _productManager.txhManager = [TXHTicketingHubManager sharedManager];
+    }
+    return _productManager;
 }
 
 #pragma mark - NotificationHandlers
