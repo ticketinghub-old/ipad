@@ -9,9 +9,11 @@
 #import "TXHMainViewController.h"
 
 #import "TXHProductsManagerNotifications.h"
-#import "TXHProductListController.h"
-#import "TXHTicketingHubManager.h"
 #import "TXHProductsManager.h"
+#import "TXHTicketingHubManager.h"
+
+#import "TXHProductListController.h"
+#import "TXHSalesmanDoormanContainerViewController.h"
 
 #import "TXHSensorView.h"
 
@@ -68,6 +70,12 @@
         TXHProductListController *productList = segue.destinationViewController;
         productList.productsManager = TXHPRODUCTSMANAGER;
         productList.user = [TXHTICKETINHGUBCLIENT currentUser];
+    }
+    else if ([segue.identifier isEqualToString:@"SalesOrDoormanContainerEmbed"])
+    {
+        UINavigationController *navController = segue.destinationViewController;
+        TXHSalesmanDoormanContainerViewController *sdContainer = (TXHSalesmanDoormanContainerViewController *)navController.topViewController;
+        sdContainer.productManager = TXHPRODUCTSMANAGER;
     }
 }
 

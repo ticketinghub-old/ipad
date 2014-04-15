@@ -118,14 +118,15 @@
     if ([segue.identifier isEqualToString:@"TicketDetail"])
     {
         TXHTicketDetailsViewController *detailController = segue.destinationViewController;
-        detailController.delegate = self;
-        detailController.ticket   = self.selectedTicket;
+        detailController.delegate       = self;
+        detailController.productManager = self.productManager;
+        detailController.ticket         = self.selectedTicket;
     }
     else if ([segue.identifier isEqualToString:@"TicketOrder"])
     {
         TXHDoorOrderViewController *orderViewController = segue.destinationViewController;
-        orderViewController.ticket = self.selectedTicket;
-         
+        
+        [orderViewController setTicket:self.selectedTicket andProductManager:self.productManager];
     }
 }
 
@@ -193,7 +194,7 @@
 {
     if (!ticket)
         return;
-        
+    
     self.selectedTicket = ticket;
     [self performSegueWithIdentifier:@"TicketDetail" sender:self];
 }
@@ -297,14 +298,14 @@
         
         __weak typeof(self) wself = self;
         
-        [TXHPRODUCTSMANAGER searchForTicketWithSeqID:ticketSeqID
-                                          completion:^(TXHTicket *ticket, NSError *error) {
-                                              wself.loadingData = NO;
-                                              if (!error)
-                                                  [wself showDetailsForTicket:ticket];
-                                              else
-                                                  [wself showErrorWithMessage:@"Couldn't find ticket data."];
-                                          }];
+        [self.productManager searchForTicketWithSeqID:ticketSeqID
+                                           completion:^(TXHTicket *ticket, NSError *error) {
+                                               wself.loadingData = NO;
+                                               if (!error)
+                                                   [wself showDetailsForTicket:ticket];
+                                               else
+                                                   [wself showErrorWithMessage:@"Couldn't find ticket data."];
+                                           }];
     }
 }
 
@@ -391,12 +392,12 @@
     
     [self showInfolabelWithText:@"Loading tickets"];
     
-    [TXHPRODUCTSMANAGER ticketRecordsForAvailability:availability
-                                            andQuery:nil
-                                          completion:^(NSArray *ticketRecords, NSError *error) {
-                                        
-                                              wself.tickets = ticketRecords;
-                                          }];
+    [self.productManager ticketRecordsForAvailability:availability
+                                             andQuery:nil
+                                           completion:^(NSArray *ticketRecords, NSError *error) {
+                                               
+                                               wself.tickets = ticketRecords;
+                                           }];
 }
 
 #pragma mark - UITableViewDataSource
@@ -432,7 +433,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     TXHTicket *ticket = [self ticketAtIndexPath:indexPath];
-
+    
     [self showDetailsForTicket:ticket];
 }
 
@@ -451,7 +452,7 @@
 - (void)txhTicketDetailsViewController:(TXHTicketDetailsViewController *)controller wantsToPresentOrderForTicket:(TXHTicket *)ticket
 {
     __weak typeof(self) wself = self;
-
+    
     [self dismissDetailViewController:controller completion:^{
         [wself showOrderForTicekt:ticket];
     }];
@@ -470,15 +471,15 @@
     TXHTicket *cellTicket = [self ticketAtIndexPath:[self.tableView indexPathForCell:cell]];
     
     [self.ticketsDisabled addObject:cellTicket.ticketId];
-
+    
     __weak typeof(self) wself = self;
-    [TXHPRODUCTSMANAGER setTicket:cellTicket
-                         attended:cell.switchValue
-                       completion:^(TXHTicket *ticket, NSError *error) {
-                           [wself.ticketsDisabled removeObject:cellTicket.ticketId];
-                           [cell setAttendedAt:cellTicket.attendedAt animated:YES];
-                           [wself updateHeader];
-                       }];
+    [self.productManager setTicket:cellTicket
+                          attended:cell.switchValue
+                        completion:^(TXHTicket *ticket, NSError *error) {
+                            [wself.ticketsDisabled removeObject:cellTicket.ticketId];
+                            [cell setAttendedAt:cellTicket.attendedAt animated:YES];
+                            [wself updateHeader];
+                        }];
 }
 
 @end

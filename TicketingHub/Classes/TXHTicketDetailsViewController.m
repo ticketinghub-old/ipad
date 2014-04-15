@@ -107,7 +107,7 @@
 {
     NSDate *expirationDate = self.ticket.expiresAt;
     BOOL ticketExpired = [expirationDate isInThePast];
-
+    
     NSString *errorConstant = [self errorMessageConstant];
     NSString *errorDurationMesage = nil;
     
@@ -130,7 +130,7 @@
                 NSInteger minutesFromNow = [expirationDate minutesFromNow];
                 errorDurationMesage = [self errorForMinutes:minutesFromNow];
             }
-        
+            
         }
         [self setErrorMessageBold:errorDurationMesage normalString:errorConstant];
     }
@@ -144,8 +144,8 @@
     
     NSMutableAttributedString *errorMessage = [[NSMutableAttributedString alloc] initWithString:error];
     [errorMessage addAttribute:NSFontAttributeName
-                            value:[UIFont boldSystemFontOfSize:15]
-                            range:boldRange];
+                         value:[UIFont boldSystemFontOfSize:15]
+                         range:boldRange];
     
     self.errorLabel.attributedText = errorMessage;
 }
@@ -231,16 +231,16 @@
     [self blockAttenededButton];
     
     __weak typeof(self) wself = self;
-    [TXHPRODUCTSMANAGER setTicket:self.ticket
-                         attended:(self.ticket.attendedAt == nil)
-                       completion:^(TXHTicket *ticket, NSError *error) {
-                           if (!error)
-                               [wself.delegate txhTicketDetailsViewController:wself
-                                                              didChangeTicket:wself.ticket];
-                           
-                           [wself unblockAttenededButton];
-                           [wself updateButtons];
-                       }];
+    [self.productManager setTicket:self.ticket
+                          attended:(self.ticket.attendedAt == nil)
+                        completion:^(TXHTicket *ticket, NSError *error) {
+                            if (!error)
+                                [wself.delegate txhTicketDetailsViewController:wself
+                                                               didChangeTicket:wself.ticket];
+                            
+                            [wself unblockAttenededButton];
+                            [wself updateButtons];
+                        }];
 }
 
 - (IBAction)closeButtonAction:(id)sender
@@ -292,7 +292,7 @@
         wself.fullNameLabel.text   = [customer.fullName length] ? customer.fullName : @"-";
         wself.phoneLabel.text      = [customer.telephone length] ? customer.telephone : @"-";
         wself.countryLabel.text    = [customer.country length] ? customer.country : @"-";
-
+        
         [wself updateButtons];
     });
 }

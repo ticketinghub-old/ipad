@@ -90,8 +90,9 @@
     if ([segue.identifier isEqualToString:@"TicketDetail"])
     {
         TXHTicketDetailsViewController *detailController = segue.destinationViewController;
-        detailController.delegate = self;
-        detailController.ticket   = self.selectedTicket;
+        detailController.delegate       = self;
+        detailController.productManager = self.productManager;
+        detailController.ticket         = self.selectedTicket;
     }
 }
 
@@ -117,9 +118,9 @@
     [cell setIsFirstRow:NO];
     [cell setIsLastRow:indexPath.row == [self.tickets count] - 1];
     
-    TXHTicket *ticket = [self ticketAtIndexPath:indexPath];
+    TXHTicket *ticket     = [self ticketAtIndexPath:indexPath];
     BOOL isTicketDisabled = [self.ticketsDisabled containsObject:ticket.ticketId];
-    NSString *priceTag = [TXHPRODUCTSMANAGER priceStringForPrice:ticket.price];
+    NSString *priceTag    = [self.productManager priceStringForPrice:ticket.price];
     
     [cell setTitle:ticket.customer.fullName];
     [cell setSubtitle:ticket.tier.name];
@@ -174,7 +175,7 @@
         }
         case 2:
         {
-            NSString *priceString = [TXHPRODUCTSMANAGER priceStringForPrice:[self.order total]];
+            NSString *priceString = [self.productManager priceStringForPrice:[self.order total]];
             
             [self.header3 setTotalValueString:priceString];
             
@@ -230,13 +231,13 @@
     
     __weak typeof(self) wself = self;
 
-    [TXHPRODUCTSMANAGER setTicket:cellTicket
-                         attended:cell.switchValue
-                       completion:^(TXHTicket *ticket, NSError *error) {
-                           [wself.ticketsDisabled removeObject:cellTicket.ticketId];
-                           [cell setAttendedAt:cellTicket.attendedAt animated:YES];
-                           [wself.header2 setAttendedCount:@(wself.order.attendedTickets)];
-                       }];
+    [self.productManager setTicket:cellTicket
+                          attended:cell.switchValue
+                        completion:^(TXHTicket *ticket, NSError *error) {
+                            [wself.ticketsDisabled removeObject:cellTicket.ticketId];
+                            [cell setAttendedAt:cellTicket.attendedAt animated:YES];
+                            [wself.header2 setAttendedCount:@(wself.order.attendedTickets)];
+                        }];
 }
 
 #pragma  mark - TXHDoorTicketsAttendedHeaderViewDelegate

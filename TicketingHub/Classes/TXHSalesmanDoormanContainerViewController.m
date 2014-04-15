@@ -9,13 +9,15 @@
 #import "TXHSalesmanDoormanContainerViewController.h"
 @import CoreData;
 
+#import "TXHOrderManager.h"
 #import "TXHProductsManager.h"
-#import "TXHTicketingHubManager.h"
+
 #import "TXHDateSelectorViewController.h"
+
+#import "TXHDoorMainViewController.h"
 #import "TXHSalesMainViewController.h"
 
 #import "TXHEmbeddingSegue.h"
-
 #import "UIResponder+FirstResponder.h"
 #import "UIColor+TicketingHub.h"
 #import "TXHActivityLabelView.h"
@@ -58,10 +60,7 @@
     [self registerForProductAndAvailabilityChanges];
 
     [self updateUI];
-    
-    
-    // mhmm nav controller
-    self.productManager = TXHPRODUCTSMANAGER;
+
 }
 
 - (void)dealloc
@@ -88,21 +87,14 @@
     [self dismissVisiblePopover];
     [[UIResponder currentFirstResponder] resignFirstResponder];
 
-    NSString *storyboardIdentifier = nil;
-    
-    if (self.modeSelector.selectedSegmentIndex == 1)
-        storyboardIdentifier = @"Doorman";
-    else
-        storyboardIdentifier = @"Salesman";
-
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardIdentifier bundle:nil];
-    UIViewController *destinationController = [storyboard instantiateInitialViewController];
+    NSString *storyboardIdentifier          = [self storyboardIdentifierForSegmentIndex:self.modeSelector.selectedSegmentIndex];
+    UIViewController *destinationController = [self initialControllerForStoryboardIdentifier:storyboardIdentifier];
     
     TXHEmbeddingSegue *segue = [[TXHEmbeddingSegue alloc] initWithIdentifier:storyboardIdentifier
                                                                       source:self
                                                                  destination:destinationController];
     
-    segue.containerView = self.contentDetailView;
+    segue.containerView      = self.contentDetailView;
     segue.previousController = self.currentContentController;
     
     self.currentContentController = segue.destinationViewController;
@@ -110,7 +102,38 @@
     [segue perform];
     
     self.selectedAvailability = nil;
+
     [self fetchAvailability];
+}
+
+- (UIViewController *)initialControllerForStoryboardIdentifier:(NSString *)storyboardIdentifier
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardIdentifier bundle:nil];
+    UIViewController *initialController = [storyboard instantiateInitialViewController];
+    
+    if ([storyboardIdentifier isEqualToString:@"Doorman"])
+    {
+        TXHDoorMainViewController *doorMainController = (TXHDoorMainViewController *)initialController;
+        doorMainController.prodctManager = self.productManager;
+    }
+    else if ([storyboardIdentifier isEqualToString:@"Salesman"])
+    {
+        TXHSalesMainViewController *salesMainController = (TXHSalesMainViewController *)initialController;
+        salesMainController.productManager = self.productManager;
+        salesMainController.orderManager   = TXHORDERMANAGER;
+    }
+    
+    return initialController;
+}
+
+- (NSString *)storyboardIdentifierForSegmentIndex:(NSInteger)segmentIndex
+{
+    switch (segmentIndex)
+    {
+        case 0: return @"Salesman";
+        case 1: return @"Doorman";
+    }
+    return nil;
 }
 
 #pragma mark - Setters / Getters
@@ -233,8 +256,9 @@
     [[UIResponder currentFirstResponder] resignFirstResponder];
 
     TXHDateSelectorViewController *dateViewController = [[TXHDateSelectorViewController alloc] initWithSunday:NO];
+    dateViewController.productManager = self.productManager;
     dateViewController.delegate = self;
-
+    
     [self.view layoutIfNeeded];
 
     self.popover = [[UIPopoverController alloc] initWithContentViewController:dateViewController];

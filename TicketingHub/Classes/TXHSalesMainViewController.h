@@ -28,4 +28,7 @@
 
 @interface TXHSalesMainViewController : UIViewController
 
+@property (strong, nonatomic) TXHProductsManager *productManager;
+@property (strong, nonatomic) TXHOrderManager    *orderManager;
+
 @end

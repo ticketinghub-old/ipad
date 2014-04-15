@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class TXHProductsManager;
 @class TXHTicketDetailsViewController;
 
 @protocol TXHTicketDetailsViewControllerDelegate
@@ -22,5 +23,5 @@
 
 @property (nonatomic, weak) id<TXHTicketDetailsViewControllerDelegate> delegate;
 @property (nonatomic, strong) TXHTicket *ticket;
-
+@property (nonatomic, strong) TXHProductsManager *productManager;
 @end

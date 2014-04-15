@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3E0DAB9118AA41510045697C /* iOS-api.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3E0DAB9018AA41510045697C /* iOS-api.podspec */; };
+		3E192D5718FD188C00D727AA /* TXHDoorMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E192D5618FD188C00D727AA /* TXHDoorMainViewController.m */; };
 		3E22139B18AA791000DE35A6 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E22139A18AA791000DE35A6 /* ArrayDataSource.m */; };
 		3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E22139D18AA794C00DE35A6 /* DictionaryDataSource.m */; };
 		3E2B085318F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B085218F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.m */; };
@@ -130,6 +131,8 @@
 
 /* Begin PBXFileReference section */
 		3E0DAB9018AA41510045697C /* iOS-api.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS-api.podspec"; sourceTree = "<group>"; };
+		3E192D5518FD188C00D727AA /* TXHDoorMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorMainViewController.h; sourceTree = "<group>"; };
+		3E192D5618FD188C00D727AA /* TXHDoorMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorMainViewController.m; sourceTree = "<group>"; };
 		3E22139918AA791000DE35A6 /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
 		3E22139A18AA791000DE35A6 /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
 		3E22139C18AA794C00DE35A6 /* DictionaryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryDataSource.h; sourceTree = "<group>"; };
@@ -1034,6 +1037,8 @@
 				3E9D734018D1EEB10087121B /* Order */,
 				3E87023B18C72A50008F4EAD /* Tickets List */,
 				3E87023A18C72A41008F4EAD /* Searching Area */,
+				3E192D5518FD188C00D727AA /* TXHDoorMainViewController.h */,
+				3E192D5618FD188C00D727AA /* TXHDoorMainViewController.m */,
 			);
 			name = Door;
 			sourceTree = "<group>";
@@ -1306,6 +1311,7 @@
 				EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */,
 				EEB1846617D114390025530A /* TXHTextEntryTableViewCell.m in Sources */,
 				3ECE137418B63A6900E7148F /* NSDate+Additions.m in Sources */,
+				3E192D5718FD188C00D727AA /* TXHDoorMainViewController.m in Sources */,
 				EEB1846717D114390025530A /* TXHTextEntryView.m in Sources */,
 				3ECE137718B689CE00E7148F /* NSDate+CupertinoYankee.m in Sources */,
 				3E44157018AB80EA00C4AE1C /* TXHTicketingHubManager.m in Sources */,

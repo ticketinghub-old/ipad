@@ -34,6 +34,8 @@
 @property (strong, nonatomic) TXHActivityLabelView *activityView;
 
 @property (strong, nonatomic) TXHOrder *order;
+@property (strong, nonatomic) TXHTicket *ticket;
+@property (strong, nonatomic) TXHProductsManager *productManager;
 
 @property (assign, nonatomic) TXHPrintType selectedPrintType;
 @property (strong, nonatomic) TXHPrintersUtility *printingUtility;
@@ -47,8 +49,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self setup];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -59,15 +59,24 @@
     [self.navigationController.view addSubview:self.activityView];
 }
 
-- (void)setup
+- (void)setProductManager:(TXHProductsManager *)productManager
 {
-    self.title = [[TXHPRODUCTSMANAGER selectedProduct] name];
+    _productManager = productManager;
+    
+    [self updateTitle];
 }
 
-- (void)setTicket:(TXHTicket *)ticket
+- (void)updateTitle
 {
-    _ticket = ticket;
-    
+    self.title = [[self.productManager selectedProduct] name];
+}
+
+- (void)setTicket:(TXHTicket *)ticket andProductManager:(TXHProductsManager *)productManager
+{
+    self.ticket = ticket;
+    self.productManager = productManager;
+
+    [self updateTitle];
     [self loadOrder];
 }
 
@@ -84,15 +93,15 @@
 {
     __weak typeof(self) wself = self;
     [self showLoadingIndicator];
-    [TXHPRODUCTSMANAGER getOrderForTicket:self.ticket
-                               completion:^(TXHOrder *order, NSError *error) {
-                                   [wself hideLoadingIndicator];
-                                   
-                                   if (error)
-                                       [wself dismissWithError:error];
-                                   else
-                                       wself.order = order;
-                               }];
+    [self.productManager getOrderForTicket:self.ticket
+                                completion:^(TXHOrder *order, NSError *error) {
+                                    [wself hideLoadingIndicator];
+                                    
+                                    if (error)
+                                        [wself dismissWithError:error];
+                                    else
+                                        wself.order = order;
+                                }];
 }
 
 - (void)dismissWithError:(NSError *)error
@@ -169,6 +178,7 @@
     else if ([segue.identifier isEqualToString:@"OrderTickets"])
     {
         self.orderTicketsListViewController = segue.destinationViewController;
+        self.orderTicketsListViewController.productManager = self.productManager;
     }
     else if ([segue.identifier isEqualToString:@"PrintButtons"])
     {

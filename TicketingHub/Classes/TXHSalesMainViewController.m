@@ -53,9 +53,6 @@ static void * ContentValidContext = &ContentValidContext;
 // data
 @property (strong, nonatomic) TXHSalesStepsManager *stepsManager;
 
-@property (strong, nonatomic) TXHProductsManager *productManager;
-@property (strong, nonatomic) TXHOrderManager    *orderManager;
-
 @end
 
 @implementation TXHSalesMainViewController
@@ -63,9 +60,6 @@ static void * ContentValidContext = &ContentValidContext;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.productManager = TXHPRODUCTSMANAGER;
-    self.orderManager   = TXHORDERMANAGER;
     
     [self setupStepsManager];
     

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class TXHProductsManager;
+
 @interface TXHDoorOrderViewController : UIViewController
 
-@property (nonatomic, strong) TXHTicket *ticket;
+- (void)setTicket:(TXHTicket *)ticket andProductManager:(TXHProductsManager *)productManager;
 
 @end

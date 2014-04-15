@@ -42,7 +42,6 @@
 	[super viewDidLoad];
     
     self.dataDictionary = [NSMutableDictionary dictionary];
-
 	[self.monthView selectDate:[NSDate date]];
 }
 
@@ -78,10 +77,9 @@
 - (void)hideLoadingIndicator
 {
     self.lodingMonthsCount--;
+    
     if (!self.lodingMonthsCount)
-    {
         [self.indicatorView stopAnimating];
-    }
 }
 
 #pragma mark MonthView Delegate & DataSource
@@ -154,7 +152,7 @@
     __weak typeof(self) wself = self;
     
     
-    [TXHPRODUCTSMANAGER fetchSelectedProductAvailabilitiesFromDate:startDate
+    [self.productManager fetchSelectedProductAvailabilitiesFromDate:startDate
                                                             toDate:lastDate
                                                         withCoupon:nil
                                                         completion:^(NSArray *availabilities, NSError *error) {

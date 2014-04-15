@@ -9,6 +9,7 @@
 @import UIKit;
 #import <TapkuLibrary/TapkuLibrary.h>
 
+@class TXHProductsManager;
 @class TXHDateSelectorViewController;
 
 @protocol TXHDateSelectorViewDelegate <NSObject>
@@ -19,8 +20,8 @@
 
 @interface TXHDateSelectorViewController : TKCalendarMonthTableViewController
 
-
 @property (weak, nonatomic) id <TXHDateSelectorViewDelegate> delegate;
+@property (strong, nonatomic) TXHProductsManager *productManager;
 
 @end
 

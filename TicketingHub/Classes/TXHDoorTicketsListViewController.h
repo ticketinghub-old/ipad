@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class TXHProductsManager;
+
 @interface TXHDoorTicketsListViewController : UITableViewController
+
+@property (strong, nonatomic) TXHProductsManager *productManager;
 
 @end
