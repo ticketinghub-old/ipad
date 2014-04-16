@@ -30,7 +30,7 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIImageView *email;
 @property (weak, nonatomic) IBOutlet UIImageView *passwordIcon;
-@property (weak, nonatomic) IBOutlet UIView *fieldsContainerView;
+@property (weak, nonatomic) IBOutlet UIView      *fieldsContainerView;
 
 @end
 
@@ -83,7 +83,7 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
           initialSpringVelocity:0
                         options:UIViewAnimationOptionAllowUserInteraction
                      animations:^{
-                         [self  updateFieldsConstraintsToCenter];
+                         [self updateFieldsConstraintsToCenter];
                      } completion:nil];
 }
 

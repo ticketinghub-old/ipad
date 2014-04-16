@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *const TXHQueryValueKey;
+
 extern NSString *const TXHRecognizedQRCodeNotification;
 extern NSString *const TXHSearchQueryDidChangeNotification;
 

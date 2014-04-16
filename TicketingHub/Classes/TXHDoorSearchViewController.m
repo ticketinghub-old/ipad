@@ -8,7 +8,10 @@
 
 #import "TXHDoorSearchViewController.h"
 
+#import "TXHInfineaManger.h"
 #import "TXHBarcodeScanner.h"
+
+NSString *const TXHQueryValueKey                    = @"TXHQueryValueKey";
 
 NSString *const TXHRecognizedQRCodeNotification     = @"TXHRecognizedQRCodeNotification";
 NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeNotification";
@@ -28,8 +31,7 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 @property (strong, nonatomic) NSDate *lastScanTimestamp;
 
 @property (strong, nonatomic) TXHBarcodeScanner *scanner;
-@property (assign, nonatomic) BOOL hasExternalScannerConnected;
-
+@property (strong, nonatomic) TXHInfineaManger *infineaManager;
 @end
 
 @implementation TXHDoorSearchViewController
@@ -45,10 +47,7 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 {
     [super viewWillAppear:animated];
     
-    if ([self shouldUseBuiltInCamera])
-        [self showCameraPreviewAnimated:NO];
-    else
-        [self hideCameraPreviewAnimated:NO];
+    [self updateCameraView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -59,6 +58,7 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
         [self startScanningWithBuiltInCamera];
     
     [self registerForKeyboardNotifications];
+    [self registerForScannerNotifications];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -68,6 +68,24 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     [self stopScanningWithBuiltInCamera];
     
     [self unregisterFromKeyboardNotifications];
+    [self unregisterFromScannerNotifications];
+}
+
+- (void)updateCameraView
+{
+    if ([self shouldUseBuiltInCamera])
+        [self showCameraPreviewAnimated:YES];
+    else
+        [self hideCameraPreviewAnimated:YES];
+}
+
+- (TXHInfineaManger *)infineaManager
+{
+    if (!_infineaManager)
+    {
+        _infineaManager = [[TXHInfineaManger alloc] init];
+    }
+    return  _infineaManager;
 }
 
 #pragma mark - built-in camera helpers
@@ -85,7 +103,7 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 
 - (BOOL)shouldUseBuiltInCamera
 {
-    return ([TXHBarcodeScanner isCameraAvailable] && !self.hasExternalScannerConnected);
+    return ([TXHBarcodeScanner isCameraAvailable] && !self.infineaManager.isScannerConnected);
 }
 
 - (void)startScanningWithBuiltInCamera
@@ -98,6 +116,23 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 {
     [self.scanner showPreviewInView:nil];
     [self.scanner stopScanning];
+}
+
+#pragma mark - infinea scanner notifications
+
+- (void)registerForScannerNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scannerConnectionDidChange:) name:TXHScannerConnectionStatusDidChangedNotification object:self.infineaManager];
+}
+
+- (void)unregisterFromScannerNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:self.infineaManager];
+}
+
+- (void)scannerConnectionDidChange:(NSNotification *)notification
+{
+    [self updateCameraView];
 }
 
 #pragma mark - keyboard notification
@@ -115,7 +150,8 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     
 }
 
-- (void)keyboardWillShow:(NSNotification *)notification {
+- (void)keyboardWillShow:(NSNotification *)notification
+{
     NSDictionary *info = [notification userInfo];
     NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
     NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
@@ -140,7 +176,8 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
                      }];
 }
 
-- (void)keyboardWillHide:(NSNotification *)notification {
+- (void)keyboardWillHide:(NSNotification *)notification
+{
     NSDictionary *info = [notification userInfo];
     NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     NSInteger curve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue] << 16;
@@ -171,10 +208,14 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
                          animations:^{
                              self.cameraPreviewViewHeightConstraint.constant = 300.0;
                              [self.view layoutIfNeeded];
+                         }
+                         completion:^(BOOL finished) {
+                             [self startScanningWithBuiltInCamera];
                          }];
     else
     {
         self.cameraPreviewViewHeightConstraint.constant = 300.0;
+        [self startScanningWithBuiltInCamera];
     }
 }
 
@@ -185,10 +226,14 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
                          animations:^{
                              self.cameraPreviewViewHeightConstraint.constant = 0.0;
                              [self.view layoutIfNeeded];
+                         }
+                         completion:^(BOOL finished) {
+                             [self stopScanningWithBuiltInCamera];
                          }];
     else
     {
         self.cameraPreviewViewHeightConstraint.constant = 0.0;
+        [self stopScanningWithBuiltInCamera];
     }
 }
 
@@ -200,7 +245,7 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     {
         if ([self canMakeNextScan])
         {
-            [[NSNotificationCenter defaultCenter] postNotificationName:TXHRecognizedQRCodeNotification object:scannedValue];
+            [self postNotificationWithName:TXHRecognizedQRCodeNotification value:scannedValue];
             [self recordBarcodeScan];
         }
     }
@@ -220,7 +265,7 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 
 - (IBAction)searchFieldEditingChanged:(id)sender
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:TXHSearchQueryDidChangeNotification object:self.searchField.text];
+    [self postNotificationWithName:TXHSearchQueryDidChangeNotification value:self.searchField.text];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -228,6 +273,20 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     [textField resignFirstResponder];
     
     return YES;
+}
+
+#pragma mark - notification helper
+
+- (void)postNotificationWithName:(NSString *)name value:(NSString *)value
+{
+    if (!name) return;
+    
+    NSMutableDictionary *payload = @{}.mutableCopy;
+    
+    if ([value length])
+        payload[TXHQueryValueKey] = value;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:name object:self userInfo:[payload copy]];
 }
 
 @end

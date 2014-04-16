@@ -10,6 +10,9 @@
 		3E0DAB9118AA41510045697C /* iOS-api.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3E0DAB9018AA41510045697C /* iOS-api.podspec */; };
 		3E192D5718FD188C00D727AA /* TXHDoorMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E192D5618FD188C00D727AA /* TXHDoorMainViewController.m */; };
 		3E192D5A18FD308200D727AA /* TXHTicket+Title.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E192D5918FD308200D727AA /* TXHTicket+Title.m */; };
+		3E192D5E18FD600200D727AA /* TXHInfineaManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E192D5D18FD600200D727AA /* TXHInfineaManger.m */; };
+		3E192D6518FD60A400D727AA /* DTDevices.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3E192D6118FD60A400D727AA /* DTDevices.pdf */; };
+		3E192D6618FD60A400D727AA /* libdtdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E192D6418FD60A400D727AA /* libdtdev.a */; };
 		3E22139B18AA791000DE35A6 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E22139A18AA791000DE35A6 /* ArrayDataSource.m */; };
 		3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E22139D18AA794C00DE35A6 /* DictionaryDataSource.m */; };
 		3E2B085318F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B085218F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.m */; };
@@ -136,6 +139,13 @@
 		3E192D5618FD188C00D727AA /* TXHDoorMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorMainViewController.m; sourceTree = "<group>"; };
 		3E192D5818FD308200D727AA /* TXHTicket+Title.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHTicket+Title.h"; sourceTree = "<group>"; };
 		3E192D5918FD308200D727AA /* TXHTicket+Title.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHTicket+Title.m"; sourceTree = "<group>"; };
+		3E192D5C18FD600200D727AA /* TXHInfineaManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHInfineaManger.h; sourceTree = "<group>"; };
+		3E192D5D18FD600200D727AA /* TXHInfineaManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHInfineaManger.m; sourceTree = "<group>"; };
+		3E192D6018FD60A400D727AA /* DTDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDevices.h; sourceTree = "<group>"; };
+		3E192D6118FD60A400D727AA /* DTDevices.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = DTDevices.pdf; sourceTree = "<group>"; };
+		3E192D6218FD60A400D727AA /* EMVPrivateTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVPrivateTags.h; sourceTree = "<group>"; };
+		3E192D6318FD60A400D727AA /* EMVTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVTags.h; sourceTree = "<group>"; };
+		3E192D6418FD60A400D727AA /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libdtdev.a; sourceTree = "<group>"; };
 		3E22139918AA791000DE35A6 /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
 		3E22139A18AA791000DE35A6 /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
 		3E22139C18AA794C00DE35A6 /* DictionaryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryDataSource.h; sourceTree = "<group>"; };
@@ -355,6 +365,7 @@
 				EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */,
 				EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */,
 				58E4FB551760AE5500E328A0 /* UIKit.framework in Frameworks */,
+				3E192D6618FD60A400D727AA /* libdtdev.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +383,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E192D5B18FD5FD800D727AA /* Infinea Tab */ = {
+			isa = PBXGroup;
+			children = (
+				3E192D5F18FD609700D727AA /* DTDevices */,
+				3E192D5C18FD600200D727AA /* TXHInfineaManger.h */,
+				3E192D5D18FD600200D727AA /* TXHInfineaManger.m */,
+			);
+			name = "Infinea Tab";
+			sourceTree = "<group>";
+		};
+		3E192D5F18FD609700D727AA /* DTDevices */ = {
+			isa = PBXGroup;
+			children = (
+				3E192D6018FD60A400D727AA /* DTDevices.h */,
+				3E192D6118FD60A400D727AA /* DTDevices.pdf */,
+				3E192D6218FD60A400D727AA /* EMVPrivateTags.h */,
+				3E192D6318FD60A400D727AA /* EMVTags.h */,
+				3E192D6418FD60A400D727AA /* libdtdev.a */,
+			);
+			name = DTDevices;
+			sourceTree = "<group>";
+		};
 		3E22139818AA78DB00DE35A6 /* TableViewDataSources */ = {
 			isa = PBXGroup;
 			children = (
@@ -980,6 +1013,7 @@
 		58E4FB971760D3C800E328A0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3E192D5B18FD5FD800D727AA /* Infinea Tab */,
 				3EA52BEB18E2D17300FEA0CA /* Printers */,
 				3E7F87C818DAD14A0046DD7A /* External */,
 				EEB1843317D113FB0025530A /* Common */,
@@ -1142,6 +1176,7 @@
 				4D586DE11797E51E00E40534 /* Images.xcassets in Resources */,
 				3E53C54D18E58FD000FF6F9B /* TXHActivityLabelView.xib in Resources */,
 				3EF8EE3A18D3148400586283 /* TicketListHeaders.xib in Resources */,
+				3E192D6518FD60A400D727AA /* DTDevices.pdf in Resources */,
 				3E87704218D710D100585FFA /* Localizable.strings in Resources */,
 				3E87709818D7355600585FFA /* Salesman.storyboard in Resources */,
 				58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */,
@@ -1275,6 +1310,7 @@
 				3E6A422518C483870053EF34 /* TXHSensorView.m in Sources */,
 				3EF8EE4118D3330900586283 /* TXHDoorTicketsAttendedHeaderView.m in Sources */,
 				EE75D99417D11048009ADCD8 /* TXHSalesPaymentCashDetailsViewController.m in Sources */,
+				3E192D5E18FD600200D727AA /* TXHInfineaManger.m in Sources */,
 				3E192D5A18FD308200D727AA /* TXHTicket+Title.m in Sources */,
 				3E53C54518E5693600FF6F9B /* NSError+TXHPrinters.m in Sources */,
 				EE75D99517D11048009ADCD8 /* TXHSalesPaymentCreditDetailsViewController.m in Sources */,
@@ -1478,7 +1514,10 @@
 				);
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TicketingHub/Classes",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
@@ -1520,7 +1559,10 @@
 				);
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TicketingHub/Classes",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
@@ -1643,7 +1685,10 @@
 				);
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TicketingHub/Classes",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",

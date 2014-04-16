@@ -9,6 +9,7 @@
 #import "TXHDoorTicketsListViewController.h"
 
 #import "TXHProductsManager.h"
+#import "TXHInfineaManger.h"
 
 #import "TXHDoorSearchViewController.h"
 #import "TXHDoorTicketCell.h"
@@ -233,6 +234,7 @@
 {
     [self registerForKeyboardNotifications];
     [self registerForSearchViewNotification];
+    [self registerForScannerNotifications];
     [self registerForProductAndAvailabilityChanges];
 }
 
@@ -240,12 +242,25 @@
 {
     [self unregisterFromKeyboardNotifications];
     [self unregisterFromSearchViewNotification];
+    [self unregisterFromScannerNotifications];
     [self unregisterForProductAndAvailabilityChanges];
+}
+
+- (void)registerForScannerNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scannerBarcodeRecognized:) name:TXHScannerRecognizedQRCodeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scannerMSRDataRecognized:) name:TXHScannerRecognizedMSRCardDataNotification object:nil];
+}
+
+- (void)unregisterFromScannerNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHScannerRecognizedQRCodeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHScannerRecognizedMSRCardDataNotification object:nil];
 }
 
 - (void)registerForSearchViewNotification
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barcodeRecognized:) name:TXHRecognizedQRCodeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraBarcodeRecognized:) name:TXHRecognizedQRCodeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchQueryDidChange:) name:TXHSearchQueryDidChangeNotification object:nil];
 }
 
@@ -274,10 +289,30 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];
 }
 
-- (void)barcodeRecognized:(NSNotification *)note
+- (void)scannerMSRDataRecognized:(NSNotification *)note
 {
-    NSString *barcode = note.object;
+    __unused NSString *cardTrack = [note userInfo][TXHScannerRecognizedValueKey];
     
+    UIAlertView *msrAlert = [[UIAlertView alloc] initWithTitle:@"MSR" message:cardTrack delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [msrAlert show];
+}
+
+- (void)scannerBarcodeRecognized:(NSNotification *)note
+{
+    NSString *barcode = [note userInfo][TXHScannerRecognizedValueKey];
+
+    [self filterTicketsWithBarcode:barcode];
+}
+
+- (void)cameraBarcodeRecognized:(NSNotification *)note
+{
+    NSString *barcode = [note userInfo][TXHQueryValueKey];
+
+    [self filterTicketsWithBarcode:barcode];
+}
+
+- (void)filterTicketsWithBarcode:(NSString *)barcode
+{
     if (![barcode length] || ![self canSearch])
         return;
     
@@ -292,27 +327,32 @@
     }
     else
     {
-        NSDictionary *decodedBarcode = [TXHTicket decodeBarcode:barcode];
-        NSNumber *ticketSeqID = decodedBarcode[kTXHBarcodeTicketSeqIdKey];
-        
-        self.loadingData = YES;
-        
-        __weak typeof(self) wself = self;
-        
-        [self.productManager searchForTicketWithSeqID:ticketSeqID
-                                           completion:^(TXHTicket *ticket, NSError *error) {
-                                               wself.loadingData = NO;
-                                               if (!error)
-                                                   [wself showDetailsForTicket:ticket];
-                                               else
-                                                   [wself showErrorWithMessage:@"Couldn't find ticket data."];
-                                           }];
+        [self lookupTicketWithBarcode:barcode];
     }
+}
+
+- (void)lookupTicketWithBarcode:(NSString *)barcode
+{
+    NSDictionary *decodedBarcode = [TXHTicket decodeBarcode:barcode];
+    NSNumber *ticketSeqID = decodedBarcode[kTXHBarcodeTicketSeqIdKey];
+    
+    self.loadingData = YES;
+    
+    __weak typeof(self) wself = self;
+    
+    [self.productManager searchForTicketWithSeqID:ticketSeqID
+                                       completion:^(TXHTicket *ticket, NSError *error) {
+                                           wself.loadingData = NO;
+                                           if (!error)
+                                               [wself showDetailsForTicket:ticket];
+                                           else
+                                               [wself showErrorWithMessage:@"Couldn't find ticket data."];
+                                       }];
 }
 
 - (void)searchQueryDidChange:(NSNotification *)note
 {
-    NSString *query = note.object;
+    NSString *query = [note userInfo][TXHQueryValueKey];
     
     if (![self canSearch])
         return;
