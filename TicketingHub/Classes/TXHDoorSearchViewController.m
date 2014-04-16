@@ -57,8 +57,7 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     if ([self shouldUseBuiltInCamera])
         [self startScanningWithBuiltInCamera];
     
-    [self registerForKeyboardNotifications];
-    [self registerForScannerNotifications];
+    [self registerForNotifications];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -67,9 +66,12 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     
     [self stopScanningWithBuiltInCamera];
     
-    [self unregisterFromKeyboardNotifications];
-    [self unregisterFromScannerNotifications];
+    [self unregisterFromNotifications];
 }
+
+
+
+#pragma mark - private
 
 - (void)updateCameraView
 {
@@ -77,28 +79,6 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
         [self showCameraPreviewAnimated:YES];
     else
         [self hideCameraPreviewAnimated:YES];
-}
-
-- (TXHInfineaManger *)infineaManager
-{
-    if (!_infineaManager)
-    {
-        _infineaManager = [[TXHInfineaManger alloc] init];
-    }
-    return  _infineaManager;
-}
-
-#pragma mark - built-in camera helpers
-
-- (TXHBarcodeScanner *)scanner
-{
-    if (!_scanner && [self shouldUseBuiltInCamera])
-    {
-        TXHBarcodeScanner *scanner = [TXHBarcodeScanner new];
-        scanner.delegate = self;
-        _scanner = scanner;
-    }
-    return _scanner;
 }
 
 - (BOOL)shouldUseBuiltInCamera
@@ -118,7 +98,49 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     [self.scanner stopScanning];
 }
 
+
+
+#pragma mark - accessors
+
+- (TXHInfineaManger *)infineaManager
+{
+    if (!_infineaManager)
+    {
+        _infineaManager = [[TXHInfineaManger alloc] init];
+    }
+    return  _infineaManager;
+}
+
+
+
+#pragma mark - built-in camera helpers
+
+- (TXHBarcodeScanner *)scanner
+{
+    if (!_scanner && [self shouldUseBuiltInCamera])
+    {
+        TXHBarcodeScanner *scanner = [TXHBarcodeScanner new];
+        scanner.delegate = self;
+        _scanner = scanner;
+    }
+    return _scanner;
+}
+
+
+
 #pragma mark - infinea scanner notifications
+
+- (void)registerForNotifications
+{
+    [self registerForKeyboardNotifications];
+    [self registerForScannerNotifications];
+}
+
+- (void)unregisterFromNotifications
+{
+    [self unregisterFromKeyboardNotifications];
+    [self unregisterFromScannerNotifications];
+}
 
 - (void)registerForScannerNotifications
 {
@@ -261,6 +283,8 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     self.lastScanTimestamp = [NSDate date];
 }
 
+
+
 #pragma mark - textField
 
 - (IBAction)searchFieldEditingChanged:(id)sender
@@ -274,6 +298,8 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     
     return YES;
 }
+
+
 
 #pragma mark - notification helper
 
