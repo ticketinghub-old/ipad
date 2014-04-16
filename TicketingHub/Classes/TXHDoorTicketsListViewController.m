@@ -32,7 +32,7 @@
 @property (strong, nonatomic) UILabel *infolabel;
 
 @property (strong, nonatomic) NSString *searchQuery;
-@property (weak, nonatomic)   TXHTicket *selectedTicket;
+@property (strong, nonatomic) TXHTicket *selectedTicket;
 
 @property (strong, nonatomic) NSMutableSet *ticketsDisabled;
 @property (assign, nonatomic, getter = isLoadingData) BOOL loadingData;
@@ -48,14 +48,23 @@
     [super viewDidLoad];
     
     self.ticketsDisabled = [NSMutableSet set];
-    [self registerForNotifications];
     [self updateHeader];
 }
 
-- (void)dealloc
+- (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+
+    [self registerForNotifications];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+
     [self unregisterFromNotifications];
 }
+
 
 - (void)applyTicketFilter
 {
