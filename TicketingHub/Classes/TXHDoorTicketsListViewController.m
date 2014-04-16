@@ -289,12 +289,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];
 }
 
+#pragma mark - notification actions
+
 - (void)scannerMSRDataRecognized:(NSNotification *)note
 {
     __unused NSString *cardTrack = [note userInfo][TXHScannerRecognizedValueKey];
-    
-    UIAlertView *msrAlert = [[UIAlertView alloc] initWithTitle:@"MSR" message:cardTrack delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    [msrAlert show];
 }
 
 - (void)scannerBarcodeRecognized:(NSNotification *)note

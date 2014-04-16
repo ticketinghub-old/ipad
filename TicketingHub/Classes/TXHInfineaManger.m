@@ -56,22 +56,15 @@ NSString * const TXHScannerConnectionStatusDidChangedNotification = @"TXHScanner
 
 - (void)connectionState:(int)state
 {    
-	switch (state) {
+	switch (state)
+    {
 		case CONN_DISCONNECTED:
-        {
-            UIAlertView *msrAlert = [[UIAlertView alloc] initWithTitle:@"MSR" message:@"disconnected" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [msrAlert show];
             self.scannerConnected = NO;
-        }
             break;
 		case CONN_CONNECTING:
 			break;
 		case CONN_CONNECTED:
-        {
-            UIAlertView *msrAlert = [[UIAlertView alloc] initWithTitle:@"MSR" message:@"connected" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [msrAlert show];
             self.scannerConnected = YES;
-        }
             break;
 	}
 }
