@@ -18,6 +18,8 @@
 #import "TXHTicket+Title.h"
 #import "TXHDoorOrderViewController.h"
 
+#import "UIViewController+BHTKeyboardNotifications.h"
+
 #import "UIColor+TicketingHub.h"
 #import <iOS-api/NSDateFormatter+TicketingHubFormat.h>
 
@@ -49,6 +51,8 @@
     
     self.ticketsDisabled = [NSMutableSet set];
     [self updateHeader];
+    
+    [self setupKeybaordAnimations];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -146,6 +150,23 @@
     return self.filteredTickets[indexPath.row];
 }
 
+- (void)setupKeybaordAnimations
+{
+    __weak typeof(self) wself = self;
+    
+    [self setKeyboardWillShowAnimationBlock:^(CGRect keyboardFrame) {
+        CGFloat height = keyboardFrame.size.width;
+        wself.tableView.contentInset = UIEdgeInsetsMake(0, 0, height, 0);
+        wself.infolabel.height = wself.view.height - height;
+    }];
+    
+    
+    [self setKeyboardWillHideAnimationBlock:^(CGRect keyboardFrame) {
+        wself.tableView.contentInset = UIEdgeInsetsZero;
+        wself.infolabel.height = wself.view.height;
+    }];
+}
+
 #pragma mark - Info Label
 
 - (UILabel *)infolabel
@@ -241,7 +262,6 @@
 
 - (void)registerForNotifications
 {
-    [self registerForKeyboardNotifications];
     [self registerForSearchViewNotification];
     [self registerForScannerNotifications];
     [self registerForProductAndAvailabilityChanges];
@@ -249,7 +269,6 @@
 
 - (void)unregisterFromNotifications
 {
-    [self unregisterFromKeyboardNotifications];
     [self unregisterFromSearchViewNotification];
     [self unregisterFromScannerNotifications];
     [self unregisterForProductAndAvailabilityChanges];
@@ -372,61 +391,6 @@
 {
     return !(self.isLoadingData || self.errorShown);
 }
-
-#pragma mark - keyboard notification
-
-- (void)registerForKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-}
-
-- (void)unregisterFromKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-    
-}
-
-- (void)keyboardWillShow:(NSNotification *)notification
-{
-    NSDictionary *info = [notification userInfo];
-    NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
-    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    CGRect keyboardFrame = [kbFrame CGRectValue];
-    NSInteger curve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue] << 16;
-    
-    CGFloat height = keyboardFrame.size.width;
-    
-    [UIView animateWithDuration:animationDuration
-                          delay:0.0
-                        options:curve
-                     animations:^{
-                         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, height, 0);
-                         self.infolabel.height = self.view.height - height;
-                     }
-                     completion:^(BOOL finished) {
-                     }];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification
-{
-    NSDictionary *info = [notification userInfo];
-    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    NSInteger curve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue] << 16;
-    
-    [UIView animateWithDuration:animationDuration
-                          delay:0.0
-                        options:curve
-                     animations:^{
-                         self.tableView.contentInset = UIEdgeInsetsZero;
-                         self.infolabel.height = self.view.height;
-                     }
-                     completion:^(BOOL finished) {
-                     }];
-}
-
-#pragma mark notifications
 
 - (void)productDidChange:(NSNotification *)note
 {

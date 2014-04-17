@@ -14,6 +14,8 @@
 #import <UIView+Shake/UIView+Shake.h>
 #import "UIColor+TicketingHub.h"
 
+#import "UIViewController+BHTKeyboardNotifications.h"
+
 // The storyboard identifier for this controller
 NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController";
 
@@ -56,21 +58,11 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
     self.passwordIcon.tintColor = [UIColor txhBlueColor];
     
     [self updateFieldsConstraintsToOffScreen];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
     
-    [self registerForKeyboardNotifications];
+    [self setupKeybaordAnimations];
+    
     [self setLastLoggedInUser];
-}
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-
-    [self unregisterForKeyboardNotifications];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -87,16 +79,29 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
                      } completion:nil];
 }
 
-- (void)registerForKeyboardNotifications
+- (void)setupKeybaordAnimations
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-}
-
-- (void)unregisterForKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    __weak typeof(self) wself = self;
+    
+    [self setKeyboardWillShowAnimationBlock:^(CGRect keyboardFrame) {
+        self.verticalLogoConstrain.constant = 250.0f;
+        wself.logoTofieldsContraint.constant = 30.0f;
+        [wself.view layoutIfNeeded];
+    }];
+    
+    [self setKeyboardWillHideAnimationBlock:^(CGRect keyboardFrame) {
+        wself.verticalLogoConstrain.constant = 50.0f;
+        wself.logoTofieldsContraint.constant = 95.0f;
+        [wself.view layoutIfNeeded];
+    }];
+    
+    [self setKeyboardDidHideActionBlock:^(CGRect keyboardFrame){
+        
+    }];
+    
+    [self setKeyboardDidShowActionBlock:^(CGRect keyboardFrame){
+        // animation
+    }];
 }
 
 - (void)updateFieldsConstraintsToOffScreen
@@ -128,37 +133,6 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
 - (void)resetPasswordField
 {
     self.passwordField.text = @"";
-}
-
-#pragma mark - Superclass overrides
-
-
-#pragma mark - Notification Handlers
-
-#pragma mark Keyboard
-
-- (void)keyboardWillShow:(NSNotification *)notification {
-    NSDictionary *keyboardAnimationDetail = [notification userInfo];
-    UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-    CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
-
-    [UIView animateWithDuration:duration delay:0.0 options:(animationCurve << 16) animations:^{
-        self.verticalLogoConstrain.constant = 250.0f;
-        self.logoTofieldsContraint.constant = 30.0f;
-        [self.view layoutIfNeeded];
-    } completion:nil];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    NSDictionary *keyboardAnimationDetail = [notification userInfo];
-    UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-    CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
-
-    [UIView animateWithDuration:duration delay:0.0 options:(animationCurve << 16) animations:^{
-        self.verticalLogoConstrain.constant = 50.0f;
-        self.logoTofieldsContraint.constant = 95.0f;
-        [self.view layoutIfNeeded];
-    } completion:nil];
 }
 
 #pragma mark - Private methods

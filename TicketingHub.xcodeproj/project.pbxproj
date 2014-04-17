@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E04039C18FEEE7D00AF67B2 /* UIViewController+BHTKeyboardNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E04039B18FEEE7D00AF67B2 /* UIViewController+BHTKeyboardNotifications.m */; };
 		3E0DAB9118AA41510045697C /* iOS-api.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3E0DAB9018AA41510045697C /* iOS-api.podspec */; };
 		3E192D5718FD188C00D727AA /* TXHDoorMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E192D5618FD188C00D727AA /* TXHDoorMainViewController.m */; };
 		3E192D5A18FD308200D727AA /* TXHTicket+Title.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E192D5918FD308200D727AA /* TXHTicket+Title.m */; };
@@ -134,6 +135,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E04039A18FEEE7D00AF67B2 /* UIViewController+BHTKeyboardNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BHTKeyboardNotifications.h"; sourceTree = "<group>"; };
+		3E04039B18FEEE7D00AF67B2 /* UIViewController+BHTKeyboardNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BHTKeyboardNotifications.m"; sourceTree = "<group>"; };
 		3E0DAB9018AA41510045697C /* iOS-api.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS-api.podspec"; sourceTree = "<group>"; };
 		3E192D5518FD188C00D727AA /* TXHDoorMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorMainViewController.h; sourceTree = "<group>"; };
 		3E192D5618FD188C00D727AA /* TXHDoorMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorMainViewController.m; sourceTree = "<group>"; };
@@ -682,6 +685,8 @@
 				3E7F87D318DC59060046DD7A /* NSDateFormatter+DisplayFormat.m */,
 				3E192D5818FD308200D727AA /* TXHTicket+Title.h */,
 				3E192D5918FD308200D727AA /* TXHTicket+Title.m */,
+				3E04039A18FEEE7D00AF67B2 /* UIViewController+BHTKeyboardNotifications.h */,
+				3E04039B18FEEE7D00AF67B2 /* UIViewController+BHTKeyboardNotifications.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1352,6 +1357,7 @@
 				3EA52BFB18E2F06600FEA0CA /* TXHStarIOPrintersEngine.m in Sources */,
 				EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */,
 				EEB1846617D114390025530A /* TXHTextEntryTableViewCell.m in Sources */,
+				3E04039C18FEEE7D00AF67B2 /* UIViewController+BHTKeyboardNotifications.m in Sources */,
 				3ECE137418B63A6900E7148F /* NSDate+Additions.m in Sources */,
 				3E192D5718FD188C00D727AA /* TXHDoorMainViewController.m in Sources */,
 				EEB1846717D114390025530A /* TXHTextEntryView.m in Sources */,

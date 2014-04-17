@@ -7,6 +7,7 @@
 //
 
 #import "TXHDoorSearchViewController.h"
+#import "UIViewController+BHTKeyboardNotifications.h"
 
 #import "TXHInfineaManger.h"
 #import "TXHBarcodeScanner.h"
@@ -40,6 +41,8 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 {
     [super viewDidLoad];
     
+    [self setupKeybaordAnimations];
+    
     self.searchField.delegate = self;
 }
 
@@ -70,7 +73,6 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 }
 
 
-
 #pragma mark - private
 
 - (void)updateCameraView
@@ -98,7 +100,38 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     [self.scanner stopScanning];
 }
 
-
+- (void)setupKeybaordAnimations
+{
+    __weak typeof(self) wself = self;
+    
+    [self setKeyboardWillShowAnimationBlock:^(CGRect keyboardFrame) {
+        [wself hideCameraPreviewAnimated:NO];
+        
+        wself.bottomLabelConstraint.constant = 30;
+        wself.bottomConstraint.constant = keyboardFrame.size.width;
+    
+        [wself.view layoutIfNeeded];
+    }];
+    
+    
+    [self setKeyboardWillHideAnimationBlock:^(CGRect keyboardFrame) {
+        if ([wself shouldUseBuiltInCamera])
+            [wself showCameraPreviewAnimated:NO];
+        
+        wself.bottomConstraint.constant = 0;
+        wself.bottomLabelConstraint.constant = 100;
+        
+        [wself.view layoutIfNeeded];
+    }];
+    
+    [self setKeyboardDidShowActionBlock:^(CGRect keyboardFrame) {
+        [wself stopScanningWithBuiltInCamera];
+    }];
+    
+    [self setKeyboardDidHideActionBlock:^(CGRect keyboardFrame){
+        [wself startScanningWithBuiltInCamera];
+    }];
+}
 
 #pragma mark - accessors
 
@@ -132,13 +165,11 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 
 - (void)registerForNotifications
 {
-    [self registerForKeyboardNotifications];
     [self registerForScannerNotifications];
 }
 
 - (void)unregisterFromNotifications
 {
-    [self unregisterFromKeyboardNotifications];
     [self unregisterFromScannerNotifications];
 }
 
@@ -149,76 +180,12 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 
 - (void)unregisterFromScannerNotifications
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:self.infineaManager];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHScannerConnectionStatusDidChangedNotification object:self.infineaManager];
 }
 
 - (void)scannerConnectionDidChange:(NSNotification *)notification
 {
     [self updateCameraView];
-}
-
-#pragma mark - keyboard notification
-
-- (void)registerForKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-}
-
-- (void)unregisterFromKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-    
-}
-
-- (void)keyboardWillShow:(NSNotification *)notification
-{
-    NSDictionary *info = [notification userInfo];
-    NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
-    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    CGRect keyboardFrame = [kbFrame CGRectValue];
-    NSInteger curve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue] << 16;
-    
-    CGFloat height = keyboardFrame.size.width;
-
-    [UIView animateWithDuration:animationDuration
-                          delay:0.0
-                        options:curve
-                     animations:^{
-                         [self stopScanningWithBuiltInCamera];
-
-                         [self hideCameraPreviewAnimated:NO];
-                         
-                         self.bottomLabelConstraint.constant = 30;
-                         self.bottomConstraint.constant = height;
-                         [self.view layoutIfNeeded];
-                     }
-                     completion:^(BOOL finished) {
-                     }];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification
-{
-    NSDictionary *info = [notification userInfo];
-    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    NSInteger curve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue] << 16;
-
-    [UIView animateWithDuration:animationDuration
-                          delay:0.0
-                        options:curve
-                      animations:^{
-                          if ([self shouldUseBuiltInCamera])
-                              [self showCameraPreviewAnimated:NO];
-                        
-                          self.bottomConstraint.constant = 0;
-                          self.bottomLabelConstraint.constant = 100;
-
-                          [self.view layoutIfNeeded];
-                      }
-                     completion:^(BOOL finished) {
-                         [self startScanningWithBuiltInCamera];
-                     }];
 }
 
 #pragma mark - update UI

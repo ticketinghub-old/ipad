@@ -7,6 +7,7 @@
 //
 
 #import "TXHSalesMainViewController.h"
+#import "UIViewController+BHTKeyboardNotifications.h"
 
 // segues
 #import "TXHEmbeddingSegue.h"
@@ -62,9 +63,9 @@ static void * ContentValidContext = &ContentValidContext;
     [super viewDidLoad];
     
     [self setupStepsManager];
+    [self setupKeyboardAnimations];
     
     [self registerForProductAndAvailabilityChanges];
-    [self registerForKeyboardNotifications];
     [self registerForOrderExpirationNotifications];
     
     [self resetData];
@@ -168,12 +169,25 @@ static void * ContentValidContext = &ContentValidContext;
     self.printerSelectionPopover = popover;
 }
 
+- (void)setupKeyboardAnimations
+{
+    __weak typeof(self) wself = self;
+    
+    [self setKeyboardWillShowAnimationBlock:^(CGRect keyboardFrame) {
+        CGFloat height = keyboardFrame.size.width - wself.stepCompletionController.view.height;
+        [wself.stepContentController setOffsetBottomBy:height];
+    }];
+    
+    [self setKeyboardWillHideAnimationBlock:^(CGRect keyboardFrame) {
+        [wself.stepContentController setOffsetBottomBy:0];
+    }];
+}
+
 - (void)dealloc
 {
     self.stepContentController = nil; // removing KVO observer
     
     [self unregisterForProductAndAvailabilityChanges];
-    [self unregisterFromKeyboardNotifications];
     [self unregisterFromOrderExpirationNotifications];
 }
 
@@ -299,18 +313,6 @@ static void * ContentValidContext = &ContentValidContext;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];
 }
 
-- (void)registerForKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-}
-
-- (void)unregisterFromKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-}
-
 - (void)registerForOrderExpirationNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -341,46 +343,6 @@ static void * ContentValidContext = &ContentValidContext;
 {
     [self resetData];
 }
-
-#pragma mark - Keyboard notifications
-
-- (void)keyboardWillShow:(NSNotification *)notification
-{
-    NSDictionary *info = [notification userInfo];
-    NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
-    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    CGRect keyboardFrame = [kbFrame CGRectValue];
-    NSInteger curve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue] << 16;
-    
-    CGFloat height = keyboardFrame.size.width - self.stepCompletionController.view.height;
-    
-    if ([self.stepContentController respondsToSelector:@selector(setOffsetBottomBy:)])
-        [UIView animateWithDuration:animationDuration
-                              delay:0.0
-                            options:curve
-                         animations:^{
-                             [self.stepContentController setOffsetBottomBy:height];
-                             
-                         }
-                         completion:nil];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    NSDictionary *info = [notification userInfo];
-    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    NSInteger curve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue] << 16;
-    
-    if ([self.stepContentController respondsToSelector:@selector(setOffsetBottomBy:)])
-        [UIView animateWithDuration:animationDuration
-                              delay:0.0
-                            options:curve
-                         animations:^{
-                             [self.stepContentController setOffsetBottomBy:0];
-                             
-                         }
-                         completion:nil];
-}
-
 
 #pragma mark - TXHSaleStepsManagerDelegate
 
