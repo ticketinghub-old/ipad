@@ -133,7 +133,7 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     }];
 }
 
-#pragma mark - accessors
+#pragma mark - lazy loading getters
 
 - (TXHInfineaManger *)infineaManager
 {
@@ -143,10 +143,6 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     }
     return  _infineaManager;
 }
-
-
-
-#pragma mark - built-in camera helpers
 
 - (TXHBarcodeScanner *)scanner
 {
@@ -158,8 +154,6 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     }
     return _scanner;
 }
-
-
 
 #pragma mark - infinea scanner notifications
 
@@ -186,57 +180,45 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 - (void)scannerConnectionDidChange:(NSNotification *)notification
 {
     [self updateCameraView];
+    
+    if ([self shouldUseBuiltInCamera])
+        [self startScanningWithBuiltInCamera];
+    else
+        [self stopScanningWithBuiltInCamera];
 }
 
 #pragma mark - update UI
 
-- (void)showCameraPreviewAnimated:(BOOL)aniamted
+- (void)showCameraPreviewAnimated:(BOOL)animated
 {
-    if (aniamted)
-        [UIView animateWithDuration:CAMERA_PREVIEW_ANIMATION_DURATION
-                         animations:^{
-                             self.cameraPreviewViewHeightConstraint.constant = 300.0;
-                             [self.view layoutIfNeeded];
-                         }
-                         completion:^(BOOL finished) {
-                             [self startScanningWithBuiltInCamera];
-                         }];
-    else
-    {
-        self.cameraPreviewViewHeightConstraint.constant = 300.0;
-        [self startScanningWithBuiltInCamera];
-    }
+    [self setCameraPreviewViewHeightConstraintConstant:300.0 aniamted:animated];
 }
 
-- (void)hideCameraPreviewAnimated:(BOOL)aniamted
+- (void)hideCameraPreviewAnimated:(BOOL)animated
 {
-    if (aniamted)
+    [self setCameraPreviewViewHeightConstraintConstant:0.0 aniamted:animated];
+}
+
+- (void)setCameraPreviewViewHeightConstraintConstant:(CGFloat)constant aniamted:(BOOL)animated
+{
+    if (animated)
         [UIView animateWithDuration:CAMERA_PREVIEW_ANIMATION_DURATION
                          animations:^{
-                             self.cameraPreviewViewHeightConstraint.constant = 0.0;
+                             self.cameraPreviewViewHeightConstraint.constant = constant;
                              [self.view layoutIfNeeded];
-                         }
-                         completion:^(BOOL finished) {
-                             [self stopScanningWithBuiltInCamera];
                          }];
     else
-    {
-        self.cameraPreviewViewHeightConstraint.constant = 0.0;
-        [self stopScanningWithBuiltInCamera];
-    }
+        self.cameraPreviewViewHeightConstraint.constant = constant;
 }
 
 #pragma mark - BarcodeViewControllerDelegate
 
 - (void)scanViewController:(TXHBarcodeScanner *)barcodeScaner didSuccessfullyScan:(NSString *)scannedValue
 {
-    @synchronized (self)
+    if ([self canMakeNextScan])
     {
-        if ([self canMakeNextScan])
-        {
-            [self postNotificationWithName:TXHRecognizedQRCodeNotification value:scannedValue];
-            [self recordBarcodeScan];
-        }
+        [self recordBarcodeScanTimestamp];
+        [self postNotificationWithName:TXHRecognizedQRCodeNotification value:scannedValue];
     }
 }
 
@@ -245,11 +227,10 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     return (!self.lastScanTimestamp || [self.lastScanTimestamp timeIntervalSinceNow] < -2.0);
 }
 
-- (void)recordBarcodeScan
+- (void)recordBarcodeScanTimestamp
 {
     self.lastScanTimestamp = [NSDate date];
 }
-
 
 
 #pragma mark - textField
@@ -262,11 +243,8 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
-    
     return YES;
 }
-
-
 
 #pragma mark - notification helper
 
