@@ -84,7 +84,7 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
     __weak typeof(self) wself = self;
     
     [self setKeyboardWillShowAnimationBlock:^(CGRect keyboardFrame) {
-        self.verticalLogoConstrain.constant = 250.0f;
+        wself.verticalLogoConstrain.constant = 250.0f;
         wself.logoTofieldsContraint.constant = 30.0f;
         [wself.view layoutIfNeeded];
     }];
@@ -93,14 +93,6 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
         wself.verticalLogoConstrain.constant = 50.0f;
         wself.logoTofieldsContraint.constant = 95.0f;
         [wself.view layoutIfNeeded];
-    }];
-    
-    [self setKeyboardDidHideActionBlock:^(CGRect keyboardFrame){
-        
-    }];
-    
-    [self setKeyboardDidShowActionBlock:^(CGRect keyboardFrame){
-        // animation
     }];
 }
 
