@@ -53,12 +53,9 @@
 {
     [super viewDidLoad];
  
-    [self setup];
-    
-    [self selectMode:nil];
- 
     [self registerForProductAndAvailabilityChanges];
-
+    [self setupNavigationBar];
+    [self selectMode:nil];
     [self updateUI];
 }
 
@@ -226,7 +223,7 @@
 
 #pragma mark - Private
 
-- (void)setup
+- (void)setupNavigationBar
 {
     [self.navigationController.navigationBar setBarTintColor:[UIColor txhDarkBlueColor]];
     self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:24.0f],
@@ -250,7 +247,7 @@
     [self.navigationItem setLeftBarButtonItems:@[self.navigationItem.leftBarButtonItem, self.dateButton]];
 }
 
--(void)selectDate:(id)__unused sender
+- (void)selectDate:(id)__unused sender
 {
     [self dismissVisiblePopover];
     [[UIResponder currentFirstResponder] resignFirstResponder];
@@ -328,10 +325,10 @@
 
 - (void)updateActivityIndicator
 {
-    if (self.loadingAvailabilites)
-        [self.activityView showWithMessage:NSLocalizedString(@"SD_LOADING_AVAILABILITIES_LABEL", nil) indicatorHidden:NO];
-    else if (self.loadingAvailabilitesDetails)
+    if (self.loadingAvailabilitesDetails)
         [self.activityView showWithMessage:NSLocalizedString(@"SD_LOADING_AVAILABILITY_DETAILS_LABEL", nil) indicatorHidden:NO];
+    else if (self.loadingAvailabilites)
+        [self.activityView showWithMessage:NSLocalizedString(@"SD_LOADING_AVAILABILITIES_LABEL", nil) indicatorHidden:NO];
     else if (!self.selectedProduct || !self.selectedAvailability)
         [self.activityView showWithMessage:NSLocalizedString(@"SD_NO_AVAILABILITIES_LABEL", nil) indicatorHidden:YES];
     else
@@ -350,8 +347,22 @@
 
 - (void)updateAvailabilityButton
 {
-    self.dateButton.enabled = (self.selectedProduct != nil);
-    self.dateButton.title = [self dateTimeButtonTitleForAvailability:self.selectedAvailability];
+    if (self.isLoadingAvailabilites || self.isLoadingAvailabilitesDetails)
+    {
+        [self.navigationItem setLeftBarButtonItems:@[self.navigationItem.leftBarButtonItem]];
+        self.dateButton = nil;
+        return;
+    }
+    
+    // just updating title looks really bad
+    NSString *title = [self dateTimeButtonTitleForAvailability:self.selectedAvailability];
+    
+    UIBarButtonItem *dateButton = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleBordered target:self action:@selector(selectDate:)];
+    dateButton.enabled = (self.selectedProduct != nil);
+    
+    [self.navigationItem setLeftBarButtonItems:@[self.navigationItem.leftBarButtonItem, dateButton]];
+    
+    self.dateButton = dateButton;
 }
 
 - (NSString *)dateTimeButtonTitleForAvailability:(TXHAvailability *)availability
