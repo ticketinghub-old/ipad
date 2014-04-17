@@ -36,4 +36,6 @@
 
 - (void)getOrderForTicket:(TXHTicket *)ticket completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
+- (void)getOrderForCardMSRData:(NSString *)msrData completion:(void (^)(NSArray *orders, NSError *error))completion;
+
 @end

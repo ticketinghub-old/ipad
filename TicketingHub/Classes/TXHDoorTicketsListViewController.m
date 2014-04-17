@@ -337,6 +337,23 @@
 - (void)scannerMSRDataRecognized:(NSNotification *)note
 {
     __unused NSString *cardTrack = [note userInfo][TXHScannerRecognizedValueKey];
+    
+    [self.productManager getOrderForCardMSRData:cardTrack
+                                     completion:^(NSArray *orders, NSError *error) {
+                                     
+                                         if (error)
+                                             DLog(@"error: %@ getting orders:%@",error.localizedDescription, orders);
+                                         else
+                                             DLog(@"get orders for MSR data %@: %@",cardTrack, orders);
+                                     
+                                         UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"MSR Response"
+                                                                                        message:[NSString stringWithFormat:@"msrTrack : %@\nerror: %@,orders : %@--",cardTrack, error.localizedDescription, orders]
+                                                                                       delegate:nil
+                                                                              cancelButtonTitle:@"OK"
+                                                                              otherButtonTitles:nil];
+                                         [aler show];
+                                         
+                                     }];
 }
 
 - (void)scannerBarcodeRecognized:(NSNotification *)note
@@ -481,16 +498,17 @@
 {
     __weak typeof(self) wself = self;
     
-    [self dismissDetailViewController:controller completion:^{
-        [wself showOrderForTicekt:ticket];
-    }];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self dismissDetailViewController:controller completion:^{
+            [wself showOrderForTicekt:ticket];
+        }];
+    });
 }
 
-- (void)dismissDetailViewController:(TXHTicketDetailsViewController *)controller completion: (void (^)(void))completion
+- (void)dismissDetailViewController:(TXHTicketDetailsViewController *)controller completion:(void (^)(void))completion
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:completion];
 }
-
 
 #pragma mark - TXHDoorTicketCellDelegate
 

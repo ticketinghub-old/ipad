@@ -136,5 +136,11 @@ NSString * const TXHSelectedAvailabilityKey         = @"TXHSelectedProductKey";
                                   completion:completion];
 }
 
+- (void)getOrderForCardMSRData:(NSString *)msrData completion:(void (^)(NSArray *orders, NSError *error))completion
+{
+    [self.txhManager.client getOrdersForCardMSRString:msrData
+                                           completion:completion];
+}
+
 @end
 
