@@ -27,14 +27,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
 
+@property (strong, nonatomic) TXHActivityLabelView *activityView;
+
 @property (strong, nonatomic) NSArray *tickets;
 @property (strong, nonatomic) NSArray *filteredTickets;
-@property (strong, nonatomic) TXHActivityLabelView *activityView;
 
 @property (strong, nonatomic) NSString *searchQuery;
 @property (strong, nonatomic) TXHTicket *selectedTicket;
-
 @property (strong, nonatomic) NSMutableSet *ticketsDisabled;
+
 @property (assign, nonatomic, getter = isLoadingData) BOOL loadingData;
 @property (assign, nonatomic, getter = isErrorShown) BOOL errorShown;
 
@@ -47,11 +48,8 @@
 {
     [super viewDidLoad];
     
-    [self updateHeader];
+    [self updateHeaderLabels];
     [self setupKeybaordAnimations];
-    
-    self.ticketsDisabled = [NSMutableSet set];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -67,7 +65,6 @@
 
     [self unregisterFromNotifications];
 }
-
 
 - (void)applyTicketFilter
 {
@@ -85,10 +82,10 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSArray *filteredTickets = [TXHTicket filterTickets:wself.tickets withQuery:wself.searchQuery];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (bQueryCounter == queryCounter)
-                wself.filteredTickets = filteredTickets;
-        });
+        if (bQueryCounter == queryCounter)
+            dispatch_async(dispatch_get_main_queue(), ^{
+                    wself.filteredTickets = filteredTickets;
+            });
     });
 }
 
@@ -97,7 +94,7 @@
     _tickets = tickets;
     
     [self applyTicketFilter];
-    [self updateHeader];
+    [self updateHeaderLabels];
 }
 
 - (void)setSearchQuery:(NSString *)searchQuery
@@ -119,6 +116,15 @@
     _loadingData = loadingData;
     
     [self updateInfoLabel];
+}
+
+- (NSMutableSet *)ticketsDisabled
+{
+    if (!_ticketsDisabled)
+    {
+        _ticketsDisabled = [NSMutableSet new];
+    }
+    return _ticketsDisabled;
 }
 
 - (NSUInteger)attendingTickets
@@ -214,7 +220,7 @@
     }
 }
 
-- (void)updateHeader
+- (void)updateHeaderLabels
 {
     BOOL anyTickets = [self.filteredTickets count] > 0;
     
@@ -500,7 +506,7 @@
                         completion:^(TXHTicket *ticket, NSError *error) {
                             [wself.ticketsDisabled removeObject:cellTicket.ticketId];
                             [cell setAttendedAt:cellTicket.attendedAt animated:YES];
-                            [wself updateHeader];
+                            [wself updateHeaderLabels];
                         }];
 }
 
