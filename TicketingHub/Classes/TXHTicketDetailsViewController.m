@@ -7,16 +7,19 @@
 //
 
 #import "TXHTicketDetailsViewController.h"
-#import "UIImage+ImageEffects.h"
-#import "UIColor+TicketingHub.h"
+
+#import "TXHProductsManager.h"
+
+#import "TXHBorderedButton.h"
+#import "TXHTicketDetailsErrorView.h"
+
 #import "NSDate+Additions.h"
 #import "NSDateFormatter+DisplayFormat.h"
-#import "TXHBorderedButton.h"
+#import "UIImage+ImageEffects.h"
+#import "UIColor+TicketingHub.h"
+
 #import <QuartzCore/QuartzCore.h>
 #import <iOS-api/NSDate+ISO.h>
-#import <iOS-api/NSDateFormatter+TicketingHubFormat.h>
-#import "TXHProductsManager.h"
-#import "TXHTicketDetailsErrorView.h"
 
 @interface TXHTicketDetailsViewController ()
 
@@ -45,8 +48,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
+	
     [self customizeView];
 }
 
@@ -55,6 +57,7 @@
     [super viewWillAppear:animated];
     
     [self setupBackground];
+    
     [self updateButtons];
     [self updateErrorView];
 }
@@ -107,8 +110,9 @@
 
 - (void)configureAttendedButtonWhenAttended
 {
+    NSString *titleFormat = NSLocalizedString(@"TICKET_DETAILS_ATTENDED_TITLE_FORMAT", nil);
     NSString *dateString = [self.ticket.attendedAt isoTimeString];
-    NSString *title      = [NSString stringWithFormat:@"Attended at %@",dateString];
+    NSString *title      = [NSString stringWithFormat:titleFormat,dateString];
     NSRange timeRange    = [title rangeOfString:dateString];
     
     NSMutableAttributedString *attributedTitle =
@@ -144,7 +148,7 @@
 {
     [self.attendedButton setAttributedTitle:nil forState:UIControlStateNormal];
     [self.attendedButton setAttributedTitle:nil forState:UIControlStateHighlighted];
-    [self.attendedButton setTitle:@"Mark as attended" forState:UIControlStateNormal];
+    [self.attendedButton setTitle:NSLocalizedString(@"TICKET_DETAILS_MARK_AS_ATTENDED_BUTTON_TITLE", nil) forState:UIControlStateNormal];
     self.attendedButton.borderColor          = [UIColor txhButtonBlueColor];
     self.attendedButton.normalFillColor      = [UIColor txhButtonBlueColor];
     self.attendedButton.highlightedFillColor = self.attendedButton.superview.backgroundColor;
@@ -219,7 +223,9 @@
     
     __weak typeof(self) wself = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        wself.titleLabel.text      = [NSString stringWithFormat:@"%@ Ticket",wself.ticket.tier.name];
+        
+        NSString *titleFormat = NSLocalizedString(@"TICKET_DETAILS_TITLE_FORMAT", nil);
+        wself.titleLabel.text      = [NSString stringWithFormat:titleFormat,wself.ticket.tier.name];
         wself.subtitleLabel.text   = [wself.ticket.reference length] > 0 ? wself.ticket.reference : @"";
         wself.validFromLabel.text  = [wself dateStringForDate:wself.ticket.validFrom];
         wself.validUntilLabel.text = [wself dateStringForDate:wself.ticket.expiresAt];

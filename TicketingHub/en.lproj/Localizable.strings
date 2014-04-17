@@ -86,3 +86,19 @@
 /* Main navigation Bar */
 
 "NAV_SELECT_DATE_BUTTON_TITLE" = "Select date";
+
+/* Doorman tickets list */
+
+"DOORMAN_TICKETS_LIST_NO_TICKETS_LABEL"            = "No Tickets";
+"DOORMAN_TICKETS_LIST_NO_TICKETS_FOR_QUERY_FORMAT" = "No Tickets for: %@";
+"DOORMAN_TICKETS_LIST_LOOKING_UP_TICKETS"          = "Looking up ticket";
+"DOORMAN_TICKETS_LIST_ATTENDEES_FORMAT"            = "%lu Attendees";
+"DOORMAN_TICKETS_LIST_ATTENDING_FORMAT"            = "%lu Attending";
+"DOORMAN_TICKETS_LIST_LOADING_TICKETS"             = "Loading tickets";
+
+/* Ticket details */
+
+"TICKET_DETAILS_TITLE_FORMAT"                  = "%@ Ticket";
+"TICKET_DETAILS_MARK_AS_ATTENDED_BUTTON_TITLE" = "Mark as attended";
+"TICKET_DETAILS_ATTENDED_TITLE_FORMAT"         = "Attended at %@";
+
