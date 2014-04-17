@@ -30,15 +30,21 @@ NSString * const TXHScannerConnectionStatusDidChangedNotification = @"TXHScanner
     
     if (!self) return nil;
     
+    return self;
+}
+
+- (void)connect
+{
     self.dtDevices = [DTDevices sharedDevice];
     [self.dtDevices addDelegate:self];
     [self.dtDevices connect];
     
-    return self;
+    self.scannerConnected = self.dtDevices.connstate == CONN_CONNECTED;
 }
 
-- (void)dealloc
+- (void)disconnect
 {
+    [self.dtDevices removeDelegate:self];
     [self.dtDevices disconnect];
 }
 

@@ -43,6 +43,8 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     
     [self setupKeybaordAnimations];
     
+    [self.infineaManager connect];
+    
     self.searchField.delegate = self;
 }
 
@@ -72,6 +74,10 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     [self unregisterFromNotifications];
 }
 
+- (void)dealloc
+{
+    [self.infineaManager disconnect];
+}
 
 #pragma mark - private
 

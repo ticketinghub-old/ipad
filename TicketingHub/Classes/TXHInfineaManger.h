@@ -18,4 +18,7 @@ extern NSString * const TXHScannerConnectionStatusDidChangedNotification;
 
 @property (readonly, nonatomic, assign, getter = isScannerConnected) BOOL scannerConnected;
 
+- (void)connect;
+- (void)disconnect;
+
 @end
