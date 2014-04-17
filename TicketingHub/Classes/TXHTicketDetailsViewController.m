@@ -16,11 +16,11 @@
 #import <iOS-api/NSDate+ISO.h>
 #import <iOS-api/NSDateFormatter+TicketingHubFormat.h>
 #import "TXHProductsManager.h"
+#import "TXHTicketDetailsErrorView.h"
 
 @interface TXHTicketDetailsViewController ()
 
-@property (weak, nonatomic) IBOutlet UIView *errorView;
-@property (weak, nonatomic) IBOutlet UILabel *errorLabel;
+@property (weak, nonatomic) IBOutlet TXHTicketDetailsErrorView *errorView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -94,80 +94,15 @@
 - (void)updateAttendedButton
 {
     if (self.ticket.attendedAt)
-    {
         [self configureAttendedButtonWhenAttended];
-    }
     else
-    {
         [self configureAttendedButtonWhenNotAttended];
-    }
 }
 
 - (void)updateErrorView
 {
     NSDate *expirationDate = self.ticket.expiresAt;
-    BOOL ticketExpired = [expirationDate isInThePast];
-    
-    NSString *errorConstant = [self errorMessageConstant];
-    NSString *errorDurationMesage = nil;
-    
-    if (ticketExpired)
-    {
-        NSInteger daysFromNow = [expirationDate daysFromNow];
-        if (daysFromNow > 0)
-        {
-            errorDurationMesage = [self errorForDays:daysFromNow];
-        }
-        else
-        {
-            NSInteger hoursFromNow = [expirationDate hoursFromNow];
-            if (hoursFromNow > 0)
-            {
-                errorDurationMesage = [self errorForHours:hoursFromNow];
-            }
-            else
-            {
-                NSInteger minutesFromNow = [expirationDate minutesFromNow];
-                errorDurationMesage = [self errorForMinutes:minutesFromNow];
-            }
-            
-        }
-        [self setErrorMessageBold:errorDurationMesage normalString:errorConstant];
-    }
-    self.errorView.hidden = !ticketExpired;
-}
-
-- (void)setErrorMessageBold:(NSString *)boldString normalString:(NSString *)normalString
-{
-    NSString *error = [NSString stringWithFormat:@"%@ %@",boldString, normalString];
-    NSRange boldRange = [error rangeOfString:boldString];
-    
-    NSMutableAttributedString *errorMessage = [[NSMutableAttributedString alloc] initWithString:error];
-    [errorMessage addAttribute:NSFontAttributeName
-                         value:[UIFont boldSystemFontOfSize:15]
-                         range:boldRange];
-    
-    self.errorLabel.attributedText = errorMessage;
-}
-
-- (NSString *)errorForMinutes:(NSInteger)minutes
-{
-    return [NSString stringWithFormat:@"This Ticket expired %ld minutes ago.",(long)minutes];
-}
-
-- (NSString *)errorForHours:(NSInteger)hours
-{
-    return [NSString stringWithFormat:@"This Ticket expired %ld hours ago.",(long)hours];
-}
-
-- (NSString *)errorForDays:(NSInteger)days
-{
-    return [NSString stringWithFormat:@"This Ticket expired %ld days ago.", (long)days];
-}
-
-- (NSString *)errorMessageConstant
-{
-    return @"You still have option to grant access.";
+    [self.errorView showWithExpirationDate:expirationDate];
 }
 
 - (void)configureAttendedButtonWhenAttended

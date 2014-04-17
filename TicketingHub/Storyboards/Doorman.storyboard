@@ -342,7 +342,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z6R-wx-NFg">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z6R-wx-NFg" customClass="TXHTicketDetailsErrorView">
                                 <rect key="frame" x="192" y="160" width="640" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -360,6 +360,9 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="errorLabel" destination="Nzq-0b-rIU" id="IY3-HL-Fch"/>
+                                </connections>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XkD-3K-xAp">
                                 <rect key="frame" x="192" y="204" width="640" height="360"/>
@@ -565,7 +568,6 @@
                         <outlet property="attendedButton" destination="mYo-6D-GyY" id="OPk-W8-ChE"/>
                         <outlet property="contentView" destination="XkD-3K-xAp" id="ZrQ-DH-dFW"/>
                         <outlet property="countryLabel" destination="XtM-3P-YZ0" id="vUm-Gq-3pq"/>
-                        <outlet property="errorLabel" destination="Nzq-0b-rIU" id="4re-ZM-kdr"/>
                         <outlet property="errorView" destination="z6R-wx-NFg" id="ilG-t1-MgZ"/>
                         <outlet property="fullNameLabel" destination="6Pq-wg-uM4" id="NDI-Fv-V1D"/>
                         <outlet property="orderButton" destination="DFD-Y5-RnF" id="zzx-MD-lOn"/>

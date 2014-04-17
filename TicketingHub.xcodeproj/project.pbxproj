@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3E04039C18FEEE7D00AF67B2 /* UIViewController+BHTKeyboardNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E04039B18FEEE7D00AF67B2 /* UIViewController+BHTKeyboardNotifications.m */; };
 		3E0DAB9118AA41510045697C /* iOS-api.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3E0DAB9018AA41510045697C /* iOS-api.podspec */; };
+		3E15207118FFD4190013F09E /* TXHTicketDetailsErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E15207018FFD4190013F09E /* TXHTicketDetailsErrorView.m */; };
 		3E192D5718FD188C00D727AA /* TXHDoorMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E192D5618FD188C00D727AA /* TXHDoorMainViewController.m */; };
 		3E192D5A18FD308200D727AA /* TXHTicket+Title.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E192D5918FD308200D727AA /* TXHTicket+Title.m */; };
 		3E192D5E18FD600200D727AA /* TXHInfineaManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E192D5D18FD600200D727AA /* TXHInfineaManger.m */; };
@@ -138,6 +139,8 @@
 		3E04039A18FEEE7D00AF67B2 /* UIViewController+BHTKeyboardNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BHTKeyboardNotifications.h"; sourceTree = "<group>"; };
 		3E04039B18FEEE7D00AF67B2 /* UIViewController+BHTKeyboardNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BHTKeyboardNotifications.m"; sourceTree = "<group>"; };
 		3E0DAB9018AA41510045697C /* iOS-api.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS-api.podspec"; sourceTree = "<group>"; };
+		3E15206F18FFD4190013F09E /* TXHTicketDetailsErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketDetailsErrorView.h; sourceTree = "<group>"; };
+		3E15207018FFD4190013F09E /* TXHTicketDetailsErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketDetailsErrorView.m; sourceTree = "<group>"; };
 		3E192D5518FD188C00D727AA /* TXHDoorMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorMainViewController.h; sourceTree = "<group>"; };
 		3E192D5618FD188C00D727AA /* TXHDoorMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorMainViewController.m; sourceTree = "<group>"; };
 		3E192D5818FD308200D727AA /* TXHTicket+Title.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHTicket+Title.h"; sourceTree = "<group>"; };
@@ -892,6 +895,8 @@
 			children = (
 				3EE8E21618CA23C8006E8F5E /* TXHTicketDetailsViewController.h */,
 				3EE8E21718CA23C8006E8F5E /* TXHTicketDetailsViewController.m */,
+				3E15206F18FFD4190013F09E /* TXHTicketDetailsErrorView.h */,
+				3E15207018FFD4190013F09E /* TXHTicketDetailsErrorView.m */,
 			);
 			name = "Ticket Details";
 			sourceTree = "<group>";
@@ -1279,6 +1284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEF6BA4717D1192B005B1B20 /* TXHBarcodeScanner.m in Sources */,
+				3E15207118FFD4190013F09E /* TXHTicketDetailsErrorView.m in Sources */,
 				3E53C53D18E343FD00FF6F9B /* TXHPrinterSelectionViewController.m in Sources */,
 				58E4FB631760AE5500E328A0 /* main.m in Sources */,
 				3EF8EE3E18D332F200586283 /* TXHDoorTicketsDateHeaderView.m in Sources */,
