@@ -8,21 +8,19 @@
 
 #import "TXHDoorTicketsListViewController.h"
 
+#import "TXHDoorSearchViewController.h"
+#import "TXHTicketDetailsViewController.h"
+#import "TXHDoorOrderViewController.h"
+
+#import "TXHDoorTicketCell.h"
+#import "TXHActivityLabelView.h"
+
 #import "TXHProductsManager.h"
 #import "TXHInfineaManger.h"
 
-#import "TXHDoorSearchViewController.h"
-#import "TXHDoorTicketCell.h"
-#import "TXHTicketDetailsViewController.h"
 #import "TXHTicket+Filter.h"
 #import "TXHTicket+Title.h"
-#import "TXHDoorOrderViewController.h"
-
 #import "UIViewController+BHTKeyboardNotifications.h"
-
-#import "UIColor+TicketingHub.h"
-#import <iOS-api/NSDateFormatter+TicketingHubFormat.h>
-
 
 @interface TXHDoorTicketsListViewController () <TXHTicketDetailsViewControllerDelegate, TXHDoorTicketCellDelegate, UIAlertViewDelegate>
 
@@ -31,7 +29,7 @@
 
 @property (strong, nonatomic) NSArray *tickets;
 @property (strong, nonatomic) NSArray *filteredTickets;
-@property (strong, nonatomic) UILabel *infolabel;
+@property (strong, nonatomic) TXHActivityLabelView *activityView;
 
 @property (strong, nonatomic) NSString *searchQuery;
 @property (strong, nonatomic) TXHTicket *selectedTicket;
@@ -49,10 +47,11 @@
 {
     [super viewDidLoad];
     
-    self.ticketsDisabled = [NSMutableSet set];
     [self updateHeader];
-    
     [self setupKeybaordAnimations];
+    
+    self.ticketsDisabled = [NSMutableSet set];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -140,7 +139,6 @@
     else if ([segue.identifier isEqualToString:@"TicketOrder"])
     {
         TXHDoorOrderViewController *orderViewController = segue.destinationViewController;
-        
         [orderViewController setTicket:self.selectedTicket andProductManager:self.productManager];
     }
 }
@@ -157,58 +155,58 @@
     [self setKeyboardWillShowAnimationBlock:^(CGRect keyboardFrame) {
         CGFloat height = keyboardFrame.size.width;
         wself.tableView.contentInset = UIEdgeInsetsMake(0, 0, height, 0);
-        wself.infolabel.height = wself.view.height - height;
+        wself.activityView.height = wself.view.height - height;
     }];
     
     
     [self setKeyboardWillHideAnimationBlock:^(CGRect keyboardFrame) {
         wself.tableView.contentInset = UIEdgeInsetsZero;
-        wself.infolabel.height = wself.view.height;
+        wself.activityView.height = wself.view.height;
     }];
 }
 
 #pragma mark - Info Label
 
-- (UILabel *)infolabel
+- (TXHActivityLabelView *)activityView
 {
-    if (!_infolabel)
+    if (!_activityView)
     {
-        UILabel *infoLabel = [[UILabel alloc] initWithFrame:self.view.bounds];
-        infoLabel.textColor        = [UIColor txhDarkBlueColor];
-        infoLabel.font             = [UIFont fontWithName:@"HelveticaNeue-Thin" size:28];
-        infoLabel.textAlignment    = NSTextAlignmentCenter;
-        infoLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        infoLabel.translatesAutoresizingMaskIntoConstraints = YES;
-        [self.view addSubview:infoLabel];
-        _infolabel = infoLabel;
+        TXHActivityLabelView *activityView = [TXHActivityLabelView getInstance];
+        activityView.frame = self.view.bounds;
+        activityView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        
+        [self.view addSubview:activityView];
+        _activityView = activityView;
     }
-    return _infolabel;
+    return _activityView;
 }
 
-- (void)showInfolabelWithText:(NSString *)text
+- (void)showInfolabelWithText:(NSString *)text withIndicator:(BOOL)indicator
 {
-    self.infolabel.text = text;
-    self.infolabel.hidden = NO;
+    self.tableView.scrollEnabled = NO;
+    [self.activityView showWithMessage:text indicatorHidden:!indicator];
 }
 
 - (void)hideInfoLabel
 {
-    self.infolabel.hidden = YES;
+    self.tableView.scrollEnabled = YES;
+    [self.activityView hide];
 }
 
 - (void)updateInfoLabel
 {
     if (![self.tickets count])
     {
-        [self showInfolabelWithText:@"No Tickets"];
+        [self showInfolabelWithText:NSLocalizedString(@"DOORMAN_TICKETS_LIST_NO_TICKETS_LABEL", nil) withIndicator:NO];
     }
     else if (![self.filteredTickets count])
     {
-        [self showInfolabelWithText:[NSString stringWithFormat:@"No Tickets for: %@",self.searchQuery]];
+        NSString *format = NSLocalizedString(@"DOORMAN_TICKETS_LIST_NO_TICKETS_FOR_QUERY_FORMAT", nil);
+        [self showInfolabelWithText:[NSString stringWithFormat:format,self.searchQuery] withIndicator:NO];
     }
     else if (self.loadingData)
     {
-        [self showInfolabelWithText:@"Looking up ticket"];
+        [self showInfolabelWithText:NSLocalizedString(@"DOORMAN_TICKETS_LIST_LOOKING_UP_TICKETS", nil) withIndicator:NO];
     }
     else
     {
@@ -218,8 +216,19 @@
 
 - (void)updateHeader
 {
-    self.titleLabel.text    = [NSString stringWithFormat:@"%lu Attendees",(unsigned long)[self.tickets count]];
-    self.subtitleLabel.text = [NSString stringWithFormat:@"%lu Attending",(unsigned long)[self attendingTickets]];
+    BOOL anyTickets = [self.filteredTickets count] > 0;
+    
+    self.titleLabel.hidden    = !anyTickets;
+    self.subtitleLabel.hidden = !anyTickets;
+    
+    if (anyTickets)
+    {
+        NSString *attendeesFormat = NSLocalizedString(@"DOORMAN_TICKETS_LIST_ATTENDEES_FORMAT", nil);
+        NSString *attendingFormat = NSLocalizedString(@"DOORMAN_TICKETS_LIST_ATTENDING_FORMAT", nil);
+        
+        self.titleLabel.text    = [NSString stringWithFormat:attendeesFormat,(unsigned long)[self.tickets count]];
+        self.subtitleLabel.text = [NSString stringWithFormat:attendingFormat,(unsigned long)[self attendingTickets]];
+    }
 }
 
 - (void)showDetailsForTicket:(TXHTicket *)ticket
@@ -403,7 +412,7 @@
     
     TXHAvailability *availability = note.userInfo[TXHSelectedAvailabilityKey];
     
-    [self showInfolabelWithText:@"Loading tickets"];
+    [self showInfolabelWithText:NSLocalizedString(@"DOORMAN_TICKETS_LIST_LOADING_TICKETS", nil) withIndicator:YES];
     
     [self.productManager ticketRecordsForAvailability:availability
                                              andQuery:nil
