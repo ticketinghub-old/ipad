@@ -27,4 +27,6 @@
 
 - (void)showPreviewInView:(UIView *)view;
 
+- (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation;
+
 @end

@@ -79,6 +79,11 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     [self.infineaManager disconnect];
 }
 
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
+{
+    [self.scanner setInterfaceOrientation:toInterfaceOrientation];
+}
+
 #pragma mark - private
 
 - (void)updateCameraView

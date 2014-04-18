@@ -55,6 +55,11 @@
 
 #pragma mark - Methods
 
+- (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation
+{
+    [self setVideoOrientation:[self videoOrientationFortInterfaceOrientation:orientation]];
+}
+
 + (BOOL)isCameraAvailable;
 {
     NSArray *videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
@@ -108,14 +113,36 @@
         self.preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
         self.preview.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         
-        AVCaptureConnection *con = self.preview.connection;
-        con.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
+        UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+        [self setInterfaceOrientation:interfaceOrientation];
         
         [view.layer insertSublayer:self.preview atIndex:0];
     }
     
     [self.tapRecognizer.view removeGestureRecognizer:self.tapRecognizer];
     [view addGestureRecognizer:self.tapRecognizer];
+}
+
+- (void)setVideoOrientation:(AVCaptureVideoOrientation)orientation
+{
+    AVCaptureConnection *con = self.preview.connection;
+    con.videoOrientation = orientation;
+}
+
+- (AVCaptureVideoOrientation)videoOrientationFortInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    
+    
+    AVCaptureVideoOrientation newOrientation = AVCaptureVideoOrientationLandscapeRight;
+    
+    if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft){
+        newOrientation = AVCaptureVideoOrientationLandscapeLeft;
+    }
+    else if (interfaceOrientation == UIInterfaceOrientationLandscapeRight){
+        newOrientation = AVCaptureVideoOrientationLandscapeRight;
+    }
+    
+    return newOrientation;
 }
 
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate
