@@ -20,7 +20,7 @@ PODS:
     - AFNetworking/NSURLSession
   - DCTCoreDataStack (1.1)
   - Expecta (0.2.4)
-  - iOS-api (0.0.61):
+  - iOS-api (0.0.63):
     - AFNetworking (~> 2.2.0)
     - DCTCoreDataStack (~> 1.1)
   - OCMock (2.2.4)
@@ -43,7 +43,7 @@ DEPENDENCIES:
   - SevenSwitch (~> 1.3.0)
   - Specta (~> 0.2.1)
   - Stripe (~> 1.0.2)
-  - TapkuLibrary (from `https://github.com/Hubbub/tapkulibrary.git`, branch `ios7`)
+  - TapkuLibrary (from `https://github.com/bartekhugo/tapkulibrary.git`, branch `ios7`)
   - UIAlertView-Blocks (~> 1.0)
   - UIImage+PDF (~> 1.1.2)
   - UIView+Shake (~> 0.2)
@@ -53,13 +53,13 @@ EXTERNAL SOURCES:
     :podspec: .
   TapkuLibrary:
     :branch: ios7
-    :git: https://github.com/Hubbub/tapkulibrary.git
+    :git: https://github.com/bartekhugo/tapkulibrary.git
 
 SPEC CHECKSUMS:
   AFNetworking: dd8c1868e57451e3d17ebd3516f2a8c16f9646fe
   DCTCoreDataStack: 4090bc1d6819fda813c7cc45119d1fa8fd8b8b3c
   Expecta: 5c147dedfea5fbcf773995f7e65020abcc936ce5
-  iOS-api: be99d303d143b65401bca4971f1dfe21ab4c8b72
+  iOS-api: 3416e96ead55d530873fcf5d81d9e3a7f09eb7c9
   OCMock: 5008fae4b4789b8fc3e48cd7660f2eb5ef8ce89e
   PaymentKit: 92df7c2fb4fb3b4e0c3f5fb8c8e75cc528025126
   PPSSignatureView: 83ffa630306afc93ad595e5a6e98a0dba1c8a49b
