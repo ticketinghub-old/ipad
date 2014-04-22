@@ -53,6 +53,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+ 
     // fix for preapre for segue
     [self.activityView removeFromSuperview];
     self.activityView.frame = self.navigationController.view.bounds;
