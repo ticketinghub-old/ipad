@@ -83,6 +83,9 @@
 "TICKET_REFERENCE_TITLE_FORMAT" = "Ticket %@";
 "TICKET_TITLE_DEFAULT"          = "Ticket";
 
+"ORDER_TITLE_DEFAULT"           = "Order";
+"ORDER_REFERENCE_TITLE_FORMAT"  = "Order %@";
+
 /* Main navigation Bar */
 
 "NAV_SELECT_DATE_BUTTON_TITLE" = "Select date";
@@ -95,6 +98,10 @@
 "DOORMAN_TICKETS_LIST_ATTENDEES_FORMAT"            = "%lu Attendees";
 "DOORMAN_TICKETS_LIST_ATTENDING_FORMAT"            = "%lu Attending";
 "DOORMAN_TICKETS_LIST_LOADING_TICKETS"             = "Loading tickets";
+
+"DOORMAN_TICKETS_LIST_SEARCHING_LABEL"             = "Searching";
+    "DOORMAN_TICKETS_LIST_NO_ORDERS_FOR_CARD_TITLE"    = "No orders found";
+"DOORMAN_TICKETS_LIST_NO_ORDERS_FOR_CARD_MESSAGE"  = "Looks like this card hasn't been used to pay for any order";
 
 /* Ticket details */
 

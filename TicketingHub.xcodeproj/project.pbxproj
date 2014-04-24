@@ -24,6 +24,8 @@
 		3E488BDA18BE850600E90BE6 /* RMDownloadIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E488BD818BE850600E90BE6 /* RMDownloadIndicator.m */; };
 		3E4ADF7318D8C17400D2C508 /* TXHPrintButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4ADF7218D8C17400D2C508 /* TXHPrintButtonsViewController.m */; };
 		3E4ADF7618D9ED2800D2C508 /* TXHSignaturePadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4ADF7518D9ED2800D2C508 /* TXHSignaturePadViewController.m */; };
+		3E51D2CF1909692A00F8193E /* TXHRMPickerViewControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E51D2CE1909692A00F8193E /* TXHRMPickerViewControllerDelegate.m */; };
+		3E51D2D219096C0D00F8193E /* TXHOrder+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E51D2D119096C0D00F8193E /* TXHOrder+Helpers.m */; };
 		3E53C53D18E343FD00FF6F9B /* TXHPrinterSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E53C53C18E343FD00FF6F9B /* TXHPrinterSelectionViewController.m */; };
 		3E53C54518E5693600FF6F9B /* NSError+TXHPrinters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E53C54418E5693600FF6F9B /* NSError+TXHPrinters.m */; };
 		3E53C54B18E58FB400FF6F9B /* TXHActivityLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E53C54A18E58FB400FF6F9B /* TXHActivityLabelView.m */; };
@@ -167,6 +169,10 @@
 		3E4ADF7218D8C17400D2C508 /* TXHPrintButtonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHPrintButtonsViewController.m; sourceTree = "<group>"; };
 		3E4ADF7418D9ED2800D2C508 /* TXHSignaturePadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSignaturePadViewController.h; path = TicketingHub/Classes/TXHSignaturePadViewController.h; sourceTree = SOURCE_ROOT; };
 		3E4ADF7518D9ED2800D2C508 /* TXHSignaturePadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSignaturePadViewController.m; path = TicketingHub/Classes/TXHSignaturePadViewController.m; sourceTree = SOURCE_ROOT; };
+		3E51D2CD1909692A00F8193E /* TXHRMPickerViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHRMPickerViewControllerDelegate.h; sourceTree = "<group>"; };
+		3E51D2CE1909692A00F8193E /* TXHRMPickerViewControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHRMPickerViewControllerDelegate.m; sourceTree = "<group>"; };
+		3E51D2D019096C0D00F8193E /* TXHOrder+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHOrder+Helpers.h"; sourceTree = "<group>"; };
+		3E51D2D119096C0D00F8193E /* TXHOrder+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHOrder+Helpers.m"; sourceTree = "<group>"; };
 		3E53C53B18E343FD00FF6F9B /* TXHPrinterSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHPrinterSelectionViewController.h; sourceTree = "<group>"; };
 		3E53C53C18E343FD00FF6F9B /* TXHPrinterSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHPrinterSelectionViewController.m; sourceTree = "<group>"; };
 		3E53C54318E5693600FF6F9B /* NSError+TXHPrinters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+TXHPrinters.h"; sourceTree = "<group>"; };
@@ -680,6 +686,8 @@
 				3E7F87D318DC59060046DD7A /* NSDateFormatter+DisplayFormat.m */,
 				3E192D5818FD308200D727AA /* TXHTicket+Title.h */,
 				3E192D5918FD308200D727AA /* TXHTicket+Title.m */,
+				3E51D2D019096C0D00F8193E /* TXHOrder+Helpers.h */,
+				3E51D2D119096C0D00F8193E /* TXHOrder+Helpers.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -739,6 +747,8 @@
 				3E4ADF7018D8C15000D2C508 /* Controls */,
 				3E9D734218D1EEC20087121B /* OrderTicketsList */,
 				3E9D734118D1EEB90087121B /* OrderDetails */,
+				3E51D2CD1909692A00F8193E /* TXHRMPickerViewControllerDelegate.h */,
+				3E51D2CE1909692A00F8193E /* TXHRMPickerViewControllerDelegate.m */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -1343,6 +1353,7 @@
 				3E192D5E18FD600200D727AA /* TXHInfineaManger.m in Sources */,
 				3E192D5A18FD308200D727AA /* TXHTicket+Title.m in Sources */,
 				3E53C54518E5693600FF6F9B /* NSError+TXHPrinters.m in Sources */,
+				3E51D2CF1909692A00F8193E /* TXHRMPickerViewControllerDelegate.m in Sources */,
 				EE75D99517D11048009ADCD8 /* TXHSalesPaymentCreditDetailsViewController.m in Sources */,
 				3E2B085318F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.m in Sources */,
 				EE75D99817D11048009ADCD8 /* TXHSalesPaymentPaymentDetailsViewController.m in Sources */,
@@ -1384,6 +1395,7 @@
 				EEB1846617D114390025530A /* TXHTextEntryTableViewCell.m in Sources */,
 				3ECE137418B63A6900E7148F /* NSDate+Additions.m in Sources */,
 				3E192D5718FD188C00D727AA /* TXHDoorMainViewController.m in Sources */,
+				3E51D2D219096C0D00F8193E /* TXHOrder+Helpers.m in Sources */,
 				EEB1846717D114390025530A /* TXHTextEntryView.m in Sources */,
 				3ECE137718B689CE00E7148F /* NSDate+CupertinoYankee.m in Sources */,
 				3E44157018AB80EA00C4AE1C /* TXHTicketingHubManager.m in Sources */,

@@ -20,7 +20,9 @@
 
 #import "TXHTicket+Filter.h"
 #import "TXHTicket+Title.h"
+#import "TXHOrder+Helpers.h"
 #import "UIViewController+BHTKeyboardNotifications.h"
+#import "TXHRMPickerViewControllerDelegate.h"
 
 @interface TXHDoorTicketsListViewController () <TXHTicketDetailsViewControllerDelegate, TXHDoorTicketCellDelegate, UIAlertViewDelegate>
 
@@ -338,23 +340,66 @@
 {
     __unused NSString *cardTrack = [note userInfo][TXHScannerRecognizedValueKey];
     
+    [self showInfolabelWithText:NSLocalizedString(@"DOORMAN_TICKETS_LIST_SEARCHING_LABEL", nil)
+                  withIndicator:YES];
+    
+    __weak typeof(self) wself = self;
+    
     [self.productManager getOrderForCardMSRData:cardTrack
                                      completion:^(NSArray *orders, NSError *error) {
                                      
-                                         if (error)
-                                             DLog(@"error: %@ getting orders:%@",error.localizedDescription, orders);
+                                         [wself hideInfoLabel];
+
+                                         if (!error)
+                                         {
+                                             if (![orders count])
+                                             {
+                                                 [wself showNoOrdersForCardDataAlert];
+                                                 return;
+                                             }
+                                             
+                                             [wself selectOrderFromOrders:orders];
+                                         }
                                          else
-                                             DLog(@"get orders for MSR data %@: %@",cardTrack, orders);
-                                     
-                                         UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"MSR Response"
-                                                                                        message:[NSString stringWithFormat:@"msrTrack : %@\nerror: %@,orders : %@--",cardTrack, error.localizedDescription, orders]
-                                                                                       delegate:nil
-                                                                              cancelButtonTitle:@"OK"
-                                                                              otherButtonTitles:nil];
-                                         [aler show];
-                                         
+                                         {
+                                             //TODO: handle error
+                                         }
                                      }];
 }
+
+- (void)showNoOrdersForCardDataAlert
+{
+    UIAlertView *aler = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"DOORMAN_TICKETS_LIST_NO_ORDERS_FOR_CARD_TITLE", nil)
+                                                   message:NSLocalizedString(@"DOORMAN_TICKETS_LIST_NO_ORDERS_FOR_CARD_MESSAGE", nil)
+                                                  delegate:nil
+                                         cancelButtonTitle:NSLocalizedString(@"ERROR_DISMISS_BUTTON_TITLE", nil)
+                                         otherButtonTitles:nil];
+    [aler show];
+
+}
+
+- (void)selectOrderFromOrders:(NSArray *)orders
+{
+    if ([orders count] == 1)
+    {
+        TXHOrder *order = [orders firstObject];
+        [self showOrderForTicekt:[order.tickets anyObject]];
+    }
+    else
+    {
+        __weak typeof(self) wself = self;
+        
+        TXHRMPickerViewControllerDelegate *delegate = [[TXHRMPickerViewControllerDelegate alloc] init];
+
+        [delegate showWithItems:[TXHOrder ordersTitles:orders]
+               selectionHandler:^(RMPickerViewController *vc, NSArray *selectedRows) {
+                   TXHOrder *selectedOrder = orders[[[selectedRows firstObject] intValue]];
+                   [wself showOrderForTicekt:[selectedOrder.tickets anyObject]];
+               }];
+    }
+}
+
+
 
 - (void)scannerBarcodeRecognized:(NSNotification *)note
 {

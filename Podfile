@@ -11,6 +11,7 @@ pod 'UIImage+PDF', '~> 1.1.2'
 pod 'UIAlertView-Blocks', '~> 1.0'
 pod 'UIView+Shake', '~> 0.2'
 pod 'UIViewController+BHTKeyboardAnimationBlocks', '~> 0.0.1'
+pod 'RMPickerViewController', '~> 1.1.0'
 
 target :test, :exclusive => true do
     
