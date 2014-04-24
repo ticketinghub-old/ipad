@@ -12,8 +12,6 @@
 		3E192D5718FD188C00D727AA /* TXHDoorMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E192D5618FD188C00D727AA /* TXHDoorMainViewController.m */; };
 		3E192D5A18FD308200D727AA /* TXHTicket+Title.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E192D5918FD308200D727AA /* TXHTicket+Title.m */; };
 		3E192D5E18FD600200D727AA /* TXHInfineaManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E192D5D18FD600200D727AA /* TXHInfineaManger.m */; };
-		3E192D6518FD60A400D727AA /* DTDevices.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3E192D6118FD60A400D727AA /* DTDevices.pdf */; };
-		3E192D6618FD60A400D727AA /* libdtdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E192D6418FD60A400D727AA /* libdtdev.a */; };
 		3E22139B18AA791000DE35A6 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E22139A18AA791000DE35A6 /* ArrayDataSource.m */; };
 		3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E22139D18AA794C00DE35A6 /* DictionaryDataSource.m */; };
 		3E2B085318F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B085218F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.m */; };
@@ -53,6 +51,7 @@
 		3EA52C0C18E31BDC00FEA0CA /* TXHStarIOPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52C0B18E31BDC00FEA0CA /* TXHStarIOPrinter.m */; };
 		3EA61BBC18F443A8004458B2 /* TXHPrintersUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA61BBB18F443A8004458B2 /* TXHPrintersUtility.m */; };
 		3EAA200218CF7C52003EC924 /* TXHTicket+Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */; };
+		3EACF4AF1906ABB200AE636F /* libheft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EACF4AD1906ABB200AE636F /* libheft.a */; };
 		3EC63E0218B36E7A00B091A0 /* TXHSalesStepsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0118B36E7A00B091A0 /* TXHSalesStepsManager.m */; };
 		3EC63E0818B3721600B091A0 /* TXHSalesStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0718B3721600B091A0 /* TXHSalesStep.m */; };
 		3EC8845B18C4984B00CE0597 /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC8845A18C4984B00CE0597 /* UIResponder+FirstResponder.m */; };
@@ -144,11 +143,6 @@
 		3E192D5918FD308200D727AA /* TXHTicket+Title.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHTicket+Title.m"; sourceTree = "<group>"; };
 		3E192D5C18FD600200D727AA /* TXHInfineaManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHInfineaManger.h; sourceTree = "<group>"; };
 		3E192D5D18FD600200D727AA /* TXHInfineaManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHInfineaManger.m; sourceTree = "<group>"; };
-		3E192D6018FD60A400D727AA /* DTDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDevices.h; sourceTree = "<group>"; };
-		3E192D6118FD60A400D727AA /* DTDevices.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = DTDevices.pdf; sourceTree = "<group>"; };
-		3E192D6218FD60A400D727AA /* EMVPrivateTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVPrivateTags.h; sourceTree = "<group>"; };
-		3E192D6318FD60A400D727AA /* EMVTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVTags.h; sourceTree = "<group>"; };
-		3E192D6418FD60A400D727AA /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libdtdev.a; sourceTree = "<group>"; };
 		3E22139918AA791000DE35A6 /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
 		3E22139A18AA791000DE35A6 /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
 		3E22139C18AA794C00DE35A6 /* DictionaryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryDataSource.h; sourceTree = "<group>"; };
@@ -224,6 +218,12 @@
 		3EA61BBB18F443A8004458B2 /* TXHPrintersUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHPrintersUtility.m; sourceTree = "<group>"; };
 		3EAA200018CF7C52003EC924 /* TXHTicket+Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHTicket+Filter.h"; sourceTree = "<group>"; };
 		3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHTicket+Filter.m"; sourceTree = "<group>"; };
+		3EACF4A51906ABB200AE636F /* DTDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDevices.h; sourceTree = "<group>"; };
+		3EACF4A91906ABB200AE636F /* CmdIds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CmdIds.h; sourceTree = "<group>"; };
+		3EACF4AA1906ABB200AE636F /* HeftClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftClient.h; sourceTree = "<group>"; };
+		3EACF4AB1906ABB200AE636F /* HeftManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftManager.h; sourceTree = "<group>"; };
+		3EACF4AC1906ABB200AE636F /* HeftStatusReportPublic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftStatusReportPublic.h; sourceTree = "<group>"; };
+		3EACF4AD1906ABB200AE636F /* libheft.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libheft.a; sourceTree = "<group>"; };
 		3EC63E0018B36E7A00B091A0 /* TXHSalesStepsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesStepsManager.h; path = TicketingHub/Classes/TXHSalesStepsManager.h; sourceTree = SOURCE_ROOT; };
 		3EC63E0118B36E7A00B091A0 /* TXHSalesStepsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesStepsManager.m; path = TicketingHub/Classes/TXHSalesStepsManager.m; sourceTree = SOURCE_ROOT; };
 		3EC63E0318B36EAB00B091A0 /* TXHSalesWizardViewControllerDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TXHSalesWizardViewControllerDataSource.h; path = TicketingHub/Classes/TXHSalesWizardViewControllerDataSource.h; sourceTree = SOURCE_ROOT; };
@@ -368,7 +368,7 @@
 				EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */,
 				EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */,
 				58E4FB551760AE5500E328A0 /* UIKit.framework in Frameworks */,
-				3E192D6618FD60A400D727AA /* libdtdev.a in Frameworks */,
+				3EACF4AF1906ABB200AE636F /* libheft.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,11 +399,6 @@
 		3E192D5F18FD609700D727AA /* DTDevices */ = {
 			isa = PBXGroup;
 			children = (
-				3E192D6018FD60A400D727AA /* DTDevices.h */,
-				3E192D6118FD60A400D727AA /* DTDevices.pdf */,
-				3E192D6218FD60A400D727AA /* EMVPrivateTags.h */,
-				3E192D6318FD60A400D727AA /* EMVTags.h */,
-				3E192D6418FD60A400D727AA /* libdtdev.a */,
 			);
 			name = DTDevices;
 			sourceTree = "<group>";
@@ -831,6 +826,34 @@
 			name = "StarIO classes";
 			sourceTree = "<group>";
 		};
+		3EACF4A41906ABB200AE636F /* extLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				3EACF4A51906ABB200AE636F /* DTDevices.h */,
+			);
+			path = extLibraries;
+			sourceTree = "<group>";
+		};
+		3EACF4A71906ABB200AE636F /* HeftLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				3EACF4A81906ABB200AE636F /* include */,
+				3EACF4AD1906ABB200AE636F /* libheft.a */,
+			);
+			path = HeftLibrary;
+			sourceTree = "<group>";
+		};
+		3EACF4A81906ABB200AE636F /* include */ = {
+			isa = PBXGroup;
+			children = (
+				3EACF4A91906ABB200AE636F /* CmdIds.h */,
+				3EACF4AA1906ABB200AE636F /* HeftClient.h */,
+				3EACF4AB1906ABB200AE636F /* HeftManager.h */,
+				3EACF4AC1906ABB200AE636F /* HeftStatusReportPublic.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
 		3EB60EE418C66F6A00B56182 /* RMDownloadIndicator */ = {
 			isa = PBXGroup;
 			children = (
@@ -922,6 +945,8 @@
 		58E4FB481760AE5500E328A0 = {
 			isa = PBXGroup;
 			children = (
+				3EACF4A41906ABB200AE636F /* extLibraries */,
+				3EACF4A71906ABB200AE636F /* HeftLibrary */,
 				3ECE452A18C0B57F00DD1F7B /* AFNetworkActivityLogger.h */,
 				3ECE452B18C0B57F00DD1F7B /* AFNetworkActivityLogger.m */,
 				3E0DAB9018AA41510045697C /* iOS-api.podspec */,
@@ -1181,7 +1206,6 @@
 				4D586DE11797E51E00E40534 /* Images.xcassets in Resources */,
 				3E53C54D18E58FD000FF6F9B /* TXHActivityLabelView.xib in Resources */,
 				3EF8EE3A18D3148400586283 /* TicketListHeaders.xib in Resources */,
-				3E192D6518FD60A400D727AA /* DTDevices.pdf in Resources */,
 				3E87704218D710D100585FFA /* Localizable.strings in Resources */,
 				3E87709818D7355600585FFA /* Salesman.storyboard in Resources */,
 				58E4FB921760AEF300E328A0 /* Storyboard.storyboard in Resources */,
@@ -1455,6 +1479,7 @@
 				PROVISIONING_PROFILE = "738354CF-28D7-43A0-9F06-071DDCE9C343";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1492,6 +1517,7 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -1499,6 +1525,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1522,14 +1549,17 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/TicketingHub/Classes",
+					"$(PROJECT_DIR)/extLibraries",
+					"$(PROJECT_DIR)/HeftLibrary",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
+					"-lc++",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "83E5B7A7-D15E-4BD7-96A3-7A6A384B0648";
+				VALID_ARCHS = "armv7 armv7s";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
 					"-Wno-objc-missing-property-synthesis",
@@ -1543,6 +1573,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1567,14 +1598,17 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/TicketingHub/Classes",
+					"$(PROJECT_DIR)/extLibraries",
+					"$(PROJECT_DIR)/HeftLibrary",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
+					"-lc++",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "83E5B7A7-D15E-4BD7-96A3-7A6A384B0648";
+				VALID_ARCHS = "armv7 armv7s";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
 					"-Wno-objc-missing-property-synthesis",
@@ -1588,6 +1622,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TicketingHub.app/TicketingHub";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1603,6 +1638,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1610,6 +1646,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TicketingHub.app/TicketingHub";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1625,6 +1662,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -1662,6 +1700,7 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = AdHoc;
 		};
@@ -1669,6 +1708,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1693,14 +1733,17 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/TicketingHub/Classes",
+					"$(PROJECT_DIR)/extLibraries",
+					"$(PROJECT_DIR)/HeftLibrary",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
+					"-lc++",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "738354CF-28D7-43A0-9F06-071DDCE9C343";
+				VALID_ARCHS = "armv7 armv7s";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
 					"-Wno-objc-missing-property-synthesis",
@@ -1714,6 +1757,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TicketingHub.app/TicketingHub";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1729,6 +1773,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = AdHoc;
 		};
