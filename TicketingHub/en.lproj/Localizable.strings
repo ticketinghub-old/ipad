@@ -100,7 +100,7 @@
 "DOORMAN_TICKETS_LIST_LOADING_TICKETS"             = "Loading tickets";
 
 "DOORMAN_TICKETS_LIST_SEARCHING_LABEL"             = "Searching";
-    "DOORMAN_TICKETS_LIST_NO_ORDERS_FOR_CARD_TITLE"    = "No orders found";
+"DOORMAN_TICKETS_LIST_NO_ORDERS_FOR_CARD_TITLE"    = "No orders found";
 "DOORMAN_TICKETS_LIST_NO_ORDERS_FOR_CARD_MESSAGE"  = "Looks like this card hasn't been used to pay for any order";
 
 /* Ticket details */
@@ -108,4 +108,3 @@
 "TICKET_DETAILS_TITLE_FORMAT"                  = "%@ Ticket";
 "TICKET_DETAILS_MARK_AS_ATTENDED_BUTTON_TITLE" = "Mark as attended";
 "TICKET_DETAILS_ATTENDED_TITLE_FORMAT"         = "Attended at %@";
-

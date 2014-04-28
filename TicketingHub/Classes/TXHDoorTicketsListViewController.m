@@ -338,18 +338,18 @@
 
 - (void)scannerMSRDataRecognized:(NSNotification *)note
 {
-    __unused NSString *cardTrack = [note userInfo][TXHScannerRecognizedValueKey];
-    
     [self showInfolabelWithText:NSLocalizedString(@"DOORMAN_TICKETS_LIST_SEARCHING_LABEL", nil)
                   withIndicator:YES];
+    
+    NSString *cardTrack = [note userInfo][TXHScannerRecognizedValueKey];
     
     __weak typeof(self) wself = self;
     
     [self.productManager getOrderForCardMSRData:cardTrack
                                      completion:^(NSArray *orders, NSError *error) {
-                                     
+                                         
                                          [wself hideInfoLabel];
-
+                                         
                                          if (!error)
                                          {
                                              if (![orders count])
@@ -362,7 +362,7 @@
                                          }
                                          else
                                          {
-                                             //TODO: handle error
+                                             [wself showAlertForError:error];
                                          }
                                      }];
 }
@@ -433,6 +433,17 @@
     {
         [self lookupTicketWithBarcode:barcode];
     }
+}
+
+- (void)showAlertForError:(NSError *)error
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
+                                                    message:error.localizedDescription
+                                                   delegate:nil
+                                          cancelButtonTitle:NSLocalizedString(@"ERROR_DISMISS_BUTTON_TITLE", nil)
+                                          otherButtonTitles:nil];
+    
+    [alert show];
 }
 
 - (void)lookupTicketWithBarcode:(NSString *)barcode
