@@ -7,6 +7,7 @@
 //
 
 #import "TXHTicketingHubManager.h"
+#import "TXHConfiguration.h"
 
 @interface TXHTicketingHubManager ()
 
@@ -40,7 +41,8 @@ static TXHTicketingHubManager * _sharedManager;
 
 + (void)setupDefaultClient
 {
-    TXHTicketingHubClient *client = [[TXHTicketingHubClient alloc] initWithStoreURL:[[self class] txh_defaultStoreURL]];
+    TXHTicketingHubClient *client = [[TXHTicketingHubClient alloc] initWithStoreURL:[[self class] txh_defaultStoreURL]
+                                                                   andBaseServerURL:[[self class] txh_defaultAPIBaseURL]];
     client.showNetworkActivityIndicatorAutomatically = YES;
     
     _sharedManager.client = client;
@@ -69,6 +71,17 @@ static TXHTicketingHubManager * _sharedManager;
     }
     
     return storeURL;
+}
+
++ (NSURL *)txh_defaultAPIBaseURL
+{
+    static NSURL *serverURL = nil;
+    if (!serverURL) {
+        NSString *storeURLString = CONFIGURATION[kAPIBaseURL];
+        serverURL = [NSURL URLWithString:storeURLString];
+    }
+    
+    return serverURL;
 }
 
 @end
