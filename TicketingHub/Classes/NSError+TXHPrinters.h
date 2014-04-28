@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const TXHPrinterErrorDomain;
+
+
 typedef NS_ENUM(NSInteger, TXHPrinterErrorCode)
 {
     kTXHPrinterFailToOpenPortError = 10000,

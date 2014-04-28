@@ -8,7 +8,9 @@
 
 #import "TXHActivityLabelPrintersUtilityDelegate.h"
 #import "TXHActivityLabelView.h"
+#import "NSError+TXHPrinters.h"
 #import <UIAlertView-Blocks/UIAlertView+Blocks.h>
+
 
 @implementation TXHActivityLabelPrintersUtilityDelegate
 
@@ -22,12 +24,7 @@
 
 - (void)txhPrintersUtility:(TXHPrintersUtility *)utility didFinishLoadingType:(TXHPrintType)type error:(NSError *)error
 {
-    if (error)
-    {
-        
-    }
-    else
-        [self.activityView hide];
+    [self finishPrintingWithError:error];
 }
 
 - (void)txhPrintersUtility:(TXHPrintersUtility *)utility didStartPrintingType:(TXHPrintType)type
@@ -38,12 +35,29 @@
 
 - (void)txhPrintersUtility:(TXHPrintersUtility *)utility didFinishPrintingType:(TXHPrintType)type error:(NSError *)error
 {
+    [self finishPrintingWithError:error];
+}
+
+- (void)finishPrintingWithError:(NSError *)error
+{
+    [self.activityView hide];
+    
     if (error)
     {
-        
+        [[[UIAlertView alloc] initWithTitle:[self titleForError:error]
+                                   message:error.localizedDescription
+                                  delegate:nil
+                         cancelButtonTitle:NSLocalizedString(@"ERROR_DISMISS_BUTTON_TITLE", nil)
+                         otherButtonTitles:nil] show];
     }
-    else
-        [self.activityView hide];
+}
+
+- (NSString *)titleForError:(NSError *)error
+{
+    if ([error.domain isEqualToString:TXHPrinterErrorDomain])
+        return NSLocalizedString(@"PRINTER_ERROR_TITLE", nil);
+    
+    return NSLocalizedString(@"ERROR_TITLE", nil);
 }
 
 - (void)txhPrintersUtility:(TXHPrintersUtility *)utility selectTicketTemplate:(void(^)(TXHTicketTemplate *))selectTemplate fromTemplates:(NSArray *)templates
