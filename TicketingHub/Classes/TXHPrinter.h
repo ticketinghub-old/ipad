@@ -31,9 +31,16 @@ typedef void (^TXHPrinterContinueBlock)(void (^continuePrintingBlock)(BOOL conti
     if printer doesnt support automatic cutter,
     this block will be called between each page to give chance to i.e rip it off,
     if block is nil all pages will be printed one after another without any interruptions 
+ 
+    gets called in the main thread
  */
 - (void)setPrintingContinueBlock:(TXHPrinterContinueBlock)printContinueBlock;
 
-- (void)printPDFDocument:(id)document completion:(TXHPrinterCompletionBlock)completion;
+/*
+    printing 
+ 
+    gets called in the main thread
+*/
+- (void)printPDFDocumentWithURL:(NSURL *)documentURL completion:(TXHPrinterCompletionBlock)completion;
 
 @end

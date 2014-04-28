@@ -118,7 +118,7 @@
     
     __weak typeof(self) wself = self;
     
-    [self.selectedPrinter printPDFDocument:fileURL completion:^(NSError *error, BOOL canceled){
+    [self.selectedPrinter printPDFDocumentWithURL:fileURL completion:^(NSError *error, BOOL canceled){
         [wself.delegate txhPrintersUtility:wself didFinishPrintingType:wself.printType error:error];
     }];
 }

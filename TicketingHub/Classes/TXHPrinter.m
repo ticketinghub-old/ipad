@@ -36,11 +36,11 @@
     self.printingContinue = printContinueBlock;
 }
 
-- (void)printPDFDocument:(id)document completion:(TXHPrinterCompletionBlock)completion
+- (void)printPDFDocumentWithURL:(NSURL *)documentURL completion:(TXHPrinterCompletionBlock)completion
 {
-    [self.printerEngine printPDFDocument:document
-                             withPrinter:self
-                         completionBlock:completion];
+    [self.printerEngine printPDFDocumentWithURL:documentURL
+                                    withPrinter:self
+                                completionBlock:completion];
 }
 
 - (NSUInteger)paperWidth

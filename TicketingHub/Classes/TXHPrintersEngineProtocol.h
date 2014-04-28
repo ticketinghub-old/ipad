@@ -13,7 +13,7 @@
 
 - (void)fetchAvailablePrinters:(void(^)(NSArray *printers, NSError *error))completion;
 
-- (void)printPDFDocument:(id)document
-             withPrinter:(TXHPrinter *)printer
-         completionBlock:(TXHPrinterCompletionBlock)completionBlock;
+- (void)printPDFDocumentWithURL:(NSURL *)document
+                    withPrinter:(TXHPrinter *)printer
+                completionBlock:(TXHPrinterCompletionBlock)completionBlock;
 @end

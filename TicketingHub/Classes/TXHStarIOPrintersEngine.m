@@ -58,9 +58,9 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
  *
  *
  */
-- (void)printPDFDocument:(id)documentURL
-             withPrinter:(TXHPrinter *)printer
-         completionBlock:(TXHPrinterCompletionBlock)completionBlock
+- (void)printPDFDocumentWithURL:(NSURL *)documentURL
+                    withPrinter:(TXHPrinter *)printer
+                completionBlock:(TXHPrinterCompletionBlock)completionBlock
 {
     if (!printer)
     {
