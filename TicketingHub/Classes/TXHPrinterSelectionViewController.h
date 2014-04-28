@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class TXHPrinter;
+@class TXHPrintersManager;
 @class TXHPrinterSelectionViewController;
 
 @protocol TXHPrinterSelectionViewControllerDelegate <NSObject>
@@ -21,6 +22,9 @@
 
 
 @interface TXHPrinterSelectionViewController : UITableViewController
+
+
+- (instancetype)initWithPrintersManager:(TXHPrintersManager *)manager;
 
 @property (nonatomic, weak) id<TXHPrinterSelectionViewControllerDelegate> delegate;
 

@@ -15,10 +15,21 @@
 
 @property (nonatomic, strong) NSArray *printers;
 @property (nonatomic, strong) ArrayDataSource *datasource;
+@property (nonatomic, strong) TXHPrintersManager *printersManager;
 
 @end
 
 @implementation TXHPrinterSelectionViewController
+
+- (instancetype)initWithPrintersManager:(TXHPrintersManager *)manager
+{
+    if (!manager || !(self = [super init]))
+        return nil;
+    
+    self.printersManager = manager;
+    
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -33,7 +44,7 @@
 - (void)loadPrinters
 {
     __weak typeof(self) wself = self;
-    [TXHPRINTERSMANAGER fetchAvailablePrinters:^(NSSet *printers, NSError *error) {
+    [self.printersManager fetchAvailablePrinters:^(NSSet *printers, NSError *error) {
         wself.printers = [printers allObjects];
     }];
 }

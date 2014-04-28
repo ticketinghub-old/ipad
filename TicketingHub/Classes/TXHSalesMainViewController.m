@@ -22,6 +22,7 @@
 #import "TXHSalesStepsManager.h"
 #import "TXHOrderManager.h"
 #import "TXHProductsManager.h"
+#import "TXHPrintersManager.h"
 
 #import "TXHActivityLabelView.h"
 #import "TXHActivityLabelPrintersUtilityDelegate.h"
@@ -153,7 +154,7 @@ static void * ContentValidContext = &ContentValidContext;
 
 - (void)showPrinterSelectorFromButton:(UIButton *)button
 {
-    TXHPrinterSelectionViewController *printerSelector = [[TXHPrinterSelectionViewController alloc] init];
+    TXHPrinterSelectionViewController *printerSelector = [[TXHPrinterSelectionViewController alloc] initWithPrintersManager:TXHPRINTERSMANAGER];
     printerSelector.delegate = self;
     
     UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:printerSelector];

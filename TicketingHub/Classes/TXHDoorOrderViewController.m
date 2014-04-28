@@ -18,6 +18,7 @@
 
 #import "TXHPrinterSelectionViewController.h"
 #import "TXHPrintersUtility.h"
+#import "TXHPrintersManager.h"
 
 #import "TXHActivityLabelPrintersUtilityDelegate.h"
 #import "TXHActivityLabelView.h"
@@ -211,7 +212,7 @@
 
 - (void)showPrinterSelectorFromButton:(UIButton *)button
 {
-    TXHPrinterSelectionViewController *printerSelector = [[TXHPrinterSelectionViewController alloc] init];
+    TXHPrinterSelectionViewController *printerSelector = [[TXHPrinterSelectionViewController alloc] initWithPrintersManager:TXHPRINTERSMANAGER];
     printerSelector.delegate = self;
     
     UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:printerSelector];
