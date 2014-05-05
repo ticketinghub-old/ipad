@@ -45,6 +45,7 @@
 		<string>com.datecs.iserial.communication</string>
 		<string>com.datecs.linea.pro.bar</string>
 		<string>com.datecs.linea.pro.msr</string>
+		<string>com.datecs.pinpad</string>
 		<string>jp.star-m.starpro</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>

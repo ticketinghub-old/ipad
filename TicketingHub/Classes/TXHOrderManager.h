@@ -76,5 +76,5 @@ typedef void (^TXHArrayCompletion)(NSArray *array, NSError *error);
 - (void)getTicketTemplatesWithCompletion:(TXHArrayCompletion)completion;
 - (void)downloadTicketsWithTemplate:(TXHTicketTemplate *)template format:(TXHDocumentFormat)format completion:(void(^)(NSURL *url, NSError *error))completion;
 
-
+- (void)getPaymentGatewaysWithCompletion:(void(^)(NSArray *gateways,NSError *error))completion;
 @end

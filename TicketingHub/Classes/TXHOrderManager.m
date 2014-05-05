@@ -105,6 +105,11 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
     }
 }
 
+- (void)orderDidExpire:(NSNotification *)note
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:TXHOrderDidExpireNotification object:nil];
+}
+
 #pragma mark public methods
 
 - (void)storeValue:(id)value forKey:(NSString *)key
@@ -364,6 +369,11 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
                                          withTemplet:template
                                               format:format
                                           completion:completion];
+}
+
+- (void)getPaymentGatewaysWithCompletion:(void(^)(NSArray *gateways,NSError *error))completion
+{
+    [self.txhManager.client getPaymentGatewaysWithCompletion:completion];
 }
 
 #pragma mark private methods

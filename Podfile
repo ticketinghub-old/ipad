@@ -23,13 +23,3 @@ target :test, :exclusive => true do
 
 end
 
-
-# Remove 64-bit build architecture and 'isa' errors from Pods targets
-post_install do |installer|
-    installer.project.targets.each do |target|
-        target.build_configurations.each do |configuration|
-            target.build_settings(configuration.name)['ARCHS'] = '$(ARCHS_STANDARD_32_BIT)'
-            target.build_settings(configuration.name)['CLANG_WARN_DIRECT_OBJC_ISA_USAGE'] = 'NO'
-        end
-    end
-end

@@ -17,7 +17,6 @@
 		3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E22139D18AA794C00DE35A6 /* DictionaryDataSource.m */; };
 		3E2B085318F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B085218F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.m */; };
 		3E2B085518F5719600F13214 /* StarIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2B085418F5719600F13214 /* StarIO.framework */; };
-		3E2E2BCF190E9FDF006EABA1 /* TXHHandpointManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2E2BCE190E9FDF006EABA1 /* TXHHandpointManager.m */; };
 		3E2E2BD3190EAF0D006EABA1 /* TXHConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2E2BD2190EAF0D006EABA1 /* TXHConfiguration.m */; };
 		3E2E2C67190EC311006EABA1 /* TXHConfigurationShared.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E2E2BD5190EB391006EABA1 /* TXHConfigurationShared.plist */; };
 		3E2E2C68190EC311006EABA1 /* TXHConfigurationProduction.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E2E2C5C190EB881006EABA1 /* TXHConfigurationProduction.plist */; };
@@ -42,7 +41,17 @@
 		3E87704718D711C900585FFA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E87704518D711C900585FFA /* InfoPlist.strings */; };
 		3E87709818D7355600585FFA /* Salesman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E87709A18D7355600585FFA /* Salesman.storyboard */; };
 		3E8770B018D8685D00585FFA /* TXHSalesSummaryFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8770AF18D8685D00585FFA /* TXHSalesSummaryFooter.m */; };
+		3E8D760719178FA800EB9588 /* libheft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8D760619178FA800EB9588 /* libheft.a */; };
+		3E8D76091917921000EB9588 /* libdtdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8D76081917921000EB9588 /* libdtdev.a */; };
 		3E8FD59318C74CD70066FA50 /* TXHDoorSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8FD59218C74CD70066FA50 /* TXHDoorSearchViewController.m */; };
+		3E938D9E190FE6F900FC29E9 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E938D9D190FE6F900FC29E9 /* Reveal.framework */; };
+		3E938DB1190FED7A00FC29E9 /* DKPOSClientFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E938DA4190FED7A00FC29E9 /* DKPOSClientFactory.m */; };
+		3E938DB2190FED7A00FC29E9 /* DKPOSClientTransactionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E938DA6190FED7A00FC29E9 /* DKPOSClientTransactionInfo.m */; };
+		3E938DB3190FED7A00FC29E9 /* DKPOSClientTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E938DA8190FED7A00FC29E9 /* DKPOSClientTypes.m */; };
+		3E938DB4190FED7A00FC29E9 /* DKPOSCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E938DAA190FED7A00FC29E9 /* DKPOSCurrency.m */; };
+		3E938DB5190FED7A00FC29E9 /* DKHandpointTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E938DAD190FED7A00FC29E9 /* DKHandpointTypes.m */; };
+		3E938DB6190FED7A00FC29E9 /* DKPOSHandpointClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E938DAF190FED7A00FC29E9 /* DKPOSHandpointClient.m */; };
+		3E938DBD1910E62A00FC29E9 /* NSString+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E938DBC1910E62A00FC29E9 /* NSString+Hex.m */; };
 		3E9D734518D1EEF60087121B /* TXHDoorOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D734418D1EEF60087121B /* TXHDoorOrderViewController.m */; };
 		3E9D734818D1EF110087121B /* TXHDoorOrderTicketsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D734718D1EF110087121B /* TXHDoorOrderTicketsListViewController.m */; };
 		3E9D734B18D1EF260087121B /* TXHDoorOrderDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D734A18D1EF260087121B /* TXHDoorOrderDetailsViewController.m */; };
@@ -58,7 +67,6 @@
 		3EA52C0C18E31BDC00FEA0CA /* TXHStarIOPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52C0B18E31BDC00FEA0CA /* TXHStarIOPrinter.m */; };
 		3EA61BBC18F443A8004458B2 /* TXHPrintersUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA61BBB18F443A8004458B2 /* TXHPrintersUtility.m */; };
 		3EAA200218CF7C52003EC924 /* TXHTicket+Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */; };
-		3EACF4AF1906ABB200AE636F /* libheft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EACF4AD1906ABB200AE636F /* libheft.a */; };
 		3EC63E0218B36E7A00B091A0 /* TXHSalesStepsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0118B36E7A00B091A0 /* TXHSalesStepsManager.m */; };
 		3EC63E0818B3721600B091A0 /* TXHSalesStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0718B3721600B091A0 /* TXHSalesStep.m */; };
 		3EC8845B18C4984B00CE0597 /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC8845A18C4984B00CE0597 /* UIResponder+FirstResponder.m */; };
@@ -158,8 +166,6 @@
 		3E2B085118F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHActivityLabelPrintersUtilityDelegate.h; sourceTree = "<group>"; };
 		3E2B085218F4A39D00F13214 /* TXHActivityLabelPrintersUtilityDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHActivityLabelPrintersUtilityDelegate.m; sourceTree = "<group>"; };
 		3E2B085418F5719600F13214 /* StarIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = StarIO.framework; sourceTree = "<group>"; };
-		3E2E2BCD190E9FDF006EABA1 /* TXHHandpointManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHHandpointManager.h; sourceTree = "<group>"; };
-		3E2E2BCE190E9FDF006EABA1 /* TXHHandpointManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHHandpointManager.m; sourceTree = "<group>"; };
 		3E2E2BD1190EAF0D006EABA1 /* TXHConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHConfiguration.h; path = Configuration/TXHConfiguration.h; sourceTree = "<group>"; };
 		3E2E2BD2190EAF0D006EABA1 /* TXHConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHConfiguration.m; path = Configuration/TXHConfiguration.m; sourceTree = "<group>"; };
 		3E2E2BD5190EB391006EABA1 /* TXHConfigurationShared.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TXHConfigurationShared.plist; path = Configuration/TXHConfigurationShared.plist; sourceTree = "<group>"; };
@@ -205,8 +211,30 @@
 		3E87709B18D7356100585FFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Salesman.storyboard; sourceTree = "<group>"; };
 		3E8770AE18D8685D00585FFA /* TXHSalesSummaryFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesSummaryFooter.h; path = TicketingHub/Classes/TXHSalesSummaryFooter.h; sourceTree = SOURCE_ROOT; };
 		3E8770AF18D8685D00585FFA /* TXHSalesSummaryFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesSummaryFooter.m; path = TicketingHub/Classes/TXHSalesSummaryFooter.m; sourceTree = SOURCE_ROOT; };
+		3E8D760219178FA800EB9588 /* CmdIds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CmdIds.h; sourceTree = "<group>"; };
+		3E8D760319178FA800EB9588 /* HeftClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftClient.h; sourceTree = "<group>"; };
+		3E8D760419178FA800EB9588 /* HeftManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftManager.h; sourceTree = "<group>"; };
+		3E8D760519178FA800EB9588 /* HeftStatusReportPublic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftStatusReportPublic.h; sourceTree = "<group>"; };
+		3E8D760619178FA800EB9588 /* libheft.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libheft.a; sourceTree = "<group>"; };
+		3E8D76081917921000EB9588 /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libdtdev.a; sourceTree = "<group>"; };
 		3E8FD59118C74CD70066FA50 /* TXHDoorSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorSearchViewController.h; sourceTree = "<group>"; };
 		3E8FD59218C74CD70066FA50 /* TXHDoorSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorSearchViewController.m; sourceTree = "<group>"; };
+		3E938D9D190FE6F900FC29E9 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		3E938DA2190FED7A00FC29E9 /* DKPOSClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKPOSClient.h; sourceTree = "<group>"; };
+		3E938DA3190FED7A00FC29E9 /* DKPOSClientFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKPOSClientFactory.h; sourceTree = "<group>"; };
+		3E938DA4190FED7A00FC29E9 /* DKPOSClientFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKPOSClientFactory.m; sourceTree = "<group>"; };
+		3E938DA5190FED7A00FC29E9 /* DKPOSClientTransactionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKPOSClientTransactionInfo.h; sourceTree = "<group>"; };
+		3E938DA6190FED7A00FC29E9 /* DKPOSClientTransactionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKPOSClientTransactionInfo.m; sourceTree = "<group>"; };
+		3E938DA7190FED7A00FC29E9 /* DKPOSClientTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKPOSClientTypes.h; sourceTree = "<group>"; };
+		3E938DA8190FED7A00FC29E9 /* DKPOSClientTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKPOSClientTypes.m; sourceTree = "<group>"; };
+		3E938DA9190FED7A00FC29E9 /* DKPOSCurrency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKPOSCurrency.h; sourceTree = "<group>"; };
+		3E938DAA190FED7A00FC29E9 /* DKPOSCurrency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKPOSCurrency.m; sourceTree = "<group>"; };
+		3E938DAC190FED7A00FC29E9 /* DKHandpointTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKHandpointTypes.h; sourceTree = "<group>"; };
+		3E938DAD190FED7A00FC29E9 /* DKHandpointTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKHandpointTypes.m; sourceTree = "<group>"; };
+		3E938DAE190FED7A00FC29E9 /* DKPOSHandpointClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKPOSHandpointClient.h; sourceTree = "<group>"; };
+		3E938DAF190FED7A00FC29E9 /* DKPOSHandpointClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKPOSHandpointClient.m; sourceTree = "<group>"; };
+		3E938DBB1910E62A00FC29E9 /* NSString+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hex.h"; sourceTree = "<group>"; };
+		3E938DBC1910E62A00FC29E9 /* NSString+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hex.m"; sourceTree = "<group>"; };
 		3E9D734318D1EEF60087121B /* TXHDoorOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorOrderViewController.h; sourceTree = "<group>"; };
 		3E9D734418D1EEF60087121B /* TXHDoorOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorOrderViewController.m; sourceTree = "<group>"; };
 		3E9D734618D1EF110087121B /* TXHDoorOrderTicketsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorOrderTicketsListViewController.h; sourceTree = "<group>"; };
@@ -239,11 +267,6 @@
 		3EAA200018CF7C52003EC924 /* TXHTicket+Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHTicket+Filter.h"; sourceTree = "<group>"; };
 		3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHTicket+Filter.m"; sourceTree = "<group>"; };
 		3EACF4A51906ABB200AE636F /* DTDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDevices.h; sourceTree = "<group>"; };
-		3EACF4A91906ABB200AE636F /* CmdIds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CmdIds.h; sourceTree = "<group>"; };
-		3EACF4AA1906ABB200AE636F /* HeftClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftClient.h; sourceTree = "<group>"; };
-		3EACF4AB1906ABB200AE636F /* HeftManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftManager.h; sourceTree = "<group>"; };
-		3EACF4AC1906ABB200AE636F /* HeftStatusReportPublic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftStatusReportPublic.h; sourceTree = "<group>"; };
-		3EACF4AD1906ABB200AE636F /* libheft.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libheft.a; sourceTree = "<group>"; };
 		3EC63E0018B36E7A00B091A0 /* TXHSalesStepsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesStepsManager.h; path = TicketingHub/Classes/TXHSalesStepsManager.h; sourceTree = SOURCE_ROOT; };
 		3EC63E0118B36E7A00B091A0 /* TXHSalesStepsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesStepsManager.m; path = TicketingHub/Classes/TXHSalesStepsManager.m; sourceTree = SOURCE_ROOT; };
 		3EC63E0318B36EAB00B091A0 /* TXHSalesWizardViewControllerDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TXHSalesWizardViewControllerDataSource.h; path = TicketingHub/Classes/TXHSalesWizardViewControllerDataSource.h; sourceTree = SOURCE_ROOT; };
@@ -380,6 +403,7 @@
 				3EA52BF718E2EFF000FEA0CA /* ExternalAccessory.framework in Frameworks */,
 				CEA4926CD193447DAE8A8A56 /* libPods.a in Frameworks */,
 				3E2B085518F5719600F13214 /* StarIO.framework in Frameworks */,
+				3E938D9E190FE6F900FC29E9 /* Reveal.framework in Frameworks */,
 				4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */,
 				58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */,
 				58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */,
@@ -387,8 +411,9 @@
 				5860E8581762175B0046DFD3 /* QuartzCore.framework in Frameworks */,
 				EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */,
 				EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */,
+				3E8D76091917921000EB9588 /* libdtdev.a in Frameworks */,
+				3E8D760719178FA800EB9588 /* libheft.a in Frameworks */,
 				58E4FB551760AE5500E328A0 /* UIKit.framework in Frameworks */,
-				3EACF4AF1906ABB200AE636F /* libheft.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,8 +465,6 @@
 		3E2E2BCC190E9FC9006EABA1 /* Handpoint */ = {
 			isa = PBXGroup;
 			children = (
-				3E2E2BCD190E9FDF006EABA1 /* TXHHandpointManager.h */,
-				3E2E2BCE190E9FDF006EABA1 /* TXHHandpointManager.m */,
 			);
 			name = Handpoint;
 			sourceTree = "<group>";
@@ -732,6 +755,8 @@
 				3E192D5918FD308200D727AA /* TXHTicket+Title.m */,
 				3E51D2D019096C0D00F8193E /* TXHOrder+Helpers.h */,
 				3E51D2D119096C0D00F8193E /* TXHOrder+Helpers.m */,
+				3E938DBB1910E62A00FC29E9 /* NSString+Hex.h */,
+				3E938DBC1910E62A00FC29E9 /* NSString+Hex.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -781,6 +806,62 @@
 				3EE8E21018C8799C006E8F5E /* TXHDoorTicketCell.m */,
 			);
 			name = "Tickets List";
+			sourceTree = "<group>";
+		};
+		3E8D760019178FA800EB9588 /* HeftLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				3E8D760119178FA800EB9588 /* include */,
+				3E8D760619178FA800EB9588 /* libheft.a */,
+			);
+			path = HeftLibrary;
+			sourceTree = "<group>";
+		};
+		3E8D760119178FA800EB9588 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				3E8D760219178FA800EB9588 /* CmdIds.h */,
+				3E8D760319178FA800EB9588 /* HeftClient.h */,
+				3E8D760419178FA800EB9588 /* HeftManager.h */,
+				3E8D760519178FA800EB9588 /* HeftStatusReportPublic.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		3E938D9F190FED7A00FC29E9 /* DKHandpoint */ = {
+			isa = PBXGroup;
+			children = (
+				3E938DA1190FED7A00FC29E9 /* DKPOS */,
+				3E938DAB190FED7A00FC29E9 /* Handpoint */,
+			);
+			path = DKHandpoint;
+			sourceTree = "<group>";
+		};
+		3E938DA1190FED7A00FC29E9 /* DKPOS */ = {
+			isa = PBXGroup;
+			children = (
+				3E938DA2190FED7A00FC29E9 /* DKPOSClient.h */,
+				3E938DA3190FED7A00FC29E9 /* DKPOSClientFactory.h */,
+				3E938DA4190FED7A00FC29E9 /* DKPOSClientFactory.m */,
+				3E938DA5190FED7A00FC29E9 /* DKPOSClientTransactionInfo.h */,
+				3E938DA6190FED7A00FC29E9 /* DKPOSClientTransactionInfo.m */,
+				3E938DA7190FED7A00FC29E9 /* DKPOSClientTypes.h */,
+				3E938DA8190FED7A00FC29E9 /* DKPOSClientTypes.m */,
+				3E938DA9190FED7A00FC29E9 /* DKPOSCurrency.h */,
+				3E938DAA190FED7A00FC29E9 /* DKPOSCurrency.m */,
+			);
+			path = DKPOS;
+			sourceTree = "<group>";
+		};
+		3E938DAB190FED7A00FC29E9 /* Handpoint */ = {
+			isa = PBXGroup;
+			children = (
+				3E938DAC190FED7A00FC29E9 /* DKHandpointTypes.h */,
+				3E938DAD190FED7A00FC29E9 /* DKHandpointTypes.m */,
+				3E938DAE190FED7A00FC29E9 /* DKPOSHandpointClient.h */,
+				3E938DAF190FED7A00FC29E9 /* DKPOSHandpointClient.m */,
+			);
+			path = Handpoint;
 			sourceTree = "<group>";
 		};
 		3E9D734018D1EEB10087121B /* Order */ = {
@@ -884,28 +965,19 @@
 			isa = PBXGroup;
 			children = (
 				3EACF4A51906ABB200AE636F /* DTDevices.h */,
+				3E8D76081917921000EB9588 /* libdtdev.a */,
 			);
 			path = extLibraries;
 			sourceTree = "<group>";
 		};
-		3EACF4A71906ABB200AE636F /* HeftLibrary */ = {
+		3EACF4A71906ABB200AE636F /* Handpoint */ = {
 			isa = PBXGroup;
 			children = (
-				3EACF4A81906ABB200AE636F /* include */,
-				3EACF4AD1906ABB200AE636F /* libheft.a */,
+				3E8D760019178FA800EB9588 /* HeftLibrary */,
+				3E938D9F190FED7A00FC29E9 /* DKHandpoint */,
 			);
+			name = Handpoint;
 			path = HeftLibrary;
-			sourceTree = "<group>";
-		};
-		3EACF4A81906ABB200AE636F /* include */ = {
-			isa = PBXGroup;
-			children = (
-				3EACF4A91906ABB200AE636F /* CmdIds.h */,
-				3EACF4AA1906ABB200AE636F /* HeftClient.h */,
-				3EACF4AB1906ABB200AE636F /* HeftManager.h */,
-				3EACF4AC1906ABB200AE636F /* HeftStatusReportPublic.h */,
-			);
-			path = include;
 			sourceTree = "<group>";
 		};
 		3EB60EE418C66F6A00B56182 /* RMDownloadIndicator */ = {
@@ -1000,7 +1072,7 @@
 			isa = PBXGroup;
 			children = (
 				3EACF4A41906ABB200AE636F /* extLibraries */,
-				3EACF4A71906ABB200AE636F /* HeftLibrary */,
+				3EACF4A71906ABB200AE636F /* Handpoint */,
 				3ECE452A18C0B57F00DD1F7B /* AFNetworkActivityLogger.h */,
 				3ECE452B18C0B57F00DD1F7B /* AFNetworkActivityLogger.m */,
 				3E0DAB9018AA41510045697C /* iOS-api.podspec */,
@@ -1025,6 +1097,7 @@
 		58E4FB531760AE5500E328A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3E938D9D190FE6F900FC29E9 /* Reveal.framework */,
 				3E2B085418F5719600F13214 /* StarIO.framework */,
 				3EA52BF618E2EFF000FEA0CA /* ExternalAccessory.framework */,
 				4D68DAAA178B0A5400743227 /* AVFoundation.framework */,
@@ -1373,9 +1446,11 @@
 				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
 				3E3D46EE18ACBB8500275ACF /* UIColor+TicketingHub.m in Sources */,
 				3ED7561818BDD96500D8F60B /* TXHOrderManager.m in Sources */,
+				3E938DBD1910E62A00FC29E9 /* NSString+Hex.m in Sources */,
 				3E2E2BD3190EAF0D006EABA1 /* TXHConfiguration.m in Sources */,
 				EEB1845A17D114390025530A /* TXHBaseDataEntryView.m in Sources */,
 				3EA36B8618B237BF008F8C59 /* UIView+Additions.m in Sources */,
+				3E938DB3190FED7A00FC29E9 /* DKPOSClientTypes.m in Sources */,
 				3E9D734818D1EF110087121B /* TXHDoorOrderTicketsListViewController.m in Sources */,
 				3E488BDA18BE850600E90BE6 /* RMDownloadIndicator.m in Sources */,
 				EEB1845C17D114390025530A /* TXHCurrencyEntryView.m in Sources */,
@@ -1383,11 +1458,11 @@
 				EEB1845F17D114390025530A /* TXHDataSelectionView.m in Sources */,
 				EEB1846017D114390025530A /* TXHDataSelectionViewController.m in Sources */,
 				3E8770B018D8685D00585FFA /* TXHSalesSummaryFooter.m in Sources */,
+				3E938DB5190FED7A00FC29E9 /* DKHandpointTypes.m in Sources */,
 				3E7F87D418DC59070046DD7A /* NSDateFormatter+DisplayFormat.m in Sources */,
 				3EA36B8018AFDF5C008F8C59 /* TXHProductListCell.m in Sources */,
 				EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */,
 				3E3D46EA18ACB89A00275ACF /* FetchedResultsControllerDataSource.m in Sources */,
-				3E2E2BCF190E9FDF006EABA1 /* TXHHandpointManager.m in Sources */,
 				EEB1849017D115640025530A /* TXHEmbeddingSegue.m in Sources */,
 				3EA52BEE18E2D18900FEA0CA /* TXHPrintersManager.m in Sources */,
 				3ECE452C18C0B57F00DD1F7B /* AFNetworkActivityLogger.m in Sources */,
@@ -1398,6 +1473,7 @@
 				3EE8E21118C8799D006E8F5E /* TXHDoorTicketCell.m in Sources */,
 				EE75D99017D11048009ADCD8 /* TXHSalesMainViewController.m in Sources */,
 				3EA52BF118E2D22000FEA0CA /* TXHPrinter.m in Sources */,
+				3E938DB6190FED7A00FC29E9 /* DKPOSHandpointClient.m in Sources */,
 				EE75D99317D11048009ADCD8 /* TXHSalesPaymentCardDetailsViewController.m in Sources */,
 				3E6A422518C483870053EF34 /* TXHSensorView.m in Sources */,
 				3EF8EE4118D3330900586283 /* TXHDoorTicketsAttendedHeaderView.m in Sources */,
@@ -1444,10 +1520,13 @@
 				3EA52C0518E3176100FEA0CA /* RasterDocument.m in Sources */,
 				3EA52BFB18E2F06600FEA0CA /* TXHStarIOPrintersEngine.m in Sources */,
 				EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */,
+				3E938DB2190FED7A00FC29E9 /* DKPOSClientTransactionInfo.m in Sources */,
 				EEB1846617D114390025530A /* TXHTextEntryTableViewCell.m in Sources */,
+				3E938DB1190FED7A00FC29E9 /* DKPOSClientFactory.m in Sources */,
 				3ECE137418B63A6900E7148F /* NSDate+Additions.m in Sources */,
 				3E192D5718FD188C00D727AA /* TXHDoorMainViewController.m in Sources */,
 				3E51D2D219096C0D00F8193E /* TXHOrder+Helpers.m in Sources */,
+				3E938DB4190FED7A00FC29E9 /* DKPOSCurrency.m in Sources */,
 				EEB1846717D114390025530A /* TXHTextEntryView.m in Sources */,
 				3ECE137718B689CE00E7148F /* NSDate+CupertinoYankee.m in Sources */,
 				3E44157018AB80EA00C4AE1C /* TXHTicketingHubManager.m in Sources */,
@@ -1551,7 +1630,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1575,7 +1654,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/extLibraries",
-					"$(PROJECT_DIR)/HeftLibrary",
+					"$(PROJECT_DIR)/HeftLibrary/HeftLibrary",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1583,8 +1662,8 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6E1E26CB-5DF7-4252-BF35-BF7DA8B1FD64";
-				VALID_ARCHS = "armv7 armv7s";
+				PROVISIONING_PROFILE = "DFBB756F-524A-4EB6-803B-3E5BF5882798";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
 					"-Wno-objc-missing-property-synthesis",
@@ -1660,7 +1739,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1684,7 +1763,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/extLibraries",
-					"$(PROJECT_DIR)/HeftLibrary",
+					"$(PROJECT_DIR)/HeftLibrary/HeftLibrary",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1692,7 +1771,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
 					"-Wno-objc-missing-property-synthesis",
@@ -1768,7 +1847,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1792,7 +1871,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/extLibraries",
-					"$(PROJECT_DIR)/HeftLibrary",
+					"$(PROJECT_DIR)/HeftLibrary/HeftLibrary",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1800,7 +1879,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
 					"-Wno-objc-missing-property-synthesis",
@@ -1920,7 +1999,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1944,7 +2023,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/extLibraries",
-					"$(PROJECT_DIR)/HeftLibrary",
+					"$(PROJECT_DIR)/HeftLibrary/HeftLibrary",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1952,8 +2031,8 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6E1E26CB-5DF7-4252-BF35-BF7DA8B1FD64";
-				VALID_ARCHS = "armv7 armv7s";
+				PROVISIONING_PROFILE = "DFBB756F-524A-4EB6-803B-3E5BF5882798";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
 					"-Wno-objc-missing-property-synthesis",
@@ -1967,7 +2046,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1991,7 +2070,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/extLibraries",
-					"$(PROJECT_DIR)/HeftLibrary",
+					"$(PROJECT_DIR)/HeftLibrary/HeftLibrary",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1999,7 +2078,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
 					"-Wno-objc-missing-property-synthesis",
@@ -2099,7 +2178,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7082BAD3DAB74253A99F8290 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -2123,7 +2202,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/extLibraries",
-					"$(PROJECT_DIR)/HeftLibrary",
+					"$(PROJECT_DIR)/HeftLibrary/HeftLibrary",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -2131,7 +2210,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
 					"-Wno-objc-missing-property-synthesis",
