@@ -18,6 +18,7 @@ PODS:
   - AFNetworking/UIKit (2.2.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Block-KVO (2.2.1)
   - DCTCoreDataStack (1.1)
   - Expecta (0.2.4)
   - iOS-api (0.0.76):
@@ -38,6 +39,7 @@ PODS:
   - UIViewController+BHTKeyboardAnimationBlocks (0.0.2)
 
 DEPENDENCIES:
+  - Block-KVO (~> 2.2.1)
   - Expecta (~> 0.2.3)
   - iOS-api (from `.`)
   - OCMock (~> 2.2.3)
@@ -61,6 +63,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
+  Block-KVO: 7b298fb4617e948179b4c7725569feff7bd58337
   DCTCoreDataStack: 4090bc1d6819fda813c7cc45119d1fa8fd8b8b3c
   Expecta: 5c147dedfea5fbcf773995f7e65020abcc936ce5
   iOS-api: 3142393d6313ed8a73c71bf1949a0c5f91e34897
