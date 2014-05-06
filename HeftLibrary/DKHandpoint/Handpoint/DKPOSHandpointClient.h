@@ -16,5 +16,7 @@
 
 @property (nonatomic, weak) NSObject<DKPOSClientDelegate>* delegate;
 
++ (instancetype)sharedClient;
+
 @end
 

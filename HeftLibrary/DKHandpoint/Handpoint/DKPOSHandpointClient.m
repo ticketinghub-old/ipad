@@ -19,11 +19,21 @@
 
 @implementation DKPOSHandpointClient
 
++ (instancetype)sharedClient
+{
+    static DKPOSHandpointClient *_sharedClient;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedClient = [[DKPOSHandpointClient alloc] init];
+    });
+    return _sharedClient;
+}
+
 - (void)initialize
 {
     [[HeftManager sharedManager] setDelegate:self];
     
-    if([self isAccessoryConnected])
+    if([self isAccessoryConnected] && ![self isConnected])
     {
         [self connectToAvailableDevice];
     }
@@ -613,5 +623,6 @@
     
     return nil;
 }
+
 
 @end
