@@ -10,7 +10,7 @@
 
 @interface TXHActivityLabelView : UIView
 
-+ (instancetype)getInstance;
++ (instancetype)getInstanceInView:(UIView *)targetView;
 
 - (void)showWithMessage:(NSString *)text indicatorHidden:(BOOL)hidden;
 

@@ -179,12 +179,7 @@
 {
     if (!_activityView)
     {
-        TXHActivityLabelView *activityView = [TXHActivityLabelView getInstance];
-        activityView.frame = self.view.bounds;
-        activityView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        
-        [self.view addSubview:activityView];
-        _activityView = activityView;
+        _activityView = [TXHActivityLabelView getInstanceInView:self.view];
     }
     return _activityView;
 }

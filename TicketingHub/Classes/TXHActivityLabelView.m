@@ -17,11 +17,26 @@
 
 @implementation TXHActivityLabelView
 
-+ (instancetype)getInstance
++ (instancetype)getInstanceFromNibNamed:(NSString *)nibName
 {
-    NSArray *content = [[NSBundle mainBundle] loadNibNamed:@"TXHActivityLabelView" owner:nil options:nil];
+    NSArray *content = [[NSBundle mainBundle] loadNibNamed:nibName owner:nil options:nil];
     TXHActivityLabelView *view = [content firstObject];
     return view;
+}
+
++ (instancetype)getInstanceInView:(UIView *)targetView
+{
+    TXHActivityLabelView *activityView = [self getInstanceFromNibNamed:@"TXHActivityLabelView"];
+    [activityView hide];
+
+    if (targetView)
+    {
+        activityView.frame = targetView.bounds;
+        activityView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        activityView.translatesAutoresizingMaskIntoConstraints = YES;
+        [targetView addSubview:activityView];
+    }
+    return activityView;
 }
 
 - (void)showWithMessage:(NSString *)text indicatorHidden:(BOOL)hidden
