@@ -20,9 +20,11 @@ typedef NS_ENUM(NSInteger, TXHPaymentMethodType)
 
 @interface TXHSalesPaymentPaymentDetailsViewController : UIViewController
 
+@property (readonly, nonatomic, getter = isValid) BOOL valid;
+
 @property (strong, nonatomic) TXHProductsManager *productManager;
 @property (strong, nonatomic) TXHOrderManager    *orderManager;
 
-- (void)setPaymentMethodType:(TXHPaymentMethodType)paymentType;
+@property (assign, nonatomic) TXHPaymentMethodType paymentType;
 
 @end

@@ -13,45 +13,33 @@
 #import "TXHSalesPaymentCashDetailsViewController.h"
 #import "TXHSalesPaymentCreditDetailsViewController.h"
 
-@interface TXHSalesPaymentPaymentDetailsViewController ()
+#import <Block-KVO/MTKObserving.h>
 
-@property (weak, nonatomic) IBOutlet UIView *paymentContentView;
+@protocol DetailsViewControllerProtocol
 
-@property (strong, nonatomic) TXHSalesPaymentCardDetailsViewController   *cardController;
-@property (strong, nonatomic) TXHSalesPaymentCashDetailsViewController   *cashController;
-@property (strong, nonatomic) TXHSalesPaymentCreditDetailsViewController *creditController;
+@property (readonly, nonatomic, getter = isValid) BOOL valid;
 
-@property (weak, nonatomic) UIViewController *currentControler;
+@property (strong, nonatomic) TXHProductsManager *productManager;
+@property (strong, nonatomic) TXHOrderManager    *orderManager;
 
 @end
 
+
+@interface TXHSalesPaymentPaymentDetailsViewController ()
+
+@property (readwrite, nonatomic, getter = isValid) BOOL valid;
+
+@property (weak, nonatomic) IBOutlet UIView *paymentContentView;
+@property (weak, nonatomic) UIViewController<DetailsViewControllerProtocol> *currentControler;
+
+@end
+
+
+
 @implementation TXHSalesPaymentPaymentDetailsViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    [self performSegueWithIdentifier:@"TXHSalesPaymentCardDetailsViewController" sender:self];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Transitioning between payment method view controllers
     if ([segue isMemberOfClass:[TXHEmbeddingSegue class]])
     {
         TXHEmbeddingSegue *transitionSegue = (TXHEmbeddingSegue *)segue;
@@ -59,50 +47,39 @@
         transitionSegue.previousController = self.currentControler;
     }
     
-    if ([segue.identifier isEqualToString:@"TXHSalesPaymentCashDetailsViewController"])
-    {
-        self.cashController = segue.destinationViewController;
-        self.cashController.productManager = self.productManager;
-        self.cashController.orderManager   = self.orderManager;
-        return;
-    }
-    
-    if ([segue.identifier isEqualToString:@"TXHSalesPaymentCreditDetailsViewController"])
-    {
-        self.creditController = segue.destinationViewController;
-        self.creditController.productManager = self.productManager;
-        self.creditController.orderManager   = self.orderManager;
-        return;
-    }
-    
-    // Card controller should already be set by the embedding segue
-    if ([segue.identifier isEqualToString:@"TXHSalesPaymentCardDetailsViewController"])
-    {
-        self.cardController = segue.destinationViewController;
-        return;
-    }
-    
     self.currentControler = segue.destinationViewController;
 }
 
-- (void)setPaymentMethodType:(TXHPaymentMethodType)paymentType
+- (void)setCurrentControler:(UIViewController<DetailsViewControllerProtocol> *)currentControler
 {
-    NSString *paymentMethodKey;
+    currentControler.productManager = self.productManager;
+    currentControler.orderManager   = self.orderManager;
+    
+    _currentControler = currentControler;
+    
+    [self map:@keypath(self.currentControler.valid) to:@keypath(self.valid) null:nil];
+}
+
+- (void)setPaymentType:(TXHPaymentMethodType)paymentType
+{
+    _paymentType = paymentType;
+    
+    NSString *sequeIdentifier = [self segueIdentifierForPaymentType:paymentType];
+    
+    @try{ [self performSegueWithIdentifier:sequeIdentifier sender:self]; }
+    @finally{ }
+}
+
+- (NSString *)segueIdentifierForPaymentType:(TXHPaymentMethodType)paymentType
+{
     switch (paymentType)
     {
-        default:
-        case TXHPaymentMethodTypeCard:
-            paymentMethodKey = @"Card";
-            break;
-        case TXHPaymentMethodTypeCash:
-            paymentMethodKey = @"Cash";
-            break;
-        case TXHPaymentMethodTypeCreditCard:
-            paymentMethodKey = @"Credit";
-            break;
+        case TXHPaymentMethodTypeCard:          return @"TXHSalesPaymentCardDetailsViewController";
+        case TXHPaymentMethodTypeCash:          return @"TXHSalesPaymentCashDetailsViewController";
+        case TXHPaymentMethodTypeCreditCard:    return @"TXHSalesPaymentCreditDetailsViewController";
     }
     
-    [self performSegueWithIdentifier:[NSString stringWithFormat:@"TXHSalesPayment%@DetailsViewController", paymentMethodKey] sender:self];
+    return nil;
 }
 
 @end

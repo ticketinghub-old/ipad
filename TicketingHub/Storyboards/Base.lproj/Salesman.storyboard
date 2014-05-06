@@ -500,6 +500,9 @@
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <connections>
+                        <outlet property="paymentTypeSegmentedControl" destination="Afw-Y7-e2L" id="5P4-Dv-4RS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D4R-hu-YO5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1067,46 +1070,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8xf-rc-dvi" customClass="STPView">
-                                <rect key="frame" x="394" y="67" width="236" height="41"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="236" id="0YE-kJ-Df2"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="41" id="JJ5-KJ-iIp"/>
-                                    <constraint firstAttribute="height" constant="41" id="MJi-vW-6xc"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J5Q-vY-VSe">
-                                <rect key="frame" x="190" y="67" width="30" height="30"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKP-XK-VQS">
+                                <rect key="frame" x="521" y="20" width="483" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="ucO-nr-WYW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcB-Qm-7MF">
+                                <rect key="frame" x="376" y="314" width="273" height="139"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="139" id="e6p-zf-ylw"/>
+                                    <constraint firstAttribute="width" constant="273" id="rWo-EH-nAK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <state key="normal" title="Pay">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="payAction:" destination="IVP-nR-Uny" eventType="touchUpInside" id="Umt-Kk-UlW"/>
+                                    <action selector="payAction:" destination="IVP-nR-Uny" eventType="touchUpInside" id="qgi-1z-2gy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1EO-gV-GUc">
-                                <rect key="frame" x="58" y="67" width="59" height="30"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ris-ZW-UYE">
+                                <rect key="frame" x="20" y="20" width="493" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Connect">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="connectAction:" destination="IVP-nR-Uny" eventType="touchUpInside" id="qFu-L5-U0m"/>
-                                </connections>
-                            </button>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="493" id="aVp-B4-8hG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="8xf-rc-dvi" secondAttribute="centerX" id="YzK-Yf-v90"/>
-                            <constraint firstItem="8xf-rc-dvi" firstAttribute="top" secondItem="LZO-RZ-UrS" secondAttribute="bottom" constant="67" id="zgM-8g-Whh"/>
+                            <constraint firstItem="mKP-XK-VQS" firstAttribute="top" secondItem="LZO-RZ-UrS" secondAttribute="bottom" constant="20" id="Acf-sj-qi1"/>
+                            <constraint firstItem="mKP-XK-VQS" firstAttribute="leading" secondItem="ris-ZW-UYE" secondAttribute="trailing" constant="8" id="Bv9-EP-dhQ"/>
+                            <constraint firstAttribute="centerY" secondItem="bcB-Qm-7MF" secondAttribute="centerY" id="DW5-h9-hSg"/>
+                            <constraint firstItem="ris-ZW-UYE" firstAttribute="top" secondItem="mKP-XK-VQS" secondAttribute="top" id="Enw-fh-qZV"/>
+                            <constraint firstAttribute="centerX" secondItem="bcB-Qm-7MF" secondAttribute="centerX" id="GAa-3f-JOU"/>
+                            <constraint firstItem="ris-ZW-UYE" firstAttribute="leading" secondItem="39H-hZ-dU8" secondAttribute="leading" constant="20" symbolic="YES" id="Nbr-5p-JQT"/>
+                            <constraint firstAttribute="trailing" secondItem="mKP-XK-VQS" secondAttribute="trailing" constant="20" id="zN8-CS-AWj"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <connections>
-                        <outlet property="cardDetailsView" destination="8xf-rc-dvi" id="e9g-FX-6zi"/>
+                        <outlet property="amountLabel" destination="ris-ZW-UYE" id="2X2-KR-Ub7"/>
+                        <outlet property="infoLabel" destination="mKP-XK-VQS" id="C0z-HX-z6v"/>
+                        <outlet property="payButton" destination="bcB-Qm-7MF" id="gQC-4H-Og5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VvL-7o-JXE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1291,7 +1305,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lqT-OQ-mWw" customClass="PPSSignatureView">
-                                        <rect key="frame" x="20" y="80" width="600" height="205"/>
+                                        <rect key="frame" x="0.0" y="80" width="640" height="280"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>

@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class TXHOrderManager;
+@class TXHProductsManager;
+
 @interface TXHSalesPaymentCardDetailsViewController : UIViewController
+
+@property (readonly, nonatomic, getter = isValid) BOOL valid;
+
+@property (strong, nonatomic) TXHProductsManager *productManager;
+@property (strong, nonatomic) TXHOrderManager    *orderManager;
 
 @end

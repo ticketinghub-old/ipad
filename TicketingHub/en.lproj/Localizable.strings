@@ -50,9 +50,9 @@
 "PRINTER_ERROR_INCONSISTENCY_RECOVER"           = "";
 "PRINTER_ERROR_UNKNOWN_RECOVERY"                = "";
 
-"ERROR_TITLE"                   = "Error";
-"PRINTER_ERROR_TITLE"           = "Printing Error";
-"ERROR_DISMISS_BUTTON_TITLE"    = "OK";
+"ERROR_DISMISS_BUTTON_TITLE" = "OK";
+"ERROR_TITLE"                = "Error";
+"PRINTER_ERROR_TITLE"        = "Printing Error";
 
 /* Activity labels - Printers */
 
@@ -108,3 +108,54 @@
 "TICKET_DETAILS_TITLE_FORMAT"                  = "%@ Ticket";
 "TICKET_DETAILS_MARK_AS_ATTENDED_BUTTON_TITLE" = "Mark as attended";
 "TICKET_DETAILS_ATTENDED_TITLE_FORMAT"         = "Attended at %@";
+
+
+/* Handpoint */
+// TODO:                 Give a bit of love into those messages!!!
+// statuses
+"DKPOSClientTransactionStatusCodeWaitingForCard"          = "Waiting For Card";
+"DKPOSClientTransactionStatusCodeCardInserted"            = "Card Inserted";
+"DKPOSClientTransactionStatusSignatureRequested"          = "Signature Requested";
+"DKPOSClientTransactionStatusCodeApplicationSelection"    = "Processing...";
+"DKPOSClientTransactionStatusCodeApplicationConfirmation" = "Processing...";
+"DKPOSClientTransactionStatusCodeAmountValidation"        = "Processing...";
+"DKPOSClientTransactionStatusCodePinInput"                = "Waiting For Pin";
+"DKPOSClientTransactionStatusCodeManualCardInput"         = "Manual Card Input";
+"DKPOSClientTransactionStatusCodeWaitingCardRemoval"      = "Waiting For Card Removal";
+"DKPOSClientTransactionStatusCodeTipInput"                = "Tip Input";
+"DKPOSClientTransactionStatusCodeConnecting"              = "Connecting...";
+"DKPOSClientTransactionStatusCodeSending"                 = "Connecting...";
+"DKPOSClientTransactionStatusCodeReceiving"               = "Connecting...";
+"DKPOSClientTransactionStatusCodeDisconnecting"           = "Disconnecting";
+"DKPOSClientTransactionStatusCodeTransactionApproved"     = "Approved";
+"DKPOSClientTransactionStatusCodeTransactionProcessed"    = "Transaction Processed";
+
+// errors
+"DKPOSClientTransactionErrorInvalidData"             = "Invalid Data";
+"DKPOSClientTransactionErrorProcessingError"         = "Processing Error";
+"DKPOSClientTransactionErrorCommandNotAllowed"       = "Error";
+"DKPOSClientTransactionErrorNotInitialized"          = "Error";
+"DKPOSClientTransactionErrorConnectionTimeout"       = "Connection Timeout";
+"DKPOSClientTransactionErrorConnectionFailed"        = "Connection Failed";
+"DKPOSClientTransactionErrorSendingFailed"           = "Comunication Failed";
+"DKPOSClientTransactionErrorReceivingFailed"         = "Comunication Failed";
+"DKPOSClientTransactionErrorNoDataAvailable"         = "Comunication Failed";
+"DKPOSClientTransactionErrorTransactionNotAllowed"   = "Transaction Not Allowed";
+"DKPOSClientTransactionErrorUnsupportedCurrency"     = "Currency Not Supported";
+"DKPOSClientTransactionErrorNoHostAvailable"         = "No Host Available";
+"DKPOSClientTransactionErrorCardReaderError"         = "Reader Error";
+"DKPOSClientTransactionErrorCardReadingFailed"       = "Reader Error";
+"DKPOSClientTransactionErrorInvalidCard"             = "Invalid Card";
+"DKPOSClientTransactionErrorInputTimeout"            = "Input Timeout";
+"DKPOSClientTransactionErrorUserCancelled"           = "Cancelled by User";
+"DKPOSClientTransactionErrorInvalidSignature"        = "Wrong Signature";
+"DKPOSClientTransactionErrorSharedSecretInvalid"     = "Shared Secret Invalid";
+"DKPOSClientTransactionErrorTransactionUndefined"    = "Undefined Transaction";
+"DKPOSClientTransactionErrorTransactionDeclined"     = "Transaction Declined";
+"DKPOSClientTransactionErrorTransactionNotProcessed" = "Transaction Not Processed";
+"DKPOSClientTransactionErrorTransactionCancelled"    = "Transaction Cancelled";
+"DKPOSClientTransactionErrorTransactionDeviceReset"  = "Transaction Device Reset";
+"DKPOSCLientTransactionErrorUnknownError"            = "Unknown Error";
+
+"DEVICE_CONNECTIONERROR_TITLE" = "Connection Error";
+"TRANSACTION_FAILED_TITLE"     = "Transaction Error";

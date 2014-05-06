@@ -13,15 +13,15 @@
 #import "TXHSalesTimerViewController.h"
 #import "TXHOrderManager.h"
 
+#import <Block-KVO/MTKObserving.h>
+
 @interface TXHSalesPaymentViewController () <UICollectionViewDelegateFlowLayout>
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
 
-// A mutable collection of sections indicating their expanded status.
-@property (strong, nonatomic) NSMutableDictionary *sections;
 
-// A reference to the payment details content controller
 @property (strong, nonatomic) TXHSalesPaymentPaymentDetailsViewController *paymentDetailsController;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *paymentTypeSegmentedControl;
 
 @end
 
@@ -31,15 +31,25 @@
 {
     [super viewDidLoad];
     
-    // Add constraints
-    self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    self.view.translatesAutoresizingMaskIntoConstraints = YES;
+}
+
+- (void)setPaymentDetailsController:(TXHSalesPaymentPaymentDetailsViewController *)paymentDetailsController
+{
+    _paymentDetailsController = paymentDetailsController;
+
+    paymentDetailsController.productManager = self.productManager;
+    paymentDetailsController.orderManager   = self.orderManager;
+    
+    [self updatePaymentMethod];
+    
+    [self map:@keypath(self.paymentDetailsController.valid) to:@keypath(self.valid) null:nil];
 }
 
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-#pragma unused (sender)
-    if ([segue.identifier isEqualToString:@"TXHSalesPaymentPaymentDetailsViewController"]) {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"TXHSalesPaymentPaymentDetailsViewController"])
+    {
         self.paymentDetailsController = segue.destinationViewController;
     }
 }
@@ -49,15 +59,12 @@
 
 - (IBAction)didChangePaymentMethod:(UISegmentedControl *)sender
 {
-    [self.paymentDetailsController setPaymentMethodType:(TXHPaymentMethodType)sender.selectedSegmentIndex];
-
-    // TODO: temporary
-    self.valid = (TXHPaymentMethodType)sender.selectedSegmentIndex == 2;
+    [self updatePaymentMethod];
 }
 
-- (void)setOffsetBottomBy:(CGFloat)offset
+- (void)updatePaymentMethod
 {
-//    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, offset, 0);
+    self.paymentDetailsController.paymentType = (TXHPaymentMethodType)self.paymentTypeSegmentedControl.selectedSegmentIndex;
 }
 
 #pragma mark - TXHSalesContentsViewControllerProtocol
