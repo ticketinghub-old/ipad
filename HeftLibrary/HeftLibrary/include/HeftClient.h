@@ -55,9 +55,9 @@ typedef enum{
  @param months Budget facility indicator. Decides how many months a payment can be divided into. Is required for budget transactions. Accepted values are:  03, 06, 12, 18, 24, 30, 36, 42, 48, 54, 60 
  @return YES if request is sent and NO if there is active transaction already.
  */
-- (BOOL)saleWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present;
-- (BOOL)saleWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present reference:(NSString*)reference;
 - (BOOL)saleWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present reference:(NSString*)reference divideBy:(NSString*)months;
+- (BOOL)saleWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present reference:(NSString*)reference;
+- (BOOL)saleWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present;
 
 /** 
  Performs REFUND transaction.
@@ -75,8 +75,8 @@ typedef enum{
  @param reference An optional reference id (max 25 characters) that can be associated with the authorization. Example value: 45678135.
  @return YES if request is sent and NO if there is active transaction already.
  */
-- (BOOL)refundWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present;
 - (BOOL)refundWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present reference:(NSString*)reference;
+- (BOOL)refundWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present;
 
 /**
  Voids SALE transaction.
@@ -120,18 +120,18 @@ typedef enum{
  *When a scanned code is detected the card reader will emit scan event notifications back to the caller, which the caller application can catch and display to the operator.
  *To cancel scan mode call cancel.
  *Scan mode is automatically disabled after a period of inactivity, on the card reader.
- @param multi_scan      true - [default] multiple scan codes can be scanned, resulting in multiple scan events. Scan mode must be esplicitly cancelled.
+ @param multiScan      true - [default] multiple scan codes can be scanned, resulting in multiple scan events. Scan mode must be esplicitly cancelled.
  *                      false - scan mode will be disabled as soon as one barcode has been detected
- @param buttonless_mode true - [default] The operator needs to press the scan buttons to activate the scanner (during scan mode).
+ @param buttonMode true - [default] The operator needs to press the scan buttons to activate the scanner (during scan mode).
  *                      false - The scanner will be turned on immediately and kept on for the duration of the scan mode.
  @param timeoutSeconds         0 - [default] The card reader will determine when scanning should time out.
  *                      x - The scanner will time out if x seconds of inactivity occur.
  @return YES if request is sent and No if there is already an active operation running. 
  */
--(BOOL)enableScanner;
--(BOOL)enableScanner:(BOOL)multiScan;
--(BOOL)enableScanner:(BOOL)multiScan buttonMode:(BOOL)buttonMode;
 -(BOOL)enableScanner:(BOOL)multiScan buttonMode:(BOOL)buttonMode timeoutSeconds:(NSInteger)timeoutSeconds;
+-(BOOL)enableScanner:(BOOL)multiScan buttonMode:(BOOL)buttonMode;
+-(BOOL)enableScanner:(BOOL)multiScan;
+-(BOOL)enableScanner;
 
 /**
  Performs start of the day request.
