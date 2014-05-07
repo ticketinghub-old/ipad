@@ -316,12 +316,11 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
 }
 
 
-- (void)updateOrderWithPaymentMethod:(NSString *)paymentMethod completion:(void (^)(TXHOrder *, NSError *))completion
-{
+- (void)updateOrderWithPayment:(TXHPayment *)payment completion:(TXHOrderCompletion)completion;{
     __weak typeof(self) wself = self;
     
     [self.txhManager.client updateOrder:self.order
-                      withPaymentMethod:paymentMethod
+                            withPayment:payment
                              completion:^(TXHOrder *order, NSError *error) {
                                  if (order)
                                  {

@@ -8,7 +8,10 @@
 
 //Info Dictionary Keys
 
-NSString *const kDKHandppointTransactionIDKey = @"TransactionID";
-NSString *const kDKHandpointDeviceSerialKey = @"SerialNumber";
-NSString *const kDKHandpointTransactionAuthorisationCodeKey = @"AuthorisationCode";
-NSString *const kDKHandpointTransactionCardIssuerNameKey = @"CardSchemeName";
+NSString *const kDKHandppointTransactionIDKey                    = @"TransactionID";
+NSString *const kDKHandpointDeviceSerialKey                      = @"SerialNumber";
+NSString *const kDKHandpointTransactionAuthorisationCodeKey      = @"AuthorisationCode";
+NSString *const kDKHandpointTransactionCardIssuerNameKey         = @"CardSchemeName";
+NSString *const kDKHandpointTransactionCardVerificationMethodKey = @"CVM";
+NSString *const kDKHandpointTransactionCardEntryTypeKey          = @"CardEntryType";
+NSString *const kDKHandpointTransactionEFTTransactionIDKey       = @"EFTTransactionID";

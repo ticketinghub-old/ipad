@@ -22,6 +22,8 @@
 @property (strong, nonatomic) TXHProductsManager *productManager;
 @property (strong, nonatomic) TXHOrderManager    *orderManager;
 
+@property (strong, nonatomic) TXHGateway         *gateway;
+
 @end
 
 
@@ -54,6 +56,11 @@
 {
     currentControler.productManager = self.productManager;
     currentControler.orderManager   = self.orderManager;
+    
+    if (self.paymentType == TXHPaymentMethodTypeCard)
+    {
+        currentControler.gateway = self.gateway;
+    }
     
     _currentControler = currentControler;
     

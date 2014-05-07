@@ -63,7 +63,7 @@ typedef void (^TXHArrayCompletion)(NSArray *array, NSError *error);
 
 // Payment
 
-- (void)updateOrderWithPaymentMethod:(NSString *)paymentMethod completion:(TXHOrderCompletion)completion;
+- (void)updateOrderWithPayment:(TXHPayment *)payment completion:(TXHOrderCompletion)completion;
 
 // confirmation
 

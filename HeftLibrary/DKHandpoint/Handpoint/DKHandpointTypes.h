@@ -75,4 +75,8 @@ extern NSString *const kDKHandppointTransactionIDKey;
 extern NSString *const kDKHandpointDeviceSerialKey;
 extern NSString *const kDKHandpointTransactionAuthorisationCodeKey;
 extern NSString *const kDKHandpointTransactionCardIssuerNameKey;
+extern NSString *const kDKHandpointTransactionCardVerificationMethodKey;
+extern NSString *const kDKHandpointTransactionCardEntryTypeKey;
+extern NSString *const kDKHandpointTransactionEFTTransactionIDKey;
+
 

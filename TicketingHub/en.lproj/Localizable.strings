@@ -159,3 +159,7 @@
 
 "DEVICE_CONNECTIONERROR_TITLE" = "Connection Error";
 "TRANSACTION_FAILED_TITLE"     = "Transaction Error";
+
+/* Card payment view */
+
+"CARD_CONTROLLER_UPDATING_PAYMENT_MESSAGE" = "Finalizing payment";

@@ -9,11 +9,15 @@
 #import "DKPOSClientTransactionInfo.h"
 #import "DKPOSClientTypes.h"
 
-NSString *const kDKPOSClientTransactionIDKey = @"DKPOSClientTransactionIDKey";
-NSString *const kDKPOSClientDeviceSerialKey = @"DKPOSClientDeviceSerialKey";
-NSString *const kDKPOSClientTransactionAuthorisationCodeKey = @"DKPOSClientTransactionAuthorisationCodeKey";
-NSString *const kDKPOSClientTransactionCardIssuerNameKey = @"DKPOSClientTransactionCardSchemeNameKey";
-NSString *const kDKPOSClientTransactionIssuerID = @"kDKPOSClientTransactionIssuerID";
+NSString *const kDKPOSClientTransactionIDKey                     = @"DKPOSClientTransactionIDKey";
+NSString *const kDKPOSClientDeviceSerialKey                      = @"DKPOSClientDeviceSerialKey";
+NSString *const kDKPOSClientTransactionAuthorisationCodeKey      = @"DKPOSClientTransactionAuthorisationCodeKey";
+NSString *const kDKPOSClientTransactionCardIssuerNameKey         = @"DKPOSClientTransactionCardSchemeNameKey";
+NSString *const kDKPOSClientTransactionIssuerID                  = @"kDKPOSClientTransactionIssuerID";
+NSString *const kDKPOSClientTransactionCardVerificationMethodKey = @"kDKPOSClientTransactionCardVerificationMethodKey";
+NSString *const kDKPOSClientTransactionCardEntryTypeKey          = @"kDKPOSClientTransactionCardEntryTypeKey";
+NSString *const kDKPOSClientTransactionEFTTransactionIDKey       = @"kDKPOSClientTransactionEFTTransactionIDKey";
+
 
 @implementation DKPOSClientTransactionInfo
 

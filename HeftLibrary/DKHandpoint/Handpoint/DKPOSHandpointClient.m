@@ -618,6 +618,16 @@
         if(info[kDKHandppointTransactionIDKey])
             result[kDKPOSClientTransactionIDKey] = info[kDKHandppointTransactionIDKey];
         
+        if (info[kDKHandpointTransactionCardVerificationMethodKey])
+        {
+            result[kDKPOSClientTransactionCardVerificationMethodKey] = info[kDKHandpointTransactionCardVerificationMethodKey];
+        }
+        
+        if (info[kDKHandpointTransactionEFTTransactionIDKey]) {
+            result[kDKPOSClientTransactionEFTTransactionIDKey] = info[kDKHandpointTransactionEFTTransactionIDKey];
+        }
+        
+        
         return result;
     }
     

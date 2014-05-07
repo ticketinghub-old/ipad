@@ -18,4 +18,6 @@
 @property (strong, nonatomic) TXHProductsManager *productManager;
 @property (strong, nonatomic) TXHOrderManager    *orderManager;
 
+@property (strong, nonatomic) TXHGateway *gateway;
+
 @end

@@ -25,6 +25,8 @@ typedef NS_ENUM(NSInteger, TXHPaymentMethodType)
 @property (strong, nonatomic) TXHProductsManager *productManager;
 @property (strong, nonatomic) TXHOrderManager    *orderManager;
 
+@property (strong, nonatomic) TXHGateway *gateway;
+
 @property (assign, nonatomic) TXHPaymentMethodType paymentType;
 
 @end

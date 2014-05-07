@@ -13,6 +13,10 @@ extern NSString *const kDKPOSClientDeviceSerialKey;
 extern NSString *const kDKPOSClientTransactionAuthorisationCodeKey;
 extern NSString *const kDKPOSClientTransactionCardIssuerNameKey;
 extern NSString *const kDKPOSClientTransactionIssuerID;
+extern NSString *const kDKPOSClientTransactionCardVerificationMethodKey;
+extern NSString *const kDKPOSClientTransactionCardEntryTypeKey;
+extern NSString *const kDKPOSClientTransactionEFTTransactionIDKey;
+
 
 @interface DKPOSClientTransactionInfo : NSObject
 

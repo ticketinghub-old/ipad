@@ -19,6 +19,8 @@
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
 
+@property (nonatomic, strong) NSArray *paymentGateways;
+@property (nonatomic, strong) TXHGateway *handpointGateway; // TODO: to change of couse
 
 @property (strong, nonatomic) TXHSalesPaymentPaymentDetailsViewController *paymentDetailsController;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *paymentTypeSegmentedControl;
@@ -31,6 +33,56 @@
 {
     [super viewDidLoad];
     
+    __weak typeof(self) wself = self;
+
+    [self updateView];
+    
+    [self.orderManager getPaymentGatewaysWithCompletion:^(NSArray *gateways, NSError *error) {
+        
+        if (error)
+        {
+            //TODO: handle error
+            return ;
+        }
+        wself.paymentGateways = gateways;
+    }];
+}
+
+- (void)setPaymentGateways:(NSArray *)paymentGateways
+{
+    _paymentGateways = paymentGateways;
+
+    [self checkHandpointgateway];
+
+    [self updateView];
+}
+
+- (void)checkHandpointgateway
+{
+    for (TXHGateway *gateway in self.paymentGateways)
+    {
+        if ([gateway.type isEqualToString:@"handpoint"])
+        {
+            self.handpointGateway = gateway;
+            return;
+        }
+    }
+}
+
+- (void)setHandpointGateway:(TXHGateway *)handpointGateway
+{
+    _handpointGateway = handpointGateway;
+    [self updatePaymentMethod];
+}
+
+- (void)updateView
+{
+    [self updatePaymentTypeSegmentedControl];
+}
+
+- (void)updatePaymentTypeSegmentedControl
+{
+//    self.paymentTypeSegmentedControl.numberOfSegments = 1 + [self.acceptableGateways count];
 }
 
 - (void)setPaymentDetailsController:(TXHSalesPaymentPaymentDetailsViewController *)paymentDetailsController
@@ -44,7 +96,6 @@
     
     [self map:@keypath(self.paymentDetailsController.valid) to:@keypath(self.valid) null:nil];
 }
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -64,6 +115,7 @@
 
 - (void)updatePaymentMethod
 {
+    self.paymentDetailsController.gateway     = self.handpointGateway;
     self.paymentDetailsController.paymentType = (TXHPaymentMethodType)self.paymentTypeSegmentedControl.selectedSegmentIndex;
 }
 
@@ -71,24 +123,17 @@
 
 - (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
 {
-    NSDictionary *ownerInfo = @{@"first_name" : @"Bartek",
-                                @"last_name"  : @"Hugo",
-                                @"email"      : @"bartekhugo@me.com",
-                                @"telephone"  : @"+447534463225",
-                                @"country"    : @"GB"};
+//   [self.orderManager updateOrderWithPaymentMethod:@"cash"
+//                                      completion:^(TXHOrder *order, NSError *error) {
+//                                          if (!error)
+    [self.orderManager confirmOrderWithCompletion:^(TXHOrder *order2, NSError *error2) {
+      if (blockName)
+          blockName(error2);
+    }];
+//                                          else if (blockName)
+//                                                  blockName(error);
     
-    [self.orderManager updateOrderWithOwnerInfo:ownerInfo
-                                   completion:^(TXHOrder *order, NSError *error) {
-                                       if (!error)
-                                           [self.orderManager updateOrderWithPaymentMethod:@"credit"
-                                                                              completion:^(TXHOrder *order2, NSError *error2) {
-                                                                                  if (!error)
-                                                                                      [self.orderManager confirmOrderWithCompletion:^(TXHOrder *order3, NSError *error3) {
-                                                                                          if (blockName)
-                                                                                              blockName(error3);
-                                                                                      }];
-                                                                              }];
-                                   }];
+//                                      }];
     
 }
 

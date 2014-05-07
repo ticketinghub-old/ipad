@@ -13,6 +13,7 @@
 #import "TXHActivityLabelView.h"
 
 #import "DKPOSHandpointClient.h"
+#import "TXHPayment+DKPOSClientTransactionInfo.h"
 
 #import "TXHProductsManager.h"
 #import "TXHOrderManager.h"
@@ -171,7 +172,32 @@ static void * HandpointConnectedContext = &HandpointConnectedContext;
 {
     [self.activityView hide];
 
-    self.valid = YES;
+    NSManagedObjectContext *orderMoc = self.orderManager.order.managedObjectContext;
+    
+    TXHPayment *payment = [TXHPayment createWithTransactionInfo:info
+                                         inManagedObjectContext:orderMoc];
+    
+    payment.gateway = self.gateway;
+    
+    [self.activityView showWithMessage:NSLocalizedString(@"CARD_CONTROLLER_UPDATING_PAYMENT_MESSAGE", nil)
+                       indicatorHidden:NO];
+    
+    __weak typeof(self) wself = self;
+    
+    [self.orderManager updateOrderWithPayment:payment
+                                   completion:^(TXHOrder *order, NSError *error) {
+                                       [wself.activityView hide];
+                                       
+                                       if (error)
+                                       {
+                                           [self showErrorWithTitle:NSLocalizedString(@"", nil)
+                                                            message:NSLocalizedString(@"", nil)];
+                                       }
+                                       else
+                                       {
+                                           wself.valid = YES;
+                                       }
+                                   }];
 }
 - (void)posClient:(NSObject<DKPOSClient>*)client transactionFailedWithError:(NSError*)error
 {

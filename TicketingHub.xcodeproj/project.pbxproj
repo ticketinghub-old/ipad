@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3E082DAE190EC909003B60C6 /* TXHConfigurationStaging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E2E2C5A190EB81B006EABA1 /* TXHConfigurationStaging.plist */; };
+		3E0FF588191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0FF587191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.m */; };
 		3E15207118FFD4190013F09E /* TXHTicketDetailsErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E15207018FFD4190013F09E /* TXHTicketDetailsErrorView.m */; };
 		3E192D5718FD188C00D727AA /* TXHDoorMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E192D5618FD188C00D727AA /* TXHDoorMainViewController.m */; };
 		3E192D5A18FD308200D727AA /* TXHTicket+Title.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E192D5918FD308200D727AA /* TXHTicket+Title.m */; };
@@ -149,6 +150,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E0FF586191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHPayment+DKPOSClientTransactionInfo.h"; sourceTree = "<group>"; };
+		3E0FF587191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHPayment+DKPOSClientTransactionInfo.m"; sourceTree = "<group>"; };
 		3E15206F18FFD4190013F09E /* TXHTicketDetailsErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketDetailsErrorView.h; sourceTree = "<group>"; };
 		3E15207018FFD4190013F09E /* TXHTicketDetailsErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketDetailsErrorView.m; sourceTree = "<group>"; };
 		3E192D5518FD188C00D727AA /* TXHDoorMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorMainViewController.h; sourceTree = "<group>"; };
@@ -431,6 +434,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E0FF585191A2F600067F9F2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3EAA200018CF7C52003EC924 /* TXHTicket+Filter.h */,
+				3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */,
+				3E192D5818FD308200D727AA /* TXHTicket+Title.h */,
+				3E192D5918FD308200D727AA /* TXHTicket+Title.m */,
+				3E51D2D019096C0D00F8193E /* TXHOrder+Helpers.h */,
+				3E51D2D119096C0D00F8193E /* TXHOrder+Helpers.m */,
+				3E0FF586191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.h */,
+				3E0FF587191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		3E192D5B18FD5FD800D727AA /* Infinea Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -733,6 +751,7 @@
 		3E3D46EB18ACBB6E00275ACF /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				3E0FF585191A2F600067F9F2 /* Model */,
 				3EE8E21918CA2645006E8F5E /* UIImage+ImageEffects.h */,
 				3EE8E21A18CA2645006E8F5E /* UIImage+ImageEffects.m */,
 				3E3D46EC18ACBB8500275ACF /* UIColor+TicketingHub.h */,
@@ -747,14 +766,8 @@
 				3EC8845A18C4984B00CE0597 /* UIResponder+FirstResponder.m */,
 				3EE8E21218C890F5006E8F5E /* UIImage+String.h */,
 				3EE8E21318C890F5006E8F5E /* UIImage+String.m */,
-				3EAA200018CF7C52003EC924 /* TXHTicket+Filter.h */,
-				3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */,
 				3E7F87D218DC59060046DD7A /* NSDateFormatter+DisplayFormat.h */,
 				3E7F87D318DC59060046DD7A /* NSDateFormatter+DisplayFormat.m */,
-				3E192D5818FD308200D727AA /* TXHTicket+Title.h */,
-				3E192D5918FD308200D727AA /* TXHTicket+Title.m */,
-				3E51D2D019096C0D00F8193E /* TXHOrder+Helpers.h */,
-				3E51D2D119096C0D00F8193E /* TXHOrder+Helpers.m */,
 				3E938DBB1910E62A00FC29E9 /* NSString+Hex.h */,
 				3E938DBC1910E62A00FC29E9 /* NSString+Hex.m */,
 			);
@@ -1071,8 +1084,8 @@
 		58E4FB481760AE5500E328A0 = {
 			isa = PBXGroup;
 			children = (
-				3EACF4A41906ABB200AE636F /* extLibraries */,
 				3EACF4A71906ABB200AE636F /* Handpoint */,
+				3EACF4A41906ABB200AE636F /* extLibraries */,
 				3ECE452A18C0B57F00DD1F7B /* AFNetworkActivityLogger.h */,
 				3ECE452B18C0B57F00DD1F7B /* AFNetworkActivityLogger.m */,
 				3EB7B992191909BE006DA520 /* iOS-api.podspec */,
@@ -1456,6 +1469,7 @@
 				EEB1845C17D114390025530A /* TXHCurrencyEntryView.m in Sources */,
 				EEB1845E17D114390025530A /* TXHDataEntryFieldErrorView.m in Sources */,
 				EEB1845F17D114390025530A /* TXHDataSelectionView.m in Sources */,
+				3E0FF588191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.m in Sources */,
 				EEB1846017D114390025530A /* TXHDataSelectionViewController.m in Sources */,
 				3E8770B018D8685D00585FFA /* TXHSalesSummaryFooter.m in Sources */,
 				3E938DB5190FED7A00FC29E9 /* DKHandpointTypes.m in Sources */,
@@ -1879,6 +1893,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "70349576-C737-4768-9A60-779CF49BA5D6";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
@@ -2210,6 +2225,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "70349576-C737-4768-9A60-779CF49BA5D6";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",

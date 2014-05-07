@@ -11,9 +11,11 @@
 #import "TXHOrderManager.h"
 #import "TXHProductsManager.h"
 
-@interface TXHSalesPaymentCashDetailsViewController () <UITextFieldDelegate>
+@interface TXHSalesPaymentCashDetailsViewController ()
 
 @property (strong, nonatomic) NSNumber *totalAmount;
+
+@property (readwrite, nonatomic, getter = isValid) BOOL valid;
 
 @property (weak, nonatomic) IBOutlet UILabel     *totalAmountValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel     *changeValueLabel;
@@ -29,6 +31,20 @@
     [super viewDidLoad];
 
     [self updateView];
+
+    NSManagedObjectContext *orderMoc = self.orderManager.order.managedObjectContext;
+    
+    TXHPayment *payment = [TXHPayment insertInManagedObjectContext:orderMoc];
+    payment.type = @"cash";
+    
+    __weak typeof(self) wself = self;
+    [self.orderManager updateOrderWithPayment:payment
+                                   completion:^(TXHOrder *order, NSError *error) {
+                                       
+                                       wself.valid = (error == nil);
+                                       [wself updateView];
+                                       
+                                   }];
 }
 
 - (void)setProductManager:(TXHProductsManager *)productManager
