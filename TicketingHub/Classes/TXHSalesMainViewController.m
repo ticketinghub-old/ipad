@@ -175,12 +175,16 @@ static void * ContentValidContext = &ContentValidContext;
     __weak typeof(self) wself = self;
     
     [self setKeyboardWillShowAnimationBlock:^(CGRect keyboardFrame) {
-        CGFloat height = keyboardFrame.size.width - wself.stepCompletionController.view.height;
-        [wself.stepContentController setOffsetBottomBy:height];
+        if ([wself.stepContentController respondsToSelector:@selector(setOffsetBottomBy:)])
+        {
+            CGFloat height = keyboardFrame.size.width - wself.stepCompletionController.view.height;
+            [wself.stepContentController setOffsetBottomBy:height];
+        }
     }];
     
     [self setKeyboardWillHideAnimationBlock:^(CGRect keyboardFrame) {
-        [wself.stepContentController setOffsetBottomBy:0];
+        if ([wself.stepContentController respondsToSelector:@selector(setOffsetBottomBy:)])
+            [wself.stepContentController setOffsetBottomBy:0];
     }];
 }
 
