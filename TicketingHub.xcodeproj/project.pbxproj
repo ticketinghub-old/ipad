@@ -80,6 +80,9 @@
 		3EE8E21418C890F5006E8F5E /* UIImage+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8E21318C890F5006E8F5E /* UIImage+String.m */; };
 		3EE8E21818CA23C8006E8F5E /* TXHTicketDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8E21718CA23C8006E8F5E /* TXHTicketDetailsViewController.m */; };
 		3EE8E21B18CA2645006E8F5E /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8E21A18CA2645006E8F5E /* UIImage+ImageEffects.m */; };
+		3EF09F90191BB0A100C85109 /* TXHPaymentOptionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF09F8F191BB0A100C85109 /* TXHPaymentOptionsManager.m */; };
+		3EF09F93191BB4CB00C85109 /* TXHPaymentOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF09F92191BB4CB00C85109 /* TXHPaymentOption.m */; };
+		3EF09F96191BDB7800C85109 /* UISegmentedControl+NSArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF09F95191BDB7800C85109 /* UISegmentedControl+NSArray.m */; };
 		3EF8EE3A18D3148400586283 /* TicketListHeaders.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EF8EE3918D3148400586283 /* TicketListHeaders.xib */; };
 		3EF8EE3E18D332F200586283 /* TXHDoorTicketsDateHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF8EE3D18D332F200586283 /* TXHDoorTicketsDateHeaderView.m */; };
 		3EF8EE4118D3330900586283 /* TXHDoorTicketsAttendedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF8EE4018D3330900586283 /* TXHDoorTicketsAttendedHeaderView.m */; };
@@ -295,6 +298,12 @@
 		3EE8E21718CA23C8006E8F5E /* TXHTicketDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketDetailsViewController.m; sourceTree = "<group>"; };
 		3EE8E21918CA2645006E8F5E /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		3EE8E21A18CA2645006E8F5E /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		3EF09F8E191BB0A100C85109 /* TXHPaymentOptionsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHPaymentOptionsManager.h; sourceTree = SOURCE_ROOT; };
+		3EF09F8F191BB0A100C85109 /* TXHPaymentOptionsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHPaymentOptionsManager.m; sourceTree = SOURCE_ROOT; };
+		3EF09F91191BB4CB00C85109 /* TXHPaymentOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHPaymentOption.h; sourceTree = SOURCE_ROOT; };
+		3EF09F92191BB4CB00C85109 /* TXHPaymentOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHPaymentOption.m; sourceTree = SOURCE_ROOT; };
+		3EF09F94191BDB7800C85109 /* UISegmentedControl+NSArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+NSArray.h"; sourceTree = "<group>"; };
+		3EF09F95191BDB7800C85109 /* UISegmentedControl+NSArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISegmentedControl+NSArray.m"; sourceTree = "<group>"; };
 		3EF8EE3918D3148400586283 /* TicketListHeaders.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketListHeaders.xib; sourceTree = "<group>"; };
 		3EF8EE3C18D332F200586283 /* TXHDoorTicketsDateHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorTicketsDateHeaderView.h; sourceTree = "<group>"; };
 		3EF8EE3D18D332F200586283 /* TXHDoorTicketsDateHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorTicketsDateHeaderView.m; sourceTree = "<group>"; };
@@ -679,6 +688,10 @@
 			children = (
 				EE75D96617D11048009ADCD8 /* TXHSalesPaymentViewController.h */,
 				EE75D96717D11048009ADCD8 /* TXHSalesPaymentViewController.m */,
+				3EF09F8E191BB0A100C85109 /* TXHPaymentOptionsManager.h */,
+				3EF09F8F191BB0A100C85109 /* TXHPaymentOptionsManager.m */,
+				3EF09F91191BB4CB00C85109 /* TXHPaymentOption.h */,
+				3EF09F92191BB4CB00C85109 /* TXHPaymentOption.m */,
 				3E3A5B1B18AA705900A54812 /* Content */,
 			);
 			name = "4 Payment";
@@ -770,6 +783,8 @@
 				3E7F87D318DC59060046DD7A /* NSDateFormatter+DisplayFormat.m */,
 				3E938DBB1910E62A00FC29E9 /* NSString+Hex.h */,
 				3E938DBC1910E62A00FC29E9 /* NSString+Hex.m */,
+				3EF09F94191BDB7800C85109 /* UISegmentedControl+NSArray.h */,
+				3EF09F95191BDB7800C85109 /* UISegmentedControl+NSArray.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1448,6 +1463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EF09F93191BB4CB00C85109 /* TXHPaymentOption.m in Sources */,
 				EEF6BA4717D1192B005B1B20 /* TXHBarcodeScanner.m in Sources */,
 				3E15207118FFD4190013F09E /* TXHTicketDetailsErrorView.m in Sources */,
 				3E53C53D18E343FD00FF6F9B /* TXHPrinterSelectionViewController.m in Sources */,
@@ -1509,6 +1525,7 @@
 				3EC8845B18C4984B00CE0597 /* UIResponder+FirstResponder.m in Sources */,
 				EE75D99C17D11048009ADCD8 /* TXHSalesSummaryItemCell.m in Sources */,
 				3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */,
+				3EF09F90191BB0A100C85109 /* TXHPaymentOptionsManager.m in Sources */,
 				3E4ADF7618D9ED2800D2C508 /* TXHSignaturePadViewController.m in Sources */,
 				EE75D99E17D11048009ADCD8 /* TXHSalesSummaryHeader.m in Sources */,
 				EE75D99F17D11048009ADCD8 /* TXHSalesSummaryViewController.m in Sources */,
@@ -1539,6 +1556,7 @@
 				3E938DB1190FED7A00FC29E9 /* DKPOSClientFactory.m in Sources */,
 				3ECE137418B63A6900E7148F /* NSDate+Additions.m in Sources */,
 				3E192D5718FD188C00D727AA /* TXHDoorMainViewController.m in Sources */,
+				3EF09F96191BDB7800C85109 /* UISegmentedControl+NSArray.m in Sources */,
 				3E51D2D219096C0D00F8193E /* TXHOrder+Helpers.m in Sources */,
 				3E938DB4190FED7A00FC29E9 /* DKPOSCurrency.m in Sources */,
 				EEB1846717D114390025530A /* TXHTextEntryView.m in Sources */,

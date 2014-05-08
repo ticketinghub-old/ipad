@@ -462,20 +462,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MLT-0W-HWB">
-                                <rect key="frame" x="0.0" y="59" width="1024" height="709"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <segue destination="Z2H-xZ-GsB" kind="embed" identifier="TXHSalesPaymentPaymentDetailsViewController" id="ZQK-Yz-YGa"/>
-                                </connections>
-                            </containerView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Afw-Y7-e2L">
+                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Afw-Y7-e2L">
                                 <rect key="frame" x="20" y="16" width="984" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
-                                    <segment title="Credit / Debit Card"/>
-                                    <segment title="By Cash"/>
-                                    <segment title="Credit"/>
+                                    <segment title=""/>
+                                    <segment title=""/>
                                 </segments>
                                 <color key="tintColor" red="0.16078431369999999" green="0.47843137250000001" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -487,21 +479,30 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQd-0A-MHH">
+                                <rect key="frame" x="0.0" y="59" width="1024" height="709"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Afw-Y7-e2L" firstAttribute="top" secondItem="xcT-hZ-I7c" secondAttribute="bottom" constant="16" id="0DW-DA-SVp"/>
                             <constraint firstItem="Afw-Y7-e2L" firstAttribute="leading" secondItem="0ti-f9-XGT" secondAttribute="leading" constant="20" id="8Pd-gr-BxV"/>
-                            <constraint firstItem="MLT-0W-HWB" firstAttribute="leading" secondItem="0ti-f9-XGT" secondAttribute="leading" id="QeE-KH-Xkk"/>
-                            <constraint firstAttribute="trailing" secondItem="MLT-0W-HWB" secondAttribute="trailing" id="WmP-1P-F5I"/>
+                            <constraint firstItem="Wn5-rI-pgt" firstAttribute="top" secondItem="HQd-0A-MHH" secondAttribute="bottom" id="9wv-UI-iSb"/>
+                            <constraint firstItem="HQd-0A-MHH" firstAttribute="top" secondItem="0ti-f9-XGT" secondAttribute="top" constant="59" id="QMQ-vd-clN"/>
                             <constraint firstAttribute="trailing" secondItem="Afw-Y7-e2L" secondAttribute="trailing" constant="20" id="b8h-RF-uIL"/>
-                            <constraint firstItem="MLT-0W-HWB" firstAttribute="top" secondItem="xcT-hZ-I7c" secondAttribute="bottom" constant="59" id="gf5-yG-ByT"/>
-                            <constraint firstItem="Wn5-rI-pgt" firstAttribute="top" secondItem="MLT-0W-HWB" secondAttribute="bottom" id="iR3-wj-5T2"/>
+                            <constraint firstItem="HQd-0A-MHH" firstAttribute="leading" secondItem="0ti-f9-XGT" secondAttribute="leading" id="ddR-9J-hoa"/>
+                            <constraint firstAttribute="trailing" secondItem="HQd-0A-MHH" secondAttribute="trailing" id="yEJ-lj-Yrf"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <connections>
+                        <outlet property="containerView" destination="HQd-0A-MHH" id="lzd-fc-W68"/>
                         <outlet property="paymentTypeSegmentedControl" destination="Afw-Y7-e2L" id="5P4-Dv-4RS"/>
+                        <segue destination="IVP-nR-Uny" kind="custom" identifier="TXHSalesPaymentCardDetailsViewController" customClass="TXHEmbeddingSegue" id="Bb2-UM-Irg"/>
+                        <segue destination="QH0-TV-maE" kind="custom" identifier="TXHSalesPaymentCashDetailsViewController" customClass="TXHEmbeddingSegue" id="Ihd-er-Pff"/>
+                        <segue destination="QXG-6t-PVr" kind="custom" identifier="TXHSalesPaymentCreditDetailsViewController" customClass="TXHEmbeddingSegue" id="9J5-2Y-C67"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D4R-hu-YO5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1019,45 +1020,6 @@
             </objects>
             <point key="canvasLocation" x="1862" y="-478"/>
         </scene>
-        <!--Sales Payment Payment Details View Controller-->
-        <scene sceneID="Cqk-w3-mdl">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" modalPresentationStyle="formSheet" id="Z2H-xZ-GsB" customClass="TXHSalesPaymentPaymentDetailsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Z13-Qo-vWo"/>
-                        <viewControllerLayoutGuide type="bottom" id="6pp-jg-1R1"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottomRight" id="ia8-zE-TDe">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="709"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JGZ-Ai-liG">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="709"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="JGZ-Ai-liG" firstAttribute="top" secondItem="Z13-Qo-vWo" secondAttribute="bottom" id="3Gv-cm-bsF"/>
-                            <constraint firstAttribute="trailing" secondItem="JGZ-Ai-liG" secondAttribute="trailing" id="5xW-8t-Gdw"/>
-                            <constraint firstItem="JGZ-Ai-liG" firstAttribute="leading" secondItem="ia8-zE-TDe" secondAttribute="leading" id="93v-bf-xPG"/>
-                            <constraint firstItem="6pp-jg-1R1" firstAttribute="top" secondItem="JGZ-Ai-liG" secondAttribute="bottom" id="IqT-ug-3i8"/>
-                        </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                    <toolbarItems/>
-                    <connections>
-                        <outlet property="paymentContentView" destination="JGZ-Ai-liG" id="WVV-y1-GCL"/>
-                        <segue destination="QXG-6t-PVr" kind="custom" identifier="TXHSalesPaymentCreditDetailsViewController" customClass="TXHEmbeddingSegue" id="kAo-9i-GI8"/>
-                        <segue destination="QH0-TV-maE" kind="custom" identifier="TXHSalesPaymentCashDetailsViewController" customClass="TXHEmbeddingSegue" id="zhi-pf-aB7"/>
-                        <segue destination="IVP-nR-Uny" kind="custom" identifier="TXHSalesPaymentCardDetailsViewController" customClass="TXHEmbeddingSegue" id="86V-wC-Mt2"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3C1-MJ-j2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4140" y="1412"/>
-        </scene>
         <!--Sales Payment Card Details View Controller-->
         <scene sceneID="9LO-g9-XoL">
             <objects>
@@ -1125,7 +1087,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VvL-7o-JXE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5625" y="516"/>
+            <point key="canvasLocation" x="4465" y="520"/>
         </scene>
         <!--Sales Payment Credit Details View Controller-->
         <scene sceneID="WVg-Xj-7Wi">
@@ -1177,7 +1139,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LqH-0V-7Ih" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5625" y="2280"/>
+            <point key="canvasLocation" x="4465" y="2284"/>
         </scene>
         <!--Sales Payment Cash Details View Controller-->
         <scene sceneID="dK5-23-xY9">
@@ -1275,7 +1237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XK2-9p-DUF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5625" y="1383"/>
+            <point key="canvasLocation" x="4465" y="1387"/>
         </scene>
         <!--Signature Pad View Controller-->
         <scene sceneID="o0C-iJ-Ysu">
@@ -1417,7 +1379,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7dg-eD-j0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6918" y="1358"/>
+            <point key="canvasLocation" x="5758" y="1362"/>
         </scene>
     </scenes>
     <resources>

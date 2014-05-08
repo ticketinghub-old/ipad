@@ -8,22 +8,39 @@
 
 #import "TXHSalesPaymentViewController.h"
 
-#import "TXHSalesCompletionViewController.h"
-#import "TXHSalesPaymentPaymentDetailsViewController.h"
-#import "TXHSalesTimerViewController.h"
+#import "TXHPaymentOptionsManager.h"
+#import "TXHPaymentOption.h"
+
+#import "TXHProductsManager.h"
 #import "TXHOrderManager.h"
 
+#import "TXHEmbeddingSegue.h"
+#import "UISegmentedControl+NSArray.h"
+#import "TXHActivityLabelView.h"
 #import <Block-KVO/MTKObserving.h>
+
+@protocol TXHSalesPaymentSpecificViewControllerProtocol
+
+@property (readonly, nonatomic, getter = isValid) BOOL valid;
+@property (strong, nonatomic) TXHProductsManager *productManager;
+@property (strong, nonatomic) TXHOrderManager    *orderManager;
+@property (strong, nonatomic) TXHPaymentOption   *paymentOption;
+
+@end
+
 
 @interface TXHSalesPaymentViewController () <UICollectionViewDelegateFlowLayout>
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
 
-@property (nonatomic, strong) NSArray *paymentGateways;
-@property (nonatomic, strong) TXHGateway *handpointGateway; // TODO: to change of couse
-
-@property (strong, nonatomic) TXHSalesPaymentPaymentDetailsViewController *paymentDetailsController;
+@property (weak, nonatomic) TXHActivityLabelView *activityView;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *paymentTypeSegmentedControl;
+
+@property (strong, nonatomic) UIViewController<TXHSalesPaymentSpecificViewControllerProtocol> *paymentDetailsController;
+@property (strong, nonatomic) TXHPaymentOptionsManager *paymentOptionsManager;
+@property (strong, nonatomic) NSArray *paymentOptions;
+
 
 @end
 
@@ -32,74 +49,99 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    __weak typeof(self) wself = self;
 
-    [self updateView];
+    [self setupOptionsManger];
+    [self reloadOptions];
+}
+
+- (TXHActivityLabelView *)activityView
+{
+    if (!_activityView)
+    {
+        _activityView = [TXHActivityLabelView getInstanceInView:self.view];
+    }
+    return _activityView;
+}
+
+- (void)setupOptionsManger
+{
+    TXHPaymentOptionsManager *optionsManager = [[TXHPaymentOptionsManager alloc] initWithOrderManager:self.orderManager];
+    self.paymentOptionsManager = optionsManager;
+}
+
+- (void)reloadOptions
+{
+    __weak typeof(self) wself = self;
     
-    [self.orderManager getPaymentGatewaysWithCompletion:^(NSArray *gateways, NSError *error) {
+    [self.activityView showWithMessage:@"" indicatorHidden:NO];
+    [self.paymentOptionsManager loadOptionsWithCompletion:^(NSArray *paymentOptions, NSError *error) {
+
+        [wself.activityView hide];
         
         if (error)
         {
-            //TODO: handle error
-            return ;
+            // TODO: handle error
+            return;
         }
-        wself.paymentGateways = gateways;
+        
+        wself.paymentOptions = paymentOptions;
     }];
 }
 
-- (void)setPaymentGateways:(NSArray *)paymentGateways
+- (void)setPaymentOptions:(NSArray *)paymentOptions
 {
-    _paymentGateways = paymentGateways;
-
-    [self checkHandpointgateway];
-
-    [self updateView];
+    _paymentOptions = paymentOptions;
+    
+    [self reloadView];
 }
 
-- (void)checkHandpointgateway
+- (void)reloadView
 {
-    for (TXHGateway *gateway in self.paymentGateways)
-    {
-        if ([gateway.type isEqualToString:@"handpoint"])
-        {
-            self.handpointGateway = gateway;
-            return;
-        }
-    }
+    [self reloadSegmentedControl];
+    [self reloadSelectedController];
 }
 
-- (void)setHandpointGateway:(TXHGateway *)handpointGateway
+- (void)reloadSegmentedControl
 {
-    _handpointGateway = handpointGateway;
-    [self updatePaymentMethod];
+    NSArray *paymentNames = [self.paymentOptions valueForKeyPath:@"displayName"];
+    
+    [self.paymentTypeSegmentedControl setItemsFromArray:paymentNames];
+    [self.paymentTypeSegmentedControl setSelectedSegmentIndex:0];
+    
+    self.paymentTypeSegmentedControl.hidden = [paymentNames count] == 0;
 }
 
-- (void)updateView
+- (void)reloadSelectedController
 {
-    [self updatePaymentTypeSegmentedControl];
+    NSUInteger selectedIndex = self.paymentTypeSegmentedControl.selectedSegmentIndex;
+    TXHPaymentOption *option = [self.paymentOptions objectAtIndex:selectedIndex];
+    NSString *identifier     = option.segueIdentifier;
+
+    [self performSegueWithIdentifier:identifier sender:self];
 }
 
-- (void)updatePaymentTypeSegmentedControl
-{
-//    self.paymentTypeSegmentedControl.numberOfSegments = 1 + [self.acceptableGateways count];
-}
-
-- (void)setPaymentDetailsController:(TXHSalesPaymentPaymentDetailsViewController *)paymentDetailsController
+- (void)setPaymentDetailsController:(UIViewController<TXHSalesPaymentSpecificViewControllerProtocol> *)paymentDetailsController
 {
     _paymentDetailsController = paymentDetailsController;
 
     paymentDetailsController.productManager = self.productManager;
     paymentDetailsController.orderManager   = self.orderManager;
     
-    [self updatePaymentMethod];
-    
     [self map:@keypath(self.paymentDetailsController.valid) to:@keypath(self.valid) null:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"TXHSalesPaymentPaymentDetailsViewController"])
+    if ([segue isMemberOfClass:[TXHEmbeddingSegue class]])
+    {
+        TXHEmbeddingSegue *transitionSegue = (TXHEmbeddingSegue *)segue;
+        transitionSegue.containerView      = self.containerView;
+        transitionSegue.previousController = self.paymentDetailsController;
+    }
+    
+    if ([segue.identifier isEqualToString:@"TXHSalesPaymentCardDetailsViewController"] ||
+        [segue.identifier isEqualToString:@"TXHSalesPaymentCashDetailsViewController"] ||
+        [segue.identifier isEqualToString:@"TXHSalesPaymentCreditDetailsViewController"])
     {
         self.paymentDetailsController = segue.destinationViewController;
     }
@@ -110,31 +152,17 @@
 
 - (IBAction)didChangePaymentMethod:(UISegmentedControl *)sender
 {
-    [self updatePaymentMethod];
-}
-
-- (void)updatePaymentMethod
-{
-    self.paymentDetailsController.gateway     = self.handpointGateway;
-    self.paymentDetailsController.paymentType = (TXHPaymentMethodType)self.paymentTypeSegmentedControl.selectedSegmentIndex;
+    [self reloadSelectedController];
 }
 
 #pragma mark - TXHSalesContentsViewControllerProtocol
 
 - (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
 {
-//   [self.orderManager updateOrderWithPaymentMethod:@"cash"
-//                                      completion:^(TXHOrder *order, NSError *error) {
-//                                          if (!error)
-    [self.orderManager confirmOrderWithCompletion:^(TXHOrder *order2, NSError *error2) {
-      if (blockName)
-          blockName(error2);
+    [self.orderManager confirmOrderWithCompletion:^(TXHOrder *order, NSError *error) {
+        if (blockName)
+            blockName(error);
     }];
-//                                          else if (blockName)
-//                                                  blockName(error);
-    
-//                                      }];
-    
 }
 
 

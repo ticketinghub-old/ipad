@@ -163,3 +163,8 @@
 /* Card payment view */
 
 "CARD_CONTROLLER_UPDATING_PAYMENT_MESSAGE" = "Finalizing payment";
+
+"PAYMENT_OPTION_CARD_TITLE"   = "Card";
+"PAYMENT_OPTION_CREDIT_TITLE" = "Credit";
+"PAYMENT_OPTION_CASH_TITLE"   = "Cash";
+
