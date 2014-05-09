@@ -17,7 +17,7 @@ static NSString *const kStripeType    = @"stripe";
 @interface TXHPaymentOptionsManager ()
 
 @property (strong, nonatomic) TXHOrderManager *orderManager;
-@property (strong, nonatomic) NSArray         *options;
+@property (strong, nonatomic) NSArray         *paymentOptions;
 
 @end
 
@@ -31,6 +31,16 @@ static NSString *const kStripeType    = @"stripe";
     _orderManager = orderManger;
     
     return self;
+}
+
+- (TXHPaymentOption *)paymentOptionsAtIndex:(NSUInteger)index
+{
+    if (index < [self.paymentOptions count])
+    {
+        return self.paymentOptions[index];
+    }
+    
+    return nil;
 }
 
 - (void)loadOptionsWithCompletion:(void(^)(NSArray *paymentOptions, NSError *error))completion
@@ -47,7 +57,7 @@ static NSString *const kStripeType    = @"stripe";
         
         NSArray *prioritizeGateways = [self prioritizeGateways:gateways];
         NSArray *paymentOptions     = [self paymentOptionsFromGateways:prioritizeGateways];
-        wself.options = paymentOptions;
+        wself.paymentOptions = paymentOptions;
         
         if (completion)
             completion(paymentOptions, error);

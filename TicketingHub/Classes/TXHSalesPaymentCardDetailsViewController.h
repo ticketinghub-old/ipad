@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TXHSalesPaymentContentViewControllerProtocol.h"
 
-@class TXHOrderManager;
-@class TXHProductsManager;
-
-@interface TXHSalesPaymentCardDetailsViewController : UIViewController
+@interface TXHSalesPaymentCardDetailsViewController : UIViewController <TXHSalesPaymentContentViewControllerProtocol>
 
 @property (readonly, nonatomic, getter = isValid) BOOL valid;
+@property (readonly, nonatomic, getter = isEnabled) BOOL enabled;
 
 @property (strong, nonatomic) TXHProductsManager *productManager;
 @property (strong, nonatomic) TXHOrderManager    *orderManager;

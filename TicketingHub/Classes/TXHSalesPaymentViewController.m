@@ -11,6 +11,8 @@
 #import "TXHPaymentOptionsManager.h"
 #import "TXHPaymentOption.h"
 
+#import "TXHSalesPaymentContentViewControllerProtocol.h"
+
 #import "TXHProductsManager.h"
 #import "TXHOrderManager.h"
 
@@ -18,15 +20,6 @@
 #import "UISegmentedControl+NSArray.h"
 #import "TXHActivityLabelView.h"
 #import <Block-KVO/MTKObserving.h>
-
-@protocol TXHSalesPaymentSpecificViewControllerProtocol
-
-@property (readonly, nonatomic, getter = isValid) BOOL valid;
-@property (strong, nonatomic) TXHProductsManager *productManager;
-@property (strong, nonatomic) TXHOrderManager    *orderManager;
-@property (strong, nonatomic) TXHPaymentOption   *paymentOption;
-
-@end
 
 
 @interface TXHSalesPaymentViewController () <UICollectionViewDelegateFlowLayout>
@@ -37,9 +30,8 @@
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *paymentTypeSegmentedControl;
 
-@property (strong, nonatomic) UIViewController<TXHSalesPaymentSpecificViewControllerProtocol> *paymentDetailsController;
+@property (strong, nonatomic) UIViewController<TXHSalesPaymentContentViewControllerProtocol> *paymentDetailsController;
 @property (strong, nonatomic) TXHPaymentOptionsManager *paymentOptionsManager;
-@property (strong, nonatomic) NSArray *paymentOptions;
 
 
 @end
@@ -52,15 +44,6 @@
 
     [self setupOptionsManger];
     [self reloadOptions];
-}
-
-- (TXHActivityLabelView *)activityView
-{
-    if (!_activityView)
-    {
-        _activityView = [TXHActivityLabelView getInstanceInView:self.view];
-    }
-    return _activityView;
 }
 
 - (void)setupOptionsManger
@@ -77,22 +60,14 @@
     [self.paymentOptionsManager loadOptionsWithCompletion:^(NSArray *paymentOptions, NSError *error) {
 
         [wself.activityView hide];
+        [wself reloadView];
         
         if (error)
         {
             // TODO: handle error
             return;
         }
-        
-        wself.paymentOptions = paymentOptions;
     }];
-}
-
-- (void)setPaymentOptions:(NSArray *)paymentOptions
-{
-    _paymentOptions = paymentOptions;
-    
-    [self reloadView];
 }
 
 - (void)reloadView
@@ -103,7 +78,7 @@
 
 - (void)reloadSegmentedControl
 {
-    NSArray *paymentNames = [self.paymentOptions valueForKeyPath:@"displayName"];
+    NSArray *paymentNames = [self payentOptionDisplayNames];
     
     [self.paymentTypeSegmentedControl setItemsFromArray:paymentNames];
     [self.paymentTypeSegmentedControl setSelectedSegmentIndex:0];
@@ -111,23 +86,28 @@
     self.paymentTypeSegmentedControl.hidden = [paymentNames count] == 0;
 }
 
+- (NSArray *)payentOptionDisplayNames
+{
+    NSArray *paymentOptions = self.paymentOptionsManager.paymentOptions;
+    NSArray *paymentNames = [paymentOptions valueForKeyPath:@"displayName"];
+
+    return paymentNames;
+}
+
 - (void)reloadSelectedController
 {
-    NSUInteger selectedIndex = self.paymentTypeSegmentedControl.selectedSegmentIndex;
-    TXHPaymentOption *option = [self.paymentOptions objectAtIndex:selectedIndex];
+    TXHPaymentOption *option = [self selectedPaymentOption];
     NSString *identifier     = option.segueIdentifier;
 
     [self performSegueWithIdentifier:identifier sender:self];
 }
 
-- (void)setPaymentDetailsController:(UIViewController<TXHSalesPaymentSpecificViewControllerProtocol> *)paymentDetailsController
+- (TXHPaymentOption *)selectedPaymentOption
 {
-    _paymentDetailsController = paymentDetailsController;
+    NSUInteger selectedIndex = self.paymentTypeSegmentedControl.selectedSegmentIndex;
+    TXHPaymentOption *selectedOption = [self.paymentOptionsManager paymentOptionsAtIndex:selectedIndex];
 
-    paymentDetailsController.productManager = self.productManager;
-    paymentDetailsController.orderManager   = self.orderManager;
-    
-    [self map:@keypath(self.paymentDetailsController.valid) to:@keypath(self.valid) null:nil];
+    return selectedOption;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -147,6 +127,26 @@
     }
 }
 
+- (void)setPaymentDetailsController:(UIViewController<TXHSalesPaymentContentViewControllerProtocol> *)paymentDetailsController
+{
+    _paymentDetailsController = paymentDetailsController;
+    
+    TXHPaymentOption *option = [self selectedPaymentOption];
+    
+    paymentDetailsController.productManager = self.productManager;
+    paymentDetailsController.orderManager   = self.orderManager;
+    paymentDetailsController.gateway        = option.gateway;
+    
+    [self map:@keypath(self.paymentDetailsController.valid) to:@keypath(self.valid) null:nil];
+}
+
+- (TXHActivityLabelView *)activityView
+{
+    if (!_activityView)
+        _activityView = [TXHActivityLabelView getInstanceInView:self.view];
+    
+    return _activityView;
+}
 
 #pragma mark - Payment method changed
 
