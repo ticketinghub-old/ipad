@@ -684,13 +684,10 @@
 		3E3A5B1518AA6D9100A54812 /* 4 Payment */ = {
 			isa = PBXGroup;
 			children = (
+				3E3A5B1B18AA705900A54812 /* Content */,
+				3EB09800191CDDA700159749 /* Payment Options Manager */,
 				EE75D96617D11048009ADCD8 /* TXHSalesPaymentViewController.h */,
 				EE75D96717D11048009ADCD8 /* TXHSalesPaymentViewController.m */,
-				3EF09F8E191BB0A100C85109 /* TXHPaymentOptionsManager.h */,
-				3EF09F8F191BB0A100C85109 /* TXHPaymentOptionsManager.m */,
-				3EF09F91191BB4CB00C85109 /* TXHPaymentOption.h */,
-				3EF09F92191BB4CB00C85109 /* TXHPaymentOption.m */,
-				3E3A5B1B18AA705900A54812 /* Content */,
 			);
 			name = "4 Payment";
 			sourceTree = "<group>";
@@ -994,6 +991,17 @@
 			);
 			name = Handpoint;
 			path = HeftLibrary;
+			sourceTree = "<group>";
+		};
+		3EB09800191CDDA700159749 /* Payment Options Manager */ = {
+			isa = PBXGroup;
+			children = (
+				3EF09F8E191BB0A100C85109 /* TXHPaymentOptionsManager.h */,
+				3EF09F8F191BB0A100C85109 /* TXHPaymentOptionsManager.m */,
+				3EF09F91191BB4CB00C85109 /* TXHPaymentOption.h */,
+				3EF09F92191BB4CB00C85109 /* TXHPaymentOption.m */,
+			);
+			name = "Payment Options Manager";
 			sourceTree = "<group>";
 		};
 		3EB60EE418C66F6A00B56182 /* RMDownloadIndicator */ = {
