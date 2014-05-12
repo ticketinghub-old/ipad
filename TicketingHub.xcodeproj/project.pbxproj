@@ -23,6 +23,7 @@
 		3E3C50C218C7823500A9285C /* TXHDoorTicketsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C50C118C7823500A9285C /* TXHDoorTicketsListViewController.m */; };
 		3E3D46EA18ACB89A00275ACF /* FetchedResultsControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D46E918ACB89A00275ACF /* FetchedResultsControllerDataSource.m */; };
 		3E3D46EE18ACBB8500275ACF /* UIColor+TicketingHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D46ED18ACBB8500275ACF /* UIColor+TicketingHub.m */; };
+		3E407C091920F7C90002B6FE /* TXHGateway+CNPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E407C081920F7C90002B6FE /* TXHGateway+CNPHelper.m */; };
 		3E44157018AB80EA00C4AE1C /* TXHTicketingHubManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E44156F18AB80EA00C4AE1C /* TXHTicketingHubManager.m */; };
 		3E488BD918BE850600E90BE6 /* RMDisplayLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E488BD618BE850600E90BE6 /* RMDisplayLabel.m */; };
 		3E488BDA18BE850600E90BE6 /* RMDownloadIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E488BD818BE850600E90BE6 /* RMDownloadIndicator.m */; };
@@ -41,7 +42,6 @@
 		3E87704718D711C900585FFA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E87704518D711C900585FFA /* InfoPlist.strings */; };
 		3E87709818D7355600585FFA /* Salesman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E87709A18D7355600585FFA /* Salesman.storyboard */; };
 		3E8770B018D8685D00585FFA /* TXHSalesSummaryFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8770AF18D8685D00585FFA /* TXHSalesSummaryFooter.m */; };
-		3E8D760719178FA800EB9588 /* libheft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8D760619178FA800EB9588 /* libheft.a */; };
 		3E8D76091917921000EB9588 /* libdtdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8D76081917921000EB9588 /* libdtdev.a */; };
 		3E8FD59318C74CD70066FA50 /* TXHDoorSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8FD59218C74CD70066FA50 /* TXHDoorSearchViewController.m */; };
 		3E938D9E190FE6F900FC29E9 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E938D9D190FE6F900FC29E9 /* Reveal.framework */; };
@@ -67,6 +67,7 @@
 		3EA52C0C18E31BDC00FEA0CA /* TXHStarIOPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52C0B18E31BDC00FEA0CA /* TXHStarIOPrinter.m */; };
 		3EA61BBC18F443A8004458B2 /* TXHPrintersUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA61BBB18F443A8004458B2 /* TXHPrintersUtility.m */; };
 		3EAA200218CF7C52003EC924 /* TXHTicket+Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */; };
+		3EB09806191D139D00159749 /* libheft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB09805191D139D00159749 /* libheft.a */; };
 		3EB7B993191909BE006DA520 /* iOS-api.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3EB7B992191909BE006DA520 /* iOS-api.podspec */; };
 		3EC63E0218B36E7A00B091A0 /* TXHSalesStepsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0118B36E7A00B091A0 /* TXHSalesStepsManager.m */; };
 		3EC63E0818B3721600B091A0 /* TXHSalesStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0718B3721600B091A0 /* TXHSalesStep.m */; };
@@ -183,6 +184,8 @@
 		3E3D46E918ACB89A00275ACF /* FetchedResultsControllerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedResultsControllerDataSource.m; sourceTree = "<group>"; };
 		3E3D46EC18ACBB8500275ACF /* UIColor+TicketingHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TicketingHub.h"; sourceTree = "<group>"; };
 		3E3D46ED18ACBB8500275ACF /* UIColor+TicketingHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TicketingHub.m"; sourceTree = "<group>"; };
+		3E407C071920F7C90002B6FE /* TXHGateway+CNPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHGateway+CNPHelper.h"; sourceTree = "<group>"; };
+		3E407C081920F7C90002B6FE /* TXHGateway+CNPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHGateway+CNPHelper.m"; sourceTree = "<group>"; };
 		3E44156E18AB80EA00C4AE1C /* TXHTicketingHubManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketingHubManager.h; sourceTree = "<group>"; };
 		3E44156F18AB80EA00C4AE1C /* TXHTicketingHubManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubManager.m; sourceTree = "<group>"; };
 		3E488BD518BE850600E90BE6 /* RMDisplayLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDisplayLabel.h; sourceTree = "<group>"; };
@@ -219,7 +222,6 @@
 		3E8D760319178FA800EB9588 /* HeftClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftClient.h; sourceTree = "<group>"; };
 		3E8D760419178FA800EB9588 /* HeftManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftManager.h; sourceTree = "<group>"; };
 		3E8D760519178FA800EB9588 /* HeftStatusReportPublic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftStatusReportPublic.h; sourceTree = "<group>"; };
-		3E8D760619178FA800EB9588 /* libheft.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libheft.a; sourceTree = "<group>"; };
 		3E8D76081917921000EB9588 /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libdtdev.a; sourceTree = "<group>"; };
 		3E8FD59118C74CD70066FA50 /* TXHDoorSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorSearchViewController.h; sourceTree = "<group>"; };
 		3E8FD59218C74CD70066FA50 /* TXHDoorSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorSearchViewController.m; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 		3EAA200018CF7C52003EC924 /* TXHTicket+Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHTicket+Filter.h"; sourceTree = "<group>"; };
 		3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHTicket+Filter.m"; sourceTree = "<group>"; };
 		3EACF4A51906ABB200AE636F /* DTDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDevices.h; sourceTree = "<group>"; };
+		3EB09805191D139D00159749 /* libheft.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libheft.a; sourceTree = "<group>"; };
 		3EB7B992191909BE006DA520 /* iOS-api.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS-api.podspec"; sourceTree = "<group>"; };
 		3EC63E0018B36E7A00B091A0 /* TXHSalesStepsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesStepsManager.h; path = TicketingHub/Classes/TXHSalesStepsManager.h; sourceTree = SOURCE_ROOT; };
 		3EC63E0118B36E7A00B091A0 /* TXHSalesStepsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesStepsManager.m; path = TicketingHub/Classes/TXHSalesStepsManager.m; sourceTree = SOURCE_ROOT; };
@@ -412,6 +415,7 @@
 			files = (
 				3EA52BF718E2EFF000FEA0CA /* ExternalAccessory.framework in Frameworks */,
 				CEA4926CD193447DAE8A8A56 /* libPods.a in Frameworks */,
+				3EB09806191D139D00159749 /* libheft.a in Frameworks */,
 				3E2B085518F5719600F13214 /* StarIO.framework in Frameworks */,
 				3E938D9E190FE6F900FC29E9 /* Reveal.framework in Frameworks */,
 				4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */,
@@ -422,7 +426,6 @@
 				EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */,
 				EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */,
 				3E8D76091917921000EB9588 /* libdtdev.a in Frameworks */,
-				3E8D760719178FA800EB9588 /* libheft.a in Frameworks */,
 				58E4FB551760AE5500E328A0 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,6 +455,8 @@
 				3E51D2D119096C0D00F8193E /* TXHOrder+Helpers.m */,
 				3E0FF586191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.h */,
 				3E0FF587191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.m */,
+				3E407C071920F7C90002B6FE /* TXHGateway+CNPHelper.h */,
+				3E407C081920F7C90002B6FE /* TXHGateway+CNPHelper.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -485,13 +490,6 @@
 				3E3D46E918ACB89A00275ACF /* FetchedResultsControllerDataSource.m */,
 			);
 			name = TableViewDataSources;
-			sourceTree = "<group>";
-		};
-		3E2E2BCC190E9FC9006EABA1 /* Handpoint */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Handpoint;
 			sourceTree = "<group>";
 		};
 		3E2E2BD4190EAF16006EABA1 /* Configuration */ = {
@@ -684,8 +682,8 @@
 		3E3A5B1518AA6D9100A54812 /* 4 Payment */ = {
 			isa = PBXGroup;
 			children = (
-				3E3A5B1B18AA705900A54812 /* Content */,
 				3EB09800191CDDA700159749 /* Payment Options Manager */,
+				3E3A5B1B18AA705900A54812 /* Content */,
 				EE75D96617D11048009ADCD8 /* TXHSalesPaymentViewController.h */,
 				EE75D96717D11048009ADCD8 /* TXHSalesPaymentViewController.m */,
 			);
@@ -792,13 +790,6 @@
 			name = Buttons;
 			sourceTree = "<group>";
 		};
-		3E7F87C818DAD14A0046DD7A /* External */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = External;
-			sourceTree = "<group>";
-		};
 		3E87023A18C72A41008F4EAD /* Searching Area */ = {
 			isa = PBXGroup;
 			children = (
@@ -824,10 +815,11 @@
 		3E8D760019178FA800EB9588 /* HeftLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				3EB09805191D139D00159749 /* libheft.a */,
 				3E8D760119178FA800EB9588 /* include */,
-				3E8D760619178FA800EB9588 /* libheft.a */,
 			);
-			path = HeftLibrary;
+			name = HeftLibrary;
+			path = ../../HeftLibrary/HeftLibrary;
 			sourceTree = "<group>";
 		};
 		3E8D760119178FA800EB9588 /* include */ = {
@@ -847,7 +839,8 @@
 				3E938DA1190FED7A00FC29E9 /* DKPOS */,
 				3E938DAB190FED7A00FC29E9 /* Handpoint */,
 			);
-			path = DKHandpoint;
+			name = DKHandpoint;
+			path = ../../HeftLibrary/DKHandpoint;
 			sourceTree = "<group>";
 		};
 		3E938DA1190FED7A00FC29E9 /* DKPOS */ = {
@@ -980,17 +973,8 @@
 				3EACF4A51906ABB200AE636F /* DTDevices.h */,
 				3E8D76081917921000EB9588 /* libdtdev.a */,
 			);
-			path = extLibraries;
-			sourceTree = "<group>";
-		};
-		3EACF4A71906ABB200AE636F /* Handpoint */ = {
-			isa = PBXGroup;
-			children = (
-				3E8D760019178FA800EB9588 /* HeftLibrary */,
-				3E938D9F190FED7A00FC29E9 /* DKHandpoint */,
-			);
-			name = Handpoint;
-			path = HeftLibrary;
+			name = extLibraries;
+			path = ../../extLibraries;
 			sourceTree = "<group>";
 		};
 		3EB09800191CDDA700159749 /* Payment Options Manager */ = {
@@ -1002,6 +986,24 @@
 				3EF09F92191BB4CB00C85109 /* TXHPaymentOption.m */,
 			);
 			name = "Payment Options Manager";
+			sourceTree = "<group>";
+		};
+		3EB09801191D087C00159749 /* Handpoint reader */ = {
+			isa = PBXGroup;
+			children = (
+				3E8D760019178FA800EB9588 /* HeftLibrary */,
+				3E938D9F190FED7A00FC29E9 /* DKHandpoint */,
+				3EACF4A41906ABB200AE636F /* extLibraries */,
+			);
+			name = "Handpoint reader";
+			sourceTree = "<group>";
+		};
+		3EB09802191D089400159749 /* Scanners */ = {
+			isa = PBXGroup;
+			children = (
+				3E192D5B18FD5FD800D727AA /* Infinea Tab */,
+			);
+			name = Scanners;
 			sourceTree = "<group>";
 		};
 		3EB60EE418C66F6A00B56182 /* RMDownloadIndicator */ = {
@@ -1104,8 +1106,6 @@
 		58E4FB481760AE5500E328A0 = {
 			isa = PBXGroup;
 			children = (
-				3EACF4A71906ABB200AE636F /* Handpoint */,
-				3EACF4A41906ABB200AE636F /* extLibraries */,
 				3ECE452A18C0B57F00DD1F7B /* AFNetworkActivityLogger.h */,
 				3ECE452B18C0B57F00DD1F7B /* AFNetworkActivityLogger.m */,
 				3EB7B992191909BE006DA520 /* iOS-api.podspec */,
@@ -1205,10 +1205,9 @@
 		58E4FB971760D3C800E328A0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3E2E2BCC190E9FC9006EABA1 /* Handpoint */,
-				3E192D5B18FD5FD800D727AA /* Infinea Tab */,
+				3EB09802191D089400159749 /* Scanners */,
+				3EB09801191D087C00159749 /* Handpoint reader */,
 				3EA52BEB18E2D17300FEA0CA /* Printers */,
-				3E7F87C818DAD14A0046DD7A /* External */,
 				EEB1843317D113FB0025530A /* Common */,
 				EEB1846917D1148A0025530A /* Door */,
 				EE75D9AA17D112AC009ADCD8 /* Login */,
@@ -1492,6 +1491,7 @@
 				EEB1845F17D114390025530A /* TXHDataSelectionView.m in Sources */,
 				3E0FF588191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.m in Sources */,
 				EEB1846017D114390025530A /* TXHDataSelectionViewController.m in Sources */,
+				3E407C091920F7C90002B6FE /* TXHGateway+CNPHelper.m in Sources */,
 				3E8770B018D8685D00585FFA /* TXHSalesSummaryFooter.m in Sources */,
 				3E938DB5190FED7A00FC29E9 /* DKHandpointTypes.m in Sources */,
 				3E7F87D418DC59070046DD7A /* NSDateFormatter+DisplayFormat.m in Sources */,

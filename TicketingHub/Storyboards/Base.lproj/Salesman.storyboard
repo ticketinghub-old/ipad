@@ -1083,6 +1083,7 @@
                         <outlet property="amountLabel" destination="ris-ZW-UYE" id="2X2-KR-Ub7"/>
                         <outlet property="infoLabel" destination="mKP-XK-VQS" id="C0z-HX-z6v"/>
                         <outlet property="payButton" destination="bcB-Qm-7MF" id="gQC-4H-Og5"/>
+                        <segue destination="X77-oU-xTm" kind="modal" identifier="ShowSignaturePad" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="rrc-X2-tGF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VvL-7o-JXE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1394,4 +1395,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="rrc-X2-tGF"/>
+    </inferredMetricsTieBreakers>
 </document>

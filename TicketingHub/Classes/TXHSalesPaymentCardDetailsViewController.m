@@ -8,6 +8,8 @@
 
 #import "TXHSalesPaymentCardDetailsViewController.h"
 
+#import "TXHSignaturePadViewController.h"
+
 #import "NSString+Hex.h"
 #import "TXHConfiguration.h"
 #import "TXHActivityLabelView.h"
@@ -20,7 +22,7 @@
 
 static void * HandpointConnectedContext = &HandpointConnectedContext;
 
-@interface TXHSalesPaymentCardDetailsViewController () <DKPOSClientDelegate>
+@interface TXHSalesPaymentCardDetailsViewController () <DKPOSClientDelegate, TXHSignaturePadViewControllerDelegate>
 
 @property (strong, nonatomic) DKPOSHandpointClient *handpointClient;
 @property (strong, nonatomic) TXHActivityLabelView *activityView;
@@ -31,6 +33,8 @@ static void * HandpointConnectedContext = &HandpointConnectedContext;
 @property (weak, nonatomic) IBOutlet UIButton *payButton;
 @property (weak, nonatomic) IBOutlet UILabel  *amountLabel;
 @property (weak, nonatomic) IBOutlet UILabel  *infoLabel;
+
+@property (strong, nonatomic) NSString *SVGSignatre;
 
 @end
 
@@ -74,7 +78,7 @@ static void * HandpointConnectedContext = &HandpointConnectedContext;
     TXHOrder *order = [self.orderManager order];
     
     NSError *error;
-    [self.handpointClient saleWithAmount:order.totalValue
+    [self.handpointClient saleWithAmount:3000
                                 currency:order.currency
                              cardPresent:YES
                                reference:order.reference
@@ -87,9 +91,6 @@ static void * HandpointConnectedContext = &HandpointConnectedContext;
 
 - (void)setupHandpointClient
 {
-    if (!self.handpointClient.isConfigured)
-        [self.handpointClient setSharedSecret:[CONFIGURATION[kHandpointSecretKey] hexData]];
-    
     if (!self.handpointClient.isConnected)
         [self.handpointClient initialize];
     
@@ -116,6 +117,14 @@ static void * HandpointConnectedContext = &HandpointConnectedContext;
     return _activityView;
 }
 
+- (void)setGateway:(TXHGateway *)gateway
+{
+    _gateway = gateway;
+    
+    NSData *sharedSecretHexData = [gateway.sharedSecret hexData];
+    [self.handpointClient setSharedSecret:sharedSecretHexData];
+}
+
 - (void)setValid:(BOOL)valid
 {
     _valid = valid;
@@ -134,7 +143,6 @@ static void * HandpointConnectedContext = &HandpointConnectedContext;
 - (void)stopObservingHandpointConnection
 {
     [self.handpointClient removeObserver:self forKeyPath:@"handpointClient" context:HandpointConnectedContext];
-
 }
 
 - (void)dealloc
@@ -160,32 +168,22 @@ static void * HandpointConnectedContext = &HandpointConnectedContext;
 - (void)posClientDidConnectDevice
 {
     [self updateView];
-    DLog(@"%@", NSStringFromSelector(_cmd));
 }
 - (void)posClientDidDisconnectDevice
 {
     [self updateView];
-    DLog(@"%@", NSStringFromSelector(_cmd));
 }
+
 #pragma mark required
 
 - (void)posClient:(NSObject<DKPOSClient>*)client transactionFinishedWithInfo:(DKPOSClientTransactionInfo*)info
 {
-    [self.activityView hide];
-
-    NSManagedObjectContext *orderMoc = self.orderManager.order.managedObjectContext;
-    
-    TXHPayment *payment = [TXHPayment createWithTransactionInfo:info
-                                         inManagedObjectContext:orderMoc];
-    
-    payment.gateway = self.gateway;
+    __weak typeof(self) wself = self;
     
     [self.activityView showWithMessage:NSLocalizedString(@"CARD_CONTROLLER_UPDATING_PAYMENT_MESSAGE", nil)
                        indicatorHidden:NO];
     
-    __weak typeof(self) wself = self;
-    
-    [self.orderManager updateOrderWithPayment:payment
+    [self.orderManager updateOrderWithPayment:[self paymentForClientTransactionInfo:info]
                                    completion:^(TXHOrder *order, NSError *error) {
                                        [wself.activityView hide];
                                        
@@ -200,6 +198,20 @@ static void * HandpointConnectedContext = &HandpointConnectedContext;
                                        }
                                    }];
 }
+
+- (TXHPayment *)paymentForClientTransactionInfo:(DKPOSClientTransactionInfo*)info
+{
+    NSManagedObjectContext *orderMoc = self.orderManager.order.managedObjectContext;
+    
+    TXHPayment *payment = [TXHPayment createWithTransactionInfo:info
+                                         inManagedObjectContext:orderMoc];
+    
+    payment.signature = self.SVGSignatre;
+    payment.gateway   = self.gateway;
+    
+    return payment;
+}
+
 - (void)posClient:(NSObject<DKPOSClient>*)client transactionFailedWithError:(NSError*)error
 {
     [self.activityView hide];
@@ -219,7 +231,7 @@ static void * HandpointConnectedContext = &HandpointConnectedContext;
 
 - (void)posClient:(NSObject<DKPOSClient>*)client transactionSignatureRequested:(DKPOSClientTransactionInfo*)info
 {
-    // TODO: implment transaction signature request if should support
+    [self performSegueWithIdentifier:@"ShowSignaturePad" sender:self];
 }
 
 - (void)posClient:(NSObject<DKPOSClient>*)client deviceConnectionError:(NSError*)error
@@ -239,6 +251,28 @@ static void * HandpointConnectedContext = &HandpointConnectedContext;
                                               cancelButtonTitle:NSLocalizedString(@"ERROR_DISMISS_BUTTON_TITLE", nil)
                                               otherButtonTitles:nil];
     [alertView show];
+}
+
+#pragma mark - TXHSignaturePadViewControllerDelegate
+
+- (void)txhSignaturePadViewController:(TXHSignaturePadViewController *)controller acceptSignatureWithImage:(UIImage *)image
+{
+    __weak typeof(self) wself = self;
+
+    [self dismissViewControllerAnimated:YES completion:^{
+        wself.SVGSignatre = controller.SVGSignature;
+        [wself.handpointClient signatureAccepted];
+    }];
+}
+
+
+- (void)txhSignaturePadViewControllerShouldDismiss:(TXHSignaturePadViewController *)controller
+{
+    __weak typeof(self) wself = self;
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        [wself.handpointClient cancelTransaction];
+    }];
 }
 
 

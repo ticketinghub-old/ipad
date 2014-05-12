@@ -118,5 +118,10 @@ static void * kSIgnatureViewHasSignatureContext = &kSIgnatureViewHasSignatureCon
     [self stopObservingSignatureView];
 }
 
+- (NSString *)SVGSignature
+{
+    return [self.signatureView svgPath];
+}
+
 
 @end

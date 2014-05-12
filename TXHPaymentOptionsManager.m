@@ -10,9 +10,9 @@
 #import "TXHPaymentOption.h"
 
 #import "TXHOrderManager.h"
+#import "TXHGateway+CNPHelper.h"
 
 static NSString *const kHandpointType = @"handpoint";
-static NSString *const kStripeType    = @"stripe";
 
 @interface TXHPaymentOptionsManager ()
 
@@ -71,9 +71,9 @@ static NSString *const kStripeType    = @"stripe";
             return NSOrderedAscending;
         if ([g2.type isEqualToString:kHandpointType])
             return NSOrderedDescending;
-        if ([g1.type isEqualToString:kStripeType])
+        if ([g1 isCNPGateway])
             return NSOrderedAscending;
-        if ([g2.type isEqualToString:kStripeType])
+        if ([g2 isCNPGateway])
             return NSOrderedDescending;
         return NSOrderedSame;
     }];
@@ -115,12 +115,11 @@ static NSString *const kStripeType    = @"stripe";
 {
     if ([gateway.type isEqualToString:kHandpointType])
     {
-        return NSLocalizedString(@"PAYMENT_OPTION_CARD_TITLE", nil);
+        return NSLocalizedString(@"PAYMENT_OPTION_HANDPOINT_TITLE", nil);
     }
-    
-    if ([gateway.type isEqualToString:kStripeType])
+    if ([gateway isCNPGateway])
     {
-        return NSLocalizedString(@"PAYMENT_OPTION_CREDIT_TITLE", nil);
+        return NSLocalizedString(@"PAYMENT_OPTION_CNP_TITLE", nil);
     }
  
     return nil;
@@ -133,7 +132,7 @@ static NSString *const kStripeType    = @"stripe";
         return @"TXHSalesPaymentCardDetailsViewController";
     }
     
-    if ([gateway.type isEqualToString:kStripeType])
+    if ([gateway isCNPGateway])
     {
         return @"TXHSalesPaymentCreditDetailsViewController";
     }

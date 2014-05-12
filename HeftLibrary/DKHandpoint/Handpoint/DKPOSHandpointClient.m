@@ -604,10 +604,14 @@
         NSMutableDictionary *result = [NSMutableDictionary dictionary];
         
         if(info[kDKHandpointDeviceSerialKey])
+        {
             result[kDKPOSClientDeviceSerialKey] = info[kDKHandpointDeviceSerialKey];
+        }
         
         if(info[kDKHandpointTransactionAuthorisationCodeKey])
+        {
             result[kDKPOSClientTransactionAuthorisationCodeKey] = info[kDKHandpointTransactionAuthorisationCodeKey];
+        }
         
         if(info[kDKHandpointTransactionCardIssuerNameKey])
         {
@@ -616,15 +620,22 @@
         }
         
         if(info[kDKHandppointTransactionIDKey])
+        {
             result[kDKPOSClientTransactionIDKey] = info[kDKHandppointTransactionIDKey];
-        
+        }
         if (info[kDKHandpointTransactionCardVerificationMethodKey])
         {
             result[kDKPOSClientTransactionCardVerificationMethodKey] = info[kDKHandpointTransactionCardVerificationMethodKey];
         }
         
-        if (info[kDKHandpointTransactionEFTTransactionIDKey]) {
+        if (info[kDKHandpointTransactionEFTTransactionIDKey])
+        {
             result[kDKPOSClientTransactionEFTTransactionIDKey] = info[kDKHandpointTransactionEFTTransactionIDKey];
+        }
+        
+        if (info[kDKHandpointTransactionCardEntryTypeKey])
+        {
+            result[kDKPOSClientTransactionCardEntryTypeKey] = info[kDKHandpointTransactionCardEntryTypeKey];
         }
         
         
