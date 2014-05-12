@@ -2,14 +2,15 @@ platform :ios, '7.0'
 
 inhibit_all_warnings!
 
-pod 'TapkuLibrary', :git => 'https://github.com/bartekhugo/tapkulibrary.git', :branch => 'ios7'
 pod 'iOS-api', :podspec => '.'
 
+pod 'TapkuLibrary',     :git => 'https://github.com/bartekhugo/tapkulibrary.git',       :branch => 'ios7'
+pod 'PPSSignatureView', :git => 'https://github.com/bartekhugo/PPSSignatureView.git',   :branch => 'svg'
+
 pod 'Block-KVO',                                    '~> 2.2.1'
-pod 'PPSSignatureView',                             '~> 0.1.0'
 pod 'RMPickerViewController',                       '~> 1.1.0'
 pod 'SevenSwitch',                                  '~> 1.3.0'
-pod 'Stripe',                                       '~> 1.0.2'
+pod 'Stripe',                                       '~> 1.1.2'
 pod 'UIAlertView-Blocks',                           '~> 1.0'
 pod 'UIImage+PDF',                                  '~> 1.1.2'
 pod 'UIView+Shake',                                 '~> 0.2'
