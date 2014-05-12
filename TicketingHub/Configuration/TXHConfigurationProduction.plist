@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Handpoint_Secret</key>
-	<string>D8EDA50655B5A30439CFE1BE17575AE93299AF2B3CBAC320E367071FAD500727</string>
 	<key>API_Base_URL</key>
 	<string>https://api.ticketinghub.com/</string>
 </dict>
