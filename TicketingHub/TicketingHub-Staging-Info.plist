@@ -47,6 +47,7 @@
 		<string>com.datecs.linea.pro.msr</string>
 		<string>com.datecs.pinpad</string>
 		<string>jp.star-m.starpro</string>
+		<string>com.socketmobile.chs</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

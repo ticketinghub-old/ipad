@@ -69,6 +69,16 @@
 		3EAA200218CF7C52003EC924 /* TXHTicket+Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */; };
 		3EB09806191D139D00159749 /* libheft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB09805191D139D00159749 /* libheft.a */; };
 		3EB7B993191909BE006DA520 /* iOS-api.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3EB7B992191909BE006DA520 /* iOS-api.podspec */; };
+		3EC14ED819225B6F00306027 /* Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC14EB919225B6F00306027 /* Debug.m */; };
+		3EC14ED919225B6F00306027 /* DeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC14EBB19225B6F00306027 /* DeviceInfo.m */; };
+		3EC14EDF19225BC500306027 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC14EDE19225BC500306027 /* libstdc++.dylib */; };
+		3EC14EE119225BD400306027 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC14EE019225BD400306027 /* libiconv.dylib */; };
+		3EC14EE319225C1A00306027 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC14EE219225C1A00306027 /* CoreMedia.framework */; };
+		3EC14EE519225C3000306027 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC14EE419225C3000306027 /* OpenGLES.framework */; };
+		3EC14EE719225C3A00306027 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC14EE619225C3A00306027 /* CoreVideo.framework */; };
+		3EC14EEE19225D6A00306027 /* ScanApiHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC14EED19225D6A00306027 /* ScanApiHelper.m */; };
+		3EC14EF11922615300306027 /* TXHScanAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC14EF01922615300306027 /* TXHScanAPIManager.m */; };
+		3EC14EF81922661C00306027 /* libScanApi64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC14EF61922661C00306027 /* libScanApi64.a */; };
 		3EC63E0218B36E7A00B091A0 /* TXHSalesStepsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0118B36E7A00B091A0 /* TXHSalesStepsManager.m */; };
 		3EC63E0818B3721600B091A0 /* TXHSalesStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC63E0718B3721600B091A0 /* TXHSalesStep.m */; };
 		3EC8845B18C4984B00CE0597 /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC8845A18C4984B00CE0597 /* UIResponder+FirstResponder.m */; };
@@ -275,6 +285,41 @@
 		3EACF4A51906ABB200AE636F /* DTDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDevices.h; sourceTree = "<group>"; };
 		3EB09805191D139D00159749 /* libheft.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libheft.a; sourceTree = "<group>"; };
 		3EB7B992191909BE006DA520 /* iOS-api.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS-api.podspec"; sourceTree = "<group>"; };
+		3EC14EB819225B6F00306027 /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
+		3EC14EB919225B6F00306027 /* Debug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debug.m; sourceTree = "<group>"; };
+		3EC14EBA19225B6F00306027 /* DeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInfo.h; sourceTree = "<group>"; };
+		3EC14EBB19225B6F00306027 /* DeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceInfo.m; sourceTree = "<group>"; };
+		3EC14EBD19225B6F00306027 /* BtHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BtHelper.h; sourceTree = "<group>"; };
+		3EC14EBE19225B6F00306027 /* BtHelperWm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BtHelperWm.h; sourceTree = "<group>"; };
+		3EC14EBF19225B6F00306027 /* GenBarcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenBarcode.h; sourceTree = "<group>"; };
+		3EC14EC019225B6F00306027 /* ISktScanApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISktScanApi.h; sourceTree = "<group>"; };
+		3EC14EC119225B6F00306027 /* ISktScanDecodedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISktScanDecodedData.h; sourceTree = "<group>"; };
+		3EC14EC219225B6F00306027 /* ISktScanDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISktScanDevice.h; sourceTree = "<group>"; };
+		3EC14EC319225B6F00306027 /* ISktScanEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISktScanEvent.h; sourceTree = "<group>"; };
+		3EC14EC419225B6F00306027 /* ISktScanMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISktScanMsg.h; sourceTree = "<group>"; };
+		3EC14EC519225B6F00306027 /* ISktScanObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISktScanObject.h; sourceTree = "<group>"; };
+		3EC14EC619225B6F00306027 /* ISktScanProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISktScanProperty.h; sourceTree = "<group>"; };
+		3EC14EC719225B6F00306027 /* ISktScanSymbology.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISktScanSymbology.h; sourceTree = "<group>"; };
+		3EC14EC819225B6F00306027 /* ISktScanVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISktScanVersion.h; sourceTree = "<group>"; };
+		3EC14EC919225B6F00306027 /* ScanAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanAPI.h; sourceTree = "<group>"; };
+		3EC14ECA19225B6F00306027 /* SktClassFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SktClassFactory.h; sourceTree = "<group>"; };
+		3EC14ECB19225B6F00306027 /* SktScanAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SktScanAPI.h; sourceTree = "<group>"; };
+		3EC14ECC19225B6F00306027 /* SktScanCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SktScanCore.h; sourceTree = "<group>"; };
+		3EC14ECD19225B6F00306027 /* SktScanDeviceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SktScanDeviceType.h; sourceTree = "<group>"; };
+		3EC14ECE19225B6F00306027 /* SktScanErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SktScanErrors.h; sourceTree = "<group>"; };
+		3EC14ECF19225B6F00306027 /* SktScanPropIds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SktScanPropIds.h; sourceTree = "<group>"; };
+		3EC14ED019225B6F00306027 /* SktScanTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SktScanTypes.h; sourceTree = "<group>"; };
+		3EC14ED619225B6F00306027 /* ScanApiIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanApiIncludes.h; sourceTree = "<group>"; };
+		3EC14EDE19225BC500306027 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		3EC14EE019225BD400306027 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		3EC14EE219225C1A00306027 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		3EC14EE419225C3000306027 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		3EC14EE619225C3A00306027 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		3EC14EEC19225D6A00306027 /* ScanApiHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanApiHelper.h; sourceTree = "<group>"; };
+		3EC14EED19225D6A00306027 /* ScanApiHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanApiHelper.m; sourceTree = "<group>"; };
+		3EC14EEF1922615300306027 /* TXHScanAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHScanAPIManager.h; sourceTree = "<group>"; };
+		3EC14EF01922615300306027 /* TXHScanAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHScanAPIManager.m; sourceTree = "<group>"; };
+		3EC14EF61922661C00306027 /* libScanApi64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libScanApi64.a; sourceTree = "<group>"; };
 		3EC63E0018B36E7A00B091A0 /* TXHSalesStepsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesStepsManager.h; path = TicketingHub/Classes/TXHSalesStepsManager.h; sourceTree = SOURCE_ROOT; };
 		3EC63E0118B36E7A00B091A0 /* TXHSalesStepsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesStepsManager.m; path = TicketingHub/Classes/TXHSalesStepsManager.m; sourceTree = SOURCE_ROOT; };
 		3EC63E0318B36EAB00B091A0 /* TXHSalesWizardViewControllerDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TXHSalesWizardViewControllerDataSource.h; path = TicketingHub/Classes/TXHSalesWizardViewControllerDataSource.h; sourceTree = SOURCE_ROOT; };
@@ -413,6 +458,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EC14EE719225C3A00306027 /* CoreVideo.framework in Frameworks */,
+				3EC14EE519225C3000306027 /* OpenGLES.framework in Frameworks */,
+				3EC14EE319225C1A00306027 /* CoreMedia.framework in Frameworks */,
+				3EC14EE119225BD400306027 /* libiconv.dylib in Frameworks */,
+				3EC14EDF19225BC500306027 /* libstdc++.dylib in Frameworks */,
 				3EA52BF718E2EFF000FEA0CA /* ExternalAccessory.framework in Frameworks */,
 				CEA4926CD193447DAE8A8A56 /* libPods.a in Frameworks */,
 				3EB09806191D139D00159749 /* libheft.a in Frameworks */,
@@ -426,6 +476,7 @@
 				EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */,
 				EEB4FC3F17B272EF00F226BC /* SystemConfiguration.framework in Frameworks */,
 				3E8D76091917921000EB9588 /* libdtdev.a in Frameworks */,
+				3EC14EF81922661C00306027 /* libScanApi64.a in Frameworks */,
 				58E4FB551760AE5500E328A0 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1001,6 +1052,7 @@
 		3EB09802191D089400159749 /* Scanners */ = {
 			isa = PBXGroup;
 			children = (
+				3EC14E911922554600306027 /* Socket Mobile */,
 				3E192D5B18FD5FD800D727AA /* Infinea Tab */,
 			);
 			name = Scanners;
@@ -1027,6 +1079,67 @@
 				EE51C1EE180FED4F001AA88A /* TXHProductsManagerNotifications.h */,
 			);
 			name = Managers;
+			sourceTree = "<group>";
+		};
+		3EC14E911922554600306027 /* Socket Mobile */ = {
+			isa = PBXGroup;
+			children = (
+				3EC14EB719225B6F00306027 /* ScanAPI */,
+				3EC14EEF1922615300306027 /* TXHScanAPIManager.h */,
+				3EC14EF01922615300306027 /* TXHScanAPIManager.m */,
+			);
+			name = "Socket Mobile";
+			sourceTree = "<group>";
+		};
+		3EC14EB719225B6F00306027 /* ScanAPI */ = {
+			isa = PBXGroup;
+			children = (
+				3EC14EF41922661C00306027 /* lib */,
+				3EC14EBC19225B6F00306027 /* include */,
+				3EC14EB819225B6F00306027 /* Debug.h */,
+				3EC14EB919225B6F00306027 /* Debug.m */,
+				3EC14EBA19225B6F00306027 /* DeviceInfo.h */,
+				3EC14EBB19225B6F00306027 /* DeviceInfo.m */,
+				3EC14ED619225B6F00306027 /* ScanApiIncludes.h */,
+				3EC14EEC19225D6A00306027 /* ScanApiHelper.h */,
+				3EC14EED19225D6A00306027 /* ScanApiHelper.m */,
+			);
+			path = ScanAPI;
+			sourceTree = "<group>";
+		};
+		3EC14EBC19225B6F00306027 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				3EC14EBD19225B6F00306027 /* BtHelper.h */,
+				3EC14EBE19225B6F00306027 /* BtHelperWm.h */,
+				3EC14EBF19225B6F00306027 /* GenBarcode.h */,
+				3EC14EC019225B6F00306027 /* ISktScanApi.h */,
+				3EC14EC119225B6F00306027 /* ISktScanDecodedData.h */,
+				3EC14EC219225B6F00306027 /* ISktScanDevice.h */,
+				3EC14EC319225B6F00306027 /* ISktScanEvent.h */,
+				3EC14EC419225B6F00306027 /* ISktScanMsg.h */,
+				3EC14EC519225B6F00306027 /* ISktScanObject.h */,
+				3EC14EC619225B6F00306027 /* ISktScanProperty.h */,
+				3EC14EC719225B6F00306027 /* ISktScanSymbology.h */,
+				3EC14EC819225B6F00306027 /* ISktScanVersion.h */,
+				3EC14EC919225B6F00306027 /* ScanAPI.h */,
+				3EC14ECA19225B6F00306027 /* SktClassFactory.h */,
+				3EC14ECB19225B6F00306027 /* SktScanAPI.h */,
+				3EC14ECC19225B6F00306027 /* SktScanCore.h */,
+				3EC14ECD19225B6F00306027 /* SktScanDeviceType.h */,
+				3EC14ECE19225B6F00306027 /* SktScanErrors.h */,
+				3EC14ECF19225B6F00306027 /* SktScanPropIds.h */,
+				3EC14ED019225B6F00306027 /* SktScanTypes.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		3EC14EF41922661C00306027 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				3EC14EF61922661C00306027 /* libScanApi64.a */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 		3EC63E0418B36EFF00B091A0 /* Steps List */ = {
@@ -1130,6 +1243,11 @@
 		58E4FB531760AE5500E328A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3EC14EE619225C3A00306027 /* CoreVideo.framework */,
+				3EC14EE419225C3000306027 /* OpenGLES.framework */,
+				3EC14EE219225C1A00306027 /* CoreMedia.framework */,
+				3EC14EE019225BD400306027 /* libiconv.dylib */,
+				3EC14EDE19225BC500306027 /* libstdc++.dylib */,
 				3E938D9D190FE6F900FC29E9 /* Reveal.framework */,
 				3E2B085418F5719600F13214 /* StarIO.framework */,
 				3EA52BF618E2EFF000FEA0CA /* ExternalAccessory.framework */,
@@ -1514,6 +1632,7 @@
 				3EF8EE4118D3330900586283 /* TXHDoorTicketsAttendedHeaderView.m in Sources */,
 				EE75D99417D11048009ADCD8 /* TXHSalesPaymentCashDetailsViewController.m in Sources */,
 				3E192D5E18FD600200D727AA /* TXHInfineaManger.m in Sources */,
+				3EC14EEE19225D6A00306027 /* ScanApiHelper.m in Sources */,
 				3E192D5A18FD308200D727AA /* TXHTicket+Title.m in Sources */,
 				3E53C54518E5693600FF6F9B /* NSError+TXHPrinters.m in Sources */,
 				3E51D2CF1909692A00F8193E /* TXHRMPickerViewControllerDelegate.m in Sources */,
@@ -1538,6 +1657,7 @@
 				EE75D9A117D11048009ADCD8 /* TXHSalesTicketTierCell.m in Sources */,
 				3E9D734518D1EEF60087121B /* TXHDoorOrderViewController.m in Sources */,
 				EE75D9A217D11048009ADCD8 /* TXHSalesTicketTiersViewController.m in Sources */,
+				3EC14EF11922615300306027 /* TXHScanAPIManager.m in Sources */,
 				EE75D9A417D11048009ADCD8 /* TXHSalesTimerViewController.m in Sources */,
 				3EE8E21818CA23C8006E8F5E /* TXHTicketDetailsViewController.m in Sources */,
 				3EAA200218CF7C52003EC924 /* TXHTicket+Filter.m in Sources */,
@@ -1566,8 +1686,10 @@
 				EEB1846717D114390025530A /* TXHTextEntryView.m in Sources */,
 				3ECE137718B689CE00E7148F /* NSDate+CupertinoYankee.m in Sources */,
 				3E44157018AB80EA00C4AE1C /* TXHTicketingHubManager.m in Sources */,
+				3EC14ED819225B6F00306027 /* Debug.m in Sources */,
 				3E6F479718AFD6A300E644F7 /* TXHBorderedButton.m in Sources */,
 				3E53C54B18E58FB400FF6F9B /* TXHActivityLabelView.m in Sources */,
+				3EC14ED919225B6F00306027 /* DeviceInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1677,6 +1799,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
 				GCC_WARN_UNUSED_PARAMETER = NO;
@@ -1691,6 +1814,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/extLibraries",
 					"$(PROJECT_DIR)/HeftLibrary/HeftLibrary",
+					"$(PROJECT_DIR)/TicketingHub/Classes/ScanAPI/lib",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1786,6 +1910,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
 				GCC_WARN_UNUSED_PARAMETER = NO;
@@ -1800,6 +1925,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/extLibraries",
 					"$(PROJECT_DIR)/HeftLibrary/HeftLibrary",
+					"$(PROJECT_DIR)/TicketingHub/Classes/ScanAPI/lib",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1894,6 +2020,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
 				GCC_WARN_UNUSED_PARAMETER = NO;
@@ -1908,6 +2035,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/extLibraries",
 					"$(PROJECT_DIR)/HeftLibrary/HeftLibrary",
+					"$(PROJECT_DIR)/TicketingHub/Classes/ScanAPI/lib",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -2047,6 +2175,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
 				GCC_WARN_UNUSED_PARAMETER = NO;
@@ -2061,6 +2190,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/extLibraries",
 					"$(PROJECT_DIR)/HeftLibrary/HeftLibrary",
+					"$(PROJECT_DIR)/TicketingHub/Classes/ScanAPI/lib",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -2094,6 +2224,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
 				GCC_WARN_UNUSED_PARAMETER = NO;
@@ -2108,6 +2239,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/extLibraries",
 					"$(PROJECT_DIR)/HeftLibrary/HeftLibrary",
+					"$(PROJECT_DIR)/TicketingHub/Classes/ScanAPI/lib",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -2226,6 +2358,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketingHub/TicketingHub-Prefix.pch";
 				GCC_WARN_UNUSED_PARAMETER = NO;
@@ -2240,6 +2373,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/extLibraries",
 					"$(PROJECT_DIR)/HeftLibrary/HeftLibrary",
+					"$(PROJECT_DIR)/TicketingHub/Classes/ScanAPI/lib",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
