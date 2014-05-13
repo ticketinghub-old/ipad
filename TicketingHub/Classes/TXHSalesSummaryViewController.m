@@ -188,7 +188,7 @@
 
     header.delegate         = self;
     header.ticketTitle      = [self titleForTicket:ticket];
-    header.ticketTotalPrice = [self.productManager priceStringForPrice:[ticket totalPrice]];
+    header.ticketTotalPrice = [self.productManager priceStringForPrice:ticket.price];
     header.expanded         = [self isSectionExpanded:indexPath.section];
     header.section          = indexPath.section;
     header.canExpand        = ([ticket.upgrades count] > 0);

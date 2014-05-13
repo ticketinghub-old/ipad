@@ -130,7 +130,7 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
     
     for (TXHTicket *ticket in order.tickets)
     {
-        totalAmount += [[ticket totalPrice] integerValue];
+        totalAmount += ticket.priceValue;
     }
     
     return @(totalAmount);
