@@ -17,6 +17,7 @@
 
 #import "TXHProductsManager.h"
 #import "TXHInfineaManger.h"
+#import "TXHScanAPIManager.h"
 
 #import "TXHTicket+Filter.h"
 #import "TXHTicket+Title.h"
@@ -290,12 +291,16 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scannerBarcodeRecognized:) name:TXHScannerRecognizedQRCodeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scannerMSRDataRecognized:) name:TXHScannerRecognizedMSRCardDataNotification object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scanner2BarcodeRecognized:) name:TXHScanAPIScannerRecognizedCodeNotification object:nil];
 }
 
 - (void)unregisterFromScannerNotifications
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHScannerRecognizedQRCodeNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHScannerRecognizedMSRCardDataNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHScanAPIScannerRecognizedCodeNotification object:nil];
 }
 
 - (void)registerForSearchViewNotification
@@ -402,6 +407,14 @@
 
     [self filterTicketsWithBarcode:barcode];
 }
+
+- (void)scanner2BarcodeRecognized:(NSNotification *)note
+{
+    NSString *barcode = [note userInfo][TXHScanAPIScannerRecognizedValueKey];
+    
+    [self filterTicketsWithBarcode:barcode];
+}
+
 
 - (void)cameraBarcodeRecognized:(NSNotification *)note
 {

@@ -16,6 +16,8 @@ NSString * const TXHScanAPIScannerConnectionStatusDidChangedNotification;
 
 @interface TXHScanAPIManager : NSObject
 
+@property (readonly, nonatomic, assign, getter = isScannerConnected) BOOL scannerConnected;
+
 - (void)connect;
 - (void)disconnect; // IMPORTANT to call disconnect as api helper hold reference to its delegate... wtf
 

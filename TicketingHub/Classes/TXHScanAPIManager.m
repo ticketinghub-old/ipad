@@ -11,7 +11,7 @@
 
 NSString * const TXHScanAPIScannerRecognizedValueKey                     = @"TXHScanAPIScannerRecognizedValueKey";
 
-NSString * const TXHScanAPIScannerRecognizedQRCodeNotification           = @"TXHScanAPIScannerRecognizedQRCodeNotification";
+NSString * const TXHScanAPIScannerRecognizedCodeNotification             = @"TXHScanAPIScannerRecognizedCodeNotification";
 NSString * const TXHScanAPIScannerConnectionStatusDidChangedNotification = @"TXHScanAPIScannerConnectionStatusDidChangedNotification";
 
 
@@ -41,6 +41,11 @@ NSString * const TXHScanAPIScannerConnectionStatusDidChangedNotification = @"TXH
 {
     [self.scanApiHelper setDelegate:nil];
     [self.scanApiHelper close];
+}
+
+- (BOOL)isScannerConnected
+{
+    return [self.devices count] > 0;
 }
 
 #pragma mark - Pulling Data - WTF?
@@ -73,7 +78,7 @@ NSString * const TXHScanAPIScannerConnectionStatusDidChangedNotification = @"TXH
 - (void)onDecodedData:(DeviceInfo*) device DecodedData:(id<ISktScanDecodedData>) decodedData
 {
     NSString *decodedString = [NSString stringWithUTF8String:(const char *)[decodedData getData]];
-    [self postNotificationWithName:TXHScanAPIScannerRecognizedQRCodeNotification value:decodedString];
+    [self postNotificationWithName:TXHScanAPIScannerRecognizedCodeNotification value:decodedString];
 }
 
 - (void)onScanApiInitializeComplete:(SKTRESULT) result

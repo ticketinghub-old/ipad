@@ -10,6 +10,8 @@
 #import "UIViewController+BHTKeyboardNotifications.h"
 
 #import "TXHInfineaManger.h"
+#import "TXHScanAPIManager.h"
+
 #import "TXHBarcodeScanner.h"
 
 NSString *const TXHQueryValueKey                    = @"TXHQueryValueKey";
@@ -32,7 +34,9 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 @property (strong, nonatomic) NSDate *lastScanTimestamp;
 
 @property (strong, nonatomic) TXHBarcodeScanner *scanner;
-@property (strong, nonatomic) TXHInfineaManger *infineaManager;
+@property (strong, nonatomic) TXHScanAPIManager *scanAPIManager;
+@property (strong, nonatomic) TXHInfineaManger  *infineaManager;
+
 @end
 
 @implementation TXHDoorSearchViewController
@@ -44,6 +48,7 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     [self setupKeybaordAnimations];
     
     [self.infineaManager connect];
+    [self.scanAPIManager connect];
     
     self.searchField.delegate = self;
 }
@@ -77,6 +82,7 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 - (void)dealloc
 {
     [self.infineaManager disconnect];
+    [self.scanAPIManager disconnect];
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
@@ -96,7 +102,9 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 
 - (BOOL)shouldUseBuiltInCamera
 {
-    return ([TXHBarcodeScanner isCameraAvailable] && !self.infineaManager.isScannerConnected);
+    return ([TXHBarcodeScanner isCameraAvailable] &&
+            !self.infineaManager.isScannerConnected &&
+            !self.scanAPIManager.isScannerConnected);
 }
 
 - (void)startScanningWithBuiltInCamera
@@ -155,6 +163,15 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     return  _infineaManager;
 }
 
+- (TXHScanAPIManager *)scanAPIManager
+{
+    if (!_scanAPIManager)
+    {
+        _scanAPIManager = [[TXHScanAPIManager alloc] init];
+    }
+    return _scanAPIManager;
+}
+
 - (TXHBarcodeScanner *)scanner
 {
     if (!_scanner && [self shouldUseBuiltInCamera])
@@ -181,11 +198,13 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 - (void)registerForScannerNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scannerConnectionDidChange:) name:TXHScannerConnectionStatusDidChangedNotification object:self.infineaManager];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scannerConnectionDidChange:) name:TXHScanAPIScannerConnectionStatusDidChangedNotification object:self.scanAPIManager];
 }
 
 - (void)unregisterFromScannerNotifications
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHScannerConnectionStatusDidChangedNotification object:self.infineaManager];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHScanAPIScannerConnectionStatusDidChangedNotification object:self.scanAPIManager];
 }
 
 - (void)scannerConnectionDidChange:(NSNotification *)notification
@@ -235,7 +254,7 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 
 - (BOOL)canMakeNextScan
 {
-    return (!self.lastScanTimestamp || [self.lastScanTimestamp timeIntervalSinceNow] < -2.0);
+    return (!self.lastScanTimestamp || [self.lastScanTimestamp timeIntervalSinceNow] < -1.0);
 }
 
 - (void)recordBarcodeScanTimestamp
