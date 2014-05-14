@@ -40,6 +40,8 @@ NSString * const TXHPrinterErrorDomain = @"TXHPrinterErrorDomain";
             return NSLocalizedString(@"PRINTER_ERROR_TIMED_OUT_DESC", nil);
         case kTXHPrinterArgsInconsistencyError:
             return NSLocalizedString(@"PRINTER_ERROR_INCONSISTENCY_DESC", nil);
+        case kTXHPrinterWrongPrinterError:
+            return NSLocalizedString(@"PRINTER_ERROR_WRONG_PRINTER_DESC", nil);
 
     }
     
@@ -58,6 +60,8 @@ NSString * const TXHPrinterErrorDomain = @"TXHPrinterErrorDomain";
             return NSLocalizedString(@"PRINTER_ERROR_TIMED_OUT_REASON", nil);
         case kTXHPrinterArgsInconsistencyError:
             return NSLocalizedString(@"PRINTER_ERROR_INCONSISTENCY_REASON", nil);
+        case kTXHPrinterWrongPrinterError:
+            return NSLocalizedString(@"PRINTER_ERROR_WRONG_PRINTER_REASON", nil);
 
     }
 
@@ -76,6 +80,8 @@ NSString * const TXHPrinterErrorDomain = @"TXHPrinterErrorDomain";
             return NSLocalizedString(@"PRINTER_ERROR_TIMED_OUT_RECOVER", nil);
         case kTXHPrinterArgsInconsistencyError:
             return NSLocalizedString(@"PRINTER_ERROR_INCONSISTENCY_RECOVER", nil);
+        case kTXHPrinterWrongPrinterError:
+            return NSLocalizedString(@"PRINTER_ERROR_WRONG_PRINTER_RECOVER", nil);
 
     }
 
