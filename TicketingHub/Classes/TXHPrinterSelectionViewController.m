@@ -45,8 +45,26 @@
 {
     __weak typeof(self) wself = self;
     [self.printersManager fetchAvailablePrinters:^(NSSet *printers, NSError *error) {
-        wself.printers = [printers allObjects];
+        
+        NSArray *filteredPrinters = [printers allObjects];
+        
+        if (wself.onlyPrintersWithDrawer)
+            filteredPrinters = [self filterOnlyDrawerPrintersFromPrinters:filteredPrinters];
+        
+        wself.printers = filteredPrinters;
     }];
+}
+
+- (NSArray *)filterOnlyDrawerPrintersFromPrinters:(NSArray *)printers
+{
+    NSMutableArray *drawerPrinters = [NSMutableArray array];
+    for (TXHPrinter *printer in printers)
+    {
+        if (printer.canOpenDrawer)
+            [drawerPrinters addObject:printer];
+    }
+    
+    return [drawerPrinters copy];
 }
 
 - (void)setPrinters:(NSArray *)printers

@@ -23,6 +23,7 @@
 
 @interface TXHPrinterSelectionViewController : UITableViewController
 
+@property (nonatomic, assign) BOOL onlyPrintersWithDrawer;
 
 - (instancetype)initWithPrintersManager:(TXHPrintersManager *)manager;
 
