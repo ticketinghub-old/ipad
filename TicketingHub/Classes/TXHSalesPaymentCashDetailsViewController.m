@@ -11,7 +11,12 @@
 #import "TXHOrderManager.h"
 #import "TXHProductsManager.h"
 
-@interface TXHSalesPaymentCashDetailsViewController ()
+#import "TXHBorderedButton.h"
+#import "TXHPrinter.h"
+#import "TXHPrintersManager.h"
+#import "TXHPrinterSelectionViewController.h"
+
+@interface TXHSalesPaymentCashDetailsViewController () <TXHPrinterSelectionViewControllerDelegate>
 
 @property (strong, nonatomic) NSNumber *totalAmount;
 
@@ -21,6 +26,9 @@
 @property (weak, nonatomic) IBOutlet UILabel     *totalAmountValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel     *changeValueLabel;
 @property (weak, nonatomic) IBOutlet UITextField *givenAmountValueField;
+
+@property (weak, nonatomic) IBOutlet TXHBorderedButton *openDrawerButton;
+@property (strong, nonatomic) UIPopoverController *printerSelectionPopover;
 
 @end
 
@@ -81,5 +89,42 @@
     
     self.changeValueLabel.text = changeString;
 }
+
+- (IBAction)openDrawerButtonAction:(id)sender
+{
+    TXHPrinterSelectionViewController *printerSelector = [[TXHPrinterSelectionViewController alloc] initWithPrintersManager:TXHPRINTERSMANAGER];
+    printerSelector.delegate = self;
+    
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:printerSelector];
+    popover.popoverContentSize = CGSizeMake(200, 110);
+    
+    CGRect fromRect = [self.openDrawerButton.superview convertRect:self.openDrawerButton.frame toView:self.view];
+    
+    [popover presentPopoverFromRect:fromRect
+                             inView:self.view
+           permittedArrowDirections:UIPopoverArrowDirectionAny
+                           animated:YES];
+    
+    self.printerSelectionPopover = popover;
+}
+
+#pragma mark - TXHPrinterSelectionViewControllerDelegate
+
+- (void)txhPrinterSelectionViewController:(TXHPrinterSelectionViewController *)controller
+                         didSelectPrinter:(TXHPrinter *)printer
+{
+    
+    [self.printerSelectionPopover dismissPopoverAnimated:YES];
+    self.printerSelectionPopover = nil;
+
+    // double check
+    if (printer.canOpenDrawer)
+    {
+        [printer openDrawerWithCompletion:^(NSError *error, BOOL cancelled) {
+            
+        }];
+    }
+}
+
 
 @end

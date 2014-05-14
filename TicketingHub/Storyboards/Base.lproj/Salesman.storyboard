@@ -1211,6 +1211,51 @@
                                     <outlet property="delegate" destination="QH0-TV-maE" id="drU-XG-bcb"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Xk-5G-Pg1" customClass="TXHBorderedButton">
+                                <rect key="frame" x="20" y="708" width="200" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9bz-Gx-Btq"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="aMP-ez-6lk"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="jsp-uc-Gf7"/>
+                                    <constraint firstAttribute="width" constant="200" id="y74-5G-yf1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <state key="normal" title="Open Drawer">
+                                    <color key="titleColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.094117647060000004" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalFillColor">
+                                        <color key="value" red="0.094117647060000004" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedFillColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedTextColor">
+                                        <color key="value" red="0.094117647060000004" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="acceptSignatureAction:" destination="X77-oU-xTm" eventType="touchUpInside" id="BB1-vE-ule"/>
+                                    <action selector="continueAction:" destination="ECv-yP-c3G" eventType="touchUpInside" id="k2W-RJ-Mir"/>
+                                    <action selector="openDrawerButtonAction:" destination="QH0-TV-maE" eventType="touchUpInside" id="Uex-wY-ptQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -1219,10 +1264,12 @@
                             <constraint firstAttribute="trailing" secondItem="aB2-hQ-7pE" secondAttribute="trailing" constant="354" id="6Ez-aR-iqm"/>
                             <constraint firstItem="GrL-4Y-xvP" firstAttribute="top" secondItem="aB2-hQ-7pE" secondAttribute="bottom" constant="33" id="Bd3-Us-xTH"/>
                             <constraint firstAttribute="trailing" secondItem="gM7-R1-L4A" secondAttribute="trailing" constant="124" id="DBo-NP-39l"/>
+                            <constraint firstItem="0Xk-5G-Pg1" firstAttribute="leading" secondItem="5la-w8-acr" secondAttribute="leading" constant="20" id="Gt6-zi-WC7"/>
                             <constraint firstItem="aB2-hQ-7pE" firstAttribute="top" secondItem="Pde-4l-dh6" secondAttribute="bottom" constant="8" id="NQl-sd-EFA"/>
                             <constraint firstItem="GrL-4Y-xvP" firstAttribute="centerY" secondItem="ewR-q4-axR" secondAttribute="centerY" id="OjJ-Zg-fFH"/>
                             <constraint firstAttribute="trailing" secondItem="MJT-cc-rlm" secondAttribute="trailing" constant="114" id="TMq-sE-fis"/>
                             <constraint firstItem="aB2-hQ-7pE" firstAttribute="trailing" secondItem="GrL-4Y-xvP" secondAttribute="trailing" id="VZX-xE-aK5"/>
+                            <constraint firstItem="9Vg-sj-0nJ" firstAttribute="top" secondItem="0Xk-5G-Pg1" secondAttribute="bottom" constant="20" id="YLn-mz-rYR"/>
                             <constraint firstItem="gM7-R1-L4A" firstAttribute="leading" secondItem="Pde-4l-dh6" secondAttribute="trailing" constant="30" id="dzW-Sl-9KO"/>
                             <constraint firstAttribute="trailing" secondItem="ewR-q4-axR" secondAttribute="trailing" constant="124" id="fFP-XU-zH2"/>
                             <constraint firstItem="MJT-cc-rlm" firstAttribute="centerY" secondItem="aB2-hQ-7pE" secondAttribute="centerY" id="oqm-5m-4iz"/>
@@ -1233,6 +1280,7 @@
                     <connections>
                         <outlet property="changeValueLabel" destination="ewR-q4-axR" id="Iws-4N-caN"/>
                         <outlet property="givenAmountValueField" destination="MJT-cc-rlm" id="n33-AN-kAm"/>
+                        <outlet property="openDrawerButton" destination="0Xk-5G-Pg1" id="PBl-b8-QAV"/>
                         <outlet property="totalAmountValueLabel" destination="gM7-R1-L4A" id="Rv6-fg-koP"/>
                     </connections>
                 </viewController>
@@ -1396,6 +1444,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="rrc-X2-tGF"/>
+        <segue reference="yT6-w0-yn6"/>
     </inferredMetricsTieBreakers>
 </document>
