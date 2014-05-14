@@ -25,6 +25,19 @@ NSString * const TXHScanAPIScannerConnectionStatusDidChangedNotification = @"TXH
 
 @implementation TXHScanAPIManager
 
++ (instancetype)sharedManager
+{
+    static TXHScanAPIManager *_sharedManager;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedManager = [[TXHScanAPIManager alloc] init];
+        [_sharedManager connect];
+    });
+    
+    return _sharedManager;
+}
+
 - (void)connect
 {
     self.devices = [NSMutableSet set];

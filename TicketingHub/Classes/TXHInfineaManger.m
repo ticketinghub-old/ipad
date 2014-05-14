@@ -24,6 +24,19 @@ NSString * const TXHScannerConnectionStatusDidChangedNotification = @"TXHScanner
 
 @implementation TXHInfineaManger
 
++ (instancetype)sharedManager
+{
+    static TXHInfineaManger *_sharedManager;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedManager = [[TXHInfineaManger alloc] init];
+        [_sharedManager connect];
+    });
+    
+    return _sharedManager;
+}
+
 - (instancetype)init
 {
     self = [super init];

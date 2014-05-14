@@ -16,8 +16,7 @@
 #import "TXHActivityLabelView.h"
 
 #import "TXHProductsManager.h"
-#import "TXHInfineaManger.h"
-#import "TXHScanAPIManager.h"
+#import "TXHScanersManager.h"
 
 #import "TXHTicket+Filter.h"
 #import "TXHTicket+Title.h"
@@ -25,12 +24,14 @@
 #import "UIViewController+BHTKeyboardNotifications.h"
 #import "TXHRMPickerViewControllerDelegate.h"
 
-@interface TXHDoorTicketsListViewController () <TXHTicketDetailsViewControllerDelegate, TXHDoorTicketCellDelegate, UIAlertViewDelegate>
+@interface TXHDoorTicketsListViewController () <TXHTicketDetailsViewControllerDelegate, TXHDoorTicketCellDelegate, UIAlertViewDelegate, TXHScanersManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
 
 @property (strong, nonatomic) TXHActivityLabelView *activityView;
+
+@property (strong, nonatomic) TXHScanersManager *scannersManager;
 
 @property (strong, nonatomic) NSArray *tickets;
 @property (strong, nonatomic) NSArray *filteredTickets;
@@ -53,6 +54,13 @@
     
     [self updateHeaderLabels];
     [self setupKeybaordAnimations];
+    [self setupScannersManager];
+}
+
+- (void)setupScannersManager
+{
+    self.scannersManager = [[TXHScanersManager alloc] init];
+    self.scannersManager.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -276,31 +284,13 @@
 - (void)registerForNotifications
 {
     [self registerForSearchViewNotification];
-    [self registerForScannerNotifications];
     [self registerForProductAndAvailabilityChanges];
 }
 
 - (void)unregisterFromNotifications
 {
     [self unregisterFromSearchViewNotification];
-    [self unregisterFromScannerNotifications];
     [self unregisterForProductAndAvailabilityChanges];
-}
-
-- (void)registerForScannerNotifications
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scannerBarcodeRecognized:) name:TXHScannerRecognizedQRCodeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scannerMSRDataRecognized:) name:TXHScannerRecognizedMSRCardDataNotification object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scanner2BarcodeRecognized:) name:TXHScanAPIScannerRecognizedCodeNotification object:nil];
-}
-
-- (void)unregisterFromScannerNotifications
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHScannerRecognizedQRCodeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHScannerRecognizedMSRCardDataNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHScanAPIScannerRecognizedCodeNotification object:nil];
 }
 
 - (void)registerForSearchViewNotification
@@ -334,14 +324,17 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];
 }
 
-#pragma mark - notification actions
+#pragma mark - TXHScannerManagerDelegate
 
-- (void)scannerMSRDataRecognized:(NSNotification *)note
+- (void)scannerManager:(TXHScanersManager *)manager didRecognizeQRCode:(NSString *)QRCodeString
+{
+    [self filterTicketsWithBarcode:QRCodeString];
+}
+
+- (void)scannerManager:(TXHScanersManager *)manager didRecognizeMSRCardTrack:(NSString *)cardTrack
 {
     [self showInfolabelWithText:NSLocalizedString(@"DOORMAN_TICKETS_LIST_SEARCHING_LABEL", nil)
                   withIndicator:YES];
-    
-    NSString *cardTrack = [note userInfo][TXHScannerRecognizedValueKey];
     
     __weak typeof(self) wself = self;
     
@@ -399,22 +392,7 @@
     }
 }
 
-
-
-- (void)scannerBarcodeRecognized:(NSNotification *)note
-{
-    NSString *barcode = [note userInfo][TXHScannerRecognizedValueKey];
-
-    [self filterTicketsWithBarcode:barcode];
-}
-
-- (void)scanner2BarcodeRecognized:(NSNotification *)note
-{
-    NSString *barcode = [note userInfo][TXHScanAPIScannerRecognizedValueKey];
-    
-    [self filterTicketsWithBarcode:barcode];
-}
-
+#pragma mark - Soft Barcode Scanner
 
 - (void)cameraBarcodeRecognized:(NSNotification *)note
 {
