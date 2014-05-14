@@ -233,7 +233,7 @@
 		3E8D760319178FA800EB9588 /* HeftClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftClient.h; sourceTree = "<group>"; };
 		3E8D760419178FA800EB9588 /* HeftManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftManager.h; sourceTree = "<group>"; };
 		3E8D760519178FA800EB9588 /* HeftStatusReportPublic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftStatusReportPublic.h; sourceTree = "<group>"; };
-		3E8D76081917921000EB9588 /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libdtdev.a; sourceTree = "<group>"; };
+		3E8D76081917921000EB9588 /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libdtdev.a; path = ../../extLibraries/libdtdev.a; sourceTree = "<group>"; };
 		3E8FD59118C74CD70066FA50 /* TXHDoorSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorSearchViewController.h; sourceTree = "<group>"; };
 		3E8FD59218C74CD70066FA50 /* TXHDoorSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorSearchViewController.m; sourceTree = "<group>"; };
 		3E938D9D190FE6F900FC29E9 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
@@ -283,7 +283,7 @@
 		3EA61BBB18F443A8004458B2 /* TXHPrintersUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHPrintersUtility.m; sourceTree = "<group>"; };
 		3EAA200018CF7C52003EC924 /* TXHTicket+Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHTicket+Filter.h"; sourceTree = "<group>"; };
 		3EAA200118CF7C52003EC924 /* TXHTicket+Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHTicket+Filter.m"; sourceTree = "<group>"; };
-		3EACF4A51906ABB200AE636F /* DTDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDevices.h; sourceTree = "<group>"; };
+		3EACF4A51906ABB200AE636F /* DTDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTDevices.h; path = ../../extLibraries/DTDevices.h; sourceTree = "<group>"; };
 		3EB09805191D139D00159749 /* libheft.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libheft.a; sourceTree = "<group>"; };
 		3EB7B992191909BE006DA520 /* iOS-api.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS-api.podspec"; sourceTree = "<group>"; };
 		3EC14EB819225B6F00306027 /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
@@ -528,6 +528,8 @@
 		3E192D5F18FD609700D727AA /* DTDevices */ = {
 			isa = PBXGroup;
 			children = (
+				3EACF4A51906ABB200AE636F /* DTDevices.h */,
+				3E8D76081917921000EB9588 /* libdtdev.a */,
 			);
 			name = DTDevices;
 			sourceTree = "<group>";
@@ -1021,16 +1023,6 @@
 			name = "StarIO classes";
 			sourceTree = "<group>";
 		};
-		3EACF4A41906ABB200AE636F /* extLibraries */ = {
-			isa = PBXGroup;
-			children = (
-				3EACF4A51906ABB200AE636F /* DTDevices.h */,
-				3E8D76081917921000EB9588 /* libdtdev.a */,
-			);
-			name = extLibraries;
-			path = ../../extLibraries;
-			sourceTree = "<group>";
-		};
 		3EB09800191CDDA700159749 /* Payment Options Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1047,7 +1039,6 @@
 			children = (
 				3E8D760019178FA800EB9588 /* HeftLibrary */,
 				3E938D9F190FED7A00FC29E9 /* DKHandpoint */,
-				3EACF4A41906ABB200AE636F /* extLibraries */,
 			);
 			name = "Handpoint reader";
 			sourceTree = "<group>";
