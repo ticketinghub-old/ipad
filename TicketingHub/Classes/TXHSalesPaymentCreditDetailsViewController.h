@@ -12,7 +12,6 @@
 @interface TXHSalesPaymentCreditDetailsViewController : UIViewController <TXHSalesPaymentContentViewControllerProtocol>
 
 @property (readonly, nonatomic, getter = isValid) BOOL valid;
-@property (readonly, nonatomic, getter = isEnabled) BOOL enabled;
 
 @property (strong, nonatomic) TXHProductsManager *productManager;
 @property (strong, nonatomic) TXHOrderManager    *orderManager;

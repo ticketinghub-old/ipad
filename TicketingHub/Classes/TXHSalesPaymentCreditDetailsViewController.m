@@ -15,7 +15,6 @@
 @interface TXHSalesPaymentCreditDetailsViewController () <TXHSignaturePadViewControllerDelegate>
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
-@property (readwrite, nonatomic, getter = isEnabled) BOOL enabled;
 
 @end
 

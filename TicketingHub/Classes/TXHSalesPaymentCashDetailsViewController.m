@@ -21,7 +21,6 @@
 @property (strong, nonatomic) NSNumber *totalAmount;
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
-@property (readwrite, nonatomic, getter = isEnabled) BOOL enabled;
 
 @property (weak, nonatomic) IBOutlet UILabel     *totalAmountValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel     *changeValueLabel;
@@ -38,8 +37,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.enabled = YES;
 
     [self updateView];
 

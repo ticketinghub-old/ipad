@@ -28,7 +28,6 @@ static void * HandpointConnectedContext = &HandpointConnectedContext;
 @property (strong, nonatomic) TXHActivityLabelView *activityView;
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
-@property (readwrite, nonatomic, getter = isEnabled) BOOL enabled;
 
 @property (weak, nonatomic) IBOutlet UIButton *payButton;
 @property (weak, nonatomic) IBOutlet UILabel  *amountLabel;
