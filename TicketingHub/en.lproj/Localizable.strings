@@ -36,18 +36,21 @@
 "PRINTER_ERROR_PRINTER_OFFLINE_DESC"            = "Printer is offline";
 "PRINTER_ERROR_TIMED_OUT_DESC"                  = "Write port timed out";
 "PRINTER_ERROR_INCONSISTENCY_DESC"              = "Missing Parameter";
+"PRINTER_ERROR_WRONG_PRINTER_DESC"              = "Wrong printer specified";
 "PRINTER_ERROR_UNKNOWN_DESC"                    = "Unknown printer error";
 
 "PRINTER_ERROR_FAIL_TO_OPEN_PORT_REASON"        = "";
 "PRINTER_ERROR_PRINTER_OFFLINE_REASON"          = "";
 "PRINTER_ERROR_TIMED_OUT_REASON"                = "";
 "PRINTER_ERROR_INCONSISTENCY_REASON"            = "";
+"PRINTER_ERROR_WRONG_PRINTER_REASEON"           = "";
 "PRINTER_ERROR_UNKNOWN_REASON"                  = "";
 
 "PRINTER_ERROR_FAIL_TO_OPEN_PORT_RECOVERY"      = "";
 "PRINTER_ERROR_PRINTER_OFFLINE_RECOVER"         = "";
 "PRINTER_ERROR_TIMED_OUT_RECOVER"               = "";
 "PRINTER_ERROR_INCONSISTENCY_RECOVER"           = "";
+"PRINTER_ERROR_WRONG_PRINTER_RECOVER"           = "";
 "PRINTER_ERROR_UNKNOWN_RECOVERY"                = "";
 
 "ERROR_DISMISS_BUTTON_TITLE" = "OK";
