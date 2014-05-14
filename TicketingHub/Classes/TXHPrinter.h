@@ -19,7 +19,10 @@ typedef void (^TXHPrinterContinueBlock)(void (^continuePrintingBlock)(BOOL conti
 
 @property (nonatomic, readonly, assign) NSUInteger paperWidth; // in mm
 @property (nonatomic, readonly, assign) NSUInteger dpi;
+
 @property (nonatomic, readonly, assign, getter = hasCutter) BOOL cutter;
+@property (nonatomic, readonly, assign) BOOL canOpenDrawer;
+
 @property (nonatomic, readonly, copy) TXHPrinterContinueBlock printingContinue;
 
 
@@ -42,5 +45,11 @@ typedef void (^TXHPrinterContinueBlock)(void (^continuePrintingBlock)(BOOL conti
     gets called in the main thread
 */
 - (void)printPDFDocumentWithURL:(NSURL *)documentURL completion:(TXHPrinterCompletionBlock)completion;
+
+
+/*
+    sends open drawer command to the printer
+*/
+- (void)openDrawerWithCompletion:(TXHPrinterCompletionBlock)completion;
 
 @end

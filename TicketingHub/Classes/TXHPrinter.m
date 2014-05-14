@@ -43,6 +43,12 @@
                                 completionBlock:completion];
 }
 
+- (void)openDrawerWithCompletion:(TXHPrinterCompletionBlock)completion
+{
+    [self.printerEngine openDrawerFromPrinter:self
+                                   completion:completion];
+}
+
 - (NSUInteger)paperWidth
 {
     return 0;
@@ -54,6 +60,11 @@
 }
 
 - (BOOL)hasCutter
+{
+    return NO;
+}
+
+- (BOOL)canOpenDrawer
 {
     return NO;
 }

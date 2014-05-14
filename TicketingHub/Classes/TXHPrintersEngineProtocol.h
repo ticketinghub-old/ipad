@@ -16,4 +16,8 @@
 - (void)printPDFDocumentWithURL:(NSURL *)document
                     withPrinter:(TXHPrinter *)printer
                 completionBlock:(TXHPrinterCompletionBlock)completionBlock;
+
+- (void)openDrawerFromPrinter:(TXHPrinter *)printer
+                   completion:(TXHPrinterCompletionBlock)completion;
+
 @end

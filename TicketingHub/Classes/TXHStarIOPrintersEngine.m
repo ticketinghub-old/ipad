@@ -20,8 +20,6 @@
 #import <sys/time.h>
 #import <unistd.h>
 
-static char * const POS_OPEN_DRAWER_COMMAND = "\x07";
-
 static NSString * const kPrinterPortSettingsPortable    = @"mini";
 static NSString * const kPrinterPortSettingsPOS         = @"";
 
@@ -151,43 +149,78 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
                         imageToPrint:img
                             maxWidth:STAR_PRINTER_MAXWIDTH
                    compressionEnable:YES
-                      withDrawerKick:NO
                           completion:completion];
+    }
+}
+
+- (void)openDrawerFromPrinter:(TXHPrinter *)printer
+                   completion:(TXHPrinterCompletionBlock)completion
+{
+    TXHStarIOPrinter *starPrinter = (TXHStarIOPrinter *)printer;
+
+    if (starPrinter.printerType == TXHStarPortablePrinterTypePOS)
+    {
+        [self openCashDrawerWithPortname:starPrinter.portInfo.portName
+                            portSettings:kPrinterPortSettingsPOS
+                            drawerNumber:1
+                              completion:^(NSError *error) {
+                                  if (completion)
+                                      completion(error, NO);
+                              }];
+    }
+    else if (completion)
+    {
+        completion([NSError printerErrorWithCode:kTXHPrinterWrongPrinterError],YES);
     }
 }
 
 
 #pragma mark - POS printers
 
-- (void)printImageWithPortname:(NSString *)portName portSettings:(NSString*)portSettings imageToPrint:(UIImage*)imageToPrint maxWidth:(int)maxWidth compressionEnable:(BOOL)compressionEnable withDrawerKick:(BOOL)drawerKick completion:(void(^)(NSError *error))completion
+- (void)printImageWithPortname:(NSString *)portName portSettings:(NSString*)portSettings imageToPrint:(UIImage*)imageToPrint maxWidth:(int)maxWidth compressionEnable:(BOOL)compressionEnable completion:(void(^)(NSError *error))completion
 {
-    RasterDocument *rasterDoc = [[RasterDocument alloc] initWithDefaults:RasSpeed_Medium
-                                                      endOfPageBehaviour:RasPageEndMode_FeedAndFullCut
-                                                  endOfDocumentBahaviour:RasPageEndMode_FeedAndFullCut
-                                                               topMargin:RasTopMargin_Standard
-                                                              pageLength:0
-                                                              leftMargin:0
-                                                             rightMargin:0];
-
-    StarBitmap *starbitmap = [[StarBitmap alloc] initWithUIImage:imageToPrint :maxWidth :false];
-    
     NSMutableData *commandsToPrint = [[NSMutableData alloc] init];
     
-    NSData *shortcommand = [rasterDoc BeginDocumentCommandData];
-    [commandsToPrint appendData:shortcommand];
-    
-    shortcommand = [starbitmap getImageDataForPrinting:compressionEnable];
-    [commandsToPrint appendData:shortcommand];
-    
-    shortcommand = [rasterDoc EndDocumentCommandData];
-    [commandsToPrint appendData:shortcommand];
-    
-    if (drawerKick == YES) {
-        [commandsToPrint appendBytes:POS_OPEN_DRAWER_COMMAND
-                              length:sizeof(POS_OPEN_DRAWER_COMMAND) - 1];
+    if (imageToPrint)
+    {
+        RasterDocument *rasterDoc = [[RasterDocument alloc] initWithDefaults:RasSpeed_Medium
+                                                          endOfPageBehaviour:RasPageEndMode_FeedAndFullCut
+                                                      endOfDocumentBahaviour:RasPageEndMode_FeedAndFullCut
+                                                                   topMargin:RasTopMargin_Standard
+                                                                  pageLength:0
+                                                                  leftMargin:0
+                                                                 rightMargin:0];
+        
+        StarBitmap *starbitmap = [[StarBitmap alloc] initWithUIImage:imageToPrint :maxWidth :false];
+        
+        
+        NSData *shortcommand = [rasterDoc BeginDocumentCommandData];
+        [commandsToPrint appendData:shortcommand];
+        
+        shortcommand = [starbitmap getImageDataForPrinting:compressionEnable];
+        [commandsToPrint appendData:shortcommand];
+        
+        shortcommand = [rasterDoc EndDocumentCommandData];
+        [commandsToPrint appendData:shortcommand];
     }
     
     [self sendCommand:commandsToPrint portName:portName portSettings:portSettings timeoutMillis:10000 completion:completion];
+}
+
+- (void)openCashDrawerWithPortname:(NSString *)portName portSettings:(NSString *)portSettings drawerNumber:(NSUInteger)drawerNumber completion:(void(^)(NSError *error))completion
+{
+    unsigned char opencashdrawer_command = 0x00;
+    
+    if (drawerNumber == 1) {
+        opencashdrawer_command = 0x07; //BEL
+    }
+    else if (drawerNumber == 2) {
+        opencashdrawer_command = 0x1a; //SUB
+    }
+    
+    NSData *commands = [NSData dataWithBytes:&opencashdrawer_command length:1];
+    
+    [self sendCommand:commands portName:portName portSettings:portSettings timeoutMillis:10000 completion:completion];
 }
 
 #pragma mark - portable printer

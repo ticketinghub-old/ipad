@@ -95,4 +95,17 @@
     return [super hasCutter];
 }
 
+- (BOOL)canOpenDrawer
+{
+    switch (self.printerModel)
+    {
+        case TXHStarPortablePrinterTSP650II:    return YES;
+        case TXHStarPortablePrinterSM300i:      return NO;
+        case TXHStarPortablePrinterUnknown:
+            break;
+    }
+    
+    return NO;
+}
+
 @end
