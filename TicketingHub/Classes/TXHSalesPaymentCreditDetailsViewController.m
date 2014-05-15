@@ -12,8 +12,9 @@
 #import "TXHOrderManager.h"
 #import "TXHProductsManager.h"
 
-@interface TXHSalesPaymentCreditDetailsViewController () <TXHSignaturePadViewControllerDelegate>
 #import "TXHInfineaManger.h"
+
+@interface TXHSalesPaymentCreditDetailsViewController () <TXHSignaturePadViewControllerDelegate>
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
 @property (strong, nonatomic) TXHInfineaManger *infineaManager;
