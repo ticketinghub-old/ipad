@@ -1102,45 +1102,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="payment-card-big" translatesAutoresizingMaskIntoConstraints="NO" id="k6u-sS-9hS">
-                                <rect key="frame" x="387" y="241" width="250" height="285"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lat-aW-1hK" customClass="TXHCardView">
+                                <rect key="frame" x="261" y="0.0" width="502" height="290"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.24469146950000001" blue="0.9017778045" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="EDW-xF-GbD"/>
-                                    <constraint firstAttribute="height" constant="285" id="hAw-aL-eET"/>
+                                    <constraint firstAttribute="width" constant="502" id="eTW-7H-o7B"/>
+                                    <constraint firstAttribute="height" constant="290" id="tz8-6N-HXQ"/>
                                 </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIj-W4-q5S">
-                                <rect key="frame" x="333" y="173" width="359" height="422"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="359" id="9fO-G3-4Wf"/>
-                                    <constraint firstAttribute="height" constant="422" id="dH7-PE-aGC"/>
-                                </constraints>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="testButtonAction:" destination="QXG-6t-PVr" eventType="touchUpInside" id="GD9-jI-5C4"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="k6u-sS-9hS" secondAttribute="centerY" id="AYl-re-8V5"/>
-                            <constraint firstAttribute="centerY" secondItem="yIj-W4-q5S" secondAttribute="centerY" id="IYZ-Ow-F2i"/>
-                            <constraint firstAttribute="centerX" secondItem="k6u-sS-9hS" secondAttribute="centerX" id="kuC-Mi-BGk"/>
-                            <constraint firstAttribute="centerX" secondItem="yIj-W4-q5S" secondAttribute="centerX" id="rzT-Qy-RFK"/>
+                            <constraint firstAttribute="centerX" secondItem="lat-aW-1hK" secondAttribute="centerX" id="9Sf-t0-tYT"/>
+                            <constraint firstItem="lat-aW-1hK" firstAttribute="top" secondItem="TpA-cW-Knl" secondAttribute="top" id="X8S-0H-3O5"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <connections>
+                        <outlet property="cardView" destination="lat-aW-1hK" id="RcK-Wg-kMQ"/>
                         <segue destination="X77-oU-xTm" kind="modal" identifier="ShowSignaturePad" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="yT6-w0-yn6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LqH-0V-7Ih" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4465" y="2284"/>
+            <point key="canvasLocation" x="4465" y="2266"/>
         </scene>
         <!--Sales Payment Cash Details View Controller-->
         <scene sceneID="dK5-23-xY9">
@@ -1435,7 +1421,6 @@
         <image name="Expand" width="14" height="8"/>
         <image name="GreenCheckmark" width="41" height="41"/>
         <image name="close-mark" width="16" height="16"/>
-        <image name="payment-card-big" width="250" height="285"/>
         <image name="pen-icon" width="48" height="36"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

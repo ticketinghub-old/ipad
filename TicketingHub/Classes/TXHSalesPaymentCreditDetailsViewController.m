@@ -14,10 +14,18 @@
 
 #import "TXHInfineaManger.h"
 
+#import "TXHCardView.h"
+#import "TXHCardView+TXHCustomXIB.h"
+
+#import <Block-KVO/MTKObserving.h>
+
 @interface TXHSalesPaymentCreditDetailsViewController () <TXHSignaturePadViewControllerDelegate>
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
 @property (strong, nonatomic) TXHInfineaManger *infineaManager;
+
+@property (strong, nonatomic) IBOutlet TXHCardView *cardView;
+@property (copy, nonatomic) NSString *cardTrackData;
 
 @end
 
@@ -29,6 +37,8 @@
     
     [self initializeInfineaManger];
     [self registerForScannersRecognitionNotifications];
+    
+    [self observeCardView];
 }
 
 - (void)dealloc
@@ -44,7 +54,7 @@
     [manger connect];
 }
 
-- (IBAction)testButtonAction:(id)sender
+- (void)showSignatureView
 {
     [self performSegueWithIdentifier:@"ShowSignaturePad" sender:self];
 }
@@ -61,6 +71,16 @@
         signatureController.ownerName        = order.customer.fullName;
         signatureController.delegate         = self;
     }
+}
+
+- (void)observeCardView
+{
+    [self observeProperty:@keypath(self.cardView.valid) withBlock:^(__weak TXHSalesPaymentCreditDetailsViewController *wself, id old, id new) {
+        NSLog(@"cardnumber: %@",wself.cardView.card.number);
+        NSLog(@"exipry month: %d",wself.cardView.card.expMonth);
+        NSLog(@"expiry year: %d",wself.cardView.card.expYear);
+        NSLog(@"cvv: %@",wself.cardView.card.cvc);
+    }];
 }
 
 #pragma mark - Infinea Notification
@@ -85,7 +105,10 @@
 {
     if (note.object == self.infineaManager)
     {
-//        NSString *cardTrack = [note userInfo][TXHScannerRecognizedValueKey];
+        NSString *cardTrack = [note userInfo][TXHScannerRecognizedValueKey];
+        self.cardTrackData = cardTrack;
+        
+        self.cardView.skipFronSide = [cardTrack length] > 0;
     }
 }
 
