@@ -13,12 +13,35 @@
 #import "TXHProductsManager.h"
 
 @interface TXHSalesPaymentCreditDetailsViewController () <TXHSignaturePadViewControllerDelegate>
+#import "TXHInfineaManger.h"
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
+@property (strong, nonatomic) TXHInfineaManger *infineaManager;
 
 @end
 
 @implementation TXHSalesPaymentCreditDetailsViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self initializeInfineaManger];
+    [self registerForScannersRecognitionNotifications];
+}
+
+- (void)dealloc
+{
+    [self unregisterFromScannersRecognitionNotifications];
+}
+
+- (void)initializeInfineaManger
+{
+    TXHInfineaManger *manger = [TXHInfineaManger sharedManager];
+    self.infineaManager = manger;
+
+    [manger connect];
+}
 
 - (IBAction)testButtonAction:(id)sender
 {
@@ -36,6 +59,32 @@
         signatureController.totalPriceString = [self.productManager priceStringForPrice:order.total];
         signatureController.ownerName        = order.customer.fullName;
         signatureController.delegate         = self;
+    }
+}
+
+#pragma mark - Infinea Notification
+
+- (void)registerForScannersRecognitionNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(scannerMSRDataRecognized:)
+                                                 name:TXHScannerRecognizedMSRCardDataNotification
+                                               object:self.infineaManager];
+}
+
+- (void)unregisterFromScannersRecognitionNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:TXHScannerRecognizedMSRCardDataNotification
+                                                  object:self.infineaManager];
+}
+
+
+- (void)scannerMSRDataRecognized:(NSNotification *)note
+{
+    if (note.object == self.infineaManager)
+    {
+//        NSString *cardTrack = [note userInfo][TXHScannerRecognizedValueKey];
     }
 }
 

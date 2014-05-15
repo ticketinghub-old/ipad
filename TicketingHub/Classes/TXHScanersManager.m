@@ -8,7 +8,6 @@
 
 #import "TXHScanersManager.h"
 
-
 @interface TXHScanersManager ()
 
 @property (strong, nonatomic) TXHScanAPIManager *scanAPIManager;
@@ -33,7 +32,14 @@
 
 - (instancetype)init
 {
-    return [self initWithInfineaManager:[TXHInfineaManger sharedManager] andScanApiManager:[TXHScanAPIManager sharedManager]];
+    TXHInfineaManger *infineaManager = [TXHInfineaManger sharedManager];
+    [infineaManager connect];
+    
+    TXHScanAPIManager * scanAPIManager = [TXHScanAPIManager sharedManager];
+    [scanAPIManager connect];
+    
+    return [self initWithInfineaManager:infineaManager
+                      andScanApiManager:scanAPIManager];
 }
 
 - (void)dealloc
@@ -120,5 +126,6 @@
     if ([self.delegate respondsToSelector:@selector(scannerConnectionStatusDidChange:)])
         [self.delegate scannerConnectionStatusDidChange:self];
 }
+
 
 @end
