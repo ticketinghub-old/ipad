@@ -77,8 +77,8 @@
 {
     [self observeProperty:@keypath(self.cardView.valid) withBlock:^(__weak TXHSalesPaymentCreditDetailsViewController *wself, id old, id new) {
         NSLog(@"cardnumber: %@",wself.cardView.card.number);
-        NSLog(@"exipry month: %d",wself.cardView.card.expMonth);
-        NSLog(@"expiry year: %d",wself.cardView.card.expYear);
+        NSLog(@"exipry month: %lu",(unsigned long)wself.cardView.card.expMonth);
+        NSLog(@"expiry year: %lu",(unsigned long)wself.cardView.card.expYear);
         NSLog(@"cvv: %@",wself.cardView.card.cvc);
     }];
 }
