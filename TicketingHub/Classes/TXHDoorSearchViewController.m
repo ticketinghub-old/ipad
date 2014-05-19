@@ -45,8 +45,6 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     
     [self setupKeybaordAnimations];
     
-    [self setupScannersManager];
-    
     self.searchField.delegate = self;
 }
 
@@ -77,10 +75,15 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     [self.scanner setInterfaceOrientation:toInterfaceOrientation];
 }
 
-- (void)setupScannersManager
+- (TXHScanersManager *)scannersManager
 {
-    self.scannersManager = [[TXHScanersManager alloc] init];
-    self.scannersManager.delegate = self;
+    if (!_scannersManager)
+    {
+        _scannersManager = [[TXHScanersManager alloc] init];
+        _scannersManager.delegate = self;
+    }
+    
+    return _scannersManager;
 }
 
 #pragma mark - private

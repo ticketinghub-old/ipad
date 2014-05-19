@@ -40,14 +40,25 @@ NSString * const TXHScanAPIScannerConnectionStatusDidChangedNotification = @"TXH
 
 - (void)connect
 {
-    self.devices = [NSMutableSet set];
-    
-    ScanApiHelper *scanApiHelper = [[ScanApiHelper alloc] init];
-    [scanApiHelper setDelegate:self];
-    [scanApiHelper open];
-
-    self.scanApiHelper   = scanApiHelper;
-    self.scanApiConsumer = [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(consumeAsyncData:) userInfo:nil repeats:YES];
+    if (!self.scanApiHelper)
+    {
+        self.devices = [NSMutableSet set];
+        
+        ScanApiHelper *scanApiHelper = [[ScanApiHelper alloc] init];
+        [scanApiHelper setDelegate:self];
+        [scanApiHelper open];
+        
+        self.scanApiHelper   = scanApiHelper;
+        
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.5
+                                                          target:self
+                                                        selector:@selector(consumeAsyncData:)
+                                                        userInfo:nil
+                                                         repeats:YES];
+        
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        self.scanApiConsumer = timer;
+    }
 }
 
 - (void)disconnect
@@ -73,14 +84,20 @@ NSString * const TXHScanAPIScannerConnectionStatusDidChangedNotification = @"TXH
 
 - (void)onDeviceArrival:(SKTRESULT)result Device:(DeviceInfo*)deviceInfo
 {
-    [self.devices addObject:deviceInfo];
-    [self postNotificationWithName:TXHScanAPIScannerConnectionStatusDidChangedNotification value:nil];
+    if (deviceInfo)
+    {
+        [self.devices addObject:deviceInfo];
+        [self postNotificationWithName:TXHScanAPIScannerConnectionStatusDidChangedNotification value:nil];
+    }
 }
 
 - (void)onDeviceRemoval:(DeviceInfo*) deviceRemoved
 {
-    [self.devices removeObject:deviceRemoved];
-    [self postNotificationWithName:TXHScanAPIScannerConnectionStatusDidChangedNotification value:nil];
+    if (deviceRemoved)
+    {
+        [self.devices removeObject:deviceRemoved];
+        [self postNotificationWithName:TXHScanAPIScannerConnectionStatusDidChangedNotification value:nil];
+    }
 }
 
 - (void)onError:(SKTRESULT) result

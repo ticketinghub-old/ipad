@@ -26,17 +26,17 @@
     _scanAPIManager = scanApiManager;
     
     [self registerForNotifications];
-    
+
+    [_infineaManager connect];
+    [_scanAPIManager connect];
+
     return self;
 }
 
 - (instancetype)init
 {
-    TXHInfineaManger *infineaManager = [TXHInfineaManger sharedManager];
-    [infineaManager connect];
-    
-    TXHScanAPIManager * scanAPIManager = [TXHScanAPIManager sharedManager];
-    [scanAPIManager connect];
+    TXHInfineaManger *infineaManager  = [TXHInfineaManger sharedManager];
+    TXHScanAPIManager *scanAPIManager = [TXHScanAPIManager sharedManager];
     
     return [self initWithInfineaManager:infineaManager
                       andScanApiManager:scanAPIManager];
