@@ -53,6 +53,15 @@ static void * HandpointConnectedContext = &HandpointConnectedContext;
     [self updateView];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowSignaturePad"])
+    {
+        TXHSignaturePadViewController *signaturePadController = segue.destinationViewController;
+        signaturePadController.delegate = self;
+    }
+}
+
 - (void)updateView
 {
     if (self.isValid)
@@ -77,7 +86,7 @@ static void * HandpointConnectedContext = &HandpointConnectedContext;
     TXHOrder *order = [self.orderManager order];
     
     NSError *error;
-    [self.handpointClient saleWithAmount:3000
+    [self.handpointClient saleWithAmount:order.totalValue
                                 currency:order.currency
                              cardPresent:YES
                                reference:order.reference
