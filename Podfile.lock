@@ -21,7 +21,7 @@ PODS:
   - Block-KVO (2.2.1)
   - DCTCoreDataStack (1.1)
   - Expecta (0.2.4)
-  - iOS-api (0.0.94):
+  - iOS-api (0.0.95):
     - AFNetworking (~> 2.2.0)
     - DCTCoreDataStack (~> 1.1)
   - OCMock (2.2.4)
@@ -69,7 +69,7 @@ SPEC CHECKSUMS:
   Block-KVO: 7b298fb4617e948179b4c7725569feff7bd58337
   DCTCoreDataStack: 4090bc1d6819fda813c7cc45119d1fa8fd8b8b3c
   Expecta: 5c147dedfea5fbcf773995f7e65020abcc936ce5
-  iOS-api: fca43fb1aac9ffae234a123663e107d35e0fd0ac
+  iOS-api: 2bb09ad3f41cafa001f8d6e4ee1099d103d3899b
   OCMock: 5008fae4b4789b8fc3e48cd7660f2eb5ef8ce89e
   PaymentKit: 92df7c2fb4fb3b4e0c3f5fb8c8e75cc528025126
   PPSSignatureView: 83ffa630306afc93ad595e5a6e98a0dba1c8a49b
