@@ -14,9 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *headerTotalPrice;
 @property (weak, nonatomic) IBOutlet UIImageView *expandedCollapsedImageView;
 
-@property (strong, nonatomic) UIImage *expandImage;
-@property (strong, nonatomic) UIImage *collapseImage;
-
 @end
 
 @implementation TXHSalesSummaryHeader
@@ -30,7 +27,8 @@
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
     self = [super initWithCoder:aDecoder];
     if (self) {
         [self setup];
@@ -38,13 +36,8 @@
     return self;
 }
 
-- (void)setup {
-    // Create images for expanded and collapsed modes
-    self.expandImage = [[UIImage imageNamed:@"Expand"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.collapseImage = [[UIImage imageNamed:@"Collapse"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    
-    // Assign the collapsed mode at startup
-    self.expandedCollapsedImageView.image = self.collapseImage;
+- (void)setup
+{
     self.expandedCollapsedImageView.tintColor = [UIColor colorWithRed:77.0f / 255.0f
                                                                 green:134.0f / 255.0f
                                                                  blue:180.0f / 255.0f
@@ -55,29 +48,40 @@
     [self addGestureRecognizer:tapGesture];
 }
 
-- (NSAttributedString *)ticketTitle {
-    return self.headerTitle.attributedText;
+- (void)setTicketTitle:(NSString *)ticketTitle
+{
+    self.headerTitle.text = ticketTitle;
 }
 
--(void)setTicketTitle:(NSAttributedString *)ticketTitle {
-    NSAttributedString *title = ticketTitle;
-    CGSize size = [title size];
-    CGRect bounds = self.headerTitle.bounds;
-    bounds.size = size;
-    self.headerTitle.bounds = bounds;
-    self.headerTitle.attributedText = ticketTitle;
-    [self layoutIfNeeded];
+- (void)setTicketTotalPrice:(NSString *)ticketTotalPrice
+{
+    self.headerTotalPrice.text = ticketTotalPrice;
 }
 
-- (void)setIsExpanded:(BOOL)isExpanded {
-    _isExpanded = isExpanded;
-    self.expandedCollapsedImageView.image = isExpanded ? self.collapseImage : self.expandImage;
+- (void)setExpanded:(BOOL)expanded
+{
+    _expanded = expanded;
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         self.expandedCollapsedImageView.transform = CGAffineTransformMakeRotation(expanded ? M_PI : 0);
+                     }
+                     completion:nil];
 }
 
-- (void)toggleMode:(UITapGestureRecognizer *)gesture {
-    if (gesture.state == UIGestureRecognizerStateEnded) {
-        self.isExpanded = !self.isExpanded;
-        [[UIApplication sharedApplication] sendAction:@selector(toggleSection:) to:nil from:self forEvent:nil];
+- (void)setCanExpand:(BOOL)canExpand
+{
+    _canExpand = canExpand;
+    self.expandedCollapsedImageView.hidden = !canExpand;
+}
+
+- (void)toggleMode:(UITapGestureRecognizer *)gesture
+{
+    if (gesture.state == UIGestureRecognizerStateEnded)
+    {
+        self.expanded = !self.expanded;
+        [self.delegate txhSalesSummaryHeaderIsExpandedDidChange:self];
     }
 }
 

@@ -7,37 +7,84 @@
 //
 
 #import "TXHTextEntryTableViewCell.h"
+#import "TXHDataEntryFieldErrorView.h"
+#import "UIColor+TicketingHub.h"
 
 @interface TXHTextEntryTableViewCell () <UITextFieldDelegate>
 
-@property TXHTextEntryView *placeholder;
+@property (weak, nonatomic) IBOutlet UIView *backingView;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+
+@property (weak, nonatomic) IBOutlet TXHDataEntryFieldErrorView *dataErrorView;
 
 @end
 
 @implementation TXHTextEntryTableViewCell
 
-- (void)setupDataContent {
-    [super setupDataContent];
-    self.placeholder = [[TXHTextEntryView alloc] initWithFrame:CGRectInset(self.bounds, 8.0f, 0.0f)];
-    [self.contentView addSubview:self.placeholder];
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    [[UIApplication sharedApplication] sendAction:@selector(makeCellVisible:) to:nil from:self forEvent:nil];
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
     
-    if (self.errorMessage.length) {
-        // If there is an error message associated with this data item, clear it when editing occurs.
-        self.errorMessage = @"";
-    }
+    self.backingView.layer.cornerRadius = 4.0;
+    self.dataErrorView.layer.cornerRadius = 3.0;
+    
+    self.textField.delegate = self;
 }
 
-- (TXHTextEntryView *)textField {
-    return self.placeholder;
+- (void)setPlaceholder:(NSString *)placeholder
+{
+    self.textField.placeholder = placeholder;
+}
+
+- (void)setText:(NSString *)text
+{
+    self.textField.text = text;
+}
+
+- (NSString *)text
+{
+    return self.textField.text;
+}
+
+- (void)setErrorMessage:(NSString *)errorMessage
+{
+    self.dataErrorView.message = errorMessage;
+    [self updateColors];
+}
+
+- (void)updateColors
+{
+    BOOL hasError = [self hasErrors];
+    
+    self.textField.backgroundColor   = hasError ? [UIColor txhFieldErrorBackgroundColor] : [UIColor txhFieldNormalBackgroundColor];
+    self.backingView.backgroundColor = self.textField.backgroundColor;
+    self.textField.textColor         = hasError ? [UIColor txhFieldErrorTextColor] : [UIColor txhFieldNormalTextColor];
+}
+
+- (BOOL)hasErrors
+{
+    return (self.dataErrorView.message.length > 0);
 }
 
 - (void)prepareForReuse {
     [super prepareForReuse];
-    [self.textField reset];
+    
+    self.dataErrorView.message = @"";
+    self.textField.text = @"";
 }
+
+- (IBAction)textDidChange:(id)sender
+{
+    //    [self.delegate txhSalesInformationTextCellDidChangeText:self];
+}
+
+#pragma mark UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 
 @end

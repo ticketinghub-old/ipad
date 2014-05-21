@@ -8,84 +8,138 @@
 
 #import "TXHSalesCompletionViewController.h"
 
-@interface TXHSalesCompletionViewController ()
+#import "TXHBorderedButton.h"
 
-@property (weak, nonatomic) IBOutlet UITextField *coupon;
-@property (weak, nonatomic) IBOutlet UIButton *continueButton;
-@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@interface TXHSalesCompletionViewController () <UIAlertViewDelegate>
 
-@property (assign, nonatomic) BOOL editingCoupon;
+@property (weak, nonatomic) IBOutlet TXHBorderedButton *rightButton;
+@property (weak, nonatomic) IBOutlet TXHBorderedButton *middleButton;
+@property (weak, nonatomic) IBOutlet TXHBorderedButton *leftButton;
 
 @end
 
 @implementation TXHSalesCompletionViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+#pragma mark Buttons Image
+
+
+- (void)setRightButtonImage:(UIImage *)rightButtonImage
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    [self setImage:rightButtonImage forButton:self.rightButton];
 }
 
-- (void)viewDidLoad
+- (void)setMiddleButtonImage:(UIImage *)middleButtonImage
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    UIImage *buttonBorder = [[UIImage imageNamed:@"ButtonBorder"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [self.cancelButton setBackgroundImage:buttonBorder forState:UIControlStateNormal];
+    [self setImage:middleButtonImage forButton:self.middleButton];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)setImage:(UIImage *)image forButton:(TXHBorderedButton *)button
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [button setImage:image forState:UIControlStateNormal];
 }
 
-- (void)setCanCompleteStep:(BOOL)canCompleteStep {
-    _canCompleteStep = canCompleteStep;
-    self.continueButton.enabled = canCompleteStep;
+#pragma mark Buttons Title
+
+- (void)setLeftButtonTitle:(NSString *)continueButtonTitle
+{
+    [self setTitle:continueButtonTitle forButton:self.leftButton];
 }
 
-- (IBAction)cancelAction:(id)sender {
-    NSLog(@"cancel");
-    [[UIApplication sharedApplication] sendAction:@selector(orderExpiredWithSender:) to:nil from:self forEvent:nil];
+- (void)setMiddleButtonTitle:(NSString *)continueButtonTitle
+{
+    [self setTitle:continueButtonTitle forButton:self.middleButton];
 }
 
-- (IBAction)continueAction:(id)sender {
-#pragma unused (sender)
-    [[UIApplication sharedApplication] sendAction:@selector(completeWizardStep:) to:nil from:self forEvent:nil];
+- (void)setRightButtonTitle:(NSString *)continueButtonTitle
+{
+    [self setTitle:continueButtonTitle forButton:self.rightButton];
 }
 
-- (void)hideCoupon:(BOOL)hidden {
-    __block typeof(self) blockSelf = self;
-    
-    if (hidden) {
-        self.animationHandler = nil;
-        self.coupon.hidden = YES;
-        self.newVerticalHeight = 102.0f;
-    } else {
-        self.animationHandler = ^(BOOL finished) {
-#pragma unused (finished)
-            blockSelf.coupon.hidden = NO;
-        };
-        self.newVerticalHeight = 131.0f;
-    }
-    
-    [[UIApplication sharedApplication] sendAction:@selector(updateCompletionContainerHeight:) to:nil from:self forEvent:nil];
+- (void)setTitle:(NSString *)title forButton:(TXHBorderedButton *)button
+{
+    if (![title length])
+        title = @"";
+
+    [button setTitle:title forState:UIControlStateNormal];
 }
 
-#pragma mark - UITextField delegate
+#pragma mark Buttons Enable
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-#pragma unused (textField)
-    [[UIApplication sharedApplication] sendAction:@selector(increaseCompletionContainerHeight:) to:nil from:self forEvent:nil];
+- (void)setButtonsDisabled:(BOOL)disabled
+{
+    [self setLeftButtonDisabled:disabled];
+    [self setMiddleButtonDisabled:disabled];
+    [self setRightButtonDisabled:disabled];
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-#pragma unused (textField)
-    [[UIApplication sharedApplication] sendAction:@selector(decreaseCompletionContainerHeight:) to:nil from:self forEvent:nil];
+- (void)setLeftButtonDisabled:(BOOL)disabled
+{
+    [self setButton:self.leftButton disabled:disabled];
+}
+
+- (void)setMiddleButtonDisabled:(BOOL)disabled
+{
+    [self setButton:self.middleButton disabled:disabled];
+}
+
+- (void)setRightButtonDisabled:(BOOL)disabled
+{
+    [self setButton:self.rightButton disabled:disabled];
+}
+
+- (void)setButton:(TXHBorderedButton *)button disabled:(BOOL)disabled
+{
+    button.enabled = !disabled;
+}
+
+#pragma mark Buttons Hide
+
+- (void)setLeftButtonHidden:(BOOL)hidden
+{
+    [self setButton:self.leftButton hidden:hidden];
+}
+
+- (void)setMiddleButtonHidden:(BOOL)hidden
+{
+    [self setButton:self.middleButton hidden:hidden];
+}
+
+- (void)setRightButtonHidden:(BOOL)hidden
+{
+    [self setButton:self.rightButton hidden:hidden];
+}
+
+- (void)setButton:(TXHBorderedButton *)button hidden:(BOOL)hidden
+{
+    button.hidden = hidden;
+}
+
+#pragma mark - Button Actions
+
+- (IBAction)leftButtonAction:(id)sender
+{
+    [self.delegate salesCompletionViewController:self didDidSelectLeftButton:sender];
+}
+
+- (IBAction)middleButtonAction:(id)sender
+{
+    [self.delegate salesCompletionViewController:self didDidSelectMiddleButton:sender];
+}
+
+- (IBAction)rightButtonAction:(id)sender
+{
+    [self.delegate salesCompletionViewController:self didDidSelectRightButton:sender];
+}
+
+
+#pragma mark - Button Color
+
+- (void)setLeftBarButtonColor:(UIColor *)color;
+{
+    self.leftButton.borderColor          = color;
+    self.leftButton.normalTextColor      = color;
+    self.leftButton.highlightedFillColor = color;
 }
 
 @end

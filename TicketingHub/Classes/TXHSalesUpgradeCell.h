@@ -11,8 +11,8 @@
 @interface TXHSalesUpgradeCell : UICollectionViewCell
 
 @property (strong, nonatomic) NSString *upgradeName;
-@property (strong, nonatomic) NSNumber *upgradePrice;
+@property (strong, nonatomic) NSString *upgradePrice;
 @property (strong, nonatomic) NSString *upgradeDescription;
-@property (assign, nonatomic) BOOL isSelected;
+@property (assign, nonatomic, getter = isChosen) BOOL chosen;
 
 @end

@@ -7,43 +7,21 @@
 //
 
 @import UIKit;
+#import <TapkuLibrary/TapkuLibrary.h>
 
-extern NSString * const DateSelectorViewControllerStoryboardIdentifier;
-
-@class TXHTicketingHubClient;
+@class TXHProductsManager;
 @class TXHDateSelectorViewController;
 
 @protocol TXHDateSelectorViewDelegate <NSObject>
 
-@optional
-/** Handle date selection - optional
- 
- The delegate is sent this message when a date is selected in the calendar view.
-
- @param controller The instance of DateSelectorViewController that sent this message.
- @param date the selected date, the time portion is midnight and should not be relied on.
- */
-- (void)dateSelectorViewController:(TXHDateSelectorViewController *)controller didSelectDate:(NSDate *)date;
+- (void)dateSelectorViewController:(TXHDateSelectorViewController *)controller didSelectAvailability:(TXHAvailability *)availability;
 
 @end
 
+@interface TXHDateSelectorViewController : TKCalendarMonthTableViewController
 
-@interface TXHDateSelectorViewController : UIViewController
-
-/** 
- A reference to the network library
- */
-@property (strong, nonatomic) TXHTicketingHubClient *ticketingHubClient;
-
-/**
- The selected date to be highlighted in the calendar. Only the date portion is used.
- */
-@property (strong, nonatomic) NSDate *selectedDate;
-
-/** 
- A delegate to handle date selection
- */
 @property (weak, nonatomic) id <TXHDateSelectorViewDelegate> delegate;
+@property (strong, nonatomic) TXHProductsManager *productManager;
 
 @end
 

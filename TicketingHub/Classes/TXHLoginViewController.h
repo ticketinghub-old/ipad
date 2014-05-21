@@ -8,12 +8,10 @@
 
 @import UIKit;
 
-@class TXHTicketingHubClient;
-
 extern NSString * const LoginViewControllerStoryboardIdentifier;
 
 @interface TXHLoginViewController : UIViewController
 
-@property (strong, nonatomic) TXHTicketingHubClient *ticketingHubClient;
+- (IBAction)showLoginViewController:(UIStoryboardSegue *)sender;
 
 @end

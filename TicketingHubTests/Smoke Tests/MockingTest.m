@@ -2,10 +2,10 @@
 //  MockingTest.m
 // 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
 
-@interface MockingTest : SenTestCase
+@interface MockingTest : XCTestCase
 @end
 
 

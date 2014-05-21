@@ -9,274 +9,313 @@
 #import "TXHSalesUpgradeDetailsViewController.h"
 
 #import "TXHSalesCompletionViewController.h"
-#import "TXHSalesContentProtocol.h"
 #import "TXHSalesTimerViewController.h"
 #import "TXHSalesUpgradeCell.h"
 #import "TXHSalesUpgradeHeader.h"
 
-@interface TXHSalesUpgradeDetailsViewController () <TXHSalesContentProtocol, UICollectionViewDelegateFlowLayout>
+#import "TXHOrderManager.h"
+#import "TXHProductsManager.h"
+#import "UIColor+TicketingHub.h"
 
-// A reference to the timer view controller
-@property (retain, nonatomic) TXHSalesTimerViewController *timerViewController;
+static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
 
-// A reference to the completion view controller
-@property (retain, nonatomic) TXHSalesCompletionViewController *completionViewController;
+@interface TXHSalesUpgradeDetailsViewController () <UICollectionViewDelegateFlowLayout, TXHSalesUpgradeHeaderDelegate>
 
-// A completion block to be run when this step is completed
-@property (copy) void (^completionBlock)(void);
+@property (readwrite, nonatomic, getter = isValid) BOOL valid;
 
-// A mutable collection of sections indicating their expanded status.
-@property (strong, nonatomic) NSMutableDictionary *sections;
+@property (strong, nonatomic) NSDictionary        *upgrades;
+@property (strong, nonatomic) NSMutableArray      *expandedSections;
+@property (strong, nonatomic) NSMutableDictionary *selectedUpgrades;
+
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 
 @end
 
 @implementation TXHSalesUpgradeDetailsViewController
 
-@synthesize timerViewController = _timerViewController;
-@synthesize completionViewController = _completionViewController;
-@synthesize completionBlock = _completionBlock;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self setup];
-    }
-    return self;
-}
-
-- (void)setup {
-    self.sections = [NSMutableDictionary dictionary];
-    // Set the first section to be expanded
-    self.sections[@(0)] = @YES;
-    for (int index = 1; index < 4; index++) {
-        self.sections[@(index)] = @NO;
-    }
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShown:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
-    __block typeof(self) blockSelf = self;
-    self.completionBlock = ^{
-        // Update the order for tickets
-        NSLog(@"Update order for %@", blockSelf);
-    };
+    self.valid = YES;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self configureTimerViewController];
-}
+#pragma mark - accessors
 
-- (void)didReceiveMemoryWarning
+- (void)setUpgrades:(NSDictionary *)upgrades
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    _upgrades = upgrades;
+    
+    [self setupSelectedUpgrades];
+    
+    [self setupExpandedSectionsInfo];
+    
+    [self.collectionView reloadData];
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+- (void)setOrderManager:(TXHOrderManager *)orderManager
+{
+    _orderManager = orderManager;
+    
+    [self loadUpgrades];
 }
 
-- (TXHSalesTimerViewController *)timerViewController {
-    return _timerViewController;
+- (UIActivityIndicatorView *)activityIndicator
+{
+    if (!_activityIndicator)
+    {
+        UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:self.view.bounds];
+        indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+        indicatorView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        indicatorView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.8];
+        indicatorView.hidesWhenStopped = YES;
+        indicatorView.color = [UIColor txhDarkBlueColor];
+        [self.view addSubview:indicatorView];
+        _activityIndicator = indicatorView;
+    }
+    return _activityIndicator;
 }
 
-- (void)setTimerViewController:(TXHSalesTimerViewController *)timerViewController {
-    _timerViewController = timerViewController;
-    [self configureTimerViewController];
+#pragma mark - private methods
+
+- (void)showLoadingIndicator
+{
+    [self.activityIndicator startAnimating];
 }
 
-- (TXHSalesCompletionViewController *)completionViewController {
-    return _completionViewController;
+- (void)hideLoadingIndicator
+{
+    [self.activityIndicator stopAnimating];
 }
 
-- (void)setCompletionViewController:(TXHSalesCompletionViewController *)completionViewController {
-    _completionViewController = completionViewController;
-    [self configureCompletionViewController];
+- (void)loadUpgrades
+{
+    __weak typeof(self) wself = self;
+    
+    [self.orderManager upgradesForCurrentOrderWithCompletion:^(NSDictionary *upgrades, NSError *error) {
+        wself.upgrades = upgrades;
+    }];
 }
 
-- (void (^)(void))completionBlock {
-    return _completionBlock;
-}
 
-- (void)setCompletionBlock:(void (^)(void))completionBlock {
-    _completionBlock = completionBlock;
-    [self configureCompletionViewController];
-}
-
-- (void)configureTimerViewController {
-    // Set up the timer view to reflect our details
-    if (self.timerViewController) {
-        [self.timerViewController resetPresentationAnimated:NO];
-        self.timerViewController.stepTitle = NSLocalizedString(@"Add Ticket extras", @"Add Ticket extras");
-        [self.timerViewController hideCountdownTimer:NO];
+- (void)setupExpandedSectionsInfo
+{
+    self.expandedSections = [NSMutableArray array];
+    
+    for (int i = 0; i < [self.upgrades count]; i++)
+    {
+        NSNumber *value = (i == 0) ? @YES : @NO;
+        [self.expandedSections addObject:value];
     }
 }
 
-- (void)configureCompletionViewController {
-    // Set up the completion view controller to reflect ticket tier details
-    [self.completionViewController setCompletionBlock:self.completionBlock];
+- (void)setupSelectedUpgrades
+{
+    NSMutableDictionary *storedUserInput = [self.orderManager storedValueForKey:kStoredUserInputsKey];
+    
+    if (storedUserInput)
+    {
+        self.selectedUpgrades = storedUserInput;
+    }
+    else
+    {
+        self.selectedUpgrades = [NSMutableDictionary dictionary];
+    }
+}
+
+- (TXHUpgrade *)upgreadeAtIndexPath:(NSIndexPath *)indexpath
+{
+    return [self.upgrades allValues][indexpath.section][indexpath.item];
+}
+
+- (TXHTicket *)ticketForIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *ticketID = [self.upgrades allKeys][indexPath.section];
+    return [self.orderManager ticketFromOrderWithID:ticketID];
+}
+
+- (BOOL)isUpgradeSelected:(TXHUpgrade *)upgrade forTicketID:(NSString *)ticketId
+{
+    return [self.selectedUpgrades[ticketId] containsObject:upgrade];
+}
+
+- (void)toggleUpgradeSelection:(TXHUpgrade *)upgrade forTicketID:(NSString *)ticketID
+{
+    if ([self.selectedUpgrades[ticketID] containsObject:upgrade])
+        [self.selectedUpgrades[ticketID] removeObject:upgrade];
+    else
+    {
+        if (!self.selectedUpgrades[ticketID])
+            self.selectedUpgrades[ticketID] = [NSMutableSet set];
+
+        [self.selectedUpgrades[ticketID] addObject:upgrade];
+    }
+}
+
+- (BOOL)isSectionExpanded:(NSInteger)sectionIndex
+{
+    return [self.expandedSections[sectionIndex] boolValue];
+}
+
+- (void)setSection:(NSInteger)sectionIndex expanded:(BOOL)expanded
+{
+    self.expandedSections[sectionIndex] = @(expanded);
+}
+
+- (NSString *)titleForTicket:(TXHTicket *)ticket
+{
+    NSString *tierTitle    = ticket.tier.name;
+    NSString *customerName = ticket.customer.fullName;
+    
+    if (customerName)
+    {
+        return [NSString stringWithFormat:@"%@ (%@)",customerName,tierTitle];
+    }
+    
+    return tierTitle;
+}
+
+- (NSDictionary *)buildUpgradesInfo
+{
+    NSMutableDictionary *upgradesInfo = [NSMutableDictionary dictionary];
+    
+    for (NSString *ticketId in self.upgrades)
+    {
+        NSMutableArray *selectedUpgrades = [NSMutableArray array];
+        for (TXHUpgrade *upgrade in self.upgrades[ticketId])
+        {
+            if ([self isUpgradeSelected:upgrade forTicketID:ticketId]) {
+                [selectedUpgrades addObject:upgrade.upgradeId];
+            }
+        }
+        upgradesInfo[ticketId] = selectedUpgrades;
+    }
+    
+    return upgradesInfo;
 }
 
 #pragma mark - Collection View Datasource & Delegate methods
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return self.sections.count;
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return self.expandedSections.count;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    switch (section) {
-        case 0:
-            return 4;
-        case 1:
-            return 8;
-        default:
-            return 2;
-    }
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [[[self.upgrades allValues] objectAtIndex:section] count];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     TXHSalesUpgradeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TXHSalesUpgradeCell" forIndexPath:indexPath];
-    switch (indexPath.section) {
-        case 0:
-            switch (indexPath.row) {
-                case 0:
-                    cell.upgradeName = @"Upgrade";
-                    cell.upgradePrice = @(12.50);
-                    cell.upgradeDescription = @"A rather fetching little doodah\nWill be well worth adding to your ticket.  Trust me; I know all about these things!";
-                    break;
-                case 1:
-                    cell.upgradeName = @"Upgrade 2";
-                    cell.upgradePrice = @(3);
-                    cell.upgradeDescription = @"Something to drink at the interval?";
-                    cell.isSelected = YES;
-                    break;
-                case 2:
-                    cell.upgradeName = @"Upgrade 3";
-                    cell.upgradePrice = @(2.50);
-                    cell.upgradeDescription = @"Perhaps a snack appeals to you?";
-                    break;
-                case 3:
-                    cell.upgradeName = @"Upgrade 4";
-                    cell.upgradePrice = @(0);
-                    cell.upgradeDescription = @"Programme of events for the show";
-                    break;
-                default:
-                    break;
-            }
-            break;
-        case 1:
-            cell.upgradeName = [NSString stringWithFormat:@"Upgrade%@", indexPath.row == 0 ? @"" : [NSString stringWithFormat:@" %d", indexPath.row + 1]];
-            cell.upgradePrice = @(1.37 * indexPath.row);
-            cell.upgradeDescription = @"A description of your upgrade!";
-            break;
-        default:
-            cell.upgradeName = [NSString stringWithFormat:@"Upgrade%@", indexPath.row == 0 ? @"" : [NSString stringWithFormat:@" %d", indexPath.row + 1]];
-            cell.upgradePrice = @(1.37 * indexPath.row);
-            cell.upgradeDescription = @"A description of your upgrade!";
-            cell.isSelected = indexPath.row % 3;
-            break;
-    }
+    
+    [self configureCell:cell atIndexPath:indexPath];
+
     return cell;
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    if (kind == UICollectionElementKindSectionHeader) {
-        NSDictionary *attributesDict = @{NSFontAttributeName: [UIFont systemFontOfSize:28.0f]};
-        NSMutableAttributedString *attString;
-        TXHSalesUpgradeHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"TXHSalesUpgradeHeader" forIndexPath:indexPath];
-        header.section = indexPath.section;
-        switch (indexPath.section) {
-            case 0:
-                attString = [[NSMutableAttributedString alloc] initWithString:@"Oliver Morgan Adult" attributes:attributesDict];
-                [attString addAttribute:NSFontAttributeName
-                                  value:[UIFont systemFontOfSize:14.0f]
-                                  range:NSMakeRange(14, 5)];
-                
-                [attString addAttribute: NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(14, 5)];
-                header.ticketTitle = attString;
-                break;
-            case 1:
-                attString = [[NSMutableAttributedString alloc] initWithString:@"Ben Thompson Adult" attributes:attributesDict];
-                [attString addAttribute:NSFontAttributeName
-                                  value:[UIFont systemFontOfSize:14.0f]
-                                  range:NSMakeRange(13, 5)];
-                
-                [attString addAttribute: NSForegroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(13, 5)];
-                header.ticketTitle = attString;
-                break;
-            default:
-                attString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Child #%d", indexPath.row] attributes:attributesDict];
-                [attString addAttribute:NSFontAttributeName
-                                  value:[UIFont systemFontOfSize:14.0f]
-                                  range:NSMakeRange(6, 2)];
-                
-                [attString addAttribute: NSForegroundColorAttributeName value:[UIColor purpleColor] range:NSMakeRange(6, 2)];
-                header.ticketTitle = attString;
-                break;
-        }
-        header.isExpanded = [self.sections[@(indexPath.section)] boolValue];
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if (kind == UICollectionElementKindSectionHeader)
+    {
+        TXHSalesUpgradeHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                                           withReuseIdentifier:@"TXHSalesUpgradeHeader"
+                                                                                  forIndexPath:indexPath];
+        [self configureHeader:header atIndexPath:indexPath];
+        
         return header;
-    } else if (kind == UICollectionElementKindSectionFooter) {
-        UICollectionReusableView *footer = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"TXHSalesUpgradeFooter" forIndexPath:indexPath];
+        
+    }
+    else if (kind == UICollectionElementKindSectionFooter)
+    {
+        UICollectionReusableView *footer = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                                              withReuseIdentifier:@"TXHSalesUpgradeFooter"
+                                                                                     forIndexPath:indexPath];
         return footer;
     }
     return nil;
 }
 
-- (void)makeCellVisible:(id)sender {
-    UICollectionViewCell *cell = sender;
-    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
-    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+- (void)configureCell:(TXHSalesUpgradeCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    TXHTicket *ticket = [self ticketForIndexPath:indexPath];
+    TXHUpgrade *upgrade = [self upgreadeAtIndexPath:indexPath];
+
+    cell.upgradeName        = upgrade.name;
+    cell.upgradeDescription = upgrade.upgradeDescription;
+    cell.upgradePrice       = [self.productManager priceStringForPrice:upgrade.price];
+    cell.chosen             = [self isUpgradeSelected:upgrade forTicketID:ticket.ticketId];
 }
 
-#pragma mark - Action methods
+- (void)configureHeader:(TXHSalesUpgradeHeader *)header atIndexPath:(NSIndexPath *)indexPath
+{
+    TXHTicket *ticket = [self ticketForIndexPath:indexPath];
+    
+    header.delegate    = self;
+    header.ticketTitle = [self titleForTicket:ticket];
+    header.expanded    = [self isSectionExpanded:indexPath.section];
+    header.section     = indexPath.section;
+}
 
-- (void)toggleSection:(id)sender {
-    TXHSalesUpgradeHeader *header = sender;
-    self.sections[@(header.section)] = [NSNumber numberWithBool:header.isExpanded];
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    TXHTicket *ticket = [self ticketForIndexPath:indexPath];
+    TXHUpgrade *upgrade = [self upgreadeAtIndexPath:indexPath];
+    
+    [self toggleUpgradeSelection:upgrade forTicketID:ticket.ticketId];
+    
+    [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    BOOL expanded = [self isSectionExpanded:indexPath.section];
+    
+    CGSize size = CGSizeMake(220.0f, expanded ? 100.0f : 0.0f);
+    return size;
+}
+
+
+#pragma mark - TXHSalesUpgradeHeaderDelegate
+
+- (void)txhSalesUpgradeHeaderIsExpandedDidChange:(TXHSalesUpgradeHeader *)header
+{
+    [self setSection:header.section expanded:header.isExpanded];
     [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:header.section]];
 }
 
-#pragma mark - Keyboard notifications
+#pragma mark - TXHSalesContentsViewControllerProtocol
 
-- (void)keyboardWillShown:(NSNotification *)notification {
-    NSDictionary *info = [notification userInfo];
-    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+- (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
+{
+    NSDictionary *upgradesInfo = [self buildUpgradesInfo];
     
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0f, 0.0f, keyboardSize.width, 0.0f);
-    self.collectionView.contentInset = contentInsets;
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    NSDictionary *keyboardAnimationDetail = [notification userInfo];
-    UIViewAnimationCurve animationCurve = [keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-
-    CGFloat duration = [keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] floatValue];
-    [UIView animateWithDuration:duration delay:0.0 options:(animationCurve << 16) animations:^{
-        self.collectionView.contentInset = UIEdgeInsetsZero;
-        [self.collectionView layoutIfNeeded];
-    } completion:nil];
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSNumber *expanded = self.sections[@(indexPath.section)];
-    CGSize size = CGSizeMake(220.0f, expanded.boolValue ? 112.0f : 0.0f);
-    return size;
+    if (![upgradesInfo count])
+    {
+        blockName(nil);
+        return;
+    } 
+    
+    [self showLoadingIndicator];
+    
+    __weak typeof(self) wself = self;
+    [self.orderManager updateOrderWithUpgradesInfo:upgradesInfo
+                                        completion:^(TXHOrder *order, NSError *error) {
+                                            
+                                            [wself hideLoadingIndicator];
+                                            
+                                            if (error) {
+                                                [wself.collectionView reloadData];
+                                            }
+                                            
+                                            [wself.orderManager storeValue:wself.selectedUpgrades forKey:kStoredUserInputsKey];
+                                            
+                                            blockName(error);
+                                        }];
+    
 }
 
 @end

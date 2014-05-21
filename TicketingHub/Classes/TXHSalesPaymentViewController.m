@@ -8,124 +8,175 @@
 
 #import "TXHSalesPaymentViewController.h"
 
-#import "TXHSalesCompletionViewController.h"
-#import "TXHSalesContentProtocol.h"
-#import "TXHSalesPaymentPaymentDetailsViewController.h"
-#import "TXHSalesTimerViewController.h"
+#import "TXHPaymentOptionsManager.h"
+#import "TXHPaymentOption.h"
 
-@interface TXHSalesPaymentViewController () <TXHSalesContentProtocol, UICollectionViewDelegateFlowLayout>
+#import "TXHSalesPaymentContentViewControllerProtocol.h"
 
-// A reference to the timer view controller
-@property (retain, nonatomic) TXHSalesTimerViewController *timerViewController;
+#import "TXHProductsManager.h"
+#import "TXHOrderManager.h"
 
-// A reference to the completion view controller
-@property (retain, nonatomic) TXHSalesCompletionViewController *completionViewController;
+#import "TXHEmbeddingSegue.h"
+#import "UISegmentedControl+NSArray.h"
+#import "TXHActivityLabelView.h"
+#import <Block-KVO/MTKObserving.h>
 
-// A completion block to be run when this step is completed
-@property (copy) void (^completionBlock)(void);
 
-// A mutable collection of sections indicating their expanded status.
-@property (strong, nonatomic) NSMutableDictionary *sections;
+@interface TXHSalesPaymentViewController () <UICollectionViewDelegateFlowLayout>
 
-// A reference to the payment details content controller
-@property (strong, nonatomic) TXHSalesPaymentPaymentDetailsViewController *paymentDetailsController;
+@property (readwrite, nonatomic, getter = isValid) BOOL valid;
+
+@property (weak, nonatomic) TXHActivityLabelView *activityView;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *paymentTypeSegmentedControl;
+
+@property (strong, nonatomic) UIViewController<TXHSalesPaymentContentViewControllerProtocol> *paymentDetailsController;
+@property (strong, nonatomic) TXHPaymentOptionsManager *paymentOptionsManager;
+
 
 @end
 
 @implementation TXHSalesPaymentViewController
 
-@synthesize timerViewController = _timerViewController;
-@synthesize completionViewController = _completionViewController;
-@synthesize completionBlock = _completionBlock;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Add constraints
-    self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    self.view.translatesAutoresizingMaskIntoConstraints = YES;
 
-    __block typeof(self) blockSelf = self;
-    self.completionBlock = ^{
-        // Update the order for tickets
-        NSLog(@"Update order for %@", blockSelf);
-    };
+    [self setupOptionsManger];
+    [self reloadOptions];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self configureTimerViewController];
-}
-
-- (void)didReceiveMemoryWarning
+- (void)setupOptionsManger
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    TXHPaymentOptionsManager *optionsManager = [[TXHPaymentOptionsManager alloc] initWithOrderManager:self.orderManager];
+    self.paymentOptionsManager = optionsManager;
 }
 
-- (TXHSalesTimerViewController *)timerViewController {
-    return _timerViewController;
+- (void)reloadOptions
+{
+    __weak typeof(self) wself = self;
+    
+    [self.activityView showWithMessage:@"" indicatorHidden:NO];
+    [self.paymentOptionsManager loadOptionsWithCompletion:^(NSArray *paymentOptions, NSError *error) {
+
+        [wself.activityView hide];
+        [wself reloadView];
+        
+        if (error)
+        {
+            // TODO: handle error
+            return;
+        }
+    }];
 }
 
-- (void)setTimerViewController:(TXHSalesTimerViewController *)timerViewController {
-    _timerViewController = timerViewController;
-    [self configureTimerViewController];
+- (void)reloadView
+{
+    [self reloadSegmentedControl];
+    [self reloadSelectedController];
 }
 
-- (TXHSalesCompletionViewController *)completionViewController {
-    return _completionViewController;
+- (void)reloadSegmentedControl
+{
+    NSArray *paymentNames = [self payentOptionDisplayNames];
+    
+    [self.paymentTypeSegmentedControl setItemsFromArray:paymentNames];
+    [self.paymentTypeSegmentedControl setSelectedSegmentIndex:0];
+    
+    self.paymentTypeSegmentedControl.hidden = [paymentNames count] == 0;
 }
 
-- (void)setCompletionViewController:(TXHSalesCompletionViewController *)completionViewController {
-    _completionViewController = completionViewController;
-    [self configureCompletionViewController];
+- (NSArray *)payentOptionDisplayNames
+{
+    NSArray *paymentOptions = self.paymentOptionsManager.paymentOptions;
+    NSArray *paymentNames = [paymentOptions valueForKeyPath:@"displayName"];
+
+    return paymentNames;
 }
 
-- (void (^)(void))completionBlock {
-    return _completionBlock;
+- (void)reloadSelectedController
+{
+    TXHPaymentOption *option = [self selectedPaymentOption];
+    NSString *identifier     = option.segueIdentifier;
+
+    [self performSegueWithIdentifier:identifier sender:self];
 }
 
-- (void)setCompletionBlock:(void (^)(void))completionBlock {
-    _completionBlock = completionBlock;
-    [self configureCompletionViewController];
+- (TXHPaymentOption *)selectedPaymentOption
+{
+    NSUInteger selectedIndex = self.paymentTypeSegmentedControl.selectedSegmentIndex;
+    TXHPaymentOption *selectedOption = [self.paymentOptionsManager paymentOptionsAtIndex:selectedIndex];
+
+    return selectedOption;
 }
 
-- (void)configureTimerViewController {
-    // Set up the timer view to reflect our details
-    if (self.timerViewController) {
-        [self.timerViewController resetPresentationAnimated:NO];
-        self.timerViewController.stepTitle = NSLocalizedString(@"Payment", @"Payment");
-        [self.timerViewController hidePaymentSelection:NO animated:YES];
-        [self.timerViewController hideCountdownTimer:NO];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue isMemberOfClass:[TXHEmbeddingSegue class]])
+    {
+        TXHEmbeddingSegue *transitionSegue = (TXHEmbeddingSegue *)segue;
+        transitionSegue.containerView      = self.containerView;
+        transitionSegue.previousController = self.paymentDetailsController;
     }
-}
-
-- (void)configureCompletionViewController {
-    // Set up the completion view controller to reflect ticket tier details
-    [self.completionViewController setCompletionBlock:self.completionBlock];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-#pragma unused (sender)
-    if ([segue.identifier isEqualToString:@"TXHSalesPaymentPaymentDetailsViewController"]) {
+    
+    if ([segue.identifier isEqualToString:@"TXHSalesPaymentCardDetailsViewController"] ||
+        [segue.identifier isEqualToString:@"TXHSalesPaymentCashDetailsViewController"] ||
+        [segue.identifier isEqualToString:@"TXHSalesPaymentCreditDetailsViewController"])
+    {
         self.paymentDetailsController = segue.destinationViewController;
     }
 }
 
+- (void)setPaymentDetailsController:(UIViewController<TXHSalesPaymentContentViewControllerProtocol> *)paymentDetailsController
+{
+    _paymentDetailsController = paymentDetailsController;
+    
+    TXHPaymentOption *option = [self selectedPaymentOption];
+    
+    paymentDetailsController.productManager = self.productManager;
+    paymentDetailsController.orderManager   = self.orderManager;
+    paymentDetailsController.gateway        = option.gateway;
+    
+    [self map:@keypath(self.paymentDetailsController.valid) to:@keypath(self.valid) null:nil];
+}
+
+- (TXHActivityLabelView *)activityView
+{
+    if (!_activityView)
+        _activityView = [TXHActivityLabelView getInstanceInView:self.view];
+    
+    return _activityView;
+}
 
 #pragma mark - Payment method changed
--(void)didChangePaymentMethod:(id)sender {
-    [self.paymentDetailsController didChangePaymentMethod:sender];
+
+- (IBAction)didChangePaymentMethod:(UISegmentedControl *)sender
+{
+    [self reloadSelectedController];
 }
+
+#pragma mark - TXHSalesContentsViewControllerProtocol
+
+- (void)finishStepWithCompletion:(void (^)(NSError *))completionBlock
+{
+    [self.paymentDetailsController finishWithCompletion:^(NSError *error) {
+        if (!error)
+        {
+            [self.orderManager confirmOrderWithCompletion:^(TXHOrder *order, NSError *confirmationError) {
+
+                if (completionBlock)
+                    completionBlock(confirmationError);
+            }];
+        }
+        else if (completionBlock)
+            completionBlock(error);
+    }];
+}
+
+- (void)dealloc
+{
+    [self removeAllObservations];
+}
+
 
 @end

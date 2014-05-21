@@ -10,7 +10,7 @@
 
 @interface TXHTextEntryView : TXHBaseDataEntryView
 
-@property (strong, nonatomic) id <UITextFieldDelegate> delegate;
+@property (weak, nonatomic) id <UITextFieldDelegate> delegate;
 @property (strong, nonatomic) NSString *text;
 @property (strong, nonatomic) NSString *placeholder;
 @property (assign, nonatomic) UIKeyboardType keyboardType;

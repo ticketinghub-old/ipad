@@ -1,0 +1,181 @@
+/* Localized versions of strings*/
+
+/* Salesman steps titles */
+
+"SALESMAN_STEPS_TICKET_QUANTITY_TITLE" = "Tickets";
+"SALESMAN_STEPS_TICKET_UPGRADES_TITLE" = "Upgrades";
+"SALESMAN_STEPS_ORDER_SUMMARY_TITLE"   = "Summary";
+"SALESMAN_STEPS_PAYMENT_TITLE"         = "Payment";
+"SALESMAN_STEPS_SUMMARY_TITLE"         = "Completed";
+
+/* Salesman steps descriptions */
+
+"SALESMAN_STEPS_TICKET_QUANTITY_DESC" = "Select Type & Quantity";
+"SALESMAN_STEPS_TICKET_UPGRADES_DESC" = "Add ticket extras";
+"SALESMAN_STEPS_ORDER_SUMMARY_DESC"   = "Review the order";
+"SALESMAN_STEPS_PAYMENT_DESC"         = "By card, cash or credit";
+"SALESMAN_STEPS_SUMMARY_DESC"         = "Print tickets and recipt";
+
+/* Salesman steps continue button titles */
+
+"SALESMAN_STEPS_CANCEL_ORDER_BUTTON_TITLE"          = "Cancel Order";
+
+"SALESMAN_STEPS_TICKET_QUANTITY_CONTINUE_TITLE"     = "Ticket Quantities";
+"SALESMAN_STEPS_TICKET_UPGRADES_CONTINUE_TITLE"     = "Ticket Upgrades";
+"SALESMAN_STEPS_ORDER_SUMMARY_CONTINUE_TITLE"       = "Order Summary";
+"SALESMAN_STEPS_PAYMENT_CONTINUE_TITLE"             = "Payment";
+"SALESMNA_STEPS_SUMMARY_CONTINUE_TITLE"             = "Continue";
+
+"SALESMAN_STEPS_SUMMARY_LEFT_BUTTON_TITLE"          = "Next Customer";
+"SALESMAN_STEPS_SUMMARY_MIDDLE_BUTTON_TITLE"        = "Print Recipt";
+"SALESMAN_STEPS_SUMMARY_RIGHT_BUTTON_TITLE"         = "Print Tickets";
+
+/* Printer errors */
+
+"PRINTER_ERROR_FAIL_TO_OPEN_PORT_DESC"          = "Fail to open port";
+"PRINTER_ERROR_PRINTER_OFFLINE_DESC"            = "Printer is offline";
+"PRINTER_ERROR_TIMED_OUT_DESC"                  = "Write port timed out";
+"PRINTER_ERROR_INCONSISTENCY_DESC"              = "Missing Parameter";
+"PRINTER_ERROR_WRONG_PRINTER_DESC"              = "Wrong printer specified";
+"PRINTER_ERROR_UNKNOWN_DESC"                    = "Unknown printer error";
+
+"PRINTER_ERROR_FAIL_TO_OPEN_PORT_REASON"        = "";
+"PRINTER_ERROR_PRINTER_OFFLINE_REASON"          = "";
+"PRINTER_ERROR_TIMED_OUT_REASON"                = "";
+"PRINTER_ERROR_INCONSISTENCY_REASON"            = "";
+"PRINTER_ERROR_WRONG_PRINTER_REASEON"           = "";
+"PRINTER_ERROR_UNKNOWN_REASON"                  = "";
+
+"PRINTER_ERROR_FAIL_TO_OPEN_PORT_RECOVERY"      = "";
+"PRINTER_ERROR_PRINTER_OFFLINE_RECOVER"         = "";
+"PRINTER_ERROR_TIMED_OUT_RECOVER"               = "";
+"PRINTER_ERROR_INCONSISTENCY_RECOVER"           = "";
+"PRINTER_ERROR_WRONG_PRINTER_RECOVER"           = "";
+"PRINTER_ERROR_UNKNOWN_RECOVERY"                = "";
+
+"ERROR_DISMISS_BUTTON_TITLE" = "OK";
+"ERROR_TITLE"                = "Error";
+"PRINTER_ERROR_TITLE"        = "Printing Error";
+
+/* Activity labels - Printers */
+
+"LOADING_RECEIPT_LABEL"           = "Preparing Receipt";
+"LOADING_TICKETS_LABEL"           = "Preparing Tickets";
+"LOADING_TICKETS_TEMPLATES_LABEL" = "Preparing Tickets";
+
+"PRINTING_RECEIPT_LABEL"    = "Printing Receipt";
+"PRINTING_TICKETS_LABEL"    = "Printing Tickets";
+
+"TICKET_TEMPLATES_SELECTION_TITLE"                  = "Select ticket type";
+"TICKET_TEMPLATES_SELECTION_CANCEL_BUTTON_TITLE"    = "Cancel printing";
+
+
+"CONTINUE_PRINTING_TITLE"             = "Print next ticket?";
+"CONTINUE_PRINTING_NEXT_BUTTON_TITLE" = "Print next";
+"CONTINUE_PRINTING_STOP_BUTTON_TITLE" = "Cancel printing";
+"CONTINUE_PRINTING_ALL_BUTTON_TITLE"  = "Print all";
+
+/* Activity labels - Doorman Salesman */
+
+"SD_LOADING_AVAILABILITIES_LABEL"          = "Loading";
+"SD_LOADING_AVAILABILITY_DETAILS_LABEL"    = "Loading";
+"SD_NO_AVAILABILITIES_LABEL"               = "No Availabilities";
+
+/* Doorman Tickets list */
+
+"TICKET_REFERENCE_TITLE_FORMAT" = "Ticket %@";
+"TICKET_TITLE_DEFAULT"          = "Ticket";
+
+"ORDER_TITLE_DEFAULT"           = "Order";
+"ORDER_REFERENCE_TITLE_FORMAT"  = "Order %@";
+
+/* Main navigation Bar */
+
+"NAV_SELECT_DATE_BUTTON_TITLE" = "Select date";
+
+/* Doorman tickets list */
+
+"DOORMAN_TICKETS_LIST_NO_TICKETS_LABEL"            = "No Tickets";
+"DOORMAN_TICKETS_LIST_NO_TICKETS_FOR_QUERY_FORMAT" = "No Tickets for: %@";
+"DOORMAN_TICKETS_LIST_LOOKING_UP_TICKETS"          = "Looking up ticket";
+"DOORMAN_TICKETS_LIST_ATTENDEES_FORMAT"            = "%lu Attendees";
+"DOORMAN_TICKETS_LIST_ATTENDING_FORMAT"            = "%lu Attending";
+"DOORMAN_TICKETS_LIST_LOADING_TICKETS"             = "Loading tickets";
+
+"DOORMAN_TICKETS_LIST_SEARCHING_LABEL"             = "Searching";
+"DOORMAN_TICKETS_LIST_NO_ORDERS_FOR_CARD_TITLE"    = "No orders found";
+"DOORMAN_TICKETS_LIST_NO_ORDERS_FOR_CARD_MESSAGE"  = "Looks like this card hasn't been used to pay for any order";
+
+/* Ticket details */
+
+"TICKET_DETAILS_TITLE_FORMAT"                  = "%@ Ticket";
+"TICKET_DETAILS_MARK_AS_ATTENDED_BUTTON_TITLE" = "Mark as attended";
+"TICKET_DETAILS_ATTENDED_TITLE_FORMAT"         = "Attended at %@";
+
+
+/* Handpoint */
+// TODO:                 Give a bit of love into those messages!!!
+// statuses
+"DKPOSClientTransactionStatusCodeWaitingForCard"          = "Waiting For Card";
+"DKPOSClientTransactionStatusCodeCardInserted"            = "Card Inserted";
+"DKPOSClientTransactionStatusSignatureRequested"          = "Signature Requested";
+"DKPOSClientTransactionStatusCodeApplicationSelection"    = "Processing...";
+"DKPOSClientTransactionStatusCodeApplicationConfirmation" = "Processing...";
+"DKPOSClientTransactionStatusCodeAmountValidation"        = "Processing...";
+"DKPOSClientTransactionStatusCodePinInput"                = "Waiting For Pin";
+"DKPOSClientTransactionStatusCodeManualCardInput"         = "Manual Card Input";
+"DKPOSClientTransactionStatusCodeWaitingCardRemoval"      = "Waiting For Card Removal";
+"DKPOSClientTransactionStatusCodeTipInput"                = "Tip Input";
+"DKPOSClientTransactionStatusCodeConnecting"              = "Please wait...";
+"DKPOSClientTransactionStatusCodeSending"                 = "Please wait...";
+"DKPOSClientTransactionStatusCodeReceiving"               = "Please wait...";
+"DKPOSClientTransactionStatusCodeDisconnecting"           = "Please wait...";
+"DKPOSClientTransactionStatusCodeTransactionApproved"     = "Approved";
+"DKPOSClientTransactionStatusCodeTransactionProcessed"    = "Transaction Processed";
+
+// errors
+"DKPOSClientTransactionErrorInvalidData"             = "Invalid Data";
+"DKPOSClientTransactionErrorProcessingError"         = "Processing Error";
+"DKPOSClientTransactionErrorCommandNotAllowed"       = "Error";
+"DKPOSClientTransactionErrorNotInitialized"          = "Error";
+"DKPOSClientTransactionErrorConnectionTimeout"       = "Connection Timeout";
+"DKPOSClientTransactionErrorConnectionFailed"        = "Connection Failed";
+"DKPOSClientTransactionErrorSendingFailed"           = "Comunication Failed";
+"DKPOSClientTransactionErrorReceivingFailed"         = "Comunication Failed";
+"DKPOSClientTransactionErrorNoDataAvailable"         = "Comunication Failed";
+"DKPOSClientTransactionErrorTransactionNotAllowed"   = "Transaction Not Allowed";
+"DKPOSClientTransactionErrorUnsupportedCurrency"     = "Currency Not Supported";
+"DKPOSClientTransactionErrorNoHostAvailable"         = "No Host Available";
+"DKPOSClientTransactionErrorCardReaderError"         = "Reader Error";
+"DKPOSClientTransactionErrorCardReadingFailed"       = "Reader Error";
+"DKPOSClientTransactionErrorInvalidCard"             = "Invalid Card";
+"DKPOSClientTransactionErrorInputTimeout"            = "Input Timeout";
+"DKPOSClientTransactionErrorUserCancelled"           = "Cancelled by User";
+"DKPOSClientTransactionErrorInvalidSignature"        = "Wrong Signature";
+"DKPOSClientTransactionErrorSharedSecretInvalid"     = "Shared Secret Invalid";
+"DKPOSClientTransactionErrorTransactionUndefined"    = "Undefined Transaction";
+"DKPOSClientTransactionErrorTransactionDeclined"     = "Transaction Declined";
+"DKPOSClientTransactionErrorTransactionNotProcessed" = "Transaction Not Processed";
+"DKPOSClientTransactionErrorTransactionCancelled"    = "Transaction Cancelled";
+"DKPOSClientTransactionErrorTransactionDeviceReset"  = "Transaction Device Reset";
+"DKPOSCLientTransactionErrorUnknownError"            = "Unknown Error";
+
+"DEVICE_CONNECTIONERROR_TITLE" = "Connection Error";
+"TRANSACTION_FAILED_TITLE"     = "Transaction Error";
+
+"CARD_CONTROLLER_UPDATING_PAYMENT_MESSAGE"  = "Finalizing payment";
+"CARD_CONTROLLER_PREPARING_PAYMENT_MESSAGE" = "Preparing payment";
+
+"CASH_CONTROLLER_UPDATING_PAYMENT_MESSAGE" = "Finalizing payment";
+"CASH_CONTROLLER_NO_CHANGE_MESSAGE"        = "No Change";
+"CASH_CONTROLLER_NOT_ENOUGH_PAID_MESSAGE"  = "Not paid enough";
+
+
+"CNP_CONTROLLER_UPDATING_PAYMENT_MESSAGE"   = "Finalizing payment";
+
+
+
+"PAYMENT_OPTION_HANDPOINT_TITLE" = "Card";
+"PAYMENT_OPTION_CNP_TITLE"       = "Credit";
+"PAYMENT_OPTION_CASH_TITLE"      = "Cash";
+

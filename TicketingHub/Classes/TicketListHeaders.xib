@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="zZI-NP-dDM" customClass="TXHDoorTicketsDateHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="768" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdZ-Td-KOk">
+                    <rect key="frame" x="20" y="10" width="90" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
+                    <color key="textColor" red="0.16900000000000001" green="0.51200000000000001" blue="0.625" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eV-mF-InE">
+                    <rect key="frame" x="128" y="10" width="620" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ujk-Jl-Wbc">
+                    <rect key="frame" x="0.0" y="59" width="768" height="1"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.80847749255952384" green="0.80847749255952384" blue="0.80847749255952384" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="dateLabel" destination="OdZ-Td-KOk" id="JIf-eU-AIM"/>
+                <outlet property="dateValueLabel" destination="7eV-mF-InE" id="fgv-M0-UAM"/>
+            </connections>
+        </view>
+        <view contentMode="scaleToFill" id="n6B-ks-JAf" customClass="TXHDoorTicketsAttendedHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="768" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tickets" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="926-ds-wFk">
+                    <rect key="frame" x="20" y="10" width="90" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
+                    <color key="textColor" red="0.16900000000000001" green="0.51200000000000001" blue="0.625" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Attending" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSf-d6-Q2o">
+                    <rect key="frame" x="128" y="10" width="525" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                    <color key="textColor" red="0.094117647060000004" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QaH-m4-U32">
+                    <rect key="frame" x="0.0" y="59" width="768" height="1"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.80847749260000001" green="0.80847749260000001" blue="0.80847749260000001" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOg-8d-wNs">
+                    <rect key="frame" x="694" y="21" width="9" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.89411764709999997" green="0.91764705879999997" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Expand" translatesAutoresizingMaskIntoConstraints="NO" id="6SO-Wb-5Rs">
+                    <rect key="frame" x="734" y="26" width="14" height="8"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" red="0.10980392160000001" green="0.23529411759999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="14" id="Jpi-nc-d9b"/>
+                        <constraint firstAttribute="height" constant="8" id="Xnc-37-Oty"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerY" secondItem="eOg-8d-wNs" secondAttribute="centerY" constant="0.5" id="Xmx-we-QY9"/>
+                <constraint firstAttribute="centerY" secondItem="6SO-Wb-5Rs" secondAttribute="centerY" id="hI5-NA-ybA"/>
+                <constraint firstAttribute="trailing" secondItem="6SO-Wb-5Rs" secondAttribute="trailing" constant="20" id="qPJ-oB-mxL"/>
+                <constraint firstAttribute="trailing" secondItem="eOg-8d-wNs" secondAttribute="trailing" constant="65" id="usA-cE-Qm3"/>
+            </constraints>
+            <connections>
+                <outlet property="arrowImage" destination="6SO-Wb-5Rs" id="rMQ-u1-bVu"/>
+                <outlet property="attendedLabel" destination="aSf-d6-Q2o" id="Nho-t0-TFa"/>
+                <outlet property="ticketCountLabel" destination="eOg-8d-wNs" id="Eyl-Ur-0Qo"/>
+                <outlet property="ticketsLabel" destination="926-ds-wFk" id="JkQ-ki-Jp4"/>
+            </connections>
+        </view>
+        <view contentMode="scaleToFill" id="SqG-Ht-E0h" customClass="TXHDoorTicketsTotalHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="768" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMJ-lU-EjA">
+                    <rect key="frame" x="601" y="17" width="102" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="102" id="NjX-Se-idj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzu-9r-Tnt">
+                    <rect key="frame" x="494" y="19" width="99" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="99" id="QAi-tX-qfV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="JMJ-lU-EjA" secondAttribute="trailing" constant="65" id="0AO-cF-M95"/>
+                <constraint firstItem="JMJ-lU-EjA" firstAttribute="leading" secondItem="vzu-9r-Tnt" secondAttribute="trailing" constant="8" id="Hpc-o8-QwD"/>
+                <constraint firstAttribute="centerY" secondItem="vzu-9r-Tnt" secondAttribute="centerY" constant="0.5" id="Lvb-g5-wHS"/>
+                <constraint firstAttribute="centerY" secondItem="JMJ-lU-EjA" secondAttribute="centerY" constant="0.5" id="rjO-6N-6kt"/>
+            </constraints>
+            <connections>
+                <outlet property="totalLabel" destination="vzu-9r-Tnt" id="xO9-xM-qiG"/>
+                <outlet property="totalValueLabel" destination="JMJ-lU-EjA" id="nzK-Rq-lyT"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="Expand" width="14" height="8"/>
+    </resources>
+</document>

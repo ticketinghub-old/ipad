@@ -1,0 +1,89 @@
+PODS:
+  - AFNetworking (2.2.4):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.2.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.2.4):
+    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (2.2.4)
+  - AFNetworking/Security (2.2.4)
+  - AFNetworking/Serialization (2.2.4)
+  - AFNetworking/UIKit (2.2.4):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - Block-KVO (2.2.1)
+  - DCTCoreDataStack (1.1)
+  - Expecta (0.2.4)
+  - iOS-api (0.0.98):
+    - AFNetworking (~> 2.2.0)
+    - DCTCoreDataStack (~> 1.1)
+  - OCMock (2.2.4)
+  - PaymentKit (1.0.5)
+  - PPSSignatureView (0.1.0)
+  - RMPickerViewController (1.1.1)
+  - SevenSwitch (1.3.0)
+  - Specta (0.2.1)
+  - Stripe (1.1.3):
+    - PaymentKit (~> 1.0.4)
+  - TapkuLibrary (0.2.4)
+  - UIAlertView-Blocks (1.0)
+  - UIImage+PDF (1.1.3)
+  - UIView+Shake (0.2)
+  - UIView-Autolayout (0.2.0)
+  - UIViewController+BHTKeyboardAnimationBlocks (0.0.2)
+
+DEPENDENCIES:
+  - Block-KVO (~> 2.2.1)
+  - Expecta (~> 0.2.3)
+  - iOS-api (from `.`)
+  - OCMock (~> 2.2.3)
+  - PPSSignatureView (from `https://github.com/bartekhugo/PPSSignatureView.git`, branch `svg`)
+  - RMPickerViewController (~> 1.1.0)
+  - SevenSwitch (~> 1.3.0)
+  - Specta (~> 0.2.1)
+  - Stripe (~> 1.1.2)
+  - TapkuLibrary (from `https://github.com/bartekhugo/tapkulibrary.git`, branch `ios7`)
+  - UIAlertView-Blocks (~> 1.0)
+  - UIImage+PDF (~> 1.1.2)
+  - UIView+Shake (~> 0.2)
+  - UIView-Autolayout (~> 0.2.0)
+  - UIViewController+BHTKeyboardAnimationBlocks (~> 0.0.2)
+
+EXTERNAL SOURCES:
+  iOS-api:
+    :podspec: .
+  PPSSignatureView:
+    :branch: svg
+    :git: https://github.com/bartekhugo/PPSSignatureView.git
+  TapkuLibrary:
+    :branch: ios7
+    :git: https://github.com/bartekhugo/tapkulibrary.git
+
+SPEC CHECKSUMS:
+  AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
+  Block-KVO: dc4bf1bb23007380901e047da884c130776007e9
+  DCTCoreDataStack: eb0d05f4e27f92ff29fe559f66946baa939cafa7
+  Expecta: 112bcafa2304ee0f3c5e586505f24555a47b25d5
+  iOS-api: 833fbe4e93f89ab447c2a8831be1fa44a4a165ec
+  OCMock: 6db79185520e24f9f299548f2b8b07e41d881bd5
+  PaymentKit: 14b54835f57ae9e2bf5628140fcd67001740cba2
+  PPSSignatureView: 83ffa630306afc93ad595e5a6e98a0dba1c8a49b
+  RMPickerViewController: 67e8e6f5d81a4f01a6dcccd88a6d2643647fba00
+  SevenSwitch: 70af67d75bc2e477d45a984cf1f3123564b04eee
+  Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
+  Stripe: 95b57b2b8371b460188f0b64b04b22e0de8b0727
+  TapkuLibrary: 9429b4702b3fb1c58669490e2d301cf37f76a766
+  UIAlertView-Blocks: f3271e84372beb97aea115cd1fb26ae66457f12f
+  UIImage+PDF: e2670143b9a404ce7def93cd4f7fd2c532aeba89
+  UIView+Shake: 68d2bc9228f452615b7ab3c8c395b58ab3d47c89
+  UIView-Autolayout: 7c05eb666738eba682f686c2da236578177e2ebb
+  UIViewController+BHTKeyboardAnimationBlocks: fa8f86b798147159ddc1b2aba3f8c49247f1c814
+
+COCOAPODS: 0.33.1

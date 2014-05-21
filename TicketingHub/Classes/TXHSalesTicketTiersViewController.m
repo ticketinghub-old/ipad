@@ -8,179 +8,295 @@
 
 #import "TXHSalesTicketTiersViewController.h"
 
-#import <iOS-api/iOS-api.h>
-
-#import "TXHSalesContentProtocol.h"
 #import "TXHSalesTicketTierCell.h"
-#import "TXHTicketDetail.h"
-#import "TXHTicketTier.h"
+#import "UIColor+TicketingHub.h"
 
-@interface TXHSalesTicketTiersViewController () <UITextFieldDelegate, TXHSalesContentProtocol>
+#import "TXHOrderManager.h"
+#import "TXHProductsManager.h"
+#import "TXHTicketingHubManager.h"
 
-@property (strong, nonatomic) TXHProduct *product;
+@interface TXHSalesTicketTiersViewController () <UITextFieldDelegate, TXHSalesTicketTierCellDelegate>
 
-// Keep a running total of the quantity of tickets keyed by tier
-@property (strong, nonatomic) NSMutableDictionary *tierQuantities;
+@property (assign, nonatomic) BOOL checkingCoupon;
 
-// A reference to the timer view controller
-@property (strong, nonatomic) TXHSalesTimerViewController *timerViewController;
+@property (assign, nonatomic, getter = isValid) BOOL valid;
 
-// A reference to the completion view controller
-@property (strong, nonatomic) TXHSalesCompletionViewController *completionViewController;
+@property (strong, nonatomic) NSArray             *tiers; // to keep tiers ordered
+@property (strong, nonatomic) TXHAvailability     *availability;
+@property (strong, nonatomic) NSMutableDictionary *quantities;
 
-// A completion block to be run when this step is completed
-@property (copy) void (^completionBlock)(void);
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 
 @end
 
 @implementation TXHSalesTicketTiersViewController
 
-@synthesize timerViewController = _timerViewController;
-@synthesize completionViewController = _completionViewController;
-@synthesize completionBlock = _completionBlock;
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
  
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.quantities = [NSMutableDictionary dictionary];
     
-    __block typeof(self) blockSelf = self;
-    self.completionBlock = ^{
-        // Post the order for tickets
-        NSLog(@"Posting order for %d tickets", [blockSelf ticketCount]);
-    };
+    [self registerForAvailabilityChangeNotification];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    //    self.venue = [TXHServerAccessManager sharedInstance].currentVenue; // AN Turned this off
-
-    [self configureTimerViewController];
-}
-
-
-- (void)didReceiveMemoryWarning
+- (void)dealloc
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self unregisterFromAvailabilityChangeNotification];
 }
 
-- (NSMutableDictionary *)tierQuantities {
-    if (_tierQuantities == nil) {
-        _tierQuantities = [NSMutableDictionary dictionary];
+- (void)registerForAvailabilityChangeNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availabilityChanged:) name:TXHAvailabilityChangedNotification object:nil];
+}
+
+- (void)unregisterFromAvailabilityChangeNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];
+}
+
+- (void)availabilityChanged:(NSNotification *)note
+{
+    self.availability = note.userInfo[TXHSelectedAvailabilityKey];
+}
+
+- (void)setProductManager:(TXHProductsManager *)productManager
+{
+    _productManager = productManager;
+    
+    self.availability = [productManager selectedAvailability];
+}
+
+- (void)setAvailability:(TXHAvailability *)availability
+{
+    _availability = availability;
+    
+    self.tiers = [availability.tiers allObjects];
+    
+    [self.collectionView reloadData];
+}
+
+- (void)setCheckingCoupon:(BOOL)checkingCoupon
+{
+    _checkingCoupon = checkingCoupon;
+    
+    __weak typeof(self) wself = self;
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (checkingCoupon)
+            [wself showLoadingIndicator];
+        else
+            [wself hideLoadingIndicator];
+    });
+}
+
+- (TXHTier *)tierAtIndexPath:(NSIndexPath *)indexPath
+{
+    return self.tiers[indexPath.row];
+}
+
+- (UIActivityIndicatorView *)activityIndicator
+{
+    if (!_activityIndicator)
+    {
+        UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:self.view.bounds];
+        indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+        indicatorView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        indicatorView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.8];
+        indicatorView.hidesWhenStopped = YES;
+        indicatorView.color = [UIColor txhDarkBlueColor];
+        [self.view addSubview:indicatorView];
+        _activityIndicator = indicatorView;
     }
-    return _tierQuantities;
+    return _activityIndicator;
 }
 
-- (TXHSalesTimerViewController *)timerViewController {
-    return _timerViewController;
-}
+#pragma mark - private methods
 
-- (void)setTimerViewController:(TXHSalesTimerViewController *)timerViewController {
-    _timerViewController = timerViewController;
-    [self configureTimerViewController];
-}
-
-- (TXHSalesCompletionViewController *)completionViewController {
-    return _completionViewController;
-}
-
-- (void)setCompletionViewController:(TXHSalesCompletionViewController *)completionViewController {
-    _completionViewController = completionViewController;
-    [self configureCompletionViewController];
-}
-
-- (void (^)(void))completionBlock {
-    return _completionBlock;
-}
-
-- (void)setCompletionBlock:(void (^)(void))completionBlock {
-    _completionBlock = completionBlock;
-    [self configureCompletionViewController];
-}
-
-- (void)configureTimerViewController {
-    // Set up the timer view to reflect our details
-    if (self.timerViewController) {
-        [self.timerViewController stopCountdownTimer];
-        [self.timerViewController resetPresentationAnimated:NO];
-        self.timerViewController.stepTitle = NSLocalizedString(@"Select your tickets", @"Select your tickets");
-        [self.timerViewController hideCoupon:NO animated:NO];
-    }
-}
-
-- (void)configureCompletionViewController {
-    // Set up the completion view controller to reflect ticket tier details
-    [self.completionViewController setCompletionBlock:self.completionBlock];
-}
-
-
-- (NSUInteger)ticketCount {
-    // To continue past this stage the quantity of tickets selected must be more than zero
-    NSUInteger total = 0;
-    for (NSNumber *tierQuantity in [self.tierQuantities allValues]) {
-        total += tierQuantity.integerValue;
-    }
-    return total;
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (void)showLoadingIndicator
 {
-#pragma unused (tableView)
-    // Return the number of sections.
-    return 1;
+    [self.activityIndicator startAnimating];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (void)hideLoadingIndicator
 {
-#pragma unused (tableView ,section)
-    // Return the number of rows in the section.
-#warning - AN turned this off!
-//    return self.venue.ticketDetail.tiers.count;
-    return 0;
+    [self.activityIndicator stopAnimating];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TXHSalesTicketTierCell *cell = (TXHSalesTicketTierCell *)[tableView cellForRowAtIndexPath:indexPath];
-    NSLog(@"did select cell%@ at row %d", cell.tier.tierName, indexPath.row);
-}
+#pragma mark UICollectionViewDataSource
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    static NSString *CellIdentifier = @"TXHSalesTicketTierCell";
-    TXHSalesTicketTierCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    return [self.tiers count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    TXHSalesTicketTierCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SalesTicketTierCell" forIndexPath:indexPath];
     
     [self configureCell:cell forRowAtIndexPath:indexPath];
     
     return cell;
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"CouponHeader" forIndexPath:indexPath];
+    
+    return view;
+}
+
 - (void)configureCell:(TXHSalesTicketTierCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-#warning - AN turned this off!
-//    TXHTicketTier *tier = self.venue.ticketDetail.tiers[indexPath.row];
-    cell.tier = nil;
-    // - nil'ed this
+
+    TXHTier *tier = [self tierAtIndexPath:indexPath];
+
+    cell.delegate = self;
+    
+    cell.title            = tier.name;
+    cell.subtitle         = tier.tierDescription;
+    cell.priceString      = [self.productManager priceStringForPrice:tier.price];
+    cell.tierIdentifier   = tier.internalTierId;
+    cell.selectedQuantity = [self quantityForTicketIdentifier:tier.internalTierId];
+    
+    __weak typeof(self) wself = self;
     cell.quantityChangedHandler = ^(NSDictionary *quantity) {
-        // Add this quantity to our dictionary
-        [self.tierQuantities addEntriesFromDictionary:quantity];
-        self.completionViewController.canCompleteStep = ([self ticketCount] > 0);
+        [wself updateQuantitiesWithDictionary:quantity];
     };
+}
+
+- (void)updateQuantitiesWithDictionary:(NSDictionary *)dic
+{
+    for (NSString *key in dic)
+    {
+        [self.quantities setObject:dic[key] forKey:key];
+    }
+    self.valid = [self hasQuantitiesSelected];
+}
+
+- (NSInteger)quantityForTicketIdentifier:(NSString *)ticketIdentifier
+{
+    NSNumber *quantity = self.quantities[ticketIdentifier];
+    
+    return [quantity integerValue];
+}
+
+- (void)updateWithCoupon:(NSString *)couponString
+{
+    __block typeof(self) wself = self;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSDate *date = [dateFormat dateFromString:[[self.productManager selectedAvailability] dateString]];
+    
+    self.checkingCoupon = YES;
+    
+    [self.productManager fetchSelectedProductAvailabilitiesFromDate:date
+                                                             toDate:nil
+                                                         withCoupon:couponString
+                                                         completion:^(NSArray *availabilities, NSError *error) {
+                                                             
+                                                             TXHAvailability *availability = [wself.productManager selectedAvailability];
+                                                             
+                                                             for (TXHAvailability *newAvilability in availabilities)
+                                                             {
+                                                                 if ([newAvilability.dateString isEqualToString:[availability dateString]] &&
+                                                                     [newAvilability.timeString isEqualToString:[availability timeString]])
+                                                                 {
+                                                                     // checking if any of tiers has discount set to determin if coupon worked
+                                                                     BOOL hasDiscount = NO;
+                                                                     for (TXHTier  *tier in availability.tiers)
+                                                                         if ([tier.discount integerValue] > 0)
+                                                                             hasDiscount = YES;
+                                                                     
+                                                                     if (hasDiscount)
+                                                                     {
+                                                                         newAvilability.coupon = couponString;
+                                                                         [wself.productManager setSelectedAvailability:newAvilability];
+                                                                         break;
+                                                                     }
+                                                                 }
+                                                             }
+                                                             wself.checkingCoupon = NO;
+                                                         }];
+}
+
+#pragma mark - validation
+
+- (BOOL)hasQuantitiesSelected
+{
+    BOOL atLeastOneTicketSelected = NO;
+    
+    for (NSNumber *quantity in [self.quantities allValues])
+        if ([quantity integerValue] > 0)
+            atLeastOneTicketSelected = YES;
+    
+    return atLeastOneTicketSelected;
+}
+
+#pragma mark - TXHSalesTicketTierCellDelegate
+
+- (NSInteger)maximumQuantityForCell:(TXHSalesTicketTierCell *)cell
+{
+    NSIndexPath *cellIndexPath = [self.collectionView indexPathForCell:cell];
+    TXHTier *tier = [self tierAtIndexPath:cellIndexPath];
+    
+    if (!self.availability.limitValue)
+        return tier.limitValue;
+    
+    NSInteger totalQuantityWithoutaTier = 0;
+    
+    // sum up quantity without the one from arg
+    for (NSString *internalTierId in self.quantities)
+        if (![internalTierId isEqualToString:tier.internalTierId])
+            totalQuantityWithoutaTier += [self.quantities[internalTierId] integerValue];
+    
+    NSInteger availabilityLImit = self.availability.limitValue - totalQuantityWithoutaTier;
+    
+    return MIN(availabilityLImit, tier.limitValue);
+}
+
+#pragma mark - TXHSalesContentsViewControllerProtocol
+
+- (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
+{
+    [self showLoadingIndicator];
+    
+    __weak typeof(self) wself = self;
+    [self.orderManager reserveTicketsWithTierQuantities:self.quantities
+                                         availability:self.availability
+                                           completion:^(TXHOrder *order, NSError *error) {
+                                           
+                                               [wself hideLoadingIndicator];
+                                               
+                                               if (error)
+                                               {
+                                                   // shouldnt be code error as it was validated before
+                                                   DLog(@"%@", [error localizedDescription]);
+                                               }
+                                               
+                                               blockName(error);
+                                          
+                                           }];
+    
+}
+
+- (void)setOffsetBottomBy:(CGFloat)offset
+{
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, offset, 0);
+}
+
+#pragma mark - UITextFieldDelegat
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if ([textField.text length])
+    {
+        [self updateWithCoupon:textField.text];
+    }
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 
 @end

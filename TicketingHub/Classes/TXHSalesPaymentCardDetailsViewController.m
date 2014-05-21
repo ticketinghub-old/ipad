@@ -8,170 +8,255 @@
 
 #import "TXHSalesPaymentCardDetailsViewController.h"
 
-#import "PKTextField.h"
-#import "PKView.h"
-#import "STPView.h"
-#import "TXHCreditCardNumberView.h"
+#import "TXHSignaturePadViewController.h"
 
-@interface TXHSalesPaymentCardDetailsViewController ()  <STPViewDelegate, PKViewDelegate, UITextFieldDelegate>
+#import "NSString+Hex.h"
+#import "TXHConfiguration.h"
+#import "TXHActivityLabelView.h"
+#import <UIAlertView-Blocks/UIAlertView+Blocks.h>
 
-@property (weak, nonatomic) IBOutlet TXHCreditCardNumberView *creditCardNumber;
-@property (weak, nonatomic) IBOutlet STPView *stripeCreditCardView;
+#import "DKPOSHandpointClient.h"
+#import "TXHPayment+DKPOSClientTransactionInfo.h"
 
-@property (weak, nonatomic) IBOutlet UILabel *cardErrorMessage;
+#import "TXHProductsManager.h"
+#import "TXHOrderManager.h"
+
+@interface TXHSalesPaymentCardDetailsViewController () <DKPOSClientDelegate, TXHSignaturePadViewControllerDelegate>
+
+@property (strong, nonatomic) DKPOSHandpointClient *handpointClient;
+@property (strong, nonatomic) TXHActivityLabelView *activityView;
+
+@property (readwrite, nonatomic, getter = isValid) BOOL valid;
+
+@property (weak, nonatomic) IBOutlet UILabel  *amountLabel;
+@property (weak, nonatomic) IBOutlet UILabel  *infoLabel;
+
+@property (strong, nonatomic) NSString *SVGSignatre;
+
+@property (copy, nonatomic) void(^completion)(NSError *error);
 
 @end
 
 @implementation TXHSalesPaymentCardDetailsViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.creditCardNumber.delegate = self;
-    self.stripeCreditCardView.delegate = self;
-
-    // Stripe publishable key will come from the venue & be managed by the API
-    self.stripeCreditCardView.key = @"pk_test_czwzkTp2tactuLOEOqbMTRzG";
+    [self setupHandpointClient];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    self.creditCardNumber.cardNumber = @"4242424242424242";
-    self.creditCardNumber.cardType = @"visa";
-    
-    self.cardErrorMessage.text = @"";
-}
-
-- (void)didReceiveMemoryWarning
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewWillAppear:animated];
+    [self updateView];
 }
 
-- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-#pragma unused (tableView, indexPath)
-    return NO;
-}
-
-- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath {
-#pragma unused (tableView, indexPath)
-    return NO;
-}
-
-
-- (IBAction)scanCard:(id)sender {
-    // Set some data - simulating getting details from a card reader
-    PKTextField *numberField = self.stripeCreditCardView.paymentView.cardNumberField;
-    PKTextField *expiryField = self.stripeCreditCardView.paymentView.cardExpiryField;
-    PKTextField *cvcField = self.stripeCreditCardView.paymentView.cardCVCField;
-    NSRange range;
-    range.location = 0;
-    range.length = numberField.text.length;
-    [numberField.delegate textField:numberField shouldChangeCharactersInRange:range replacementString:@"4242424242424242"];
-    range.length = expiryField.text.length;
-    [expiryField.delegate textField:expiryField shouldChangeCharactersInRange:range replacementString:@"1014"];
-    range.length = cvcField.text.length;
-    [cvcField.delegate textField:cvcField shouldChangeCharactersInRange:range replacementString:@"678"];
-    [cvcField resignFirstResponder];
-    // Call the validation routine
-    [self stripeView:self.stripeCreditCardView withCard:self.stripeCreditCardView.paymentView.card isValid:self.stripeCreditCardView.paymentView.isValid];
-}
-
-- (IBAction)resetCard:(id)sender {
-    // Ensure there is no credit card data, before we start
-    PKTextField *numberField = self.stripeCreditCardView.paymentView.cardNumberField;
-    PKTextField *expiryField = self.stripeCreditCardView.paymentView.cardExpiryField;
-    PKTextField *cvcField = self.stripeCreditCardView.paymentView.cardCVCField;
-    NSRange range;
-    range.location = 0;
-    range.length = cvcField.text.length;
-    [cvcField.delegate textField:cvcField shouldChangeCharactersInRange:range replacementString:@""];
-    range.length = expiryField.text.length;
-    [expiryField.delegate textField:expiryField shouldChangeCharactersInRange:range replacementString:@""];
-    range.length = numberField.text.length;
-    [numberField.delegate textField:numberField shouldChangeCharactersInRange:range replacementString:@""];
-    [numberField resignFirstResponder];
-}
-
-#pragma mark - Stripe STPView Delegate methods
-
-- (void)stripeView:(STPView *)view withCard:(PKCard *)card isValid:(BOOL)valid {
-    NSLog(@"%s %@%@%@", __FUNCTION__,
-          [self.stripeCreditCardView.paymentView.cardNumber formattedStringWithTrail],
-          [self.stripeCreditCardView.paymentView.cardExpiry formattedStringWithTrail],
-          [self.stripeCreditCardView.paymentView.cardCVC string]
-          );
-    if (valid == NO) {
-        self.cardErrorMessage.text = @"There's a problem with the data";
-    } else {
-        self.cardErrorMessage.text = @"Woohoo - you scanned a valid card!";
-        [self.stripeCreditCardView createToken:^(STPToken *token, NSError *error) {
-            NSLog(@"Token : %@", token.tokenId);
-        }];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowSignaturePad"])
+    {
+        TXHSignaturePadViewController *signaturePadController = segue.destinationViewController;
+        signaturePadController.delegate = self;
     }
 }
 
-#pragma mark - PKView Delegate methods
-
-- (void)paymentView:(PKView *)paymentView withCard:(PKCard *)card isValid:(BOOL)valid {
-    NSLog(@"%s - %@ - %@%@%@", __FUNCTION__, valid ? @"valid" : @"invalid",
-          [self.stripeCreditCardView.paymentView.cardNumber formattedStringWithTrail],
-          [self.stripeCreditCardView.paymentView.cardExpiry formattedStringWithTrail],
-          [self.stripeCreditCardView.paymentView.cardCVC string]
-          );
+- (void)updateView
+{
+    TXHOrder *order       = self.orderManager.order;
+    NSString *priceString = [self.productManager priceStringForPrice:[order total]];
+    
+    self.amountLabel.text  = [NSString stringWithFormat:@"Amount to pay: %@",priceString];
+    self.infoLabel.text    = self.handpointClient.isConnected ? @"Connected" : @"Disconnected" ;
+    
+    self.valid = self.handpointClient.isConnected;
 }
 
-#pragma mark - UITextField Delegate methods
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    NSLog(@"%s - %@", __FUNCTION__, string);
-    return YES;
+- (void)setupHandpointClient
+{
+    if (!self.handpointClient.isConnected)
+        [self.handpointClient initialize];
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    NSLog(@"%s - %@", __FUNCTION__, textField.text);
+- (DKPOSHandpointClient *)handpointClient
+{
+    if (!_handpointClient)
+    {
+        // generally share manager should cause less problems as reconeccting is a pain in the ars
+        DKPOSHandpointClient *handpointClient = [DKPOSHandpointClient sharedClient];
+        handpointClient.delegate = self;
+        _handpointClient = handpointClient;
+    }
+    return _handpointClient;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    NSLog(@"%s - %@", __FUNCTION__, textField.text);
+- (TXHActivityLabelView *)activityView
+{
+    if (!_activityView)
+        _activityView = [TXHActivityLabelView getInstanceInView:self.navigationController.view];
+    
+    return _activityView;
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    NSLog(@"%s - %@", __FUNCTION__, textField.text);
-    return YES;
+- (void)setGateway:(TXHGateway *)gateway
+{
+    _gateway = gateway;
+    
+    NSData *sharedSecretHexData = [gateway.sharedSecret hexData];
+    [self.handpointClient setSharedSecret:sharedSecretHexData];
 }
 
-- (BOOL)textFieldShouldClear:(UITextField *)textField {
-    NSLog(@"%s - %@", __FUNCTION__, textField.text);
-    return YES;
+#pragma mark - DKPOSClientDelegate
+
+- (void)posClientDidConnectDevice
+{
+    [self updateView];
+}
+- (void)posClientDidDisconnectDevice
+{
+    [self updateView];
 }
 
--(BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    NSLog(@"%s - %@", __FUNCTION__, textField.text);
-    return YES;
+- (void)posClient:(NSObject<DKPOSClient>*)client transactionFinishedWithInfo:(DKPOSClientTransactionInfo*)info
+{
+    __weak typeof(self) wself = self;
+    
+    [self.activityView showWithMessage:NSLocalizedString(@"CARD_CONTROLLER_UPDATING_PAYMENT_MESSAGE", nil)
+                       indicatorHidden:NO];
+    
+    [self.orderManager updateOrderWithPayment:[self paymentForClientTransactionInfo:info]
+                                   completion:^(TXHOrder *order, NSError *error) {
+                                       [wself.activityView hide];
+                                       
+                                       if (error)
+                                       {
+                                           [self showErrorWithTitle:NSLocalizedString(@"", nil)
+                                                            message:NSLocalizedString(@"", nil)
+                                                             action:^{
+                                                                 if (self.completion)
+                                                                     self.completion(error);
+                                                            }];
+                                       }
+                                       else if (self.completion)
+                                           self.completion(error);
+                                       
+                                   }];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSLog(@"%s - %@", __FUNCTION__, textField.text);
-    return YES;
+- (TXHPayment *)paymentForClientTransactionInfo:(DKPOSClientTransactionInfo*)info
+{
+    NSManagedObjectContext *orderMoc = self.orderManager.order.managedObjectContext;
+    
+    TXHPayment *payment = [TXHPayment createWithTransactionInfo:info
+                                         inManagedObjectContext:orderMoc];
+    
+    payment.signature = self.SVGSignatre;
+    payment.gateway   = self.gateway;
+    
+    return payment;
 }
+
+- (void)posClient:(NSObject<DKPOSClient>*)client transactionFailedWithError:(NSError*)error
+{
+    [self.activityView hide];
+    
+    [self updateView];
+    
+    [self showErrorWithTitle:NSLocalizedString(@"TRANSACTION_FAILED_TITLE", nil)
+                     message:error.localizedDescription
+                      action:^{
+                          if (self.completion)
+                              self.completion(error);
+                      }];
+}
+
+- (void)posClient:(NSObject<DKPOSClient>*)client transactionStatusChanged:(DKPOSClientTransactionInfo*)info
+{
+    [self.activityView showWithMessage:[info localizedStatusDescription] indicatorHidden:NO];
+}
+
+- (void)posClient:(NSObject<DKPOSClient>*)client transactionSignatureRequested:(DKPOSClientTransactionInfo*)info
+{
+    [self performSegueWithIdentifier:@"ShowSignaturePad"
+                              sender:self];
+}
+
+- (void)posClient:(NSObject<DKPOSClient>*)client deviceConnectionError:(NSError*)error
+{
+    [self showErrorWithTitle:NSLocalizedString(@"DEVICE_CONNECTIONERROR_TITLE", nil)
+                     message:error.localizedDescription
+                      action:nil];
+}
+
+#pragma mark - TXHSignaturePadViewControllerDelegate
+
+- (void)txhSignaturePadViewController:(TXHSignaturePadViewController *)controller acceptSignatureWithImage:(UIImage *)image
+{
+    __weak typeof(self) wself = self;
+
+    [self dismissViewControllerAnimated:YES completion:^{
+        wself.SVGSignatre = controller.SVGSignature;
+        [wself.handpointClient signatureAccepted];
+    }];
+}
+
+- (void)txhSignaturePadViewControllerShouldDismiss:(TXHSignaturePadViewController *)controller
+{
+    __weak typeof(self) wself = self;
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        [wself.handpointClient cancelTransaction];
+    }];
+}
+
+#pragma mark - TXHSalesPaymentContentViewControllerProtocol
+
+- (void)finishWithCompletion:(void(^)(NSError *))completion
+{
+    self.completion = completion;
+    
+    TXHOrder *order = [self.orderManager order];
+    
+    [self.activityView showWithMessage:NSLocalizedString(@"CARD_CONTROLLER_PREPARING_PAYMENT_MESSAGE", nil)
+                       indicatorHidden:NO];
+    
+    NSError *error;
+    [self.handpointClient saleWithAmount:order.totalValue
+                                currency:order.currency
+                             cardPresent:YES
+                               reference:order.reference
+                                   error:&error];
+    
+    if (error)
+    {
+        [self showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
+                         message:error.localizedDescription
+                          action:^{
+                              if (completion)
+                                  completion(error);
+                         }];
+    }
+}
+
+#pragma mark - error helper
+
+- (void)showErrorWithTitle:(NSString *)title message:(NSString *)message action:(void(^)(void))action
+{
+    [self.activityView hide];
+
+    RIButtonItem *cancelItem = [RIButtonItem itemWithLabel:NSLocalizedString(@"ERROR_DISMISS_BUTTON_TITLE", nil)
+                                                    action:^{
+                                                        if (action)
+                                                            action();
+                                                    }];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                        message:message
+                                               cancelButtonItem:cancelItem
+                                               otherButtonItems: nil];
+    [alertView show];
+}
+
 
 @end

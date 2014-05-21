@@ -7,114 +7,235 @@
 //
 
 #import "TXHSalesPaymentCreditDetailsViewController.h"
+#import "TXHActivityLabelView.h"
 
-@interface TXHSalesPaymentCreditDetailsViewController ()
+#import "TXHOrderManager.h"
+#import "TXHProductsManager.h"
+
+#import "TXHScanersManager.h"
+
+#import "TXHCardView.h"
+#import "TXHCardView+TXHCustomXIB.h"
+
+#import "TXHPayment+PKCard.h"
+
+#import "TXHFullScreenKeyboardViewController.h"
+#import <UIAlertView-Blocks/UIAlertView+Blocks.h>
+
+
+@interface TXHSalesPaymentCreditDetailsViewController () <TXHFullScreenKeyboardViewControllerDelegate, TXHScanersManagerDelegate, TXHCardViewDelegate>
+
+@property (nonatomic, readwrite, assign, getter = isValid) BOOL valid;
+@property (nonatomic, strong) TXHScanersManager *scanersManager;
+@property (nonatomic, copy) NSString *cardTrackData;
+
+@property (nonatomic, strong) IBOutlet TXHCardView *cardView;
+@property (nonatomic, strong) TXHActivityLabelView *activityView;
+@property (nonatomic, strong) TXHFullScreenKeyboardViewController *fullScreenController;
 
 @end
 
 @implementation TXHSalesPaymentCreditDetailsViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    [self initializeMSRScanner];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
-    return cell;
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self scannerManager:self.scanersManager didRecognizeMSRCardTrack:@"%B1234567890123445^PADILLA/L.                ^99011X100000*000000000XXX000000?*"];
+//    });
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)viewWillDisappear:(BOOL)animated
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    [super viewWillDisappear:animated];
+    
+    [self.fullScreenController hideAniamted:NO
+                                 completion:nil];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)initializeMSRScanner
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    TXHScanersManager *scannersManger = [[TXHScanersManager alloc] initWithInfineaManager:[TXHInfineaManger sharedManager]
+                                                                       andScanApiManager:nil];
+    scannersManger.delegate = self;
+    self.scanersManager = scannersManger;
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+- (void)showCardFullScreen
 {
+    if (self.fullScreenController)
+        return;
+    
+    TXHFullScreenKeyboardViewController *full = [[TXHFullScreenKeyboardViewController alloc] init];
+    full.destinationBackgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+    full.delegate = self;
+    
+    self.fullScreenController = full;
+    
+    __weak typeof(self) wself = self;
+    
+    [full showWithView:self.cardView
+            completion:^{
+        [wself.cardView becomeFirstResponder];
+    }];
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)setCardTrackData:(NSString *)cardTrackData
 {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    _cardTrackData = cardTrackData;
+    
+    self.cardView.skipFronSide = [cardTrackData length] > 0;
 }
-*/
 
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (TXHActivityLabelView *)activityView
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if (!_activityView)
+        _activityView = [TXHActivityLabelView getInstanceInView:self.navigationController.view];
+    
+    return _activityView;
 }
 
- */
+#pragma mark - TXHScanersManagerDelegate
+
+- (void)scannerManager:(TXHScanersManager *)manager didRecognizeMSRCardTrack:(NSString *)cardTrackData
+{
+    if (!self.fullScreenController)
+    {
+        self.cardTrackData = cardTrackData;
+        [self showCardFullScreen];
+    }
+}
+
+#pragma mark - TXHCardViewDelegate
+
+- (void)txhCardView:(TXHCardView *)cardView didFinishValid:(BOOL)valid withCardInfo:(PKCard *)card
+{
+    if (valid)
+    {
+        [self hideAndAcceptCard];
+    }
+    else
+    {
+        [self hideAndResetCard];
+    }
+    
+    self.valid = valid;
+}
+
+- (void)hideAndAcceptCard
+{
+    if (![self.cardTrackData length])
+        [self.cardView flipToCardSide:TXHCardSideFront];
+    
+    __weak typeof(self) wself = self;
+    
+    [self.fullScreenController hideAniamted:YES
+                                 completion:^{
+                                     [wself disableCardAnimated:YES];
+                                 }];
+}
+
+- (void)disableCardAnimated:(BOOL)aniamted
+{
+    if (aniamted)
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.cardView.enabled = NO;
+                         }];
+    else
+        self.cardView.enabled = NO;
+}
+
+- (TXHPayment *)cnpPayment
+{
+    return [self paymentForCardInfo:self.cardView.card cardTrackData:self.cardTrackData];
+}
+
+- (TXHPayment *)paymentForCardInfo:(PKCard *)card cardTrackData:(NSString *)cardTrackData
+{
+    NSManagedObjectContext *orderMoc = self.gateway.managedObjectContext;
+    
+    TXHPayment *payment = [TXHPayment createWithCard:card
+                                       cardTrackData:cardTrackData
+                                         inManagedObjectContext:orderMoc];
+    payment.gateway   = self.gateway;
+    
+    return payment;
+}
+
+- (void)txhCardViewDidStartEditing:(TXHCardView *)cardView
+{
+    [self showCardFullScreen];
+}
+
+#pragma mark - TXHFullScreenKeyboardViewControllerDelegate
+
+- (void)txhFullScreenKeyboardViewControllerDismiss:(TXHFullScreenKeyboardViewController *)controller
+{
+    [self hideAndResetCard];
+}
+
+- (void)hideAndResetCard
+{
+    [self.cardView reset];
+    
+    [self.fullScreenController hideAniamted:YES completion:nil];
+    self.fullScreenController = nil;
+}
+
+#pragma mark - TXHSalesPaymentContentViewControllerProtocol
+
+- (void)finishWithCompletion:(void(^)(NSError *))completion
+{
+    [self.activityView showWithMessage:NSLocalizedString(@"CNP_CONTROLLER_UPDATING_PAYMENT_MESSAGE", nil)
+                       indicatorHidden:NO];
+
+    __weak typeof(self) wself = self;
+
+    [self.orderManager updateOrderWithPayment:[self cnpPayment]
+                                   completion:^(TXHOrder *order, NSError *error) {
+                                       [wself.activityView hide];
+                                       
+                                       if (error)
+                                       {
+                                           [wself showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
+                                                             message:error.localizedDescription
+                                                              action:^{
+                                                                  if (completion)
+                                                                      completion(error);
+                                                              }];
+                                       }
+                                       else if (completion)
+                                           completion(error);
+                                   }];
+}
+
+#pragma mark - error helper
+
+- (void)showErrorWithTitle:(NSString *)title message:(NSString *)message action:(void(^)(void))action
+{
+    [self.activityView hide];
+    
+    RIButtonItem *cancelItem = [RIButtonItem itemWithLabel:NSLocalizedString(@"ERROR_DISMISS_BUTTON_TITLE", nil)
+                                                    action:^{
+                                                        if (action)
+                                                            action();
+                                                    }];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                        message:message
+                                               cancelButtonItem:cancelItem
+                                               otherButtonItems: nil];
+    [alertView show];
+}
+
 
 @end

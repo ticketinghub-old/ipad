@@ -8,15 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
-@class TXHTicketTier;
-@class TXHTicketingHubClient;
+@class TXHSalesTicketTierCell;
 
-@interface TXHSalesTicketTierCell : UITableViewCell
+@protocol TXHSalesTicketTierCellDelegate <NSObject>
 
-@property (strong, nonatomic) TXHTicketingHubClient *ticketingHubClient;
-@property (strong, nonatomic) TXHTicketTier *tier;
+- (NSInteger)maximumQuantityForCell:(TXHSalesTicketTierCell *)cell;
 
-// When the quantity of tickets for the cell's tier changes, this handler will be invoked, passing the quantity .
+@end
+
+@interface TXHSalesTicketTierCell : UICollectionViewCell
+
+@property (copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *subtitle;
+@property (copy, nonatomic) NSString *priceString;
+
+@property (copy, nonatomic) NSString *tierIdentifier;
+
+@property (assign, nonatomic) NSInteger selectedQuantity;
+
+@property (weak, nonatomic) id<TXHSalesTicketTierCellDelegate> delegate;
+
 @property (copy) void (^quantityChangedHandler)(NSDictionary *);
 
 @end

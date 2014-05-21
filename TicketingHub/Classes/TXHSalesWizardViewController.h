@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TXHSalesWizardViewControllerDataSource.h"
 
 @interface TXHSalesWizardViewController : UITableViewController
 
-@property (readonly, nonatomic) NSUInteger step;
+@property (weak, nonatomic) id<TXHSalesWizardViewControllerDataSource> dataSource;
 
-- (void)moveToNextStep:(id)sender;
-- (void)orderExpired;
+- (void)reloadWizard;
 
 @end

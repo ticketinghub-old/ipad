@@ -7,68 +7,55 @@
 //
 
 #import "TXHSalesTicketCompletionViewController.h"
+#import "NSDateFormatter+DisplayFormat.h"
+
+
+#import "TXHOrderManager.h"
+#import "TXHProductsManager.h"
 
 @interface TXHSalesTicketCompletionViewController () <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *coupon;
-@property (weak, nonatomic) IBOutlet UIButton *continueButton;
+@property (weak, nonatomic) IBOutlet UILabel *summaryDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *summaryTotalLabel;
 
-@property (assign, nonatomic) BOOL editingCoupon;
+@property (readwrite, nonatomic, getter = isValid) BOOL valid;
 
 @end
 
 @implementation TXHSalesTicketCompletionViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)updateTicketCount:(NSInteger)total {
-    self.continueButton.enabled = (total > 0);
-}
-
-- (IBAction)continueAction:(id)sender {
-#pragma unused (sender)
-    [[UIApplication sharedApplication] sendAction:@selector(completeWizardStep) to:nil from:self forEvent:nil];
-}
-
-#pragma mark - UITextField delegate
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-#pragma unused (textField)
     
-    // Set a flag used when the keyboard appears whilst editing the coupon
-    self.editingCoupon = YES;
-    if ([self.delegate respondsToSelector:@selector(increaseHeight)]) {
-        [self.delegate performSelector:@selector(increaseHeight)];
-    }
+    self.valid = YES;
+    
+    [self updateView];
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-#pragma unused (textField)
+- (void)setOrderManager:(TXHOrderManager *)orderManager
+{
+    _orderManager = orderManager;
 
-    // Clear the flag used when the keyboard appears whilst editing the coupon
-    self.editingCoupon = NO;
-    if ([self.delegate respondsToSelector:@selector(decreaseHeight)]) {
-        [self.delegate performSelector:@selector(decreaseHeight)];
-    }
+    [self updateView];
+}
+
+- (void)setProductManager:(TXHProductsManager *)productManager
+{
+    _productManager = productManager;
+    
+    [self updateView];
+}
+
+- (void)updateView
+{
+    TXHOrder *order = [self.orderManager order];
+    NSNumber *totalPrice = [order total];
+    NSDate *validFromDate = [(TXHTicket *)[order.tickets anyObject] validFrom];
+    
+    self.summaryTotalLabel.text = [self.productManager priceStringForPrice:totalPrice];
+    self.summaryDateLabel.text  = [NSDateFormatter txh_fullDateStringFromDate:validFromDate];
 }
 
 @end

@@ -8,21 +8,38 @@
 
 #import <UIKit/UIKit.h>
 
+@class TXHBorderedButton;
+@class TXHSalesCompletionViewController;
+
+@protocol TXHSalesCompletionViewControllerDelegate <NSObject>
+
+- (void)salesCompletionViewController:(TXHSalesCompletionViewController *)controller didDidSelectRightButton:(TXHBorderedButton *)button;
+- (void)salesCompletionViewController:(TXHSalesCompletionViewController *)controller didDidSelectMiddleButton:(TXHBorderedButton *)button;
+- (void)salesCompletionViewController:(TXHSalesCompletionViewController *)controller didDidSelectLeftButton:(TXHBorderedButton *)button;
+
+@end
+
 @interface TXHSalesCompletionViewController : UIViewController
 
-// The current step in ticket sales processing
-@property (assign, nonatomic) NSUInteger step;
+@property (weak, nonatomic) id<TXHSalesCompletionViewControllerDelegate> delegate;
 
-// Can the current step be completed (enables / disables the continue button)
-@property (assign, nonatomic) BOOL canCompleteStep;
+- (void)setRightButtonImage:(UIImage *)rightButtonImage;
+- (void)setMiddleButtonImage:(UIImage *)middleButtonImage;
 
-// New vertical height of the view (used to resize  the parent container)
-@property (assign, nonatomic) CGFloat newVerticalHeight;
+- (void)setLeftButtonTitle:(NSString *)continueButtonTitle;
+- (void)setMiddleButtonTitle:(NSString *)continueButtonTitle;
+- (void)setRightButtonTitle:(NSString *)continueButtonTitle;
 
-// animationHandlerBlock - conforms to animation completion block
-@property (copy) void (^animationHandler)(BOOL finished);
+- (void)setButtonsDisabled:(BOOL)disabled;
+- (void)setLeftButtonDisabled:(BOOL)disabled;
+- (void)setMiddleButtonDisabled:(BOOL)disabled;
+- (void)setRightButtonDisabled:(BOOL)disabled;
 
-// This block will be called when a user indicates that they want to continue to the next step
-@property (copy) void (^completionBlock)(void);
+- (void)setLeftButtonHidden:(BOOL)hidden;
+- (void)setMiddleButtonHidden:(BOOL)hidden;
+- (void)setRightButtonHidden:(BOOL)hidden;
+
+- (void)setLeftBarButtonColor:(UIColor *)color;
+
 
 @end

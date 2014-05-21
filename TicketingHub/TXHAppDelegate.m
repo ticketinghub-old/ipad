@@ -7,26 +7,35 @@
 //
 
 #import "TXHAppDelegate.h"
+#import "TXHTicketingHubManager.h"
+#import "AFNetworkActivityLogger.h"
+#import <AFNetworking.h>
+
+//printers - move that away from app delegate
+#import "TXHPrintersManager.h"
+#import "TXHStarIOPrintersEngine.h"
 
 @interface TXHAppDelegate ()
 
 @end
 
-
 @implementation TXHAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    // We want a light status bar style as the launch screen and nav bars are dark
-    [application setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[AFNetworkActivityLogger sharedLogger] startLogging];
+    [[AFNetworkActivityLogger sharedLogger] setLevel:AFLoggerLevelDebug];
+    
+    // Remove all local data when launching app
+    [TXHTicketingHubManager clearLocalData];
 
     [[UINavigationBar appearance] setBackgroundColor:[UIColor colorWithRed:1.0f / 255.0f green:46.0f / 255.0f blue:67.0f / 255.0f alpha:1.0f]];
 
+    
+    TXHStarIOPrintersEngine *starEngine = [TXHStarIOPrintersEngine new];
+    [TXHPRINTERSMANAGER addPrinterEngine:starEngine];
+    
     return YES;
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -5,67 +5,255 @@
 //  Created by Mark on 22/07/2013.
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
-
-NSString * const DateSelectorViewControllerStoryboardIdentifier = @"DateSelectorViewController";
-
 #import "TXHDateSelectorViewController.h"
 
-#import <iOS-api/iOS-api.h>
-#import <TimesSquare/TimesSquare.h>
+#import "TXHProductsManager.h"
+#import "TXHTicketingHubManager.h"
 
-#import "TXHCalendarRowCell.h"
+#import "NSDate+CupertinoYankee.h"
+
+#import "NSDate+Additions.h"
+#import "UIColor+TicketingHub.h"
+
 
 @interface TXHDateSelectorViewController ()
 
-@property (weak, nonatomic) TSQCalendarView *calendarView;
+@property (weak, nonatomic) UIActivityIndicatorView *indicatorView;
+
+@property (nonatomic,strong) NSArray             *dotsData;
+@property (nonatomic,strong) NSMutableDictionary *dataDictionary;
+
+@property (nonatomic,strong) NSDate *selectedDate;
+@property (nonatomic,assign) NSInteger lodingMonthsCount;
 
 @end
 
 @implementation TXHDateSelectorViewController
 
-#pragma mark - View lifecycle
+#pragma mark View Lifecycle
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self setupCalendarViewAsSubview];
++ (void)initialize
+{
+    [TKCalendarMonthView setImageTintColour:[UIColor txhDarkBlueColor]];
 }
 
-- (void)viewDidLayoutSubviews {
-    NSDate *dateToMakeVisible;
+- (void) viewDidLoad
+{
+	[super viewDidLoad];
     
-    if (self.selectedDate) {
-        dateToMakeVisible = self.selectedDate;
-    } else {
-        dateToMakeVisible = [NSDate date];
-    }
-
-    [self.calendarView scrollToDate:dateToMakeVisible animated:NO];
+    self.dataDictionary = [NSMutableDictionary dictionary];
+	[self.monthView selectDate:[NSDate date]];
 }
 
-#pragma mark - Private
+- (void)availabilitiesUpdated:(NSNotification *)note
+{
+    [self.monthView reloadData];
+}
 
-- (void)setupCalendarViewAsSubview {
-    TSQCalendarView *calendarView = [[TSQCalendarView alloc] init];
-    calendarView.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    calendarView.calendar.locale = [NSLocale currentLocale];
-    calendarView.rowCellClass = [TXHCalendarRowCell class];
-    calendarView.backgroundColor = [UIColor colorWithRed:0.84f green:0.85f blue:0.86f alpha:1.0f];
+- (UIActivityIndicatorView *)indicatorView
+{
+    if (!_indicatorView)
+    {
+        UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:self.view.bounds];
+        indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+        indicatorView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        indicatorView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.8];
+        indicatorView.hidesWhenStopped = YES;
+        indicatorView.color = [UIColor txhDarkBlueColor];
+        [self.view addSubview:indicatorView];
+        _indicatorView = indicatorView;
+    }
+    return _indicatorView;
+}
 
-    CGFloat onePixel = 1.0f / [UIScreen mainScreen].scale;
-    calendarView.contentInset = UIEdgeInsetsMake(0.0f, onePixel, 0.0f, onePixel);
+#pragma mark - private methods
 
-    // Hard coded one month for development.
-    calendarView.firstDate = [NSDate date];
-    calendarView.lastDate = [NSDate dateWithTimeIntervalSinceNow:60*60*24 * 30];
+- (void)showLoadingIndicator
+{
+    self.lodingMonthsCount++;
+    [self.indicatorView startAnimating];
+}
 
-    [self.view addSubview:calendarView];
+- (void)hideLoadingIndicator
+{
+    self.lodingMonthsCount--;
+    
+    if (!self.lodingMonthsCount)
+        [self.indicatorView stopAnimating];
+}
 
-    calendarView.translatesAutoresizingMaskIntoConstraints = NO;
-    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(calendarView);
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[calendarView]|" options:kNilOptions metrics:nil views:viewsDictionary]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[calendarView]|" options:kNilOptions metrics:nil views:viewsDictionary]];
+#pragma mark MonthView Delegate & DataSource
 
-    self.calendarView = calendarView;
+- (NSArray*)calendarMonthView:(TKCalendarMonthView*)monthView marksFromDate:(NSDate*)startDate toDate:(NSDate*)lastDate
+{
+    NSMutableSet *possibleMonthsDates = [NSMutableSet set];
+    NSDate *currentMonthDate = [monthView.monthDate dateByAddingDays:1];
+
+    // try start date - might be previous month
+    [possibleMonthsDates addObject:startDate];
+    // try current month
+    [possibleMonthsDates addObject:currentMonthDate];
+    // try las date - might be next month
+    [possibleMonthsDates addObject:lastDate];
+    
+
+    for (NSDate *monthDate in possibleMonthsDates)
+    {
+        [self fetchAvailabilitiesForMonth:monthDate];
+    }
+    
+    NSMutableArray *dotsData = [NSMutableArray array];
+    
+    NSDate *date = startDate;
+	while(YES)
+    {
+        [dotsData addObject:@([[self availabilitiesForDate:date] count])];
+        
+		NSDateComponents *info = [date dateComponentsWithTimeZone:self.monthView.timeZone];
+		info.day++;
+		date = [NSDate dateWithDateComponents:info];
+        
+        if([date compare:lastDate] == NSOrderedDescending) break;
+	}
+    
+    self.dotsData = [dotsData copy];
+    
+    return self.dotsData;
+}
+
+- (void)calendarMonthView:(TKCalendarMonthView*)monthView didSelectDate:(NSDate*)date
+{
+    self.selectedDate = date;
+    
+	[self.tableView reloadData];
+}
+
+- (void)calendarMonthView:(TKCalendarMonthView*)mv monthDidChange:(NSDate*)d animated:(BOOL)animated
+{
+	[super calendarMonthView:mv monthDidChange:d animated:animated];
+	[self.tableView reloadData];
+}
+
+#pragma mark - private
+
+- (void)fetchAvailabilitiesForMonth:(NSDate *)date
+{
+    NSString *monthYearKey = [date monthYearString];
+    if (self.dataDictionary[monthYearKey])
+        return;
+    
+    NSDate *startDate = [date beginningOfMonth];
+    NSDate *lastDate = [date endOfMonth];
+        
+    //self.dotsDataDictionary[monthYearKey] = [NSMutableArray array];
+    self.dataDictionary[monthYearKey] = [NSMutableDictionary dictionary];
+
+    [self showLoadingIndicator];
+    __weak typeof(self) wself = self;
+    
+    
+    [self.productManager fetchSelectedProductAvailabilitiesFromDate:startDate
+                                                            toDate:lastDate
+                                                        withCoupon:nil
+                                                        completion:^(NSArray *availabilities, NSError *error) {
+                                                            
+                                                            if (error)
+                                                            {
+                                                                [wself.dataDictionary removeObjectForKey:monthYearKey];
+                                                            }
+                                                            else
+                                                            {
+                                                                [wself addAvailabilities:availabilities fromDate:startDate toDate:lastDate];
+                                                                [wself.monthView reloadData];
+                                                            }
+                                                            
+                                                            [wself hideLoadingIndicator];
+                                                        }];
+    
+}
+
+- (void)addAvailabilities:(NSArray *)availabilities fromDate:(NSDate*)startDate toDate:(NSDate*)lastDate
+{
+    NSString *monthYearKey = [startDate monthYearString];
+    
+    NSDate *date = startDate;
+	while(YES)
+    {
+        NSString *dateString = [date isoDateString];
+
+        NSIndexSet *indexes = [availabilities indexesOfObjectsWithOptions:NSEnumerationConcurrent
+                                                           passingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+                                                               TXHAvailability *availability = (TXHAvailability *)obj;
+                                                               return ([availability.dateString isEqualToString:dateString]);
+                                                           }];
+        
+        NSArray *filteredArray = [availabilities objectsAtIndexes:indexes];
+        NSSortDescriptor *valueDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateString" ascending:YES];
+        NSArray * sortedArray = [filteredArray sortedArrayUsingDescriptors:@[valueDescriptor]];
+        
+        self.dataDictionary[monthYearKey][dateString] = sortedArray;
+
+		NSDateComponents *info = [date dateComponentsWithTimeZone:self.monthView.timeZone];
+		info.day++;
+		date = [NSDate dateWithDateComponents:info];
+	
+        if([date compare:lastDate] == NSOrderedDescending) break;
+	}
+}
+
+
+#pragma mark UITableView Delegate & DataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSDate *selectedDate = self.selectedDate;
+	
+    NSArray *availabilities = [self availabilitiesForDate:selectedDate];
+    
+	if(availabilities == nil) return 0;
+	return [availabilities count];
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+
+    NSDate *selectedDate = self.selectedDate;
+	
+    NSArray *availabilities = [self availabilitiesForDate:selectedDate];
+    TXHAvailability *availability = availabilities[indexPath.row];
+	cell.textLabel.text = availability.timeString;
+	
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSDate *selectedDate = self.selectedDate;
+	
+    NSArray *availabilities = [self availabilitiesForDate:selectedDate];
+    TXHAvailability *availability = availabilities[indexPath.row];
+    
+    [self.delegate dateSelectorViewController:self didSelectAvailability:availability];
+}
+
+- (NSArray *)availabilitiesForDate:(NSDate *)date
+{
+    NSString *monthYearKey = [date monthYearString];
+    NSString *selectedDateString = [date isoDateString];
+	
+    NSArray *availabilities = self.dataDictionary[monthYearKey][selectedDateString];
+    
+    return availabilities;
 }
 
 @end

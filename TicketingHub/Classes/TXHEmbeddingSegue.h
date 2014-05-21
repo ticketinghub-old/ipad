@@ -10,8 +10,8 @@
 
 @interface TXHEmbeddingSegue : UIStoryboardSegue
 
-@property (weak, nonatomic) UIView *containerView;
-
-- (id)initWithIdentifier:(NSString *)identifier container:(UIView *)container source:(UIViewController *)source destination:(UIViewController *)destination;
+// not initializers so you can st those in prepare for segue
+@property (weak, nonatomic) UIView           *containerView;
+@property (weak, nonatomic) UIViewController *previousController;
 
 @end

@@ -1,0 +1,150 @@
+
+/* Class = "IBUIButton"; normalTitle = "Simulate Scan"; ObjectID = "1jw-qN-7ot"; */
+"1jw-qN-7ot.normalTitle" = "Simulate Scan";
+
+/* Class = "IBUILabel"; text = "Detail"; ObjectID = "2HA-MK-twg"; */
+"2HA-MK-twg.text" = "Detail";
+
+/* Class = "IBUILabel"; text = "Adult"; ObjectID = "2bt-7e-uQJ"; */
+"2bt-7e-uQJ.text" = "Adult";
+
+/* Class = "IBUILabel"; text = "Step description"; ObjectID = "33L-yy-ldl"; */
+"33L-yy-ldl.text" = "Step description";
+
+/* Class = "IBUILabel"; text = "Name & Tier"; ObjectID = "41r-h6-Ipu"; */
+"41r-h6-Ipu.text" = "Name & Tier";
+
+/* Class = "IBUILabel"; text = "Ticket"; ObjectID = "450-8g-UhG"; */
+"450-8g-UhG.text" = "Ticket";
+
+/* Class = "IBUILabel"; text = "Coupon Code"; ObjectID = "56B-3j-L2o"; */
+"56B-3j-L2o.text" = "Coupon Code";
+
+/* Class = "IBUILabel"; text = "£8.00"; ObjectID = "7jI-YP-8cR"; */
+"7jI-YP-8cR.text" = "£8.00";
+
+/* Class = "IBUIButton"; normalTitle = "Continue order"; ObjectID = "8AU-qh-5zk"; */
+"8AU-qh-5zk.normalTitle" = "Continue order";
+
+/* Class = "IBUILabel"; text = "Total Price"; ObjectID = "8SC-hu-kkn"; */
+"8SC-hu-kkn.text" = "Total Price";
+
+/* Class = "IBUISegmentedControl"; Afw-Y7-e2L.segmentTitles[0] = "Credit / Debit Card"; ObjectID = "Afw-Y7-e2L"; */
+"Afw-Y7-e2L.segmentTitles[0]" = "Credit / Debit Card";
+
+/* Class = "IBUISegmentedControl"; Afw-Y7-e2L.segmentTitles[1] = "By Cash"; ObjectID = "Afw-Y7-e2L"; */
+"Afw-Y7-e2L.segmentTitles[1]" = "By Cash";
+
+/* Class = "IBUISegmentedControl"; Afw-Y7-e2L.segmentTitles[2] = "Credit"; ObjectID = "Afw-Y7-e2L"; */
+"Afw-Y7-e2L.segmentTitles[2]" = "Credit";
+
+/* Class = "IBUIButton"; normalTitle = "Cancel order"; ObjectID = "GP7-Ss-ICN"; */
+"GP7-Ss-ICN.normalTitle" = "Cancel order";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "GSh-Iy-1cH"; */
+"GSh-Iy-1cH.text" = "Label";
+
+/* Class = "IBUILabel"; text = "£62.00"; ObjectID = "Gf9-3x-9T4"; */
+"Gf9-3x-9T4.text" = "£62.00";
+
+/* Class = "IBUIButton"; normalTitle = "Button"; ObjectID = "Np5-r3-Mze"; */
+"Np5-r3-Mze.normalTitle" = "Button";
+
+/* Class = "IBUIButton"; normalTitle = "Reset card details"; ObjectID = "Obz-zq-ft1"; */
+"Obz-zq-ft1.normalTitle" = "Reset card details";
+
+/* Class = "IBUILabel"; text = "£62.00"; ObjectID = "PXO-ho-0MH"; */
+"PXO-ho-0MH.text" = "£62.00";
+
+/* Class = "IBUITextField"; placeholder = "Enter your email"; ObjectID = "PrA-2h-atV"; */
+"PrA-2h-atV.placeholder" = "Enter your email";
+
+/* Class = "IBUILabel"; text = "Total"; ObjectID = "QKN-0S-i88"; */
+"QKN-0S-i88.text" = "Total";
+
+/* Class = "IBUILabel"; text = "Quantity"; ObjectID = "QOY-Sn-JB9"; */
+"QOY-Sn-JB9.text" = "Quantity";
+
+/* Class = "IBUILabel"; text = "Completed"; ObjectID = "Rm3-ud-rDW"; */
+"Rm3-ud-rDW.text" = "Completed";
+
+/* Class = "IBUILabel"; text = "£8.00"; ObjectID = "SRM-iT-ALA"; */
+"SRM-iT-ALA.text" = "£8.00";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "VTE-gC-YB8"; */
+"VTE-gC-YB8.text" = "Title";
+
+/* Class = "IBUITextView"; text = "<Description>"; ObjectID = "VqF-sq-M4H"; */
+"VqF-sq-M4H.text" = "<Description>";
+
+/* Class = "IBUILabel"; text = "Payment Details"; ObjectID = "W6m-vA-l7M"; */
+"W6m-vA-l7M.text" = "Payment Details";
+
+/* Class = "IBUILabel"; text = "<Step Description>"; ObjectID = "XLs-5a-gKP"; */
+"XLs-5a-gKP.text" = "<Step Description>";
+
+/* Class = "IBUILabel"; text = "Detail"; ObjectID = "XOD-MM-r5z"; */
+"XOD-MM-r5z.text" = "Detail";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "XgU-0W-KI3"; */
+"XgU-0W-KI3.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Step Title"; ObjectID = "aQO-2b-8h7"; */
+"aQO-2b-8h7.text" = "Step Title";
+
+/* Class = "IBUILabel"; text = "£8.00"; ObjectID = "bFV-at-tjT"; */
+"bFV-at-tjT.text" = "£8.00";
+
+/* Class = "IBUILabel"; text = "Card details"; ObjectID = "ban-1r-zRw"; */
+"ban-1r-zRw.text" = "Card details";
+
+/* Class = "IBUITextField"; placeholder = "Coupon Code"; ObjectID = "cVv-Jb-O6g"; */
+"cVv-Jb-O6g.placeholder" = "Coupon Code";
+
+/* Class = "IBUILabel"; text = "Amount Given"; ObjectID = "dGd-vA-zR3"; */
+"dGd-vA-zR3.text" = "Amount Given";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "e1D-dL-cJU"; */
+"e1D-dL-cJU.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "IBUILabel"; text = "1"; ObjectID = "eEX-rP-Hvp"; */
+"eEX-rP-Hvp.text" = "1";
+
+/* Class = "IBUILabel"; text = "CVC"; ObjectID = "eVt-QX-iJZ"; */
+"eVt-QX-iJZ.text" = "CVC";
+
+/* Class = "IBUILabel"; text = "Change:"; ObjectID = "fW0-PA-lir"; */
+"fW0-PA-lir.text" = "Change:";
+
+/* Class = "IBUITextField"; placeholder = "0"; ObjectID = "h5F-k5-KQX"; */
+"h5F-k5-KQX.placeholder" = "0";
+
+/* Class = "IBUILabel"; text = "Expires On"; ObjectID = "imQ-5y-ohX"; */
+"imQ-5y-ohX.text" = "Expires On";
+
+/* Class = "IBUILabel"; text = "Card Number"; ObjectID = "jBY-p6-WYp"; */
+"jBY-p6-WYp.text" = "Card Number";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "mKQ-ZB-Ibn"; */
+"mKQ-ZB-Ibn.text" = "Title";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "nbu-8c-tJu"; */
+"nbu-8c-tJu.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Total"; ObjectID = "o8j-t0-0Uz"; */
+"o8j-t0-0Uz.text" = "Total";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "oZo-Yj-vNg"; */
+"oZo-Yj-vNg.text" = "Title";
+
+/* Class = "IBUILabel"; text = "Card has insufficient funds"; ObjectID = "r6i-mN-MZ2"; */
+"r6i-mN-MZ2.text" = "Card has insufficient funds";
+
+/* Class = "IBUILabel"; text = "Payment Details"; ObjectID = "rzf-3G-FQi"; */
+"rzf-3G-FQi.text" = "Payment Details";
+
+/* Class = "IBUILabel"; text = "Customer Details"; ObjectID = "u43-XP-ZFK"; */
+"u43-XP-ZFK.text" = "Customer Details";
+
+/* Class = "IBUILabel"; text = "<Tier>"; ObjectID = "xja-09-U6L"; */
+"xja-09-U6L.text" = "<Tier>";

@@ -9,227 +9,224 @@
 #import "TXHSalesSummaryViewController.h"
 
 #import "TXHSalesCompletionViewController.h"
-#import "TXHSalesContentProtocol.h"
-#import "TXHSalesSummaryCell.h"
-#import "TXHSalesSummaryExtraProductsCell.h"
+#import "TXHSalesSummaryItemCell.h"
 #import "TXHSalesSummaryHeader.h"
+#import "TXHSalesSummaryFooter.h"
 #import "TXHSalesTimerViewController.h"
 
-@interface TXHSalesSummaryViewController () <TXHSalesContentProtocol, UICollectionViewDelegateFlowLayout>
+#import "TXHProductsManager.h"
+#import "TXHOrderManager.h"
 
-// A reference to the timer view controller
-@property (retain, nonatomic) TXHSalesTimerViewController *timerViewController;
+@interface TXHSalesSummaryViewController () <UICollectionViewDelegateFlowLayout, TXHSalesSummaryHeaderDelegate>
 
-// A reference to the completion view controller
-@property (retain, nonatomic) TXHSalesCompletionViewController *completionViewController;
-
-// A completion block to be run when this step is completed
-@property (copy) void (^completionBlock)(void);
+@property (readwrite, nonatomic, getter = isValid) BOOL valid;
 
 // A mutable collection of sections indicating their expanded status.
-@property (strong, nonatomic) NSMutableDictionary *sections;
+@property (strong, nonatomic) NSMutableArray *expandedSections;
+@property (strong, nonatomic) NSArray        *tickets;
 
 @end
 
 @implementation TXHSalesSummaryViewController
 
-@synthesize timerViewController = _timerViewController;
-@synthesize completionViewController = _completionViewController;
-@synthesize completionBlock = _completionBlock;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self setup];
-    }
-    return self;
-}
-
-- (void)setup {
-    self.sections = [NSMutableDictionary dictionary];
-    // Set only the first section to be expanded
-    self.sections[@(0)] = @YES;
-    for (int index = 0; index < 4; index++) {
-        self.sections[@(index)] = @NO;
-    }
-    self.sections[@(self.sections.count - 1)] = @YES;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    __block typeof(self) blockSelf = self;
-    self.completionBlock = ^{
-        // Update the order for tickets
-        NSLog(@"Update order for %@", blockSelf);
-    };
+    
+    self.valid = YES;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self configureTimerViewController];
-}
+#pragma mark - accessors
 
-- (void)didReceiveMemoryWarning
+- (void)setTickets:(NSArray *)tickets
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    _tickets = tickets;
+    
+    [self setupExpandedSectionsInfo];
+    
+    [self.collectionView reloadData];
 }
 
-- (TXHSalesTimerViewController *)timerViewController {
-    return _timerViewController;
+- (void)setOrderManager:(TXHOrderManager *)orderManager
+{
+    _orderManager = orderManager;
+    
+    [self loadTickets];
 }
 
-- (void)setTimerViewController:(TXHSalesTimerViewController *)timerViewController {
-    _timerViewController = timerViewController;
-    [self configureTimerViewController];
-}
-
-- (TXHSalesCompletionViewController *)completionViewController {
-    return _completionViewController;
-}
-
-- (void)setCompletionViewController:(TXHSalesCompletionViewController *)completionViewController {
-    _completionViewController = completionViewController;
-    [self configureCompletionViewController];
-}
-
-- (void (^)(void))completionBlock {
-    return _completionBlock;
-}
-
-- (void)setCompletionBlock:(void (^)(void))completionBlock {
-    _completionBlock = completionBlock;
-    [self configureCompletionViewController];
-}
-
-- (void)configureTimerViewController {
-    // Set up the timer view to reflect our details
-    if (self.timerViewController) {
-        [self.timerViewController resetPresentationAnimated:NO];
-        self.timerViewController.stepTitle = NSLocalizedString(@"Review the order", @"Review the order");
-        [self.timerViewController hideCountdownTimer:NO];
+- (void)setupExpandedSectionsInfo
+{
+    self.expandedSections = [NSMutableArray array];
+    
+    for (int i = 0; i < [self.tickets count]; i++)
+    {
+        NSNumber *value = (i == 0) ? @YES : @NO;
+        [self.expandedSections addObject:value];
     }
 }
 
-- (void)configureCompletionViewController {
-    // Set up the completion view controller to reflect ticket tier details
-    [self.completionViewController setCompletionBlock:self.completionBlock];
+#pragma mark - private methods
+
+- (void)loadTickets
+{
+    self.tickets = [[[self.orderManager order] tickets] allObjects];
+}
+
+- (TXHTicket *)ticketAtIndex:(NSInteger )index
+{
+    return self.tickets[index];
+}
+
+- (NSString *)titleForTicket:(TXHTicket *)ticket
+{
+    NSString *tierTitle    = ticket.tier.name;
+    NSString *customerName = ticket.customer.fullName;
+    
+    if (customerName)
+    {
+        return [NSString stringWithFormat:@"%@ (%@)",customerName,tierTitle];
+    }
+    
+    return tierTitle;
+}
+
+- (BOOL)isSectionExpanded:(NSInteger)sectionIndex
+{
+    return [self.expandedSections[sectionIndex] boolValue];
+}
+
+- (void)setSection:(NSInteger)sectionIndex expanded:(BOOL)expanded
+{
+    self.expandedSections[sectionIndex] = @(expanded);
 }
 
 #pragma mark - Collection View Datasource & Delegate methods
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return self.sections.count;
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return self.expandedSections.count;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    // The last section (Extra Products) only has one cell
-    if (section == self.sections.count - 1) {
-        return 1;
-    }
-    return 2;
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    TXHTicket *ticket = [self ticketAtIndex:section];
+    
+    return [ticket.upgrades count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == (self.sections.count - 1)) {
-        TXHSalesSummaryExtraProductsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TXHSalesSummaryExtraProductsCell" forIndexPath:indexPath];
-        cell.products = @[
-                          @{@"description": @"Guide Book", @"price" : @(6.00), @"quantity" : @(1)},
-                          @{@"description": @"Local Map", @"price" : @(2.00), @"quantity" : @(2)},
-                          @{@"description": @"Refreshments", @"price" : @(2.00), @"quantity" : @(1)},
-                          ];
-        return cell;
-    } else {
-    TXHSalesSummaryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TXHSalesSummaryCell" forIndexPath:indexPath];
-        return cell;
-    }
+
+    TXHSalesSummaryItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SummaryItemCell" forIndexPath:indexPath];
+    
+    [self configureCell:cell atIndexPath:indexPath];
+    
+    return cell;
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    if (kind == UICollectionElementKindSectionHeader) {
-        NSDictionary *attributesDict = @{NSFontAttributeName: [UIFont systemFontOfSize:28.0f]};
-        NSMutableAttributedString *attString;
-        TXHSalesSummaryHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"TXHSalesSummaryHeader" forIndexPath:indexPath];
-        header.section = indexPath.section;
-        switch (indexPath.section) {
-            case 0:
-                attString = [[NSMutableAttributedString alloc] initWithString:@"Oliver Morgan Adult" attributes:attributesDict];
-                [attString addAttribute:NSFontAttributeName
-                                  value:[UIFont systemFontOfSize:14.0f]
-                                  range:NSMakeRange(14, 5)];
-                
-                [attString addAttribute: NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(14, 5)];
-                header.ticketTitle = attString;
-                header.totalPrice = @(10.5);
-                break;
-            case 1:
-                attString = [[NSMutableAttributedString alloc] initWithString:@"Ben Thompson Adult" attributes:attributesDict];
-                [attString addAttribute:NSFontAttributeName
-                                  value:[UIFont systemFontOfSize:14.0f]
-                                  range:NSMakeRange(13, 5)];
-                
-                [attString addAttribute: NSForegroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(13, 5)];
-                header.ticketTitle = attString;
-                header.totalPrice = @(11.5);
-                break;
-            default:
-                if (indexPath.section == self.sections.count - 1) {
-                    attString = [[NSMutableAttributedString alloc] initWithString:@"Extra Products" attributes:attributesDict];
-                } else {
-                    attString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Child #%d", indexPath.row] attributes:attributesDict];
-                }
-                [attString addAttribute:NSFontAttributeName
-                                  value:[UIFont systemFontOfSize:14.0f]
-                                  range:NSMakeRange(6, 2)];
-                
-                [attString addAttribute: NSForegroundColorAttributeName value:[UIColor purpleColor] range:NSMakeRange(6, 2)];
-                header.ticketTitle = attString;
-                header.totalPrice = @(8);
-                break;
-        }
-        header.isExpanded = [self.sections[@(indexPath.section)] boolValue];
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if (kind == UICollectionElementKindSectionHeader)
+    {
+        TXHSalesSummaryHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                                           withReuseIdentifier:@"SalesSummaryHeader"
+                                                                                  forIndexPath:indexPath];
+        [self configureHeader:header atIndexPath:indexPath];
+        
         return header;
-    } else if (kind == UICollectionElementKindSectionFooter) {
-        UICollectionReusableView *footer = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"TXHSalesUpgradeFooter" forIndexPath:indexPath];
+        
+    }
+    else if (kind == UICollectionElementKindSectionFooter)
+    {
+        TXHSalesSummaryFooter *footer = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                                           withReuseIdentifier:@"SalesSummaryFooter"
+                                                                                  forIndexPath:indexPath];
+        
+        if ([collectionView numberOfSections] - 1 == indexPath.section)
+        {
+            TXHOrder *order = [self.orderManager order];
+            
+            [footer setTaxPriceText:[self.productManager priceStringForPrice:[order tax]]];
+            [footer setTotalPriceText:[self.productManager priceStringForPrice:[order total]]];
+        }
         return footer;
     }
+    
     return nil;
 }
 
-- (void)makeCellVisible:(id)sender {
+// TODO: fucked a bit, make it better!
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+{
+    if ([collectionView numberOfSections] - 1 == section)
+    {
+        return CGSizeMake(collectionView.width, 60);
+    }
+    
+    return CGSizeMake(collectionView.width, 1);
+}
+
+- (void)makeCellVisible:(id)sender
+{
     UICollectionViewCell *cell = sender;
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
     [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
 }
 
-#pragma mark - Action methods
+- (void)configureCell:(TXHSalesSummaryItemCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    TXHTicket *ticket = [self ticketAtIndex:indexPath.section];
+    TXHUpgrade *upgrade = [ticket.upgrades allObjects][indexPath.item];
+    
+    [cell setTitle:upgrade.name];
+    [cell setPrice:[self.productManager priceStringForPrice:[upgrade price]]];
+}
 
-- (void)toggleSection:(id)sender {
-    TXHSalesSummaryHeader *header = sender;
-    self.sections[@(header.section)] = [NSNumber numberWithBool:header.isExpanded];
+- (void)configureHeader:(TXHSalesSummaryHeader *)header atIndexPath:(NSIndexPath *)indexPath
+{
+    TXHTicket *ticket = [self ticketAtIndex:indexPath.section];
+
+    header.delegate         = self;
+    header.ticketTitle      = [self titleForTicket:ticket];
+    header.ticketTotalPrice = [self.productManager priceStringForPrice:ticket.price];
+    header.expanded         = [self isSectionExpanded:indexPath.section];
+    header.section          = indexPath.section;
+    header.canExpand        = ([ticket.upgrades count] > 0);
+}
+
+#pragma mark - TXHSalesSummaryHeaderDelegate
+
+- (void)txhSalesSummaryHeaderIsExpandedDidChange:(TXHSalesSummaryHeader *)header
+{
+    [self setSection:header.section expanded:header.isExpanded];
     [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:header.section]];
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSNumber *expanded = self.sections[@(indexPath.section)];
-    CGFloat width = 440.0f;
-    if ((indexPath.section == self.sections.count - 1) && (indexPath.row == 1)) {
-        width = 220.0f;
-    }
-    CGFloat height = expanded.boolValue ? 112.0f : 0.0f;
-    CGSize size = CGSizeMake(width, height);
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    BOOL expanded = [self isSectionExpanded:indexPath.section];
+    
+    CGSize size = CGSizeMake(collectionView.width, expanded ? 20.0 : 0.0f);
     return size;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    TXHTicket *ticket = [self ticketAtIndex:section];
+
+    if ([ticket.upgrades count] && [self isSectionExpanded:section])
+        return UIEdgeInsetsMake(0, 0, 10, 0);
+    
+    return UIEdgeInsetsZero;
+}
+
+#pragma mark - TXHSalesContentsViewControllerProtocol
+
+- (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
+{
+    blockName(nil);
 }
 
 @end
