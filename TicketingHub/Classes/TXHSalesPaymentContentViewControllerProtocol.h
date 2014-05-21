@@ -17,9 +17,10 @@
 @property (readonly, nonatomic, getter = isValid) BOOL valid;
 
 @optional
-
 @property (strong, nonatomic) TXHProductsManager *productManager;
 @property (strong, nonatomic) TXHOrderManager    *orderManager;
 @property (strong, nonatomic) TXHGateway         *gateway;
+
+- (void)finishWithCompletion:(void(^)(NSError *))completion;
 
 @end

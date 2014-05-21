@@ -7,25 +7,31 @@
 //
 
 #import "TXHSalesPaymentCreditDetailsViewController.h"
-#import "TXHSignaturePadViewController.h"
+#import "TXHActivityLabelView.h"
 
 #import "TXHOrderManager.h"
 #import "TXHProductsManager.h"
 
-#import "TXHInfineaManger.h"
+#import "TXHScanersManager.h"
 
 #import "TXHCardView.h"
 #import "TXHCardView+TXHCustomXIB.h"
 
-#import <Block-KVO/MTKObserving.h>
+#import "TXHPayment+PKCard.h"
 
-@interface TXHSalesPaymentCreditDetailsViewController () <TXHSignaturePadViewControllerDelegate>
+#import "TXHFullScreenKeyboardViewController.h"
+#import <UIAlertView-Blocks/UIAlertView+Blocks.h>
 
-@property (readwrite, nonatomic, getter = isValid) BOOL valid;
-@property (strong, nonatomic) TXHInfineaManger *infineaManager;
 
-@property (strong, nonatomic) IBOutlet TXHCardView *cardView;
-@property (copy, nonatomic) NSString *cardTrackData;
+@interface TXHSalesPaymentCreditDetailsViewController () <TXHFullScreenKeyboardViewControllerDelegate, TXHScanersManagerDelegate, TXHCardViewDelegate>
+
+@property (nonatomic, readwrite, assign, getter = isValid) BOOL valid;
+@property (nonatomic, strong) TXHScanersManager *scanersManager;
+@property (nonatomic, copy) NSString *cardTrackData;
+
+@property (nonatomic, strong) IBOutlet TXHCardView *cardView;
+@property (nonatomic, strong) TXHActivityLabelView *activityView;
+@property (nonatomic, strong) TXHFullScreenKeyboardViewController *fullScreenController;
 
 @end
 
@@ -35,94 +41,201 @@
 {
     [super viewDidLoad];
     
-    [self initializeInfineaManger];
-    [self registerForScannersRecognitionNotifications];
+    [self initializeMSRScanner];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
-    [self observeCardView];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self scannerManager:self.scanersManager didRecognizeMSRCardTrack:@"%B1234567890123445^PADILLA/L.                ^99011X100000*000000000XXX000000?*"];
+//    });
 }
 
-- (void)dealloc
+- (void)viewWillDisappear:(BOOL)animated
 {
-    [self unregisterFromScannersRecognitionNotifications];
+    [super viewWillDisappear:animated];
+    
+    [self.fullScreenController hideAniamted:NO
+                                 completion:nil];
 }
 
-- (void)initializeInfineaManger
+- (void)initializeMSRScanner
 {
-    TXHInfineaManger *manger = [TXHInfineaManger sharedManager];
-    self.infineaManager = manger;
-
-    [manger connect];
+    TXHScanersManager *scannersManger = [[TXHScanersManager alloc] initWithInfineaManager:[TXHInfineaManger sharedManager]
+                                                                       andScanApiManager:nil];
+    scannersManger.delegate = self;
+    self.scanersManager = scannersManger;
 }
 
-- (void)showSignatureView
+- (void)showCardFullScreen
 {
-    [self performSegueWithIdentifier:@"ShowSignaturePad" sender:self];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"ShowSignaturePad"])
-    {
-        TXHOrder *order = [self.orderManager order];
-        
-        TXHSignaturePadViewController *signatureController = segue.destinationViewController;
-
-        signatureController.totalPriceString = [self.productManager priceStringForPrice:order.total];
-        signatureController.ownerName        = order.customer.fullName;
-        signatureController.delegate         = self;
-    }
-}
-
-- (void)observeCardView
-{
-    [self observeProperty:@keypath(self.cardView.valid) withBlock:^(__weak TXHSalesPaymentCreditDetailsViewController *wself, id old, id new) {
-        NSLog(@"cardnumber: %@",wself.cardView.card.number);
-        NSLog(@"exipry month: %lu",(unsigned long)wself.cardView.card.expMonth);
-        NSLog(@"expiry year: %lu",(unsigned long)wself.cardView.card.expYear);
-        NSLog(@"cvv: %@",wself.cardView.card.cvc);
+    if (self.fullScreenController)
+        return;
+    
+    TXHFullScreenKeyboardViewController *full = [[TXHFullScreenKeyboardViewController alloc] init];
+    full.destinationBackgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+    full.delegate = self;
+    
+    self.fullScreenController = full;
+    
+    __weak typeof(self) wself = self;
+    
+    [full showWithView:self.cardView
+            completion:^{
+        [wself.cardView becomeFirstResponder];
     }];
 }
 
-#pragma mark - Infinea Notification
-
-- (void)registerForScannersRecognitionNotifications
+- (void)setCardTrackData:(NSString *)cardTrackData
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(scannerMSRDataRecognized:)
-                                                 name:TXHScannerRecognizedMSRCardDataNotification
-                                               object:self.infineaManager];
+    _cardTrackData = cardTrackData;
+    
+    self.cardView.skipFronSide = [cardTrackData length] > 0;
 }
 
-- (void)unregisterFromScannersRecognitionNotifications
+- (TXHActivityLabelView *)activityView
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:TXHScannerRecognizedMSRCardDataNotification
-                                                  object:self.infineaManager];
+    if (!_activityView)
+        _activityView = [TXHActivityLabelView getInstanceInView:self.navigationController.view];
+    
+    return _activityView;
 }
 
+#pragma mark - TXHScanersManagerDelegate
 
-- (void)scannerMSRDataRecognized:(NSNotification *)note
+- (void)scannerManager:(TXHScanersManager *)manager didRecognizeMSRCardTrack:(NSString *)cardTrackData
 {
-    if (note.object == self.infineaManager)
+    if (!self.fullScreenController)
     {
-        NSString *cardTrack = [note userInfo][TXHScannerRecognizedValueKey];
-        self.cardTrackData = cardTrack;
-        
-        self.cardView.skipFronSide = [cardTrack length] > 0;
+        self.cardTrackData = cardTrackData;
+        [self showCardFullScreen];
     }
 }
 
-#pragma mark - TXHSignaturePadViewControllerDelegate
+#pragma mark - TXHCardViewDelegate
 
-- (void)txhSignaturePadViewController:(TXHSignaturePadViewController *)controller acceptSignatureWithImage:(UIImage *)image
+- (void)txhCardView:(TXHCardView *)cardView didFinishValid:(BOOL)valid withCardInfo:(PKCard *)card
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (valid)
+    {
+        [self hideAndAcceptCard];
+    }
+    else
+    {
+        [self hideAndResetCard];
+    }
+    
+    self.valid = valid;
 }
 
-
-- (void)txhSignaturePadViewControllerShouldDismiss:(TXHSignaturePadViewController *)controller
+- (void)hideAndAcceptCard
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (![self.cardTrackData length])
+        [self.cardView flipToCardSide:TXHCardSideFront];
+    
+    __weak typeof(self) wself = self;
+    
+    [self.fullScreenController hideAniamted:YES
+                                 completion:^{
+                                     [wself disableCardAnimated:YES];
+                                 }];
 }
+
+- (void)disableCardAnimated:(BOOL)aniamted
+{
+    if (aniamted)
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.cardView.enabled = NO;
+                         }];
+    else
+        self.cardView.enabled = NO;
+}
+
+- (TXHPayment *)cnpPayment
+{
+    return [self paymentForCardInfo:self.cardView.card cardTrackData:self.cardTrackData];
+}
+
+- (TXHPayment *)paymentForCardInfo:(PKCard *)card cardTrackData:(NSString *)cardTrackData
+{
+    NSManagedObjectContext *orderMoc = self.gateway.managedObjectContext;
+    
+    TXHPayment *payment = [TXHPayment createWithCard:card
+                                       cardTrackData:cardTrackData
+                                         inManagedObjectContext:orderMoc];
+    payment.gateway   = self.gateway;
+    
+    return payment;
+}
+
+- (void)txhCardViewDidStartEditing:(TXHCardView *)cardView
+{
+    [self showCardFullScreen];
+}
+
+#pragma mark - TXHFullScreenKeyboardViewControllerDelegate
+
+- (void)txhFullScreenKeyboardViewControllerDismiss:(TXHFullScreenKeyboardViewController *)controller
+{
+    [self hideAndResetCard];
+}
+
+- (void)hideAndResetCard
+{
+    [self.cardView reset];
+    
+    [self.fullScreenController hideAniamted:YES completion:nil];
+    self.fullScreenController = nil;
+}
+
+#pragma mark - TXHSalesPaymentContentViewControllerProtocol
+
+- (void)finishWithCompletion:(void(^)(NSError *))completion
+{
+    [self.activityView showWithMessage:NSLocalizedString(@"CNP_CONTROLLER_UPDATING_PAYMENT_MESSAGE", nil)
+                       indicatorHidden:NO];
+
+    __weak typeof(self) wself = self;
+
+    [self.orderManager updateOrderWithPayment:[self cnpPayment]
+                                   completion:^(TXHOrder *order, NSError *error) {
+                                       [wself.activityView hide];
+                                       
+                                       if (error)
+                                       {
+                                           [wself showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
+                                                             message:error.localizedDescription
+                                                              action:^{
+                                                                  if (completion)
+                                                                      completion(error);
+                                                              }];
+                                       }
+                                       else if (completion)
+                                           completion(error);
+                                   }];
+}
+
+#pragma mark - error helper
+
+- (void)showErrorWithTitle:(NSString *)title message:(NSString *)message action:(void(^)(void))action
+{
+    [self.activityView hide];
+    
+    RIButtonItem *cancelItem = [RIButtonItem itemWithLabel:NSLocalizedString(@"ERROR_DISMISS_BUTTON_TITLE", nil)
+                                                    action:^{
+                                                        if (action)
+                                                            action();
+                                                    }];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                        message:message
+                                               cancelButtonItem:cancelItem
+                                               otherButtonItems: nil];
+    [alertView show];
+}
+
 
 @end

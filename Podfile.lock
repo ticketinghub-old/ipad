@@ -21,7 +21,7 @@ PODS:
   - Block-KVO (2.2.1)
   - DCTCoreDataStack (1.1)
   - Expecta (0.2.4)
-  - iOS-api (0.0.95):
+  - iOS-api (0.0.98):
     - AFNetworking (~> 2.2.0)
     - DCTCoreDataStack (~> 1.1)
   - OCMock (2.2.4)
@@ -36,6 +36,7 @@ PODS:
   - UIAlertView-Blocks (1.0)
   - UIImage+PDF (1.1.3)
   - UIView+Shake (0.2)
+  - UIView-Autolayout (0.2.0)
   - UIViewController+BHTKeyboardAnimationBlocks (0.0.2)
 
 DEPENDENCIES:
@@ -52,7 +53,8 @@ DEPENDENCIES:
   - UIAlertView-Blocks (~> 1.0)
   - UIImage+PDF (~> 1.1.2)
   - UIView+Shake (~> 0.2)
-  - UIViewController+BHTKeyboardAnimationBlocks (~> 0.0.1)
+  - UIView-Autolayout (~> 0.2.0)
+  - UIViewController+BHTKeyboardAnimationBlocks (~> 0.0.2)
 
 EXTERNAL SOURCES:
   iOS-api:
@@ -65,22 +67,23 @@ EXTERNAL SOURCES:
     :git: https://github.com/bartekhugo/tapkulibrary.git
 
 SPEC CHECKSUMS:
-  AFNetworking: 01aa7c3aa9a200b94943e54072a4373f14b3d219
-  Block-KVO: 7b298fb4617e948179b4c7725569feff7bd58337
-  DCTCoreDataStack: 4090bc1d6819fda813c7cc45119d1fa8fd8b8b3c
-  Expecta: 5c147dedfea5fbcf773995f7e65020abcc936ce5
-  iOS-api: 2bb09ad3f41cafa001f8d6e4ee1099d103d3899b
-  OCMock: 5008fae4b4789b8fc3e48cd7660f2eb5ef8ce89e
-  PaymentKit: 92df7c2fb4fb3b4e0c3f5fb8c8e75cc528025126
+  AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
+  Block-KVO: dc4bf1bb23007380901e047da884c130776007e9
+  DCTCoreDataStack: eb0d05f4e27f92ff29fe559f66946baa939cafa7
+  Expecta: 112bcafa2304ee0f3c5e586505f24555a47b25d5
+  iOS-api: 833fbe4e93f89ab447c2a8831be1fa44a4a165ec
+  OCMock: 6db79185520e24f9f299548f2b8b07e41d881bd5
+  PaymentKit: 14b54835f57ae9e2bf5628140fcd67001740cba2
   PPSSignatureView: 83ffa630306afc93ad595e5a6e98a0dba1c8a49b
-  RMPickerViewController: 4f9a10bdfc0a8cc7b596e956ef452c098144be47
-  SevenSwitch: f1ae106a4fcb459829ba5a6a3265e7e9f873f80c
-  Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
-  Stripe: fff51f61a042cc8e058f51c4281a937bff4b1a22
+  RMPickerViewController: 67e8e6f5d81a4f01a6dcccd88a6d2643647fba00
+  SevenSwitch: 70af67d75bc2e477d45a984cf1f3123564b04eee
+  Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
+  Stripe: 95b57b2b8371b460188f0b64b04b22e0de8b0727
   TapkuLibrary: 9429b4702b3fb1c58669490e2d301cf37f76a766
-  UIAlertView-Blocks: f7be28a08e85ec21143951ec6797ca6474faf563
-  UIImage+PDF: d11cf573422930295467a9867fd1a6bda11421a0
-  UIView+Shake: 8303c6fe633cfecf4c6f1b6748aa76ab9bad2e35
-  UIViewController+BHTKeyboardAnimationBlocks: 704a79f14c4bd11346c337fbe9d3967d78ae7d40
+  UIAlertView-Blocks: f3271e84372beb97aea115cd1fb26ae66457f12f
+  UIImage+PDF: e2670143b9a404ce7def93cd4f7fd2c532aeba89
+  UIView+Shake: 68d2bc9228f452615b7ab3c8c395b58ab3d47c89
+  UIView-Autolayout: 7c05eb666738eba682f686c2da236578177e2ebb
+  UIViewController+BHTKeyboardAnimationBlocks: fa8f86b798147159ddc1b2aba3f8c49247f1c814
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1

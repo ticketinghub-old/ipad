@@ -436,19 +436,19 @@ static void * ContentValidContext = &ContentValidContext;
     TXHSalesStep *step = [self.stepsManager currentStep];
     
     __weak typeof(self) wself = self;
+    
     void (^block)(UIButton *buttton) = step.rightButtonActionBlock;
     
     if (block)
         block((UIButton *)button);
     else
     {
-        self.stepCompletionController.view.userInteractionEnabled = NO;
+        [self.stepCompletionController setButtonsDisabled:YES];
         [self.stepContentController finishStepWithCompletion:^(NSError *error) {
             if (!error)
-            {
                 [wself.stepsManager continueToNextStep];
-            }
-            wself.stepCompletionController.view.userInteractionEnabled = YES;
+        
+            [wself.stepCompletionController setButtonsDisabled:NO];
         }];
     }
 }

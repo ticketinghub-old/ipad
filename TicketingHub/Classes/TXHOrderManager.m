@@ -1,4 +1,4 @@
-//
+    //
 //  TXHOrderManager.m
 //  TicketingHub
 //
@@ -120,20 +120,6 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
 - (id)storedValueForKey:(NSString *)key
 {
     return self.storedData[key];
-}
-
-- (NSNumber *)totalOrderPrice
-{
-    TXHOrder *order = self.order;
-    
-    NSInteger totalAmount = 0;
-    
-    for (TXHTicket *ticket in order.tickets)
-    {
-        totalAmount += ticket.priceValue;
-    }
-    
-    return @(totalAmount);
 }
 
 - (void)resetOrder

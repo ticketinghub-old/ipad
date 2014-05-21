@@ -10,12 +10,28 @@
 #import <PaymentKit/PKCardCVC.h>
 #import <PaymentKit/PKCardType.h>
 
+@class TXHCardBackView;
+
+@protocol TXHCardBackViewDelegate <NSObject>
+
+@optional
+- (void)txhCardBackView:(TXHCardBackView *)backView didFinishValid:(BOOL)valid;
+- (void)txhCardBackViewDidStartEditing:(TXHCardBackView *)backView;
+
+@end
+
+
+
 @interface TXHCardBackView : UIView
 
-@property (readonly, strong, nonatomic) PKCardCVC *cardCVC;
-
 @property (nonatomic, assign) PKCardType cardType;
-@property (readonly, assign, nonatomic, getter = isValid) BOOL valid;
+@property (nonatomic, strong, readonly) PKCardCVC *cardCVC;
+@property (nonatomic, weak) id<TXHCardBackViewDelegate> delegate;
 
+- (void)reset;
+- (void)setCardCvcFont:(UIFont *)font;
+
+- (void)setValidColor:(UIColor *)color;
+- (void)setInvalidColor:(UIColor *)color;
 
 @end

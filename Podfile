@@ -14,7 +14,8 @@ pod 'Stripe',                                       '~> 1.1.2'
 pod 'UIAlertView-Blocks',                           '~> 1.0'
 pod 'UIImage+PDF',                                  '~> 1.1.2'
 pod 'UIView+Shake',                                 '~> 0.2'
-pod 'UIViewController+BHTKeyboardAnimationBlocks',  '~> 0.0.1'
+pod 'UIView-Autolayout',                            '~> 0.2.0'
+pod 'UIViewController+BHTKeyboardAnimationBlocks',  '~> 0.0.2'
 
 target :test, :exclusive => true do
     

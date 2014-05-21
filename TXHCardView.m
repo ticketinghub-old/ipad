@@ -13,9 +13,7 @@
 
 #import "TXHCardView+TXHCustomXIB.h"
 
-#import <Block-KVO/MTKObserving.h>
-
-@interface TXHCardView ()
+@interface TXHCardView () <TXHCardBackViewDelegate, TXHCardFrontViewDelegate>
 
 @property (nonatomic, strong) IBOutlet TXHCardBackView  *cardBackView;
 @property (nonatomic, strong) IBOutlet TXHCardFrontView *cardFrontView;
@@ -61,12 +59,31 @@
     self.backgroundColor = [UIColor clearColor];
     self.clipsToBounds   = NO;
     
-    [self map:@keypath(self.cardFrontView.valid) to:@keypath(self.frontSideValid) null:nil];
-    [self map:@keypath(self.cardBackView.valid) to:@keypath(self.backSideValid) null:nil];
+    [self addGestureRecognizers];
     
     [self updateView];
 }
 
+- (void)addGestureRecognizers
+{
+    [self addTapGestureRecognizer];
+}
+
+- (void)addTapGestureRecognizer
+{
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)];
+    [self addGestureRecognizer:tapRecognizer];
+}
+
+- (void)tapRecognized:(UITapGestureRecognizer *)tapRecognizer
+{
+    [self startEditingCurrentCardSide];
+}
+
+- (void)startEditingCurrentCardSide
+{
+    [[self visibleCardView] becomeFirstResponder];
+}
 
 - (void)updateView
 {
@@ -94,11 +111,28 @@
                        options:[self cardTransitionOption]
                     completion:^(BOOL finished) {
                         if (finished)
-                            [toView becomeFirstResponder];
+                        {
+                            if ((self.fliped = (cardSide == TXHCardSideBack)))
+                                [toView becomeFirstResponder];
+                        }
                     }];
 }
 
+- (void)reset
+{
+    [self.cardFrontView reset];
+    [self.cardBackView reset];
+    
+    [self flipToCardSide:TXHCardSideFront];
+}
 
+- (void)setEnabled:(BOOL)enabled
+{
+    _enabled = enabled;
+    
+    self.userInteractionEnabled = enabled;
+    self.alpha = enabled ? 1.0 : 0.5;
+}
 
 - (void)setFrontSideValid:(BOOL)frontSideValid
 {
@@ -115,6 +149,26 @@
     _backSideValid = backSideValid;
     
     [self checkValid];
+}
+
+- (void)setCardBackView:(TXHCardBackView *)cardBackView
+{
+    _cardBackView = cardBackView;
+    cardBackView.delegate = self;
+}
+
+- (void)setCardFrontView:(TXHCardFrontView *)cardFrontView
+{
+    _cardFrontView = cardFrontView;
+    cardFrontView.delegate = self;
+}
+
+- (void)setValid:(BOOL)valid
+{
+    _valid = valid;
+    
+    if (valid && [self.delegate respondsToSelector:@selector(txhCardView:didFinishValid:withCardInfo:)])
+        [self.delegate txhCardView:self didFinishValid:valid withCardInfo:self.card];
 }
 
 - (void)checkValid
@@ -164,6 +218,46 @@
     card.expYear  = [expiry year];
     
     return card;
+}
+
+- (BOOL)resignFirstResponder
+{
+    return [[self visibleCardView] resignFirstResponder];
+}
+
+-(BOOL)becomeFirstResponder
+{
+    return [[self visibleCardView] becomeFirstResponder];
+}
+
+#pragma mark - TXHCardBackViewDelegate
+
+- (void)txhCardBackView:(TXHCardBackView *)backView didFinishValid:(BOOL)valid
+{
+    self.backSideValid = valid;
+}
+
+- (void)txhCardBackViewDidStartEditing:(TXHCardBackView *)backView
+{
+    [self beganEditing];
+}
+
+#pragma mark - TXHCardFrontViewDelegate
+
+- (void)txhCardFrontView:(TXHCardFrontView *)backView didFinishValid:(BOOL)valid
+{
+    self.frontSideValid = valid;
+}
+
+- (void)txhCardFrontViewDidStartEditing:(TXHCardFrontView *)backView
+{
+    [self beganEditing];
+}
+
+- (void)beganEditing
+{
+    if ([self.delegate respondsToSelector:@selector(txhCardViewDidStartEditing:)])
+        [self.delegate txhCardViewDidStartEditing:self];
 }
 
 @end

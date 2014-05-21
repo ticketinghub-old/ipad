@@ -66,6 +66,13 @@
 
 #pragma mark Buttons Enable
 
+- (void)setButtonsDisabled:(BOOL)disabled
+{
+    [self setLeftButtonDisabled:disabled];
+    [self setMiddleButtonDisabled:disabled];
+    [self setRightButtonDisabled:disabled];
+}
+
 - (void)setLeftButtonDisabled:(BOOL)disabled
 {
     [self setButton:self.leftButton disabled:disabled];

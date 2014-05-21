@@ -29,7 +29,6 @@ typedef void (^TXHArrayCompletion)(NSArray *array, NSError *error);
 + (instancetype)sharedManager;
 
 - (void)resetOrder;
-- (NSNumber *)totalOrderPrice;
 
 - (void)stopExpirationTimer;
 

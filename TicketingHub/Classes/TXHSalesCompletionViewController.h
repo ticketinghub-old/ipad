@@ -30,6 +30,7 @@
 - (void)setMiddleButtonTitle:(NSString *)continueButtonTitle;
 - (void)setRightButtonTitle:(NSString *)continueButtonTitle;
 
+- (void)setButtonsDisabled:(BOOL)disabled;
 - (void)setLeftButtonDisabled:(BOOL)disabled;
 - (void)setMiddleButtonDisabled:(BOOL)disabled;
 - (void)setRightButtonDisabled:(BOOL)disabled;
@@ -39,5 +40,6 @@
 - (void)setRightButtonHidden:(BOOL)hidden;
 
 - (void)setLeftBarButtonColor:(UIColor *)color;
+
 
 @end

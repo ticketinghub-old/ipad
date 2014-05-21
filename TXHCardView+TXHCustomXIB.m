@@ -7,16 +7,27 @@
 //
 
 #import "TXHCardView+TXHCustomXIB.h"
+#import "UIColor+TicketingHub.h"
+
+#import "TXHCardBackView.h"
+#import "TXHCardFrontView.h"
 
 static NSString * const xibName = @"TXHCustomCardView";
 
 @implementation TXHCardView (TXHCustomXIB)
 
-+ (void)loadtxhCardViewWithOwner:(id)owner;
++ (void)loadtxhCardViewWithOwner:(TXHCardView *)owner;
 {
     [[NSBundle mainBundle] loadNibNamed:xibName
                                   owner:owner
                                 options:nil];
+    
+    UIFont *cardFont = [UIFont fontWithName:@"OCRAStd" size:28.0];
+    
+    [owner.cardFrontView setCardExpiryFont:cardFont];
+    [owner.cardFrontView setCardNumberFont:cardFont];
+    
+    [owner.cardBackView setCardCvcFont:cardFont];
 }
 
 @end

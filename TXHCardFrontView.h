@@ -10,13 +10,34 @@
 
 #import <PaymentKit/PKCardNumber.h>
 #import <PaymentKit/PKCardExpiry.h>
+#import <PaymentKit/PKTextField.h>
+
+@class TXHCardFrontView;
+
+@protocol TXHCardFrontViewDelegate <NSObject>
+
+@optional
+- (void)txhCardFrontView:(TXHCardFrontView *)backView didFinishValid:(BOOL)valid;
+- (void)txhCardFrontViewDidStartEditing:(TXHCardFrontView *)backView;
+
+@end
+
+
 
 @interface TXHCardFrontView : UIView
 
-@property (readonly, assign, nonatomic, getter = isValid) BOOL valid;
+@property (nonatomic, strong, readonly) PKCardNumber *cardNumber;
+@property (nonatomic, strong, readonly) PKCardExpiry *cardExpiry;
 
-@property (readonly, strong, nonatomic) PKCardNumber *cardNumber;
-@property (readonly, strong, nonatomic) PKCardExpiry *cardExpiry;
+@property (nonatomic, weak) id<TXHCardFrontViewDelegate> delegate;
+
+- (void)reset;
+- (void)setCardNumberFont:(UIFont *)font;
+- (void)setCardExpiryFont:(UIFont *)font;
+
+- (void)setValidColor:(UIColor *)color;
+- (void)setInvalidColor:(UIColor *)color;
+
 
 
 @end

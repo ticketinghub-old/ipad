@@ -157,12 +157,25 @@
 
 #pragma mark - TXHSalesContentsViewControllerProtocol
 
-- (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
+- (void)finishStepWithCompletion:(void (^)(NSError *))completionBlock
 {
-    [self.orderManager confirmOrderWithCompletion:^(TXHOrder *order, NSError *error) {
-        if (blockName)
-            blockName(error);
+    [self.paymentDetailsController finishWithCompletion:^(NSError *error) {
+        if (!error)
+        {
+            [self.orderManager confirmOrderWithCompletion:^(TXHOrder *order, NSError *confirmationError) {
+
+                if (completionBlock)
+                    completionBlock(confirmationError);
+            }];
+        }
+        else if (completionBlock)
+            completionBlock(error);
     }];
+}
+
+- (void)dealloc
+{
+    [self removeAllObservations];
 }
 
 
