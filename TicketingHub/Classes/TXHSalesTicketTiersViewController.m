@@ -14,8 +14,12 @@
 #import "TXHOrderManager.h"
 #import "TXHProductsManager.h"
 #import "TXHTicketingHubManager.h"
+#import "TXHActivityLabelView.h"
+#import <UIAlertView-Blocks/UIAlertView+Blocks.h>
 
-@interface TXHSalesTicketTiersViewController () <UITextFieldDelegate, TXHSalesTicketTierCellDelegate>
+
+
+@interface TXHSalesTicketTiersViewController () <UICollectionViewDelegate, UICollectionViewDataSource ,UITextFieldDelegate, TXHSalesTicketTierCellDelegate>
 
 @property (assign, nonatomic) BOOL checkingCoupon;
 
@@ -25,7 +29,12 @@
 @property (strong, nonatomic) TXHAvailability     *availability;
 @property (strong, nonatomic) NSMutableDictionary *quantities;
 
-@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalValueLabel;
+
+@property (strong, nonatomic) TXHActivityLabelView *activityView;
 
 @end
 
@@ -41,10 +50,19 @@
     [self registerForAvailabilityChangeNotification];
 }
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    [self updateView];
+}
+
 - (void)dealloc
 {
     [self unregisterFromAvailabilityChangeNotification];
 }
+
 
 - (void)registerForAvailabilityChangeNotification
 {
@@ -77,51 +95,27 @@
     [self.collectionView reloadData];
 }
 
-- (void)setCheckingCoupon:(BOOL)checkingCoupon
-{
-    _checkingCoupon = checkingCoupon;
-    
-    __weak typeof(self) wself = self;
-
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (checkingCoupon)
-            [wself showLoadingIndicator];
-        else
-            [wself hideLoadingIndicator];
-    });
-}
-
 - (TXHTier *)tierAtIndexPath:(NSIndexPath *)indexPath
 {
     return self.tiers[indexPath.row];
 }
 
-- (UIActivityIndicatorView *)activityIndicator
+- (TXHTier *)tierWithInternalTierId:(NSString *)identifier
 {
-    if (!_activityIndicator)
+    for (TXHTier *tier in self.tiers)
     {
-        UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:self.view.bounds];
-        indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-        indicatorView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        indicatorView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.8];
-        indicatorView.hidesWhenStopped = YES;
-        indicatorView.color = [UIColor txhDarkBlueColor];
-        [self.view addSubview:indicatorView];
-        _activityIndicator = indicatorView;
+        if ([tier.internalTierId isEqualToString:identifier])
+            return tier;
     }
-    return _activityIndicator;
+    return nil;
 }
 
-#pragma mark - private methods
-
-- (void)showLoadingIndicator
+- (TXHActivityLabelView *)activityView
 {
-    [self.activityIndicator startAnimating];
-}
-
-- (void)hideLoadingIndicator
-{
-    [self.activityIndicator stopAnimating];
+    if (!_activityView)
+        _activityView = [TXHActivityLabelView getInstanceInView:self.navigationController.view];
+    
+    return _activityView;
 }
 
 #pragma mark UICollectionViewDataSource
@@ -171,7 +165,36 @@
     {
         [self.quantities setObject:dic[key] forKey:key];
     }
+    
+    [self updateView];
+}
+
+- (void)updateView
+{
     self.valid = [self hasQuantitiesSelected];
+
+    [self updateTotalLabel];
+}
+
+- (void)updateTotalLabel
+{
+    CGFloat total = [self totalOrderValue];
+    
+    self.totalValueLabel.text = total == 0 ? @"-" : [self.productManager priceStringForPrice:@(total)];
+}
+
+- (CGFloat)totalOrderValue
+{
+    CGFloat total = 0.0;
+    
+    for (NSString *tierId in self.quantities)
+    {
+        TXHTier *tier = [self tierWithInternalTierId:tierId];
+        NSInteger quantity = [self.quantities[tierId] integerValue];
+        total += quantity * [tier.price integerValue];
+    }
+    
+    return total;
 }
 
 - (NSInteger)quantityForTicketIdentifier:(NSString *)ticketIdentifier
@@ -234,6 +257,19 @@
     return atLeastOneTicketSelected;
 }
 
+#pragma mark - UITextFieldDelegat
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if ([textField.text length])
+    {
+        [self updateWithCoupon:textField.text];
+    }
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
 #pragma mark - TXHSalesTicketTierCellDelegate
 
 - (NSInteger)maximumQuantityForCell:(TXHSalesTicketTierCell *)cell
@@ -260,43 +296,50 @@
 
 - (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
 {
-    [self showLoadingIndicator];
+    [self.activityView showWithMessage:NSLocalizedString(@"SALESMAN_QUANTITIES_RESERVING_TICKETS_MESSAGE", nil)
+                       indicatorHidden:NO];
+    
     
     __weak typeof(self) wself = self;
     [self.orderManager reserveTicketsWithTierQuantities:self.quantities
                                          availability:self.availability
                                            completion:^(TXHOrder *order, NSError *error) {
-                                           
-                                               [wself hideLoadingIndicator];
+                                               [wself.activityView hide];
                                                
                                                if (error)
                                                {
-                                                   // shouldnt be code error as it was validated before
-                                                   DLog(@"%@", [error localizedDescription]);
+                                                   [self showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
+                                                                    message:error.localizedDescription
+                                                                     action:^{
+                                                                         if (blockName)
+                                                                             blockName(error);
+                                                                     }];
                                                }
-                                               
-                                               blockName(error);
+                                               else if (blockName)
+                                                   blockName(nil);
                                           
                                            }];
     
 }
 
-- (void)setOffsetBottomBy:(CGFloat)offset
-{
-    self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, offset, 0);
-}
+#pragma mark - error helper
 
-#pragma mark - UITextFieldDelegat
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+- (void)showErrorWithTitle:(NSString *)title message:(NSString *)message action:(void(^)(void))action
 {
-    if ([textField.text length])
-    {
-        [self updateWithCoupon:textField.text];
-    }
-    [textField resignFirstResponder];
+    [self.activityView hide];
     
-    return YES;
+    RIButtonItem *cancelItem = [RIButtonItem itemWithLabel:NSLocalizedString(@"ERROR_DISMISS_BUTTON_TITLE", nil)
+                                                    action:^{
+                                                        if (action)
+                                                            action();
+                                                    }];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                        message:message
+                                               cancelButtonItem:cancelItem
+                                               otherButtonItems: nil];
+    [alertView show];
 }
+
 
 @end

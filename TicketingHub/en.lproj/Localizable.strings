@@ -54,7 +54,7 @@
 "PRINTER_ERROR_UNKNOWN_RECOVERY"                = "";
 
 "ERROR_DISMISS_BUTTON_TITLE" = "OK";
-"ERROR_TITLE"                = "Error";
+"ERROR_TITLE" = "Error";
 "PRINTER_ERROR_TITLE"        = "Printing Error";
 
 /* Activity labels - Printers */
@@ -163,6 +163,8 @@
 "DEVICE_CONNECTIONERROR_TITLE" = "Connection Error";
 "TRANSACTION_FAILED_TITLE"     = "Transaction Error";
 
+/* Payments */
+
 "CARD_CONTROLLER_UPDATING_PAYMENT_MESSAGE"  = "Finalizing payment";
 "CARD_CONTROLLER_PREPARING_PAYMENT_MESSAGE" = "Preparing payment";
 
@@ -170,12 +172,13 @@
 "CASH_CONTROLLER_NO_CHANGE_MESSAGE"        = "No Change";
 "CASH_CONTROLLER_NOT_ENOUGH_PAID_MESSAGE"  = "Not paid enough";
 
-
 "CNP_CONTROLLER_UPDATING_PAYMENT_MESSAGE"   = "Finalizing payment";
-
-
 
 "PAYMENT_OPTION_HANDPOINT_TITLE" = "Card";
 "PAYMENT_OPTION_CNP_TITLE"       = "Credit";
 "PAYMENT_OPTION_CASH_TITLE"      = "Cash";
+
+/* Salesman Quantity */
+
+"SALESMAN_QUANTITIES_RESERVING_TICKETS_MESSAGE" = "Reserving Tickets";
 

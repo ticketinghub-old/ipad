@@ -11,7 +11,7 @@
 @class TXHOrderManager;
 @class TXHProductsManager;
 
-@interface TXHSalesTicketTiersViewController : UICollectionViewController
+@interface TXHSalesTicketTiersViewController : UIViewController
 
 @property (readonly, readonly, getter = isValid) BOOL valid;
 

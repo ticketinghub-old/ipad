@@ -8,6 +8,7 @@
 
 #import "TXHSalesTicketTierCell.h"
 #import "UIResponder+FirstResponder.h"
+#import "UIColor+TicketingHub.h"
 
 #import <QuartzCore/QuartzCore.h>
 #import "TXHProductsManager.h"
@@ -32,15 +33,11 @@
     self.quantity.delegate         = self;
     self.quantity.keyboardType     = UIKeyboardTypeNumberPad;
     self.contentView.clipsToBounds = YES;
-    self.contentView.layer.cornerRadius = 5;
-    self.contentView.layer.borderWidth  = 1.0;
-    self.contentView.layer.borderColor  = [UIColor lightGrayColor].CGColor;
+    self.contentView.layer.cornerRadius = 30;
+    self.contentView.layer.borderWidth  = 3.0;
+    self.contentView.layer.borderColor  = [UIColor txhBlueColor].CGColor;
     self.contentView.backgroundColor    = [UIColor whiteColor];
     self.layer.masksToBounds = NO;
-    self.layer.shadowOpacity = 1.0;
-    self.layer.shadowRadius  = 2;
-    self.layer.shadowOffset  = CGSizeMake(1, 1);
-    self.layer.shadowColor   = [UIColor lightGrayColor].CGColor;
 }
 
 - (void)setTitle:(NSString *)title
