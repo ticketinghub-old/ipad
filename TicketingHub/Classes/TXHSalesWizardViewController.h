@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TXHSalesWizardViewControllerDataSource.h"
 
-@interface TXHSalesWizardViewController : UITableViewController
+@interface TXHSalesWizardViewController : UIViewController
 
 @property (weak, nonatomic) id<TXHSalesWizardViewControllerDataSource> dataSource;
 

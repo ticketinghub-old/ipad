@@ -9,61 +9,63 @@
 #import "TXHSalesWizardViewController.h"
 
 #import "TXHSalesStep.h"
-#import "TXHSalesWizardTabelViewCell.h"
 
-@interface TXHSalesWizardViewController ()
+#import "UIColor+TicketingHub.h"
+#import "UIFont+TicketingHub.h"
+
+#import <AKPickerView/AKPickerView.h>
+
+@interface TXHSalesWizardViewController () <AKPickerViewDelegate>
+
+@property (weak, nonatomic) IBOutlet AKPickerView *pickerView;
 
 @end
 
 @implementation TXHSalesWizardViewController
 
-#pragma mark - Table view delegate
-
-- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)viewDidLoad
 {
-    if ([self.dataSource respondsToSelector:@selector(salesWizardViewController:canSelectStepAtIndex:)])
-        return [self.dataSource salesWizardViewController:self canSelectStepAtIndex:indexPath.row];
+    [super viewDidLoad];
     
-    return YES;
+    [self configureMenu];
+    [self reloadWizard];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)configureMenu
 {
-    [self.dataSource salesWizardViewController:self didSelectStepAtIndex:indexPath.row];
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
-{
-    return [self.dataSource numberOfsteps];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TXHSalesWizardTabelViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SalesWizardTabelViewCell"
-                                                            forIndexPath:indexPath];
-    
-    TXHSalesStep *item = [self.dataSource stepAtIndex:indexPath.row];
-    [self configureCell:cell withStep:item];
-    
-    return cell;
-}
-
-- (void)configureCell:(TXHSalesWizardTabelViewCell *)cell withStep:(TXHSalesStep *)step
-{
-    [cell setTite:step.title];
-    [cell setDetails:step.description];
-    [cell setNumber:[self.dataSource indexOfStep:step]+1];
-    [cell setCompleted:[self.dataSource isStepCompleted:step]];
-    [cell setIsCurrent:[self.dataSource isStepCurrent:step]];
+    self.pickerView.delegate             = self;
+    self.pickerView.font                 = [UIFont txhThinFontWithSize:26.0f];
+    self.pickerView.textColor            = [UIColor lightGrayColor];
+    self.pickerView.highlightedTextColor = [UIColor txhDarkBlueColor];
 }
 
 #pragma mark - Public methods
 
 - (void)reloadWizard
 {
-    [self.tableView reloadData];
+    NSUInteger currentIndex = [self.dataSource currentStepIndex];
+    
+    [self.pickerView reloadData];
+    [self.pickerView selectItem:currentIndex animated:YES];
+}
+
+#pragma mark - AKPickerViewDelegate
+
+- (NSUInteger)numberOfItemsInPickerView:(AKPickerView *)pickerView
+{
+    return [self.dataSource numberOfsteps];
+}
+
+- (NSString *)pickerView:(AKPickerView *)pickerView titleForItem:(NSInteger)item
+{
+    TXHSalesStep *step = [self.dataSource stepAtIndex:item];
+
+    return step.title;
+}
+
+- (void)pickerView:(AKPickerView *)pickerView didSelectItem:(NSInteger)item
+{
+
 }
 
 @end

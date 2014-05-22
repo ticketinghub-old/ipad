@@ -18,6 +18,7 @@ PODS:
   - AFNetworking/UIKit (2.2.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AKPickerView (0.0.2)
   - Block-KVO (2.2.1)
   - DCTCoreDataStack (1.1)
   - Expecta (0.2.4)
@@ -40,6 +41,7 @@ PODS:
   - UIViewController+BHTKeyboardAnimationBlocks (0.0.2)
 
 DEPENDENCIES:
+  - AKPickerView (~> 0.0.2)
   - Block-KVO (~> 2.2.1)
   - Expecta (~> 0.2.3)
   - iOS-api (from `.`)
@@ -68,6 +70,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
+  AKPickerView: d1870c876e1894dd067d8be596239eae81c16c0b
   Block-KVO: dc4bf1bb23007380901e047da884c130776007e9
   DCTCoreDataStack: eb0d05f4e27f92ff29fe559f66946baa939cafa7
   Expecta: 112bcafa2304ee0f3c5e586505f24555a47b25d5

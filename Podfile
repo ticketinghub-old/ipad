@@ -7,6 +7,7 @@ pod 'iOS-api', :podspec => '.'
 pod 'TapkuLibrary',     :git => 'https://github.com/bartekhugo/tapkulibrary.git',       :branch => 'ios7'
 pod 'PPSSignatureView', :git => 'https://github.com/bartekhugo/PPSSignatureView.git',   :branch => 'svg'
 
+pod 'AKPickerView',                                 '~> 0.0.2'
 pod 'Block-KVO',                                    '~> 2.2.1'
 pod 'RMPickerViewController',                       '~> 1.1.0'
 pod 'SevenSwitch',                                  '~> 1.3.0'
