@@ -10,23 +10,12 @@
 
 @class TXHSalesSummaryHeader;
 
-@protocol TXHSalesSummaryHeaderDelegate <NSObject>
-
-- (void)txhSalesSummaryHeaderIsExpandedDidChange:(TXHSalesSummaryHeader *)header;
-
-@end
 
 @interface TXHSalesSummaryHeader : UICollectionReusableView
-
-@property (weak, nonatomic) id<TXHSalesSummaryHeaderDelegate> delegate;
-
-@property (assign, nonatomic,getter = isExpanded) BOOL expanded;
 
 @property (strong, nonatomic) NSString *ticketTitle;
 @property (strong, nonatomic) NSString *ticketTotalPrice;
 
 @property (assign, nonatomic) NSUInteger section;
-
-@property (assign, nonatomic) BOOL canExpand;
 
 @end

@@ -14,4 +14,6 @@
 
 + (NSArray *)ordersTitles:(NSArray *)orders;
 
+- (NSNumber *)subtotal; //price excluding tax
+
 @end

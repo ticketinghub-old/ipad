@@ -35,5 +35,9 @@
     return title;
 }
 
+- (NSNumber *)subtotal
+{
+    return @([self.total integerValue] - [self.tax integerValue]);
+}
 
 @end

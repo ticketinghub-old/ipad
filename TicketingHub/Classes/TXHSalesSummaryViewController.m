@@ -11,19 +11,28 @@
 #import "TXHSalesCompletionViewController.h"
 #import "TXHSalesSummaryItemCell.h"
 #import "TXHSalesSummaryHeader.h"
-#import "TXHSalesSummaryFooter.h"
 #import "TXHSalesTimerViewController.h"
 
 #import "TXHProductsManager.h"
 #import "TXHOrderManager.h"
 
-@interface TXHSalesSummaryViewController () <UICollectionViewDelegateFlowLayout, TXHSalesSummaryHeaderDelegate>
+#import "TXHOrder+Helpers.h"
+
+@interface TXHSalesSummaryViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
 
-// A mutable collection of sections indicating their expanded status.
-@property (strong, nonatomic) NSMutableArray *expandedSections;
-@property (strong, nonatomic) NSArray        *tickets;
+@property (strong, nonatomic) NSArray *tickets;
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (weak, nonatomic) IBOutlet UILabel *subtotalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subtotalValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *taxLabel;
+@property (weak, nonatomic) IBOutlet UILabel *taxValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalValueLabel;
+
 
 @end
 
@@ -34,6 +43,18 @@
     [super viewDidLoad];
     
     self.valid = YES;
+    
+    [self updateView];
+}
+
+- (void)updateView
+{
+    TXHOrder *order = self.orderManager.order;
+
+    self.totalValueLabel.text    = [self.productManager priceStringForPrice:[order total]];
+    self.subtotalValueLabel.text = [self.productManager priceStringForPrice:[order subtotal]];
+    self.taxValueLabel.text      = [self.productManager priceStringForPrice:[order tax]];
+    self.taxLabel.text           = self.orderManager.order.taxName;
 }
 
 #pragma mark - accessors
@@ -41,8 +62,6 @@
 - (void)setTickets:(NSArray *)tickets
 {
     _tickets = tickets;
-    
-    [self setupExpandedSectionsInfo];
     
     [self.collectionView reloadData];
 }
@@ -52,17 +71,8 @@
     _orderManager = orderManager;
     
     [self loadTickets];
-}
-
-- (void)setupExpandedSectionsInfo
-{
-    self.expandedSections = [NSMutableArray array];
     
-    for (int i = 0; i < [self.tickets count]; i++)
-    {
-        NSNumber *value = (i == 0) ? @YES : @NO;
-        [self.expandedSections addObject:value];
-    }
+    [self updateView];
 }
 
 #pragma mark - private methods
@@ -90,21 +100,11 @@
     return tierTitle;
 }
 
-- (BOOL)isSectionExpanded:(NSInteger)sectionIndex
-{
-    return [self.expandedSections[sectionIndex] boolValue];
-}
-
-- (void)setSection:(NSInteger)sectionIndex expanded:(BOOL)expanded
-{
-    self.expandedSections[sectionIndex] = @(expanded);
-}
-
 #pragma mark - Collection View Datasource & Delegate methods
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return self.expandedSections.count;
+    return [self.tickets count];
 }
 
 
@@ -134,36 +134,17 @@
         [self configureHeader:header atIndexPath:indexPath];
         
         return header;
-        
     }
     else if (kind == UICollectionElementKindSectionFooter)
     {
-        TXHSalesSummaryFooter *footer = [collectionView dequeueReusableSupplementaryViewOfKind:kind
-                                                                           withReuseIdentifier:@"SalesSummaryFooter"
-                                                                                  forIndexPath:indexPath];
-        
-        if ([collectionView numberOfSections] - 1 == indexPath.section)
-        {
-            TXHOrder *order = [self.orderManager order];
-            
-            [footer setTaxPriceText:[self.productManager priceStringForPrice:[order tax]]];
-            [footer setTotalPriceText:[self.productManager priceStringForPrice:[order total]]];
-        }
+        UICollectionReusableView *footer = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                                              withReuseIdentifier:@"SalesSummaryFooter"
+                                                                                     forIndexPath:indexPath];
+        footer.hidden = !(indexPath.section < [self.tickets count] - 1); // hide last footer
         return footer;
     }
-    
-    return nil;
-}
 
-// TODO: fucked a bit, make it better!
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
-{
-    if ([collectionView numberOfSections] - 1 == section)
-    {
-        return CGSizeMake(collectionView.width, 60);
-    }
-    
-    return CGSizeMake(collectionView.width, 1);
+    return nil;
 }
 
 - (void)makeCellVisible:(id)sender
@@ -186,47 +167,17 @@
 {
     TXHTicket *ticket = [self ticketAtIndex:indexPath.section];
 
-    header.delegate         = self;
     header.ticketTitle      = [self titleForTicket:ticket];
     header.ticketTotalPrice = [self.productManager priceStringForPrice:ticket.price];
-    header.expanded         = [self isSectionExpanded:indexPath.section];
     header.section          = indexPath.section;
-    header.canExpand        = ([ticket.upgrades count] > 0);
-}
-
-#pragma mark - TXHSalesSummaryHeaderDelegate
-
-- (void)txhSalesSummaryHeaderIsExpandedDidChange:(TXHSalesSummaryHeader *)header
-{
-    [self setSection:header.section expanded:header.isExpanded];
-    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:header.section]];
-}
-
-#pragma mark - UICollectionViewDelegateFlowLayout
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    BOOL expanded = [self isSectionExpanded:indexPath.section];
-    
-    CGSize size = CGSizeMake(collectionView.width, expanded ? 20.0 : 0.0f);
-    return size;
-}
-
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
-    TXHTicket *ticket = [self ticketAtIndex:section];
-
-    if ([ticket.upgrades count] && [self isSectionExpanded:section])
-        return UIEdgeInsetsMake(0, 0, 10, 0);
-    
-    return UIEdgeInsetsZero;
 }
 
 #pragma mark - TXHSalesContentsViewControllerProtocol
 
 - (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
 {
-    blockName(nil);
+    if (blockName)
+        blockName(nil);
 }
 
 @end

@@ -11,7 +11,7 @@
 @class TXHOrderManager;
 @class TXHProductsManager;
 
-@interface TXHSalesSummaryViewController : UICollectionViewController
+@interface TXHSalesSummaryViewController : UIViewController
 
 @property (readonly, nonatomic, getter = isValid) BOOL valid;
 

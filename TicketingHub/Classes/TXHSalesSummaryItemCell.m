@@ -20,7 +20,7 @@
 
 - (void)setTitle:(NSString *)title
 {
-    self.titleLabel.text = [NSString stringWithFormat:@"+ %@",title];
+    self.titleLabel.text = title;
 }
 
 - (void)setPrice:(NSString *)price
