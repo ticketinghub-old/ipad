@@ -1502,9 +1502,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		58E4FB501760AE5500E328A0 /* TicketingHub */ = {
+		58E4FB501760AE5500E328A0 /* TicketsHub */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58E4FB891760AE5500E328A0 /* Build configuration list for PBXNativeTarget "TicketingHub" */;
+			buildConfigurationList = 58E4FB891760AE5500E328A0 /* Build configuration list for PBXNativeTarget "TicketsHub" */;
 			buildPhases = (
 				B273E82DB1714EE49E6FC742 /* Check Pods Manifest.lock */,
 				58E4FB4D1760AE5500E328A0 /* Sources */,
@@ -1516,7 +1516,7 @@
 			);
 			dependencies = (
 			);
-			name = TicketingHub;
+			name = TicketsHub;
 			productName = TicketingHub;
 			productReference = 58E4FB511760AE5500E328A0 /* TicketingHub.app */;
 			productType = "com.apple.product-type.application";
@@ -1567,7 +1567,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				58E4FB501760AE5500E328A0 /* TicketingHub */,
+				58E4FB501760AE5500E328A0 /* TicketsHub */,
 				58E4FB751760AE5500E328A0 /* TicketingHubTests */,
 			);
 		};
@@ -1816,7 +1816,7 @@
 /* Begin PBXTargetDependency section */
 		58E4FB7D1760AE5500E328A0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 58E4FB501760AE5500E328A0 /* TicketingHub */;
+			target = 58E4FB501760AE5500E328A0 /* TicketsHub */;
 			targetProxy = 58E4FB7C1760AE5500E328A0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -2541,7 +2541,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58E4FB891760AE5500E328A0 /* Build configuration list for PBXNativeTarget "TicketingHub" */ = {
+		58E4FB891760AE5500E328A0 /* Build configuration list for PBXNativeTarget "TicketsHub" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58E4FB8A1760AE5500E328A0 /* Debug */,
