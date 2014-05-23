@@ -7,12 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TXHUpgrade;
+@class TXHProductsManager;
+@class TXHSalesUpgradeCell;
 
-@interface TXHSalesUpgradeCell : UICollectionViewCell
+@protocol TXHSalesUpgradeCellDelegate <NSObject>
+@optional
+- (void)txhSalesUpgradeCell:(TXHSalesUpgradeCell *)cell changedTicketsSelection:(NSArray *)selectedTickets forUpgrade:(TXHUpgrade *)upgrade;
 
-@property (strong, nonatomic) NSString *upgradeName;
-@property (strong, nonatomic) NSString *upgradePrice;
-@property (strong, nonatomic) NSString *upgradeDescription;
-@property (assign, nonatomic, getter = isChosen) BOOL chosen;
+@end
+
+
+@interface TXHSalesUpgradeCell : UITableViewCell
+
+@property (weak, nonatomic) id<TXHSalesUpgradeCellDelegate> delegate;
+@property (strong, nonatomic) TXHProductsManager *productManager;
+
+@property (strong, nonatomic, readonly) TXHUpgrade *upgrade;
+@property (strong, nonatomic, readonly) NSArray *tickets;
+
+// one setter ot optimize collection view reload
+- (void)setUpgrade:(TXHUpgrade *)upgrade withTickets:(NSArray *)tickets selectedTickets:(NSArray *)selectedTickets;
 
 @end

@@ -10,8 +10,10 @@
 
 @interface UIColor (TicketingHub)
 
-+ (UIColor *)txhDarkBlueColor;
++ (UIColor *)txhVeryLightBlueColor;
++ (UIColor *)txhLightBlueColor;
 + (UIColor *)txhBlueColor;
++ (UIColor *)txhDarkBlueColor;
 + (UIColor *)txhButtonBlueColor;
 + (UIColor *)txhGreenColor;
 

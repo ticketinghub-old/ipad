@@ -221,14 +221,14 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
             dispatch_group_enter(group);
             
             [self.txhManager.client upgradesForTicket:ticket completion:^(NSArray *upgrades, NSError *error) {
-                if (upgrades)
+
+                if ([upgrades count])
                     upgradesDictionary[ticket.ticketId] = upgrades;
                 
-                if (error) // any error should be enough
+                if (error)
                     bError = error;
                 
                 dispatch_group_leave(group);
-                
             }];
         }
         

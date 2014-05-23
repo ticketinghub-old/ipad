@@ -54,7 +54,7 @@
 "PRINTER_ERROR_UNKNOWN_RECOVERY"                = "";
 
 "ERROR_DISMISS_BUTTON_TITLE" = "OK";
-"ERROR_TITLE" = "Error";
+"ERROR_TITLE"                = "Error";
 "PRINTER_ERROR_TITLE"        = "Printing Error";
 
 /* Activity labels - Printers */
@@ -181,4 +181,15 @@
 /* Salesman Quantity */
 
 "SALESMAN_QUANTITIES_RESERVING_TICKETS_MESSAGE" = "Reserving Tickets";
+
+/* Salesman Upgrades */
+
+"SALESMAN_UPGRADES_SELECT_ALL_TITLE"   = "Select all";
+"SALESMAN_UPGRADES_DESELECT_ALL_TITLE" = "Deselect all";
+
+"SALESMAN_UPGRADES_LOADING_UPGRADES"  = "Loading upgrades";
+"SALESMAN_UPGRADES_UPDATING_UPGRADES" = "Updating upgrades";
+
+
+
 

@@ -10,15 +10,40 @@
 
 @implementation UIColor (TicketingHub)
 
++ (UIColor *)txhVeryLightBlueColor
+{
+    static UIColor *color = nil;
+    
+    if (!color)
+        color = [UIColor colorWithRed:233.0f / 255.0f
+                                green:239.0f / 255.0f
+                                 blue:245.0f / 255.0f
+                                alpha:1.0f];
+    
+    return color;
+}
+
++ (UIColor *)txhLightBlueColor
+{
+    static UIColor *color = nil;
+    
+    if (!color)
+        color = [UIColor colorWithRed:127.0f / 255.0f
+                                green:169.0f / 255.0f
+                                 blue:197.0f / 255.0f
+                                alpha:1.0f];
+    
+    return color;
+}
 
 + (UIColor *)txhDarkBlueColor
 {
     static UIColor *color = nil;
     
     if (!color)
-        color = [UIColor colorWithRed:38.0f / 255.0f
-                                green:67.0f / 255.0f
-                                 blue:90.0f / 255.0f
+        color = [UIColor colorWithRed:27.0f / 255.0f
+                                green:81.0f / 255.0f
+                                 blue:117.0f / 255.0f
                                 alpha:1.0f];
     
     return color;
@@ -29,7 +54,10 @@
     static UIColor *color = nil;
     
     if (!color)
-        color = [UIColor colorFromHexString:@"#2A7BB7" alpha:1.0];
+        color = [UIColor colorWithRed:44.0f / 255.0f
+                                green:127.0f / 255.0f
+                                 blue:183.0f / 255.0f
+                                alpha:1.0f];
     
     return color;
 }
