@@ -8,17 +8,15 @@
 
 #import "TXHSalesSummaryViewController.h"
 
-#import "TXHSalesCompletionViewController.h"
 #import "TXHSalesSummaryItemCell.h"
 #import "TXHSalesSummaryHeader.h"
-#import "TXHSalesTimerViewController.h"
 
 #import "TXHProductsManager.h"
 #import "TXHOrderManager.h"
 
 #import "TXHOrder+Helpers.h"
 
-@interface TXHSalesSummaryViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface TXHSalesSummaryViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
 
@@ -32,7 +30,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *taxValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalValueLabel;
-
 
 @end
 
@@ -93,9 +90,7 @@
     NSString *customerName = ticket.customer.fullName;
     
     if (customerName)
-    {
         return [NSString stringWithFormat:@"%@ (%@)",customerName,tierTitle];
-    }
     
     return tierTitle;
 }
@@ -145,13 +140,6 @@
     }
 
     return nil;
-}
-
-- (void)makeCellVisible:(id)sender
-{
-    UICollectionViewCell *cell = sender;
-    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
-    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
 }
 
 - (void)configureCell:(TXHSalesSummaryItemCell *)cell atIndexPath:(NSIndexPath *)indexPath
