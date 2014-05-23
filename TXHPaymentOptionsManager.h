@@ -17,7 +17,7 @@
 
 - (instancetype)initWithOrderManager:(TXHOrderManager *)orderManger;
 
-- (void)loadOptionsWithCompletion:(void(^)(NSArray *paymentOptions, NSError *error))completion;
+- (void)loadPaymentOptionsWithCompletion:(void(^)(NSArray *paymentOptions, NSError *error))completion;
 - (TXHPaymentOption *)paymentOptionsAtIndex:(NSUInteger)index;
 
 @end

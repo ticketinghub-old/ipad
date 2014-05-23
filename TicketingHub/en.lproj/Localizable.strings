@@ -177,7 +177,7 @@
 "DKPOSClientTransactionErrorTransactionDeviceReset"  = "Transaction Device Reset";
 "DKPOSCLientTransactionErrorUnknownError"            = "Unknown Error";
 
-"DEVICE_CONNECTIONERROR_TITLE" = "Connection Error";
+"DEVICE_CONNECTION_ERROR_TITLE" = "Connection Error";
 "TRANSACTION_FAILED_TITLE"     = "Transaction Error";
 
 /* Payments */

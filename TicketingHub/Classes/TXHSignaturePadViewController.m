@@ -19,7 +19,6 @@ static void * kSIgnatureViewHasSignatureContext = &kSIgnatureViewHasSignatureCon
 
 @property (weak, nonatomic) IBOutlet TXHBorderedButton *acceptButton;
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceValueLabel;
-@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UIView  *contentView;
 @property (weak, nonatomic) IBOutlet PPSSignatureView *signatureView;
 
@@ -42,7 +41,6 @@ static void * kSIgnatureViewHasSignatureContext = &kSIgnatureViewHasSignatureCon
 - (void)updateLabels
 {
     self.totalPriceValueLabel.text = self.totalPriceString;
-    self.userNameLabel.text        = self.ownerName;
 }
 
 - (void)viewDidLoad
@@ -107,6 +105,10 @@ static void * kSIgnatureViewHasSignatureContext = &kSIgnatureViewHasSignatureCon
     [self dismissSelf];
 }
 
+- (IBAction)clearButtonAction:(id)sender
+{
+    [self.signatureView erase];
+}
 
 - (void)dismissSelf
 {

@@ -200,10 +200,10 @@
 
 - (TXHPayment *)paymentForClientTransactionInfo:(DKPOSClientTransactionInfo*)info
 {
-    NSManagedObjectContext *orderMoc = self.orderManager.order.managedObjectContext;
+    NSManagedObjectContext *paymentMoc = self.gateway.managedObjectContext;
     
     TXHPayment *payment = [TXHPayment createWithTransactionInfo:info
-                                         inManagedObjectContext:orderMoc];
+                                         inManagedObjectContext:paymentMoc];
     
     payment.signature = self.SVGSignatre;
     payment.gateway   = self.gateway;
@@ -236,9 +236,14 @@
 
 - (void)posClient:(NSObject<DKPOSClient>*)client deviceConnectionError:(NSError*)error
 {
-    [self showErrorWithTitle:NSLocalizedString(@"DEVICE_CONNECTIONERROR_TITLE", nil)
+    [self updateView];
+
+    [self showErrorWithTitle:NSLocalizedString(@"DEVICE_CONNECTION_ERROR_TITLE", nil)
                      message:error.localizedDescription
-                      action:nil];
+                      action:^{
+                          if (self.completion)
+                              self.completion(error);
+                      }];
 }
 
 #pragma mark - TXHSignaturePadViewControllerDelegate

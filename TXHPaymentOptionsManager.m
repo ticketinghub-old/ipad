@@ -43,7 +43,7 @@ static NSString *const kHandpointType = @"handpoint";
     return nil;
 }
 
-- (void)loadOptionsWithCompletion:(void(^)(NSArray *paymentOptions, NSError *error))completion
+- (void)loadPaymentOptionsWithCompletion:(void(^)(NSArray *paymentOptions, NSError *error))completion
 {
     __weak typeof(self) wself = self;
     [self.orderManager getPaymentGatewaysWithCompletion:^(NSArray *gateways, NSError *error) {
@@ -57,6 +57,7 @@ static NSString *const kHandpointType = @"handpoint";
         
         NSArray *prioritizeGateways = [self prioritizeGateways:gateways];
         NSArray *paymentOptions     = [self paymentOptionsFromGateways:prioritizeGateways];
+
         wself.paymentOptions = paymentOptions;
         
         if (completion)

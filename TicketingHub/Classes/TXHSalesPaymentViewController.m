@@ -57,9 +57,10 @@
     __weak typeof(self) wself = self;
     
     [self.activityView showWithMessage:@"" indicatorHidden:NO];
-    [self.paymentOptionsManager loadOptionsWithCompletion:^(NSArray *paymentOptions, NSError *error) {
+    [self.paymentOptionsManager loadPaymentOptionsWithCompletion:^(NSArray *paymentOptions, NSError *error) {
 
         [wself.activityView hide];
+        
         [wself reloadView];
         
         if (error)
