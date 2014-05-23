@@ -54,7 +54,7 @@
 "PRINTER_ERROR_UNKNOWN_RECOVERY"                = "";
 
 "ERROR_DISMISS_BUTTON_TITLE" = "OK";
-"ERROR_TITLE"                = "Error";
+"ERROR_TITLE" = "Error";
 "PRINTER_ERROR_TITLE"        = "Printing Error";
 
 /* Activity labels - Printers */
@@ -116,22 +116,39 @@
 /* Handpoint */
 // TODO:                 Give a bit of love into those messages!!!
 // statuses
-"DKPOSClientTransactionStatusCodeWaitingForCard"          = "Waiting For Card";
-"DKPOSClientTransactionStatusCodeCardInserted"            = "Card Inserted";
+"DKPOSClientTransactionStatusCodeWaitingForCard"          = "Enter card into Device";
+"DKPOSClientTransactionStatusCodeCardInserted"            = "Processing card";
 "DKPOSClientTransactionStatusSignatureRequested"          = "Signature Requested";
-"DKPOSClientTransactionStatusCodeApplicationSelection"    = "Processing...";
-"DKPOSClientTransactionStatusCodeApplicationConfirmation" = "Processing...";
-"DKPOSClientTransactionStatusCodeAmountValidation"        = "Processing...";
-"DKPOSClientTransactionStatusCodePinInput"                = "Waiting For Pin";
+"DKPOSClientTransactionStatusCodeApplicationSelection"    = "Processing card";
+"DKPOSClientTransactionStatusCodeApplicationConfirmation" = "Processing card";
+"DKPOSClientTransactionStatusCodeAmountValidation"        = "Processing card";
+"DKPOSClientTransactionStatusCodePinInput"                = "Enter PIN";
 "DKPOSClientTransactionStatusCodeManualCardInput"         = "Manual Card Input";
-"DKPOSClientTransactionStatusCodeWaitingCardRemoval"      = "Waiting For Card Removal";
+"DKPOSClientTransactionStatusCodeWaitingCardRemoval"      = "Remove Card";
 "DKPOSClientTransactionStatusCodeTipInput"                = "Tip Input";
-"DKPOSClientTransactionStatusCodeConnecting"              = "Please wait...";
-"DKPOSClientTransactionStatusCodeSending"                 = "Please wait...";
-"DKPOSClientTransactionStatusCodeReceiving"               = "Please wait...";
-"DKPOSClientTransactionStatusCodeDisconnecting"           = "Please wait...";
+"DKPOSClientTransactionStatusCodeConnecting"              = "Please wait";
+"DKPOSClientTransactionStatusCodeSending"                 = "Please wait";
+"DKPOSClientTransactionStatusCodeReceiving"               = "Please wait";
+"DKPOSClientTransactionStatusCodeDisconnecting"           = "Please wait";
 "DKPOSClientTransactionStatusCodeTransactionApproved"     = "Approved";
 "DKPOSClientTransactionStatusCodeTransactionProcessed"    = "Transaction Processed";
+
+"DKPOSClientTransactionStatusCodeWaitingForCardDesc"          = "Either use Chip & PIN or swipe for American cards";
+"DKPOSClientTransactionStatusCodeCardInsertedDesc"            = "";
+"DKPOSClientTransactionStatusSignatureRequestedDesc"          = "";
+"DKPOSClientTransactionStatusCodeApplicationSelectionDesc"    = "";
+"DKPOSClientTransactionStatusCodeApplicationConfirmationDesc" = "";
+"DKPOSClientTransactionStatusCodeAmountValidationDesc"        = "";
+"DKPOSClientTransactionStatusCodePinInputDesc"                = "Press the green button when finished";
+"DKPOSClientTransactionStatusCodeManualCardInputDesc"         = "";
+"DKPOSClientTransactionStatusCodeWaitingCardRemovalDesc"      = "";
+"DKPOSClientTransactionStatusCodeTipInputDesc"                = "";
+"DKPOSClientTransactionStatusCodeConnectingDesc"              = "";
+"DKPOSClientTransactionStatusCodeSendingDesc"                 = "";
+"DKPOSClientTransactionStatusCodeReceivingDesc"               = "";
+"DKPOSClientTransactionStatusCodeDisconnectingDesc"           = "";
+"DKPOSClientTransactionStatusCodeTransactionApprovedDesc"     = "";
+"DKPOSClientTransactionStatusCodeTransactionProcessedDesc"    = "";
 
 // errors
 "DKPOSClientTransactionErrorInvalidData"             = "Invalid Data";
@@ -190,6 +207,10 @@
 "SALESMAN_UPGRADES_LOADING_UPGRADES"  = "Loading upgrades";
 "SALESMAN_UPGRADES_UPDATING_UPGRADES" = "Updating upgrades";
 
+/* Salesman Payment - Handpoint */
 
+"SALESMAN_PAYMENT_HANDPOINT_DEVICE_CONNECTED_TITLE"    = "Handpoint Device Connected";
+"SALESMAN_PAYMENT_HANDPOINT_DEVICE_DISCONNECTED_TITLE" = "Handpoint Device Disconnected";
 
-
+"SALESMAN_PAYMENT_HANDPOINT_DEVICE_CONNECTED_DESCRIPTION"    = "To proceed with a card payment,\ntap continue and follow the instructions on the reader";
+"SALESMAN_PAYMENT_HANDPOINT_DEVICE_DISCONNECTED_DESCRIPTION" = "To proceed with a card payment,\nplease connect a handpoint device";

@@ -43,6 +43,7 @@
 		3E53C54B18E58FB400FF6F9B /* TXHActivityLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E53C54A18E58FB400FF6F9B /* TXHActivityLabelView.m */; };
 		3E53C54D18E58FD000FF6F9B /* TXHActivityLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E53C54C18E58FD000FF6F9B /* TXHActivityLabelView.xib */; };
 		3E5B2BC8192A6C5600BE4CE6 /* TXHPayment+PKCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B2BC7192A6C5600BE4CE6 /* TXHPayment+PKCard.m */; };
+		3E5FA93A192FCE8900452C30 /* DKPOSClientTransactionInfo+Messages.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FA939192FCE8900452C30 /* DKPOSClientTransactionInfo+Messages.m */; };
 		3E6A422518C483870053EF34 /* TXHSensorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6A422418C483870053EF34 /* TXHSensorView.m */; };
 		3E6F479718AFD6A300E644F7 /* TXHBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F479618AFD6A300E644F7 /* TXHBorderedButton.m */; };
 		3E7F87D418DC59070046DD7A /* NSDateFormatter+DisplayFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F87D318DC59060046DD7A /* NSDateFormatter+DisplayFormat.m */; };
@@ -242,6 +243,8 @@
 		3E53C54C18E58FD000FF6F9B /* TXHActivityLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TXHActivityLabelView.xib; sourceTree = "<group>"; };
 		3E5B2BC6192A6C5600BE4CE6 /* TXHPayment+PKCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHPayment+PKCard.h"; sourceTree = "<group>"; };
 		3E5B2BC7192A6C5600BE4CE6 /* TXHPayment+PKCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHPayment+PKCard.m"; sourceTree = "<group>"; };
+		3E5FA938192FCE8900452C30 /* DKPOSClientTransactionInfo+Messages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DKPOSClientTransactionInfo+Messages.h"; sourceTree = "<group>"; };
+		3E5FA939192FCE8900452C30 /* DKPOSClientTransactionInfo+Messages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DKPOSClientTransactionInfo+Messages.m"; sourceTree = "<group>"; };
 		3E6A422318C483870053EF34 /* TXHSensorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSensorView.h; sourceTree = "<group>"; };
 		3E6A422418C483870053EF34 /* TXHSensorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSensorView.m; sourceTree = "<group>"; };
 		3E6F479518AFD6A300E644F7 /* TXHBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBorderedButton.h; sourceTree = "<group>"; };
@@ -396,7 +399,7 @@
 		4DF3F59C17C63E070045299B /* MockingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockingTest.m; sourceTree = "<group>"; };
 		4DF3F59D17C63E070045299B /* SmokeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmokeSpec.m; sourceTree = "<group>"; };
 		5860E8571762175B0046DFD3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		58E4FB511760AE5500E328A0 /* TicketingHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicketingHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		58E4FB511760AE5500E328A0 /* TicketHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicketHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E4FB541760AE5500E328A0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		58E4FB561760AE5500E328A0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		58E4FB581760AE5500E328A0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -852,6 +855,8 @@
 				3E5039CF1928F6FC00ACFA91 /* UIApplication+TopViewController.m */,
 				3EF72D80192DEC1A00F27B6B /* UIFont+TicketingHub.h */,
 				3EF72D81192DEC1A00F27B6B /* UIFont+TicketingHub.m */,
+				3E5FA938192FCE8900452C30 /* DKPOSClientTransactionInfo+Messages.h */,
+				3E5FA939192FCE8900452C30 /* DKPOSClientTransactionInfo+Messages.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1327,7 +1332,7 @@
 		58E4FB521760AE5500E328A0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				58E4FB511760AE5500E328A0 /* TicketingHub.app */,
+				58E4FB511760AE5500E328A0 /* TicketHub.app */,
 				58E4FB761760AE5500E328A0 /* TicketingHubTests.xctest */,
 			);
 			name = Products;
@@ -1513,7 +1518,7 @@
 			);
 			name = TicketHub;
 			productName = TicketingHub;
-			productReference = 58E4FB511760AE5500E328A0 /* TicketingHub.app */;
+			productReference = 58E4FB511760AE5500E328A0 /* TicketHub.app */;
 			productType = "com.apple.product-type.application";
 		};
 		58E4FB751760AE5500E328A0 /* TicketingHubTests */ = {
@@ -1767,6 +1772,7 @@
 				3EA52C0818E3177600FEA0CA /* StarBitmap.m in Sources */,
 				EE75D9A617D11048009ADCD8 /* TXHSalesUpgradeDetailsViewController.m in Sources */,
 				3E5039C51924CA1800ACFA91 /* TXHCardFrontView.m in Sources */,
+				3E5FA93A192FCE8900452C30 /* DKPOSClientTransactionInfo+Messages.m in Sources */,
 				3E488BD918BE850600E90BE6 /* RMDisplayLabel.m in Sources */,
 				3EF8EE4418D3332300586283 /* TXHDoorTicketsTotalHeaderView.m in Sources */,
 				3E5039CD192642D500ACFA91 /* TXHFullScreenKeyboardViewController.m in Sources */,

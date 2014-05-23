@@ -16,6 +16,7 @@
 #import <UIAlertView-Blocks/UIAlertView+Blocks.h>
 
 #import "DKPOSHandpointClient.h"
+#import "DKPOSClientTransactionInfo+Messages.h"
 #import "TXHPayment+DKPOSClientTransactionInfo.h"
 
 #import "TXHProductsManager.h"
@@ -28,10 +29,12 @@
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
 
-@property (weak, nonatomic) IBOutlet UILabel  *amountLabel;
-@property (weak, nonatomic) IBOutlet UILabel  *infoLabel;
-
 @property (strong, nonatomic) NSString *SVGSignatre;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
+@property (weak, nonatomic) IBOutlet UILabel *mainLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 @property (copy, nonatomic) void(^completion)(NSError *error);
 
@@ -49,6 +52,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+ 
     [self updateView];
 }
 
@@ -63,15 +67,65 @@
 
 - (void)updateView
 {
-    TXHOrder *order       = self.orderManager.order;
-    NSString *priceString = [self.productManager priceStringForPrice:[order total]];
-    
-    self.amountLabel.text  = [NSString stringWithFormat:@"Amount to pay: %@",priceString];
-    self.infoLabel.text    = self.handpointClient.isConnected ? @"Connected" : @"Disconnected" ;
-    
-    self.valid = self.handpointClient.isConnected;
+    [self updateViewWithDKPOSClientTransactionInfo:nil];
 }
 
+- (void)updateViewWithDKPOSClientTransactionInfo:(DKPOSClientTransactionInfo*)info
+{
+    self.valid = self.handpointClient.isConnected;
+    
+    self.mainLabel.text        = [self mainLabelTextForDKPOSClientTransactionInfo:info];
+    self.imageView.image       = [self iconImageForDKPOSClientTransactionInfo:info];
+    
+    [self setDescriptionText:[self descriptionLabelTextForDKPOSClientTransactionInfo:info]];
+}
+
+- (void)setDescriptionText:(NSString *)descriptionText
+{
+    NSMutableAttributedString* attrString = [[NSMutableAttributedString alloc] initWithString:descriptionText];
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    [style setAlignment:NSTextAlignmentCenter];
+
+    [style setLineSpacing:12];
+
+    [attrString addAttribute:NSParagraphStyleAttributeName
+                       value:style
+                       range:NSMakeRange(0, [descriptionText length])];
+    
+    self.descriptionLabel.attributedText = attrString;
+}
+
+- (NSString *)mainLabelTextForDKPOSClientTransactionInfo:(DKPOSClientTransactionInfo*)info
+{
+    if (info)
+        return [info titleText];
+    else if (self.isValid)
+        return NSLocalizedString(@"SALESMAN_PAYMENT_HANDPOINT_DEVICE_CONNECTED_TITLE", nil);
+    else
+        return NSLocalizedString(@"SALESMAN_PAYMENT_HANDPOINT_DEVICE_DISCONNECTED_TITLE", nil);
+    
+    return nil;
+}
+
+- (NSString *)descriptionLabelTextForDKPOSClientTransactionInfo:(DKPOSClientTransactionInfo*)info
+{
+    if (info)
+        return [info descriptionText];
+    else if (self.isValid)
+        return NSLocalizedString(@"SALESMAN_PAYMENT_HANDPOINT_DEVICE_CONNECTED_DESCRIPTION", nil);
+    else
+        return NSLocalizedString(@"SALESMAN_PAYMENT_HANDPOINT_DEVICE_DISCONNECTED_DESCRIPTION", nil);
+    
+    return nil;
+}
+
+- (UIImage *)iconImageForDKPOSClientTransactionInfo:(DKPOSClientTransactionInfo*)info
+{
+    if (info)
+        return [info iconImage];
+    
+    return [UIImage imageNamed:@"Connected_Icon.png"];
+}
 
 - (void)setupHandpointClient
 {
@@ -131,8 +185,8 @@
                                        
                                        if (error)
                                        {
-                                           [self showErrorWithTitle:NSLocalizedString(@"", nil)
-                                                            message:NSLocalizedString(@"", nil)
+                                           [self showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
+                                                            message:error.localizedDescription
                                                              action:^{
                                                                  if (self.completion)
                                                                      self.completion(error);
@@ -159,8 +213,6 @@
 
 - (void)posClient:(NSObject<DKPOSClient>*)client transactionFailedWithError:(NSError*)error
 {
-    [self.activityView hide];
-    
     [self updateView];
     
     [self showErrorWithTitle:NSLocalizedString(@"TRANSACTION_FAILED_TITLE", nil)
@@ -173,7 +225,7 @@
 
 - (void)posClient:(NSObject<DKPOSClient>*)client transactionStatusChanged:(DKPOSClientTransactionInfo*)info
 {
-    [self.activityView showWithMessage:[info localizedStatusDescription] indicatorHidden:NO];
+    [self updateViewWithDKPOSClientTransactionInfo:info];
 }
 
 - (void)posClient:(NSObject<DKPOSClient>*)client transactionSignatureRequested:(DKPOSClientTransactionInfo*)info
@@ -218,9 +270,6 @@
     
     TXHOrder *order = [self.orderManager order];
     
-    [self.activityView showWithMessage:NSLocalizedString(@"CARD_CONTROLLER_PREPARING_PAYMENT_MESSAGE", nil)
-                       indicatorHidden:NO];
-    
     NSError *error;
     [self.handpointClient saleWithAmount:order.totalValue
                                 currency:order.currency
@@ -243,8 +292,6 @@
 
 - (void)showErrorWithTitle:(NSString *)title message:(NSString *)message action:(void(^)(void))action
 {
-    [self.activityView hide];
-
     RIButtonItem *cancelItem = [RIButtonItem itemWithLabel:NSLocalizedString(@"ERROR_DISMISS_BUTTON_TITLE", nil)
                                                     action:^{
                                                         if (action)

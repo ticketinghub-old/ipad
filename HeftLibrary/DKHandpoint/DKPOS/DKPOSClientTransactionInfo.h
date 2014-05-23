@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DKPOSClientTypes.h"
 
 extern NSString *const kDKPOSClientTransactionIDKey;
 extern NSString *const kDKPOSClientDeviceSerialKey;
@@ -20,7 +21,7 @@ extern NSString *const kDKPOSClientTransactionEFTTransactionIDKey;
 
 @interface DKPOSClientTransactionInfo : NSObject
 
-@property (nonatomic, assign) NSUInteger statusCode;
+@property (nonatomic, assign) DKPOSClientTransactionStatusCode statusCode;
 @property (nonatomic, assign) id userInfo;
 
 + (instancetype)infoWithStatusCode:(NSUInteger)statusCode userInfo:(id)userInfo;

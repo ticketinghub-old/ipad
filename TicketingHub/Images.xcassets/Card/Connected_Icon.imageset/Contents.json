@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "payment-card-big.png"
+      "filename" : "Connected_Icon.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "payment-card-big@2x.png"
+      "filename" : "Connected_Icon@2x.png"
     }
   ],
   "info" : {
