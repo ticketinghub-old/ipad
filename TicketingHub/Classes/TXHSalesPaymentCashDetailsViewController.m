@@ -1,3 +1,4 @@
+
 //
 //  TXHSalesPaymentCashDetailsViewController.m
 //  TicketingHub
@@ -19,23 +20,36 @@
 #import "TXHBorderedButton.h"
 
 #import <UIAlertView-Blocks/UIAlertView+Blocks.h>
+#import <TSCurrencyTextField/TSCurrencyTextField.h>
+#import <QuartzCore/QuartzCore.h>
+
+#import "TXHFullScreenKeyboardViewController.h"
 
 // TODO: add activity view
 
-@interface TXHSalesPaymentCashDetailsViewController () <TXHPrinterSelectionViewControllerDelegate>
+@interface TXHSalesPaymentCashDetailsViewController () <UITextFieldDelegate, TXHPrinterSelectionViewControllerDelegate, TXHFullScreenKeyboardViewControllerDelegate>
 
 @property (strong, nonatomic) NSNumber *totalAmount;
 
 @property (readwrite, nonatomic, getter = isValid) BOOL valid;
 
-@property (weak, nonatomic) IBOutlet UILabel           *totalAmountValueLabel;
-@property (weak, nonatomic) IBOutlet UILabel           *changeValueLabel;
-@property (weak, nonatomic) IBOutlet UITextField       *givenAmountValueField;
-@property (weak, nonatomic) IBOutlet TXHBorderedButton *openDrawerButton;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+
+@property (weak, nonatomic) IBOutlet UILabel *totalAmountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalAmountValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *changeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *changeValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *givenAmountLabel;
+
+@property (weak, nonatomic) IBOutlet UIView              *givenAmountBackground;
+@property (weak, nonatomic) IBOutlet TSCurrencyTextField *givenAmountValueField;
 
 @property (strong, nonatomic) TXHActivityLabelView *activityView;
 
 @property (strong, nonatomic) UIPopoverController *printerSelectionPopover;
+@property (weak, nonatomic) IBOutlet TXHBorderedButton *openDrawerButton;
+
+@property (nonatomic, strong) TXHFullScreenKeyboardViewController *fullScreenController;
 
 @end
 
@@ -45,6 +59,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.givenAmountBackground.layer.cornerRadius = 10.0f;
+    
+    [self updateGivenAmountFieldCurrncy];
+}
+
+- (void)updateGivenAmountFieldCurrncy
+{
+    NSString *currencyCode = self.productManager.selectedProduct.supplier.currency;
+    [self.givenAmountValueField.currencyNumberFormatter setCurrencyCode:currencyCode];
+    self.givenAmountValueField.amount = @(0);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -54,9 +79,20 @@
     [self updateView];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.fullScreenController hideAniamted:NO
+                                 completion:nil];
+}
+
+
 - (void)setProductManager:(TXHProductsManager *)productManager
 {
     _productManager = productManager;
+
+    [self updateGivenAmountFieldCurrncy];
     [self updateView];
 }
 
@@ -95,7 +131,7 @@
 
 - (IBAction)givenAmountValueChanged:(id)sender
 {
-    CGFloat givenAmount  = [self.givenAmountValueField.text floatValue];
+    CGFloat givenAmount  = [self.givenAmountValueField.amount floatValue];
     CGFloat changeAmount = (givenAmount * 100) - [self.totalAmount floatValue];
     
     self.valid = (changeAmount >= 0);
@@ -110,7 +146,7 @@
     if (amount > 0)
         changeString = [self.productManager priceStringForPrice:@(amount)];
     else if (amount < 0)
-        changeString = NSLocalizedString(@"CASH_CONTROLLER_NOT_ENOUGH_PAID_MESSAGE", nil);
+        changeString = NSLocalizedString(@"CASH_CONTROLLER_NOT_PAID_ENOUGH_MESSAGE", nil);
     else
         changeString = NSLocalizedString(@"CASH_CONTROLLER_NO_CHANGE_MESSAGE", nil);
     
@@ -214,5 +250,57 @@
                                                otherButtonItems: nil];
     [alertView show];
 }
+
+#pragma mark UITextFieldDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self showFullScreen];
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self hideFullScreen];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)showFullScreen
+{
+    if (self.fullScreenController)
+        return;
+    
+    TXHFullScreenKeyboardViewController *full = [[TXHFullScreenKeyboardViewController alloc] init];
+    full.destinationBackgroundColor = [UIColor whiteColor];
+    full.delegate = self;
+    
+    self.fullScreenController = full;
+    
+    __weak typeof(self) wself = self;
+    
+    [full showWithView:self.containerView
+            completion:^{
+                [wself.givenAmountValueField becomeFirstResponder];
+            }];
+}
+
+- (void)hideFullScreen
+{
+    [self.fullScreenController hideAniamted:YES
+                                 completion:^{
+                                     
+                                 }];
+}
+
+#pragma mark - TXHFullScreenKeyboardViewControllerDelegate
+
+- (void)txhFullScreenKeyboardViewControllerDismiss:(TXHFullScreenKeyboardViewController *)controller
+{
+    [self hideFullScreen];
+}
+
 
 @end

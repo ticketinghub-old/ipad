@@ -18,7 +18,7 @@ PODS:
   - AFNetworking/UIKit (2.2.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - AKPickerView (0.0.2)
+  - AKPickerView (0.0.3)
   - Block-KVO (2.2.1)
   - DCTCoreDataStack (1.1)
   - Expecta (0.2.4)
@@ -31,9 +31,12 @@ PODS:
   - RMPickerViewController (1.1.1)
   - SevenSwitch (1.3.0)
   - Specta (0.2.1)
-  - Stripe (1.1.3):
+  - Stripe (1.1.4):
     - PaymentKit (~> 1.0.4)
   - TapkuLibrary (0.2.4)
+  - TSCurrencyTextField (0.1.0):
+    - TSCurrencyTextField/Core
+  - TSCurrencyTextField/Core (0.1.0)
   - UIAlertView-Blocks (1.0)
   - UIImage+PDF (1.1.3)
   - UIView+Shake (0.2)
@@ -52,6 +55,7 @@ DEPENDENCIES:
   - Specta (~> 0.2.1)
   - Stripe (~> 1.1.2)
   - TapkuLibrary (from `https://github.com/bartekhugo/tapkulibrary.git`, branch `ios7`)
+  - TSCurrencyTextField (~> 0.1.0)
   - UIAlertView-Blocks (~> 1.0)
   - UIImage+PDF (~> 1.1.2)
   - UIView+Shake (~> 0.2)
@@ -70,7 +74,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
-  AKPickerView: d1870c876e1894dd067d8be596239eae81c16c0b
+  AKPickerView: 8cd37308b04e47e879bba3fb4d9f440d9c54934d
   Block-KVO: dc4bf1bb23007380901e047da884c130776007e9
   DCTCoreDataStack: eb0d05f4e27f92ff29fe559f66946baa939cafa7
   Expecta: 112bcafa2304ee0f3c5e586505f24555a47b25d5
@@ -81,8 +85,9 @@ SPEC CHECKSUMS:
   RMPickerViewController: 67e8e6f5d81a4f01a6dcccd88a6d2643647fba00
   SevenSwitch: 70af67d75bc2e477d45a984cf1f3123564b04eee
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
-  Stripe: 95b57b2b8371b460188f0b64b04b22e0de8b0727
+  Stripe: a0ed1c0675a3c36f6e8d575820cfec1dc9335f53
   TapkuLibrary: 9429b4702b3fb1c58669490e2d301cf37f76a766
+  TSCurrencyTextField: d63c385890f2d41200ecdd2268f01fd5968405cc
   UIAlertView-Blocks: f3271e84372beb97aea115cd1fb26ae66457f12f
   UIImage+PDF: e2670143b9a404ce7def93cd4f7fd2c532aeba89
   UIView+Shake: 68d2bc9228f452615b7ab3c8c395b58ab3d47c89
