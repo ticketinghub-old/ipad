@@ -180,7 +180,10 @@
 {
     CGFloat total = [self totalOrderValue];
     
-    self.totalValueLabel.text = total == 0 ? @"-" : [self.productManager priceStringForPrice:@(total)];
+    self.totalLabel.hidden = total == 0;
+    self.totalValueLabel.hidden = total == 0;
+
+    self.totalValueLabel.text =  [self.productManager priceStringForPrice:@(total)];
 }
 
 - (CGFloat)totalOrderValue
