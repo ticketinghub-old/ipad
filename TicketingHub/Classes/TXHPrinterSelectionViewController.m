@@ -7,9 +7,14 @@
 //
 
 #import "TXHPrinterSelectionViewController.h"
+
 #import "TXHPrintersManager.h"
-#import "ArrayDataSource.h"
 #import "TXHPrinter.h"
+
+#import "ArrayDataSource.h"
+
+#import "UIColor+TicketingHub.h"
+#import "UIFont+TicketingHub.h"
 
 @interface TXHPrinterSelectionViewController ()
 
@@ -37,6 +42,7 @@
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"printerCell"];
     self.tableView.delegate = self;
+    self.tableView.separatorStyle =  UITableViewCellSeparatorStyleNone;
     
     [self loadPrinters];
 }
@@ -79,9 +85,22 @@
                                               
                                               aCell.textLabel.text = printer.displayName;
                                           }];
+    if (![printers count])
+        [self addNoPrintersLabel];
+    
     [self.tableView reloadData];
 }
 
+- (void)addNoPrintersLabel
+{
+    UILabel *label = [[UILabel alloc] initWithFrame:self.view.bounds];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor     = [UIColor txhDarkBlueColor];
+    label.font          = [UIFont txhThinFontWithSize:23.0];
+    label.text          = NSLocalizedString(@"NO_PRINTERS_TEXT", nil);
+    
+    [self.view addSubview:label];
+}
 
 - (void)setDatasource:(ArrayDataSource *)datasource
 {

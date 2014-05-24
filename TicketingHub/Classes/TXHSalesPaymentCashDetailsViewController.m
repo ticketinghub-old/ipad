@@ -85,8 +85,15 @@
     
     [self.fullScreenController hideAniamted:NO
                                  completion:nil];
+    self.fullScreenController = nil;
 }
 
+- (void)setValid:(BOOL)valid
+{
+    _valid = valid;
+    
+    self.openDrawerButton.enabled = valid;
+}
 
 - (void)setProductManager:(TXHProductsManager *)productManager
 {
@@ -127,6 +134,8 @@
     self.totalAmountValueLabel.text = [self.productManager priceStringForPrice:self.totalAmount];
     
     [self givenAmountValueChanged:self.givenAmountValueField];
+    
+    
 }
 
 - (IBAction)givenAmountValueChanged:(id)sender
@@ -144,7 +153,12 @@
     NSString *changeString;
     
     if (amount > 0)
-        changeString = [self.productManager priceStringForPrice:@(amount)];
+    {
+        if (amount > 1000000)
+            changeString = @"SRSLY?";
+        else
+            changeString = [self.productManager priceStringForPrice:@(amount)];
+    }
     else if (amount < 0)
         changeString = NSLocalizedString(@"CASH_CONTROLLER_NOT_PAID_ENOUGH_MESSAGE", nil);
     else
@@ -290,9 +304,8 @@
 - (void)hideFullScreen
 {
     [self.fullScreenController hideAniamted:YES
-                                 completion:^{
-                                     
-                                 }];
+                                 completion:nil];
+    self.fullScreenController = nil;
 }
 
 #pragma mark - TXHFullScreenKeyboardViewControllerDelegate

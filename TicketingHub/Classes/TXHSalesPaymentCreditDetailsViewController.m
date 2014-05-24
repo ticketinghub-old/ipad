@@ -26,11 +26,18 @@
 @interface TXHSalesPaymentCreditDetailsViewController () <TXHFullScreenKeyboardViewControllerDelegate, TXHScanersManagerDelegate, TXHCardViewDelegate>
 
 @property (nonatomic, readwrite, assign, getter = isValid) BOOL valid;
+
 @property (nonatomic, strong) TXHScanersManager *scanersManager;
+
 @property (nonatomic, copy) NSString *cardTrackData;
 
+@property (nonatomic, strong) IBOutlet UILabel     *mainLabel;
+@property (nonatomic, strong) IBOutlet UILabel     *descriptionLabel;
 @property (nonatomic, strong) IBOutlet TXHCardView *cardView;
+@property (nonatomic, strong) IBOutlet UIView      *containerView;
+
 @property (nonatomic, strong) TXHActivityLabelView *activityView;
+
 @property (nonatomic, strong) TXHFullScreenKeyboardViewController *fullScreenController;
 
 @end
@@ -44,9 +51,11 @@
     [self initializeMSRScanner];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
+    
+    [self updateView];
     
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        [self scannerManager:self.scanersManager didRecognizeMSRCardTrack:@"%B1234567890123445^PADILLA/L.                ^99011X100000*000000000XXX000000?*"];
@@ -59,6 +68,13 @@
     
     [self.fullScreenController hideAniamted:NO
                                  completion:nil];
+}
+
+- (void)setValid:(BOOL)valid
+{
+    _valid = valid;
+    
+    [self updateView];
 }
 
 - (void)initializeMSRScanner
@@ -75,14 +91,14 @@
         return;
     
     TXHFullScreenKeyboardViewController *full = [[TXHFullScreenKeyboardViewController alloc] init];
-    full.destinationBackgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+    full.destinationBackgroundColor = [UIColor whiteColor];
     full.delegate = self;
     
     self.fullScreenController = full;
     
     __weak typeof(self) wself = self;
     
-    [full showWithView:self.cardView
+    [full showWithView:self.containerView
             completion:^{
         [wself.cardView becomeFirstResponder];
     }];
@@ -103,6 +119,44 @@
     return _activityView;
 }
 
+- (void)updateView
+{
+    TXHCardSide cardSide = self.cardView.cardSide;
+    [self updateLabelsForCardSide:cardSide];
+}
+
+- (void)updateLabelsForCardSide:(TXHCardSide)cardSide
+{
+    if (self.isValid)
+    {
+        self.mainLabel.text        = NSLocalizedString(@"SALESMAN_PAYMENT_CNP_MAIN_LABEL_TEXT_CARD_VALID", nil);
+        self.descriptionLabel.text = NSLocalizedString(@"SALESMAN_PAYMENT_CNP_DESCRIPTION_LABEL_TEXT_CARD_VALID", nil);
+    }
+    else
+    {
+        self.mainLabel.text        = [self mainLabelTextForCardSide:cardSide];
+        self.descriptionLabel.text = [self descriptionLabelTextForCardSide:cardSide];
+    }
+}
+
+- (NSString *)mainLabelTextForCardSide:(TXHCardSide)cardSide
+{
+    switch (cardSide) {
+        case TXHCardSideFront: return NSLocalizedString(@"SALESMAN_PAYMENT_CNP_MAIN_LABEL_TEXT_CARD_FRONT", nil);
+        case TXHCardSideBack:  return NSLocalizedString(@"SALESMAN_PAYMENT_CNP_MAIN_LABEL_TEXT_CARD_BACK", nil);
+    }
+    return nil;
+}
+
+- (NSString *)descriptionLabelTextForCardSide:(TXHCardSide)cardSide
+{
+    switch (cardSide) {
+        case TXHCardSideFront: return NSLocalizedString(@"SALESMAN_PAYMENT_CNP_DESCRIPTION_LABEL_TEXT_CARD_FRONT", nil);
+        case TXHCardSideBack:  return NSLocalizedString(@"SALESMAN_PAYMENT_CNP_DESCRIPTION_LABEL_TEXT_CARD_BACK", nil);
+    }
+    return nil;
+}
+
 #pragma mark - TXHScanersManagerDelegate
 
 - (void)scannerManager:(TXHScanersManager *)manager didRecognizeMSRCardTrack:(NSString *)cardTrackData
@@ -115,6 +169,11 @@
 }
 
 #pragma mark - TXHCardViewDelegate
+
+- (void)txhCardView:(TXHCardView *)cardView didFlipToSide:(TXHCardSide)cardSide
+{
+    [self updateLabelsForCardSide:cardSide];
+}
 
 - (void)txhCardView:(TXHCardView *)cardView didFinishValid:(BOOL)valid withCardInfo:(PKCard *)card
 {

@@ -23,6 +23,7 @@ typedef NS_ENUM(NSUInteger, TXHCardSide)
 
 @optional
 - (void)txhCardView:(TXHCardView *)cardView didFinishValid:(BOOL)valid withCardInfo:(PKCard *)card;
+- (void)txhCardView:(TXHCardView *)cardView didFlipToSide:(TXHCardSide)cardSide;
 - (void)txhCardViewDidStartEditing:(TXHCardView *)cardView;
 - (void)txhCardViewDidCancel:(TXHCardView *)cardView;
 
@@ -38,14 +39,17 @@ typedef NS_ENUM(NSUInteger, TXHCardSide)
 @property (nonatomic, assign) BOOL skipFronSide;
 @property (nonatomic, assign, readonly, getter = isValid) BOOL valid;
 
+@property (nonatomic, readonly) TXHCardSide cardSide;
+
 @property (nonatomic, weak) IBOutlet id<TXHCardViewDelegate> delegate;
 
 @property (nonatomic, strong, readonly) TXHCardBackView  *cardBackView;
 @property (nonatomic, strong, readonly) TXHCardFrontView *cardFrontView;
 
 - (instancetype)initWithFrontView:(TXHCardFrontView *)frontView backView:(TXHCardBackView *)backView;
+
 - (void)flipToCardSide:(TXHCardSide)cardSide;
-- (TXHCardSide)currentCardSide;
+
 - (void)reset;
 
 

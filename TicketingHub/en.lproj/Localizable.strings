@@ -54,8 +54,10 @@
 "PRINTER_ERROR_UNKNOWN_RECOVERY"                = "";
 
 "ERROR_DISMISS_BUTTON_TITLE" = "OK";
-"ERROR_TITLE" = "Error";
+"ERROR_TITLE"                = "Error";
 "PRINTER_ERROR_TITLE"        = "Printing Error";
+
+"NO_PRINTERS_TEXT"           = "No Printers";
 
 /* Activity labels - Printers */
 
@@ -214,3 +216,14 @@
 
 "SALESMAN_PAYMENT_HANDPOINT_DEVICE_CONNECTED_DESCRIPTION"    = "To proceed with a card payment,\ntap continue and follow the instructions on the reader";
 "SALESMAN_PAYMENT_HANDPOINT_DEVICE_DISCONNECTED_DESCRIPTION" = "To proceed with a card payment,\nplease connect a handpoint device";
+
+/* Salesman Payment - CNP */
+
+"SALESMAN_PAYMENT_CNP_MAIN_LABEL_TEXT_CARD_FRONT"        = "Card Details";
+"SALESMAN_PAYMENT_CNP_MAIN_LABEL_TEXT_CARD_BACK"         = "Security Number";
+"SALESMAN_PAYMENT_CNP_MAIN_LABEL_TEXT_CARD_VALID"        = "Valid Card Details";
+
+"SALESMAN_PAYMENT_CNP_DESCRIPTION_LABEL_TEXT_CARD_FRONT" = "Enter your card number and expiry date in the card below";
+"SALESMAN_PAYMENT_CNP_DESCRIPTION_LABEL_TEXT_CARD_BACK"  = "Enter the last 3 digits on the back of the card";
+"SALESMAN_PAYMENT_CNP_DESCRIPTION_LABEL_TEXT_CARD_VALID" = "To proceed with a payment, tap continue";
+

@@ -99,11 +99,14 @@
 
 - (void)flipToCardSide:(TXHCardSide)cardSide
 {
-    if (cardSide == [self currentCardSide])
+    if (cardSide == [self cardSide])
         return;
     
     UIView *fromView = [self visibleCardView];
     UIView *toView = [self hiddenCardView];
+    
+    if ([self.delegate respondsToSelector:@selector(txhCardView:didFlipToSide:)])
+        [self.delegate txhCardView:self didFlipToSide:cardSide];
     
     [UIView transitionFromView:fromView
                         toView:toView
@@ -176,7 +179,7 @@
     self.valid = self.backSideValid && (self.skipFronSide || self.frontSideValid);
 }
 
-- (TXHCardSide)currentCardSide
+- (TXHCardSide)cardSide
 {
     return self.fliped ? TXHCardSideBack : TXHCardSideFront;
 }
