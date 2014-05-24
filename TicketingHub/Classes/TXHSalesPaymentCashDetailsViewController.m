@@ -312,6 +312,7 @@
 
 - (void)txhFullScreenKeyboardViewControllerDismiss:(TXHFullScreenKeyboardViewController *)controller
 {
+    [self.givenAmountValueField resignFirstResponder];
     [self hideFullScreen];
 }
 

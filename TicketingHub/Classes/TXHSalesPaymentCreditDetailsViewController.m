@@ -239,6 +239,7 @@
 
 - (void)txhFullScreenKeyboardViewControllerDismiss:(TXHFullScreenKeyboardViewController *)controller
 {
+    [self.cardView resignFirstResponder];
     [self hideAndResetCard];
 }
 

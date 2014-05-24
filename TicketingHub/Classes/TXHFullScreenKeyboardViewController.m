@@ -213,7 +213,7 @@
     
     [UIView animateWithDuration:ANIMATION_DURATION
                           delay:0.0
-                        options:UIViewAnimationOptionLayoutSubviews
+                        options:UIViewAnimationOptionLayoutSubviews | UIViewAnimationCurveEaseIn
                      animations:^{
                          [self moveCustomViewToContainterCenter];
                          [self setDestinationBackgroundColor];
