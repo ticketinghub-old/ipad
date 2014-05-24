@@ -226,36 +226,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Afw-Y7-e2L">
-                                <rect key="frame" x="20" y="16" width="984" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title=""/>
-                                    <segment title=""/>
-                                </segments>
-                                <color key="tintColor" red="0.16078431369999999" green="0.47843137250000001" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="didChangePaymentMethod:" destination="2z9-so-MKI" eventType="valueChanged" id="HVk-aV-YKC"/>
-                                </connections>
-                            </segmentedControl>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lsY-im-HHc">
-                                <rect key="frame" x="0.0" y="59" width="1024" height="1"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQd-0A-MHH">
-                                <rect key="frame" x="0.0" y="59" width="1024" height="709"/>
+                                <rect key="frame" x="0.0" y="80" width="1024" height="688"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1r-cs-dch" customClass="PPiFlatSegmentedControl">
+                                <rect key="frame" x="125" y="15" width="774" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="V7U-ga-N4Z"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Afw-Y7-e2L" firstAttribute="top" secondItem="xcT-hZ-I7c" secondAttribute="bottom" constant="16" id="0DW-DA-SVp"/>
-                            <constraint firstItem="Afw-Y7-e2L" firstAttribute="leading" secondItem="0ti-f9-XGT" secondAttribute="leading" constant="20" id="8Pd-gr-BxV"/>
                             <constraint firstItem="Wn5-rI-pgt" firstAttribute="top" secondItem="HQd-0A-MHH" secondAttribute="bottom" id="9wv-UI-iSb"/>
-                            <constraint firstItem="HQd-0A-MHH" firstAttribute="top" secondItem="0ti-f9-XGT" secondAttribute="top" constant="59" id="QMQ-vd-clN"/>
-                            <constraint firstAttribute="trailing" secondItem="Afw-Y7-e2L" secondAttribute="trailing" constant="20" id="b8h-RF-uIL"/>
+                            <constraint firstItem="L1r-cs-dch" firstAttribute="leading" secondItem="0ti-f9-XGT" secondAttribute="leading" constant="125" id="Ap5-oB-0IB"/>
+                            <constraint firstItem="L1r-cs-dch" firstAttribute="top" secondItem="xcT-hZ-I7c" secondAttribute="bottom" constant="15" id="Goa-bB-Dtu"/>
+                            <constraint firstItem="HQd-0A-MHH" firstAttribute="top" secondItem="0ti-f9-XGT" secondAttribute="top" constant="80" id="OPw-Th-NOc"/>
+                            <constraint firstAttribute="trailing" secondItem="L1r-cs-dch" secondAttribute="trailing" constant="125" id="ZsY-yD-GZm"/>
                             <constraint firstItem="HQd-0A-MHH" firstAttribute="leading" secondItem="0ti-f9-XGT" secondAttribute="leading" id="ddR-9J-hoa"/>
                             <constraint firstAttribute="trailing" secondItem="HQd-0A-MHH" secondAttribute="trailing" id="yEJ-lj-Yrf"/>
                         </constraints>
@@ -263,7 +254,7 @@
                     </view>
                     <connections>
                         <outlet property="containerView" destination="HQd-0A-MHH" id="lzd-fc-W68"/>
-                        <outlet property="paymentTypeSegmentedControl" destination="Afw-Y7-e2L" id="5P4-Dv-4RS"/>
+                        <outlet property="paymentTypeSegmentedControl" destination="L1r-cs-dch" id="feO-gW-6dp"/>
                         <segue destination="IVP-nR-Uny" kind="custom" identifier="TXHSalesPaymentCardDetailsViewController" customClass="TXHEmbeddingSegue" id="Bb2-UM-Irg"/>
                         <segue destination="QH0-TV-maE" kind="custom" identifier="TXHSalesPaymentCashDetailsViewController" customClass="TXHEmbeddingSegue" id="Ihd-er-Pff"/>
                         <segue destination="QXG-6t-PVr" kind="custom" identifier="TXHSalesPaymentCreditDetailsViewController" customClass="TXHEmbeddingSegue" id="9J5-2Y-C67"/>
@@ -1157,35 +1148,35 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toal amount" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pde-4l-dh6">
-                                                <rect key="frame" x="0.0" y="0.0" width="136" height="33"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="142" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="28"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="28"/>
                                                 <color key="textColor" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GrL-4Y-xvP">
-                                                <rect key="frame" x="0.0" y="237" width="90" height="33"/>
+                                                <rect key="frame" x="0.0" y="239" width="93" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="28"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="28"/>
                                                 <color key="textColor" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Given amount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aB2-hQ-7pE">
-                                                <rect key="frame" x="0.0" y="96" width="156" height="33"/>
+                                                <rect key="frame" x="0.0" y="97" width="163" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="28"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="28"/>
                                                 <color key="textColor" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gM7-R1-L4A">
-                                                <rect key="frame" x="447" y="-10" width="26" height="52"/>
+                                                <rect key="frame" x="447" y="-9" width="26" height="52"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="45"/>
                                                 <color key="textColor" red="0.17254901959999999" green="0.49803921569999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewR-q4-axR">
-                                                <rect key="frame" x="447" y="228" width="26" height="52"/>
+                                                <rect key="frame" x="447" y="230" width="26" height="52"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="45"/>
@@ -1193,7 +1184,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Qr-Eu-19O">
-                                                <rect key="frame" x="248" y="78" width="245" height="70"/>
+                                                <rect key="frame" x="248" y="79" width="245" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="00.00" placeholder="00,00" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MJT-cc-rlm" customClass="TSCurrencyTextField">

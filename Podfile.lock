@@ -22,11 +22,16 @@ PODS:
   - Block-KVO (2.2.1)
   - DCTCoreDataStack (1.1)
   - Expecta (0.2.4)
+  - FontAwesome+iOS (0.1.1)
   - iOS-api (0.0.99):
     - AFNetworking (~> 2.2.0)
     - DCTCoreDataStack (~> 1.1)
   - OCMock (2.2.4)
   - PaymentKit (1.0.5)
+  - PPiAwesomeButton (1.4.7):
+    - FontAwesome+iOS
+  - PPiFlatSegmentedControl (1.3.8):
+    - PPiAwesomeButton
   - PPSSignatureView (0.1.0)
   - RMPickerViewController (1.1.1)
   - SevenSwitch (1.3.0)
@@ -49,6 +54,7 @@ DEPENDENCIES:
   - Expecta (~> 0.2.3)
   - iOS-api (from `.`)
   - OCMock (~> 2.2.3)
+  - PPiFlatSegmentedControl (~> 1.3.8)
   - PPSSignatureView (from `https://github.com/bartekhugo/PPSSignatureView.git`, branch `svg`)
   - RMPickerViewController (~> 1.1.0)
   - SevenSwitch (~> 1.3.0)
@@ -78,9 +84,12 @@ SPEC CHECKSUMS:
   Block-KVO: dc4bf1bb23007380901e047da884c130776007e9
   DCTCoreDataStack: eb0d05f4e27f92ff29fe559f66946baa939cafa7
   Expecta: 112bcafa2304ee0f3c5e586505f24555a47b25d5
+  FontAwesome+iOS: 3c574273fb301c2e0a88f983551562bf8768b623
   iOS-api: a522b639f7ea241a4b872d6e2fda3ce0fc240dab
   OCMock: 6db79185520e24f9f299548f2b8b07e41d881bd5
   PaymentKit: 14b54835f57ae9e2bf5628140fcd67001740cba2
+  PPiAwesomeButton: efcaafab6c0207427a3216f34933c89c2bc93a70
+  PPiFlatSegmentedControl: 978ac3a6de615a734c5988b24101b1c14983ce13
   PPSSignatureView: 83ffa630306afc93ad595e5a6e98a0dba1c8a49b
   RMPickerViewController: 67e8e6f5d81a4f01a6dcccd88a6d2643647fba00
   SevenSwitch: 70af67d75bc2e477d45a984cf1f3123564b04eee

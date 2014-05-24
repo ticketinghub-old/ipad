@@ -17,9 +17,11 @@
 #import "TXHOrderManager.h"
 
 #import "TXHEmbeddingSegue.h"
-#import "UISegmentedControl+NSArray.h"
+#import <PPiFlatSegmentedControl/PPiFlatSegmentedControl.h>     // This is shit! but im in a rush...
 #import "TXHActivityLabelView.h"
 #import <Block-KVO/MTKObserving.h>
+#import "UIColor+TicketingHub.h"
+#import "UIFont+TicketingHub.h"
 
 
 @interface TXHSalesPaymentViewController () <UICollectionViewDelegateFlowLayout>
@@ -28,10 +30,11 @@
 
 @property (weak, nonatomic) TXHActivityLabelView *activityView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *paymentTypeSegmentedControl;
+@property (weak, nonatomic) IBOutlet PPiFlatSegmentedControl *paymentTypeSegmentedControl;
 
 @property (strong, nonatomic) UIViewController<TXHSalesPaymentContentViewControllerProtocol> *paymentDetailsController;
 @property (strong, nonatomic) TXHPaymentOptionsManager *paymentOptionsManager;
+@property (strong, nonatomic) TXHPaymentOption         *selectedPaymentOption;
 
 
 @end
@@ -60,6 +63,8 @@
     [self.paymentOptionsManager loadPaymentOptionsWithCompletion:^(NSArray *paymentOptions, NSError *error) {
 
         [wself.activityView hide];
+
+        wself.selectedPaymentOption = [paymentOptions firstObject];
         
         [wself reloadView];
         
@@ -81,10 +86,42 @@
 {
     NSArray *paymentNames = [self payentOptionDisplayNames];
     
-    [self.paymentTypeSegmentedControl setItemsFromArray:paymentNames];
-    [self.paymentTypeSegmentedControl setSelectedSegmentIndex:0];
+    __weak typeof(self) wself = self;
     
+    selectionBlock selectionBlock = ^(NSUInteger segmentIndex) {
+        wself.selectedPaymentOption = [wself.paymentOptionsManager paymentOptionsAtIndex:segmentIndex];
+    };
+    
+    PPiFlatSegmentedControl *segmentedControl = [[PPiFlatSegmentedControl alloc] initWithFrame:self.paymentTypeSegmentedControl.frame
+                                                                                         items:paymentNames
+                                                                                  iconPosition:IconPositionLeft
+                                                                             andSelectionBlock:selectionBlock
+                                                                                iconSeparation:0.0];
+
+    segmentedControl.layer.cornerRadius = 15.0f;
+    segmentedControl.borderWidth        = 3.0f;
+    segmentedControl.color              = [UIColor whiteColor];
+    segmentedControl.borderColor        = [UIColor txhVeryLightBlueColor];
+    segmentedControl.selectedColor      = [UIColor txhVeryLightBlueColor];
+
+    segmentedControl.textAttributes         = @{NSFontAttributeName:[UIFont txhThinFontWithSize:25.0f],
+                                                NSForegroundColorAttributeName:[UIColor txhBlueColor]};
+    segmentedControl.selectedTextAttributes = @{NSFontAttributeName:[UIFont txhThinFontWithSize:25.0f],
+                                                NSForegroundColorAttributeName:[UIColor txhBlueColor]};
+    
+    [self.view addSubview:segmentedControl];
+    
+    [self.paymentTypeSegmentedControl removeFromSuperview];
+    self.paymentTypeSegmentedControl = segmentedControl;
+
     self.paymentTypeSegmentedControl.hidden = [paymentNames count] == 0;
+}
+
+- (void)setSelectedPaymentOption:(TXHPaymentOption *)selectedPaymentOption
+{
+    _selectedPaymentOption = selectedPaymentOption;
+    
+    [self reloadSelectedController];
 }
 
 - (NSArray *)payentOptionDisplayNames
@@ -92,7 +129,15 @@
     NSArray *paymentOptions = self.paymentOptionsManager.paymentOptions;
     NSArray *paymentNames = [paymentOptions valueForKeyPath:@"displayName"];
 
-    return paymentNames;
+    NSMutableArray *displayNameDictionaries = [NSMutableArray array];
+    
+    for (NSString *name in paymentNames)
+    {
+        NSDictionary *dic = @{@"text" : name};
+        [displayNameDictionaries addObject:dic];
+    }
+    
+    return displayNameDictionaries;
 }
 
 - (void)reloadSelectedController
@@ -103,13 +148,13 @@
     [self performSegueWithIdentifier:identifier sender:self];
 }
 
-- (TXHPaymentOption *)selectedPaymentOption
-{
-    NSUInteger selectedIndex = self.paymentTypeSegmentedControl.selectedSegmentIndex;
-    TXHPaymentOption *selectedOption = [self.paymentOptionsManager paymentOptionsAtIndex:selectedIndex];
-
-    return selectedOption;
-}
+//- (TXHPaymentOption *)selectedPaymentOption
+//{
+//    NSUInteger selectedIndex = self.paymentTypeSegmentedControl.selectedSegmentIndex;
+//    TXHPaymentOption *selectedOption = [self.paymentOptionsManager paymentOptionsAtIndex:selectedIndex];
+//
+//    return selectedOption;
+//}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

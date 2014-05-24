@@ -9,6 +9,7 @@ pod 'PPSSignatureView', :git => 'https://github.com/bartekhugo/PPSSignatureView.
 
 pod 'AKPickerView',                                 '~> 0.0.2'
 pod 'Block-KVO',                                    '~> 2.2.1'
+pod 'PPiFlatSegmentedControl',                      '~> 1.3.8'
 pod 'RMPickerViewController',                       '~> 1.1.0'
 pod 'SevenSwitch',                                  '~> 1.3.0'
 pod 'Stripe',                                       '~> 1.1.2'
