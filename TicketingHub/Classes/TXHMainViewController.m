@@ -76,6 +76,7 @@
     else if ([segue.identifier isEqualToString:@"SalesOrDoormanContainerEmbed"])
     {
         UINavigationController *navController = segue.destinationViewController;
+        
         TXHSalesmanDoormanContainerViewController *sdContainer = (TXHSalesmanDoormanContainerViewController *)navController.topViewController;
         sdContainer.productManager = self.productManager;
     }

@@ -4,10 +4,10 @@ inhibit_all_warnings!
 
 pod 'iOS-api', :podspec => '.'
 
-pod 'TapkuLibrary',     :git => 'https://github.com/bartekhugo/tapkulibrary.git',       :branch => 'ios7'
-pod 'PPSSignatureView', :git => 'https://github.com/bartekhugo/PPSSignatureView.git',   :branch => 'svg'
+pod 'TapkuLibrary',         :git => 'https://github.com/bartekhugo/tapkulibrary.git',       :branch => 'ios7'
+pod 'PPSSignatureView',     :git => 'https://github.com/bartekhugo/PPSSignatureView.git',   :branch => 'svg'
+pod 'RMStepsController',    :git => 'https://github.com/bartekhugo/RMStepsController.git',  :branch => 'tickethub'
 
-pod 'AKPickerView',                                 '~> 0.0.2'
 pod 'Block-KVO',                                    '~> 2.2.1'
 pod 'PPiFlatSegmentedControl',                      '~> 1.3.8'
 pod 'RMPickerViewController',                       '~> 1.1.0'
