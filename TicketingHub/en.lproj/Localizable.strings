@@ -57,7 +57,7 @@
 "ERROR_TITLE"                = "Error";
 "PRINTER_ERROR_TITLE"        = "Printing Error";
 
-"NO_PRINTERS_TEXT"           = "No Printers";
+"NO_PRINTERS_TEXT"           = "Not Available";
 
 /* Activity labels - Printers */
 

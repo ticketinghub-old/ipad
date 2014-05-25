@@ -95,6 +95,7 @@
 {
     UILabel *label = [[UILabel alloc] initWithFrame:self.view.bounds];
     label.textAlignment = NSTextAlignmentCenter;
+    label.numberOfLines = 0;
     label.textColor     = [UIColor txhDarkBlueColor];
     label.font          = [UIFont txhThinFontWithSize:23.0];
     label.text          = NSLocalizedString(@"NO_PRINTERS_TEXT", nil);
