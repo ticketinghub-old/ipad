@@ -81,8 +81,10 @@
                                               cellIdentifier:@"printerCell"
                                           configureCellBlock:^(id cell, id item) {
                                               UITableViewCell *aCell = (UITableViewCell *)cell;
+                                              aCell.textLabel.textAlignment = NSTextAlignmentCenter;
+                                              aCell.textLabel.font = [UIFont txhThinFontWithSize:20.0];
+
                                               TXHPrinter *printer = (TXHPrinter *)item;
-                                              
                                               aCell.textLabel.text = printer.displayName;
                                           }];
     if (![printers count])
