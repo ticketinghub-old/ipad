@@ -99,7 +99,7 @@
                                                                                 iconSeparation:0.0];
 
     segmentedControl.layer.cornerRadius = 15.0f;
-    segmentedControl.borderWidth        = 3.0f;
+    segmentedControl.borderWidth        = 2.0f;
     segmentedControl.color              = [UIColor whiteColor];
     segmentedControl.borderColor        = [UIColor txhBlueColor];
     segmentedControl.selectedColor      = [UIColor txhBlueColor];
