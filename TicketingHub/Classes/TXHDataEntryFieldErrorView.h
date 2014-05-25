@@ -15,4 +15,6 @@
 @property (strong, nonatomic) UIColor *messageColor;
 @property (strong, nonatomic) UIColor *messageBackgroundColor;
 
+@property (strong, nonatomic) UIFont *textFont;
+
 @end

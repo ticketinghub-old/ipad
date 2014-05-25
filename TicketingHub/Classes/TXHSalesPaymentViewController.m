@@ -101,13 +101,13 @@
     segmentedControl.layer.cornerRadius = 15.0f;
     segmentedControl.borderWidth        = 3.0f;
     segmentedControl.color              = [UIColor whiteColor];
-    segmentedControl.borderColor        = [UIColor txhVeryLightBlueColor];
-    segmentedControl.selectedColor      = [UIColor txhVeryLightBlueColor];
+    segmentedControl.borderColor        = [UIColor txhBlueColor];
+    segmentedControl.selectedColor      = [UIColor txhBlueColor];
 
     segmentedControl.textAttributes         = @{NSFontAttributeName:[UIFont txhThinFontWithSize:25.0f],
                                                 NSForegroundColorAttributeName:[UIColor txhBlueColor]};
     segmentedControl.selectedTextAttributes = @{NSFontAttributeName:[UIFont txhThinFontWithSize:25.0f],
-                                                NSForegroundColorAttributeName:[UIColor txhBlueColor]};
+                                                NSForegroundColorAttributeName:[UIColor whiteColor]};
     
     [self.view addSubview:segmentedControl];
     

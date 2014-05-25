@@ -31,7 +31,6 @@
     self.messageLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
-    self.messageLabel.font = [UIFont systemFontOfSize:12.5f];
     self.messageLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.messageLabel];
     
@@ -50,11 +49,6 @@
 
     self.layer.cornerRadius = 5.0f;
     
-    self.messageBackgroundColor = [UIColor colorWithRed:28.0f / 255.0f
-                                                  green:60.0f / 255.0f
-                                                   blue:84.0f / 255.0f
-                                                  alpha:1.0f];
-    self.messageColor = [UIColor whiteColor];
     self.message = @"";
 }
 
@@ -68,13 +62,7 @@
     
     if (self.hidden)
         return;
-//    
-//    NSDictionary *attributesDict = @{NSFontAttributeName: self.messageLabel.font};
-//    NSAttributedString *attributedMessage = [[NSAttributedString alloc] initWithString:message attributes:attributesDict];
-//    CGSize size = [attributedMessage size];
-//    CGRect bounds = self.messageLabel.bounds;
-//    bounds.size = size;
-//    self.messageLabel.bounds = bounds;
+
     self.messageLabel.text = message;
     [self layoutIfNeeded];
 }
@@ -83,7 +71,13 @@
     self.messageLabel.textColor = messageColor;
 }
 
-- (void)setMessageBackgroundColor:(UIColor *)messageBackgroundColor {
+- (void)setTextFont:(UIFont *)textFont{
+    _textFont = textFont;
+    self.messageLabel.font = textFont;
+}
+
+- (void)setMessageBackgroundColor:(UIColor *)messageBackgroundColor
+{
     _messageBackgroundColor = messageBackgroundColor;
     self.backgroundColor = messageBackgroundColor;
     self.messageLabel.backgroundColor = messageBackgroundColor;

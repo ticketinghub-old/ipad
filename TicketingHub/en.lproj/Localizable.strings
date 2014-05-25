@@ -227,3 +227,6 @@
 "SALESMAN_PAYMENT_CNP_DESCRIPTION_LABEL_TEXT_CARD_BACK"  = "Enter the last 3 digits on the back of the card";
 "SALESMAN_PAYMENT_CNP_DESCRIPTION_LABEL_TEXT_CARD_VALID" = "To proceed with a payment, tap continue";
 
+/* Salesman Completion */
+
+"SALESMAN_COMPLETION_UPDATING_CUTOMER_MESSAGE" = "Updating Order Details";
