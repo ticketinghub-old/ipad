@@ -139,14 +139,18 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
 
 #pragma mark Actions
 
-- (IBAction)login:(id)sender {
+- (IBAction)login:(id)sender
+{
     [self.activityIndicator startAnimating];
+    [self setLoginFieldsEnabled:NO];
     
     __weak typeof(self) wself = self;
     [TXHTICKETINHGUBCLIENT fetchSuppliersForUsername:self.userField.text
                                             password:self.passwordField.text
                                       withCompletion:^(NSArray *suppliers, NSError *error) {
                                           [wself.activityIndicator stopAnimating];                                          
+                                          [wself setLoginFieldsEnabled:YES];
+                                          
                                           if (error)
                                           {
                                               [wself shakeFields];
@@ -156,6 +160,12 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
                                           
                                           [wself loginCompleted];
                                       }];
+}
+
+- (void)setLoginFieldsEnabled:(BOOL)enabled
+{
+    self.userField.enabled     = enabled;
+    self.passwordField.enabled = enabled;
 }
 
 - (void)shakeFields
