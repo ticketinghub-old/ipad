@@ -28,16 +28,16 @@
                                 </connections>
                             </containerView>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ee0-R6-44p">
-                                <rect key="frame" x="0.0" y="75" width="1024" height="623"/>
+                                <rect key="frame" x="0.0" y="75" width="1024" height="693"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </containerView>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laq-oY-G0v">
-                                <rect key="frame" x="0.0" y="698" width="1024" height="70"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laq-oY-G0v">
+                                <rect key="frame" x="0.0" y="663" width="1024" height="105"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="gCb-I1-reW"/>
+                                    <constraint firstAttribute="height" constant="105" id="gCb-I1-reW"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="ECv-yP-c3G" kind="embed" identifier="TXHSalesCompletionViewController" id="9Fg-Eq-dIt"/>
@@ -52,8 +52,8 @@
                             <constraint firstAttribute="trailing" secondItem="laq-oY-G0v" secondAttribute="trailing" id="5KT-tZ-sQO"/>
                             <constraint firstAttribute="trailing" secondItem="Ee0-R6-44p" secondAttribute="trailing" id="8f2-Ke-xf2"/>
                             <constraint firstItem="vZg-xY-3ej" firstAttribute="leading" secondItem="JWv-YI-EIi" secondAttribute="leading" id="ALE-wX-jsw"/>
-                            <constraint firstItem="Ee0-R6-44p" firstAttribute="top" secondItem="vZg-xY-3ej" secondAttribute="bottom" id="L2y-5x-CdY"/>
-                            <constraint firstItem="laq-oY-G0v" firstAttribute="top" secondItem="Ee0-R6-44p" secondAttribute="bottom" id="Ukw-MB-Tng"/>
+                            <constraint firstItem="rye-Fa-MVC" firstAttribute="top" secondItem="Ee0-R6-44p" secondAttribute="bottom" id="OYm-SX-4cW"/>
+                            <constraint firstItem="Ee0-R6-44p" firstAttribute="top" secondItem="JWv-YI-EIi" secondAttribute="top" constant="75" id="WV7-mD-1hZ"/>
                             <constraint firstAttribute="trailing" secondItem="vZg-xY-3ej" secondAttribute="trailing" id="fyy-Ax-CRz"/>
                             <constraint firstItem="vZg-xY-3ej" firstAttribute="top" secondItem="SVV-1f-ahD" secondAttribute="bottom" id="neQ-3r-Zxe"/>
                         </constraints>
@@ -66,6 +66,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="1024" height="768"/>
                     <connections>
+                        <outlet property="contentContainerTopConstraint" destination="WV7-mD-1hZ" id="U4p-hy-Ast"/>
                         <outlet property="contentsContainer" destination="Ee0-R6-44p" id="cVE-5v-zwJ"/>
                         <segue destination="2z9-so-MKI" kind="custom" identifier="Payment" customClass="TXHEmbeddingSegue" id="FY2-hM-zEj"/>
                         <segue destination="8RN-Pr-hoD" kind="custom" identifier="Order Completion" customClass="TXHEmbeddingSegue" id="ANc-Tn-Zs5"/>
@@ -328,6 +329,9 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" red="0.49803921569999998" green="0.66274509800000003" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBorderColor">
+                                        <color key="value" red="0.49803921569999998" green="0.66274509800000003" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="normalFillColor">
                                         <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
@@ -566,6 +570,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="105"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="UpgradeCell" id="Qns-VZ-NZ9" customClass="TXHSalesUpgradeCell">
                                         <rect key="frame" x="0.0" y="22" width="1024" height="200"/>
@@ -790,6 +795,7 @@
                                     <constraint firstAttribute="width" constant="575" id="Gyi-s9-lop"/>
                                 </constraints>
                                 <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="105"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Pb3-E9-Dnb">
                                     <size key="itemSize" width="575" height="25"/>
                                     <size key="headerReferenceSize" width="723" height="50"/>
@@ -914,159 +920,223 @@
                         <viewControllerLayoutGuide type="top" id="KnN-mc-Frs"/>
                         <viewControllerLayoutGuide type="bottom" id="NaC-sK-fym"/>
                     </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5wJ-Ua-TG0">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="70"/>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5wJ-Ua-TG0" customClass="TXHGradientView">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="105"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZI-8j-M21">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GP7-Ss-ICN" customClass="TXHBorderedButton">
+                                <rect key="frame" x="30" y="15" width="180" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="YQA-EY-H9D"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GP7-Ss-ICN" customClass="TXHBorderedButton">
-                                <rect key="frame" x="20" y="15" width="200" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" priority="999" constant="200" id="ppP-Fv-2Ma"/>
-                                    <constraint firstAttribute="height" constant="40" id="zUR-ix-7X9"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
                                 <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <state key="normal" title="Cancel order">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="4"/>
+                                        <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <integer key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.91372549020000005" green="0.93725490199999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBorderColor">
+                                        <color key="value" red="0.91372549020000005" green="0.93725490199999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="normalFillColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="highlightedFillColor">
-                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.91372549020000005" green="0.93725490199999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
-                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="highlightedTextColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="leftButtonAction:" destination="ECv-yP-c3G" eventType="touchUpInside" id="HL3-Lo-8qV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8AU-qh-5zk" customClass="TXHBorderedButton">
-                                <rect key="frame" x="804" y="15" width="200" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8AU-qh-5zk" customClass="TXHBorderedButton">
+                                <rect key="frame" x="237" y="15" width="550" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25098040699958801" green="0.50196081399917603" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="O71-g0-IZC"/>
-                                    <constraint firstAttribute="width" constant="200" id="pKx-QC-GPI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
                                 <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                <state key="normal" title="Continue order">
-                                    <color key="titleColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="4"/>
+                                        <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <integer key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.094117647060000004" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="value" red="0.17254901959999999" green="0.49803921569999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBorderColor">
+                                        <color key="value" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="normalFillColor">
-                                        <color key="value" red="0.094117647060000004" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="value" red="0.17254901959999999" green="0.49803921569999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="highlightedFillColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
                                         <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="highlightedTextColor">
-                                        <color key="value" red="0.094117647060000004" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="rightButtonAction:" destination="ECv-yP-c3G" eventType="touchUpInside" id="caV-X5-UsJ"/>
+                                    <action selector="middleButtonAction:" destination="ECv-yP-c3G" eventType="touchUpInside" id="JLv-OQ-TeO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEJ-gu-l3U" customClass="TXHBorderedButton">
-                                <rect key="frame" x="334" y="15" width="150" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yBg-Xu-lVC" customClass="TXHBorderedButton">
+                                <rect key="frame" x="237" y="15" width="260" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
                                 <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                <state key="normal" title="Print Recipt">
-                                    <color key="titleColor" red="0.094117647060000004" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="deviceRGB"/>
+                                <state key="normal" title="Print Receipt">
+                                    <color key="titleColor" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="4"/>
+                                        <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <integer key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.094117647060000004" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="value" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBorderColor">
+                                        <color key="value" red="0.17254901959999999" green="0.49803921569999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="normalFillColor">
-                                        <color key="value" red="0.094117647060000004" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="value" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="highlightedFillColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.17254901959999999" green="0.49803921569999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="highlightedTextColor">
-                                        <color key="value" red="0.094117647060000004" green="0.65098039220000004" blue="0.31764705879999999" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="middleButtonAction:" destination="ECv-yP-c3G" eventType="touchUpInside" id="OOX-Sf-Mzv"/>
+                                    <action selector="middleLeftButtonAction:" destination="ECv-yP-c3G" eventType="touchUpInside" id="teD-e1-eMk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xXa-XD-TZi" customClass="TXHBorderedButton">
+                                <rect key="frame" x="527" y="15" width="260" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <state key="normal" title="Print Tickets">
+                                    <color key="titleColor" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.17254901959999999" green="0.49803921569999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBorderColor">
+                                        <color key="value" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalFillColor">
+                                        <color key="value" red="0.17254901959999999" green="0.49803921569999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedFillColor">
+                                        <color key="value" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedTextColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="middleRightButtonAction:" destination="ECv-yP-c3G" eventType="touchUpInside" id="3Jg-Hg-dWU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEJ-gu-l3U" customClass="TXHBorderedButton">
+                                <rect key="frame" x="814" y="15" width="180" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <state key="normal" title="Next Customer">
+                                    <color key="titleColor" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.91372549020000005" green="0.93725490199999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBorderColor">
+                                        <color key="value" red="0.91372549020000005" green="0.93725490199999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalFillColor">
+                                        <color key="value" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedFillColor">
+                                        <color key="value" red="0.91372549020000005" green="0.93725490199999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
+                                        <color key="value" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedTextColor">
+                                        <color key="value" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="rightButtonAction:" destination="ECv-yP-c3G" eventType="touchUpInside" id="Oos-uv-nzM"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="8AU-qh-5zk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GP7-Ss-ICN" secondAttribute="trailing" constant="20" id="5CW-cp-GKp"/>
-                            <constraint firstAttribute="trailing" secondItem="8AU-qh-5zk" secondAttribute="trailing" constant="20" id="Boz-Ph-AxL"/>
-                            <constraint firstItem="GP7-Ss-ICN" firstAttribute="leading" secondItem="5wJ-Ua-TG0" secondAttribute="leading" constant="20" id="FfV-qb-pqm"/>
-                            <constraint firstItem="yZI-8j-M21" firstAttribute="leading" secondItem="5wJ-Ua-TG0" secondAttribute="leading" id="JEa-bf-hWy"/>
-                            <constraint firstAttribute="centerY" secondItem="GP7-Ss-ICN" secondAttribute="centerY" id="Pyf-ci-2rq"/>
-                            <constraint firstAttribute="trailing" secondItem="yZI-8j-M21" secondAttribute="trailing" id="UR7-ig-EZV"/>
-                            <constraint firstItem="yZI-8j-M21" firstAttribute="top" secondItem="KnN-mc-Frs" secondAttribute="bottom" id="mPo-a1-DLr"/>
-                            <constraint firstAttribute="centerY" secondItem="8AU-qh-5zk" secondAttribute="centerY" id="ulV-w0-Rve"/>
-                        </constraints>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
                     <connections>
                         <outlet property="leftButton" destination="GP7-Ss-ICN" id="9I3-YH-GAJ"/>
-                        <outlet property="middleButton" destination="kEJ-gu-l3U" id="zuH-yv-sxh"/>
-                        <outlet property="rightButton" destination="8AU-qh-5zk" id="q0J-Ol-FCC"/>
+                        <outlet property="middleButton" destination="8AU-qh-5zk" id="aje-8z-Ooc"/>
+                        <outlet property="middleLeftButton" destination="yBg-Xu-lVC" id="oMq-bN-Skm"/>
+                        <outlet property="middleRightButton" destination="xXa-XD-TZi" id="Gws-ry-bM9"/>
+                        <outlet property="rightButton" destination="kEJ-gu-l3U" id="c4k-Rr-T7d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bj5-Ga-t15" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="313" y="1018"/>
+            <point key="canvasLocation" x="427" y="1036"/>
         </scene>
         <!--Sales Payment Card Details View Controller-->
         <scene sceneID="9LO-g9-XoL">
@@ -1146,7 +1216,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81Q-kU-4eQ">
-                                <rect key="frame" x="134" y="180" width="757" height="409"/>
+                                <rect key="frame" x="134" y="129" width="757" height="409"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U8q-Hc-BG6">
@@ -1205,7 +1275,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="81Q-kU-4eQ" secondAttribute="centerX" id="TOW-vb-8fG"/>
-                            <constraint firstAttribute="centerY" secondItem="81Q-kU-4eQ" secondAttribute="centerY" id="dvy-33-2bE"/>
+                            <constraint firstAttribute="centerY" secondItem="81Q-kU-4eQ" secondAttribute="centerY" constant="50.5" id="dvy-33-2bE"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -1254,6 +1324,9 @@
                                         <integer key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.91372549020000005" green="0.93725490199999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBorderColor">
                                         <color key="value" red="0.91372549020000005" green="0.93725490199999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="normalFillColor">
@@ -1447,6 +1520,9 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" red="0.49803921569999998" green="0.66274509800000003" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBorderColor">
+                                                        <color key="value" red="0.49803921569999998" green="0.66274509800000003" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="normalFillColor">
                                                         <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </userDefinedRuntimeAttribute>
@@ -1493,11 +1569,11 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1i-M9-B5g" customClass="TXHBorderedButton">
-                                <rect key="frame" x="262" y="673" width="500" height="75"/>
+                                <rect key="frame" x="237" y="678" width="550" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="500" id="GHs-gN-sD9"/>
+                                    <constraint firstAttribute="width" constant="550" id="GHs-gN-sD9"/>
                                     <constraint firstAttribute="height" constant="75" id="gGc-jL-T6S"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
@@ -1514,13 +1590,16 @@
                                         <integer key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBorderColor">
                                         <color key="value" red="0.17254901959999999" green="0.49803921569999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="normalFillColor">
-                                        <color key="value" red="0.17254901959999999" green="0.49803921569999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="highlightedFillColor">
-                                        <color key="value" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.17254901959999999" green="0.49803921569999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
                                         <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1534,12 +1613,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKz-mb-4vQ" customClass="TXHBorderedButton">
-                                <rect key="frame" x="20" y="673" width="200" height="75"/>
+                                <rect key="frame" x="30" y="678" width="180" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="Ad0-oK-gyj"/>
-                                    <constraint firstAttribute="width" constant="200" id="dlM-tY-Erb"/>
+                                    <constraint firstAttribute="width" constant="180" id="dlM-tY-Erb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
                                 <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
@@ -1555,6 +1634,9 @@
                                         <integer key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBorderColor">
                                         <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="normalFillColor">
@@ -1579,9 +1661,9 @@
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="qwF-YL-ol3" secondAttribute="centerY" id="56f-B3-i0q"/>
                             <constraint firstAttribute="centerX" secondItem="T1i-M9-B5g" secondAttribute="centerX" id="7go-uz-ZNt"/>
-                            <constraint firstItem="mHu-hc-dk4" firstAttribute="top" secondItem="T1i-M9-B5g" secondAttribute="bottom" constant="20" id="Qsb-CV-QTD"/>
-                            <constraint firstItem="TKz-mb-4vQ" firstAttribute="leading" secondItem="4gm-xr-vC2" secondAttribute="leading" constant="20" id="aLI-sm-nSZ"/>
-                            <constraint firstItem="mHu-hc-dk4" firstAttribute="top" secondItem="TKz-mb-4vQ" secondAttribute="bottom" constant="20" id="tK7-DV-TyC"/>
+                            <constraint firstItem="mHu-hc-dk4" firstAttribute="top" secondItem="T1i-M9-B5g" secondAttribute="bottom" constant="15" id="Qsb-CV-QTD"/>
+                            <constraint firstItem="TKz-mb-4vQ" firstAttribute="leading" secondItem="4gm-xr-vC2" secondAttribute="leading" constant="30" id="aLI-sm-nSZ"/>
+                            <constraint firstItem="mHu-hc-dk4" firstAttribute="top" secondItem="TKz-mb-4vQ" secondAttribute="bottom" constant="15" id="tK7-DV-TyC"/>
                             <constraint firstAttribute="centerX" secondItem="qwF-YL-ol3" secondAttribute="centerX" id="vCh-52-8rT"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -1612,15 +1694,15 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mmb-dJ-0Ye" customClass="AKPickerView">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="75"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="73"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.91372549020000005" green="0.93725490199999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="mmb-dJ-0Ye" firstAttribute="top" secondItem="9cs-NL-AhL" secondAttribute="bottom" id="Fy0-5y-du8"/>
-                            <constraint firstItem="Tp7-lX-dy8" firstAttribute="top" secondItem="mmb-dJ-0Ye" secondAttribute="bottom" id="KpR-kE-jDQ"/>
+                            <constraint firstItem="Tp7-lX-dy8" firstAttribute="top" secondItem="mmb-dJ-0Ye" secondAttribute="bottom" constant="2" id="KpR-kE-jDQ"/>
                             <constraint firstItem="mmb-dJ-0Ye" firstAttribute="leading" secondItem="XXP-Dd-EwL" secondAttribute="leading" id="cjA-NK-F9d"/>
                             <constraint firstAttribute="trailing" secondItem="mmb-dJ-0Ye" secondAttribute="trailing" id="sFi-Cf-q82"/>
                         </constraints>
@@ -1632,7 +1714,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TdQ-al-01d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="313" y="-547"/>
+            <point key="canvasLocation" x="427" y="-75"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

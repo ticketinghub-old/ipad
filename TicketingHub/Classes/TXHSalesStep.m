@@ -10,32 +10,37 @@
 
 #import "TXHSalesStep.h"
 
-NSString * const kWizardStepTitleKey             = @"kWizardStepTitleKey";
-NSString * const kWizardStepDescriptionKey       = @"kWizardStepDescriptionKey";
-NSString * const kWizardStepContinueTitleKey     = @"kWizardStepContinueTitleKey";
+NSString * const kWizardStepTitleKey                  = @"kWizardStepTitleKey";
+NSString * const kWizardStepDescriptionKey            = @"kWizardStepDescriptionKey";
+NSString * const kWizardStepContinueTitleKey          = @"kWizardStepContinueTitleKey";
 
-NSString * const kWizardStepControllerSegueID    = @"kWizardStepControllerSegueID";
+NSString * const kWizardStepHidesStepsList            = @"kWizardStepHidesStepsList";
 
-NSString * const kWizardStepLeftButtonTitle      = @"kWizardStepLeftButtonTitle";
-NSString * const kWizardStepMiddleButtonTitle    = @"kWizardStepMiddleButtonTitle";
-NSString * const kWizardStepRightButtonTitle     = @"kWizardStepRightButtonTitle";
+NSString * const kWizardStepControllerSegueID         = @"kWizardStepControllerSegueID";
 
-NSString * const kWizardStepLeftButtonDisabled   = @"kWizardStepLeftButtonDisabled";
-NSString * const kWizardStepMiddleButtonDisabled = @"kWizardStepMiddleButtonDisabled";
-NSString * const kWizardStepRightButtonDisabled  = @"kWizardStepRightButtonDisabled";
+NSString * const kWizardStepLeftButtonTitle           = @"kWizardStepLeftButtonTitle";
+NSString * const kWizardStepMiddleLeftButtonTitle     = @"kWizardStepMiddleLeftButtonTitle";
+NSString * const kWizardStepMiddleButtonTitle         = @"kWizardStepMiddleButtonTitle";
+NSString * const kWizardStepMiddleRightButtonTitle    = @"kWizardStepMiddleRightButtonTitle";
+NSString * const kWizardStepRightButtonTitle          = @"kWizardStepRightButtonTitle";
 
-NSString * const kWizardStepHidesLeftButton      = @"kWizardStepHidesLeftButton";
-NSString * const kWizardStepHidesMiddleButton    = @"kWizardStepHidesMiddleButton";
-NSString * const kWizardStepHidesRightButton     = @"kWizardStepHidesRightButton";
+NSString * const kWizardStepLeftButtonDisabled        = @"kWizardStepLeftButtonDisabled";
+NSString * const kWizardStepMiddleLeftButtonDisabled  = @"kWizardStepMiddleLeftButtonDisabled";
+NSString * const kWizardStepMiddleButtonDisabled      = @"kWizardStepMiddleButtonDisabled";
+NSString * const kWizardStepMiddleRightButtonDisabled = @"kWizardStepMiddleRightButtonDisabled";
+NSString * const kWizardStepRightButtonDisabled       = @"kWizardStepRightButtonDisabled";
 
-NSString * const kWizardStepMiddleButtonImage    = @"kWizardStepMiddleButtonImage";
-NSString * const kWizardStepRightButtonImage     = @"kWizardStepRightButtonImage";
+NSString * const kWizardStepHidesLeftButton           = @"kWizardStepHidesLeftButton";
+NSString * const kWizardStepHidesMiddleLeftButton     = @"kWizardStepHidesMiddleLeftButton";
+NSString * const kWizardStepHidesMiddleButton         = @"kWizardStepHidesMiddleButton";
+NSString * const kWizardStepHidesMiddleRightButton    = @"kWizardStepHidesMiddleRightButton";
+NSString * const kWizardStepHidesRightButton          = @"kWizardStepHidesRightButton";
 
-NSString * const kWizardStepLeftButtonColor      = @"kWizardStepLeftButtonColor";
-
-NSString * const kWizardStepLeftButtonBlock      = @"kWizardStepLeftButtonCustomActionBlock";
-NSString * const kWizardStepMiddleButtonBlock    = @"kWizardStepMiddleButtonCustomActionBlock";
-NSString * const kWizardStepRightButtonBlock     = @"kWizardStepRightButtonCustomActionBlock";
+NSString * const kWizardStepLeftButtonBlock           = @"kWizardStepLeftButtonCustomActionBlock";
+NSString * const kWizardStepMiddleLeftButtonBlock     = @"kWizardStepMiddleLeftButtonCustomActionBlock";
+NSString * const kWizardStepMiddleButtonBlock         = @"kWizardStepMiddleButtonCustomActionBlock";
+NSString * const kWizardStepMiddleRightButtonBlock    = @"kWizardStepMiddleRightButtonCustomActionBlock";
+NSString * const kWizardStepRightButtonBlock          = @"kWizardStepRightButtonCustomActionBlock";
 
 
 
@@ -48,24 +53,31 @@ NSString * const kWizardStepRightButtonBlock     = @"kWizardStepRightButtonCusto
 @property (copy, nonatomic) NSString *segueID;
 
 @property (copy, nonatomic) NSString *leftButtonTitle;
+@property (copy, nonatomic) NSString *middleLeftButtonTitle;
 @property (copy, nonatomic) NSString *middleButtonTitle;
+@property (copy, nonatomic) NSString *middleRightButtonTitle;
 @property (copy, nonatomic) NSString *rightButtonTitle;
 
+@property (assign, nonatomic) BOOL shouldHideStepsList;
+
 @property (assign, nonatomic, getter = hasLeftButtonDisabled)   BOOL leftButtonDisabled;
+@property (assign, nonatomic, getter = hasMiddleLeftButtonDisabled) BOOL middleLeftButtonDisabled;
 @property (assign, nonatomic, getter = hasMiddleButtonDisabled) BOOL middleButtonDisabled;
+@property (assign, nonatomic, getter = hasMiddleRightButtonDisabled) BOOL middleRightButtonDisabled;
 @property (assign, nonatomic, getter = hasRightButtonDisabled)  BOOL rightButtonDisabled;
 
 @property (assign, nonatomic, getter = hasLeftButtonHidden)   BOOL leftButtonHidden;
+@property (assign, nonatomic, getter = hasMiddleLeftButtonHidden) BOOL middleLeftButtonHidden;
 @property (assign, nonatomic, getter = hasMiddleButtonHidden) BOOL middleButtonHidden;
+@property (assign, nonatomic, getter = hasMiddleRightButtonHidden) BOOL middleRightButtonHidden;
 @property (assign, nonatomic, getter = hasRightButtonHidden)  BOOL rightButtonHidden;
-
-@property (copy, nonatomic) UIImage *middleButtonImage;
-@property (copy, nonatomic) UIImage *rightButtonImage;
 
 @property (copy, nonatomic) UIColor *leftButtonColor;
 
 @property (copy, nonatomic) void (^leftButtonActionBlock)(UIButton *button);
+@property (copy, nonatomic) void (^middleLeftButtonActionBlock)(UIButton *button);
 @property (copy, nonatomic) void (^middleButtonActionBlock)(UIButton *button);
+@property (copy, nonatomic) void (^middleRightButtonActionBlock)(UIButton *button);
 @property (copy, nonatomic) void (^rightButtonActionBlock)(UIButton *button);
 
 @end
@@ -77,25 +89,32 @@ NSString * const kWizardStepRightButtonBlock     = @"kWizardStepRightButtonCusto
     if (!(self = [super init]))
         return nil;
     
-    self.title                   = dictionary[kWizardStepTitleKey];
-    self.description             = dictionary[kWizardStepDescriptionKey];
-    self.continueTitle           = dictionary[kWizardStepContinueTitleKey];
-    self.segueID                 = dictionary[kWizardStepControllerSegueID];
-    self.leftButtonTitle         = dictionary[kWizardStepLeftButtonTitle];
-    self.middleButtonTitle       = dictionary[kWizardStepMiddleButtonTitle];
-    self.rightButtonTitle        = dictionary[kWizardStepRightButtonTitle];
-    self.leftButtonDisabled      = [dictionary[kWizardStepLeftButtonDisabled] boolValue];
-    self.middleButtonDisabled    = [dictionary[kWizardStepMiddleButtonDisabled] boolValue];
-    self.rightButtonDisabled     = [dictionary[kWizardStepRightButtonDisabled] boolValue];
-    self.leftButtonHidden        = [dictionary[kWizardStepHidesLeftButton] boolValue];
-    self.middleButtonHidden      = [dictionary[kWizardStepHidesMiddleButton] boolValue];
-    self.rightButtonHidden       = [dictionary[kWizardStepHidesRightButton] boolValue];
-    self.middleButtonImage       = dictionary[kWizardStepMiddleButtonImage];
-    self.rightButtonImage        = dictionary[kWizardStepRightButtonImage];
-    self.leftButtonColor         = dictionary[kWizardStepLeftButtonColor];
-    self.leftButtonActionBlock   = dictionary[kWizardStepLeftButtonBlock];
-    self.middleButtonActionBlock = dictionary[kWizardStepMiddleButtonBlock];
-    self.rightButtonActionBlock  = dictionary[kWizardStepRightButtonBlock];
+    self.title                        = dictionary[kWizardStepTitleKey];
+    self.description                  = dictionary[kWizardStepDescriptionKey];
+    self.continueTitle                = dictionary[kWizardStepContinueTitleKey];
+    self.segueID                      = dictionary[kWizardStepControllerSegueID];
+    self.leftButtonTitle              = dictionary[kWizardStepLeftButtonTitle];
+    self.middleLeftButtonTitle        = dictionary[kWizardStepMiddleLeftButtonTitle];
+    self.middleButtonTitle            = dictionary[kWizardStepMiddleButtonTitle];
+    self.middleRightButtonTitle       = dictionary[kWizardStepMiddleRightButtonTitle];
+    self.rightButtonTitle             = dictionary[kWizardStepRightButtonTitle];
+    self.leftButtonActionBlock        = dictionary[kWizardStepLeftButtonBlock];
+    self.middleLeftButtonActionBlock  = dictionary[kWizardStepMiddleLeftButtonBlock];
+    self.middleButtonActionBlock      = dictionary[kWizardStepMiddleButtonBlock];
+    self.middleRightButtonActionBlock = dictionary[kWizardStepMiddleRightButtonBlock];
+    self.rightButtonActionBlock       = dictionary[kWizardStepRightButtonBlock];
+    self.shouldHideStepsList          = [dictionary[kWizardStepHidesStepsList] boolValue];
+    self.leftButtonDisabled           = [dictionary[kWizardStepLeftButtonDisabled] boolValue];
+    self.middleLeftButtonDisabled     = [dictionary[kWizardStepMiddleLeftButtonDisabled] boolValue];
+    self.middleButtonDisabled         = [dictionary[kWizardStepMiddleButtonDisabled] boolValue];
+    self.middleRightButtonDisabled    = [dictionary[kWizardStepMiddleRightButtonDisabled] boolValue];
+    self.rightButtonDisabled          = [dictionary[kWizardStepRightButtonDisabled] boolValue];
+    self.leftButtonHidden             = [dictionary[kWizardStepHidesLeftButton] boolValue];
+    self.middleLeftButtonHidden       = [dictionary[kWizardStepHidesMiddleLeftButton] boolValue];
+    self.middleButtonHidden           = [dictionary[kWizardStepHidesMiddleButton] boolValue];
+    self.middleRightButtonHidden      = [dictionary[kWizardStepHidesMiddleRightButton] boolValue];
+    self.rightButtonHidden            = [dictionary[kWizardStepHidesRightButton] boolValue];
+
     
     return self;
 }

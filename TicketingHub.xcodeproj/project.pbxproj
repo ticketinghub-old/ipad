@@ -46,6 +46,7 @@
 		3E5FA93A192FCE8900452C30 /* DKPOSClientTransactionInfo+Messages.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FA939192FCE8900452C30 /* DKPOSClientTransactionInfo+Messages.m */; };
 		3E6A422518C483870053EF34 /* TXHSensorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6A422418C483870053EF34 /* TXHSensorView.m */; };
 		3E6F479718AFD6A300E644F7 /* TXHBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F479618AFD6A300E644F7 /* TXHBorderedButton.m */; };
+		3E7B7A83193234C100B8EFDA /* TXHGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B7A82193234C100B8EFDA /* TXHGradientView.m */; };
 		3E7F87D418DC59070046DD7A /* NSDateFormatter+DisplayFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F87D318DC59060046DD7A /* NSDateFormatter+DisplayFormat.m */; };
 		3E7F8A13192B8637002D9F5C /* OCR A Std.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E7F8A12192B8637002D9F5C /* OCR A Std.ttf */; };
 		3E87704218D710D100585FFA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E87704018D710D100585FFA /* Localizable.strings */; };
@@ -249,6 +250,8 @@
 		3E6A422418C483870053EF34 /* TXHSensorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSensorView.m; sourceTree = "<group>"; };
 		3E6F479518AFD6A300E644F7 /* TXHBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBorderedButton.h; sourceTree = "<group>"; };
 		3E6F479618AFD6A300E644F7 /* TXHBorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHBorderedButton.m; sourceTree = "<group>"; };
+		3E7B7A81193234C100B8EFDA /* TXHGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHGradientView.h; sourceTree = "<group>"; };
+		3E7B7A82193234C100B8EFDA /* TXHGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHGradientView.m; sourceTree = "<group>"; };
 		3E7F87D218DC59060046DD7A /* NSDateFormatter+DisplayFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+DisplayFormat.h"; sourceTree = "<group>"; };
 		3E7F87D318DC59060046DD7A /* NSDateFormatter+DisplayFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+DisplayFormat.m"; sourceTree = "<group>"; };
 		3E7F8A12192B8637002D9F5C /* OCR A Std.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OCR A Std.ttf"; sourceTree = "<group>"; };
@@ -665,6 +668,8 @@
 				3E53C54918E58FB400FF6F9B /* TXHActivityLabelView.h */,
 				3E53C54A18E58FB400FF6F9B /* TXHActivityLabelView.m */,
 				3E53C54C18E58FD000FF6F9B /* TXHActivityLabelView.xib */,
+				3E7B7A81193234C100B8EFDA /* TXHGradientView.h */,
+				3E7B7A82193234C100B8EFDA /* TXHGradientView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1746,6 +1751,7 @@
 				3E8FD59318C74CD70066FA50 /* TXHDoorSearchViewController.m in Sources */,
 				3EF72D82192DEC1A00F27B6B /* UIFont+TicketingHub.m in Sources */,
 				3EA61BBC18F443A8004458B2 /* TXHPrintersUtility.m in Sources */,
+				3E7B7A83193234C100B8EFDA /* TXHGradientView.m in Sources */,
 				EE75D99917D11048009ADCD8 /* TXHSalesPaymentViewController.m in Sources */,
 				3EF72D89192E382600F27B6B /* TXHSalesUpgradeTicketCell.m in Sources */,
 				3E22139B18AA791000DE35A6 /* ArrayDataSource.m in Sources */,

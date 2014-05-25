@@ -20,15 +20,15 @@
 
 "SALESMAN_STEPS_CANCEL_ORDER_BUTTON_TITLE"          = "Cancel Order";
 
-"SALESMAN_STEPS_TICKET_QUANTITY_CONTINUE_TITLE"     = "Ticket Quantities";
-"SALESMAN_STEPS_TICKET_UPGRADES_CONTINUE_TITLE"     = "Ticket Upgrades";
-"SALESMAN_STEPS_ORDER_SUMMARY_CONTINUE_TITLE"       = "Order Summary";
-"SALESMAN_STEPS_PAYMENT_CONTINUE_TITLE"             = "Payment";
+"SALESMAN_STEPS_TICKET_QUANTITY_CONTINUE_TITLE"     = "Continue";
+"SALESMAN_STEPS_TICKET_UPGRADES_CONTINUE_TITLE"     = "Continue";
+"SALESMAN_STEPS_ORDER_SUMMARY_CONTINUE_TITLE"       = "Continue";
+"SALESMAN_STEPS_PAYMENT_CONTINUE_TITLE"             = "Continue";
 "SALESMNA_STEPS_SUMMARY_CONTINUE_TITLE"             = "Continue";
 
-"SALESMAN_STEPS_SUMMARY_LEFT_BUTTON_TITLE"          = "Next Customer";
-"SALESMAN_STEPS_SUMMARY_MIDDLE_BUTTON_TITLE"        = "Print Recipt";
-"SALESMAN_STEPS_SUMMARY_RIGHT_BUTTON_TITLE"         = "Print Tickets";
+"SALESMAN_STEPS_SUMMARY_MIDDLE_LEFT_BUTTON_TITLE"  = "Print Recipt";
+"SALESMAN_STEPS_SUMMARY_MIDDLE_RIGHT_BUTTON_TITLE" = "Print Tickets";
+"SALESMAN_STEPS_SUMMARY_RIGHT_BUTTON_TITLE"        = "Next Customer";
 
 /* Printer errors */
 
@@ -57,7 +57,7 @@
 "ERROR_TITLE"                = "Error";
 "PRINTER_ERROR_TITLE"        = "Printing Error";
 
-"NO_PRINTERS_TEXT"           = "Not Available";
+"NO_PRINTERS_TEXT"           = "Not Connected";
 
 /* Activity labels - Printers */
 

@@ -14,7 +14,9 @@
 @protocol TXHSalesCompletionViewControllerDelegate <NSObject>
 
 - (void)salesCompletionViewController:(TXHSalesCompletionViewController *)controller didDidSelectRightButton:(TXHBorderedButton *)button;
+- (void)salesCompletionViewController:(TXHSalesCompletionViewController *)controller didDidSelectMiddleLeftButton:(TXHBorderedButton *)button;
 - (void)salesCompletionViewController:(TXHSalesCompletionViewController *)controller didDidSelectMiddleButton:(TXHBorderedButton *)button;
+- (void)salesCompletionViewController:(TXHSalesCompletionViewController *)controller didDidSelectMiddleRightButton:(TXHBorderedButton *)button;
 - (void)salesCompletionViewController:(TXHSalesCompletionViewController *)controller didDidSelectLeftButton:(TXHBorderedButton *)button;
 
 @end
@@ -23,23 +25,24 @@
 
 @property (weak, nonatomic) id<TXHSalesCompletionViewControllerDelegate> delegate;
 
-- (void)setRightButtonImage:(UIImage *)rightButtonImage;
-- (void)setMiddleButtonImage:(UIImage *)middleButtonImage;
-
-- (void)setLeftButtonTitle:(NSString *)continueButtonTitle;
-- (void)setMiddleButtonTitle:(NSString *)continueButtonTitle;
-- (void)setRightButtonTitle:(NSString *)continueButtonTitle;
+- (void)setLeftButtonTitle:(NSString *)buttonTitle;
+- (void)setMiddleLeftButtonTitle:(NSString *)buttonTitle;
+- (void)setMiddleButtonTitle:(NSString *)buttonTitle;
+- (void)setMiddleRightButtonTitle:(NSString *)buttonTitle;
+- (void)setRightButtonTitle:(NSString *)buttonTitle;
 
 - (void)setButtonsDisabled:(BOOL)disabled;
 - (void)setLeftButtonDisabled:(BOOL)disabled;
+- (void)setMiddleLeftButtonDisabled:(BOOL)disabled;
 - (void)setMiddleButtonDisabled:(BOOL)disabled;
+- (void)setMiddleRightButtonDisabled:(BOOL)disabled;
 - (void)setRightButtonDisabled:(BOOL)disabled;
 
 - (void)setLeftButtonHidden:(BOOL)hidden;
+- (void)setMiddleLeftButtonHidden:(BOOL)hidden;
 - (void)setMiddleButtonHidden:(BOOL)hidden;
+- (void)setMiddleRightButtonHidden:(BOOL)hidden;
 - (void)setRightButtonHidden:(BOOL)hidden;
-
-- (void)setLeftBarButtonColor:(UIColor *)color;
 
 
 @end

@@ -69,6 +69,12 @@
     self.layer.borderColor = borderColor.CGColor;
 }
 
+- (void)setHighlightedBorderColor:(UIColor *)borderColor
+{
+    _highlightedBorderColor = borderColor;
+    self.layer.borderColor  = borderColor.CGColor;
+}
+
 - (void)setNormalFillColor:(UIColor *)normalFillColor
 {
     _normalFillColor = normalFillColor;
@@ -97,20 +103,10 @@
 
 - (void)updateColors
 {
+    self.layer.borderColor   = self.highlighted ? self.highlightedBorderColor.CGColor : self.borderColor.CGColor;
+    
     self.backgroundColor     = self.highlighted ? self.highlightedFillColor : self.normalFillColor;
     self.imageView.tintColor = self.highlighted ? self.highlightedTextColor : self.normalTextColor;
-}
-
-#define INSET 15
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    
-    self.imageView.right = self.width - self.contentEdgeInsets.right;
-    
-    if (self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentLeft)
-        self.titleLabel.left = self.contentEdgeInsets.left;
 }
 
 

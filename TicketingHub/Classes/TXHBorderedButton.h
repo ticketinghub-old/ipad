@@ -13,6 +13,7 @@
 @interface TXHBorderedButton : UIButton
 
 @property (nonatomic, copy) UIColor *borderColor;
+@property (nonatomic, copy) UIColor *highlightedBorderColor;
 
 @property (nonatomic, copy) UIColor *normalFillColor;
 @property (nonatomic, copy) UIColor *highlightedFillColor;
