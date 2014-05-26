@@ -1698,12 +1698,23 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KIM-6Y-LyI">
+                                <rect key="frame" x="0.0" y="73" width="1024" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.91372549020000005" green="0.93725490199999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="zpf-3S-8sw"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.91372549020000005" green="0.93725490199999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="KIM-6Y-LyI" firstAttribute="leading" secondItem="XXP-Dd-EwL" secondAttribute="leading" id="8Zy-Rt-UEB"/>
                             <constraint firstItem="mmb-dJ-0Ye" firstAttribute="top" secondItem="9cs-NL-AhL" secondAttribute="bottom" id="Fy0-5y-du8"/>
                             <constraint firstItem="Tp7-lX-dy8" firstAttribute="top" secondItem="mmb-dJ-0Ye" secondAttribute="bottom" constant="2" id="KpR-kE-jDQ"/>
+                            <constraint firstAttribute="trailing" secondItem="KIM-6Y-LyI" secondAttribute="trailing" id="QHt-ac-F1u"/>
                             <constraint firstItem="mmb-dJ-0Ye" firstAttribute="leading" secondItem="XXP-Dd-EwL" secondAttribute="leading" id="cjA-NK-F9d"/>
+                            <constraint firstItem="Tp7-lX-dy8" firstAttribute="top" secondItem="KIM-6Y-LyI" secondAttribute="bottom" id="jqq-Wg-6DL"/>
                             <constraint firstAttribute="trailing" secondItem="mmb-dJ-0Ye" secondAttribute="trailing" id="sFi-Cf-q82"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
