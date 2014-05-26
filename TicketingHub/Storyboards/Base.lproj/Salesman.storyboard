@@ -233,11 +233,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1r-cs-dch" customClass="PPiFlatSegmentedControl">
-                                <rect key="frame" x="125" y="15" width="774" height="65"/>
+                                <rect key="frame" x="125" y="15" width="774" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="V7U-ga-N4Z"/>
+                                    <constraint firstAttribute="height" constant="70" id="V7U-ga-N4Z"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -506,7 +506,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="Oc9-8p-vaH"/>
                                     <constraint firstAttribute="width" constant="520" id="TNE-8R-Oqt"/>
