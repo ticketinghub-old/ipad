@@ -13,14 +13,11 @@
 #import "UIColor+TicketingHub.h"
 #import "UIFont+TicketingHub.h"
 
-//#import <AKPickerView/AKPickerView.h>
-#import <RMStepsController/RMStepsBar.h>
-#import <RMStepsController/RMStep.h>
+#import <AKPickerView/AKPickerView.h>
 
-@interface TXHSalesWizardViewController () <RMStepsBarDataSource, RMStepsBarDelegate>
+@interface TXHSalesWizardViewController () <AKPickerViewDelegate>
 
-@property (weak, nonatomic) IBOutlet RMStepsBar *stepsBar;
-//@property (weak, nonatomic) IBOutlet AKPickerView *pickerView;
+@property (weak, nonatomic) IBOutlet AKPickerView *pickerView;
 
 @end
 
@@ -36,18 +33,10 @@
 
 - (void)configureMenu
 {
-    self.stepsBar.delegate   = self;
-    self.stepsBar.dataSource = self;
-    
-    self.stepsBar.seperatorColor = [UIColor txhBlueColor];
-    [self.stepsBar setHideCancelButton:YES];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self.stepsBar reloadData];
+    self.pickerView.delegate             = self;
+    self.pickerView.font                 = [UIFont txhThinFontWithSize:26.0f];
+    self.pickerView.textColor            = [UIColor lightGrayColor];
+    self.pickerView.highlightedTextColor = [UIColor txhDarkBlueColor];
 }
 
 #pragma mark - Public methods
@@ -56,65 +45,27 @@
 {
     NSUInteger currentIndex = [self.dataSource currentStepIndex];
     
-    [self.stepsBar setIndexOfSelectedStep:currentIndex animated:YES];
+    [self.pickerView reloadData];
+    [self.pickerView selectItem:currentIndex animated:YES];
 }
 
-#pragma mark - RMStepsBarDataSource
+#pragma mark - AKPickerViewDelegate
 
-- (NSUInteger)numberOfStepsInStepsBar:(RMStepsBar *)bar
+- (NSUInteger)numberOfItemsInPickerView:(AKPickerView *)pickerView
 {
     return [self.dataSource numberOfsteps];
 }
 
-- (RMStep *)stepsBar:(RMStepsBar *)bar stepAtIndex:(NSUInteger)index
+- (NSString *)pickerView:(AKPickerView *)pickerView titleForItem:(NSInteger)item
 {
-    TXHSalesStep *salesStep = [self.dataSource stepAtIndex:index];
-    RMStep *step = [[RMStep alloc] init];
-    
-    step.title = salesStep.title;
-    step.stepTitleFont     = [UIFont txhThinFontWithSize:32];
-    step.selectedBarColor  = [UIColor whiteColor];
-    step.selectedTextColor = [UIColor txhDarkBlueColor];
-    step.enabledBarColor   = [UIColor txhDarkBlueColor];
-    step.enabledTextColor  = [UIColor whiteColor];
-    step.disabledBarColor  = [UIColor txhVeryLightBlueColor];
-    step.disabledTextColor = [UIColor txhBlueColor];
-    
-    return step;
+    TXHSalesStep *step = [self.dataSource stepAtIndex:item];
+
+    return step.title;
 }
 
-#pragma mark - RMStepsBarDelegate
-
-
-- (void)stepsBarDidSelectCancelButton:(RMStepsBar *)bar
+- (void)pickerView:(AKPickerView *)pickerView didSelectItem:(NSInteger)item
 {
-    
+
 }
-
-- (void)stepsBar:(RMStepsBar *)bar shouldSelectStepAtIndex:(NSInteger)index
-{
-    if ([self.dataSource respondsToSelector:@selector(salesWizardViewController:didSelectStepAtIndex:)])
-        [self.dataSource salesWizardViewController:self didSelectStepAtIndex:index];
-}
-
-
-//#pragma mark - AKPickerViewDelegate
-//
-//- (NSUInteger)numberOfItemsInPickerView:(AKPickerView *)pickerView
-//{
-//    return [self.dataSource numberOfsteps];
-//}
-//
-//- (NSString *)pickerView:(AKPickerView *)pickerView titleForItem:(NSInteger)item
-//{
-//    TXHSalesStep *step = [self.dataSource stepAtIndex:item];
-//
-//    return step.title;
-//}
-//
-//- (void)pickerView:(AKPickerView *)pickerView didSelectItem:(NSInteger)item
-//{
-//
-//}
 
 @end

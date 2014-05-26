@@ -1693,7 +1693,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="75"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mmb-dJ-0Ye" customClass="RMStepsBar">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mmb-dJ-0Ye" customClass="AKPickerView">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="73"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -1709,7 +1709,7 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <connections>
-                        <outlet property="stepsBar" destination="mmb-dJ-0Ye" id="G9I-KY-qF0"/>
+                        <outlet property="pickerView" destination="mmb-dJ-0Ye" id="mJN-Gr-BDx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TdQ-al-01d" userLabel="First Responder" sceneMemberID="firstResponder"/>

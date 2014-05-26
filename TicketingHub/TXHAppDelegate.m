@@ -15,8 +15,6 @@
 #import "TXHPrintersManager.h"
 #import "TXHStarIOPrintersEngine.h"
 
-#import "UIColor+TicketingHub.h"
-
 @interface TXHAppDelegate ()
 
 @end
@@ -31,10 +29,9 @@
     // Remove all local data when launching app
     [TXHTicketingHubManager clearLocalData];
 
-    [[UINavigationBar appearance] setBackgroundColor:[UIColor txhDarkBlueColor]];
-    [[UINavigationBar appearance] setShadowImage:[UIColor imageWithColor:[UIColor txhDarkBlueColor]]];
-    [[UINavigationBar appearance] setBackgroundImage:[UIColor imageWithColor:[UIColor txhDarkBlueColor]] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundColor:[UIColor colorWithRed:1.0f / 255.0f green:46.0f / 255.0f blue:67.0f / 255.0f alpha:1.0f]];
 
+    
     TXHStarIOPrintersEngine *starEngine = [TXHStarIOPrintersEngine new];
     [TXHPRINTERSMANAGER addPrinterEngine:starEngine];
     

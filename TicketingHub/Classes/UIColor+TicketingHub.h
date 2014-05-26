@@ -25,6 +25,4 @@
 + (UIColor *)txhFieldPlaceholderTextColor;
 
 + (UIColor *)colorFromHexString:(NSString *)hexString alpha:(CGFloat)alpha;
-
-+ (UIImage *)imageWithColor:(UIColor *)color;
 @end
