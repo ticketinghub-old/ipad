@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mja-t1-MrX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mja-t1-MrX">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <development version="5000" identifier="xcode"/>
@@ -168,13 +168,13 @@
                             </activityIndicatorView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="RQl-TU-usy" firstAttribute="top" secondItem="Qhu-dC-Fvf" secondAttribute="top" id="0mr-mb-km4"/>
                             <constraint firstItem="RQl-TU-usy" firstAttribute="leading" secondItem="Qhu-dC-Fvf" secondAttribute="leading" id="3LT-6i-va3"/>
                             <constraint firstItem="8SD-Da-J5a" firstAttribute="leading" secondItem="Qhu-dC-Fvf" secondAttribute="leading" constant="326" id="a10-cz-HBv"/>
                             <constraint firstAttribute="centerY" secondItem="8SD-Da-J5a" secondAttribute="centerY" constant="50" id="cfs-V8-fOn"/>
                             <constraint firstItem="lhj-Za-1cP" firstAttribute="top" secondItem="8SD-Da-J5a" secondAttribute="bottom" constant="95" id="ddI-P5-sNf"/>
                             <constraint firstItem="7zP-PL-ylK" firstAttribute="top" secondItem="RQl-TU-usy" secondAttribute="bottom" id="kcB-Zy-iC7"/>
                             <constraint firstAttribute="trailing" secondItem="RQl-TU-usy" secondAttribute="trailing" id="mAa-eh-swz"/>
-                            <constraint firstItem="RQl-TU-usy" firstAttribute="top" secondItem="kS3-T9-8Fh" secondAttribute="bottom" id="mF6-qT-XoZ"/>
                             <constraint firstItem="VYr-as-6mR" firstAttribute="top" secondItem="8SD-Da-J5a" secondAttribute="bottom" constant="35" id="s9n-C6-c16"/>
                             <constraint firstAttribute="centerX" secondItem="lhj-Za-1cP" secondAttribute="centerX" id="wDI-PJ-CYZ"/>
                             <constraint firstAttribute="centerX" secondItem="VYr-as-6mR" secondAttribute="centerX" id="xH7-uN-qu4"/>
