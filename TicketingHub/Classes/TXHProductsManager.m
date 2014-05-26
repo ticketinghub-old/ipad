@@ -142,5 +142,26 @@ NSString * const TXHSelectedAvailabilityKey         = @"TXHSelectedProductKey";
                                            completion:completion];
 }
 
+- (void)availableDatesFrom:(NSDate *)startDate endDate:(NSDate *)endDate completion:(void (^)(NSArray *availableDates, NSError *error))completion
+{
+    [self.txhManager.client availableDatesForProduct:self.selectedProduct
+                                           startDate:startDate
+                                             endDate:endDate
+                                          completion:completion];
+}
+
+- (void)getTiresCompletion:(void(^)(NSArray *tiers, NSError *error))completion
+{
+    [self.txhManager.client tiersForProduct:self.selectedProduct completion:completion];
+}
+
+- (void)availabilitiesForISODate:(NSString *)isoDate tickets:(NSArray *)tickets completion:(void(^)(NSArray *availabilities, NSError *error))completion
+{
+    [self.txhManager.client availabilitiesForProduct:self.selectedProduct
+                                          dateString:isoDate
+                                             tickets:tickets
+                                          completion:completion];
+}
+
 @end
 

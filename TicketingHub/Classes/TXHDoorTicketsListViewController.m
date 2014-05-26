@@ -21,7 +21,7 @@
 #import "TXHTicket+Filter.h"
 #import "TXHTicket+Title.h"
 #import "TXHOrder+Helpers.h"
-#import "UIViewController+BHTKeyboardNotifications.h"
+#import <UIViewController+BHTKeyboardAnimationBlocks/UIViewController+BHTKeyboardNotifications.h>
 #import "TXHRMPickerViewControllerDelegate.h"
 
 @interface TXHDoorTicketsListViewController () <TXHTicketDetailsViewControllerDelegate, TXHDoorTicketCellDelegate, UIAlertViewDelegate, TXHScanersManagerDelegate>

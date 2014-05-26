@@ -26,7 +26,6 @@
 @property (assign, nonatomic, getter = isValid) BOOL valid;
 
 @property (strong, nonatomic) NSArray             *tiers; // to keep tiers ordered
-@property (strong, nonatomic) TXHAvailability     *availability;
 @property (strong, nonatomic) NSMutableDictionary *quantities;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -40,14 +39,11 @@
 
 @implementation TXHSalesTicketTiersViewController
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
  
-    self.quantities = [NSMutableDictionary dictionary];
-    
-    [self registerForAvailabilityChangeNotification];
+    [self loadTires];
 }
 
 
@@ -58,41 +54,19 @@
     [self updateView];
 }
 
-- (void)dealloc
-{
-    [self unregisterFromAvailabilityChangeNotification];
-}
 
-
-- (void)registerForAvailabilityChangeNotification
+- (void)setTiers:(NSArray *)tiers
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availabilityChanged:) name:TXHAvailabilityChangedNotification object:nil];
-}
-
-- (void)unregisterFromAvailabilityChangeNotification
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];
-}
-
-- (void)availabilityChanged:(NSNotification *)note
-{
-    self.availability = note.userInfo[TXHSelectedAvailabilityKey];
-}
-
-- (void)setProductManager:(TXHProductsManager *)productManager
-{
-    _productManager = productManager;
-    
-    self.availability = [productManager selectedAvailability];
-}
-
-- (void)setAvailability:(TXHAvailability *)availability
-{
-    _availability = availability;
-    
-    self.tiers = [availability.tiers allObjects];
+    _tiers = tiers;
     
     [self.collectionView reloadData];
+}
+
+- (NSMutableDictionary *)quantities
+{
+    if (!_quantities)
+        _quantities = [NSMutableDictionary dictionary];
+    return _quantities;
 }
 
 - (TXHTier *)tierAtIndexPath:(NSIndexPath *)indexPath
@@ -162,9 +136,7 @@
 - (void)updateQuantitiesWithDictionary:(NSDictionary *)dic
 {
     for (NSString *key in dic)
-    {
         [self.quantities setObject:dic[key] forKey:key];
-    }
     
     [self updateView];
 }
@@ -207,44 +179,23 @@
     return [quantity integerValue];
 }
 
-- (void)updateWithCoupon:(NSString *)couponString
+- (void)loadTires
 {
     __block typeof(self) wself = self;
+
+    [self.activityView showWithMessage:NSLocalizedString(@"SALESMAN_QUANTITIES_LOADING_TICKETS_MESSAGE", nil)
+                       indicatorHidden:NO];
     
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd"];
-    NSDate *date = [dateFormat dateFromString:[[self.productManager selectedAvailability] dateString]];
-    
-    self.checkingCoupon = YES;
-    
-    [self.productManager fetchSelectedProductAvailabilitiesFromDate:date
-                                                             toDate:nil
-                                                         withCoupon:couponString
-                                                         completion:^(NSArray *availabilities, NSError *error) {
-                                                             
-                                                             TXHAvailability *availability = [wself.productManager selectedAvailability];
-                                                             
-                                                             for (TXHAvailability *newAvilability in availabilities)
-                                                             {
-                                                                 if ([newAvilability.dateString isEqualToString:[availability dateString]] &&
-                                                                     [newAvilability.timeString isEqualToString:[availability timeString]])
-                                                                 {
-                                                                     // checking if any of tiers has discount set to determin if coupon worked
-                                                                     BOOL hasDiscount = NO;
-                                                                     for (TXHTier  *tier in availability.tiers)
-                                                                         if ([tier.discount integerValue] > 0)
-                                                                             hasDiscount = YES;
-                                                                     
-                                                                     if (hasDiscount)
-                                                                     {
-                                                                         newAvilability.coupon = couponString;
-                                                                         [wself.productManager setSelectedAvailability:newAvilability];
-                                                                         break;
-                                                                     }
-                                                                 }
-                                                             }
-                                                             wself.checkingCoupon = NO;
-                                                         }];
+    [self.productManager getTiresCompletion:^(NSArray *tiers, NSError *error) {
+        [wself.activityView hide];
+        wself.tiers = tiers;
+        
+        if (error)
+            [wself showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
+                              message:error.localizedDescription
+                               action:nil];
+        
+    }];
 }
 
 #pragma mark - validation
@@ -260,19 +211,6 @@
     return atLeastOneTicketSelected;
 }
 
-#pragma mark - UITextFieldDelegat
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    if ([textField.text length])
-    {
-        [self updateWithCoupon:textField.text];
-    }
-    [textField resignFirstResponder];
-    
-    return YES;
-}
-
 #pragma mark - TXHSalesTicketTierCellDelegate
 
 - (NSInteger)maximumQuantityForCell:(TXHSalesTicketTierCell *)cell
@@ -280,49 +218,17 @@
     NSIndexPath *cellIndexPath = [self.collectionView indexPathForCell:cell];
     TXHTier *tier = [self tierAtIndexPath:cellIndexPath];
     
-    if (!self.availability.limitValue)
-        return tier.limitValue;
-    
-    NSInteger totalQuantityWithoutaTier = 0;
-    
-    // sum up quantity without the one from arg
-    for (NSString *internalTierId in self.quantities)
-        if (![internalTierId isEqualToString:tier.internalTierId])
-            totalQuantityWithoutaTier += [self.quantities[internalTierId] integerValue];
-    
-    NSInteger availabilityLImit = self.availability.limitValue - totalQuantityWithoutaTier;
-    
-    return MIN(availabilityLImit, tier.limitValue);
+    return tier.limitValue;
 }
 
 #pragma mark - TXHSalesContentsViewControllerProtocol
 
 - (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
 {
-    [self.activityView showWithMessage:NSLocalizedString(@"SALESMAN_QUANTITIES_RESERVING_TICKETS_MESSAGE", nil)
-                       indicatorHidden:NO];
+    self.orderManager.tiersQuantities = self.quantities;
     
-    
-    __weak typeof(self) wself = self;
-    [self.orderManager reserveTicketsWithTierQuantities:self.quantities
-                                         availability:self.availability
-                                           completion:^(TXHOrder *order, NSError *error) {
-                                               [wself.activityView hide];
-                                               
-                                               if (error)
-                                               {
-                                                   [self showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
-                                                                    message:error.localizedDescription
-                                                                     action:^{
-                                                                         if (blockName)
-                                                                             blockName(error);
-                                                                     }];
-                                               }
-                                               else if (blockName)
-                                                   blockName(nil);
-                                          
-                                           }];
-    
+    if (blockName)
+        blockName(nil);
 }
 
 #pragma mark - error helper

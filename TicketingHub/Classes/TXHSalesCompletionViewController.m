@@ -97,6 +97,16 @@
 - (void)setMiddleButtonDisabled:(BOOL)disabled
 {
     [self setButton:self.middleButton disabled:disabled];
+    
+    // TODO: make it better
+//    [UIView animateWithDuration:0.1
+//                          delay:0.0
+//                        options:UIViewAnimationOptionBeginFromCurrentState
+//                     animations:^{
+//                         self.middleButton.centerY = disabled ? self.view.height * 2 : self.view.height / 2;
+//                         [self.view layoutIfNeeded];
+//                     }
+//                     completion:nil];
 }
 
 - (void)setMiddleRightButtonDisabled:(BOOL)disabled

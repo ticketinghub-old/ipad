@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>API_Base_URL</key>
-	<string>https://api.ticketinghub.com/</string>
+	<string>https://api.tickethub.io/</string>
 </dict>
 </plist>

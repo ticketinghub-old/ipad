@@ -102,6 +102,8 @@ static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
         }
         else if (![ticketUpgradesDictionary count])
         {
+            wself.valid = YES;
+
             // TODO: skip to next screen
         }
         else

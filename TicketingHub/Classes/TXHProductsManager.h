@@ -38,4 +38,10 @@
 
 - (void)getOrderForCardMSRData:(NSString *)msrData completion:(void (^)(NSArray *orders, NSError *error))completion;
 
+- (void)availableDatesFrom:(NSDate *)startDate endDate:(NSDate *)endDate completion:(void (^)(NSArray *availableDates, NSError *error))completion;
+
+- (void)getTiresCompletion:(void(^)(NSArray *tiers, NSError *error))completion;
+
+- (void)availabilitiesForISODate:(NSString *)isoDate tickets:(NSArray *)tickets completion:(void(^)(NSArray *availabilities, NSError *error))completion;
+
 @end

@@ -3,6 +3,7 @@
 /* Salesman steps titles */
 
 "SALESMAN_STEPS_TICKET_QUANTITY_TITLE" = "Tickets";
+"SALESMAN_STEPS_TICKET_DATES_TITLE"    = "Dates";
 "SALESMAN_STEPS_TICKET_UPGRADES_TITLE" = "Upgrades";
 "SALESMAN_STEPS_ORDER_SUMMARY_TITLE"   = "Summary";
 "SALESMAN_STEPS_PAYMENT_TITLE"         = "Payment";
@@ -11,6 +12,7 @@
 /* Salesman steps descriptions */
 
 "SALESMAN_STEPS_TICKET_QUANTITY_DESC" = "Select Type & Quantity";
+"SALESMAN_STEPS_TICKET_UDATES_DESC"   = "Event Date & Time";
 "SALESMAN_STEPS_TICKET_UPGRADES_DESC" = "Add ticket extras";
 "SALESMAN_STEPS_ORDER_SUMMARY_DESC"   = "Review the order";
 "SALESMAN_STEPS_PAYMENT_DESC"         = "By card, cash or credit";
@@ -21,6 +23,7 @@
 "SALESMAN_STEPS_CANCEL_ORDER_BUTTON_TITLE"          = "Cancel Order";
 
 "SALESMAN_STEPS_TICKET_QUANTITY_CONTINUE_TITLE"     = "Continue";
+"SALESMAN_STEPS_TICKETDATES_CONTINUE_TITLE"         = "Continue";
 "SALESMAN_STEPS_TICKET_UPGRADES_CONTINUE_TITLE"     = "Continue";
 "SALESMAN_STEPS_ORDER_SUMMARY_CONTINUE_TITLE"       = "Continue";
 "SALESMAN_STEPS_PAYMENT_CONTINUE_TITLE"             = "Continue";
@@ -199,7 +202,15 @@
 
 /* Salesman Quantity */
 
-"SALESMAN_QUANTITIES_RESERVING_TICKETS_MESSAGE" = "Reserving Tickets";
+"SALESMAN_QUANTITIES_LOADING_TICKETS_MESSAGE" = "Loading available tickets";
+
+/* Salesman Dates */
+
+"SALESMAN_DATES_SELCT_DATE_MESSAGE"                 = "Please select date";
+"SALESMAN_DATES_NO_AVAILABLE_TIMES_MESSAGE_FORMAT"  = "Nothing available\nfor selected tickets on\n%@";
+"SALESMAN_DATES_LOADING_AVAILABLE_DATES_MESSAGE"    = "Loading available dates";
+"SALESMAN_DATES_LOADING_AVAILABLE_DAYTIMES_MESSAGE" = "Loading available times";
+"SALESMAN_DATES_RESERVING_TICKETS_MESSAGE"          = "Reserving tickets";
 
 /* Salesman Upgrades */
 

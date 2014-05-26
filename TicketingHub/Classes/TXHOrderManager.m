@@ -47,6 +47,7 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
     }
     else if (!order)
     {
+        self.tiersQuantities = nil;
         self.expirationDate = nil;
         [self clearStoredData];
     }
@@ -149,11 +150,11 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
     return nil;
 }
 
-- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability completion:(void(^)(TXHOrder *order, NSError *error))completion
+- (void)reserveTicketsWithAvailability:(TXHAvailability *)availability completion:(TXHOrderCompletion)completion;
 {
     __weak typeof(self) wself = self;
     
-    [self.txhManager.client reserveTicketsWithTierQuantities:tierQuantities
+    [self.txhManager.client reserveTicketsWithTierQuantities:self.tiersQuantities
                                                 availability:availability
                                                      isGroup:YES
                                                 shouldNotify:NO

@@ -7,7 +7,7 @@
 //
 
 #import "TXHDoorSearchViewController.h"
-#import "UIViewController+BHTKeyboardNotifications.h"
+#import <UIViewController+BHTKeyboardAnimationBlocks/UIViewController+BHTKeyboardNotifications.h>
 
 #import "TXHScanersManager.h"
 

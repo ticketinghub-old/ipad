@@ -24,6 +24,8 @@ typedef void (^TXHArrayCompletion)(NSArray *array, NSError *error);
 @property (readonly, nonatomic) TXHOrder *order;
 @property (readonly, nonatomic) NSDate *expirationDate;
 
+@property (strong, nonatomic) NSDictionary *tiersQuantities;
+
 @property (strong, nonatomic) TXHTicketingHubManager *txhManager;
 
 + (instancetype)sharedManager;
@@ -43,7 +45,7 @@ typedef void (^TXHArrayCompletion)(NSArray *array, NSError *error);
 
 // reserving tickets
 
-- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability completion:(TXHOrderCompletion)completion;
+- (void)reserveTicketsWithAvailability:(TXHAvailability *)availability completion:(TXHOrderCompletion)completion;
 
 // fields (customers info)
 

@@ -7,7 +7,7 @@
 //
 
 #import "TXHSalesMainViewController.h"
-#import "UIViewController+BHTKeyboardNotifications.h"
+#import <UIViewController+BHTKeyboardAnimationBlocks/UIViewController+BHTKeyboardNotifications.h>
 
 // segues
 #import "TXHEmbeddingSegue.h"
@@ -85,38 +85,49 @@ static void * ContentValidContext = &ContentValidContext;
                              kWizardStepHidesRightButton        : @YES,
                              kWizardStepHidesMiddleLeftButton   : @YES,
                              kWizardStepHidesMiddleRightButton  : @YES}];
-    
+
     TXHSalesStep *step2 = [[TXHSalesStep alloc] initWithDictionary:
-                           @{kWizardStepTitleKey          : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_TITLE",nil),
-                             kWizardStepDescriptionKey    : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_DESC",nil),
-                             kWizardStepContinueTitleKey  : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_CONTINUE_TITLE",nil),
-                             kWizardStepLeftButtonTitle   : NSLocalizedString(@"SALESMAN_STEPS_CANCEL_ORDER_BUTTON_TITLE",nil),
-                             kWizardStepControllerSegueID : @"Tickets Upgrades",
-                             kWizardStepHidesRightButton : @YES,
+                           @{kWizardStepTitleKey                : NSLocalizedString(@"SALESMAN_STEPS_TICKET_DATES_TITLE",nil),
+                             kWizardStepDescriptionKey          : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UDATES_DESC",nil),
+                             kWizardStepContinueTitleKey        : NSLocalizedString(@"SALESMAN_STEPS_TICKETDATES_CONTINUE_TITLE",nil),
+                             kWizardStepLeftButtonTitle         : NSLocalizedString(@"SALESMAN_STEPS_CANCEL_ORDER_BUTTON_TITLE",nil),
+                             kWizardStepControllerSegueID       : @"Tickets Dates",
+                             kWizardStepHidesRightButton        : @YES,
+                             kWizardStepHidesLeftButton         : @YES,
                              kWizardStepHidesMiddleLeftButton   : @YES,
                              kWizardStepHidesMiddleRightButton  : @YES}];
     
     TXHSalesStep *step3 = [[TXHSalesStep alloc] initWithDictionary:
-                           @{kWizardStepTitleKey          : NSLocalizedString(@"SALESMAN_STEPS_ORDER_SUMMARY_TITLE",nil),
-                             kWizardStepDescriptionKey    : NSLocalizedString(@"SALESMAN_STEPS_ORDER_SUMMARY_DESC",nil),
-                             kWizardStepContinueTitleKey  : NSLocalizedString(@"SALESMAN_STEPS_ORDER_SUMMARY_CONTINUE_TITLE",nil),
-                             kWizardStepLeftButtonTitle   : NSLocalizedString(@"SALESMAN_STEPS_CANCEL_ORDER_BUTTON_TITLE",nil),
-                             kWizardStepControllerSegueID : @"Order Summary",
-                             kWizardStepHidesRightButton : @YES,
+                           @{kWizardStepTitleKey                : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_TITLE",nil),
+                             kWizardStepDescriptionKey          : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_DESC",nil),
+                             kWizardStepContinueTitleKey        : NSLocalizedString(@"SALESMAN_STEPS_TICKET_UPGRADES_CONTINUE_TITLE",nil),
+                             kWizardStepLeftButtonTitle         : NSLocalizedString(@"SALESMAN_STEPS_CANCEL_ORDER_BUTTON_TITLE",nil),
+                             kWizardStepControllerSegueID       : @"Tickets Upgrades",
+                             kWizardStepHidesRightButton        : @YES,
                              kWizardStepHidesMiddleLeftButton   : @YES,
                              kWizardStepHidesMiddleRightButton  : @YES}];
     
     TXHSalesStep *step4 = [[TXHSalesStep alloc] initWithDictionary:
-                           @{kWizardStepTitleKey          : NSLocalizedString(@"SALESMAN_STEPS_PAYMENT_TITLE",nil),
-                             kWizardStepDescriptionKey    : NSLocalizedString(@"SALESMAN_STEPS_PAYMENT_DESC",nil),
-                             kWizardStepContinueTitleKey  : NSLocalizedString(@"SALESMAN_STEPS_PAYMENT_CONTINUE_TITLE",nil),
-                             kWizardStepLeftButtonTitle   : NSLocalizedString(@"SALESMAN_STEPS_CANCEL_ORDER_BUTTON_TITLE",nil),
-                             kWizardStepControllerSegueID : @"Payment",
-                             kWizardStepHidesRightButton : @YES,
+                           @{kWizardStepTitleKey                : NSLocalizedString(@"SALESMAN_STEPS_ORDER_SUMMARY_TITLE",nil),
+                             kWizardStepDescriptionKey          : NSLocalizedString(@"SALESMAN_STEPS_ORDER_SUMMARY_DESC",nil),
+                             kWizardStepContinueTitleKey        : NSLocalizedString(@"SALESMAN_STEPS_ORDER_SUMMARY_CONTINUE_TITLE",nil),
+                             kWizardStepLeftButtonTitle         : NSLocalizedString(@"SALESMAN_STEPS_CANCEL_ORDER_BUTTON_TITLE",nil),
+                             kWizardStepControllerSegueID       : @"Order Summary",
+                             kWizardStepHidesRightButton        : @YES,
                              kWizardStepHidesMiddleLeftButton   : @YES,
                              kWizardStepHidesMiddleRightButton  : @YES}];
     
     TXHSalesStep *step5 = [[TXHSalesStep alloc] initWithDictionary:
+                           @{kWizardStepTitleKey                : NSLocalizedString(@"SALESMAN_STEPS_PAYMENT_TITLE",nil),
+                             kWizardStepDescriptionKey          : NSLocalizedString(@"SALESMAN_STEPS_PAYMENT_DESC",nil),
+                             kWizardStepContinueTitleKey        : NSLocalizedString(@"SALESMAN_STEPS_PAYMENT_CONTINUE_TITLE",nil),
+                             kWizardStepLeftButtonTitle         : NSLocalizedString(@"SALESMAN_STEPS_CANCEL_ORDER_BUTTON_TITLE",nil),
+                             kWizardStepControllerSegueID       : @"Payment",
+                             kWizardStepHidesRightButton        : @YES,
+                             kWizardStepHidesMiddleLeftButton   : @YES,
+                             kWizardStepHidesMiddleRightButton  : @YES}];
+    
+    TXHSalesStep *step6 = [[TXHSalesStep alloc] initWithDictionary:
                            @{kWizardStepTitleKey                : NSLocalizedString(@"SALESMAN_STEPS_SUMMARY_TITLE",nil),
                              kWizardStepDescriptionKey          : NSLocalizedString(@"SALESMAN_STEPS_SUMMARY_DESC",nil),
                              kWizardStepContinueTitleKey        : NSLocalizedString(@"SALESMNA_STEPS_SUMMARY_CONTINUE_TITLE",nil),
@@ -131,7 +142,7 @@ static void * ContentValidContext = &ContentValidContext;
                              kWizardStepMiddleRightButtonBlock  : [self printTicketsButtonActionBlock],
                              kWizardStepRightButtonBlock        : [self resetDataActionBlock]}];
     
-    self.stepsManager = [[TXHSalesStepsManager alloc] initWithSteps:@[step1, step2, step3, step4, step5]];
+    self.stepsManager = [[TXHSalesStepsManager alloc] initWithSteps:@[step1, step2, step3, step4, step5, step6]];
     self.stepsManager.delegate = self;
 }
 
@@ -454,8 +465,8 @@ static void * ContentValidContext = &ContentValidContext;
         [self.stepContentController finishStepWithCompletion:^(NSError *error) {
             if (!error)
                 [wself.stepsManager continueToNextStep];
-            
-            [wself.stepCompletionController setButtonsDisabled:NO];
+            else
+                [wself.stepCompletionController setButtonsDisabled:wself.stepContentController.isValid];
         }];
     }
 }

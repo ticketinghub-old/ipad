@@ -14,7 +14,7 @@
 #import <UIView+Shake/UIView+Shake.h>
 #import "UIColor+TicketingHub.h"
 
-#import "UIViewController+BHTKeyboardNotifications.h"
+#import <UIViewController+BHTKeyboardAnimationBlocks/UIViewController+BHTKeyboardNotifications.h>
 
 // The storyboard identifier for this controller
 NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController";
