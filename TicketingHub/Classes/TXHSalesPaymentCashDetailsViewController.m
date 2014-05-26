@@ -124,7 +124,7 @@
 - (TXHActivityLabelView *)activityView
 {
     if (!_activityView)
-        _activityView = [TXHActivityLabelView getInstanceInView:self.navigationController.view];
+        _activityView = [TXHActivityLabelView getInstanceInView:self.view];
     
     return _activityView;
 }
