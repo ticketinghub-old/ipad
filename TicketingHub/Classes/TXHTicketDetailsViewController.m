@@ -17,6 +17,7 @@
 #import "NSDateFormatter+DisplayFormat.h"
 #import "UIImage+ImageEffects.h"
 #import "UIColor+TicketingHub.h"
+#import "UIFont+TicketingHub.h"
 
 #import <QuartzCore/QuartzCore.h>
 #import <iOS-api/NSDate+ISO.h>
@@ -87,22 +88,14 @@
     NSString *title      = [NSString stringWithFormat:titleFormat,dateString];
     NSRange timeRange    = [title rangeOfString:dateString];
     
-    NSMutableAttributedString *attributedTitle =
-    [[NSMutableAttributedString alloc] initWithString:title];
+    NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc] initWithString:title];
     
     [attributedTitle addAttribute:NSFontAttributeName
-                            value:[UIFont boldSystemFontOfSize:15]
+                            value:[UIFont txhBoldFontWithSize:self.attendedButton.titleLabel.font.pointSize]
                             range:timeRange];
-    
-    [attributedTitle addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, [title length])];
+
     [self.attendedButton setAttributedTitle:attributedTitle forState:UIControlStateNormal];
-    
-    NSMutableAttributedString *highlightedAttributedTitle = [attributedTitle mutableCopy];
-    [highlightedAttributedTitle addAttribute:NSForegroundColorAttributeName value:[UIColor txhGreenColor] range:NSMakeRange(0, [title length])];
-    [self.attendedButton setAttributedTitle:highlightedAttributedTitle forState:UIControlStateHighlighted];
-    
-    [self.attendedButton setTitle:nil
-                         forState:UIControlStateNormal];
+    [self.attendedButton setTitle:nil forState:UIControlStateNormal];
     
     self.attendedButton.borderColor            = [UIColor txhBlueColor];
     self.attendedButton.highlightedBorderColor = [UIColor txhDarkBlueColor];
@@ -115,7 +108,6 @@
 - (void)configureAttendedButtonWhenNotAttended
 {
     [self.attendedButton setAttributedTitle:nil forState:UIControlStateNormal];
-    [self.attendedButton setAttributedTitle:nil forState:UIControlStateHighlighted];
     [self.attendedButton setTitle:NSLocalizedString(@"TICKET_DETAILS_MARK_AS_ATTENDED_BUTTON_TITLE", nil) forState:UIControlStateNormal];
 
     self.attendedButton.borderColor            = [UIColor txhDarkBlueColor];

@@ -16,21 +16,19 @@
 
 @end
 
-@interface TXHDoorTicketCell : UITableViewCell
+@interface TXHDoorTicketCell : UICollectionViewCell
 
 @property (nonatomic, weak) id<TXHDoorTicketCellDelegate> delegate;
 @property (nonatomic, readonly) BOOL switchValue;
 
 
-- (void)setIsFirstRow:(BOOL)isFirst;
-- (void)setIsLastRow:(BOOL)isLast;
+- (void)setName:(NSString *)name;
+- (void)setTierName:(NSString *)tierName;
+- (void)setReference:(NSString *)orderReference;
+- (void)setPrice:(NSString *)price;
 
-- (void)setTitle:(NSString *)title;
-- (void)setSubtitle:(NSString *)subtitle;
 
 - (void)setAttendedAt:(NSDate *)attendedAt animated:(BOOL)animated;
 - (void)setIsLoading:(BOOL)loading;
-
-- (void)setPriceTag:(NSString *)priceTag;
 
 @end

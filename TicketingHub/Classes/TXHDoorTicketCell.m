@@ -8,18 +8,19 @@
 
 #import "TXHDoorTicketCell.h"
 #import <SevenSwitch/SevenSwitch.h>
+#import <QuartzCore/QuartzCore.h>
 #import "UIImage+String.h"
 #import "UIColor+TicketingHub.h"
+#import "UIFont+TicketingHub.h"
 
 @interface TXHDoorTicketCell ()
 
 @property (weak, nonatomic) IBOutlet SevenSwitch             *attendedSwitch;
-@property (weak, nonatomic) IBOutlet UILabel                 *mainLabel;
-@property (weak, nonatomic) IBOutlet UILabel                 *secondaryLabel;
+@property (weak, nonatomic) IBOutlet UILabel                 *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel                 *tierLabel;
+@property (weak, nonatomic) IBOutlet UILabel                 *orderLabel;
 @property (weak, nonatomic) IBOutlet UILabel                 *pricetagLabel;
 @property (weak, nonatomic) IBOutlet UIImageView             *chevronImageView;
-@property (weak, nonatomic) IBOutlet UIView                  *topSeparatorView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint      *bottomSeparatorLeadingConstraint;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
     
 @end
@@ -41,14 +42,12 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    
-    UIImage *chervon = [self.chevronImageView image];
-    chervon = [chervon imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.chevronImageView.image = chervon;
 
-    self.attendedSwitch.inactiveColor  = [UIColor whiteColor];
-    self.attendedSwitch.onTintColor    = [UIColor colorFromHexString:@"#18a651" alpha:1.0];
-    self.attendedSwitch.borderColor    = [UIColor colorFromHexString:@"#dce5ec" alpha:1.0];
+    self.layer.cornerRadius = 10.0;
+    
+    self.attendedSwitch.inactiveColor  = [UIColor txhVeryLightBlueColor];
+    self.attendedSwitch.onTintColor    = [UIColor txhBlueColor];
+    self.attendedSwitch.borderColor    = [UIColor txhVeryLightBlueColor];
     
     [self.attendedSwitch addTarget:self action:@selector(switchDidChange:) forControlEvents:UIControlEventValueChanged];
 }
@@ -58,24 +57,24 @@
     return self.attendedSwitch.on;
 }
 
-- (void)setIsFirstRow:(BOOL)isFirst
+- (void)setName:(NSString *)name
 {
-    self.topSeparatorView.hidden = !isFirst;
+    self.nameLabel.text = name;
 }
 
-- (void)setIsLastRow:(BOOL)isLast
+- (void)setTierName:(NSString *)tierName
 {
-    self.bottomSeparatorLeadingConstraint.constant = isLast ? 0 : self.mainLabel.frame.origin.x;
+    self.tierLabel.text = tierName;
 }
 
-- (void)setTitle:(NSString *)title
+- (void)setReference:(NSString *)orderReference
 {
-    self.mainLabel.text = title;
+    self.orderLabel.text = orderReference;
 }
 
-- (void)setSubtitle:(NSString *)subtitle
+- (void)setPrice:(NSString *)price
 {
-    self.secondaryLabel.text = subtitle;
+    self.pricetagLabel.text = price;
 }
 
 - (void)setAttendedAt:(NSDate *)attendedAt animated:(BOOL)animated
@@ -86,7 +85,7 @@
     {
         NSString *dateString = [[TXHDoorTicketCell timeFormatter] stringFromDate:attendedAt];
         dateImage = [UIImage imageWithString:dateString
-                                        font:[UIFont fontWithName:@"Helvetica" size:14]
+                                        font:[UIFont txhThinFontWithSize:16.0f]
                                        color:[UIColor whiteColor]];
         
     }

@@ -19,7 +19,7 @@
                                  NSForegroundColorAttributeName : color};
 
     // would have to round to even number to avaoid misalligned image in 3rd party lib
-    CGSize size = CGSizeMake(38,16);// [string sizeWithAttributes:attributes];
+    CGSize size = CGSizeMake(60,20);// [string sizeWithAttributes:attributes];
 
     CGFloat scale = 1.0;
     if([[UIScreen mainScreen]respondsToSelector:@selector(scale)]) {
@@ -35,7 +35,7 @@
         UIGraphicsBeginImageContext(size);
     }
     
-    [string drawAtPoint:CGPointMake(0.0, 0.0) withAttributes:attributes];
+    [string drawAtPoint:CGPointMake(10.0, 0.0) withAttributes:attributes];
     
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

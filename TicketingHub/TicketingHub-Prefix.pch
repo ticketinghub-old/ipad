@@ -10,11 +10,12 @@
 @import Security;
 @import SystemConfiguration;
 
+// UIView Helper methods
+#import "UIView+Additions.h"
+
 // Logging helper macros
 #import "CommonMacros.h"
 
 // TicketingHubClient
 #import <iOS-api/iOS-api.h>
 
-// UIView Helper methods
-#import "UIView+Additions.h"

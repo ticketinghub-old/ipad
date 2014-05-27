@@ -10,7 +10,7 @@
 
 @class TXHProductsManager;
 
-@interface TXHDoorTicketsListViewController : UITableViewController
+@interface TXHDoorTicketsListViewController : UIViewController
 
 @property (strong, nonatomic) TXHProductsManager *productManager;
 

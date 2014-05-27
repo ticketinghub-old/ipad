@@ -105,6 +105,16 @@ NSString * const TXHSelectedAvailabilityKey         = @"TXHSelectedProductKey";
     [self.txhManager.client availabilitiesForProduct:self.selectedProduct fromDate:fromDate toDate:toDate coupon:coupon completion:completion];
 }
 
+- (void)ticketRecordsValidFromDate:(NSDate *)date includingAttended:(BOOL)attended query:(NSString *)query paginationInfo:(TXHPartialResponsInfo *)info  completion:(void(^)(TXHPartialResponsInfo *info, NSArray *ricketRecords, NSError *error))completion
+{
+    [self.txhManager.client ticketRecordsForProduct:self.selectedProduct
+                                      validFromDate:date
+                                  includingAttended:attended
+                                              query:query
+                                     paginationInfo:info
+                                         completion:completion];
+
+}
 
 - (void)ticketRecordsForAvailability:(TXHAvailability *)availability andQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion;
 {

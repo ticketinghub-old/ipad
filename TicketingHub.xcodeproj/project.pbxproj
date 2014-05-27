@@ -65,6 +65,7 @@
 		3E938DB5190FED7A00FC29E9 /* DKHandpointTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E938DAD190FED7A00FC29E9 /* DKHandpointTypes.m */; };
 		3E938DB6190FED7A00FC29E9 /* DKPOSHandpointClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E938DAF190FED7A00FC29E9 /* DKPOSHandpointClient.m */; };
 		3E938DBD1910E62A00FC29E9 /* NSString+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E938DBC1910E62A00FC29E9 /* NSString+Hex.m */; };
+		3E9BA43F19351EDB00780E78 /* TXHDoorTicketsListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9BA43E19351EDB00780E78 /* TXHDoorTicketsListHeaderView.m */; };
 		3E9D734518D1EEF60087121B /* TXHDoorOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D734418D1EEF60087121B /* TXHDoorOrderViewController.m */; };
 		3E9D734818D1EF110087121B /* TXHDoorOrderTicketsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D734718D1EF110087121B /* TXHDoorOrderTicketsListViewController.m */; };
 		3E9D734B18D1EF260087121B /* TXHDoorOrderDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D734A18D1EF260087121B /* TXHDoorOrderDetailsViewController.m */; };
@@ -290,6 +291,8 @@
 		3E938DAF190FED7A00FC29E9 /* DKPOSHandpointClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKPOSHandpointClient.m; sourceTree = "<group>"; };
 		3E938DBB1910E62A00FC29E9 /* NSString+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hex.h"; sourceTree = "<group>"; };
 		3E938DBC1910E62A00FC29E9 /* NSString+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hex.m"; sourceTree = "<group>"; };
+		3E9BA43D19351EDB00780E78 /* TXHDoorTicketsListHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorTicketsListHeaderView.h; sourceTree = "<group>"; };
+		3E9BA43E19351EDB00780E78 /* TXHDoorTicketsListHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorTicketsListHeaderView.m; sourceTree = "<group>"; };
 		3E9D734318D1EEF60087121B /* TXHDoorOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorOrderViewController.h; sourceTree = "<group>"; };
 		3E9D734418D1EEF60087121B /* TXHDoorOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorOrderViewController.m; sourceTree = "<group>"; };
 		3E9D734618D1EF110087121B /* TXHDoorOrderTicketsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorOrderTicketsListViewController.h; sourceTree = "<group>"; };
@@ -975,6 +978,8 @@
 				3EE8E21518CA23A4006E8F5E /* Ticket Details */,
 				3E3C50C018C7823500A9285C /* TXHDoorTicketsListViewController.h */,
 				3E3C50C118C7823500A9285C /* TXHDoorTicketsListViewController.m */,
+				3E9BA43D19351EDB00780E78 /* TXHDoorTicketsListHeaderView.h */,
+				3E9BA43E19351EDB00780E78 /* TXHDoorTicketsListHeaderView.m */,
 				3EE8E20F18C8799C006E8F5E /* TXHDoorTicketCell.h */,
 				3EE8E21018C8799C006E8F5E /* TXHDoorTicketCell.m */,
 			);
@@ -1782,6 +1787,7 @@
 				3E4ADF7318D8C17400D2C508 /* TXHPrintButtonsViewController.m in Sources */,
 				3EC8845B18C4984B00CE0597 /* UIResponder+FirstResponder.m in Sources */,
 				EE75D99C17D11048009ADCD8 /* TXHSalesSummaryItemCell.m in Sources */,
+				3E9BA43F19351EDB00780E78 /* TXHDoorTicketsListHeaderView.m in Sources */,
 				3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */,
 				3E5B2BC8192A6C5600BE4CE6 /* TXHPayment+PKCard.m in Sources */,
 				3EF09F90191BB0A100C85109 /* TXHPaymentOptionsManager.m in Sources */,

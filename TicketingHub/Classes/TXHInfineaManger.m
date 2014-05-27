@@ -76,14 +76,14 @@ NSString * const TXHScannerConnectionStatusDidChangedNotification = @"TXHScanner
 {    
 	switch (state)
     {
-		case CONN_DISCONNECTED:
-            self.scannerConnected = NO;
-            break;
-		case CONN_CONNECTING:
-			break;
 		case CONN_CONNECTED:
             self.scannerConnected = YES;
             break;
+		case CONN_CONNECTING:
+		case CONN_DISCONNECTED:
+        default:
+            self.scannerConnected = NO;
+			break;
 	}
 }
 

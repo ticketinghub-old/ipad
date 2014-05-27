@@ -103,13 +103,17 @@
 "DOORMAN_TICKETS_LIST_NO_TICKETS_LABEL"            = "No Tickets";
 "DOORMAN_TICKETS_LIST_NO_TICKETS_FOR_QUERY_FORMAT" = "No Tickets for: %@";
 "DOORMAN_TICKETS_LIST_LOOKING_UP_TICKETS"          = "Looking up ticket";
-"DOORMAN_TICKETS_LIST_ATTENDEES_FORMAT"            = "%lu Attendees";
+"DOORMAN_TICKETS_LIST_ATTENDEES_FORMAT"            = "%lu Guests";
+"DOORMAN_TICKETS_LIST_ATTENDING_FORMAT"            = "%lu Attending";
 "DOORMAN_TICKETS_LIST_ATTENDING_FORMAT"            = "%lu Attending";
 "DOORMAN_TICKETS_LIST_LOADING_TICKETS"             = "Loading tickets";
 
 "DOORMAN_TICKETS_LIST_SEARCHING_LABEL"             = "Searching";
 "DOORMAN_TICKETS_LIST_NO_ORDERS_FOR_CARD_TITLE"    = "No orders found";
 "DOORMAN_TICKETS_LIST_NO_ORDERS_FOR_CARD_MESSAGE"  = "Looks like this card hasn't been used to pay for any order";
+
+"DOORMAN_TICKETS_LIST_HIDE_ATTENDING_BUTTON_TITLE" = "Hide attending";
+"DOORMAN_TICKETS_LIST_SHOW_ATTENDING_BUTTON_TITLE" = "Show attending";
 
 /* Ticket details */
 

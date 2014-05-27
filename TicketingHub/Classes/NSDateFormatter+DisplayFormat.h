@@ -13,5 +13,7 @@
 + (instancetype)txh_fullDateFormatter;
 
 + (NSString *)txh_fullDateStringFromDate:(NSDate *)date;
++ (NSString *)txh_dateStringFromDate:(NSDate *)date;
++ (NSString *)txh_timeStringFromDate:(NSDate *)date;
 
 @end

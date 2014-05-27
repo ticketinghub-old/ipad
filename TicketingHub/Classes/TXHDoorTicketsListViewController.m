@@ -12,37 +12,43 @@
 #import "TXHTicketDetailsViewController.h"
 #import "TXHDoorOrderViewController.h"
 
+#import "TXHDoorTicketsListHeaderView.h"
 #import "TXHDoorTicketCell.h"
 #import "TXHActivityLabelView.h"
 
 #import "TXHProductsManager.h"
 #import "TXHScanersManager.h"
 
+#import "TXHBorderedButton.h"
 #import "TXHTicket+Filter.h"
 #import "TXHTicket+Title.h"
 #import "TXHOrder+Helpers.h"
 #import <UIViewController+BHTKeyboardAnimationBlocks/UIViewController+BHTKeyboardNotifications.h>
 #import "TXHRMPickerViewControllerDelegate.h"
+#import <iOS-api/TXHPartialResponsInfo.h>
 
-@interface TXHDoorTicketsListViewController () <TXHTicketDetailsViewControllerDelegate, TXHDoorTicketCellDelegate, UIAlertViewDelegate, TXHScanersManagerDelegate>
+@interface TXHDoorTicketsListViewController () <TXHTicketDetailsViewControllerDelegate, TXHDoorTicketCellDelegate, UIAlertViewDelegate, TXHScanersManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
+@property (weak, nonatomic) IBOutlet TXHBorderedButton *toogleAttendingButton;
 
 @property (strong, nonatomic) TXHActivityLabelView *activityView;
 
 @property (strong, nonatomic) TXHScanersManager *scannersManager;
 
-@property (strong, nonatomic) NSArray *tickets;
-@property (strong, nonatomic) NSArray *filteredTickets;
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
+@property (strong, nonatomic) NSArray *tickets;
 @property (strong, nonatomic) NSString *searchQuery;
+
 @property (strong, nonatomic) TXHTicket *selectedTicket;
 @property (strong, nonatomic) NSMutableSet *ticketsDisabled;
 
 @property (assign, nonatomic, getter = isLoadingData) BOOL loadingData;
 @property (assign, nonatomic, getter = isErrorShown) BOOL errorShown;
 
+@property (assign, nonatomic) BOOL hideAttending;
+
+@property (strong, nonatomic) TXHPartialResponsInfo *paginationInfo;
 
 @end
 
@@ -52,9 +58,10 @@
 {
     [super viewDidLoad];
     
-    [self updateHeaderLabels];
     [self setupKeybaordAnimations];
     [self setupScannersManager];
+    
+    [self reload];
 }
 
 - (void)setupScannersManager
@@ -77,49 +84,42 @@
     [self unregisterFromNotifications];
 }
 
-- (void)applyTicketFilter
+//- (void)applyTicketFilter
+//{
+//    static NSInteger queryCounter = 0;
+//    queryCounter++;
+//    
+//    if (!self.searchQuery.length)
+//    {
+//        self.filteredTickets = self.tickets;
+//        return;
+//    }
+//    
+//    NSInteger bQueryCounter = queryCounter;
+//    __weak typeof(self) wself = self;
+//    
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+//        NSArray *filteredTickets = [TXHTicket filterTickets:wself.tickets withQuery:wself.searchQuery];
+//        if (bQueryCounter == queryCounter)
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                    wself.filteredTickets = filteredTickets;
+//            });
+//    });
+//}
+
+- (void)setHideAttending:(BOOL)hideAttending
 {
-    static NSInteger queryCounter = 0;
-    queryCounter++;
+    _hideAttending = hideAttending;
     
-    if (!self.searchQuery.length)
-    {
-        self.filteredTickets = self.tickets;
-        return;
-    }
-    
-    NSInteger bQueryCounter = queryCounter;
-    __weak typeof(self) wself = self;
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSArray *filteredTickets = [TXHTicket filterTickets:wself.tickets withQuery:wself.searchQuery];
-        if (bQueryCounter == queryCounter)
-            dispatch_async(dispatch_get_main_queue(), ^{
-                    wself.filteredTickets = filteredTickets;
-            });
-    });
+    [self updateToggleAttendingButton];
+    [self reload];
 }
 
 - (void)setTickets:(NSArray *)tickets
 {
     _tickets = tickets;
     
-    [self applyTicketFilter];
-    [self updateHeaderLabels];
-}
-
-- (void)setSearchQuery:(NSString *)searchQuery
-{
-    _searchQuery = searchQuery;
-    
-    [self applyTicketFilter];
-}
-
-- (void)setFilteredTickets:(NSArray *)filteredTickets
-{
-    _filteredTickets = filteredTickets;
-    [self updateInfoLabel];
-    [self.tableView reloadData];
+    [self.collectionView reloadData];
 }
 
 - (void)setLoadingData:(BOOL)loadingData
@@ -129,19 +129,49 @@
     [self updateInfoLabel];
 }
 
+- (void)setSearchQuery:(NSString *)searchQuery
+{
+    if (![_searchQuery isEqualToString:searchQuery])
+    {
+        _searchQuery = searchQuery;
+        
+        [self reload];
+    }
+}
+
+//- (void)setSearchQuery:(NSString *)searchQuery
+//{
+//    _searchQuery = searchQuery;
+//    
+//    [self applyTicketFilter];
+//}
+
+//- (void)setFilteredTickets:(NSArray *)filteredTickets
+//{
+//    _filteredTickets = filteredTickets;
+////    [self updateInfoLabel];
+//    [self.tableView reloadData];
+//}
+
+//- (void)setLoadingData:(BOOL)loadingData
+//{
+//    _loadingData = loadingData;
+//    
+////    [self updateInfoLabel];
+//}
+
 - (NSMutableSet *)ticketsDisabled
 {
     if (!_ticketsDisabled)
-    {
         _ticketsDisabled = [NSMutableSet new];
-    }
+
     return _ticketsDisabled;
 }
 
-- (NSUInteger)attendingTickets
+- (NSUInteger)attendingTicketsFrom:(NSArray *)tickets
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"attendedAt != NULL"];
-    return [[self.tickets filteredArrayUsingPredicate:predicate] count];
+    return [[tickets filteredArrayUsingPredicate:predicate] count];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -162,7 +192,7 @@
 
 - (TXHTicket *)ticketAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.filteredTickets[indexPath.row];
+    return self.tickets[indexPath.item];
 }
 
 - (void)setupKeybaordAnimations
@@ -171,15 +201,43 @@
     
     [self setKeyboardWillShowAnimationBlock:^(CGRect keyboardFrame) {
         CGFloat height = keyboardFrame.size.width;
-        wself.tableView.contentInset = UIEdgeInsetsMake(0, 0, height, 0);
+        wself.collectionView.contentInset = UIEdgeInsetsMake(0, 0, height, 0);
         wself.activityView.height = wself.view.height - height;
     }];
     
     
     [self setKeyboardWillHideAnimationBlock:^(CGRect keyboardFrame) {
-        wself.tableView.contentInset = UIEdgeInsetsZero;
+        wself.collectionView.contentInset = UIEdgeInsetsZero;
         wself.activityView.height = wself.view.height;
     }];
+}
+
+- (void)reload
+{
+    self.paginationInfo = nil;
+    self.tickets = [NSArray array];
+    
+    [self loadTickets];
+    
+    [self updateView];
+}
+
+- (void)loadTickets
+{
+    if (!self.isLoadingData)
+    {
+        self.loadingData = YES;
+        __weak typeof(self) wself = self;
+        [self.productManager ticketRecordsValidFromDate:[[NSDate date] dateByAddingTimeInterval:60*60*24*3 - 60*60*14]
+                                      includingAttended:!self.hideAttending
+                                                  query:nil
+                                         paginationInfo:self.paginationInfo
+                                             completion:^(TXHPartialResponsInfo *info, NSArray *ticketRecords, NSError *error) {
+                                                 wself.tickets = [wself.tickets arrayByAddingObjectsFromArray:ticketRecords];
+                                                 wself.loadingData = NO;
+                                                 wself.paginationInfo = info;
+                                             }];
+    }
 }
 
 #pragma mark - Info Label
@@ -187,60 +245,68 @@
 - (TXHActivityLabelView *)activityView
 {
     if (!_activityView)
-    {
-        _activityView = [TXHActivityLabelView getInstanceInView:self.view];
-    }
+        _activityView = [TXHActivityLabelView getInstanceInView:self.collectionView];
+
     return _activityView;
 }
 
 - (void)showInfolabelWithText:(NSString *)text withIndicator:(BOOL)indicator
 {
-    self.tableView.scrollEnabled = NO;
     [self.activityView showWithMessage:text indicatorHidden:!indicator];
 }
 
 - (void)hideInfoLabel
 {
-    self.tableView.scrollEnabled = YES;
     [self.activityView hide];
+}
+
+- (void)updateView
+{
+    [self updateToggleAttendingButton];
+}
+
+- (void)updateToggleAttendingButton
+{
+    NSString *title;
+    
+    if (self.hideAttending)
+        title = NSLocalizedString(@"DOORMAN_TICKETS_LIST_SHOW_ATTENDING_BUTTON_TITLE", nil);
+    else
+        title = NSLocalizedString(@"DOORMAN_TICKETS_LIST_HIDE_ATTENDING_BUTTON_TITLE", nil);
+    
+    [self.toogleAttendingButton setTitle:title forState:UIControlStateNormal];
 }
 
 - (void)updateInfoLabel
 {
-    if (![self.tickets count])
-    {
+    if (!self.paginationInfo && self.loadingData)
+        [self showInfolabelWithText:NSLocalizedString(@"DOORMAN_TICKETS_LIST_LOOKING_UP_TICKETS", nil) withIndicator:YES];
+    else if (![self.tickets count] && !self.isLoadingData)
         [self showInfolabelWithText:NSLocalizedString(@"DOORMAN_TICKETS_LIST_NO_TICKETS_LABEL", nil) withIndicator:NO];
-    }
-    else if (![self.filteredTickets count])
-    {
-        NSString *format = NSLocalizedString(@"DOORMAN_TICKETS_LIST_NO_TICKETS_FOR_QUERY_FORMAT", nil);
-        [self showInfolabelWithText:[NSString stringWithFormat:format,self.searchQuery] withIndicator:NO];
-    }
-    else if (self.loadingData)
-    {
-        [self showInfolabelWithText:NSLocalizedString(@"DOORMAN_TICKETS_LIST_LOOKING_UP_TICKETS", nil) withIndicator:NO];
-    }
     else
-    {
         [self hideInfoLabel];
-    }
 }
 
-- (void)updateHeaderLabels
+//- (void)updateHeaderLabels
+//{
+//    BOOL anyTickets = [self.filteredTickets count] > 0;
+//    
+//    self.titleLabel.hidden    = !anyTickets;
+//    self.subtitleLabel.hidden = !anyTickets;
+//    
+//    if (anyTickets)
+//    {
+//        NSString *attendeesFormat = NSLocalizedString(@"DOORMAN_TICKETS_LIST_ATTENDEES_FORMAT", nil);
+//        NSString *attendingFormat = NSLocalizedString(@"DOORMAN_TICKETS_LIST_ATTENDING_FORMAT", nil);
+//        
+//        self.titleLabel.text    = [NSString stringWithFormat:attendeesFormat,(unsigned long)[self.tickets count]];
+//        self.subtitleLabel.text = [NSString stringWithFormat:attendingFormat,(unsigned long)[self attendingTickets]];
+//    }
+//}
+
+- (IBAction)toggleAttendingAction:(id)sender
 {
-    BOOL anyTickets = [self.filteredTickets count] > 0;
-    
-    self.titleLabel.hidden    = !anyTickets;
-    self.subtitleLabel.hidden = !anyTickets;
-    
-    if (anyTickets)
-    {
-        NSString *attendeesFormat = NSLocalizedString(@"DOORMAN_TICKETS_LIST_ATTENDEES_FORMAT", nil);
-        NSString *attendingFormat = NSLocalizedString(@"DOORMAN_TICKETS_LIST_ATTENDING_FORMAT", nil);
-        
-        self.titleLabel.text    = [NSString stringWithFormat:attendeesFormat,(unsigned long)[self.tickets count]];
-        self.subtitleLabel.text = [NSString stringWithFormat:attendingFormat,(unsigned long)[self attendingTickets]];
-    }
+    self.hideAttending = !self.hideAttending;
 }
 
 - (void)showDetailsForTicket:(TXHTicket *)ticket
@@ -272,7 +338,27 @@
     [alert show];
 }
 
-#pragma mark UIalertViewDelegate
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+    self.searchQuery = nil;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [textField resignFirstResponder];
+    });
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    self.searchQuery = textField.text;
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
+#pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -284,13 +370,13 @@
 - (void)registerForNotifications
 {
     [self registerForSearchViewNotification];
-    [self registerForProductAndAvailabilityChanges];
+    [self registerForProductChanges];
 }
 
 - (void)unregisterFromNotifications
 {
     [self unregisterFromSearchViewNotification];
-    [self unregisterForProductAndAvailabilityChanges];
+    [self unregisterForProductChanges];
 }
 
 - (void)registerForSearchViewNotification
@@ -305,58 +391,44 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHRecognizedQRCodeNotification object:nil];
 }
 
-- (void)registerForProductAndAvailabilityChanges
+- (void)registerForProductChanges
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(productDidChange:)
                                                  name:TXHProductsChangedNotification
                                                object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(availabilityDidChange:)
-                                                 name:TXHAvailabilityChangedNotification
-                                               object:nil];
 }
 
-- (void)unregisterForProductAndAvailabilityChanges
+- (void)unregisterForProductChanges
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductsChangedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];
 }
 
 #pragma mark - TXHScannerManagerDelegate
 
 - (void)scannerManager:(TXHScanersManager *)manager didRecognizeQRCode:(NSString *)QRCodeString
 {
-    [self filterTicketsWithBarcode:QRCodeString];
+    [self lookupTicketWithQRCode:QRCodeString];
 }
 
 - (void)scannerManager:(TXHScanersManager *)manager didRecognizeMSRCardTrack:(NSString *)cardTrack
 {
-    [self showInfolabelWithText:NSLocalizedString(@"DOORMAN_TICKETS_LIST_SEARCHING_LABEL", nil)
-                  withIndicator:YES];
+
+    self.loadingData = YES;
     
     __weak typeof(self) wself = self;
     
     [self.productManager getOrderForCardMSRData:cardTrack
                                      completion:^(NSArray *orders, NSError *error) {
-                                         
-                                         [wself hideInfoLabel];
+                                         wself.loadingData = NO;
                                          
                                          if (!error)
-                                         {
                                              if (![orders count])
-                                             {
                                                  [wself showNoOrdersForCardDataAlert];
-                                                 return;
-                                             }
-                                             
-                                             [wself selectOrderFromOrders:orders];
-                                         }
+                                             else
+                                                 [wself selectOrderFromOrders:orders];
                                          else
-                                         {
                                              [wself showAlertForError:error];
-                                         }
                                      }];
 }
 
@@ -398,27 +470,7 @@
 {
     NSString *barcode = [note userInfo][TXHQueryValueKey];
 
-    [self filterTicketsWithBarcode:barcode];
-}
-
-- (void)filterTicketsWithBarcode:(NSString *)barcode
-{
-    if (![barcode length] || ![self canSearch])
-        return;
-    
-    DLog(@"search for ticket with barcode: %@",barcode);
-    
-    NSArray *filteredTickets = [TXHTicket filterTickets:self.tickets withQuery:barcode];
-    
-    if ([filteredTickets count])
-    {
-        TXHTicket *scannedTicket = [filteredTickets firstObject];
-        [self showDetailsForTicket:scannedTicket];
-    }
-    else
-    {
-        [self lookupTicketWithBarcode:barcode];
-    }
+    [self lookupTicketWithQRCode:barcode];
 }
 
 - (void)showAlertForError:(NSError *)error
@@ -432,7 +484,7 @@
     [alert show];
 }
 
-- (void)lookupTicketWithBarcode:(NSString *)barcode
+- (void)lookupTicketWithQRCode:(NSString *)barcode
 {
     NSDictionary *decodedBarcode = [TXHTicket decodeBarcode:barcode];
     NSNumber *ticketSeqID = decodedBarcode[kTXHBarcodeTicketSeqIdKey];
@@ -457,7 +509,7 @@
     
     if (![self canSearch])
         return;
-    
+
     self.searchQuery = query;
 }
 
@@ -471,58 +523,117 @@
     self.tickets = nil;
 }
 
-- (void)availabilityDidChange:(NSNotification *)note
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    __weak typeof(self) wself = self;
-    
-    TXHAvailability *availability = note.userInfo[TXHSelectedAvailabilityKey];
-    
-    [self showInfolabelWithText:NSLocalizedString(@"DOORMAN_TICKETS_LIST_LOADING_TICKETS", nil) withIndicator:YES];
-    
-    [self.productManager ticketRecordsForAvailability:availability
-                                             andQuery:nil
-                                           completion:^(NSArray *ticketRecords, NSError *error) {
-                                               
-                                               wself.tickets = ticketRecords;
-                                           }];
+    return [self.tickets count];
 }
 
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [self.filteredTickets count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TXHDoorTicketCell *cell = (TXHDoorTicketCell *)[tableView dequeueReusableCellWithIdentifier:@"DoorTicketListCell" forIndexPath:indexPath];
-    [cell setDelegate:self];
+    TXHDoorTicketCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TicketCell" forIndexPath:indexPath];
     
-    [cell setIsFirstRow:indexPath.row == 0];
-    [cell setIsLastRow:indexPath.row == [self.filteredTickets count] - 1];
-    
-    TXHTicket *ticket = [self ticketAtIndexPath:indexPath];
-    BOOL isTicketDisabled = [self.ticketsDisabled containsObject:ticket.ticketId];
-
-    [cell setTitle:ticket.title];
-    [cell setSubtitle:ticket.tier.name];
-    [cell setAttendedAt:ticket.attendedAt animated:NO];
-    [cell setIsLoading:isTicketDisabled];
+    [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
 
-#pragma mark - UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    return [self.tickets count] ? 1 : 0;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if (kind == UICollectionElementKindSectionHeader)
+    {
+        TXHDoorTicketsListHeaderView *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                                           withReuseIdentifier:@"TicketsHeader"
+                                                                                  forIndexPath:indexPath];
+        [self configureHeader:header atIndexPath:indexPath];
+        
+        return header;
+    }
     
+    return nil;
+}
+
+- (void)configureCell:(TXHDoorTicketCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    TXHTicket *ticket = [self ticketAtIndexPath:indexPath];
+    
+    BOOL isTicketDisabled = [self.ticketsDisabled containsObject:ticket.ticketId];
+
+    [cell setDelegate:self];
+    [cell setName:ticket.customer.fullName];
+    [cell setTierName:ticket.tier.name];
+    [cell setReference:ticket.reference];
+    [cell setPrice:[self.productManager priceStringForPrice:ticket.price]];
+    [cell setAttendedAt:ticket.attendedAt animated:NO];
+    [cell setIsLoading:isTicketDisabled];
+}
+
+- (void)configureHeader:(TXHDoorTicketsListHeaderView *)header atIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *tickets = self.tickets;// tickets at index path
+    TXHTicket *firstTicket = [tickets firstObject];
+    
+    NSInteger attendingTickets = [self attendingTicketsFrom:tickets];
+
+    [header setAttending:attendingTickets];
+    [header setTotal:[tickets count]];
+    [header setDate:firstTicket.validFrom];
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
     TXHTicket *ticket = [self ticketAtIndexPath:indexPath];
     
     [self showDetailsForTicket:ticket];
 }
+
+//#pragma mark - UITableViewDataSource
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    return [self.filteredTickets count];
+//}
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    TXHDoorTicketCell *cell = (TXHDoorTicketCell *)[tableView dequeueReusableCellWithIdentifier:@"DoorTicketListCell" forIndexPath:indexPath];
+//    [cell setDelegate:self];
+//    
+//    [cell setIsFirstRow:indexPath.row == 0];
+//    [cell setIsLastRow:indexPath.row == [self.filteredTickets count] - 1];
+//    
+//    TXHTicket *ticket = [self ticketAtIndexPath:indexPath];
+//    BOOL isTicketDisabled = [self.ticketsDisabled containsObject:ticket.ticketId];
+//
+//    [cell setTitle:ticket.title];
+//    [cell setSubtitle:ticket.tier.name];
+//    [cell setAttendedAt:ticket.attendedAt animated:NO];
+//    [cell setIsLoading:isTicketDisabled];
+//    
+//    if (self.paginationInfo.hasMore && indexPath.row == [self.tickets count] - 1)
+//        [self loadMoreTickets];
+//    
+//    return cell;
+//}
+//
+//#pragma mark - UITableViewDelegate
+//
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    
+//    TXHTicket *ticket = [self ticketAtIndexPath:indexPath];
+//    
+//    [self showDetailsForTicket:ticket];
+//}
 
 #pragma mark - TXHTicketDetailsViewControllerDelegate
 
@@ -533,18 +644,16 @@
 
 - (void)txhTicketDetailsViewController:(TXHTicketDetailsViewController *)controller didChangeTicket:(TXHTicket *)ticket
 {
-    [self.tableView reloadData];
+    [self.collectionView reloadData];
 }
 
 - (void)txhTicketDetailsViewController:(TXHTicketDetailsViewController *)controller wantsToPresentOrderForTicket:(TXHTicket *)ticket
 {
     __weak typeof(self) wself = self;
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self dismissDetailViewController:controller completion:^{
-            [wself showOrderForTicekt:ticket];
-        }];
-    });
+    [self dismissDetailViewController:controller completion:^{
+        [wself showOrderForTicekt:ticket];
+    }];
 }
 
 - (void)dismissDetailViewController:(TXHTicketDetailsViewController *)controller completion:(void (^)(void))completion
@@ -556,7 +665,7 @@
 
 - (void)txhDoorTicketCelldidChangeSwitch:(TXHDoorTicketCell *)cell
 {
-    TXHTicket *cellTicket = [self ticketAtIndexPath:[self.tableView indexPathForCell:cell]];
+    TXHTicket *cellTicket = [self ticketAtIndexPath:[self.collectionView indexPathForCell:cell]];
     
     [self.ticketsDisabled addObject:cellTicket.ticketId];
     
@@ -566,7 +675,7 @@
                         completion:^(TXHTicket *ticket, NSError *error) {
                             [wself.ticketsDisabled removeObject:cellTicket.ticketId];
                             [cell setAttendedAt:cellTicket.attendedAt animated:YES];
-                            [wself updateHeaderLabels];
+//                            [wself.collectionView reloadData];// TODO: update header....
                         }];
 }
 

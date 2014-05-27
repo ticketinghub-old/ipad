@@ -116,19 +116,19 @@
     TXHDoorTicketCell *cell = (TXHDoorTicketCell *)[tableView dequeueReusableCellWithIdentifier:@"DoorOrderTicketListCell" forIndexPath:indexPath];
     [cell setDelegate:self];
     
-    [cell setIsFirstRow:NO];
-    [cell setIsLastRow:indexPath.row == [self.tickets count] - 1];
-    
-    TXHTicket *ticket     = [self ticketAtIndexPath:indexPath];
-    BOOL isTicketDisabled = [self.ticketsDisabled containsObject:ticket.ticketId];
-    NSString *priceTag    = [self.productManager priceStringForPrice:ticket.price];
-    
-    [cell setTitle:ticket.title];
-    [cell setSubtitle:ticket.tier.name];
-    [cell setAttendedAt:ticket.attendedAt animated:NO];
-    [cell setIsLoading:isTicketDisabled];
-    [cell setPriceTag:priceTag];
-    
+//    [cell setIsFirstRow:NO];
+//    [cell setIsLastRow:indexPath.row == [self.tickets count] - 1];
+//    
+//    TXHTicket *ticket     = [self ticketAtIndexPath:indexPath];
+//    BOOL isTicketDisabled = [self.ticketsDisabled containsObject:ticket.ticketId];
+//    NSString *priceTag    = [self.productManager priceStringForPrice:ticket.price];
+//    
+//    [cell setTitle:ticket.title];
+//    [cell setSubtitle:ticket.tier.name];
+//    [cell setAttendedAt:ticket.attendedAt animated:NO];
+//    [cell setIsLoading:isTicketDisabled];
+//    [cell setPriceTag:priceTag];
+//    
     return cell;
 }
 

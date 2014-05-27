@@ -51,7 +51,7 @@
         [self.indicator startAnimating];
     
     [UIView animateWithDuration:0.3
-                          delay:0.2
+                          delay:0.1
                         options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^{
                          self.alpha = 1.0;
