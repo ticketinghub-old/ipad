@@ -66,7 +66,7 @@ static void * ContentValidContext = &ContentValidContext;
     [self setupStepsManager];
     [self setupKeyboardAnimations];
     
-    [self registerForProductAndAvailabilityChanges];
+    [self registerForProductChanges];
     [self registerForOrderExpirationNotifications];
     
     [self resetData];
@@ -204,7 +204,7 @@ static void * ContentValidContext = &ContentValidContext;
 {
     self.stepContentController = nil; // removing KVO observer
     
-    [self unregisterForProductAndAvailabilityChanges];
+    [self unregisterForProductChanges];
     [self unregisterFromOrderExpirationNotifications];
 }
 
@@ -310,23 +310,17 @@ static void * ContentValidContext = &ContentValidContext;
 
 #pragma mark - notifications
 
-- (void)registerForProductAndAvailabilityChanges
+- (void)registerForProductChanges
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(productDidChange:)
                                                  name:TXHProductsChangedNotification
                                                object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(availabilityDidChange:)
-                                                 name:TXHAvailabilityChangedNotification
-                                               object:nil];
 }
 
-- (void)unregisterForProductAndAvailabilityChanges
+- (void)unregisterForProductChanges
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductsChangedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHAvailabilityChangedNotification object:nil];
 }
 
 - (void)registerForOrderExpirationNotifications
@@ -341,14 +335,9 @@ static void * ContentValidContext = &ContentValidContext;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHOrderDidExpireNotification object:nil];
 }
 
-#pragma mark product/availability notifications
+#pragma mark product notifications
 
 - (void)productDidChange:(NSNotification *)note
-{
-    [self resetData];
-}
-
-- (void)availabilityDidChange:(NSNotification *)note
 {
     [self resetData];
 }

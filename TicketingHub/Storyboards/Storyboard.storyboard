@@ -464,7 +464,7 @@
     <resources>
         <image name="background" width="1024" height="768"/>
         <image name="envelope" width="20" height="20"/>
-        <image name="handle" width="22" height="16"/>
+        <image name="handle" width="22" height="32"/>
         <image name="logo" width="396" height="143"/>
         <image name="right-arrow" width="9" height="16"/>
         <image name="shadow" width="8" height="1"/>
