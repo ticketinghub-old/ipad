@@ -55,6 +55,10 @@ static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
 {
     _upgrades = upgrades;
     
+    if (![upgrades count]) // TODO: maybe skip to next step automatically
+        [self.activityView showWithMessage:NSLocalizedString(@"SALESMAN_UPGRADES_NO_UPGRADES_MESSAGE", nil)
+                           indicatorHidden:YES];
+    
     [self.tableView reloadData];
 }
 
@@ -99,12 +103,6 @@ static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
                               action:^{
                                   [wself.orderManager resetOrder];
                               }];
-        }
-        else if (![ticketUpgradesDictionary count])
-        {
-            wself.valid = YES;
-
-            // TODO: skip to next screen
         }
         else
         {
