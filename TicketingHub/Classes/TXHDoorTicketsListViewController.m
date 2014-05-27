@@ -27,6 +27,8 @@
 #import "TXHRMPickerViewControllerDelegate.h"
 #import <iOS-api/TXHPartialResponsInfo.h>
 
+// TODO: almost the same as TXHDoorOrderTicketsListViewController - extract common parts
+
 @interface TXHDoorTicketsListViewController () <TXHTicketDetailsViewControllerDelegate, TXHDoorTicketCellDelegate, UIAlertViewDelegate, TXHScanersManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet TXHBorderedButton *toogleAttendingButton;
@@ -228,7 +230,7 @@
     {
         self.loadingData = YES;
         __weak typeof(self) wself = self;
-        [self.productManager ticketRecordsValidFromDate:[[NSDate date] dateByAddingTimeInterval:60*60*24*3 - 60*60*14]
+        [self.productManager ticketRecordsValidFromDate:[[NSDate date] dateByAddingTimeInterval:60*60*24*3 - 60*60*20]
                                       includingAttended:!self.hideAttending
                                                   query:nil
                                          paginationInfo:self.paginationInfo

@@ -12,22 +12,27 @@
 #import "TXHProductsManager.h"
 #import "UIView+Additions.h"
 #import "TXHTicket+Title.h"
+#import "TXHBorderedButton.h"
 
-#import "TXHDoorTicketsDateHeaderView.h"
-#import "TXHDoorTicketsTotalHeaderView.h"
-#import "TXHDoorTicketsAttendedHeaderView.h"
+#import "TXHDoorTicketsListHeaderView.h"
+#import "TXHDoorTicketCell.h"
 
-@interface TXHDoorOrderTicketsListViewController () <TXHTicketDetailsViewControllerDelegate, TXHDoorTicketCellDelegate, TXHDoorTicketsAttendedHeaderViewDelegate>
+
+// TODO: almost the same as TXHDoorTicketsListViewController - extract common parts
+
+@interface TXHDoorOrderTicketsListViewController () <TXHTicketDetailsViewControllerDelegate, TXHDoorTicketCellDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) NSArray *tickets;
 @property (weak, nonatomic)   TXHTicket *selectedTicket;
 @property (strong, nonatomic) NSMutableSet *ticketsDisabled;
 
-@property (strong, nonatomic) TXHDoorTicketsDateHeaderView     *header1;
-@property (strong, nonatomic) TXHDoorTicketsAttendedHeaderView *header2;
-@property (strong, nonatomic) TXHDoorTicketsTotalHeaderView    *header3;
-@property (strong, nonatomic) NSArray *headers;
+@property (weak, nonatomic) IBOutlet TXHBorderedButton *toogleAttendingButton;
+
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+
 @property (assign, nonatomic) BOOL ticketsCollapsed;
+
+@property (assign, nonatomic) BOOL hideAttending;
 
 @end
 
@@ -37,23 +42,7 @@
 {
     [super viewDidLoad];
     
-    [self loadHeaders];
-    
     self.ticketsDisabled = [NSMutableSet set];
-}
-
-- (void)loadHeaders
-{
-    NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"TicketListHeaders" owner:nil options:nil];
-    
-    if ([views count] == 3)
-    {
-        self.header1 = views[0];
-        self.header2 = views[1];
-        self.header3 = views[2];
-        self.headers = views;
-        self.header2.delegate = self;
-    }
 }
 
 - (void)setOrder:(TXHOrder *)order
@@ -67,7 +56,7 @@
 {
     _tickets = tickets;
     
-    [self.tableView reloadData];
+    [self.collectionView reloadData];
 }
 
 - (void)showDetailsForTicket:(TXHTicket *)ticket
@@ -84,6 +73,17 @@
     return self.tickets[indexPath.row];
 }
 
+- (NSUInteger)attendingTicketsFrom:(NSArray *)tickets
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"attendedAt != NULL"];
+    return [[tickets filteredArrayUsingPredicate:predicate] count];
+}
+
+- (IBAction)toggleAttendingAction:(id)sender
+{
+    self.hideAttending = !self.hideAttending;
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -97,103 +97,175 @@
     }
 }
 
-#pragma mark - UITableViewDataSource
+//#pragma mark - UITableViewDataSource
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    if (section == 1)
+//        return self.ticketsCollapsed ? 0 : [self.tickets count];
+//    return 0;
+//}
+//
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    return [self.headers count];
+//}
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    TXHDoorTicketCell *cell = (TXHDoorTicketCell *)[tableView dequeueReusableCellWithIdentifier:@"DoorOrderTicketListCell" forIndexPath:indexPath];
+//    [cell setDelegate:self];
+//    
+////    [cell setIsFirstRow:NO];
+////    [cell setIsLastRow:indexPath.row == [self.tickets count] - 1];
+////    
+////    TXHTicket *ticket     = [self ticketAtIndexPath:indexPath];
+////    BOOL isTicketDisabled = [self.ticketsDisabled containsObject:ticket.ticketId];
+////    NSString *priceTag    = [self.productManager priceStringForPrice:ticket.price];
+////    
+////    [cell setTitle:ticket.title];
+////    [cell setSubtitle:ticket.tier.name];
+////    [cell setAttendedAt:ticket.attendedAt animated:NO];
+////    [cell setIsLoading:isTicketDisabled];
+////    [cell setPriceTag:priceTag];
+////    
+//    return cell;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    CGFloat height = 0.0f;
+//    switch (section) {
+//        case 0:
+//            height = self.header1.height;
+//            break;
+//        case 1:
+//            height = self.header2.height;
+//            break;
+//        case 2:
+//            height = self.header3.height;
+//            break;
+//    }
+//    
+//    return height;
+//}
+//
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UIView *header;
+//    switch (section) {
+//        case 0:
+//        {
+//            NSDate *validFromDate = [(TXHTicket *)[self.order.tickets anyObject] validFrom];
+//            
+//            [self.header1 setDate:validFromDate];
+//            
+//            header = self.header1;
+//            break;
+//        }
+//        case 1:
+//        {
+//            NSInteger totalTicketCount = [self.order.tickets count];
+//
+//            [self.header2 setExpanded:!self.ticketsCollapsed];
+//            [self.header2 setTotalCount:@(totalTicketCount)];
+//            [self.header2 setAttendedCount:@(self.order.attendedTickets)];
+//            
+//            header = self.header2;
+//            break;
+//        }
+//        case 2:
+//        {
+//            NSString *priceString = [self.productManager priceStringForPrice:[self.order total]];
+//            
+//            [self.header3 setTotalValueString:priceString];
+//            
+//            header = self.header3;
+//            break;
+//        }
+//    }
+//    
+//    return header;
+//}
+//
+//#pragma mark - UITableViewDelegate
+//
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    
+//    TXHTicket *ticket = [self ticketAtIndexPath:indexPath];
+//    
+//    [self showDetailsForTicket:ticket];
+//}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    if (section == 1)
-        return self.ticketsCollapsed ? 0 : [self.tickets count];
-    return 0;
+    return [self.tickets count];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [self.headers count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TXHDoorTicketCell *cell = (TXHDoorTicketCell *)[tableView dequeueReusableCellWithIdentifier:@"DoorOrderTicketListCell" forIndexPath:indexPath];
-    [cell setDelegate:self];
+    TXHDoorTicketCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TicketCell" forIndexPath:indexPath];
     
-//    [cell setIsFirstRow:NO];
-//    [cell setIsLastRow:indexPath.row == [self.tickets count] - 1];
-//    
-//    TXHTicket *ticket     = [self ticketAtIndexPath:indexPath];
-//    BOOL isTicketDisabled = [self.ticketsDisabled containsObject:ticket.ticketId];
-//    NSString *priceTag    = [self.productManager priceStringForPrice:ticket.price];
-//    
-//    [cell setTitle:ticket.title];
-//    [cell setSubtitle:ticket.tier.name];
-//    [cell setAttendedAt:ticket.attendedAt animated:NO];
-//    [cell setIsLoading:isTicketDisabled];
-//    [cell setPriceTag:priceTag];
-//    
+    [self configureCell:cell atIndexPath:indexPath];
+    
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    CGFloat height = 0.0f;
-    switch (section) {
-        case 0:
-            height = self.header1.height;
-            break;
-        case 1:
-            height = self.header2.height;
-            break;
-        case 2:
-            height = self.header3.height;
-            break;
-    }
-    
-    return height;
+    return [self.tickets count] ? 1 : 0;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    UIView *header;
-    switch (section) {
-        case 0:
-        {
-            NSDate *validFromDate = [(TXHTicket *)[self.order.tickets anyObject] validFrom];
-            
-            [self.header1 setDate:validFromDate];
-            
-            header = self.header1;
-            break;
-        }
-        case 1:
-        {
-            NSInteger totalTicketCount = [self.order.tickets count];
-
-            [self.header2 setExpanded:!self.ticketsCollapsed];
-            [self.header2 setTotalCount:@(totalTicketCount)];
-            [self.header2 setAttendedCount:@(self.order.attendedTickets)];
-            
-            header = self.header2;
-            break;
-        }
-        case 2:
-        {
-            NSString *priceString = [self.productManager priceStringForPrice:[self.order total]];
-            
-            [self.header3 setTotalValueString:priceString];
-            
-            header = self.header3;
-            break;
-        }
+    if (kind == UICollectionElementKindSectionHeader)
+    {
+        TXHDoorTicketsListHeaderView *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                                                  withReuseIdentifier:@"TicketsHeader"
+                                                                                         forIndexPath:indexPath];
+        [self configureHeader:header atIndexPath:indexPath];
+        
+        return header;
     }
     
-    return header;
+    return nil;
 }
 
-#pragma mark - UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(TXHDoorTicketCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    TXHTicket *ticket = [self ticketAtIndexPath:indexPath];
     
+    BOOL isTicketDisabled = [self.ticketsDisabled containsObject:ticket.ticketId];
+    
+    [cell setDelegate:self];
+    [cell setName:ticket.customer.fullName];
+    [cell setTierName:ticket.tier.name];
+    [cell setReference:ticket.reference];
+    [cell setPrice:[self.productManager priceStringForPrice:ticket.price]];
+    [cell setAttendedAt:ticket.attendedAt animated:NO];
+    [cell setIsLoading:isTicketDisabled];
+}
+
+- (void)configureHeader:(TXHDoorTicketsListHeaderView *)header atIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *tickets = self.tickets;// tickets at index path
+    TXHTicket *firstTicket = [tickets firstObject];
+    
+    NSInteger attendingTickets = [self attendingTicketsFrom:tickets];
+    
+    [header setAttending:attendingTickets];
+    [header setTotal:[tickets count]];
+    [header setDate:firstTicket.validFrom];
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
     TXHTicket *ticket = [self ticketAtIndexPath:indexPath];
     
     [self showDetailsForTicket:ticket];
@@ -208,7 +280,7 @@
 
 - (void)txhTicketDetailsViewController:(TXHTicketDetailsViewController *)controller didChangeTicket:(TXHTicket *)ticket
 {
-    [self.tableView reloadData];
+    [self.collectionView reloadData];
 }
 
 - (void)txhTicketDetailsViewController:(TXHTicketDetailsViewController *)controller wantsToPresentOrderForTicket:(TXHTicket *)ticket
@@ -226,7 +298,7 @@
 
 - (void)txhDoorTicketCelldidChangeSwitch:(TXHDoorTicketCell *)cell
 {
-    TXHTicket *cellTicket = [self ticketAtIndexPath:[self.tableView indexPathForCell:cell]];
+    TXHTicket *cellTicket = [self ticketAtIndexPath:[self.collectionView indexPathForCell:cell]];
     
     [self.ticketsDisabled addObject:cellTicket.ticketId];
     
@@ -237,20 +309,8 @@
                         completion:^(TXHTicket *ticket, NSError *error) {
                             [wself.ticketsDisabled removeObject:cellTicket.ticketId];
                             [cell setAttendedAt:cellTicket.attendedAt animated:YES];
-                            [wself.header2 setAttendedCount:@(wself.order.attendedTickets)];
+//                            [wself.header2 setAttendedCount:@(wself.order.attendedTickets)];
                         }];
-}
-
-#pragma  mark - TXHDoorTicketsAttendedHeaderViewDelegate
-
-- (void)txhDoorTicketsAttendedHeaderViewDelegateIsExpandedDidChange:(TXHDoorTicketsAttendedHeaderView *)header
-{
-    self.ticketsCollapsed = !header.isExpanded;
-    
-    [self.tableView beginUpdates];
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [self.tableView endUpdates];
-
 }
 
 @end

@@ -114,4 +114,18 @@
     [self.delegate txhDoorTicketCelldidChangeSwitch:self];
 }
 
+- (void)setHighlighted:(BOOL)highlighted
+{
+    [super setHighlighted:highlighted];
+    [self updateView];
+}
+
+- (void)updateView
+{
+    BOOL highlight = self.highlighted;
+    
+    self.layer.borderColor = [UIColor txhBlueColor].CGColor;
+    self.layer.borderWidth = highlight ? 3.0 : 0.0;
+}
+
 @end

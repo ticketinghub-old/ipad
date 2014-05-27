@@ -50,6 +50,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self updateTitle];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -62,16 +64,9 @@
     [self.navigationController.view addSubview:self.activityView];
 }
 
-- (void)setProductManager:(TXHProductsManager *)productManager
-{
-    _productManager = productManager;
-    
-    [self updateTitle];
-}
-
 - (void)updateTitle
 {
-    self.title = [[self.productManager selectedProduct] name];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_small"]];
 }
 
 - (void)setTicket:(TXHTicket *)ticket andProductManager:(TXHProductsManager *)productManager
@@ -79,7 +74,6 @@
     self.ticket = ticket;
     self.productManager = productManager;
 
-    [self updateTitle];
     [self loadOrder];
 }
 

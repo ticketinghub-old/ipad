@@ -111,10 +111,6 @@
 		3EF72D82192DEC1A00F27B6B /* UIFont+TicketingHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF72D81192DEC1A00F27B6B /* UIFont+TicketingHub.m */; };
 		3EF72D86192E380B00F27B6B /* TXHSalesUpgradeSelectAllCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF72D85192E380B00F27B6B /* TXHSalesUpgradeSelectAllCell.m */; };
 		3EF72D89192E382600F27B6B /* TXHSalesUpgradeTicketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF72D88192E382600F27B6B /* TXHSalesUpgradeTicketCell.m */; };
-		3EF8EE3A18D3148400586283 /* TicketListHeaders.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EF8EE3918D3148400586283 /* TicketListHeaders.xib */; };
-		3EF8EE3E18D332F200586283 /* TXHDoorTicketsDateHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF8EE3D18D332F200586283 /* TXHDoorTicketsDateHeaderView.m */; };
-		3EF8EE4118D3330900586283 /* TXHDoorTicketsAttendedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF8EE4018D3330900586283 /* TXHDoorTicketsAttendedHeaderView.m */; };
-		3EF8EE4418D3332300586283 /* TXHDoorTicketsTotalHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF8EE4318D3332300586283 /* TXHDoorTicketsTotalHeaderView.m */; };
 		4D586DE11797E51E00E40534 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D586DE01797E51E00E40534 /* Images.xcassets */; };
 		4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D68DAAA178B0A5400743227 /* AVFoundation.framework */; };
 		4D8FCCB617A28A8C008B4227 /* Doorman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D8FCCB517A28A8C008B4227 /* Doorman.storyboard */; };
@@ -400,13 +396,6 @@
 		3EF72D85192E380B00F27B6B /* TXHSalesUpgradeSelectAllCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesUpgradeSelectAllCell.m; path = TicketingHub/TXHSalesUpgradeSelectAllCell.m; sourceTree = SOURCE_ROOT; };
 		3EF72D87192E382600F27B6B /* TXHSalesUpgradeTicketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSalesUpgradeTicketCell.h; path = TicketingHub/TXHSalesUpgradeTicketCell.h; sourceTree = SOURCE_ROOT; };
 		3EF72D88192E382600F27B6B /* TXHSalesUpgradeTicketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSalesUpgradeTicketCell.m; path = TicketingHub/TXHSalesUpgradeTicketCell.m; sourceTree = SOURCE_ROOT; };
-		3EF8EE3918D3148400586283 /* TicketListHeaders.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketListHeaders.xib; sourceTree = "<group>"; };
-		3EF8EE3C18D332F200586283 /* TXHDoorTicketsDateHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorTicketsDateHeaderView.h; sourceTree = "<group>"; };
-		3EF8EE3D18D332F200586283 /* TXHDoorTicketsDateHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorTicketsDateHeaderView.m; sourceTree = "<group>"; };
-		3EF8EE3F18D3330900586283 /* TXHDoorTicketsAttendedHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorTicketsAttendedHeaderView.h; sourceTree = "<group>"; };
-		3EF8EE4018D3330900586283 /* TXHDoorTicketsAttendedHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorTicketsAttendedHeaderView.m; sourceTree = "<group>"; };
-		3EF8EE4218D3332300586283 /* TXHDoorTicketsTotalHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorTicketsTotalHeaderView.h; sourceTree = "<group>"; };
-		3EF8EE4318D3332300586283 /* TXHDoorTicketsTotalHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorTicketsTotalHeaderView.m; sourceTree = "<group>"; };
 		416C11A4A2B1455096EE1258 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
 		4D586DE01797E51E00E40534 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4D68DAAA178B0A5400743227 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -1070,7 +1059,6 @@
 		3E9D734218D1EEC20087121B /* OrderTicketsList */ = {
 			isa = PBXGroup;
 			children = (
-				3EF8EE3B18D332C400586283 /* Table Headers */,
 				3E9D734618D1EF110087121B /* TXHDoorOrderTicketsListViewController.h */,
 				3E9D734718D1EF110087121B /* TXHDoorOrderTicketsListViewController.m */,
 			);
@@ -1322,20 +1310,6 @@
 				3EA52BEB18E2D17300FEA0CA /* Printers */,
 			);
 			name = Devices;
-			sourceTree = "<group>";
-		};
-		3EF8EE3B18D332C400586283 /* Table Headers */ = {
-			isa = PBXGroup;
-			children = (
-				3EF8EE3918D3148400586283 /* TicketListHeaders.xib */,
-				3EF8EE3C18D332F200586283 /* TXHDoorTicketsDateHeaderView.h */,
-				3EF8EE3D18D332F200586283 /* TXHDoorTicketsDateHeaderView.m */,
-				3EF8EE3F18D3330900586283 /* TXHDoorTicketsAttendedHeaderView.h */,
-				3EF8EE4018D3330900586283 /* TXHDoorTicketsAttendedHeaderView.m */,
-				3EF8EE4218D3332300586283 /* TXHDoorTicketsTotalHeaderView.h */,
-				3EF8EE4318D3332300586283 /* TXHDoorTicketsTotalHeaderView.m */,
-			);
-			name = "Table Headers";
 			sourceTree = "<group>";
 		};
 		4DF3F59B17C63E070045299B /* Smoke Tests */ = {
@@ -1620,7 +1594,6 @@
 				3E2E2C67190EC311006EABA1 /* TXHConfigurationShared.plist in Resources */,
 				4D586DE11797E51E00E40534 /* Images.xcassets in Resources */,
 				3E53C54D18E58FD000FF6F9B /* TXHActivityLabelView.xib in Resources */,
-				3EF8EE3A18D3148400586283 /* TicketListHeaders.xib in Resources */,
 				3E5039C71924CA1800ACFA91 /* TXHCustomCardView.xib in Resources */,
 				3E87704218D710D100585FFA /* Localizable.strings in Resources */,
 				3E87709818D7355600585FFA /* Salesman.storyboard in Resources */,
@@ -1723,7 +1696,6 @@
 				3E15207118FFD4190013F09E /* TXHTicketDetailsErrorView.m in Sources */,
 				3E53C53D18E343FD00FF6F9B /* TXHPrinterSelectionViewController.m in Sources */,
 				58E4FB631760AE5500E328A0 /* main.m in Sources */,
-				3EF8EE3E18D332F200586283 /* TXHDoorTicketsDateHeaderView.m in Sources */,
 				EE75D9B417D11311009ADCD8 /* TXHMainViewController.m in Sources */,
 				EE75D9B317D11311009ADCD8 /* TXHProductListController.m in Sources */,
 				EEB1849217D115640025530A /* TXHSalesmanDoormanContainerViewController.m in Sources */,
@@ -1764,7 +1736,6 @@
 				3E938DB6190FED7A00FC29E9 /* DKPOSHandpointClient.m in Sources */,
 				EE75D99317D11048009ADCD8 /* TXHSalesPaymentCardDetailsViewController.m in Sources */,
 				3E6A422518C483870053EF34 /* TXHSensorView.m in Sources */,
-				3EF8EE4118D3330900586283 /* TXHDoorTicketsAttendedHeaderView.m in Sources */,
 				3E7B7A99193385E000B8EFDA /* TXHEventHeaderView.m in Sources */,
 				EE75D99417D11048009ADCD8 /* TXHSalesPaymentCashDetailsViewController.m in Sources */,
 				3E192D5E18FD600200D727AA /* TXHInfineaManger.m in Sources */,
@@ -1810,7 +1781,6 @@
 				3E5039C51924CA1800ACFA91 /* TXHCardFrontView.m in Sources */,
 				3E5FA93A192FCE8900452C30 /* DKPOSClientTransactionInfo+Messages.m in Sources */,
 				3E488BD918BE850600E90BE6 /* RMDisplayLabel.m in Sources */,
-				3EF8EE4418D3332300586283 /* TXHDoorTicketsTotalHeaderView.m in Sources */,
 				3E5039CD192642D500ACFA91 /* TXHFullScreenKeyboardViewController.m in Sources */,
 				3EE8E21418C890F5006E8F5E /* UIImage+String.m in Sources */,
 				3EC63E0818B3721600B091A0 /* TXHSalesStep.m in Sources */,
