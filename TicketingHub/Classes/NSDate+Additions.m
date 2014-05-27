@@ -195,10 +195,10 @@
     NSMutableString *string = [NSMutableString string];
     
     if (hours > 0)
-        [string appendFormat:@"%d h ",hours];
+        [string appendFormat:@"%ld h ",(long)hours];
     
     if (minutes > 0)
-        [string appendFormat:@"%d min",minutes];
+        [string appendFormat:@"%ld min",(long)minutes];
     
     return [NSString stringWithString:string];
 }
