@@ -16,5 +16,8 @@
 
 - (void)hide;
 
+- (void)setMessagColor:(UIColor *)color;
+- (void)setMessagFont:(UIFont *)font;
+
 
 @end

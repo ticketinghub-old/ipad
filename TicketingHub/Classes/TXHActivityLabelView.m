@@ -7,6 +7,7 @@
 //
 
 #import "TXHActivityLabelView.h"
+#import "UIFont+TicketingHub.h"
 
 @interface TXHActivityLabelView ()
 
@@ -34,6 +35,7 @@
         activityView.frame = targetView.bounds;
         activityView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         activityView.translatesAutoresizingMaskIntoConstraints = YES;
+        activityView.label.font = [UIFont txhThinFontWithSize:23.0f];
         [targetView addSubview:activityView];
     }
     return activityView;
@@ -49,7 +51,7 @@
         [self.indicator startAnimating];
     
     [UIView animateWithDuration:0.3
-                          delay:0.0
+                          delay:0.2
                         options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^{
                          self.alpha = 1.0;
@@ -68,6 +70,16 @@
                          self.alpha = 0.0;
                      }
                      completion:nil];
+}
+
+- (void)setMessagColor:(UIColor *)color
+{
+    self.label.textColor = color;
+}
+
+- (void)setMessagFont:(UIFont *)font
+{
+    self.label.font = font;
 }
 
 @end
