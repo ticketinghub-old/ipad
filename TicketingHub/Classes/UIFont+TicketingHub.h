@@ -11,5 +11,6 @@
 @interface UIFont (TicketingHub)
 
 + (UIFont *)txhThinFontWithSize:(CGFloat)size;
++ (UIFont *)txhBoldFontWithSize:(CGFloat)size;
 
 @end

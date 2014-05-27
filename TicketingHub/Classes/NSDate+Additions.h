@@ -17,6 +17,7 @@
 - (NSString *)daySuffix;
 
 - (BOOL)isInThePast;
+- (BOOL)isInTheFuture;
 
 - (NSInteger)daysFromNow;
 - (NSInteger)hoursFromNow;

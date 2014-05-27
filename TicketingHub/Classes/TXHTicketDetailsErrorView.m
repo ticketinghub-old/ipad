@@ -7,7 +7,11 @@
 //
 
 #import "TXHTicketDetailsErrorView.h"
-#import "NSDate+Additions.h"
+
+#import "NSDateFormatter+DisplayFormat.h"
+
+#import "UIFont+TicketingHub.h"
+
 
 @interface TXHTicketDetailsErrorView ()
 
@@ -17,76 +21,58 @@
 
 @implementation TXHTicketDetailsErrorView
 
+- (void)showWithError:(TXHTicketDetailsErrorType)errorType date:(NSDate *)date
+{
+    switch (errorType) {
+        case TXHTicketDetailsEarlyError:
+        {
+            [self setError:NSLocalizedString(@"TICKET_DETAILS_EARLY_ERROR_MESSAGE", nil) boldPart:nil];
+        }
+            break;
+        
+        case TXHTicketDetailsExpiredError:
+        {
+            [self setError:NSLocalizedString(@"TICKET_DETAILS_EXPIRED_ERROR_MESSAGE", nil) boldPart:nil];
+        }
+            break;
+            
+        case TXHTicketDetailsCancelledError:
+        {
+            NSString *dateString    = [NSDateFormatter txh_fullDateStringFromDate:date];
+            NSString *messageString = [NSString stringWithFormat:NSLocalizedString(@"TICKET_DETAILS_ERROR_MESSAGE_FORMAT", nil), dateString];
+            
+            [self setError:messageString boldPart:dateString];
+        }
+            break;
+    }
+}
+
 - (void)showWithExpirationDate:(NSDate *)expirationDate
 {
-    BOOL ticketExpired = [expirationDate isInThePast];
+    NSString *dateString    = [NSDateFormatter txh_fullDateStringFromDate:expirationDate];
+    NSString *messageString = [NSString stringWithFormat:NSLocalizedString(@"TICKET_DETAILS_ERROR_MESSAGE_FORMAT", nil), dateString];
     
-    self.hidden = !ticketExpired;
+    [self setError:messageString boldPart:dateString];
+}
+
+- (void)setError:(NSString *)errorMessage boldPart:(NSString *)boldString
+{
+    NSMutableAttributedString *errorMessageAttributed = [[NSMutableAttributedString alloc] initWithString:errorMessage];
     
-    NSString *errorConstant = [self errorMessageConstant];
-    NSString *errorDurationMesage = nil;
-    
-    if (ticketExpired)
+    if ([boldString length])
     {
-        NSInteger daysFromNow = [expirationDate daysFromNow];
-        if (daysFromNow > 0)
-        {
-            errorDurationMesage = [self errorForDays:daysFromNow];
-        }
-        else
-        {
-            NSInteger hoursFromNow = [expirationDate hoursFromNow];
-            if (hoursFromNow > 0)
-            {
-                errorDurationMesage = [self errorForHours:hoursFromNow];
-            }
-            else
-            {
-                NSInteger minutesFromNow = [expirationDate minutesFromNow];
-                errorDurationMesage = [self errorForMinutes:minutesFromNow];
-            }
-            
-        }
-        [self setErrorMessageBold:errorDurationMesage normalString:errorConstant];
+        NSRange boldRange = [errorMessage rangeOfString:boldString];
+        
+        [errorMessageAttributed addAttribute:NSFontAttributeName
+                                       value:[UIFont txhBoldFontWithSize:self.errorLabel.font.pointSize]
+                                       range:boldRange];
     }
+    self.errorLabel.attributedText = errorMessageAttributed;
 }
 
 - (void)hide
 {
     self.hidden = YES;
-}
-
-- (void)setErrorMessageBold:(NSString *)boldString normalString:(NSString *)normalString
-{
-    NSString *error = [NSString stringWithFormat:@"%@ %@",boldString, normalString];
-    NSRange boldRange = [error rangeOfString:boldString];
-    
-    NSMutableAttributedString *errorMessage = [[NSMutableAttributedString alloc] initWithString:error];
-    [errorMessage addAttribute:NSFontAttributeName
-                         value:[UIFont boldSystemFontOfSize:15]
-                         range:boldRange];
-    
-    self.errorLabel.attributedText = errorMessage;
-}
-
-- (NSString *)errorForMinutes:(NSInteger)minutes
-{
-    return [NSString stringWithFormat:@"This Ticket expired %ld minutes ago.",(long)minutes];
-}
-
-- (NSString *)errorForHours:(NSInteger)hours
-{
-    return [NSString stringWithFormat:@"This Ticket expired %ld hours ago.",(long)hours];
-}
-
-- (NSString *)errorForDays:(NSInteger)days
-{
-    return [NSString stringWithFormat:@"This Ticket expired %ld days ago.", (long)days];
-}
-
-- (NSString *)errorMessageConstant
-{
-    return @"You still have option to grant access.";
 }
 
 @end

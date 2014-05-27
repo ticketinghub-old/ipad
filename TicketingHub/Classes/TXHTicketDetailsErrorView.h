@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, TXHTicketDetailsErrorType)
+{
+    TXHTicketDetailsEarlyError,
+    TXHTicketDetailsCancelledError,
+    TXHTicketDetailsExpiredError
+};
+
 @interface TXHTicketDetailsErrorView : UIView
 
-- (void)showWithExpirationDate:(NSDate *)expirationDate;
+- (void)showWithError:(TXHTicketDetailsErrorType)errorType date:(NSDate *)date;
 - (void)hide;
 
 @end

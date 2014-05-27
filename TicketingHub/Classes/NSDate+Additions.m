@@ -61,6 +61,11 @@
     return ([self timeIntervalSinceNow] < 0);
 }
 
+- (BOOL)isInTheFuture
+{
+    return ([self timeIntervalSinceNow] > 0);
+}
+
 - (NSInteger)daysFromNow
 {
     NSDate *fromDate;

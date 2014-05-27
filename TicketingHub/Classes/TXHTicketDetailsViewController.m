@@ -28,18 +28,19 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *validFromLabel;
 @property (weak, nonatomic) IBOutlet UILabel *validUntilLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *upgradesLabel;
-@property (weak, nonatomic) IBOutlet UILabel *fullNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
-@property (weak, nonatomic) IBOutlet UILabel *countryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *voucherLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 
 @property (weak, nonatomic) IBOutlet TXHBorderedButton *orderButton;
+@property (weak, nonatomic) IBOutlet TXHBorderedButton *printTicketButton;
 @property (weak, nonatomic) IBOutlet TXHBorderedButton *attendedButton;
 
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
-
 
 @end
 
@@ -56,56 +57,27 @@
 {
     [super viewWillAppear:animated];
     
-    [self setupBackground];
-    
-    [self updateButtons];
-    [self updateErrorView];
+    [self updateView];
 }
 
 - (void)customizeView
 {
-    self.contentView.layer.cornerRadius = 5;
-    self.errorView.layer.cornerRadius   = 5;
+    [self setupBackground];
+ 
+    self.contentView.layer.cornerRadius = 15;
 }
 
 - (void)setupBackground
 {
-    UIColor *blurTintColor = [[UIColor txhDarkBlueColor] colorWithAlphaComponent:0.6];
+    UIColor *blurTintColor = [[UIColor txhDarkBlueColor] colorWithAlphaComponent:0.9];
     
-    UIImage *bgImage = [[UIImage screenshot] applyBlurWithRadius:3
+    UIImage *bgImage = [[UIImage screenshot] applyBlurWithRadius:5
                                                        tintColor:blurTintColor
                                            saturationDeltaFactor:1.8
                                                        maskImage:nil];
     
     UIColor *bgImgColor = [UIColor colorWithPatternImage:bgImage];
     self.view.backgroundColor = bgImgColor;
-}
-
-- (void)updateButtons
-{
-    [self updateOrderButton];
-    [self updateAttendedButton];
-}
-
-- (void)updateOrderButton
-{
-    UIImage *arrow = [UIImage imageNamed:@"right-arrow"];
-    arrow = [arrow imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [self.orderButton setImage:arrow forState:UIControlStateNormal];
-}
-
-- (void)updateAttendedButton
-{
-    if (self.ticket.attendedAt)
-        [self configureAttendedButtonWhenAttended];
-    else
-        [self configureAttendedButtonWhenNotAttended];
-}
-
-- (void)updateErrorView
-{
-    NSDate *expirationDate = self.ticket.expiresAt;
-    [self.errorView showWithExpirationDate:expirationDate];
 }
 
 - (void)configureAttendedButtonWhenAttended
@@ -132,16 +104,12 @@
     [self.attendedButton setTitle:nil
                          forState:UIControlStateNormal];
     
-    self.attendedButton.borderColor          = [UIColor txhGreenColor];
-    self.attendedButton.normalFillColor      = [UIColor txhGreenColor];
-    self.attendedButton.highlightedFillColor = self.attendedButton.superview.backgroundColor;
-    self.attendedButton.normalTextColor      = [UIColor whiteColor];
-    self.attendedButton.highlightedTextColor = [UIColor txhGreenColor];
-    
-    
-    UIImage *icon = [UIImage imageNamed:@"small-checkmark"];
-    icon = [icon imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [self.attendedButton setImage:icon forState:UIControlStateNormal];
+    self.attendedButton.borderColor            = [UIColor txhBlueColor];
+    self.attendedButton.highlightedBorderColor = [UIColor txhDarkBlueColor];
+    self.attendedButton.normalFillColor        = [UIColor txhBlueColor];
+    self.attendedButton.highlightedFillColor   = [UIColor txhDarkBlueColor];
+    self.attendedButton.normalTextColor        = [UIColor whiteColor];
+    self.attendedButton.highlightedTextColor   = [UIColor whiteColor];
 }
 
 - (void)configureAttendedButtonWhenNotAttended
@@ -149,20 +117,23 @@
     [self.attendedButton setAttributedTitle:nil forState:UIControlStateNormal];
     [self.attendedButton setAttributedTitle:nil forState:UIControlStateHighlighted];
     [self.attendedButton setTitle:NSLocalizedString(@"TICKET_DETAILS_MARK_AS_ATTENDED_BUTTON_TITLE", nil) forState:UIControlStateNormal];
-    self.attendedButton.borderColor          = [UIColor txhButtonBlueColor];
-    self.attendedButton.normalFillColor      = [UIColor txhButtonBlueColor];
-    self.attendedButton.highlightedFillColor = self.attendedButton.superview.backgroundColor;
-    self.attendedButton.normalTextColor      = [UIColor whiteColor];
-    self.attendedButton.highlightedTextColor = [UIColor txhButtonBlueColor];
-    
-    UIImage *icon = [UIImage imageNamed:@"empty-circle"];
-    icon = [icon imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [self.attendedButton setImage:icon forState:UIControlStateNormal];
+
+    self.attendedButton.borderColor            = [UIColor txhDarkBlueColor];
+    self.attendedButton.highlightedBorderColor = [UIColor txhBlueColor];
+    self.attendedButton.normalFillColor        = [UIColor txhDarkBlueColor];
+    self.attendedButton.highlightedFillColor   = [UIColor txhBlueColor];
+    self.attendedButton.normalTextColor        = [UIColor whiteColor];
+    self.attendedButton.highlightedTextColor   = [UIColor whiteColor];
 }
 
 - (IBAction)orderButtonAction:(id)sender
 {
     [self.delegate txhTicketDetailsViewController:self wantsToPresentOrderForTicket:self.ticket];
+}
+
+- (IBAction)printTicketButton:(id)sender
+{
+
 }
 
 - (IBAction)attendedButtonAction:(id)sender
@@ -211,6 +182,16 @@
     _ticket = ticket;
     
     [self updateView];
+
+    if (!_ticket.order)
+    {
+        __weak typeof(self) wself = self;
+        
+        [self.productManager getOrderForTicket:self.ticket
+                                    completion:^(TXHOrder *order, NSError *error) {
+                                        [wself updateView];
+                                    }];
+    }
 }
 
 - (void)updateView
@@ -221,21 +202,67 @@
     
     TXHCustomer *customer = self.ticket.customer;
     
-    __weak typeof(self) wself = self;
+    __weak typeof(self) wself = self; // not really necessery
     dispatch_async(dispatch_get_main_queue(), ^{
+       
+        BOOL hasOrder = wself.ticket.order != nil;
         
+        wself.contentView.hidden       = !hasOrder;
+        wself.errorView.hidden         = !hasOrder;
+        wself.printTicketButton.hidden = !hasOrder;
+        wself.attendedButton.hidden    = !hasOrder;
+        
+        if (!hasOrder)
+            return;
+            
         NSString *titleFormat = NSLocalizedString(@"TICKET_DETAILS_TITLE_FORMAT", nil);
-        wself.titleLabel.text      = [NSString stringWithFormat:titleFormat,wself.ticket.tier.name];
-        wself.subtitleLabel.text   = [wself.ticket.reference length] > 0 ? wself.ticket.reference : @"";
-        wself.validFromLabel.text  = [wself dateStringForDate:wself.ticket.validFrom];
-        wself.validUntilLabel.text = [wself dateStringForDate:wself.ticket.expiresAt];
-        wself.upgradesLabel.text   = [upgrades count] ? [upgrades componentsJoinedByString:@", "] : @"-";
-        wself.fullNameLabel.text   = [customer.fullName length] ? customer.fullName : @"-";
-        wself.phoneLabel.text      = [customer.telephone length] ? customer.telephone : @"-";
-        wself.countryLabel.text    = [customer.country length] ? customer.country : @"-";
+        TXHTicket *ticket = [wself ticket];
+        
+        wself.titleLabel.text      = [NSString stringWithFormat:titleFormat,wself.ticket.reference];
+        wself.subtitleLabel.text   = customer.fullName;
+        wself.validFromLabel.text  = ticket.order.confirmedAt ? [wself dateStringForDate:ticket.order.confirmedAt] : @"-";
+        wself.validUntilLabel.text = ticket.expiresAt ? [wself dateStringForDate:ticket.expiresAt] : @"-";
+        wself.voucherLabel.text    = [ticket.voucher length] ? ticket.voucher : @"-";
+        wself.upgradesLabel.text   = [upgrades count] ? [upgrades componentsJoinedByString:@"\n"] : @"-";
+        wself.priceLabel.text      = ticket.price ? [wself.productManager priceStringForPrice:ticket.price] : @"-";
         
         [wself updateButtons];
+        [wself updateErrorView];
+
     });
+}
+
+- (void)updateButtons
+{
+    [self updateAttendedButton];
+}
+
+- (void)updateAttendedButton
+{
+    if (self.ticket.attendedAt)
+        [self configureAttendedButtonWhenAttended];
+    else
+        [self configureAttendedButtonWhenNotAttended];
+}
+
+- (void)updateErrorView
+{
+    if (self.ticket.order.cancelledAt)
+    {
+        [self.errorView showWithError:TXHTicketDetailsCancelledError date:self.ticket.order.cancelledAt];
+    }
+    else if (self.ticket.validFrom && [self.ticket.validFrom isInTheFuture])
+    {
+        [self.errorView showWithError:TXHTicketDetailsEarlyError date:self.ticket.validFrom];
+    }
+    else if (self.ticket.expiresAt && [self.ticket.expiresAt isInThePast])
+    {
+        [self.errorView showWithError:TXHTicketDetailsExpiredError date:self.ticket.expiresAt];
+    }
+    else
+    {
+        [self.errorView hide];
+    }
 }
 
 - (void)blockAttenededButton
