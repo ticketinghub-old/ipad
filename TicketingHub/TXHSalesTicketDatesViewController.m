@@ -242,8 +242,11 @@
     
     TXHAvailability *availability = [self availabilityAtIndexPath:indexPath];
     
+    NSTimeInterval duration = [NSDate gvc_iso8601DurationInterval:availability.duration];
+    NSString *durationString = [NSDate stringFromDuration:duration];
+    
     [cell setTimeString:availability.timeString];
-    [cell setDurationString:availability.duration];
+    [cell setDurationString:durationString];
     [cell setPriceString:[self.productManager priceStringForPrice:availability.total]];
     
     return cell;
