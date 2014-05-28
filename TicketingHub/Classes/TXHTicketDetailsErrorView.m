@@ -38,16 +38,13 @@
             
         case TXHTicketDetailsCancelledError:
         {
-            NSString *dateString    = [NSDateFormatter txh_fullDateStringFromDate:date];
-            NSString *messageString = [NSString stringWithFormat:NSLocalizedString(@"TICKET_DETAILS_ERROR_MESSAGE_FORMAT", nil), dateString];
-            
-            [self setError:messageString boldPart:dateString];
+            [self showWithCancellationDate:date];
         }
             break;
     }
 }
 
-- (void)showWithExpirationDate:(NSDate *)expirationDate
+- (void)showWithCancellationDate:(NSDate *)expirationDate
 {
     NSString *dateString    = [NSDateFormatter txh_fullDateStringFromDate:expirationDate];
     NSString *messageString = [NSString stringWithFormat:NSLocalizedString(@"TICKET_DETAILS_ERROR_MESSAGE_FORMAT", nil), dateString];

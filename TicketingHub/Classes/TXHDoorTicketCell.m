@@ -48,6 +48,7 @@
     self.attendedSwitch.inactiveColor  = [UIColor txhVeryLightBlueColor];
     self.attendedSwitch.onTintColor    = [UIColor txhBlueColor];
     self.attendedSwitch.borderColor    = [UIColor txhVeryLightBlueColor];
+    self.attendedSwitch.thumbTintColor = [UIColor whiteColor];
     
     [self.attendedSwitch addTarget:self action:@selector(switchDidChange:) forControlEvents:UIControlEventValueChanged];
 }
@@ -107,6 +108,12 @@
         [self.activityIndicator startAnimating];
     else
         [self.activityIndicator stopAnimating];
+}
+
+- (void)setActive:(BOOL)active
+{
+    self.attendedSwitch.userInteractionEnabled = active;
+    self.attendedSwitch.thumbTintColor = active ? [UIColor whiteColor] : [UIColor clearColor];
 }
 
 - (void)switchDidChange:(id)sender

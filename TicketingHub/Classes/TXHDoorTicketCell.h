@@ -26,7 +26,7 @@
 - (void)setTierName:(NSString *)tierName;
 - (void)setReference:(NSString *)orderReference;
 - (void)setPrice:(NSString *)price;
-
+- (void)setActive:(BOOL)active;
 
 - (void)setAttendedAt:(NSDate *)attendedAt animated:(BOOL)animated;
 - (void)setIsLoading:(BOOL)loading;

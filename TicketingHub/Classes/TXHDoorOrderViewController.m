@@ -83,6 +83,7 @@
     
     self.orderDetailsViewController.order     = order;
     self.orderTicketsListViewController.order = order;
+    self.printButtonsViewController.order     = order;
 }
 
 
@@ -181,10 +182,14 @@
 
 #pragma mark - TXHPrintButtonsViewControllerDelegate
 
-
-- (void)txhPrintButtonsViewControllerCustomButtonAction:(TXHBorderedButton *)button
+- (void)txhPrintButtonsViewControllerCancelButtonAction:(TXHBorderedButton *)button
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+- (void)txhPrintButtonsViewControllerMarkAttendingButtonAction:(TXHBorderedButton *)button
+{
+    
 }
 
 - (void)txhPrintButtonsViewControllerPrintReciptAction:(TXHBorderedButton *)button

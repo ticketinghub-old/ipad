@@ -43,6 +43,7 @@
     [super viewDidLoad];
     
     self.ticketsDisabled = [NSMutableSet set];
+    [self.collectionView setContentInset:UIEdgeInsetsMake(0, 0, 125, 0)];
 }
 
 - (void)setOrder:(TXHOrder *)order
@@ -248,6 +249,7 @@
     [cell setPrice:[self.productManager priceStringForPrice:ticket.price]];
     [cell setAttendedAt:ticket.attendedAt animated:NO];
     [cell setIsLoading:isTicketDisabled];
+    [cell setActive:(ticket.order.cancelledAt == nil)];
 }
 
 - (void)configureHeader:(TXHDoorTicketsListHeaderView *)header atIndexPath:(NSIndexPath *)indexPath

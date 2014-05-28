@@ -13,7 +13,8 @@
 
 @protocol TXHPrintButtonsViewControllerDelegate <NSObject>
 
-- (void)txhPrintButtonsViewControllerCustomButtonAction:(TXHBorderedButton *)button;
+- (void)txhPrintButtonsViewControllerCancelButtonAction:(TXHBorderedButton *)button;
+- (void)txhPrintButtonsViewControllerMarkAttendingButtonAction:(TXHBorderedButton *)button;
 - (void)txhPrintButtonsViewControllerPrintReciptAction:(TXHBorderedButton *)button;
 - (void)txhPrintButtonsViewControllerPrintTicketsAction:(TXHBorderedButton *)button;
 
@@ -21,9 +22,8 @@
 
 @interface TXHPrintButtonsViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet TXHBorderedButton *printTicketsButton;
-@property (weak, nonatomic) IBOutlet TXHBorderedButton *printReciptButton;
-@property (weak, nonatomic) IBOutlet TXHBorderedButton *customActionButton;
+
+@property (weak, nonatomic) TXHOrder *order;
 
 @property (weak, nonatomic) id<TXHPrintButtonsViewControllerDelegate> delegate;
 
