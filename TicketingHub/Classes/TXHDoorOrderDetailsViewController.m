@@ -8,32 +8,29 @@
 
 #import "TXHDoorOrderDetailsViewController.h"
 #import "TXHBorderedButton.h"
-#import <iOS-api/NSDateFormatter+TicketingHubFormat.h>
-
+#import "NSDateFormatter+DisplayFormat.h"
 
 #define dashIfEmpty(x) [x length] > 0 ? x : @"-"
+#define dashIfZero(x) [x integerValue] != 0 ? x : @"-"
+
 
 
 @interface TXHDoorOrderDetailsViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *fullNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *fullNameValueLabel;
-@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
-@property (weak, nonatomic) IBOutlet UILabel *emailValueLabel;
-@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
-@property (weak, nonatomic) IBOutlet UILabel *phoneValueLabel;
-@property (weak, nonatomic) IBOutlet UILabel *countryLabel;
-@property (weak, nonatomic) IBOutlet UILabel *countryValueLabel;
-@property (weak, nonatomic) IBOutlet UILabel *cardLabel;
-@property (weak, nonatomic) IBOutlet UILabel *cardValueLabel;
-@property (weak, nonatomic) IBOutlet UILabel *cardTypeLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *cardTypeImageView;
-@property (weak, nonatomic) IBOutlet UILabel *cardTypeValueLabel;
-@property (weak, nonatomic) IBOutlet UILabel *expiryLabel;
-@property (weak, nonatomic) IBOutlet UILabel *expiryValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *orderReferenceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *orderOwnerFullNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *orderOwnerEmailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *orderOwnerPhoneNumberLabel;
 
-@property (weak, nonatomic) IBOutlet TXHBorderedButton *cancelRefundButton;
+@property (weak, nonatomic) IBOutlet UILabel *confirmedOnValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *couponValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *staffNumberValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *groupValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *directOrderValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalPriceValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *paymentTypeValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *last4ValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cardExpiryDateValueLabel;
 
 @end
 
@@ -54,22 +51,23 @@
 - (void)updateLabels
 {
     TXHCustomer *customer = self.order.customer;
+    TXHOrder *order       = self.order;
     
-    self.fullNameValueLabel.text = dashIfEmpty(customer.fullName);
-    self.emailValueLabel.text    = dashIfEmpty(customer.email);
-    self.phoneValueLabel.text    = dashIfEmpty(customer.telephone);
-    self.countryValueLabel.text  = dashIfEmpty(customer.address.country);
+    self.orderReferenceLabel.text        = [NSString stringWithFormat:NSLocalizedString(@"ORDER_DETAILS_TITLE_FORMAT", nil),order.reference];
+
+    self.orderOwnerFullNameLabel.text    = dashIfEmpty(customer.fullName);
+    self.orderOwnerEmailLabel.text       = dashIfEmpty(customer.email);
+    self.orderOwnerPhoneNumberLabel.text = dashIfEmpty(customer.telephone);
     
-    self.cardValueLabel.text     = dashIfEmpty(@"");
-    self.cardTypeValueLabel.text = dashIfEmpty(@"");
-    self.expiryValueLabel.text   = dashIfEmpty([NSDateFormatter txh_stringFromDate:self.order.expiresAt]);
-}
+    self.confirmedOnValueLabel.text    = dashIfEmpty([NSDateFormatter txh_fullDateStringFromDate:self.order.confirmedAt]);
+    self.couponValueLabel.text         = dashIfEmpty(order.coupon);
+    self.staffNumberValueLabel.text    = dashIfEmpty(@"-");
+    self.groupValueLabel.text          = [order.group boolValue] ? @"Yes" : @"No";
+    self.directOrderValueLabel.text    = [order.directt boolValue] ? @"Yes" : @"No";
 
-#pragma mark - Actions
-
-- (IBAction)cancelRefundButtonAction:(id)sender
-{
-
+    self.paymentTypeValueLabel.text    = dashIfEmpty(order.payment.type);
+    self.last4ValueLabel.text          = dashIfEmpty(order.payment.card.last4);
+    self.cardExpiryDateValueLabel.text = [NSString stringWithFormat:@"%@/%@",dashIfZero(order.payment.card.month), dashIfZero(order.payment.card.year)];
 }
 
 @end

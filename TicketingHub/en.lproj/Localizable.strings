@@ -125,6 +125,9 @@
 "TICKET_DETAILS_EARLY_ERROR_MESSAGE"   = "This ticket is early. You can still change the attendance.";
 "TICKET_DETAILS_ERROR_MESSAGE_FORMAT"  = "This ticket was cancelled on %@";
 
+/* Ticket details */
+"ORDER_DETAILS_TITLE_FORMAT"                  = "Order %@";
+
 
 /* Handpoint */
 // TODO:                 Give a bit of love into those messages!!!
