@@ -79,59 +79,71 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="juE-qh-d83">
-                                        <rect key="frame" x="20" y="20" width="260" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="TSc-sI-cGF">
-                                                <rect key="frame" x="10" y="0.0" width="230" height="40"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="TSc-sI-cGF">
+                                                <rect key="frame" x="30" y="0.0" width="240" height="60"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <action selector="searchFieldEditingChanged:" destination="Lzd-lE-Kx5" eventType="editingChanged" id="iLC-ud-ogd"/>
                                                 </connections>
                                             </textField>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFp-Iy-GrM">
+                                                <rect key="frame" x="0.0" y="58" width="300" height="2"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.91372549020000005" green="0.93725490199999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="B8Z-Ny-QUK"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="GFp-Iy-GrM" secondAttribute="bottom" id="10v-21-D6P"/>
                                             <constraint firstItem="TSc-sI-cGF" firstAttribute="top" secondItem="juE-qh-d83" secondAttribute="top" id="2uk-uA-M1s"/>
                                             <constraint firstAttribute="bottom" secondItem="TSc-sI-cGF" secondAttribute="bottom" id="Cci-OC-59t"/>
-                                            <constraint firstAttribute="height" constant="40" id="QLZ-tj-c5r"/>
-                                            <constraint firstAttribute="trailing" secondItem="TSc-sI-cGF" secondAttribute="trailing" constant="20" id="ZKu-EZ-bCs"/>
-                                            <constraint firstItem="TSc-sI-cGF" firstAttribute="leading" secondItem="juE-qh-d83" secondAttribute="leading" constant="10" id="jnp-fE-D4p"/>
+                                            <constraint firstAttribute="trailing" secondItem="GFp-Iy-GrM" secondAttribute="trailing" id="M4W-Mr-Fp3"/>
+                                            <constraint firstAttribute="height" constant="60" id="QLZ-tj-c5r"/>
+                                            <constraint firstAttribute="trailing" secondItem="TSc-sI-cGF" secondAttribute="trailing" constant="30" id="ZKu-EZ-bCs"/>
+                                            <constraint firstItem="GFp-Iy-GrM" firstAttribute="leading" secondItem="juE-qh-d83" secondAttribute="leading" id="adP-i9-33g"/>
+                                            <constraint firstItem="TSc-sI-cGF" firstAttribute="leading" secondItem="juE-qh-d83" secondAttribute="leading" constant="30" id="jnp-fE-D4p"/>
                                         </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifying-glass" translatesAutoresizingMaskIntoConstraints="NO" id="lRN-Se-hfB">
-                                        <rect key="frame" x="124" y="219" width="52" height="54"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifying_glass_icon" translatesAutoresizingMaskIntoConstraints="NO" id="lRN-Se-hfB">
+                                        <rect key="frame" x="136" y="256" width="28" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="54" id="rlX-UW-hzW"/>
-                                            <constraint firstAttribute="width" constant="52" id="v9W-c1-ptN"/>
+                                            <constraint firstAttribute="height" constant="29" id="Psk-Dr-H1g"/>
+                                            <constraint firstAttribute="width" constant="28" id="aP5-HX-L0D"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can't find a booking?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Hr-sU-27W">
-                                        <rect key="frame" x="66" y="293" width="169" height="21"/>
+                                        <rect key="frame" x="62" y="305" width="177" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" red="0.30196078430000001" green="0.39607843139999999" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can search by email, name, credit card or scan the tickets QR Code." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="188" translatesAutoresizingMaskIntoConstraints="NO" id="gP2-GM-AT8">
-                                        <rect key="frame" x="56" y="322" width="188" height="46"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can search by email, name, credit card or scan the tickets QR Code." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="217" translatesAutoresizingMaskIntoConstraints="NO" id="gP2-GM-AT8">
+                                        <rect key="frame" x="42" y="337" width="217" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                                        <color key="textColor" red="0.49803921569999998" green="0.66274509800000003" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.89411764705882346" green="0.91764705882352937" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="9Hr-sU-27W" secondAttribute="centerX" id="5rp-du-cW3"/>
-                                    <constraint firstItem="juE-qh-d83" firstAttribute="leading" secondItem="cgR-4h-bXO" secondAttribute="leading" constant="20" id="HWs-eM-HPj"/>
-                                    <constraint firstItem="juE-qh-d83" firstAttribute="top" secondItem="cgR-4h-bXO" secondAttribute="top" constant="20" id="RKX-oz-av5"/>
+                                    <constraint firstItem="juE-qh-d83" firstAttribute="leading" secondItem="cgR-4h-bXO" secondAttribute="leading" id="HWs-eM-HPj"/>
+                                    <constraint firstItem="juE-qh-d83" firstAttribute="top" secondItem="cgR-4h-bXO" secondAttribute="top" id="RKX-oz-av5"/>
                                     <constraint firstItem="gP2-GM-AT8" firstAttribute="top" secondItem="9Hr-sU-27W" secondAttribute="bottom" constant="8" id="Wbd-9v-5oK"/>
-                                    <constraint firstAttribute="trailing" secondItem="juE-qh-d83" secondAttribute="trailing" constant="20" id="h3B-pY-4Sc"/>
+                                    <constraint firstAttribute="trailing" secondItem="juE-qh-d83" secondAttribute="trailing" id="h3B-pY-4Sc"/>
                                     <constraint firstAttribute="centerX" secondItem="lRN-Se-hfB" secondAttribute="centerX" id="ihp-Pk-omb"/>
                                     <constraint firstAttribute="bottom" secondItem="gP2-GM-AT8" secondAttribute="bottom" constant="100" id="n3F-ja-0Pr"/>
                                     <constraint firstItem="9Hr-sU-27W" firstAttribute="top" secondItem="lRN-Se-hfB" secondAttribute="bottom" constant="20" id="oew-RD-ydX"/>
@@ -1527,7 +1539,6 @@
     <resources>
         <image name="arrow_indicator" width="12" height="21"/>
         <image name="close_mark" width="24" height="24"/>
-        <image name="magnifying-glass" width="52" height="54"/>
         <image name="magnifying_glass_icon" width="28" height="27"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -1536,6 +1547,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="sDc-fl-k84"/>
+        <segue reference="rLv-Er-hak"/>
     </inferredMetricsTieBreakers>
 </document>
