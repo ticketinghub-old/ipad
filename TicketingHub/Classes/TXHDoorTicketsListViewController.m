@@ -230,7 +230,7 @@
     {
         self.loadingData = YES;
         __weak typeof(self) wself = self;
-        [self.productManager ticketRecordsValidFromDate:[[NSDate date] dateByAddingTimeInterval:60*60*24*3 - 60*60*20]
+        [self.productManager ticketRecordsValidFromDate:[NSDate date]
                                       includingAttended:!self.hideAttending
                                                   query:nil
                                          paginationInfo:self.paginationInfo
