@@ -19,9 +19,9 @@
 
 - (void)setupAccessoryView
 {
-    UIImage *accessoryImage = [UIImage imageNamed:@"right-arrow"];
+    UIImage *accessoryImage = [UIImage imageNamed:@"arrow_indicator"];
     accessoryImage          = [accessoryImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.accessoryView      = [[UIImageView alloc] initWithImage:accessoryImage];
+    self.accessoryView = [[UIImageView alloc] initWithImage:accessoryImage];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -51,6 +51,7 @@
     
     [self updateColors];
 }
+
 
 - (void)updateColors
 {
