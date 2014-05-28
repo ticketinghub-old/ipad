@@ -23,7 +23,7 @@ PODS:
   - DCTCoreDataStack (1.1)
   - Expecta (0.2.4)
   - FontAwesome+iOS (0.1.1)
-  - iOS-api (0.0.108):
+  - iOS-api (0.0.111):
     - AFNetworking (~> 2.2.0)
     - DCTCoreDataStack (~> 1.1)
   - OCMock (2.2.4)
@@ -45,7 +45,7 @@ PODS:
   - TSCurrencyTextField/Core (0.1.0)
   - UIAlertView-Blocks (1.0)
   - UIImage+PDF (1.1.3)
-  - UIView+Shake (0.2)
+  - UIView+Shake (0.3)
   - UIView-Autolayout (0.2.0)
   - UIViewController+BHTKeyboardAnimationBlocks (0.0.2)
 
@@ -93,7 +93,7 @@ SPEC CHECKSUMS:
   DCTCoreDataStack: eb0d05f4e27f92ff29fe559f66946baa939cafa7
   Expecta: 112bcafa2304ee0f3c5e586505f24555a47b25d5
   FontAwesome+iOS: 3c574273fb301c2e0a88f983551562bf8768b623
-  iOS-api: 77a83fe5ba742ab6f68100157ac11cbcec29bc01
+  iOS-api: 57eae65a403de6ce0341a79472e456641cc3632e
   OCMock: 6db79185520e24f9f299548f2b8b07e41d881bd5
   PaymentKit: 14b54835f57ae9e2bf5628140fcd67001740cba2
   PPiAwesomeButton: efcaafab6c0207427a3216f34933c89c2bc93a70
@@ -108,7 +108,7 @@ SPEC CHECKSUMS:
   TSCurrencyTextField: d63c385890f2d41200ecdd2268f01fd5968405cc
   UIAlertView-Blocks: f3271e84372beb97aea115cd1fb26ae66457f12f
   UIImage+PDF: e2670143b9a404ce7def93cd4f7fd2c532aeba89
-  UIView+Shake: 68d2bc9228f452615b7ab3c8c395b58ab3d47c89
+  UIView+Shake: 443c0ea01b80a2117ec27380dfe39e0f0fc05ea2
   UIView-Autolayout: 7c05eb666738eba682f686c2da236578177e2ebb
   UIViewController+BHTKeyboardAnimationBlocks: fa8f86b798147159ddc1b2aba3f8c49247f1c814
 

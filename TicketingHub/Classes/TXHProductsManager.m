@@ -146,11 +146,19 @@ NSString * const TXHSelectedAvailabilityKey         = @"TXHSelectedProductKey";
                                   completion:completion];
 }
 
-- (void)getOrderForCardMSRData:(NSString *)msrData completion:(void (^)(NSArray *orders, NSError *error))completion
+- (void)getOrderForCardMSRData:(NSString *)msrData paginationInfo:(TXHPartialResponsInfo *)info completion:(void (^)(TXHPartialResponsInfo *info, NSArray *orders, NSError *error))completion
 {
     [self.txhManager.client getOrdersForCardMSRString:msrData
+                                       paginationInfo:info
                                            completion:completion];
 }
+- (void)getOrderForQuery:(NSString *)query paginationInfo:(TXHPartialResponsInfo *)info completion:(void (^)(TXHPartialResponsInfo *info, NSArray *orders, NSError *error))completion
+{
+    [self.txhManager.client getOrdersForQuery:query
+                                   paginationInfo:info
+                                   completion:completion];
+}
+
 
 - (void)availableDatesFrom:(NSDate *)startDate endDate:(NSDate *)endDate completion:(void (^)(NSArray *availableDates, NSError *error))completion
 {

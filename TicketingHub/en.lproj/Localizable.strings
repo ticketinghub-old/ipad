@@ -105,7 +105,6 @@
 "DOORMAN_TICKETS_LIST_LOOKING_UP_TICKETS"          = "Looking up ticket";
 "DOORMAN_TICKETS_LIST_ATTENDEES_FORMAT"            = "%lu Guests";
 "DOORMAN_TICKETS_LIST_ATTENDING_FORMAT"            = "%lu Attending";
-"DOORMAN_TICKETS_LIST_ATTENDING_FORMAT"            = "%lu Attending";
 "DOORMAN_TICKETS_LIST_LOADING_TICKETS"             = "Loading tickets";
 
 "DOORMAN_TICKETS_LIST_SEARCHING_LABEL"             = "Searching";

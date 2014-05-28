@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class TXHProductsManager;
+
 extern NSString *const TXHQueryValueKey;
 
 extern NSString *const TXHRecognizedQRCodeNotification;
@@ -15,5 +17,7 @@ extern NSString *const TXHSearchQueryDidChangeNotification;
 
 
 @interface TXHDoorSearchViewController : UIViewController
+
+@property (strong, nonatomic) TXHProductsManager *productsManger;
 
 @end

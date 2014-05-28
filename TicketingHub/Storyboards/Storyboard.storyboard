@@ -294,7 +294,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWl-ug-4Uk" customClass="TXHBorderedButton">
                                         <rect key="frame" x="20" y="20" width="290" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Logout">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -347,9 +347,12 @@
                                     <constraint firstAttribute="height" constant="100" id="xjC-ta-wIZ"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shadow" translatesAutoresizingMaskIntoConstraints="NO" id="NjO-cz-bla">
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shadow" translatesAutoresizingMaskIntoConstraints="NO" id="NjO-cz-bla">
                                 <rect key="frame" x="322" y="0.0" width="8" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="8" id="wO6-b6-w5C"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -357,9 +360,9 @@
                             <constraint firstItem="suw-Sn-fju" firstAttribute="top" secondItem="FiJ-8i-n6o" secondAttribute="bottom" id="2IZ-GQ-TtC"/>
                             <constraint firstItem="hcn-rF-iNJ" firstAttribute="top" secondItem="vYL-1t-XRn" secondAttribute="bottom" constant="-2" id="4Wu-sb-Nww"/>
                             <constraint firstItem="FiJ-8i-n6o" firstAttribute="leading" secondItem="Tu6-K8-Nzc" secondAttribute="leading" id="B2P-nr-8Yb"/>
-                            <constraint firstItem="NjO-cz-bla" firstAttribute="bottom" secondItem="vYL-1t-XRn" secondAttribute="bottom" constant="-2" id="Dzg-Wq-6EZ"/>
                             <constraint firstItem="FiJ-8i-n6o" firstAttribute="top" secondItem="7Iv-3d-WXC" secondAttribute="bottom" id="KFl-oP-waE"/>
                             <constraint firstItem="vYL-1t-XRn" firstAttribute="trailing" secondItem="Tu6-K8-Nzc" secondAttribute="trailing" id="PEj-OU-cEZ"/>
+                            <constraint firstItem="hcn-rF-iNJ" firstAttribute="top" secondItem="NjO-cz-bla" secondAttribute="bottom" id="Wu8-w7-rpe"/>
                             <constraint firstItem="suw-Sn-fju" firstAttribute="leading" secondItem="Tu6-K8-Nzc" secondAttribute="leading" id="Z3s-he-oTv"/>
                             <constraint firstItem="vYL-1t-XRn" firstAttribute="leading" secondItem="Tu6-K8-Nzc" secondAttribute="leading" id="gEA-gJ-wla"/>
                             <constraint firstItem="vYL-1t-XRn" firstAttribute="top" secondItem="suw-Sn-fju" secondAttribute="bottom" id="kNi-rJ-NAM"/>

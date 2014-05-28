@@ -44,6 +44,7 @@
 		3E53C54D18E58FD000FF6F9B /* TXHActivityLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E53C54C18E58FD000FF6F9B /* TXHActivityLabelView.xib */; };
 		3E5B2BC8192A6C5600BE4CE6 /* TXHPayment+PKCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B2BC7192A6C5600BE4CE6 /* TXHPayment+PKCard.m */; };
 		3E5FA93A192FCE8900452C30 /* DKPOSClientTransactionInfo+Messages.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FA939192FCE8900452C30 /* DKPOSClientTransactionInfo+Messages.m */; };
+		3E65781E193622F8009008CD /* TXHOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E65781D193622F8009008CD /* TXHOrderCell.m */; };
 		3E6A422518C483870053EF34 /* TXHSensorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6A422418C483870053EF34 /* TXHSensorView.m */; };
 		3E6F479718AFD6A300E644F7 /* TXHBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F479618AFD6A300E644F7 /* TXHBorderedButton.m */; };
 		3E7B7A83193234C100B8EFDA /* TXHGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B7A82193234C100B8EFDA /* TXHGradientView.m */; };
@@ -246,6 +247,8 @@
 		3E5B2BC7192A6C5600BE4CE6 /* TXHPayment+PKCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHPayment+PKCard.m"; sourceTree = "<group>"; };
 		3E5FA938192FCE8900452C30 /* DKPOSClientTransactionInfo+Messages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DKPOSClientTransactionInfo+Messages.h"; sourceTree = "<group>"; };
 		3E5FA939192FCE8900452C30 /* DKPOSClientTransactionInfo+Messages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DKPOSClientTransactionInfo+Messages.m"; sourceTree = "<group>"; };
+		3E65781C193622F8009008CD /* TXHOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHOrderCell.h; sourceTree = "<group>"; };
+		3E65781D193622F8009008CD /* TXHOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOrderCell.m; sourceTree = "<group>"; };
 		3E6A422318C483870053EF34 /* TXHSensorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSensorView.h; sourceTree = "<group>"; };
 		3E6A422418C483870053EF34 /* TXHSensorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSensorView.m; sourceTree = "<group>"; };
 		3E6F479518AFD6A300E644F7 /* TXHBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHBorderedButton.h; sourceTree = "<group>"; };
@@ -957,6 +960,8 @@
 				3E3A5B0B18AA681900A54812 /* Barcode Scaner */,
 				3E8FD59118C74CD70066FA50 /* TXHDoorSearchViewController.h */,
 				3E8FD59218C74CD70066FA50 /* TXHDoorSearchViewController.m */,
+				3E65781C193622F8009008CD /* TXHOrderCell.h */,
+				3E65781D193622F8009008CD /* TXHOrderCell.m */,
 			);
 			name = "Searching Area";
 			sourceTree = "<group>";
@@ -1759,6 +1764,7 @@
 				3EC8845B18C4984B00CE0597 /* UIResponder+FirstResponder.m in Sources */,
 				EE75D99C17D11048009ADCD8 /* TXHSalesSummaryItemCell.m in Sources */,
 				3E9BA43F19351EDB00780E78 /* TXHDoorTicketsListHeaderView.m in Sources */,
+				3E65781E193622F8009008CD /* TXHOrderCell.m in Sources */,
 				3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */,
 				3E5B2BC8192A6C5600BE4CE6 /* TXHPayment+PKCard.m in Sources */,
 				3EF09F90191BB0A100C85109 /* TXHPaymentOptionsManager.m in Sources */,

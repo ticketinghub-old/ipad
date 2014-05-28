@@ -37,7 +37,8 @@
 
 - (void)getOrderForTicket:(TXHTicket *)ticket completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
-- (void)getOrderForCardMSRData:(NSString *)msrData completion:(void (^)(NSArray *orders, NSError *error))completion;
+- (void)getOrderForCardMSRData:(NSString *)msrData paginationInfo:(TXHPartialResponsInfo *)info completion:(void (^)(TXHPartialResponsInfo *info, NSArray *orders, NSError *error))completion;
+- (void)getOrderForQuery:(NSString *)query paginationInfo:(TXHPartialResponsInfo *)info completion:(void (^)(TXHPartialResponsInfo *info, NSArray *orders, NSError *error))completion;
 
 - (void)availableDatesFrom:(NSDate *)startDate endDate:(NSDate *)endDate completion:(void (^)(NSArray *availableDates, NSError *error))completion;
 

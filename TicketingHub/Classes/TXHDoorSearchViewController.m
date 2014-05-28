@@ -10,8 +10,13 @@
 #import <UIViewController+BHTKeyboardAnimationBlocks/UIViewController+BHTKeyboardNotifications.h>
 
 #import "TXHScanersManager.h"
-
 #import "TXHBarcodeScanner.h"
+#import "TXHProductsManager.h"
+
+#import "TXHOrderCell.h"
+#import <iOS-api/TXHPartialResponsInfo.h>
+
+// TODO: this supposed to be search controller, then all change with no time do it the right way
 
 NSString *const TXHQueryValueKey                    = @"TXHQueryValueKey";
 
@@ -29,6 +34,13 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 @property (weak, nonatomic) IBOutlet UIView *cameraPreviewView;
 @property (weak, nonatomic) IBOutlet UIView *searchView;
 @property (weak, nonatomic) IBOutlet UITextField *searchField;
+
+@property (strong, nonatomic) NSMutableArray *orders;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) TXHPartialResponsInfo *paginationInfo;
+@property (assign, nonatomic, getter = isLoadingData) BOOL loadingData;
+
+@property (copy, nonatomic) NSString *searchQuery;
 
 @property (strong, nonatomic) NSDate *lastScanTimestamp;
 
@@ -53,6 +65,7 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     [super viewWillAppear:animated];
     
     [self updateCameraView];
+    self.scannersManager.delegate = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -68,6 +81,7 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     [super viewDidDisappear:animated];
     
     [self stopScanningWithBuiltInCamera];
+    self.scannersManager.delegate = nil;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
@@ -84,6 +98,31 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     }
     
     return _scannersManager;
+}
+
+
+-(void)setSearchQuery:(NSString *)searchQuery
+{
+    _searchQuery = searchQuery;
+    
+    [self resetOrders];
+}
+
+- (void)resetOrders
+{
+    self.paginationInfo = nil;
+    [self.orders removeAllObjects];
+    [self.tableView reloadData];
+
+    [self reloadOrders];
+}
+
+- (NSMutableArray *)orders
+{
+    if (!_orders)
+        _orders = [NSMutableArray array];
+    
+    return _orders;
 }
 
 #pragma mark - private
@@ -122,10 +161,9 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
         
         wself.bottomLabelConstraint.constant = 30;
         wself.bottomConstraint.constant = keyboardFrame.size.width;
-    
+
         [wself.view layoutIfNeeded];
     }];
-    
     
     [self setKeyboardWillHideAnimationBlock:^(CGRect keyboardFrame) {
         if ([wself shouldUseBuiltInCamera])
@@ -144,6 +182,39 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     [self setKeyboardDidHideActionBlock:^(CGRect keyboardFrame){
         [wself startScanningWithBuiltInCamera];
     }];
+}
+
+- (void)reloadOrders
+{
+    static NSInteger counter = 0;
+    __block NSInteger blockCounter = ++counter;
+    __weak typeof(self) wself = self;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+
+        if (counter != blockCounter)
+            return;
+        
+        wself.loadingData = YES;
+        [wself.productsManger getOrderForQuery:self.searchQuery
+                                paginationInfo:self.paginationInfo
+                                    completion:^(TXHPartialResponsInfo *info, NSArray *orders, NSError *error) {
+                                        wself.loadingData    = NO;
+                                        
+                                        if (counter != blockCounter)
+                                            return;
+                                        
+                                        wself.paginationInfo = info;
+        
+                                        [wself addOders:orders];
+                                    }];
+    });
+}
+
+- (void)addOders:(NSArray *)orders
+{
+    [self.orders addObjectsFromArray:orders];
+    [self.tableView reloadData];
 }
 
 #pragma mark - lazy loading getters
@@ -219,9 +290,9 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 
 #pragma mark - textField
 
-- (IBAction)searchFieldEditingChanged:(id)sender
+- (IBAction)searchFieldEditingChanged:(UITextField *)textField
 {
-    [self postNotificationWithName:TXHSearchQueryDidChangeNotification value:self.searchField.text];
+    self.searchQuery = textField.text;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -243,5 +314,37 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     
     [[NSNotificationCenter defaultCenter] postNotificationName:name object:self userInfo:[payload copy]];
 }
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.orders count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TXHOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OrderCell" forIndexPath:indexPath];
+    
+    TXHOrder *order = [self orderAtIndexPath:indexPath];
+    
+    [cell setOrderReference:order.reference];
+    [cell setPrice:[self.productsManger priceStringForPrice:order.total]];
+    [cell setGuestCount:0];
+    [cell setAttendingCount:0];
+    
+    if (self.paginationInfo.hasMore && !self.loadingData && indexPath.row == [self.orders count] - 1 )
+        [self reloadOrders];
+    
+    return cell;
+}
+
+- (TXHOrder *)orderAtIndexPath:(NSIndexPath *)indexPath
+{
+    return self.orders[indexPath.row];
+}
+
+#pragma mark - UITableViewDelegate
+
 
 @end

@@ -210,18 +210,32 @@
         NSString *titleFormat = NSLocalizedString(@"TICKET_DETAILS_TITLE_FORMAT", nil);
         TXHTicket *ticket = [wself ticket];
         
+        NSArray * prefixedUpgrades = [self prependArrayOfStrings:upgrades prefix:@"+ "];
+        
         wself.titleLabel.text      = [NSString stringWithFormat:titleFormat,wself.ticket.reference];
         wself.subtitleLabel.text   = customer.fullName;
         wself.validFromLabel.text  = ticket.order.confirmedAt ? [wself dateStringForDate:ticket.order.confirmedAt] : @"-";
         wself.validUntilLabel.text = ticket.expiresAt ? [wself dateStringForDate:ticket.expiresAt] : @"-";
         wself.voucherLabel.text    = [ticket.voucher length] ? ticket.voucher : @"-";
-        wself.upgradesLabel.text   = [upgrades count] ? [upgrades componentsJoinedByString:@"\n"] : @"-";
+        wself.upgradesLabel.text   = [prefixedUpgrades count] ? [prefixedUpgrades componentsJoinedByString:@"\n"] : @"-";
         wself.priceLabel.text      = ticket.price ? [wself.productManager priceStringForPrice:ticket.price] : @"-";
         
         [wself updateButtons];
         [wself updateErrorView];
 
     });
+}
+
+- (NSArray *)prependArrayOfStrings:(NSArray*)originalArray prefix:(NSString*)prefix
+{
+    NSMutableArray *newArray = [[NSMutableArray alloc] init];
+    for( NSString *currString in originalArray )
+    {
+        NSString *newString = [NSString stringWithFormat:@"%@%@", prefix, currString];
+        [newArray addObject:newString];
+    }
+    
+    return newArray;
 }
 
 - (void)updateButtons

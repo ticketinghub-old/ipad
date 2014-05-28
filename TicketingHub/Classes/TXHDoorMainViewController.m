@@ -26,6 +26,12 @@
         TXHDoorTicketsListViewController *ticketsList = segue.destinationViewController;
         ticketsList.productManager = self.prodctManager;
     }
+    else if ([segue.identifier isEqualToString:@"TXHDoorSearchViewController"])
+    {
+        TXHDoorSearchViewController *search = segue.destinationViewController;
+        search.productsManger = self.prodctManager;
+    }
+
 }
 
 

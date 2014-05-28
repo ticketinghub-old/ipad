@@ -56,10 +56,7 @@
     [super viewWillAppear:animated];
     
     [self updateView];
-    
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self scannerManager:self.scanersManager didRecognizeMSRCardTrack:@"%B1234567890123445^PADILLA/L.                ^99011X100000*000000000XXX000000?*"];
-//    });
+    self.scanersManager.delegate = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -68,6 +65,7 @@
     
     [self.fullScreenController hideAniamted:NO
                                  completion:nil];
+    self.scanersManager.delegate = nil;
 }
 
 - (void)setValid:(BOOL)valid

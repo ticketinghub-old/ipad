@@ -230,17 +230,26 @@
 {
     if (!self.isLoadingData)
     {
-        self.loadingData = YES;
+        
+        static NSInteger counter = 0;
+        __block NSInteger blockCounter = ++counter;
+
         __weak typeof(self) wself = self;
-        [self.productManager ticketRecordsValidFromDate:[NSDate date]
-                                      includingAttended:!self.hideAttending
-                                                  query:nil
-                                         paginationInfo:self.paginationInfo
-                                             completion:^(TXHPartialResponsInfo *info, NSArray *ticketRecords, NSError *error) {
-                                                 wself.tickets = [wself.tickets arrayByAddingObjectsFromArray:ticketRecords];
-                                                 wself.loadingData = NO;
-                                                 wself.paginationInfo = info;
-                                             }];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (counter != blockCounter)
+                return;
+            
+            wself.loadingData = YES;
+            [wself.productManager ticketRecordsValidFromDate:[NSDate date]
+                                          includingAttended:!wself.hideAttending
+                                                      query:nil
+                                             paginationInfo:wself.paginationInfo
+                                                 completion:^(TXHPartialResponsInfo *info, NSArray *ticketRecords, NSError *error) {
+                                                     wself.tickets = [wself.tickets arrayByAddingObjectsFromArray:ticketRecords];
+                                                     wself.loadingData = NO;
+                                                     wself.paginationInfo = info;
+                                                 }];
+        });
     }
 }
 
@@ -354,10 +363,14 @@
     return YES;
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+- (IBAction)searchFieldEditingChanged:(UITextField *)textField
 {
     self.searchQuery = textField.text;
-    
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
     [textField resignFirstResponder];
     return YES;
 }
@@ -423,7 +436,8 @@
     __weak typeof(self) wself = self;
     
     [self.productManager getOrderForCardMSRData:cardTrack
-                                     completion:^(NSArray *orders, NSError *error) {
+                                 paginationInfo:nil
+                                     completion:^(TXHPartialResponsInfo *info, NSArray *orders, NSError *error) {
                                          wself.loadingData = NO;
                                          
                                          if (!error)
