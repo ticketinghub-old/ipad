@@ -77,6 +77,7 @@
     [super viewWillAppear:animated];
 
     [self registerForNotifications];
+    self.scannersManager.delegate = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -84,6 +85,7 @@
     [super viewWillDisappear:animated];
 
     [self unregisterFromNotifications];
+    self.scannersManager.delegate = nil;
 }
 
 //- (void)applyTicketFilter
