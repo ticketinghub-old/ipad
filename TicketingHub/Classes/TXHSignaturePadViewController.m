@@ -55,14 +55,17 @@ static void * kSIgnatureViewHasSignatureContext = &kSIgnatureViewHasSignatureCon
 
 - (void)customizeContentView
 {
-    self.contentView.layer.cornerRadius = 5;
+    self.contentView.layer.cornerRadius = 12;
 }
 
 - (void)setupBackground
 {
-    UIColor *blurTintColor = [[UIColor txhDarkBlueColor] colorWithAlphaComponent:0.6];
+    UIColor *blurTintColor = [UIColor colorWithRed:6.0f / 255.0f
+                                             green:69.0f / 255.0f
+                                              blue:111.0f / 255.0f
+                                             alpha:0.2f];
     
-    UIImage *bgImage = [[UIImage screenshot] applyBlurWithRadius:3
+    UIImage *bgImage = [[UIImage screenshot] applyBlurWithRadius:20
                                                        tintColor:blurTintColor
                                            saturationDeltaFactor:1.8
                                                        maskImage:nil];

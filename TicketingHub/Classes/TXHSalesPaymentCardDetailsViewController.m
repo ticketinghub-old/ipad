@@ -61,7 +61,8 @@
     if ([segue.identifier isEqualToString:@"ShowSignaturePad"])
     {
         TXHSignaturePadViewController *signaturePadController = segue.destinationViewController;
-        signaturePadController.delegate = self;
+        signaturePadController.delegate         = self;
+        signaturePadController.totalPriceString = [self.productManager priceStringForPrice:self.orderManager.order.total];
     }
 }
 
