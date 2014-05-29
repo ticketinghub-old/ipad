@@ -10,6 +10,7 @@
 #import "TXHTicketingHubManager.h"
 
 NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification";
+NSString * const TXHOrderDidChangeNotification = @"TXHOrderDidChangeNotification";
 
 @interface TXHOrderManager ()
 
@@ -53,6 +54,8 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
     }
     
     _order = order;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:TXHOrderDidChangeNotification object:self];
 }
 
 - (void)setExpirationDate:(NSDate *)expirationDate
@@ -106,9 +109,9 @@ NSString * const TXHOrderDidExpireNotification = @"TXHOrderDidExpireNotification
     }
 }
 
-- (void)orderDidExpire:(NSNotification *)note
+- (void)orderDidExpire:(NSTimer *)timer
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:TXHOrderDidExpireNotification object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TXHOrderDidExpireNotification object:self];
 }
 
 #pragma mark public methods

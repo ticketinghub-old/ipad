@@ -1,5 +1,8 @@
 /* Localized versions of strings*/
 
+"SALESMAN_TITLE" = "Salesman";
+"DOORMAN_TITLE"  = "Doorman";
+
 /* Salesman steps titles */
 
 "SALESMAN_STEPS_TICKET_QUANTITY_TITLE" = "Tickets";

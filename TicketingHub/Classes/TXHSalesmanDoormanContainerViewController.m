@@ -20,10 +20,12 @@
 #import "UIColor+TicketingHub.h"
 #import "UIFont+TicketingHub.h"
 #import "TXHActivityLabelView.h"
+#import <Block-KVO/MTKObserving.h>
+
 
 @interface TXHSalesmanDoormanContainerViewController ()
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelector;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *modeSelector;
 @property (weak, nonatomic) IBOutlet UIView             *contentDetailView;
 
 @property (strong, nonatomic) TXHProduct      *selectedProduct;
@@ -31,6 +33,8 @@
 @property (strong, nonatomic) TXHActivityLabelView *activityView;
 
 @property (weak, nonatomic) UIViewController *currentContentController;
+
+@property (strong, nonatomic) UIBarButtonItem *rightItem;
 
 @end
 
@@ -51,6 +55,7 @@
 - (void)dealloc
 {
     [self unregisterFromProductChanges];
+    [self removeAllObservations];
 }
 
 - (void)registerForProductChanges
@@ -62,6 +67,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductsChangedNotification object:nil];
 }
+
 
 #pragma mark Actions
 
@@ -82,6 +88,23 @@
     self.currentContentController = segue.destinationViewController;
 
     [segue perform];
+}
+
+- (void)setCurrentContentController:(UIViewController *)currentContentController
+{
+    _currentContentController = currentContentController;
+    
+    [self map:@keypath(self.currentContentController.navigationItem.rightBarButtonItem) to:@keypath(self.rightItem) null:nil];
+}
+
+- (void)setRightItem:(UIBarButtonItem *)rightItem
+{
+    _rightItem = rightItem;
+    
+    if (!rightItem)
+        _rightItem = [[UIBarButtonItem alloc]  initWithCustomView:self.modeSelector];
+    
+    self.navigationItem.rightBarButtonItem = _rightItem;
 }
 
 - (UIViewController *)initialControllerForStoryboardIdentifier:(NSString *)storyboardIdentifier
@@ -193,13 +216,7 @@
                                      forState:UIControlStateSelected];
 
     self.modeSelector.tintColor = [UIColor txhBlueColor];
-    
-//    self.modeSelector.textAttributes         = @{NSFontAttributeName:[UIFont txhThinFontWithSize:25.0f],
-//                                                NSForegroundColorAttributeName:[UIColor txhBlueColor]};
-//    self.modeSelector.selectedTextAttributes = @{NSFontAttributeName:[UIFont txhThinFontWithSize:25.0f],
-//                                                NSForegroundColorAttributeName:[UIColor whiteColor]};
-    
-    self.modeSelector.enabled = (self.selectedProduct != nil);
+    self.modeSelector.enabled   = (self.selectedProduct != nil);
 }
 
 #pragma mark - loading view
@@ -212,5 +229,7 @@
     }
     return _activityView;
 }
+
+
 
 @end

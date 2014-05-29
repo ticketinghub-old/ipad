@@ -10,8 +10,8 @@
 
 @class TXHTicketingHubManager;
 
-
 extern NSString * const TXHOrderDidExpireNotification;
+extern NSString * const TXHOrderDidChangeNotification;
 
 #define TXHORDERMANAGER [TXHOrderManager sharedManager]
 

@@ -52,6 +52,8 @@ static void * ContentValidContext = &ContentValidContext;
 @property (assign, nonatomic) TXHPrintType                            selectedPrintType;
 @property (strong, nonatomic) UIPopoverController                     *printerSelectionPopover;
 
+@property (strong, nonatomic) NSTimer *timer;
+
 // data
 @property (strong, nonatomic) TXHSalesStepsManager *stepsManager;
 
@@ -67,7 +69,7 @@ static void * ContentValidContext = &ContentValidContext;
     [self setupKeyboardAnimations];
     
     [self registerForProductChanges];
-    [self registerForOrderExpirationNotifications];
+    [self registerForOrderManagerNotifications];
     
     [self resetData];
 }
@@ -205,13 +207,16 @@ static void * ContentValidContext = &ContentValidContext;
     self.stepContentController = nil; // removing KVO observer
     
     [self unregisterForProductChanges];
-    [self unregisterFromOrderExpirationNotifications];
+    [self unregisterFromOrderManagerNotifications];
 }
 
 - (void)resetData
 {
     [self.orderManager resetOrder];
     [self.stepsManager resetProcess];
+    
+    self.navigationItem.rightBarButtonItem = nil;
+
 }
 
 - (void (^)(UIButton *button))resetDataActionBlock
@@ -323,16 +328,21 @@ static void * ContentValidContext = &ContentValidContext;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHProductsChangedNotification object:nil];
 }
 
-- (void)registerForOrderExpirationNotifications
+- (void)registerForOrderManagerNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(orderDidExpire:)
                                                  name:TXHOrderDidExpireNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(orderDidChange:)
+                                                 name:TXHOrderDidChangeNotification object:nil];
 }
 
-- (void)unregisterFromOrderExpirationNotifications
+- (void)unregisterFromOrderManagerNotifications
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHOrderDidExpireNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHOrderDidChangeNotification object:nil];
+
 }
 
 #pragma mark product notifications
@@ -347,6 +357,61 @@ static void * ContentValidContext = &ContentValidContext;
 - (void)orderDidExpire:(NSNotification *)note
 {
     [self resetData];
+}
+
+
+- (void)orderDidChange:(NSNotification *)note
+{
+    TXHOrder *order = self.orderManager.order;
+    
+    if (order && !order.confirmedAt && !self.timer)
+    {
+        NSTimer *timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        self.timer = timer;
+    }
+    else
+    {
+        [self.timer invalidate];
+        self.timer = nil;
+        
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+}
+
+- (void)timerFireMethod:(NSTimer *)timer
+{
+    NSTimeInterval interval = 10*60 + [self.orderManager.order.createdAt timeIntervalSinceNow];
+    interval = interval < 0 ? 0 : interval;
+    NSString *timeString = [self stringFromTimeInterval:interval];
+    
+    UIImage *timerIcon = [UIImage imageNamed:@"timer_icon"];
+    
+    UIButton *timerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [timerButton setImage:timerIcon forState:UIControlStateNormal];
+    [timerButton setTitle:timeString forState:UIControlStateNormal];
+    timerButton.frame = (CGRect) {
+        .size.width = 100,
+        .size.height = 30,
+    };
+    
+    UIBarButtonItem *barButton= [[UIBarButtonItem alloc] initWithCustomView:timerButton];
+    
+    self.navigationItem.rightBarButtonItem = barButton;
+//    self.toolbar.items = [NSArray arrayWithObject:barButton];
+//    
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:timeString
+//                                                                              style:UIBarButtonItemStylePlain
+//                                                                             target:nil
+//                                                                             action:nil];
+}
+
+- (NSString *)stringFromTimeInterval:(NSTimeInterval)interval
+{
+    NSInteger ti = (NSInteger)interval;
+    NSInteger seconds = ti % 60;
+    NSInteger minutes = (ti / 60) % 60;
+    return [NSString stringWithFormat:@"  %02ld:%02ld", (long)minutes, (long)seconds];
 }
 
 #pragma mark - TXHSaleStepsManagerDelegate
@@ -364,11 +429,7 @@ static void * ContentValidContext = &ContentValidContext;
         [self.orderManager stopExpirationTimer];
         middleButtonTitle = step.middleButtonTitle;
     }
-    
-    // update header
-    // TODO: set expiration handler
-//    [self.timeController setTimerEndDate:[self.orderManager expirationDate]];
-    
+
     // update footer
     [self.stepCompletionController setLeftButtonHidden:step.hasLeftButtonHidden];
     [self.stepCompletionController setMiddleLeftButtonHidden:step.hasMiddleLeftButtonHidden];
