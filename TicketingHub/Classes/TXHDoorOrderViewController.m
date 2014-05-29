@@ -120,25 +120,45 @@
                               }];
 }
 
+#pragma mark - error helper
+
+- (void)showErrorWithTitle:(NSString *)title message:(NSString *)message action:(void(^)(void))action
+{
+    [self.activityView hide];
+    
+    RIButtonItem *cancelItem = [RIButtonItem itemWithLabel:NSLocalizedString(@"ERROR_DISMISS_BUTTON_TITLE", nil)
+                                                    action:^{
+                                                        if (action)
+                                                            action();
+                                                    }];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                        message:message
+                                               cancelButtonItem:cancelItem
+                                               otherButtonItems: nil];
+    [alertView show];
+}
+
 - (void)dismissWithError:(NSError *)error
 {
     [self showLoadingIndicator];
     
     __weak typeof(self) wself = self;
     
-    RIButtonItem *confirmItem = [RIButtonItem itemWithLabel:NSLocalizedString(@"", nil)
+    RIButtonItem *confirmItem = [RIButtonItem itemWithLabel:NSLocalizedString(@"ERROR_DISMISS_BUTTON_TITLE", nil)
                                                      action:^{
                                                          [wself hideLoadingIndicator];
                                                          //TODO: this should be done with delegation
-                                                         [wself.navigationController dismissViewControllerAnimated:YES completion:nil];
+                                                         [wself.navigationController popViewControllerAnimated:YES];
                                                      }];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"", nil)
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
                                                     message:error.localizedDescription
                                            cancelButtonItem:confirmItem
                                            otherButtonItems:nil];
     [alert show];
 }
+
 
 - (TXHActivityLabelView *)activityView
 {
@@ -204,13 +224,28 @@
     
     [self.productManager cancelOrder:self.order
                           completion:^(TXHOrder *order, NSError *error) {
-                              wself.order = order;
+                              if (error)
+                                  [wself showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
+                                                    message:error.localizedDescription
+                                                     action:nil];
+                              else if (order)
+                                  wself.order = order;
                           }];
 }
 
 - (void)txhPrintButtonsViewControllerMarkAttendingButtonAction:(TXHBorderedButton *)button
 {
+    __weak typeof(self) wself = self;
     
+    [self.productManager setAllTicketsAttendedForOrder:self.order
+                                            completion:^(TXHOrder *order, NSError *error) {
+                                                if (error)
+                                                    [wself showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
+                                                                      message:error.localizedDescription
+                                                                       action:nil];
+                                                else if (order)
+                                                    wself.order = order;
+                                            }];
 }
 
 - (void)txhPrintButtonsViewControllerPrintReciptAction:(TXHBorderedButton *)button

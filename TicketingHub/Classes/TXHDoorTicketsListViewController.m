@@ -29,6 +29,8 @@
 
 #import "TXHRMPickerViewControllerDelegate.h"
 #import <iOS-api/TXHPartialResponsInfo.h>
+#import <UIAlertView-Blocks/UIAlertView+Blocks.h>
+
 
 // TODO: almost the same as TXHDoorOrderTicketsListViewController - extract common parts
 
@@ -318,13 +320,14 @@
 - (void)showErrorWithMessage:(NSString *)message
 {
     self.errorShown = YES;
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
                                                     message:message
                                                    delegate:self
-                                          cancelButtonTitle:@"OK"
+                                          cancelButtonTitle:NSLocalizedString(@"ERROR_DISMISS_BUTTON_TITLE", nil)
                                           otherButtonTitles:nil];
     [alert show];
 }
+
 
 #pragma mark - UITextFieldDelegate
 

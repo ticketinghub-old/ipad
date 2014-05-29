@@ -132,6 +132,12 @@ NSString * const TXHSelectedAvailabilityKey         = @"TXHSelectedProductKey";
                           completion:completion];
 }
 
+- (void)setAllTicketsAttendedForOrder:(TXHOrder *)order completion:(void(^)(TXHOrder *order, NSError *error))completion
+{
+    [self.txhManager.client setAllTicketsAttendedForOrder:order
+                                               completion:completion];
+}
+
 - (void)searchForTicketWithSeqID:(NSNumber *)seqID completion:(void(^)(TXHTicket *ticket, NSError *error))completion
 {
     [self.txhManager.client searchForTicketWithSeqId:seqID

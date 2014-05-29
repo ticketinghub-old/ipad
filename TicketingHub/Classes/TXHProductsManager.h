@@ -32,6 +32,7 @@
 - (void)ticketRecordsForAvailability:(TXHAvailability *)availability andQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion;
 
 - (void)setTicket:(TXHTicket *)ticket attended:(BOOL)attended completion:(void(^)(TXHTicket *ticket, NSError *error))completion;
+- (void)setAllTicketsAttendedForOrder:(TXHOrder *)order completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
 - (void)searchForTicketWithSeqID:(NSNumber *)seqID completion:(void(^)(TXHTicket *ticket, NSError *error))completion;
 
