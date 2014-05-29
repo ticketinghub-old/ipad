@@ -18,14 +18,16 @@
 
 // TODO: this supposed to be search controller, then all change with no time do it the right way
 
-NSString *const TXHQueryValueKey                    = @"TXHQueryValueKey";
+NSString *const TXHQueryValueKey    = @"TXHQueryValueKey";
+NSString *const TXHSelectedOrderKey = @"TXHSelectedOrderKey";
 
-NSString *const TXHRecognizedQRCodeNotification     = @"TXHRecognizedQRCodeNotification";
-NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeNotification";
+NSString *const TXHRecognizedQRCodeNotification = @"TXHRecognizedQRCodeNotification";
+NSString *const TXHDidSelectOrderNotification   = @"TXHDidSelectOrderNotification";
+
 
 #define CAMERA_PREVIEW_ANIMATION_DURATION 0.3
 
-@interface TXHDoorSearchViewController () <BarcodeViewControllerDelegate, UITextFieldDelegate, TXHScanersManagerDelegate>
+@interface TXHDoorSearchViewController () <BarcodeViewControllerDelegate, UITextFieldDelegate, TXHScanersManagerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *cameraPreviewViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
@@ -273,7 +275,7 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     if ([self canMakeNextScan])
     {
         [self recordBarcodeScanTimestamp];
-        [self postNotificationWithName:TXHRecognizedQRCodeNotification value:scannedValue];
+        [self postNotificationWithName:TXHRecognizedQRCodeNotification query:scannedValue];
     }
 }
 
@@ -286,7 +288,6 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 {
     self.lastScanTimestamp = [NSDate date];
 }
-
 
 #pragma mark - textField
 
@@ -303,7 +304,7 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 
 #pragma mark - notification helper
 
-- (void)postNotificationWithName:(NSString *)name value:(NSString *)value
+- (void)postNotificationWithName:(NSString *)name query:(NSString *)value
 {
     if (!name) return;
     
@@ -311,6 +312,18 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
     
     if ([value length])
         payload[TXHQueryValueKey] = value;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:name object:self userInfo:[payload copy]];
+}
+
+- (void)postNotificationWithName:(NSString *)name order:(TXHOrder *)order
+{
+    if (!name) return;
+    
+    NSMutableDictionary *payload = @{}.mutableCopy;
+    
+    if (order)
+        payload[TXHSelectedOrderKey] = order;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:name object:self userInfo:[payload copy]];
 }
@@ -346,5 +359,15 @@ NSString *const TXHSearchQueryDidChangeNotification = @"TXHSearchQueryDidChangeN
 
 #pragma mark - UITableViewDelegate
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.searchField resignFirstResponder];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    TXHOrder *selectedOrder = [self orderAtIndexPath:indexPath];
+    
+    [self postNotificationWithName:TXHDidSelectOrderNotification order:selectedOrder];
+}
 
 @end

@@ -54,16 +54,6 @@
     [self updateTitle];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
- 
-    // fix for preapre for segue
-    [self.activityView removeFromSuperview];
-    self.activityView.frame = self.navigationController.view.bounds;
-    [self.navigationController.view addSubview:self.activityView];
-}
-
 - (void)updateTitle
 {
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_small"]];
@@ -77,6 +67,14 @@
     [self loadOrder];
 }
 
+- (void)setOrder:(TXHOrder *)order andProductManager:(TXHProductsManager *)productManager
+{
+    self.order = order;
+    self.productManager = productManager;
+    
+    [self updateOrder];
+}
+
 - (void)setOrder:(TXHOrder *)order
 {
     _order = order;
@@ -86,11 +84,13 @@
     self.printButtonsViewController.order     = order;
 }
 
-
 - (void)loadOrder
 {
+    if (!self.ticket)
+        return;
+        
     __weak typeof(self) wself = self;
-    [self showLoadingIndicator];
+    //[self showLoadingIndicator];
     [self.productManager getOrderForTicket:self.ticket
                                 completion:^(TXHOrder *order, NSError *error) {
                                     [wself hideLoadingIndicator];
@@ -100,6 +100,24 @@
                                     else
                                         wself.order = order;
                                 }];
+}
+
+- (void)updateOrder
+{
+    if (!self.order)
+        return;
+    
+    __weak typeof(self) wself = self;
+    //[self showLoadingIndicator];
+    [self.productManager getUpdatedOrder:self.order
+                              completion:^(TXHOrder *order, NSError *error) {
+                                  [wself hideLoadingIndicator];
+                                  
+                                  if (error)
+                                      [wself dismissWithError:error];
+                                  else
+                                      wself.order = order;
+                              }];
 }
 
 - (void)dismissWithError:(NSError *)error
@@ -125,9 +143,7 @@
 - (TXHActivityLabelView *)activityView
 {
     if (!_activityView)
-    {
         _activityView = [TXHActivityLabelView getInstanceInView:self.view];
-    }
     return _activityView;
 }
 

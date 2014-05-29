@@ -37,6 +37,8 @@
 
 - (void)getOrderForTicket:(TXHTicket *)ticket completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
+- (void)getUpdatedOrder:(TXHOrder *)order completion:(void(^)(TXHOrder *order, NSError *error))completion;
+
 - (void)cancelOrder:(TXHOrder *)order completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
 - (void)getOrderForCardMSRData:(NSString *)msrData paginationInfo:(TXHPartialResponsInfo *)info completion:(void (^)(TXHPartialResponsInfo *info, NSArray *orders, NSError *error))completion;

@@ -13,5 +13,6 @@
 @interface TXHDoorOrderViewController : UIViewController
 
 - (void)setTicket:(TXHTicket *)ticket andProductManager:(TXHProductsManager *)productManager;
+- (void)setOrder:(TXHOrder *)order andProductManager:(TXHProductsManager *)productManager;
 
 @end

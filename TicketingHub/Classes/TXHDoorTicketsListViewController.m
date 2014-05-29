@@ -20,10 +20,13 @@
 #import "TXHScanersManager.h"
 
 #import "TXHBorderedButton.h"
+
 #import "TXHTicket+Filter.h"
 #import "TXHTicket+Title.h"
 #import "TXHOrder+Helpers.h"
+
 #import <UIViewController+BHTKeyboardAnimationBlocks/UIViewController+BHTKeyboardNotifications.h>
+
 #import "TXHRMPickerViewControllerDelegate.h"
 #import <iOS-api/TXHPartialResponsInfo.h>
 
@@ -39,10 +42,11 @@
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
-@property (strong, nonatomic) NSArray *tickets;
+@property (strong, nonatomic) NSArray  *tickets;
 @property (strong, nonatomic) NSString *searchQuery;
 
 @property (strong, nonatomic) TXHTicket *selectedTicket;
+@property (strong, nonatomic) TXHOrder  *selectedOrder;
 @property (strong, nonatomic) NSMutableSet *ticketsDisabled;
 
 @property (assign, nonatomic, getter = isLoadingData) BOOL loadingData;
@@ -88,29 +92,6 @@
     self.scannersManager.delegate = nil;
 }
 
-//- (void)applyTicketFilter
-//{
-//    static NSInteger queryCounter = 0;
-//    queryCounter++;
-//    
-//    if (!self.searchQuery.length)
-//    {
-//        self.filteredTickets = self.tickets;
-//        return;
-//    }
-//    
-//    NSInteger bQueryCounter = queryCounter;
-//    __weak typeof(self) wself = self;
-//    
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-//        NSArray *filteredTickets = [TXHTicket filterTickets:wself.tickets withQuery:wself.searchQuery];
-//        if (bQueryCounter == queryCounter)
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                    wself.filteredTickets = filteredTickets;
-//            });
-//    });
-//}
-
 - (void)setHideAttending:(BOOL)hideAttending
 {
     _hideAttending = hideAttending;
@@ -143,27 +124,6 @@
     }
 }
 
-//- (void)setSearchQuery:(NSString *)searchQuery
-//{
-//    _searchQuery = searchQuery;
-//    
-//    [self applyTicketFilter];
-//}
-
-//- (void)setFilteredTickets:(NSArray *)filteredTickets
-//{
-//    _filteredTickets = filteredTickets;
-////    [self updateInfoLabel];
-//    [self.tableView reloadData];
-//}
-
-//- (void)setLoadingData:(BOOL)loadingData
-//{
-//    _loadingData = loadingData;
-//    
-////    [self updateInfoLabel];
-//}
-
 - (NSMutableSet *)ticketsDisabled
 {
     if (!_ticketsDisabled)
@@ -190,7 +150,13 @@
     else if ([segue.identifier isEqualToString:@"TicketOrder"])
     {
         TXHDoorOrderViewController *orderViewController = segue.destinationViewController;
-        [orderViewController setTicket:self.selectedTicket andProductManager:self.productManager];
+        if (self.selectedTicket)
+            [orderViewController setTicket:self.selectedTicket andProductManager:self.productManager];
+        else if (self. selectedOrder)
+            [orderViewController setOrder:self.selectedOrder andProductManager:self.productManager];
+        
+        self.selectedOrder  = nil;
+        self.selectedTicket = nil;
     }
 }
 
@@ -340,6 +306,15 @@
     [self performSegueWithIdentifier:@"TicketOrder" sender:self];
 }
 
+- (void)showOrderForOrder:(TXHOrder *)order
+{
+    if (!order)
+        return;
+    
+    self.selectedOrder = order;
+    [self performSegueWithIdentifier:@"TicketOrder" sender:self];
+}
+
 - (void)showErrorWithMessage:(NSString *)message
 {
     self.errorShown = YES;
@@ -398,13 +373,13 @@
 
 - (void)registerForSearchViewNotification
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orderSelectedNotification:) name:TXHDidSelectOrderNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraBarcodeRecognized:) name:TXHRecognizedQRCodeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchQueryDidChange:) name:TXHSearchQueryDidChangeNotification object:nil];
 }
 
 - (void)unregisterFromSearchViewNotification
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHSearchQueryDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHDidSelectOrderNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHRecognizedQRCodeNotification object:nil];
 }
 
@@ -480,6 +455,13 @@
                    [wself showOrderForTicekt:[selectedOrder.tickets anyObject]];
                }];
     }
+}
+
+- (void)orderSelectedNotification:(NSNotification *)notification
+{
+    TXHOrder *order = notification.userInfo[TXHSelectedOrderKey];
+    
+    [self showOrderForOrder:order];
 }
 
 #pragma mark - Soft Barcode Scanner
@@ -613,45 +595,6 @@
     [self showDetailsForTicket:ticket];
 }
 
-//#pragma mark - UITableViewDataSource
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    return [self.filteredTickets count];
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    TXHDoorTicketCell *cell = (TXHDoorTicketCell *)[tableView dequeueReusableCellWithIdentifier:@"DoorTicketListCell" forIndexPath:indexPath];
-//    [cell setDelegate:self];
-//    
-//    [cell setIsFirstRow:indexPath.row == 0];
-//    [cell setIsLastRow:indexPath.row == [self.filteredTickets count] - 1];
-//    
-//    TXHTicket *ticket = [self ticketAtIndexPath:indexPath];
-//    BOOL isTicketDisabled = [self.ticketsDisabled containsObject:ticket.ticketId];
-//
-//    [cell setTitle:ticket.title];
-//    [cell setSubtitle:ticket.tier.name];
-//    [cell setAttendedAt:ticket.attendedAt animated:NO];
-//    [cell setIsLoading:isTicketDisabled];
-//    
-//    if (self.paginationInfo.hasMore && indexPath.row == [self.tickets count] - 1)
-//        [self loadMoreTickets];
-//    
-//    return cell;
-//}
-//
-//#pragma mark - UITableViewDelegate
-//
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    
-//    TXHTicket *ticket = [self ticketAtIndexPath:indexPath];
-//    
-//    [self showDetailsForTicket:ticket];
-//}
 
 #pragma mark - TXHTicketDetailsViewControllerDelegate
 

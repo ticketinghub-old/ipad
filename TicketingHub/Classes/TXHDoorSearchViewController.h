@@ -11,10 +11,10 @@
 @class TXHProductsManager;
 
 extern NSString *const TXHQueryValueKey;
+extern NSString *const TXHSelectedOrderKey;
 
 extern NSString *const TXHRecognizedQRCodeNotification;
-extern NSString *const TXHSearchQueryDidChangeNotification;
-
+extern NSString *const TXHDidSelectOrderNotification;
 
 @interface TXHDoorSearchViewController : UIViewController
 

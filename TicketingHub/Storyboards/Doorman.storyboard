@@ -17,9 +17,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yX-jp-zA5">
-                                <rect key="frame" x="299" y="0.0" width="725" height="768"/>
+                                <rect key="frame" x="300" y="0.0" width="724" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="724" id="RUo-Yw-FR8"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="Qge-n3-R9U" kind="embed" identifier="TXHDoorTicketsListViewController" id="hgV-g9-4xu"/>
                                 </connections>
@@ -39,9 +42,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6Pf-YJ-qp2" firstAttribute="top" secondItem="4AM-90-HYO" secondAttribute="top" id="0iP-Yt-tTw"/>
-                            <constraint firstItem="6yX-jp-zA5" firstAttribute="leading" secondItem="6Pf-YJ-qp2" secondAttribute="trailing" constant="-1" id="1Sh-b2-th3"/>
+                            <constraint firstItem="6yX-jp-zA5" firstAttribute="leading" secondItem="6Pf-YJ-qp2" secondAttribute="trailing" id="1Sh-b2-th3"/>
                             <constraint firstItem="QA0-YU-Sm7" firstAttribute="top" secondItem="6yX-jp-zA5" secondAttribute="bottom" id="1jX-JU-uX3"/>
-                            <constraint firstAttribute="trailing" secondItem="6yX-jp-zA5" secondAttribute="trailing" id="3iA-hA-64w"/>
                             <constraint firstItem="QA0-YU-Sm7" firstAttribute="top" secondItem="6Pf-YJ-qp2" secondAttribute="bottom" id="Nqk-30-zLa"/>
                             <constraint firstItem="6Pf-YJ-qp2" firstAttribute="leading" secondItem="4AM-90-HYO" secondAttribute="leading" id="Xdq-sc-OPL"/>
                             <constraint firstItem="6yX-jp-zA5" firstAttribute="top" secondItem="4AM-90-HYO" secondAttribute="top" id="aRr-ZV-qgf"/>
@@ -71,7 +73,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="cRf-0l-zdb"/>
+                                    <constraint firstAttribute="height" priority="999" constant="300" id="cRf-0l-zdb"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgR-4h-bXO">
@@ -88,7 +90,7 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="textColor" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                 <connections>
                                                     <action selector="searchFieldEditingChanged:" destination="Lzd-lE-Kx5" eventType="editingChanged" id="iLC-ud-ogd"/>
                                                 </connections>
@@ -133,7 +135,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderCell" id="Gm1-9o-A7D" customClass="TXHOrderCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="OrderCell" id="Gm1-9o-A7D" customClass="TXHOrderCell">
                                                 <rect key="frame" x="0.0" y="22" width="300" height="85"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gm1-9o-A7D" id="nqa-Th-JOO">
@@ -203,11 +205,18 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTextColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="atendeessLabel" destination="hmp-BM-fC6" id="ADy-H0-y6Q"/>
                                                     <outlet property="attendingLabel" destination="ErO-py-S8R" id="MYn-R6-hA1"/>
+                                                    <outlet property="chevronVIew" destination="KS2-x9-aQQ" id="EV4-Vb-jWR"/>
                                                     <outlet property="orderReferenceLabel" destination="3VZ-cc-OLg" id="cbo-Gn-k9l"/>
                                                     <outlet property="priceLabel" destination="cA4-w7-d6E" id="Bdw-dv-BFc"/>
+                                                    <outlet property="separatorView" destination="Wcr-I9-W0s" id="kqG-Zj-ugR"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -280,7 +289,7 @@
                         <viewControllerLayoutGuide type="bottom" id="iod-yU-vwu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="RM1-Ai-NRW">
-                        <rect key="frame" x="0.0" y="0.0" width="725" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="724" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xZ4-Kf-EnD">
