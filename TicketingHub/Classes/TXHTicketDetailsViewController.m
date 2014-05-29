@@ -220,6 +220,11 @@
         wself.upgradesLabel.text   = [prefixedUpgrades count] ? [prefixedUpgrades componentsJoinedByString:@"\n"] : @"-";
         wself.priceLabel.text      = ticket.price ? [wself.productManager priceStringForPrice:ticket.price] : @"-";
         
+        BOOL isCancelled = wself.ticket.order.cancelledAt;
+
+        self.printTicketButton.hidden = isCancelled;
+        self.attendedButton.hidden    = isCancelled;
+        
         [wself updateButtons];
         [wself updateErrorView];
 
