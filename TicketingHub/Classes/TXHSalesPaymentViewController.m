@@ -31,6 +31,7 @@
 @property (weak, nonatomic) TXHActivityLabelView *activityView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet PPiFlatSegmentedControl *paymentTypeSegmentedControl;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *paymentTypeSegmentedControlWidthConstraint;
 
 @property (strong, nonatomic) UIViewController<TXHSalesPaymentContentViewControllerProtocol> *paymentDetailsController;
 @property (strong, nonatomic) TXHPaymentOptionsManager *paymentOptionsManager;
@@ -92,17 +93,25 @@
         wself.selectedPaymentOption = [wself.paymentOptionsManager paymentOptionsAtIndex:segmentIndex];
     };
     
+    self.paymentTypeSegmentedControlWidthConstraint.constant = [paymentNames count] * 240;
+    [self.view layoutIfNeeded];
+    
     PPiFlatSegmentedControl *segmentedControl = [[PPiFlatSegmentedControl alloc] initWithFrame:self.paymentTypeSegmentedControl.frame
                                                                                          items:paymentNames
                                                                                   iconPosition:IconPositionLeft
                                                                              andSelectionBlock:selectionBlock
                                                                                 iconSeparation:0.0];
 
+    UIColor *customTXHBlue = [UIColor colorWithRed:67.0f / 255.0f
+                                             green:134.0f / 255.0f
+                                              blue:188.0f / 255.0f
+                                             alpha:1.0f];
+    
     segmentedControl.layer.cornerRadius = 15.0f;
     segmentedControl.borderWidth        = 2.0f;
     segmentedControl.color              = [UIColor whiteColor];
-    segmentedControl.borderColor        = [UIColor txhBlueColor];
-    segmentedControl.selectedColor      = [UIColor txhBlueColor];
+    segmentedControl.borderColor        = customTXHBlue;
+    segmentedControl.selectedColor      = customTXHBlue;
 
     segmentedControl.textAttributes         = @{NSFontAttributeName:[UIFont txhThinFontWithSize:25.0f],
                                                 NSForegroundColorAttributeName:[UIColor txhBlueColor]};
@@ -147,14 +156,6 @@
 
     [self performSegueWithIdentifier:identifier sender:self];
 }
-
-//- (TXHPaymentOption *)selectedPaymentOption
-//{
-//    NSUInteger selectedIndex = self.paymentTypeSegmentedControl.selectedSegmentIndex;
-//    TXHPaymentOption *selectedOption = [self.paymentOptionsManager paymentOptionsAtIndex:selectedIndex];
-//
-//    return selectedOption;
-//}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

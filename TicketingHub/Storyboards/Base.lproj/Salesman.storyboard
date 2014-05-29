@@ -234,22 +234,22 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1r-cs-dch" customClass="PPiFlatSegmentedControl">
-                                <rect key="frame" x="125" y="15" width="774" height="70"/>
+                                <rect key="frame" x="272" y="15" width="480" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="V7U-ga-N4Z"/>
+                                    <constraint firstAttribute="height" constant="65" id="V7U-ga-N4Z"/>
+                                    <constraint firstAttribute="width" constant="480" id="rSP-GW-ELE"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Wn5-rI-pgt" firstAttribute="top" secondItem="HQd-0A-MHH" secondAttribute="bottom" id="9wv-UI-iSb"/>
-                            <constraint firstItem="L1r-cs-dch" firstAttribute="leading" secondItem="0ti-f9-XGT" secondAttribute="leading" constant="125" id="Ap5-oB-0IB"/>
                             <constraint firstItem="L1r-cs-dch" firstAttribute="top" secondItem="xcT-hZ-I7c" secondAttribute="bottom" constant="15" id="Goa-bB-Dtu"/>
                             <constraint firstItem="HQd-0A-MHH" firstAttribute="top" secondItem="0ti-f9-XGT" secondAttribute="top" constant="80" id="OPw-Th-NOc"/>
-                            <constraint firstAttribute="trailing" secondItem="L1r-cs-dch" secondAttribute="trailing" constant="125" id="ZsY-yD-GZm"/>
                             <constraint firstItem="HQd-0A-MHH" firstAttribute="leading" secondItem="0ti-f9-XGT" secondAttribute="leading" id="ddR-9J-hoa"/>
+                            <constraint firstAttribute="centerX" secondItem="L1r-cs-dch" secondAttribute="centerX" id="qMI-IR-DI0"/>
                             <constraint firstAttribute="trailing" secondItem="HQd-0A-MHH" secondAttribute="trailing" id="yEJ-lj-Yrf"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -257,6 +257,7 @@
                     <connections>
                         <outlet property="containerView" destination="HQd-0A-MHH" id="lzd-fc-W68"/>
                         <outlet property="paymentTypeSegmentedControl" destination="L1r-cs-dch" id="feO-gW-6dp"/>
+                        <outlet property="paymentTypeSegmentedControlWidthConstraint" destination="rSP-GW-ELE" id="B4n-wm-07W"/>
                         <segue destination="IVP-nR-Uny" kind="custom" identifier="TXHSalesPaymentCardDetailsViewController" customClass="TXHEmbeddingSegue" id="Bb2-UM-Irg"/>
                         <segue destination="QH0-TV-maE" kind="custom" identifier="TXHSalesPaymentCashDetailsViewController" customClass="TXHEmbeddingSegue" id="Ihd-er-Pff"/>
                         <segue destination="QXG-6t-PVr" kind="custom" identifier="TXHSalesPaymentCreditDetailsViewController" customClass="TXHEmbeddingSegue" id="9J5-2Y-C67"/>
