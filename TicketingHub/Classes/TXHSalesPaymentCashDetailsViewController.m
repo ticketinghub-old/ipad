@@ -61,6 +61,7 @@
     [super viewDidLoad];
     
     self.givenAmountBackground.layer.cornerRadius = 10.0f;
+    self.valid = YES;
     
     [self updateGivenAmountFieldCurrncy];
 }
@@ -86,13 +87,6 @@
     [self.fullScreenController hideAniamted:NO
                                  completion:nil];
     self.fullScreenController = nil;
-}
-
-- (void)setValid:(BOOL)valid
-{
-    _valid = valid;
-    
-    self.openDrawerButton.enabled = valid;
 }
 
 - (void)setProductManager:(TXHProductsManager *)productManager
@@ -143,7 +137,7 @@
     CGFloat givenAmount  = [self.givenAmountValueField.amount floatValue];
     CGFloat changeAmount = (givenAmount * 100) - [self.totalAmount floatValue];
     
-    self.valid = (changeAmount >= 0);
+    self.openDrawerButton.enabled = (changeAmount >= 0);
     
     self.changeValueLabel.text = [self changeStringForChangeAmount:changeAmount];
 }
