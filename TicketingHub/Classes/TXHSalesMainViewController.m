@@ -23,12 +23,15 @@
 #import "TXHProductsManager.h"
 #import "TXHPrintersManager.h"
 
+#import <Block-KVO/MTKObserving.h>
+
 #import "TXHActivityLabelView.h"
 #import "TXHActivityLabelPrintersUtilityDelegate.h"
 #import "TXHPrinterSelectionViewController.h"
 #import "TXHPrintersUtility.h"
 
 #import "UIColor+TicketingHub.h"
+#import "UIFont+TicketingHub.h"
 
 // defines
 #import "TXHProductsManagerNotifications.h"
@@ -388,6 +391,7 @@ static void * ContentValidContext = &ContentValidContext;
     UIImage *timerIcon = [UIImage imageNamed:@"timer_icon"];
     
     UIButton *timerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [timerButton.titleLabel setFont:[UIFont txhThinFontWithSize:18.0]];
     [timerButton setImage:timerIcon forState:UIControlStateNormal];
     [timerButton setTitle:timeString forState:UIControlStateNormal];
     timerButton.frame = (CGRect) {
@@ -398,12 +402,6 @@ static void * ContentValidContext = &ContentValidContext;
     UIBarButtonItem *barButton= [[UIBarButtonItem alloc] initWithCustomView:timerButton];
     
     self.navigationItem.rightBarButtonItem = barButton;
-//    self.toolbar.items = [NSArray arrayWithObject:barButton];
-//    
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:timeString
-//                                                                              style:UIBarButtonItemStylePlain
-//                                                                             target:nil
-//                                                                             action:nil];
 }
 
 - (NSString *)stringFromTimeInterval:(NSTimeInterval)interval
