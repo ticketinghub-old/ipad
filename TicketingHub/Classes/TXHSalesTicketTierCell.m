@@ -30,14 +30,12 @@
 {
     [super awakeFromNib];
     
-    self.quantity.delegate         = self;
-    self.quantity.keyboardType     = UIKeyboardTypeNumberPad;
-    self.contentView.clipsToBounds = YES;
+    self.quantity.delegate              = self;
+    self.quantity.keyboardType          = UIKeyboardTypeNumberPad;
+    self.contentView.clipsToBounds      = YES;
     self.contentView.layer.cornerRadius = 30;
-    self.contentView.layer.borderWidth  = 3.0;
-    self.contentView.layer.borderColor  = [UIColor txhBlueColor].CGColor;
     self.contentView.backgroundColor    = [UIColor whiteColor];
-    self.layer.masksToBounds = NO;
+    self.layer.masksToBounds            = NO;
 }
 
 - (void)setTitle:(NSString *)title
@@ -71,6 +69,10 @@
     _selectedQuantity  = quantity;
     self.quantity.text = [NSString stringWithFormat:@"%ld",(long)quantity];
     
+    CGFloat alpha = self.selectedQuantity > 0 ? 0.8 : 0.1;
+    self.layer.borderColor = [[UIColor txhBlueColor] colorWithAlphaComponent:alpha].CGColor;
+    self.contentView.layer.borderWidth  = self.selectedQuantity > 0 ? 2 : 1;
+
     
     [self quantityDidChange];
 }
@@ -102,18 +104,4 @@
     [[UIResponder currentFirstResponder] resignFirstResponder];
 }
 
-#pragma mark - UITextFieldDelegate
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    if (![textField.text length]) {
-        self.selectedQuantity = self.selectedQuantity;
-    }
-}
 @end
