@@ -225,6 +225,8 @@
 "SALESMAN_DATES_LOADING_AVAILABLE_DAYTIMES_MESSAGE" = "Loading available times";
 "SALESMAN_DATES_RESERVING_TICKETS_MESSAGE"          = "Reserving tickets";
 
+"SALESMAN_DATES_TIME_SPACES_FORMAT"  = "%ld spaces";
+
 /* Salesman Upgrades */
 
 "SALESMAN_UPGRADES_SELECT_ALL_TITLE"   = "Select all";
