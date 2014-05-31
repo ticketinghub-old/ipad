@@ -57,6 +57,9 @@ static void * ContentValidContext = &ContentValidContext;
 
 @property (strong, nonatomic) NSTimer *timer;
 
+@property (assign, nonatomic) BOOL contentControllerValid;
+@property (assign, nonatomic) BOOL contentControllerShouldBeSkiped;
+
 // data
 @property (strong, nonatomic) TXHSalesStepsManager *stepsManager;
 
@@ -293,28 +296,32 @@ static void * ContentValidContext = &ContentValidContext;
 
 - (void)setStepContentController:(UIViewController<TXHSalesContentsViewControllerProtocol> *)stepContentController
 {
-    id observer = self;
-    NSString * keyPath = @"valid";
-    
-    if (_stepContentController)
-        [_stepContentController removeObserver:self forKeyPath:keyPath context:ContentValidContext];
-    
     _stepContentController = stepContentController;
     
-    if (_stepContentController)
-        [_stepContentController addObserver:observer
-                                 forKeyPath:keyPath
-                                    options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial
-                                    context:ContentValidContext];
+    [self map:@keypath(self.stepContentController.valid) to:@keypath(self.contentControllerValid) null:nil];
+    [self map:@keypath(self.stepContentController.shouldBeSkiped) to:@keypath(self.contentControllerShouldBeSkiped) null:nil];
+
+    self.contentControllerValid = [self.stepContentController isValid];
+    self.contentControllerShouldBeSkiped = [self.stepContentController shouldBeSkiped];
 }
 
 #pragma mark - KVO
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+-(void)setContentControllerValid:(BOOL)contentControllerValid
 {
-    if (context == ContentValidContext)
-        [self.stepCompletionController setMiddleButtonDisabled:![self.stepContentController isValid]];
+    _contentControllerValid = contentControllerValid;
+    
+    [self.stepCompletionController setMiddleButtonDisabled:![self.stepContentController isValid]];
 }
+
+- (void)setContentControllerShouldBeSkiped:(BOOL)contentControllerShouldBeSkiped
+{
+    _contentControllerShouldBeSkiped = contentControllerShouldBeSkiped;
+    
+    if (contentControllerShouldBeSkiped)
+        [self continueToNextStep];
+}
+
 
 #pragma mark - notifications
 
@@ -471,6 +478,17 @@ static void * ContentValidContext = &ContentValidContext;
     [self performSegueWithIdentifier:segueID sender:self];
 }
 
+- (void)continueToNextStep
+{
+    [self.stepCompletionController setButtonsDisabled:YES];
+    [self.stepContentController finishStepWithCompletion:^(NSError *error) {
+        if (!error)
+            [self.stepsManager continueToNextStep];
+        else
+            [self.stepCompletionController setButtonsDisabled:self.stepContentController.isValid];
+    }];
+}
+
 #pragma mark - TXHSalesCompletionViewControllerDelegate
 
 - (void)salesCompletionViewController:(TXHSalesCompletionViewController *)controller didDidSelectLeftButton:(TXHBorderedButton *)button
@@ -509,13 +527,7 @@ static void * ContentValidContext = &ContentValidContext;
         block((UIButton *)button);
     else
     {
-        [self.stepCompletionController setButtonsDisabled:YES];
-        [self.stepContentController finishStepWithCompletion:^(NSError *error) {
-            if (!error)
-                [wself.stepsManager continueToNextStep];
-            else
-                [wself.stepCompletionController setButtonsDisabled:wself.stepContentController.isValid];
-        }];
+        [wself continueToNextStep];
     }
 }
 

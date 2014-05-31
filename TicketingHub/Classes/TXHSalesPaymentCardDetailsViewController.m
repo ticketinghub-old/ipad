@@ -27,7 +27,8 @@
 @property (strong, nonatomic) DKPOSHandpointClient *handpointClient;
 @property (strong, nonatomic) TXHActivityLabelView *activityView;
 
-@property (readwrite, nonatomic, getter = isValid) BOOL valid;
+@property (readwrite, assign, nonatomic, getter = isValid) BOOL valid;
+@property (readwrite, assign, nonatomic) BOOL shouldBeSkiped;
 
 @property (strong, nonatomic) NSString *SVGSignatre;
 

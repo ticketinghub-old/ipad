@@ -23,7 +23,8 @@
 
 @property (assign, nonatomic) BOOL checkingCoupon;
 
-@property (assign, nonatomic, getter = isValid) BOOL valid;
+@property (readwrite, assign, nonatomic, getter = isValid) BOOL valid;
+@property (readwrite, assign, nonatomic) BOOL shouldBeSkiped;
 
 @property (strong, nonatomic) NSArray             *tiers; // to keep tiers ordered
 @property (strong, nonatomic) NSMutableDictionary *quantities;

@@ -24,7 +24,8 @@
 
 @interface TXHSalesTicketDatesViewController () <CALViewDataSource, CALViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (assign, nonatomic, getter = isValid) BOOL valid;
+@property (readwrite, assign, nonatomic, getter = isValid) BOOL valid;
+@property (readwrite, assign, nonatomic) BOOL shouldBeSkiped;
 
 @property (weak, nonatomic) IBOutlet CALView *callendarView;
 @property (weak, nonatomic) IBOutlet UICollectionView *eventsCollectionView;

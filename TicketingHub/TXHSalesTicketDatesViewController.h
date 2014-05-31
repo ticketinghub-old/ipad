@@ -13,7 +13,8 @@
 
 @interface TXHSalesTicketDatesViewController : UIViewController
 
-@property (readonly, readonly, getter = isValid) BOOL valid;
+@property (readonly, nonatomic, getter = isValid) BOOL valid;
+@property (readonly, nonatomic) BOOL shouldBeSkiped;
 
 @property (strong, nonatomic) TXHProductsManager *productManager;
 @property (strong, nonatomic) TXHOrderManager    *orderManager;

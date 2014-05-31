@@ -25,7 +25,8 @@
 
 @interface TXHSalesPaymentCreditDetailsViewController () <TXHFullScreenKeyboardViewControllerDelegate, TXHScanersManagerDelegate, TXHCardViewDelegate>
 
-@property (nonatomic, readwrite, assign, getter = isValid) BOOL valid;
+@property (readwrite, assign, nonatomic, getter = isValid) BOOL valid;
+@property (readwrite, assign, nonatomic) BOOL shouldBeSkiped;
 
 @property (nonatomic, strong) TXHScanersManager *scanersManager;
 

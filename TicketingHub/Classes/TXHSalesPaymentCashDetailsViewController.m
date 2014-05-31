@@ -31,7 +31,8 @@
 
 @property (strong, nonatomic) NSNumber *totalAmount;
 
-@property (readwrite, nonatomic, getter = isValid) BOOL valid;
+@property (readwrite, assign, nonatomic, getter = isValid) BOOL valid;
+@property (readwrite, assign, nonatomic) BOOL shouldBeSkiped;
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 

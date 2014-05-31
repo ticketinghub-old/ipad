@@ -14,6 +14,8 @@
 @interface TXHSalesTicketCompletionViewController : UIViewController
 
 @property (readonly, nonatomic, getter = isValid) BOOL valid;
+@property (readonly, nonatomic) BOOL shouldBeSkiped;
+
 @property (weak, nonatomic) id delegate;
 
 @property (strong, nonatomic) TXHProductsManager *productManager;

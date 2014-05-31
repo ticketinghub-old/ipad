@@ -22,7 +22,8 @@ static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
 
 @interface TXHSalesUpgradeDetailsViewController () <UITableViewDelegate, UITableViewDataSource, TXHSalesUpgradeCellDelegate>
 
-@property (readwrite, nonatomic, getter = isValid) BOOL valid;
+@property (readwrite, assign, nonatomic, getter = isValid) BOOL valid;
+@property (readwrite, assign, nonatomic) BOOL shouldBeSkiped;
 
 @property (strong, nonatomic) NSDictionary        *ticketUpgradesDictionary;
 @property (strong, nonatomic) NSArray             *tickets;
@@ -114,6 +115,7 @@ static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
             
             wself.upgrades = [allUpgrades allObjects];
             wself.ticketUpgradesDictionary = ticketUpgradesDictionary;
+            wself.shouldBeSkiped = [allUpgrades count] == 0;
             wself.valid = YES;
         }
     }];

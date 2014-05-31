@@ -14,6 +14,7 @@
 @protocol TXHSalesContentsViewControllerProtocol <NSObject>
 
 @property (nonatomic, readonly, getter = isValid) BOOL valid;
+@property (readonly, assign, nonatomic) BOOL shouldBeSkiped;
 
 @property (strong, nonatomic) TXHProductsManager *productManager;
 @property (strong, nonatomic) TXHOrderManager    *orderManager;

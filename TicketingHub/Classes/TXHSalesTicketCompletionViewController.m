@@ -29,8 +29,8 @@ static NSString * const kTelephoneKey = @"telephone";
 
 @interface TXHSalesTicketCompletionViewController () <UITextFieldDelegate, TXHFullScreenKeyboardViewControllerDelegate>
 
-@property (readwrite, nonatomic, getter = isValid) BOOL valid;
-
+@property (readwrite, assign, nonatomic, getter = isValid) BOOL valid;
+@property (readwrite, assign, nonatomic) BOOL shouldBeSkiped;
 
 @property (weak, nonatomic) IBOutlet UILabel *referenceNumberLabel;
 
