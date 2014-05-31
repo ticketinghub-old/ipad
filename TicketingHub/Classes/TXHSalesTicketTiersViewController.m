@@ -120,16 +120,24 @@
 
     TXHTier *tier = [self tierAtIndexPath:indexPath];
 
+    NSInteger selectedQuantity = [self quantityForTicketIdentifier:tier.internalTierId];
     cell.delegate = self;
     
     cell.title            = tier.name;
     cell.subtitle         = tier.tierDescription;
-    cell.priceString      = [self.productManager priceStringForPrice:tier.price];
+    cell.priceString      = selectedQuantity > 0 ? [self.productManager priceStringForPrice:@([tier.price integerValue] * selectedQuantity)] : nil;;
     cell.tierIdentifier   = tier.internalTierId;
     cell.selectedQuantity = [self quantityForTicketIdentifier:tier.internalTierId];
     
+    
     __weak typeof(self) wself = self;
+    __weak TXHSalesTicketTierCell * bcell = cell;
     cell.quantityChangedHandler = ^(NSDictionary *quantity) {
+        NSInteger newQuantity = [wself quantityForTicketIdentifier:tier.internalTierId];
+        if (newQuantity)
+            bcell.priceString = [wself.productManager priceStringForPrice:@([tier.price integerValue] * newQuantity)];
+        else
+            bcell.priceString = nil;
         [wself updateQuantitiesWithDictionary:quantity];
     };
 }
