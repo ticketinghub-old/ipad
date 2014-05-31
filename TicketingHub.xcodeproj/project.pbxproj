@@ -150,12 +150,7 @@
 		EEB1845A17D114390025530A /* TXHBaseDataEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843917D114390025530A /* TXHBaseDataEntryView.m */; };
 		EEB1845C17D114390025530A /* TXHCurrencyEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1843E17D114390025530A /* TXHCurrencyEntryView.m */; };
 		EEB1845E17D114390025530A /* TXHDataEntryFieldErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1844217D114390025530A /* TXHDataEntryFieldErrorView.m */; };
-		EEB1845F17D114390025530A /* TXHDataSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1844417D114390025530A /* TXHDataSelectionView.m */; };
-		EEB1846017D114390025530A /* TXHDataSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1844617D114390025530A /* TXHDataSelectionViewController.m */; };
-		EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1844E17D114390025530A /* TXHSelectionEntryTableViewCell.m */; };
-		EEB1846617D114390025530A /* TXHTextEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1845217D114390025530A /* TXHTextEntryTableViewCell.m */; };
 		EEB1846717D114390025530A /* TXHTextEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1845417D114390025530A /* TXHTextEntryView.m */; };
-		EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848417D115640025530A /* TXHDateSelectorViewController.m */; };
 		EEB1849017D115640025530A /* TXHEmbeddingSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848617D115640025530A /* TXHEmbeddingSegue.m */; };
 		EEB1849217D115640025530A /* TXHSalesmanDoormanContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB1848A17D115640025530A /* TXHSalesmanDoormanContainerViewController.m */; };
 		EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB4FC3C17B272E600F226BC /* MobileCoreServices.framework */; };
@@ -463,19 +458,9 @@
 		EEB1843E17D114390025530A /* TXHCurrencyEntryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCurrencyEntryView.m; sourceTree = "<group>"; };
 		EEB1844117D114390025530A /* TXHDataEntryFieldErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDataEntryFieldErrorView.h; sourceTree = "<group>"; };
 		EEB1844217D114390025530A /* TXHDataEntryFieldErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDataEntryFieldErrorView.m; sourceTree = "<group>"; };
-		EEB1844317D114390025530A /* TXHDataSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDataSelectionView.h; sourceTree = "<group>"; };
-		EEB1844417D114390025530A /* TXHDataSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDataSelectionView.m; sourceTree = "<group>"; };
-		EEB1844517D114390025530A /* TXHDataSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDataSelectionViewController.h; sourceTree = "<group>"; };
-		EEB1844617D114390025530A /* TXHDataSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDataSelectionViewController.m; sourceTree = "<group>"; };
-		EEB1844D17D114390025530A /* TXHSelectionEntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSelectionEntryTableViewCell.h; sourceTree = "<group>"; };
-		EEB1844E17D114390025530A /* TXHSelectionEntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSelectionEntryTableViewCell.m; sourceTree = "<group>"; };
-		EEB1845117D114390025530A /* TXHTextEntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTextEntryTableViewCell.h; sourceTree = "<group>"; };
-		EEB1845217D114390025530A /* TXHTextEntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTextEntryTableViewCell.m; sourceTree = "<group>"; };
 		EEB1845317D114390025530A /* TXHTextEntryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTextEntryView.h; sourceTree = "<group>"; };
 		EEB1845417D114390025530A /* TXHTextEntryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTextEntryView.m; sourceTree = "<group>"; };
 		EEB1845717D114390025530A /* TXHUserDefaultsKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHUserDefaultsKeys.h; sourceTree = "<group>"; };
-		EEB1848317D115640025530A /* TXHDateSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDateSelectorViewController.h; sourceTree = "<group>"; };
-		EEB1848417D115640025530A /* TXHDateSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDateSelectorViewController.m; sourceTree = "<group>"; };
 		EEB1848517D115640025530A /* TXHEmbeddingSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHEmbeddingSegue.h; sourceTree = "<group>"; };
 		EEB1848617D115640025530A /* TXHEmbeddingSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHEmbeddingSegue.m; sourceTree = "<group>"; };
 		EEB1848917D115640025530A /* TXHSalesmanDoormanContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHSalesmanDoormanContainerViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -603,15 +588,6 @@
 			name = "Scheme Configurations";
 			sourceTree = "<group>";
 		};
-		3E3A5B0018AA58EB00A54812 /* Date Time PIcker */ = {
-			isa = PBXGroup;
-			children = (
-				EEB1848317D115640025530A /* TXHDateSelectorViewController.h */,
-				EEB1848417D115640025530A /* TXHDateSelectorViewController.m */,
-			);
-			name = "Date Time PIcker";
-			sourceTree = "<group>";
-		};
 		3E3A5B0118AA5C1F00A54812 /* Seques */ = {
 			isa = PBXGroup;
 			children = (
@@ -621,38 +597,10 @@
 			name = Seques;
 			sourceTree = "<group>";
 		};
-		3E3A5B0218AA5CA600A54812 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				3E3A5B0418AA5CBC00A54812 /* TableViewCells */,
-				3E3A5B0318AA5CB300A54812 /* CollectionViewCells */,
-			);
-			name = Cells;
-			sourceTree = "<group>";
-		};
-		3E3A5B0318AA5CB300A54812 /* CollectionViewCells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = CollectionViewCells;
-			sourceTree = "<group>";
-		};
-		3E3A5B0418AA5CBC00A54812 /* TableViewCells */ = {
-			isa = PBXGroup;
-			children = (
-				EEB1845117D114390025530A /* TXHTextEntryTableViewCell.h */,
-				EEB1845217D114390025530A /* TXHTextEntryTableViewCell.m */,
-				EEB1844D17D114390025530A /* TXHSelectionEntryTableViewCell.h */,
-				EEB1844E17D114390025530A /* TXHSelectionEntryTableViewCell.m */,
-			);
-			name = TableViewCells;
-			sourceTree = "<group>";
-		};
 		3E3A5B0518AA5D4000A54812 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				3EB60EE418C66F6A00B56182 /* RMDownloadIndicator */,
-				3E3A5B0218AA5CA600A54812 /* Cells */,
 				3E6F479818AFD6AC00E644F7 /* Buttons */,
 				EEB1843817D114390025530A /* TXHBaseDataEntryView.h */,
 				EEB1843917D114390025530A /* TXHBaseDataEntryView.m */,
@@ -662,8 +610,6 @@
 				EEB1843E17D114390025530A /* TXHCurrencyEntryView.m */,
 				EEB1844117D114390025530A /* TXHDataEntryFieldErrorView.h */,
 				EEB1844217D114390025530A /* TXHDataEntryFieldErrorView.m */,
-				EEB1844317D114390025530A /* TXHDataSelectionView.h */,
-				EEB1844417D114390025530A /* TXHDataSelectionView.m */,
 				3E6A422318C483870053EF34 /* TXHSensorView.h */,
 				3E6A422418C483870053EF34 /* TXHSensorView.m */,
 				3E53C54918E58FB400FF6F9B /* TXHActivityLabelView.h */,
@@ -673,16 +619,6 @@
 				3E7B7A82193234C100B8EFDA /* TXHGradientView.m */,
 			);
 			name = Views;
-			sourceTree = "<group>";
-		};
-		3E3A5B0618AA624500A54812 /* Selection Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				3E3A5B0018AA58EB00A54812 /* Date Time PIcker */,
-				EEB1844517D114390025530A /* TXHDataSelectionViewController.h */,
-				EEB1844617D114390025530A /* TXHDataSelectionViewController.m */,
-			);
-			name = "Selection Controllers";
 			sourceTree = "<group>";
 		};
 		3E3A5B0B18AA681900A54812 /* Barcode Scaner */ = {
@@ -1470,7 +1406,6 @@
 				3EB60EE518C66F9000B56182 /* Managers */,
 				3E3D46EB18ACBB6E00275ACF /* Categories */,
 				3E22139818AA78DB00DE35A6 /* TableViewDataSources */,
-				3E3A5B0618AA624500A54812 /* Selection Controllers */,
 				3E3A5B0118AA5C1F00A54812 /* Seques */,
 				3E3A5B0518AA5D4000A54812 /* Views */,
 			);
@@ -1704,14 +1639,11 @@
 				3E5039CA1924CA8200ACFA91 /* TXHCardView+TXHCustomXIB.m in Sources */,
 				EEB1845C17D114390025530A /* TXHCurrencyEntryView.m in Sources */,
 				EEB1845E17D114390025530A /* TXHDataEntryFieldErrorView.m in Sources */,
-				EEB1845F17D114390025530A /* TXHDataSelectionView.m in Sources */,
 				3E0FF588191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.m in Sources */,
-				EEB1846017D114390025530A /* TXHDataSelectionViewController.m in Sources */,
 				3E407C091920F7C90002B6FE /* TXHGateway+CNPHelper.m in Sources */,
 				3E938DB5190FED7A00FC29E9 /* DKHandpointTypes.m in Sources */,
 				3E7F87D418DC59070046DD7A /* NSDateFormatter+DisplayFormat.m in Sources */,
 				3EA36B8018AFDF5C008F8C59 /* TXHProductListCell.m in Sources */,
-				EEB1848F17D115640025530A /* TXHDateSelectorViewController.m in Sources */,
 				3E3D46EA18ACB89A00275ACF /* FetchedResultsControllerDataSource.m in Sources */,
 				EEB1849017D115640025530A /* TXHEmbeddingSegue.m in Sources */,
 				3E5039D01928F6FC00ACFA91 /* UIApplication+TopViewController.m in Sources */,
@@ -1780,10 +1712,8 @@
 				3E7B7A9619337C9D00B8EFDA /* TXHEventCollectionViewCell.m in Sources */,
 				3EA52C0518E3176100FEA0CA /* RasterDocument.m in Sources */,
 				3EA52BFB18E2F06600FEA0CA /* TXHStarIOPrintersEngine.m in Sources */,
-				EEB1846417D114390025530A /* TXHSelectionEntryTableViewCell.m in Sources */,
 				3E938DB2190FED7A00FC29E9 /* DKPOSClientTransactionInfo.m in Sources */,
 				3EF72D86192E380B00F27B6B /* TXHSalesUpgradeSelectAllCell.m in Sources */,
-				EEB1846617D114390025530A /* TXHTextEntryTableViewCell.m in Sources */,
 				3E938DB1190FED7A00FC29E9 /* DKPOSClientFactory.m in Sources */,
 				3E7B7A93193367F800B8EFDA /* TXHSalesTicketDatesViewController.m in Sources */,
 				3ECE137418B63A6900E7148F /* NSDate+Additions.m in Sources */,
