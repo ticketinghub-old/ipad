@@ -11,7 +11,7 @@
 @interface TXHEventCollectionViewCell : UICollectionViewCell
 
 - (void)setTimeString:(NSString *)text;
-- (void)setDurationString:(NSString *)text;
+- (void)setSpacesString:(NSString *)text;
 - (void)setPriceString:(NSString *)text;
 
 @end

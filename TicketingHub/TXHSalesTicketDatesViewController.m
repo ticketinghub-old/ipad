@@ -243,11 +243,10 @@
     
     TXHAvailability *availability = [self availabilityAtIndexPath:indexPath];
     
-    NSTimeInterval duration = [NSDate gvc_iso8601DurationInterval:availability.duration];
-    NSString *durationString = [NSDate stringFromDuration:duration];
+    NSString *spacesString = [NSString stringWithFormat:NSLocalizedString(@"SALESMAN_DATES_TIME_SPACES_FORMAT", nil), [availability.limit integerValue]];
     
     [cell setTimeString:availability.timeString];
-    [cell setDurationString:durationString];
+    [cell setSpacesString:spacesString];
     [cell setPriceString:[self.productManager priceStringForPrice:availability.total]];
     
     return cell;

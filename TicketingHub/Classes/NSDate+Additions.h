@@ -23,8 +23,6 @@
 - (NSInteger)hoursFromNow;
 - (NSInteger)minutesFromNow;
 
-+ (NSTimeInterval)gvc_iso8601DurationInterval:(NSString *)duration;
-
 + (NSString *)stringFromDuration:(NSTimeInterval)duration;
 
 @end

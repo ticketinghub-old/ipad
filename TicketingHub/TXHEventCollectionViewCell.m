@@ -26,7 +26,7 @@
     self.leftLabel.text = text;
 }
 
-- (void)setDurationString:(NSString *)text
+- (void)setSpacesString:(NSString *)text
 {
     self.middleLabel.text = text;
 }
@@ -60,7 +60,7 @@
     [super awakeFromNib];
     
     self.layer.cornerRadius = 10.0;
-    self.layer.borderColor = [UIColor txhBlueColor].CGColor;
+    self.layer.borderColor = [[UIColor txhBlueColor] colorWithAlphaComponent:0.8].CGColor;
 }
 
 - (void)prepareForReuse
@@ -68,7 +68,7 @@
     [super prepareForReuse];
     
     [self setTimeString:nil];
-    [self setDurationString:nil];
+    [self setSpacesString:nil];
     [self setPriceString:nil];
 }
 
