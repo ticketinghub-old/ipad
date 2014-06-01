@@ -296,12 +296,16 @@ static void * ContentValidContext = &ContentValidContext;
 
 - (void)setStepContentController:(UIViewController<TXHSalesContentsViewControllerProtocol> *)stepContentController
 {
+    [self willChangeValueForKey:@"stepContentController"];
     _stepContentController = stepContentController;
+    [self didChangeValueForKey:@"stepContentController"];
+    
+    [self removeAllObservations];
     
     [self map:@keypath(self.stepContentController.valid) to:@keypath(self.contentControllerValid) null:nil];
     [self map:@keypath(self.stepContentController.shouldBeSkiped) to:@keypath(self.contentControllerShouldBeSkiped) null:nil];
 
-    self.contentControllerValid = [self.stepContentController isValid];
+    self.contentControllerValid          = [self.stepContentController isValid];
     self.contentControllerShouldBeSkiped = [self.stepContentController shouldBeSkiped];
 }
 
