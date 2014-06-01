@@ -108,7 +108,7 @@
                                             <size key="itemSize" width="222" height="222"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="30" minY="30" maxX="30" maxY="280"/>
+                                            <inset key="sectionInset" minX="30" minY="30" maxX="30" maxY="220"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SalesTicketTierCell" id="Y1n-zZ-l5C" customClass="TXHSalesTicketTierCell">
@@ -1773,12 +1773,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="KIM-6Y-LyI" secondAttribute="bottom" id="4Ug-yN-Ojt"/>
                             <constraint firstItem="KIM-6Y-LyI" firstAttribute="leading" secondItem="XXP-Dd-EwL" secondAttribute="leading" id="8Zy-Rt-UEB"/>
                             <constraint firstItem="mmb-dJ-0Ye" firstAttribute="top" secondItem="9cs-NL-AhL" secondAttribute="bottom" id="Fy0-5y-du8"/>
                             <constraint firstItem="Tp7-lX-dy8" firstAttribute="top" secondItem="mmb-dJ-0Ye" secondAttribute="bottom" constant="2" id="KpR-kE-jDQ"/>
                             <constraint firstAttribute="trailing" secondItem="KIM-6Y-LyI" secondAttribute="trailing" id="QHt-ac-F1u"/>
                             <constraint firstItem="mmb-dJ-0Ye" firstAttribute="leading" secondItem="XXP-Dd-EwL" secondAttribute="leading" id="cjA-NK-F9d"/>
-                            <constraint firstItem="Tp7-lX-dy8" firstAttribute="top" secondItem="KIM-6Y-LyI" secondAttribute="bottom" id="jqq-Wg-6DL"/>
                             <constraint firstAttribute="trailing" secondItem="mmb-dJ-0Ye" secondAttribute="trailing" id="sFi-Cf-q82"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>

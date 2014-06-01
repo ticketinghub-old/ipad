@@ -35,9 +35,9 @@
 {
     self.pickerView.delegate               = self;
     self.pickerView.font                   = [UIFont txhThinFontWithSize:25.0f];
-    self.pickerView.textColor              = [UIColor lightGrayColor];
+    self.pickerView.textColor              = [[UIColor txhDarkBlueColor] colorWithAlphaComponent:0.25];
     self.pickerView.highlightedTextColor   = [UIColor txhDarkBlueColor];
-    self.pickerView.interitemSpacing       = 40.0;
+    self.pickerView.interitemSpacing       = 50.0;
     self.pickerView.userInteractionEnabled = NO;
 }
 
