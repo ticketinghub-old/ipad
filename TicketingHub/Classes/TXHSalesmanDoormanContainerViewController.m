@@ -25,16 +25,16 @@
 
 @interface TXHSalesmanDoormanContainerViewController ()
 
-@property (strong, nonatomic) IBOutlet UISegmentedControl *modeSelector;
-@property (weak, nonatomic) IBOutlet UIView             *contentDetailView;
+@property (strong, nonatomic) IBOutlet UISegmentedControl   *modeSelector;
+@property (weak, nonatomic  ) IBOutlet UIView               *contentDetailView;
 
-@property (strong, nonatomic) TXHProduct      *selectedProduct;
+@property (strong, nonatomic) TXHProduct           *selectedProduct;
 
 @property (strong, nonatomic) TXHActivityLabelView *activityView;
 
-@property (weak, nonatomic) UIViewController *currentContentController;
+@property (weak, nonatomic  ) UIViewController     *currentContentController;
 
-@property (strong, nonatomic) UIBarButtonItem *rightItem;
+@property (strong, nonatomic) UIBarButtonItem      *rightItem;
 
 @end
 
