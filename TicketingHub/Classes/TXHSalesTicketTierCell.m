@@ -30,12 +30,13 @@
 {
     [super awakeFromNib];
     
-    self.quantity.delegate              = self;
-    self.quantity.keyboardType          = UIKeyboardTypeNumberPad;
-    self.contentView.clipsToBounds      = YES;
-    self.contentView.layer.cornerRadius = 30;
-    self.contentView.backgroundColor    = [UIColor whiteColor];
-    self.layer.masksToBounds            = NO;
+    self.quantity.delegate     = self;
+    self.quantity.keyboardType = UIKeyboardTypeNumberPad;
+    self.clipsToBounds         = YES;
+    self.layer.cornerRadius    = 30;
+    self.layer.masksToBounds   = NO;
+    
+    [self updateView];
 }
 
 - (void)setTitle:(NSString *)title
@@ -67,20 +68,26 @@
     self.decreaseButton.enabled = selectedQuantity > 0;
     
     _selectedQuantity  = quantity;
-    self.quantity.text = [NSString stringWithFormat:@"%ld",(long)quantity];
-    
-    CGFloat alpha = self.selectedQuantity > 0 ? 0.8 : 0.1;
-    self.layer.borderColor = [[UIColor txhBlueColor] colorWithAlphaComponent:alpha].CGColor;
-    self.contentView.layer.borderWidth  = self.selectedQuantity > 0 ? 2 : 1;
-
     
     [self quantityDidChange];
 }
 
 - (void)quantityDidChange
-{
+{    
+    [self updateView];
+
     if (self.quantityChangedHandler)
         self.quantityChangedHandler(self.tierIdentifier ? @{self.tierIdentifier : [NSNumber numberWithInteger:self.quantity.text.integerValue]} : nil);
+}
+
+- (void)updateView
+{
+    self.quantity.text = [NSString stringWithFormat:@"%ld",(long)self.selectedQuantity];
+    self.price.hidden  = self.selectedQuantity == 0;
+    
+    CGFloat borderAlpha = self.selectedQuantity > 0 ? 0.8 : 0.1;
+    self.layer.borderColor = [[UIColor txhBlueColor] colorWithAlphaComponent:borderAlpha].CGColor;
+    self.layer.borderWidth = self.selectedQuantity > 0 ? 2 : 1;
 }
 
 #pragma mark - Quantity Value Changed action

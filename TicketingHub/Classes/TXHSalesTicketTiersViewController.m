@@ -44,7 +44,7 @@
 {
     [super viewDidLoad];
  
-    [self loadTires];
+    [self loadTiers];
 }
 
 
@@ -120,26 +120,26 @@
 
     TXHTier *tier = [self tierAtIndexPath:indexPath];
 
-    NSInteger selectedQuantity = [self quantityForTicketIdentifier:tier.internalTierId];
     cell.delegate = self;
-    
-    cell.title            = tier.name;
-    cell.subtitle         = tier.tierDescription;
-    cell.priceString      = selectedQuantity > 0 ? [self.productManager priceStringForPrice:@([tier.price integerValue] * selectedQuantity)] : nil;;
-    cell.tierIdentifier   = tier.internalTierId;
-    cell.selectedQuantity = [self quantityForTicketIdentifier:tier.internalTierId];
-    
     
     __weak typeof(self) wself = self;
     __weak TXHSalesTicketTierCell * bcell = cell;
     cell.quantityChangedHandler = ^(NSDictionary *quantity) {
+        [wself updateQuantitiesWithDictionary:quantity];
+        
         NSInteger newQuantity = [wself quantityForTicketIdentifier:tier.internalTierId];
         if (newQuantity)
             bcell.priceString = [wself.productManager priceStringForPrice:@([tier.price integerValue] * newQuantity)];
         else
-            bcell.priceString = nil;
-        [wself updateQuantitiesWithDictionary:quantity];
+            bcell.priceString = NSLocalizedString(@"SALESMAN_WUANTITIES_SELECT_TICKET_AMOUT_PRICE_LABEL", nil);
     };
+    
+    cell.selectedQuantity = [self quantityForTicketIdentifier:tier.internalTierId]; // tiggers quantityChangedHandler so updates ticket price too
+    cell.title            = tier.name;
+    cell.subtitle         = tier.tierDescription;
+    cell.tierIdentifier   = tier.internalTierId;
+    
+    
 }
 
 - (void)updateQuantitiesWithDictionary:(NSDictionary *)dic
@@ -188,7 +188,7 @@
     return [quantity integerValue];
 }
 
-- (void)loadTires
+- (void)loadTiers
 {
     __block typeof(self) wself = self;
 
