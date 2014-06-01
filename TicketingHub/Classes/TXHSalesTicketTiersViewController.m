@@ -74,7 +74,7 @@
 
 - (TXHTier *)tierAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.tiers[0];
+    return self.tiers[indexPath.item];
 }
 
 - (TXHTier *)tierWithInternalTierId:(NSString *)identifier
@@ -99,7 +99,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.tiers count] * 10;
+    return [self.tiers count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
