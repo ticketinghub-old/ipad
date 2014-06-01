@@ -210,7 +210,7 @@ static void * ContentValidContext = &ContentValidContext;
 
 - (void)dealloc
 {
-    self.stepContentController = nil; // removing KVO observer
+    [self removeAllObservations];
     
     [self unregisterForProductChanges];
     [self unregisterFromOrderManagerNotifications];
@@ -403,6 +403,7 @@ static void * ContentValidContext = &ContentValidContext;
     
     UIButton *timerButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [timerButton.titleLabel setFont:[UIFont txhThinFontWithSize:18.0]];
+    [timerButton setAdjustsImageWhenHighlighted:NO];
     [timerButton setImage:timerIcon forState:UIControlStateNormal];
     [timerButton setTitle:timeString forState:UIControlStateNormal];
     timerButton.frame = (CGRect) {
@@ -420,7 +421,7 @@ static void * ContentValidContext = &ContentValidContext;
     NSInteger ti = (NSInteger)interval;
     NSInteger seconds = ti % 60;
     NSInteger minutes = (ti / 60) % 60;
-    return [NSString stringWithFormat:@"%02ld:%02ld", (long)minutes, (long)seconds];
+    return [NSString stringWithFormat:@"  %02ld:%02ld", (long)minutes, (long)seconds];
 }
 
 #pragma mark - TXHSaleStepsManagerDelegate
