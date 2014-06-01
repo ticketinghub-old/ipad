@@ -83,7 +83,6 @@
 - (void)updateView
 {
     self.quantity.text = [NSString stringWithFormat:@"%ld",(long)self.selectedQuantity];
-    self.price.hidden  = self.selectedQuantity == 0;
     
     CGFloat borderAlpha = self.selectedQuantity > 0 ? 0.8 : 0.1;
     self.layer.borderColor = [[UIColor txhBlueColor] colorWithAlphaComponent:borderAlpha].CGColor;
