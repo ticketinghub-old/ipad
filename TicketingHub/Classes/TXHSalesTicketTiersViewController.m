@@ -29,6 +29,7 @@
 @property (strong, nonatomic) NSArray             *tiers; // to keep tiers ordered
 @property (strong, nonatomic) NSMutableDictionary *quantities;
 
+@property (weak, nonatomic) IBOutlet UIView *collectionViewContainer;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
@@ -53,6 +54,7 @@
     [super viewWillAppear:animated];
 
     [self updateView];
+    [self updateGradientMask];
 }
 
 
@@ -72,7 +74,7 @@
 
 - (TXHTier *)tierAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.tiers[indexPath.row];
+    return self.tiers[0];
 }
 
 - (TXHTier *)tierWithInternalTierId:(NSString *)identifier
@@ -97,7 +99,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.tiers count];
+    return [self.tiers count] * 10;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -155,6 +157,15 @@
     self.valid = [self hasQuantitiesSelected];
 
     [self updateTotalLabel];
+}
+
+- (void)updateGradientMask
+{
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.collectionViewContainer.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor blackColor] CGColor], (id)[[UIColor clearColor] CGColor], nil];
+    gradient.locations = @[@(0.4f), @(0.6f)];
+    self.collectionViewContainer.layer.mask = gradient;
 }
 
 - (void)updateTotalLabel
