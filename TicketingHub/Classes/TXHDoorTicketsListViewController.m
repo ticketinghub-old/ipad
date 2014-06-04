@@ -495,15 +495,15 @@
     self.loadingData = YES;
     
     __weak typeof(self) wself = self;
-    
-    [self.productManager searchForTicketWithSeqID:ticketSeqID
-                                       completion:^(TXHTicket *ticket, NSError *error) {
-                                           wself.loadingData = NO;
-                                           if (!error)
-                                               [wself showDetailsForTicket:ticket];
-                                           else
-                                               [wself showErrorWithMessage:@"Couldn't find ticket data."];
-                                       }];
+    if (ticketSeqID)
+        [self.productManager searchForTicketWithSeqID:ticketSeqID
+                                           completion:^(TXHTicket *ticket, NSError *error) {
+                                               wself.loadingData = NO;
+                                               if (!error)
+                                                   [wself showDetailsForTicket:ticket];
+                                               else
+                                                   [wself showErrorWithMessage:@"Couldn't find ticket data."];
+                                           }];
 }
 
 - (void)searchQueryDidChange:(NSNotification *)note
