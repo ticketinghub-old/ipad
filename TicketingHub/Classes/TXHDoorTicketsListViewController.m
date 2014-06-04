@@ -58,6 +58,8 @@
 
 @property (strong, nonatomic) TXHPartialResponsInfo *paginationInfo;
 
+@property (strong, nonatomic) NSMapTable * sectionHeaders;
+
 @end
 
 @implementation TXHDoorTicketsListViewController
@@ -107,6 +109,7 @@
     _tickets = tickets;
     
     [self.collectionView reloadData];
+    [self updateInfoLabel];
 }
 
 - (void)setLoadingData:(BOOL)loadingData
@@ -124,6 +127,13 @@
         
         [self reload];
     }
+}
+
+- (NSMapTable *)sectionHeaders
+{
+    if (!_sectionHeaders)
+        _sectionHeaders = [NSMapTable mapTableWithKeyOptions:NSMapTableStrongMemory valueOptions:NSMapTableWeakMemory];
+    return _sectionHeaders;
 }
 
 - (NSMutableSet *)ticketsDisabled
@@ -267,23 +277,6 @@
     else
         [self hideInfoLabel];
 }
-
-//- (void)updateHeaderLabels
-//{
-//    BOOL anyTickets = [self.filteredTickets count] > 0;
-//    
-//    self.titleLabel.hidden    = !anyTickets;
-//    self.subtitleLabel.hidden = !anyTickets;
-//    
-//    if (anyTickets)
-//    {
-//        NSString *attendeesFormat = NSLocalizedString(@"DOORMAN_TICKETS_LIST_ATTENDEES_FORMAT", nil);
-//        NSString *attendingFormat = NSLocalizedString(@"DOORMAN_TICKETS_LIST_ATTENDING_FORMAT", nil);
-//        
-//        self.titleLabel.text    = [NSString stringWithFormat:attendeesFormat,(unsigned long)[self.tickets count]];
-//        self.subtitleLabel.text = [NSString stringWithFormat:attendingFormat,(unsigned long)[self attendingTickets]];
-//    }
-//}
 
 - (IBAction)toggleAttendingAction:(id)sender
 {
@@ -555,11 +548,27 @@
                                                                            withReuseIdentifier:@"TicketsHeader"
                                                                                   forIndexPath:indexPath];
         [self configureHeader:header atIndexPath:indexPath];
-        
+        NSNumber * key = @(indexPath.section);
+        [self.sectionHeaders setObject:header forKey:key];
         return header;
     }
     
     return nil;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingSupplementaryView:(UICollectionReusableView *)view forElementOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
+{
+    NSNumber * key = @(indexPath.section);
+    if (elementKind == UICollectionElementKindSectionHeader)
+        [self.sectionHeaders removeObjectForKey:key];
+}
+
+- (void)updateHeaderValuesAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSNumber * key = @(indexPath.section);
+    TXHDoorTicketsListHeaderView *header = [self.sectionHeaders objectForKey:key];
+    [self configureHeader:header atIndexPath:indexPath];
+    
 }
 
 - (void)configureCell:(TXHDoorTicketCell *)cell atIndexPath:(NSIndexPath *)indexPath
@@ -575,6 +584,26 @@
     [cell setPrice:[self.productManager priceStringForPrice:ticket.price]];
     [cell setAttendedAt:ticket.attendedAt animated:NO];
     [cell setIsLoading:isTicketDisabled];
+}
+
+- (void)removeCell:(TXHDoorTicketCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    [self.collectionView performBatchUpdates:^{
+        [self removeTicket:self.tickets[indexPath.row]];
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:indexPath.section];
+        if (self.tickets.count == 0)
+            [self.collectionView deleteSections:indexSet];
+        else
+            [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+    } completion:nil];
+}
+
+- (void)removeTicket:(TXHTicket *)ticket
+{
+    if (![self.tickets containsObject:ticket]) return;
+    NSMutableArray * mutableTickets = [self.tickets mutableCopy];
+    [mutableTickets removeObject:ticket];
+    self.tickets = [mutableTickets copy];
 }
 
 - (void)configureHeader:(TXHDoorTicketsListHeaderView *)header atIndexPath:(NSIndexPath *)indexPath
@@ -598,11 +627,15 @@
     [self showDetailsForTicket:ticket];
 }
 
-
 #pragma mark - TXHTicketDetailsViewControllerDelegate
 
 - (void)txhTicketDetailsViewControllerShouldDismiss:(TXHTicketDetailsViewController *)controller
 {
+    if (self.hideAttending && controller.ticket.attendedAt)
+    {
+        [self removeTicket:controller.ticket];
+        [self.collectionView reloadData];
+    }
     [self dismissDetailViewController:controller completion:nil];
 }
 
@@ -629,7 +662,10 @@
 
 - (void)txhDoorTicketCelldidChangeSwitch:(TXHDoorTicketCell *)cell
 {
-    TXHTicket *cellTicket = [self ticketAtIndexPath:[self.collectionView indexPathForCell:cell]];
+    NSIndexPath * indexPath = [self.collectionView indexPathForCell:cell];
+    TXHTicket *cellTicket = [self ticketAtIndexPath:indexPath];
+    
+    cell.userInteractionEnabled = NO;
     
     [self.ticketsDisabled addObject:cellTicket.ticketId];
     
@@ -637,9 +673,12 @@
     [self.productManager setTicket:cellTicket
                           attended:cell.switchValue
                         completion:^(TXHTicket *ticket, NSError *error) {
+                            cell.userInteractionEnabled = YES;
                             [wself.ticketsDisabled removeObject:cellTicket.ticketId];
                             [cell setAttendedAt:cellTicket.attendedAt animated:YES];
-//                            [wself.collectionView reloadData];// TODO: update header....
+                            if (wself.hideAttending && ticket.attendedAt)
+                                [wself removeCell:cell atIndexPath:indexPath];
+                            [wself updateHeaderValuesAtIndexPath:indexPath];
                         }];
 }
 
