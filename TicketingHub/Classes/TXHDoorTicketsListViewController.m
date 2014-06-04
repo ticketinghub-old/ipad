@@ -517,6 +517,7 @@
 - (void)productDidChange:(NSNotification *)note
 {
     self.tickets = nil;
+    [self reload];
 }
 
 #pragma mark - UICollectionViewDataSource
