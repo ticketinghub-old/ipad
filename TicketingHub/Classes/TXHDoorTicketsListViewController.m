@@ -533,6 +533,10 @@
     
     [self configureCell:cell atIndexPath:indexPath];
     
+    if (indexPath.item >= self.tickets.count - 1)
+        if (self.paginationInfo.hasMore)
+            [self loadTickets];
+    
     return cell;
 }
 
@@ -590,7 +594,7 @@
 - (void)removeCell:(TXHDoorTicketCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     [self.collectionView performBatchUpdates:^{
-        [self removeTicket:self.tickets[indexPath.row]];
+        [self removeTicket:self.tickets[indexPath.item]];
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:indexPath.section];
         if (self.tickets.count == 0)
             [self.collectionView deleteSections:indexSet];
