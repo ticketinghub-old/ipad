@@ -206,12 +206,12 @@ static NSString * const kTelephoneKey = @"telephone";
                                      completion:^(TXHOrder *order, NSError *error) {
                                          [wself.activityView hide];
                                          [wself setFieldsErrorsFromInfo:order.customer.errors];
-                                         if (!error)
-                                         {
-                                             wself.updateButton.enabled = NO;
-                                             wself.fieldsContainerView.alpha = 0.5;
-                                             wself.fieldsContainerView.userInteractionEnabled = NO;
-                                         }
+//                                         if (!error)
+//                                         {
+//                                             wself.updateButton.enabled = NO;
+//                                             wself.fieldsContainerView.alpha = 0.5;
+//                                             wself.fieldsContainerView.userInteractionEnabled = NO;
+//                                         }
                                          
                                      }];
 }
