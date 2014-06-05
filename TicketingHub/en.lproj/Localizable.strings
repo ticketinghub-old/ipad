@@ -134,21 +134,21 @@
 /* Handpoint */
 // TODO:                 Give a bit of love into those messages!!!
 // statuses
-"DKPOSClientTransactionStatusCodeWaitingForCard"          = "Enter card into Device";
-"DKPOSClientTransactionStatusCodeCardInserted"            = "Processing card";
-"DKPOSClientTransactionStatusSignatureRequested"          = "Signature Requested";
-"DKPOSClientTransactionStatusCodeApplicationSelection"    = "Processing card";
-"DKPOSClientTransactionStatusCodeApplicationConfirmation" = "Processing card";
-"DKPOSClientTransactionStatusCodeAmountValidation"        = "Processing card";
-"DKPOSClientTransactionStatusCodePinInput"                = "Enter PIN";
+"DKPOSClientTransactionStatusCodeWaitingForCard"          = "Waiting for card";
+"DKPOSClientTransactionStatusCodeCardInserted"            = "Card Inserted";
+"DKPOSClientTransactionStatusSignatureRequested"          = "Signature requested";
+"DKPOSClientTransactionStatusCodeApplicationSelection"    = "Application Selection";
+"DKPOSClientTransactionStatusCodeApplicationConfirmation" = "Application Confirmed";
+"DKPOSClientTransactionStatusCodeAmountValidation"        = "Validate Amount";
+"DKPOSClientTransactionStatusCodePinInput"                = "Enter Pin";
 "DKPOSClientTransactionStatusCodeManualCardInput"         = "Manual Card Input";
 "DKPOSClientTransactionStatusCodeWaitingCardRemoval"      = "Remove Card";
 "DKPOSClientTransactionStatusCodeTipInput"                = "Tip Input";
-"DKPOSClientTransactionStatusCodeConnecting"              = "Please wait";
-"DKPOSClientTransactionStatusCodeSending"                 = "Please wait";
-"DKPOSClientTransactionStatusCodeReceiving"               = "Please wait";
-"DKPOSClientTransactionStatusCodeDisconnecting"           = "Please wait";
-"DKPOSClientTransactionStatusCodeTransactionApproved"     = "Approved";
+"DKPOSClientTransactionStatusCodeConnecting"              = "Connecting...";
+"DKPOSClientTransactionStatusCodeSending"                 = "Sending...";
+"DKPOSClientTransactionStatusCodeReceiving"               = "Receiving...";
+"DKPOSClientTransactionStatusCodeDisconnecting"           = "Disconnecting...";
+"DKPOSClientTransactionStatusCodeTransactionApproved"     = "Transaction Approved";
 "DKPOSClientTransactionStatusCodeTransactionProcessed"    = "Transaction Processed";
 
 "DKPOSClientTransactionStatusCodeWaitingForCardDesc"          = "Either use Chip & PIN or swipe for American cards";
