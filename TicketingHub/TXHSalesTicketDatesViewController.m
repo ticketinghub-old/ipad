@@ -134,7 +134,7 @@
     for (TXHAvailability * availability in self.availabilities ) {
         NSArray * timeArray = [availability.timeString componentsSeparatedByString:@":"];
         if (!prevHour) prevHour = timeArray.firstObject;
-        if (prevHour != timeArray.firstObject)
+        if (![prevHour isEqualToString:timeArray.firstObject])
         {
             [availabilitiesIntoHours addObject:[currentHourArray copy]];
             currentHourArray = [NSMutableArray array];
