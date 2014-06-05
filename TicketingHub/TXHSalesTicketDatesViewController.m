@@ -39,6 +39,7 @@
 
 @property (strong, nonatomic) NSMutableSet *availableDates;
 @property (strong, nonatomic) NSArray *availabilities;
+@property (strong, nonatomic, readonly) NSArray *availabilitiesGroupedByHours;
 
 @property (strong, nonatomic) NSDate *selectedDate;
 @property (strong, nonatomic) TXHAvailability *selectedAvailability;
@@ -114,9 +115,34 @@
 - (void)setAvailabilities:(NSArray *)availabilities
 {
     _availabilities = availabilities;
+    _availabilitiesGroupedByHours = [self groupAvailabilitiesIntoHours:availabilities];
     
     [self updateView];
     [self.eventsCollectionView reloadData];
+}
+
+- (NSArray *)groupAvailabilitiesIntoHours:(NSArray *)availabilities
+{
+    if (!availabilities || !availabilities.count)
+    {
+        _availabilitiesGroupedByHours = nil;
+        return nil;
+    }
+    NSMutableArray * availabilitiesIntoHours = [NSMutableArray array];
+    NSMutableArray * currentHourArray = [NSMutableArray array];
+    NSString * prevHour = nil;
+    for (TXHAvailability * availability in self.availabilities ) {
+        NSArray * timeArray = [availability.timeString componentsSeparatedByString:@":"];
+        if (!prevHour) prevHour = timeArray.firstObject;
+        if (prevHour != timeArray.firstObject)
+        {
+            [availabilitiesIntoHours addObject:[currentHourArray copy]];
+            currentHourArray = [NSMutableArray array];
+        }
+        [currentHourArray addObject:availability];
+    }
+    [availabilitiesIntoHours addObject:[currentHourArray copy]];
+    return [availabilitiesIntoHours copy];
 }
 
 - (void)setSelectedAvailability:(TXHAvailability *)selectedAvailability
@@ -155,7 +181,6 @@
         _activityView = [TXHActivityLabelView getInstanceInView:self.view];
     return _activityView;
 }
-
 
 - (void)reloadCallendar
 {
@@ -229,12 +254,12 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.availabilities count];
+    return [self.availabilitiesGroupedByHours[section] count];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 1;
+    return [self.availabilitiesGroupedByHours count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -284,7 +309,7 @@
 
 - (TXHAvailability *)availabilityAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.availabilities[indexPath.item]; // TODO: make more secure
+    return self.availabilitiesGroupedByHours[indexPath.section][indexPath.item]; // TODO: make more secure
 }
 
 #pragma mark - UICollectionViewDelegate

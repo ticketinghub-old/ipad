@@ -1837,7 +1837,7 @@
                                     <size key="itemSize" width="482" height="80"/>
                                     <size key="headerReferenceSize" width="512" height="60"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="15" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="15" maxX="0.0" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EventCell" id="Nae-AS-Wtb" customClass="TXHEventCollectionViewCell">
