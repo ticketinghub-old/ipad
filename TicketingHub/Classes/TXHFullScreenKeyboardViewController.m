@@ -50,6 +50,10 @@
         wself.containerView.frame = wself.view.bounds;
         [wself.view layoutIfNeeded];
     }];
+    
+    [self setKeyboardDidHideActionBlock:^(CGRect keyboardFrame) {
+        [wself.delegate txhFullScreenKeyboardViewControllerDismiss:wself];
+    }];
 }
 
 - (void)addTapGestureRecognizer
