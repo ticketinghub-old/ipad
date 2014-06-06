@@ -22,7 +22,12 @@
 #import <QuartzCore/QuartzCore.h>
 #import <iOS-api/NSDate+ISO.h>
 
-@interface TXHTicketDetailsViewController ()
+#import "TXHActivityLabelPrintersUtilityDelegate.h"
+#import "TXHPrinterSelectionViewController.h"
+#import "TXHPrintersManager.h"
+#import "TXHPrintersUtility.h"
+
+@interface TXHTicketDetailsViewController () <TXHPrinterSelectionViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet TXHTicketDetailsErrorView *errorView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
@@ -42,6 +47,11 @@
 @property (weak, nonatomic) IBOutlet TXHBorderedButton *attendedButton;
 
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
+
+@property (strong, nonatomic) UIPopoverController *printerSelectionPopover;
+@property (strong, nonatomic) TXHPrintersUtility *printingUtility;
+@property (strong, nonatomic) TXHActivityLabelPrintersUtilityDelegate *printingUtilityDelegate;
+
 
 @end
 
@@ -125,8 +135,32 @@
 
 - (IBAction)printTicketButton:(id)sender
 {
-
+    UIButton * button = sender;
+    TXHPrinterSelectionViewController *printerSelector = [[TXHPrinterSelectionViewController alloc] initWithPrintersManager:TXHPRINTERSMANAGER];
+    printerSelector.delegate = self;
+    
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:printerSelector];
+    popover.popoverContentSize = CGSizeMake(200, 110);
+    
+    CGRect fromRect = [button.superview convertRect:button.frame toView:self.view];
+    
+    [popover presentPopoverFromRect:fromRect
+                             inView:self.view
+           permittedArrowDirections:UIPopoverArrowDirectionAny
+                           animated:YES];
+    
+    self.printerSelectionPopover = popover;
 }
+
+- (void)txhPrinterSelectionViewController:(TXHPrinterSelectionViewController *)controller
+didSelectPrinter:(TXHPrinter *)printer
+{
+    [self.printerSelectionPopover dismissPopoverAnimated:YES];
+    self.printerSelectionPopover = nil;
+    
+    [self.printingUtility startPrintingWithType:TXHPrintTypeTickets onPrinter:printer withTicket:self.ticket];
+}
+
 
 - (IBAction)attendedButtonAction:(id)sender
 {
@@ -284,6 +318,25 @@
 - (void)unblockAttenededButton
 {
     self.attendedButton.enabled = YES;
+}
+
+
+#pragma mark - TXHPrinterSelectionViewControllerDelegate
+
+- (TXHPrintersUtility *)printingUtility
+{
+    if (!_printingUtility)
+    {
+        TXHActivityLabelPrintersUtilityDelegate *printingUtilityDelegate =
+        [TXHActivityLabelPrintersUtilityDelegate new];
+        
+        TXHPrintersUtility *printingUtility = [[TXHPrintersUtility alloc] initWithTicketingHubCLient:self.productManager.txhManager.client];
+        printingUtility.delegate = printingUtilityDelegate;
+        
+        _printingUtility = printingUtility;
+        _printingUtilityDelegate = printingUtilityDelegate;
+    }
+    return _printingUtility;
 }
 
 @end
