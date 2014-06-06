@@ -41,5 +41,6 @@ typedef NS_ENUM(NSUInteger, TXHPrintType)
 - (instancetype)initWithTicketingHubCLient:(TXHTicketingHubClient *)client;
 
 - (void)startPrintingWithType:(TXHPrintType)type onPrinter:(TXHPrinter *)printer withOrder:(TXHOrder *)order;
+- (void)startPrintingWithType:(TXHPrintType)type onPrinter:(TXHPrinter *)printer withTicket:(TXHTicket *)ticket;
 
 @end

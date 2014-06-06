@@ -127,16 +127,19 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
 
 - (void)printPage:(int)page formDocument:(NSURL *)documentURL withPrinter:(TXHPrinter *)printer completionBlock:(void(^)(NSError *error))completion
 {
-    TXHStarIOPrinter *starPrinter = (TXHStarIOPrinter *)printer;
-
     UIImage *img = [UIImage imageWithPDFURL:documentURL atWidth:STAR_PRINTER_MAXWIDTH atPage:page];
     img = [img imageWithBackground:[UIColor whiteColor]];
-    
+    [self printImg:img withPrinter:printer completionBlock:completion];
+}
+
+- (void)printImg:(UIImage *)image withPrinter:(TXHPrinter *)printer completionBlock:(void(^)(NSError *error))completion
+{
+    TXHStarIOPrinter *starPrinter = (TXHStarIOPrinter *)printer;
     if (starPrinter.printerType == TXHStarPortablePrinterTypePortable)
     {
         [self printBitmapWithPortName:starPrinter.portInfo.portName
                          portSettings:kPrinterPortSettingsPortable
-                          imageSource:img
+                          imageSource:image
                          printerWidth:STAR_PRINTER_MAXWIDTH
                     compressionEnable:YES
                        pageModeEnable:NO
@@ -146,11 +149,18 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
     {
         [self printImageWithPortname:starPrinter.portInfo.portName
                         portSettings:kPrinterPortSettingsPOS
-                        imageToPrint:img
+                        imageToPrint:image
                             maxWidth:STAR_PRINTER_MAXWIDTH
                    compressionEnable:YES
                           completion:completion];
     }
+}
+
+- (void)printImage:(UIImage *)image withPrinter:(TXHPrinter *)printer completionBlock:(TXHPrinterCompletionBlock)completion
+{
+    [self printImg:image withPrinter:printer completionBlock:^(NSError *error) {
+        if (completion) completion(error,NO);
+    }];
 }
 
 - (void)openDrawerFromPrinter:(TXHPrinter *)printer

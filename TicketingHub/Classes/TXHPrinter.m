@@ -43,6 +43,13 @@
                                 completionBlock:completion];
 }
 
+- (void)printImage:(UIImage *)image completion:(TXHPrinterCompletionBlock)completion
+{
+    [self.printerEngine printImage:image
+                       withPrinter:self
+                   completionBlock:completion];
+}
+
 - (void)openDrawerWithCompletion:(TXHPrinterCompletionBlock)completion
 {
     [self.printerEngine openDrawerFromPrinter:self

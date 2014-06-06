@@ -18,6 +18,7 @@
 @property (strong, nonatomic) UIPopoverController *printerSelectorPopover;
 
 @property (strong, nonatomic) TXHOrder              *order;
+@property (strong, nonatomic) TXHTicket             *ticket;
 @property (strong, nonatomic) TXHTicketingHubClient *client;
 
 @end
@@ -48,9 +49,19 @@
 - (void)startPrintingWithType:(TXHPrintType)type onPrinter:(TXHPrinter *)printer withOrder:(TXHOrder *)order
 {
     self.order           = order;
+    self.ticket          = nil;
     self.printType       = type;
     self.selectedPrinter = printer;
     
+    [self printSelectedTarget];
+}
+
+- (void)startPrintingWithType:(TXHPrintType)type onPrinter:(TXHPrinter *)printer withTicket:(TXHTicket *)ticket
+{
+    self.ticket          = ticket;
+    self.order           = nil;
+    self.printType       = type;
+    self.selectedPrinter = printer;
     [self printSelectedTarget];
 }
 
@@ -108,7 +119,13 @@
     __weak typeof(self) wself = self;
     
     [self.delegate txhPrintersUtility:self
-                 selectTicketTemplate:^(TXHTicketTemplate *selectedTemplate) { [wself printTicketsWithTemplate:selectedTemplate]; }
+                 selectTicketTemplate:
+                    ^(TXHTicketTemplate *selectedTemplate) {
+                        if (wself.order)
+                            [wself printTicketsWithTemplate:selectedTemplate];
+                        if (wself.ticket)
+                            [wself printTicketWithTemplate:selectedTemplate];
+                    }
                         fromTemplates:templates];
 }
 
@@ -127,20 +144,34 @@
 {
     if (!template) return;
     
-    [self.delegate txhPrintersUtility:self didStartLoadingType:TXHPrintTypeTemplates];
-    
     __weak typeof(self) wself = self;
     
-    [self.client getTicketToPrintForOrder:self.order
-                              withTemplet:template
-                                   format:TXHDocumentFormatPDF
-                               completion:^(NSURL *url, NSError *error){
-                                   
-                                   [wself.delegate txhPrintersUtility:wself didFinishLoadingType:TXHPrintTypeTemplates error:error];
-                                   
-                                   if (!error)
-                                       [wself printPDFDocumentWithURL:url];
-                               }];
+    __block NSError * printingError = nil;
+    
+    void (^ticketCompletion)(NSError *error, BOOL canceled) = ^(NSError *error, BOOL canceled) {
+        if (error) printingError = error;
+        [wself.delegate txhPrintersUtility:wself didFinishPrintingType:wself.printType error:error];
+    };
+    
+    for (TXHTicket * ticket in self.order.tickets) {
+        if (printingError) break;
+        [self.delegate txhPrintersUtility:self didStartLoadingType:TXHPrintTypeTemplates];
+        [self.client getTicketImageToPrintForTicket:ticket withTemplet:template format:TXHDocumentFormatPNG completion:^(UIImage *image, NSError *err) {
+            [wself.delegate txhPrintersUtility:self didFinishLoadingType:TXHPrintTypeTemplates error:nil];
+            [wself.delegate txhPrintersUtility:self didStartPrintingType:wself.printType];
+                [wself.selectedPrinter printImage:image completion:ticketCompletion];
+        }];
+    }
+}
+
+- (void)printTicketWithTemplate:(TXHTicketTemplate *)template
+{
+    __weak typeof(self) wself = self;
+    [self.client getTicketImageToPrintForTicket:self.ticket withTemplet:template format:TXHDocumentFormatPNG completion:^(UIImage *image, NSError *err) {
+        [wself.selectedPrinter printImage:image completion:^(NSError *error, BOOL canceled) {
+            [wself.delegate txhPrintersUtility:wself didFinishPrintingType:wself.printType error:error];
+        }];
+    }];
 }
 
 @end
