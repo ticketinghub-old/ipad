@@ -486,17 +486,22 @@
     NSNumber *ticketSeqID = decodedBarcode[kTXHBarcodeTicketSeqIdKey];
     
     self.loadingData = YES;
+
+    if (!ticketSeqID)
+    {
+        [self showErrorWithMessage:NSLocalizedString(@"SCANNER_ERROR_INCORRECT_DATA", nil)];
+        return;
+    }
     
     __weak typeof(self) wself = self;
-    if (ticketSeqID)
-        [self.productManager searchForTicketWithSeqID:ticketSeqID
-                                           completion:^(TXHTicket *ticket, NSError *error) {
-                                               wself.loadingData = NO;
-                                               if (!error)
-                                                   [wself showDetailsForTicket:ticket];
-                                               else
-                                                   [wself showErrorWithMessage:@"Couldn't find ticket data."];
-                                           }];
+    [self.productManager searchForTicketWithSeqID:ticketSeqID
+                                       completion:^(TXHTicket *ticket, NSError *error) {
+                                           wself.loadingData = NO;
+                                           if (!error)
+                                               [wself showDetailsForTicket:ticket];
+                                           else
+                                               [wself showErrorWithMessage:NSLocalizedString(@"SCANNER_ERROR_TICKET_NOT_FOUND", nil)];
+                                       }];
 }
 
 - (void)searchQueryDidChange:(NSNotification *)note
