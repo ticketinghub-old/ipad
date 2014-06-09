@@ -519,9 +519,11 @@
         return;
     }
     
+    [self showInfolabelWithText:NSLocalizedString(@"SCANNER_LOADING_TICKET_INFORMATION", "") withIndicator:YES];
     __weak typeof(self) wself = self;
     [self.productManager searchForTicketWithSeqID:ticketSeqID
                                        completion:^(TXHTicket *ticket, NSError *error) {
+                                           [wself hideInfoLabel];
                                            wself.loadingData = NO;
                                            if (!error)
                                                [wself showDetailsForTicket:ticket];

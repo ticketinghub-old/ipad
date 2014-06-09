@@ -69,6 +69,9 @@
 "SCANNER_ERROR_INCORRECT_DATA" = "Incorrect QR code data";
 "SCANNER_ERROR_TICKET_NOT_FOUND" = "Couldn't find ticket data.";
 
+/* Barcode scanner informations*/
+"SCANNER_LOADING_TICKET_INFORMATION" = "Loading informations about ticket";
+
 /* Activity labels - Printers */
 
 "LOADING_RECEIPT_LABEL"           = "Preparing Receipt";
