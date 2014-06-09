@@ -46,6 +46,7 @@
 @property (weak, nonatomic) IBOutlet UIView *activityInfoPlaceholder;
 
 @property (strong, nonatomic) NSArray  *tickets;
+@property (strong, nonatomic, readonly) NSArray  *ticketsGroupedByDate;
 @property (strong, nonatomic) NSString *searchQuery;
 
 @property (strong, nonatomic) TXHTicket *selectedTicket;
@@ -109,8 +110,31 @@
 {
     _tickets = tickets;
     
+    _ticketsGroupedByDate = [self groupTicketsByDate:tickets];
+    
     [self.collectionView reloadData];
     [self updateInfoLabel];
+}
+
+- (NSArray *)groupTicketsByDate:(NSArray *)tickets;
+{
+    if (!tickets) return nil;
+    NSDate * currentDate = nil;
+    NSMutableArray * currentDateArray = [NSMutableArray array];
+    NSMutableArray * groupedArray = [NSMutableArray array];
+    for (TXHTicket * ticket in tickets) {
+        if (![currentDate isEqualToDate:ticket.validFrom])
+        {
+            if (currentDateArray.count)
+                [groupedArray addObject:[currentDateArray copy]];
+            currentDate = ticket.validFrom;
+            currentDateArray = [NSMutableArray array];
+        }
+        [currentDateArray addObject:ticket];
+    }
+    if (currentDateArray && currentDateArray.count)
+        [groupedArray addObject:[currentDateArray copy]];
+    return [groupedArray copy];
 }
 
 - (void)setLoadingData:(BOOL)loadingData
@@ -175,7 +199,8 @@
 
 - (TXHTicket *)ticketAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.tickets[indexPath.item];
+    NSArray * sectionTickets = self.ticketsGroupedByDate[indexPath.section];
+    return sectionTickets[indexPath.item];
 }
 
 - (void)setupKeybaordAnimations
@@ -530,7 +555,8 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.tickets count];
+    NSArray * sectionTickets = self.ticketsGroupedByDate[section];
+    return [sectionTickets count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -539,7 +565,7 @@
     
     [self configureCell:cell atIndexPath:indexPath];
     
-    if (indexPath.item >= self.tickets.count - 1)
+    if (indexPath.section == self.ticketsGroupedByDate.count-1 && indexPath.item >= [self.ticketsGroupedByDate.lastObject count] - 1)
         if (self.paginationInfo.hasMore)
             [self loadTickets];
     
@@ -548,7 +574,7 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return [self.tickets count] ? 1 : 0;
+    return [self.ticketsGroupedByDate count];
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -600,12 +626,12 @@
 - (void)removeCell:(TXHDoorTicketCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     [self.collectionView performBatchUpdates:^{
-        [self removeTicket:self.tickets[indexPath.item]];
-        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:indexPath.section];
-        if (self.tickets.count == 0)
-            [self.collectionView deleteSections:indexSet];
+        NSInteger sectionTicketsCount = [self.ticketsGroupedByDate[indexPath.section] count];
+        if (sectionTicketsCount == 1)
+            [self.collectionView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section]];
         else
             [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+        [self removeTicket:self.tickets[indexPath.item]];
     } completion:nil];
 }
 
