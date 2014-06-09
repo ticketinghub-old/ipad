@@ -645,13 +645,25 @@
 
 - (void)configureHeader:(TXHDoorTicketsListHeaderView *)header atIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *tickets = self.tickets;// tickets at index path
+    if (indexPath.section >= self.ticketsGroupedByDate.count) return;
+    
+    NSArray *tickets = self.ticketsGroupedByDate[indexPath.section];// tickets at index path
     TXHTicket *firstTicket = [tickets firstObject];
     
-    NSInteger attendingTickets = [self attendingTicketsFrom:tickets];
-
-    [header setAttending:attendingTickets];
-    [header setTotal:[tickets count]];
+    [header setTotal:0];
+    [header setAttending:0];
+    
+    [self.productManager getTicketsCountValidFromDate:firstTicket.validFrom attended:NO completion:^(NSNumber *count, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [header setTotal:count.integerValue];
+        });
+    }];
+    
+    [self.productManager getTicketsCountValidFromDate:firstTicket.validFrom attended:YES completion:^(NSNumber *count, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [header setAttending:count.integerValue];
+        });
+    }];
     [header setDate:firstTicket.validFrom];
 }
 
