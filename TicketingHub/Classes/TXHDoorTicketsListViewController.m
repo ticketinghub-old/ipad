@@ -43,6 +43,7 @@
 @property (strong, nonatomic) TXHScanersManager *scannersManager;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIView *activityInfoPlaceholder;
 
 @property (strong, nonatomic) NSArray  *tickets;
 @property (strong, nonatomic) NSString *searchQuery;
@@ -236,7 +237,7 @@
 - (TXHActivityLabelView *)activityView
 {
     if (!_activityView)
-        _activityView = [TXHActivityLabelView getInstanceInView:self.collectionView];
+        _activityView = [TXHActivityLabelView getInstanceInView:self.activityInfoPlaceholder];
 
     return _activityView;
 }
@@ -270,7 +271,7 @@
 
 - (void)updateInfoLabel
 {
-    if (!self.paginationInfo && self.loadingData)
+    if (self.loadingData)
         [self showInfolabelWithText:NSLocalizedString(@"DOORMAN_TICKETS_LIST_LOOKING_UP_TICKETS", nil) withIndicator:YES];
     else if (![self.tickets count] && !self.isLoadingData)
         [self showInfolabelWithText:NSLocalizedString(@"DOORMAN_TICKETS_LIST_NO_TICKETS_LABEL", nil) withIndicator:NO];

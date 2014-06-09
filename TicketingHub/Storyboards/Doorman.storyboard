@@ -404,15 +404,15 @@
                                             <color key="textColor" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Attending" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Izx-IH-avd">
-                                            <rect key="frame" x="150" y="16" width="89" height="19"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Attending" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Izx-IH-avd">
+                                            <rect key="frame" x="150" y="16" width="80" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                             <color key="textColor" red="0.49803921569999998" green="0.66274509800000003" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="90 Guests" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImB-TJ-m21">
-                                            <rect key="frame" x="273" y="16" width="72" height="19"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Guests" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImB-TJ-m21">
+                                            <rect key="frame" x="273" y="16" width="63" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                             <color key="textColor" red="0.49803921569999998" green="0.66274509800000003" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
@@ -441,6 +441,14 @@
                                     <outlet property="delegate" destination="Qge-n3-R9U" id="NFL-db-RMs"/>
                                 </connections>
                             </collectionView>
+                            <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1a-MQ-mcm">
+                                <rect key="frame" x="0.0" y="70" width="725" height="698"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="725" id="PF7-ne-dL2"/>
+                                </constraints>
+                            </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search for tickets" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="fF7-ng-rcA">
                                 <rect key="frame" x="56" y="0.0" width="462" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -499,13 +507,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="iod-yU-vwu" firstAttribute="top" secondItem="e1a-MQ-mcm" secondAttribute="bottom" id="0v1-UF-aHL"/>
                             <constraint firstItem="xZ4-Kf-EnD" firstAttribute="top" secondItem="RM1-Ai-NRW" secondAttribute="top" constant="70" id="3be-hr-TZu"/>
+                            <constraint firstItem="e1a-MQ-mcm" firstAttribute="top" secondItem="446-Aa-im6" secondAttribute="bottom" constant="70" id="CKh-1U-hgS"/>
+                            <constraint firstItem="e1a-MQ-mcm" firstAttribute="leading" secondItem="RM1-Ai-NRW" secondAttribute="leading" id="IJX-Jy-pjN"/>
                             <constraint firstItem="xZ4-Kf-EnD" firstAttribute="leading" secondItem="RM1-Ai-NRW" secondAttribute="leading" id="zQj-ty-voG"/>
                             <constraint firstItem="iod-yU-vwu" firstAttribute="top" secondItem="xZ4-Kf-EnD" secondAttribute="bottom" id="zUI-wX-He7"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <connections>
+                        <outlet property="activityInfoPlaceholder" destination="e1a-MQ-mcm" id="bBY-66-uXa"/>
                         <outlet property="collectionView" destination="xZ4-Kf-EnD" id="G22-ZT-wow"/>
                         <outlet property="toogleAttendingButton" destination="1Co-cW-cvw" id="zOe-pI-bXF"/>
                         <segue destination="8Ki-25-kJY" kind="push" identifier="TicketOrder" id="X85-cn-oih"/>
