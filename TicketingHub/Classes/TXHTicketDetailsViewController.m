@@ -248,7 +248,7 @@ didSelectPrinter:(TXHPrinter *)printer
         
         wself.titleLabel.text      = [NSString stringWithFormat:titleFormat,wself.ticket.reference];
         wself.subtitleLabel.text   = customer.fullName;
-        wself.validFromLabel.text  = ticket.order.confirmedAt ? [wself dateStringForDate:ticket.order.confirmedAt] : @"-";
+        wself.validFromLabel.text  = ticket.validFrom ? [wself dateStringForDate:ticket.validFrom] : @"-";
         wself.validUntilLabel.text = ticket.expiresAt ? [wself dateStringForDate:ticket.expiresAt] : @"-";
         wself.voucherLabel.text    = [ticket.voucher length] ? ticket.voucher : @"-";
         wself.upgradesLabel.text   = [prefixedUpgrades count] ? [prefixedUpgrades componentsJoinedByString:@"\n"] : @"-";
