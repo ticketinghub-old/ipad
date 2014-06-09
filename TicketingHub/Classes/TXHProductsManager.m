@@ -116,6 +116,11 @@ NSString * const TXHSelectedAvailabilityKey         = @"TXHSelectedProductKey";
 
 }
 
+- (void)getTicketsCountValidFromDate:(NSDate *)date attended:(BOOL)attended completion:(void(^)(NSNumber *count, NSError *error))completion
+{
+    [self.txhManager.client getTicketsCountFromValidDate:date forProduct:self.selectedProduct attended:attended completion:completion];
+}
+
 - (void)ticketRecordsForAvailability:(TXHAvailability *)availability andQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion;
 {
     [self.txhManager.client ticketRecordsForProduct:self.selectedProduct

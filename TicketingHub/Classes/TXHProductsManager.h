@@ -31,6 +31,8 @@
 - (void)ticketRecordsValidFromDate:(NSDate *)date includingAttended:(BOOL)attended query:(NSString *)query paginationInfo:(TXHPartialResponsInfo *)info completion:(void(^)(TXHPartialResponsInfo *info, NSArray *ricketRecords, NSError *error))completion;
 - (void)ticketRecordsForAvailability:(TXHAvailability *)availability andQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion;
 
+- (void)getTicketsCountValidFromDate:(NSDate *)date attended:(BOOL)attended completion:(void(^)(NSNumber *count, NSError *error))completion;
+
 - (void)setTicket:(TXHTicket *)ticket attended:(BOOL)attended completion:(void(^)(TXHTicket *ticket, NSError *error))completion;
 - (void)setAllTicketsAttendedForOrder:(TXHOrder *)order completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
