@@ -652,9 +652,6 @@
     NSArray *tickets = self.ticketsGroupedByDate[indexPath.section];// tickets at index path
     TXHTicket *firstTicket = [tickets firstObject];
     
-    [header setTotal:0];
-    [header setAttending:0];
-    
     [self.productManager getTicketsCountValidFromDate:firstTicket.validFrom attended:NO completion:^(NSNumber *count, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [header setTotal:count.integerValue];
@@ -724,6 +721,7 @@
     [self.productManager setTicket:cellTicket
                           attended:cell.switchValue
                         completion:^(TXHTicket *ticket, NSError *error) {
+                            if (error) NSLog(@"Error: %@", error.localizedDescription);
                             cell.userInteractionEnabled = YES;
                             [wself.ticketsDisabled removeObject:cellTicket.ticketId];
                             [cell setAttendedAt:cellTicket.attendedAt animated:YES];
