@@ -25,6 +25,8 @@
 #import "TXHTicket+Title.h"
 #import "TXHOrder+Helpers.h"
 
+#import "UIColor+TicketingHub.h"
+
 #import <UIViewController+BHTKeyboardAnimationBlocks/UIViewController+BHTKeyboardNotifications.h>
 
 #import "TXHRMPickerViewControllerDelegate.h"
@@ -66,6 +68,9 @@ static NSTimeInterval expiredTicketsTimerInterval = 60.0f;
 
 @property (strong, nonatomic) NSTimer * expiredTicketsTimer;
 
+@property (weak, nonatomic) UIRefreshControl * refreshControl;
+@property (nonatomic      ) BOOL             isRefreshing;
+
 @end
 
 @implementation TXHDoorTicketsListViewController
@@ -76,6 +81,7 @@ static NSTimeInterval expiredTicketsTimerInterval = 60.0f;
     
     [self setupKeybaordAnimations];
     [self setupScannersManager];
+    [self setupRefreshControl];
     
     [self reload];
 }
@@ -95,6 +101,18 @@ static NSTimeInterval expiredTicketsTimerInterval = 60.0f;
                                                               selector:@selector(removeExpiredTickets:)
                                                               userInfo:nil
                                                                repeats:YES];
+}
+
+- (void)setupRefreshControl
+{
+    if (self.refreshControl) return;
+    self.isRefreshing = NO;
+    UIRefreshControl * refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refreshControlAction) forControlEvents:UIControlEventValueChanged];
+    refreshControl.tintColor = [UIColor txhDarkBlueColor];
+    [self.collectionView addSubview:refreshControl];
+    self.collectionView.alwaysBounceVertical = YES;
+    self.refreshControl = refreshControl;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -250,6 +268,13 @@ static NSTimeInterval expiredTicketsTimerInterval = 60.0f;
     [self updateView];
 }
 
+- (void)refreshControlAction
+{
+    self.isRefreshing = YES;
+    self.paginationInfo = nil;
+    [self loadTickets];
+}
+
 - (void)removeExpiredTickets:(NSTimer *) __unused timer
 {
     DLog(@"Removing expired tickets");
@@ -278,9 +303,14 @@ static NSTimeInterval expiredTicketsTimerInterval = 60.0f;
                                                       query:nil
                                              paginationInfo:wself.paginationInfo
                                                  completion:^(TXHPartialResponsInfo *info, NSArray *ticketRecords, NSError *error) {
-                                                     wself.tickets = [wself.tickets arrayByAddingObjectsFromArray:ticketRecords];
+                                                     if (wself.isRefreshing)
+                                                         wself.tickets = [ticketRecords copy];
+                                                     else
+                                                         wself.tickets = [wself.tickets arrayByAddingObjectsFromArray:ticketRecords];
                                                      wself.loadingData = NO;
                                                      wself.paginationInfo = info;
+                                                     [wself.refreshControl endRefreshing];
+                                                     wself.isRefreshing = NO;
                                                  }];
         });
     }
@@ -325,6 +355,7 @@ static NSTimeInterval expiredTicketsTimerInterval = 60.0f;
 
 - (void)updateInfoLabel
 {
+    if (self.isRefreshing) return;
     if (self.loadingData)
         [self showInfolabelWithText:NSLocalizedString(@"DOORMAN_TICKETS_LIST_LOOKING_UP_TICKETS", nil) withIndicator:YES];
     else if (![self.tickets count] && !self.isLoadingData)
