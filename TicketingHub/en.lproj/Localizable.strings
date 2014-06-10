@@ -113,7 +113,7 @@
 "DOORMAN_TICKETS_LIST_NO_TICKETS_LABEL"            = "No Tickets";
 "DOORMAN_TICKETS_LIST_NO_TICKETS_FOR_QUERY_FORMAT" = "No Tickets for: %@";
 "DOORMAN_TICKETS_LIST_LOOKING_UP_TICKETS"          = "Looking up ticket";
-"DOORMAN_TICKETS_LIST_ATTENDEES_FORMAT"            = "%lu Guests";
+"DOORMAN_TICKETS_LIST_ATTENDEES_FORMAT"            = "%lu Tickets";
 "DOORMAN_TICKETS_LIST_ATTENDING_FORMAT"            = "%lu Attending";
 "DOORMAN_TICKETS_LIST_LOADING_TICKETS"             = "Loading tickets";
 
