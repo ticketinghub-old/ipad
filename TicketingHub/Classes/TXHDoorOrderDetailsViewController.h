@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class TXHProductsManager;
+
 @interface TXHDoorOrderDetailsViewController : UIViewController
 
-@property (nonatomic, strong) TXHOrder *order;
+@property (nonatomic, strong) TXHOrder           *order;
+@property (nonatomic, weak  ) TXHProductsManager *productManager;
 
 @end

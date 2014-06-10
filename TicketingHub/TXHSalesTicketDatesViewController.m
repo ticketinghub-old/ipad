@@ -267,8 +267,9 @@
     TXHEventCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"EventCell" forIndexPath:indexPath];
     
     TXHAvailability *availability = [self availabilityAtIndexPath:indexPath];
-    
-    NSString *spacesString = [NSString stringWithFormat:NSLocalizedString(@"SALESMAN_DATES_TIME_SPACES_FORMAT", nil), [availability.limit integerValue]];
+    NSString *spacesString = nil;
+    if (availability.limit)
+        spacesString = [NSString stringWithFormat:NSLocalizedString(@"SALESMAN_DATES_TIME_SPACES_FORMAT", nil), [availability.limit integerValue]];
     
     [cell setTimeString:availability.timeString];
     [cell setSpacesString:spacesString];

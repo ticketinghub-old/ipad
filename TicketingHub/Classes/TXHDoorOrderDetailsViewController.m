@@ -8,6 +8,7 @@
 
 #import "TXHDoorOrderDetailsViewController.h"
 #import "TXHBorderedButton.h"
+#import "TXHProductsManager.h"
 #import "NSDateFormatter+DisplayFormat.h"
 
 #define dashIfEmpty(x) [x length] > 0 ? x : @"-"
@@ -64,6 +65,7 @@
     self.staffNumberValueLabel.text    = dashIfEmpty(@"-");
     self.groupValueLabel.text          = [order.group boolValue] ? @"Yes" : @"No";
     self.directOrderValueLabel.text    = [order.directt boolValue] ? @"Yes" : @"No";
+    self.totalPriceValueLabel.text     = [self.productManager priceStringForPrice:order.total];
 
     self.paymentTypeValueLabel.text    = dashIfEmpty(order.payment.type);
     self.last4ValueLabel.text          = dashIfEmpty(order.payment.card.last4);

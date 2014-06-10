@@ -203,6 +203,7 @@
     if ([segue.identifier isEqualToString:@"OrderDetails"])
     {
         self.orderDetailsViewController = segue.destinationViewController;
+        self.orderDetailsViewController.productManager = self.productManager;
     }
     else if ([segue.identifier isEqualToString:@"OrderTickets"])
     {
