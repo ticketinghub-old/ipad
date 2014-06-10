@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08DD7934194746AA00F5FFF9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08DD7933194746AA00F5FFF9 /* Crashlytics.framework */; };
 		3E082DAE190EC909003B60C6 /* TXHConfigurationStaging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E2E2C5A190EB81B006EABA1 /* TXHConfigurationStaging.plist */; };
 		3E0FF588191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0FF587191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.m */; };
 		3E15207118FFD4190013F09E /* TXHTicketDetailsErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E15207018FFD4190013F09E /* TXHTicketDetailsErrorView.m */; };
@@ -170,6 +171,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08DD7933194746AA00F5FFF9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		3E0FF586191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHPayment+DKPOSClientTransactionInfo.h"; sourceTree = "<group>"; };
 		3E0FF587191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHPayment+DKPOSClientTransactionInfo.m"; sourceTree = "<group>"; };
 		3E15206F18FFD4190013F09E /* TXHTicketDetailsErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketDetailsErrorView.h; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 				4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */,
 				58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */,
 				58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */,
+				08DD7934194746AA00F5FFF9 /* Crashlytics.framework in Frameworks */,
 				EEB4FC3D17B272E600F226BC /* MobileCoreServices.framework in Frameworks */,
 				5860E8581762175B0046DFD3 /* QuartzCore.framework in Frameworks */,
 				EEB4FC4117B272F700F226BC /* Security.framework in Frameworks */,
@@ -1276,6 +1279,7 @@
 		58E4FB531760AE5500E328A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				08DD7933194746AA00F5FFF9 /* Crashlytics.framework */,
 				3EC14EE619225C3A00306027 /* CoreVideo.framework */,
 				3EC14EE419225C3000306027 /* OpenGLES.framework */,
 				3EC14EE219225C1A00306027 /* CoreMedia.framework */,
@@ -1445,6 +1449,7 @@
 				58E4FB4E1760AE5500E328A0 /* Frameworks */,
 				58E4FB4F1760AE5500E328A0 /* Resources */,
 				CA29D3015EA944E897BD8944 /* Copy Pods Resources */,
+				08DD79321947468000F5FFF9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1538,6 +1543,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		08DD79321947468000F5FFF9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 865e1451010c16ff6acd13123915905c9c4b45ab 56116b4badaf1a6cb0fc292418900ad825949c049b5bb5e430464ab36f7364cb";
+		};
 		4EF73529A190447C81EAC719 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

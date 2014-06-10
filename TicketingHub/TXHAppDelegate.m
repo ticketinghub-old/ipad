@@ -11,6 +11,8 @@
 #import "AFNetworkActivityLogger.h"
 #import <AFNetworking.h>
 
+#import <Crashlytics/Crashlytics.h>
+
 //printers - move that away from app delegate
 #import "TXHPrintersManager.h"
 #import "TXHStarIOPrintersEngine.h"
@@ -26,6 +28,8 @@
 
     [[AFNetworkActivityLogger sharedLogger] startLogging];
     [[AFNetworkActivityLogger sharedLogger] setLevel:AFLoggerLevelDebug];
+    
+    [Crashlytics startWithAPIKey:@"865e1451010c16ff6acd13123915905c9c4b45ab"];
     
     // Remove all local data when launching app
     [TXHTicketingHubManager clearLocalData];
