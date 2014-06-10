@@ -32,6 +32,8 @@
 #import <UIAlertView-Blocks/UIAlertView+Blocks.h>
 
 
+static NSTimeInterval expiredTicketsTimerInterval = 60.0f;
+
 // TODO: almost the same as TXHDoorOrderTicketsListViewController - extract common parts
 
 @interface TXHDoorTicketsListViewController () <TXHTicketDetailsViewControllerDelegate, TXHDoorTicketCellDelegate, UIAlertViewDelegate, TXHScanersManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate>
@@ -62,6 +64,8 @@
 
 @property (strong, nonatomic) NSMapTable * sectionHeaders;
 
+@property (strong, nonatomic) NSTimer * expiredTicketsTimer;
+
 @end
 
 @implementation TXHDoorTicketsListViewController
@@ -82,12 +86,25 @@
     self.scannersManager.delegate = self;
 }
 
+- (void)setupExpiredTicketsTimer
+{
+    if (self.expiredTicketsTimer) return;
+    typeof(self) wself = self;
+    self.expiredTicketsTimer = [NSTimer scheduledTimerWithTimeInterval:expiredTicketsTimerInterval
+                                                                target:wself
+                                                              selector:@selector(removeExpiredTickets:)
+                                                              userInfo:nil
+                                                               repeats:YES];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 
     [self registerForNotifications];
     self.scannersManager.delegate = self;
+    
+    [self setupExpiredTicketsTimer];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -96,6 +113,9 @@
 
     [self unregisterFromNotifications];
     self.scannersManager.delegate = nil;
+    
+    [self.expiredTicketsTimer invalidate];
+    self.expiredTicketsTimer = nil;
 }
 
 - (void)setHideAttending:(BOOL)hideAttending
@@ -228,6 +248,15 @@
     [self loadTickets];
     
     [self updateView];
+}
+
+- (void)removeExpiredTickets:(NSTimer *) __unused timer
+{
+    DLog(@"Removing expired tickets");
+    NSArray * ticketsCopy = [self.tickets copy];
+    for (TXHTicket * ticket in ticketsCopy)
+        if ([ticket.expiresAt compare:[NSDate date]] == NSOrderedAscending)
+            [self removeTicket:ticket];
 }
 
 - (void)loadTickets
@@ -721,7 +750,7 @@
     [self.productManager setTicket:cellTicket
                           attended:cell.switchValue
                         completion:^(TXHTicket *ticket, NSError *error) {
-                            if (error) NSLog(@"Error: %@", error.localizedDescription);
+                            if (error) DLog(@"Error: %@", error.localizedDescription);
                             cell.userInteractionEnabled = YES;
                             [wself.ticketsDisabled removeObject:cellTicket.ticketId];
                             [cell setAttendedAt:cellTicket.attendedAt animated:YES];
