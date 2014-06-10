@@ -160,7 +160,7 @@
 - (void)configureTicketCell:(TXHSalesUpgradeTicketCell *)cell withTicket:(TXHTicket *)ticket
 {
     [cell setTitle:ticket.tier.name];
-    [cell setSubtitle:[self.productManager priceStringForPrice:ticket.price]];
+    [cell setSubtitle:[self.productManager priceStringForPrice:self.upgrade.price]];
 }
 
 #pragma mark - UICollectionViewDelegate
