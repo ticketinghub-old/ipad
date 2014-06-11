@@ -54,6 +54,7 @@ typedef void (^TXHArrayCompletion)(NSArray *array, NSError *error);
 
 // upgrades
 
+- (void)availableUpgradesForCurrentOrderWithCompletion:(TXXDictionaryCompletion)completion;
 - (void)upgradesForCurrentOrderWithCompletion:(TXXDictionaryCompletion)completion;
 - (void)updateOrderWithUpgradesInfo:(NSDictionary *)upgradesInfo completion:(TXHOrderCompletion)completion;
 

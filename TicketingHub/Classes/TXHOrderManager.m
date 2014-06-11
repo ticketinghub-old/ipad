@@ -209,6 +209,41 @@ NSString * const TXHOrderDidChangeNotification = @"TXHOrderDidChangeNotification
     });
 }
 
+- (void)availableUpgradesForCurrentOrderWithCompletion:(void(^)(NSDictionary *upgrades, NSError *error))completion
+{
+    if (!completion) return;
+    
+    __weak typeof(self) wself = self;
+    __block NSError *bError;
+    __block NSMutableDictionary *upgradesDictionary = [NSMutableDictionary dictionary];
+    
+    dispatch_group_t group = dispatch_group_create();
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for (TXHTicket *ticket in wself.order.tickets)
+        {
+            dispatch_group_enter(group);
+            
+            [self.txhManager.client availableUpgradesForTicket:ticket completion:^(NSArray *upgrades, NSError *error) {
+
+                if ([upgrades count])
+                    upgradesDictionary[ticket.ticketId] = upgrades;
+                
+                if (error)
+                    bError = error;
+                
+                dispatch_group_leave(group);
+            }];
+        }
+        
+        dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(upgradesDictionary, bError);
+        });
+    });
+}
+
 - (void)upgradesForCurrentOrderWithCompletion:(void(^)(NSDictionary *upgrades, NSError *error))completion
 {
     if (!completion) return;
@@ -225,7 +260,7 @@ NSString * const TXHOrderDidChangeNotification = @"TXHOrderDidChangeNotification
             dispatch_group_enter(group);
             
             [self.txhManager.client upgradesForTicket:ticket completion:^(NSArray *upgrades, NSError *error) {
-
+                
                 if ([upgrades count])
                     upgradesDictionary[ticket.ticketId] = upgrades;
                 
