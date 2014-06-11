@@ -105,9 +105,20 @@
     UIView *fromView = [self visibleCardView];
     UIView *toView = [self hiddenCardView];
     
+    
+    // workaround to keep keyboard while moving to back card view
+    UITextField * tmpTF;
+    if (cardSide == TXHCardSideBack)
+    {
+        tmpTF = [[UITextField alloc] init];
+        tmpTF.keyboardType = UIKeyboardTypeNumberPad;
+        [self addSubview:tmpTF];
+        [tmpTF becomeFirstResponder];
+    }
+    
     if ([self.delegate respondsToSelector:@selector(txhCardView:didFlipToSide:)])
         [self.delegate txhCardView:self didFlipToSide:cardSide];
-    
+
     [UIView transitionFromView:fromView
                         toView:toView
                       duration:0.5
@@ -116,7 +127,10 @@
                         if (finished)
                         {
                             if ((self.fliped = (cardSide == TXHCardSideBack)))
+                            {
                                 [toView becomeFirstResponder];
+                                [tmpTF removeFromSuperview];
+                            }
                         }
                     }];
 }
