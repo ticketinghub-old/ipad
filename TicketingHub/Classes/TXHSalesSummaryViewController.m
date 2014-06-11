@@ -61,6 +61,16 @@
 {
     _tickets = tickets;
     
+    [self.orderManager upgradesForCurrentOrderWithCompletion:^(NSDictionary *dictionary, NSError *error) {
+        for (TXHTicket * ticket in self.tickets)
+        {
+            ticket.upgrades = [NSSet setWithArray:dictionary[ticket.ticketId]];
+            for (TXHUpgrade * upgrade in ticket.upgrades)
+                ticket.price = @(ticket.price.integerValue - upgrade.price.integerValue);
+        }
+        [self.collectionView reloadData];
+    }];
+    
     [self.collectionView reloadData];
 }
 
