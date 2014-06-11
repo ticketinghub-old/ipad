@@ -825,17 +825,17 @@
                                 <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="105"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Pb3-E9-Dnb">
-                                    <size key="itemSize" width="575" height="25"/>
+                                    <size key="itemSize" width="575" height="35"/>
                                     <size key="headerReferenceSize" width="723" height="50"/>
                                     <size key="footerReferenceSize" width="50" height="4"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="7"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SummaryItemCell" id="xyf-rt-hX0" customClass="TXHSalesSummaryItemCell">
-                                        <rect key="frame" x="0.0" y="50" width="575" height="25"/>
+                                        <rect key="frame" x="0.0" y="50" width="575" height="35"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="575" height="25"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="575" height="35"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fd-HF-lgU">
@@ -856,9 +856,9 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="centerY" secondItem="jBb-wa-14x" secondAttribute="centerY" id="7HK-1d-A56"/>
+                                            <constraint firstAttribute="centerY" secondItem="jBb-wa-14x" secondAttribute="centerY" constant="5" id="7HK-1d-A56"/>
                                             <constraint firstAttribute="trailing" secondItem="jBb-wa-14x" secondAttribute="trailing" constant="112" id="7eV-sy-dbU"/>
-                                            <constraint firstAttribute="centerY" secondItem="5Fd-HF-lgU" secondAttribute="centerY" id="AJD-3P-eYb"/>
+                                            <constraint firstAttribute="centerY" secondItem="5Fd-HF-lgU" secondAttribute="centerY" constant="5" id="AJD-3P-eYb"/>
                                             <constraint firstItem="5Fd-HF-lgU" firstAttribute="leading" secondItem="xyf-rt-hX0" secondAttribute="leading" constant="40" id="icr-my-Thj"/>
                                         </constraints>
                                         <connections>
@@ -899,7 +899,7 @@
                                     </connections>
                                 </collectionReusableView>
                                 <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SalesSummaryFooter" id="Agd-iW-RAS">
-                                    <rect key="frame" x="0.0" y="82" width="575" height="4"/>
+                                    <rect key="frame" x="0.0" y="92" width="575" height="4"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <subviews>
                                         <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J3F-9w-4VH">

@@ -39,7 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self setupCollectionViewContentInset];
     self.valid = YES;
     
     [self updateView];
@@ -53,6 +53,13 @@
     self.subtotalValueLabel.text = [self.productManager priceStringForPrice:[order subtotal]];
     self.taxValueLabel.text      = [self.productManager priceStringForPrice:[order tax]];
     self.taxLabel.text           = self.orderManager.order.taxName;
+}
+
+- (void)setupCollectionViewContentInset
+{
+    UIEdgeInsets insets = self.collectionView.contentInset;
+    insets.bottom = 100;
+    self.collectionView.contentInset = insets;
 }
 
 #pragma mark - accessors
