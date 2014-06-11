@@ -93,7 +93,7 @@ static NSString * const kStoredUserInputsKey = @"kStoredUpgradesUserInputsKey";
     [self.activityView showWithMessage:NSLocalizedString(@"SALESMAN_UPGRADES_LOADING_UPGRADES", nil)
                        indicatorHidden:NO];
     
-    [self.orderManager upgradesForCurrentOrderWithCompletion:^(NSDictionary *ticketUpgradesDictionary, NSError *error) {
+    [self.orderManager availableUpgradesForCurrentOrderWithCompletion:^(NSDictionary *ticketUpgradesDictionary, NSError *error) {
         
         [wself.activityView hide];
         
