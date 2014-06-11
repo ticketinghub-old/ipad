@@ -693,7 +693,7 @@ static NSTimeInterval expiredTicketsTimerInterval = 60.0f;
             [self.collectionView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section]];
         else
             [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
-        [self removeTicket:self.tickets[indexPath.item]];
+        [self removeTicket:[self ticketAtIndexPath:indexPath]];
     } completion:nil];
 }
 
