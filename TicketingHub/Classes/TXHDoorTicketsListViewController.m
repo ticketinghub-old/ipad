@@ -300,7 +300,7 @@ static NSTimeInterval expiredTicketsTimerInterval = 60.0f;
             wself.loadingData = YES;
             [wself.productManager ticketRecordsValidFromDate:[NSDate date]
                                           includingAttended:!wself.hideAttending
-                                                      query:nil
+                                                      query:wself.searchQuery
                                              paginationInfo:wself.paginationInfo
                                                  completion:^(TXHPartialResponsInfo *info, NSArray *ticketRecords, NSError *error) {
                                                      if (wself.isRefreshing)
