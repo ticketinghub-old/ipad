@@ -94,6 +94,7 @@
                                      
                                      [wself.availableDates addObjectsFromArray:availableDates];
                                      [wself reloadCallendar];
+                                     [wself.callendarView selectDateIfAvailable:[NSDate date]];
                                  }];
 }
 
