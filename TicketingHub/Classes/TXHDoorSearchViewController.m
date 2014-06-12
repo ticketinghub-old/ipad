@@ -343,8 +343,17 @@ NSString *const TXHDidSelectOrderNotification   = @"TXHDidSelectOrderNotificatio
     
     [cell setOrderReference:order.reference];
     [cell setPrice:[self.productsManger priceStringForPrice:order.total]];
+    
     [cell setGuestCount:0];
     [cell setAttendingCount:0];
+    
+    [self.productsManger.txhManager.client getTicketsCountForOrder:order completion:^(NSNumber *count, NSError *error) {
+        [cell setGuestCount:count.integerValue];
+    }];
+    
+    [self.productsManger.txhManager.client getAttendeesCountForOrder:order completion:^(NSNumber *count, NSError *error) {
+        [cell setAttendingCount:count.integerValue];
+    }];
     
     if (self.paginationInfo.hasMore && !self.loadingData && indexPath.row == [self.orders count] - 1 )
         [self reloadOrders];
