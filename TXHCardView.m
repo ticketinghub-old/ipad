@@ -139,6 +139,8 @@
 {
     [self.cardFrontView reset];
     [self.cardBackView reset];
+    self.frontSideValid = NO;
+    self.backSideValid = NO;
     
     [self flipToCardSide:TXHCardSideFront];
 }

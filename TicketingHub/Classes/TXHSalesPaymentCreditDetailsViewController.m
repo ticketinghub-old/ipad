@@ -89,6 +89,7 @@
     if (self.fullScreenController)
         return;
     
+    [self.cardView reset];
     TXHFullScreenKeyboardViewController *full = [[TXHFullScreenKeyboardViewController alloc] init];
     full.destinationBackgroundColor = [UIColor whiteColor];
     full.delegate = self;
@@ -197,7 +198,8 @@
     
     [self.fullScreenController hideAniamted:YES
                                  completion:^{
-                                     [wself disableCardAnimated:YES];
+                                     wself.fullScreenController = nil;
+                                     //[wself disableCardAnimated:YES];
                                  }];
 }
 
