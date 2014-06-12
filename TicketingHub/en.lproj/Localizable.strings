@@ -133,6 +133,7 @@
 "TICKET_DETAILS_EXPIRED_ERROR_MESSAGE" = "This ticket has expired, however you can still change the attendance.";
 "TICKET_DETAILS_EARLY_ERROR_MESSAGE"   = "This ticket is early. You can still change the attendance.";
 "TICKET_DETAILS_ERROR_MESSAGE_FORMAT"  = "This ticket was cancelled on %@";
+"ORDER_CANCELLACION_MESSAGE_FORMAT"  = "This order was cancelled on %@";
 
 /* Ticket details */
 "ORDER_DETAILS_TITLE_FORMAT"                  = "Order %@";

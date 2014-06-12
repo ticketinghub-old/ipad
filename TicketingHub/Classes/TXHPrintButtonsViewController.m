@@ -81,7 +81,7 @@
 - (void)showWithCancellationDate:(NSDate *)expirationDate
 {
     NSString *dateString    = [NSDateFormatter txh_fullDateStringFromDate:expirationDate];
-    NSString *messageString = [NSString stringWithFormat:NSLocalizedString(@"TICKET_DETAILS_ERROR_MESSAGE_FORMAT", nil), dateString];
+    NSString *messageString = [NSString stringWithFormat:NSLocalizedString(@"ORDER_CANCELLACION_MESSAGE_FORMAT", nil), dateString];
     
     [self setError:messageString boldPart:dateString];
 }
