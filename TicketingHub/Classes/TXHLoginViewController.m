@@ -14,6 +14,8 @@
 #import <UIView+Shake/UIView+Shake.h>
 #import "UIColor+TicketingHub.h"
 
+#import "TXHSupplier.h"
+
 #import <UIViewController+BHTKeyboardAnimationBlocks/UIViewController+BHTKeyboardNotifications.h>
 
 // The storyboard identifier for this controller
@@ -33,6 +35,8 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
 @property (weak, nonatomic) IBOutlet UIImageView *email;
 @property (weak, nonatomic) IBOutlet UIImageView *passwordIcon;
 @property (weak, nonatomic) IBOutlet UIView      *fieldsContainerView;
+
+@property (strong, nonatomic) NSMutableArray *suppliersArray;
 
 @end
 
@@ -145,21 +149,51 @@ NSString * const LoginViewControllerStoryboardIdentifier = @"LoginViewController
     [self setLoginFieldsEnabled:NO];
     
     __weak typeof(self) wself = self;
-    [TXHTICKETINHGUBCLIENT fetchSuppliersForUsername:self.userField.text
-                                            password:self.passwordField.text
-                                      withCompletion:^(NSArray *suppliers, NSError *error) {
-                                          [wself.activityIndicator stopAnimating];                                          
-                                          [wself setLoginFieldsEnabled:YES];
-                                          
-                                          if (error)
-                                          {
-                                              [wself shakeFields];
-                                              [wself resetPasswordField];
-                                              return;
-                                          }
-                                          
-                                          [wself loginCompleted];
-                                      }];
+    
+    [TXHTICKETINHGUBCLIENT generateAccessTokenForUsername:self.userField.text
+                                                 password:self.passwordField.text
+                                           withCompletion:^(NSString *accessToken, NSError *error) {
+                                               if (error)
+                                               {
+                                                   [wself.activityIndicator stopAnimating];
+                                                   [wself setLoginFieldsEnabled:YES];
+                                                   [wself shakeFields];
+                                                   [wself resetPasswordField];
+                                                   return;
+                                               }
+                                               
+                                               dispatch_async(dispatch_get_main_queue(), ^{
+                                                   [TXHTICKETINHGUBCLIENT fetchSuppliersForUsername:wself.userField.text accessToken:accessToken withCompletion:^(NSArray *suppliers, NSError *errorSuppliers) {
+                                                       [wself.activityIndicator stopAnimating];
+                                                       [wself setLoginFieldsEnabled:YES];
+                                                       wself.suppliersArray = [suppliers mutableCopy];
+                                                       if (errorSuppliers)
+                                                       {
+                                                           [wself shakeFields];
+                                                           [wself resetPasswordField];
+                                                           return;
+                                                       }
+                                                       
+                                                       [wself fetchProductsForNextSupplier];
+                                                   }];
+                                               });
+                                               
+                                           }];
+}
+
+- (void)fetchProductsForNextSupplier
+{
+    if (self.suppliersArray.count == 0)
+    {
+        [self loginCompleted];
+        return;
+    }
+    TXHSupplier * currentSupplier = self.suppliersArray.firstObject;
+    [self.suppliersArray removeObject:currentSupplier];
+    [TXHTICKETINHGUBCLIENT productsForSupplier:currentSupplier withCompletion:^(TXHSupplier *supplier, NSError *errorSuppliers)
+     {
+            [self fetchProductsForNextSupplier];
+     }];
 }
 
 - (void)setLoginFieldsEnabled:(BOOL)enabled
