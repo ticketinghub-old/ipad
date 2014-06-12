@@ -490,7 +490,7 @@ static void * ContentValidContext = &ContentValidContext;
         if (!error)
             [self.stepsManager continueToNextStep];
         else
-            [self.stepCompletionController setButtonsDisabled:self.stepContentController.isValid];
+            [self.stepCompletionController setButtonsDisabled:NO];
     }];
 }
 
