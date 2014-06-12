@@ -215,6 +215,7 @@ didSelectPrinter:(TXHPrinter *)printer
         
         [self.productManager getOrderForTicket:self.ticket
                                     completion:^(TXHOrder *order, NSError *error) {
+                                        if (error) [wself dismissSelf];
                                         [wself updateView];
                                     }];
     }
