@@ -118,7 +118,7 @@ NSString * const TXHSelectedAvailabilityKey         = @"TXHSelectedProductKey";
 
 - (void)getTicketsCountValidFromDate:(NSDate *)date attended:(BOOL)attended completion:(void(^)(NSNumber *count, NSError *error))completion
 {
-    [self.txhManager.client getTicketsCountFromValidDate:date forProduct:self.selectedProduct attended:attended completion:completion];
+    [self.txhManager.client getTicketsCountFromValidDate:date forProduct:self.selectedProduct onlyAttendees:attended completion:completion];
 }
 
 - (void)ticketRecordsForAvailability:(TXHAvailability *)availability andQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion;
@@ -152,8 +152,7 @@ NSString * const TXHSelectedAvailabilityKey         = @"TXHSelectedProductKey";
 
 - (void)getOrderForTicket:(TXHTicket *)ticket completion:(void(^)(TXHOrder *order, NSError *error))completion
 {
-    [self.txhManager.client getOrderForTicekt:ticket
-                                 withProduct:self.selectedProduct
+    [self.txhManager.client getOrderForTicket:ticket
                                   completion:completion];
 }
 
