@@ -384,7 +384,7 @@ static void * ContentValidContext = &ContentValidContext;
         [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
         self.timer = timer;
     }
-    else
+    else if (!order)
     {
         [self.timer invalidate];
         self.timer = nil;
