@@ -218,7 +218,7 @@
 "CNP_CONTROLLER_UPDATING_PAYMENT_MESSAGE"   = "Finalizing payment";
 
 "PAYMENT_OPTION_HANDPOINT_TITLE" = "Card Card";
-"PAYMENT_OPTION_CNP_TITLE"       = "Credit Card";
+"PAYMENT_OPTION_CNP_TITLE"       = "Credit/Debit Card";
 "PAYMENT_OPTION_CASH_TITLE"      = "Cash";
 
 /* Salesman Quantity */
