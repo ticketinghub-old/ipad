@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08180DA5194B1FF700D51ADA /* TXHTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 08180DA4194B1FF700D51ADA /* TXHTextField.m */; };
 		08DD7934194746AA00F5FFF9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08DD7933194746AA00F5FFF9 /* Crashlytics.framework */; };
 		08DD7936194B064B00F5FFF9 /* HALTER__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08DD7935194B064B00F5FFF9 /* HALTER__.ttf */; };
 		3E082DAE190EC909003B60C6 /* TXHConfigurationStaging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E2E2C5A190EB81B006EABA1 /* TXHConfigurationStaging.plist */; };
@@ -172,6 +173,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08180DA3194B1FF700D51ADA /* TXHTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTextField.h; sourceTree = "<group>"; };
+		08180DA4194B1FF700D51ADA /* TXHTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTextField.m; sourceTree = "<group>"; };
 		08DD7933194746AA00F5FFF9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		08DD7935194B064B00F5FFF9 /* HALTER__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HALTER__.ttf; sourceTree = "<group>"; };
 		3E0FF586191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHPayment+DKPOSClientTransactionInfo.h"; sourceTree = "<group>"; };
@@ -520,6 +523,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08180DA2194B1FD800D51ADA /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				08180DA3194B1FF700D51ADA /* TXHTextField.h */,
+				08180DA4194B1FF700D51ADA /* TXHTextField.m */,
+			);
+			name = TextFields;
+			sourceTree = "<group>";
+		};
 		3E0FF585191A2F600067F9F2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +617,7 @@
 		3E3A5B0518AA5D4000A54812 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				08180DA2194B1FD800D51ADA /* TextFields */,
 				3EB60EE418C66F6A00B56182 /* RMDownloadIndicator */,
 				3E6F479818AFD6AC00E644F7 /* Buttons */,
 				EEB1843817D114390025530A /* TXHBaseDataEntryView.h */,
@@ -1646,6 +1659,7 @@
 				3E53C53D18E343FD00FF6F9B /* TXHPrinterSelectionViewController.m in Sources */,
 				58E4FB631760AE5500E328A0 /* main.m in Sources */,
 				EE75D9B417D11311009ADCD8 /* TXHMainViewController.m in Sources */,
+				08180DA5194B1FF700D51ADA /* TXHTextField.m in Sources */,
 				EE75D9B317D11311009ADCD8 /* TXHProductListController.m in Sources */,
 				EEB1849217D115640025530A /* TXHSalesmanDoormanContainerViewController.m in Sources */,
 				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,

@@ -136,6 +136,8 @@
         self.cardNumberField.text = [cardNumber formattedStringWithTrail];
     else
         self.cardNumberField.text = [cardNumber formattedString];
+    
+    self.cardNumberField.text = [self.cardNumberField.text stringByReplacingOccurrencesOfString:@" " withString:@"  "];
 
     [self textFieldIsInvalid:self.cardNumberField withErrors:NO];
     

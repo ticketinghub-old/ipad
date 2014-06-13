@@ -22,12 +22,14 @@ static NSString * const xibName = @"TXHCustomCardView";
                                   owner:owner
                                 options:nil];
     
-    UIFont *cardFont = [UIFont fontWithName:@"Halter" size:26.0];
+    NSString *fontName = @"Halter";
+    UIFont *cardNumberFont = [UIFont fontWithName:fontName size:23.0];
+    UIFont *cardExpiryFont = [UIFont fontWithName:fontName size:18.0];
     
-    [owner.cardFrontView setCardExpiryFont:cardFont];
-    [owner.cardFrontView setCardNumberFont:cardFont];
+    [owner.cardFrontView setCardExpiryFont:cardExpiryFont];
+    [owner.cardFrontView setCardNumberFont:cardNumberFont];
     
-    [owner.cardBackView setCardCvcFont:cardFont];
+    [owner.cardBackView setCardCvcFont:cardNumberFont];
 }
 
 @end
