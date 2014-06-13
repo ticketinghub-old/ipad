@@ -20,6 +20,8 @@
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
 
+@property (assign, nonatomic) BOOL isTorch;
+
 @end
 
 
@@ -49,6 +51,8 @@
     [self.session addOutput:self.output];
     [self.session addInput:self.input];
     
+    self.isTorch = NO;
+    
     [self.output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
     self.output.metadataObjectTypes = @[AVMetadataObjectTypeQRCode, AVMetadataObjectTypeAztecCode];
 }
@@ -66,6 +70,17 @@
     return [videoDevices count] > 0;
 }
 
+- (void)torch:(BOOL)enable
+{
+    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if ([device hasTorch]) {
+        [device lockForConfiguration:nil];
+        [device setTorchMode: enable ? AVCaptureTorchModeOn : AVCaptureTorchModeOff];
+        self.isTorch = enable;
+        [device unlockForConfiguration];
+    }
+}
+
 - (void)startScanning;
 {
     [self.session startRunning];
@@ -80,6 +95,7 @@
 {
     CGPoint locationInView = [tapRecognizer locationInView:tapRecognizer.view];
     [self focusAtPoint:locationInView];
+    [self torch:!self.isTorch];
 }
 
 - (void)focusAtPoint:(CGPoint) aPoint;

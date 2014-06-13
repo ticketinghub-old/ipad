@@ -249,11 +249,13 @@ NSString *const TXHDidSelectOrderNotification   = @"TXHDidSelectOrderNotificatio
 - (void)showCameraPreviewAnimated:(BOOL)animated
 {
     [self setCameraPreviewViewHeightConstraintConstant:300.0 aniamted:animated];
+    [self.scanner torch:YES];
 }
 
 - (void)hideCameraPreviewAnimated:(BOOL)animated
 {
     [self setCameraPreviewViewHeightConstraintConstant:0.0 aniamted:animated];
+    [self.scanner torch:NO];
 }
 
 - (void)setCameraPreviewViewHeightConstraintConstant:(CGFloat)constant aniamted:(BOOL)animated

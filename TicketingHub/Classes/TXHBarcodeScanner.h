@@ -22,6 +22,8 @@
 
 + (BOOL)isCameraAvailable;
 
+- (void)torch:(BOOL)enable;
+
 - (void)startScanning;
 - (void)stopScanning;
 
