@@ -78,6 +78,7 @@
 
 - (void)initializeMSRScanner
 {
+    if (self.scanersManager) return;
     TXHScanersManager *scannersManger = [[TXHScanersManager alloc] initWithInfineaManager:[TXHInfineaManger sharedManager]
                                                                        andScanApiManager:nil];
     scannersManger.delegate = self;
@@ -163,8 +164,8 @@
 {
     if (!self.fullScreenController)
     {
-        self.cardTrackData = cardTrackData;
         [self showCardFullScreen];
+        self.cardTrackData = cardTrackData;
     }
 }
 

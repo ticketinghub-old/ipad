@@ -99,8 +99,8 @@
 
 - (void)flipToCardSide:(TXHCardSide)cardSide
 {
-    if (cardSide == [self cardSide])
-        return;
+    if (cardSide == [self cardSide]) return;
+    if (self.skipFronSide && cardSide == TXHCardSideFront) return;
     
     UIView *fromView = [self visibleCardView];
     UIView *toView = [self hiddenCardView];
