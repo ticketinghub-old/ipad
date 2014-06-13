@@ -62,8 +62,7 @@ NSString * const TXHSelectedAvailabilityKey         = @"TXHSelectedProductKey";
     if ([price isEqualToNumber:@0])
         return @"Free";
     
-    TXHSupplier *suplier = self.selectedProduct.supplier;
-    NSNumberFormatter *formatter = [TXHNUMBERFORMATTERCACHE formatterForSuplier:suplier];
+    NSNumberFormatter *formatter = [TXHNUMBERFORMATTERCACHE formatterForProduct:self.selectedProduct];
     
     return [formatter stringFromNumber:@([price floatValue] / 100.0)];
 }

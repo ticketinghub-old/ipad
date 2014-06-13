@@ -69,7 +69,7 @@
 
 - (void)updateGivenAmountFieldCurrncy
 {
-    NSString *currencyCode = self.productManager.selectedProduct.supplier.currency;
+    NSString *currencyCode = self.productManager.selectedProduct.currency;
     [self.givenAmountValueField.currencyNumberFormatter setCurrencyCode:currencyCode];
     self.givenAmountValueField.amount = @(0);
 }
