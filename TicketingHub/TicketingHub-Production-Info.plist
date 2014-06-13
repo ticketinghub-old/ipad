@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>TXHSharedConfigFile</key>
-	<string>TXHConfigurationShared.plist</string>
-	<key>TXHMainConfigFile</key>
-	<string>TXHConfigurationProduction.plist</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -32,6 +28,15 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>TXHMainConfigFile</key>
+	<string>TXHConfigurationProduction.plist</string>
+	<key>TXHSharedConfigFile</key>
+	<string>TXHConfigurationShared.plist</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>HALTER__.ttf</string>
+		<string>OCR A Std.ttf</string>
+	</array>
 	<key>UIMainStoryboardFile~ipad</key>
 	<string>Storyboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -56,9 +61,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>OCR A Std.ttf</string>
-	</array>
 </dict>
 </plist>

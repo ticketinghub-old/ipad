@@ -22,7 +22,7 @@ static NSString * const xibName = @"TXHCustomCardView";
                                   owner:owner
                                 options:nil];
     
-    UIFont *cardFont = [UIFont fontWithName:@"OCRAStd" size:30.0];
+    UIFont *cardFont = [UIFont fontWithName:@"Halter" size:26.0];
     
     [owner.cardFrontView setCardExpiryFont:cardFont];
     [owner.cardFrontView setCardNumberFont:cardFont];
