@@ -15,7 +15,7 @@
 #import "UIColor+TicketingHub.h"
 
 
-@interface TXHCardBackView ()
+@interface TXHCardBackView () <UITextFieldDelegate>
 
 @property (strong, nonatomic) UIColor *validColor;
 @property (strong, nonatomic) UIColor *invalidColor;
@@ -74,6 +74,18 @@
         [self.delegate txhCardBackViewDidStartEditing:self];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if ([textField isEqual:self.cardCVCField])
+    {
+        [self.cardCVCField resignFirstResponder];
+    
+        if ([self.delegate respondsToSelector:@selector(txhCardBackView:didFinishValid:)])
+            [self.delegate txhCardBackView:self didFinishValid:YES];
+    }
+    return YES;
+}
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)replacementString
 {
     if ([textField isEqual:self.cardCVCField])
@@ -88,25 +100,19 @@
                                                                              withString:replacementString];
     resultString           = [PKTextField textByRemovingUselessSpacesFromString:resultString];
     PKCardCVC *cardCVC     = [PKCardCVC cardCVCWithString:resultString];
-    PKCardType cardType    = self.cardType;
     
     // Restrict length
-    if (![cardCVC isPartiallyValidWithType:cardType]) return NO;
+    if (![cardCVC isPartiallyValidWithType:PKCardTypeAmex]) return NO;
     
     // Strip non-digits
     self.cardCVCField.text = [cardCVC string];
     
-    if ([cardCVC isValidWithType:cardType])
+    if ([cardCVC isValidWithType:PKCardTypeAmex])
     {
         [self textFieldIsValid:self.cardCVCField];
-        [self.cardCVCField resignFirstResponder];
-        
-        if ([self.delegate respondsToSelector:@selector(txhCardBackView:didFinishValid:)])
-            [self.delegate txhCardBackView:self didFinishValid:YES];
     }
     else
     {
-        
         [self textFieldIsInvalid:self.cardCVCField withErrors:NO];
     }
     

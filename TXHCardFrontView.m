@@ -9,7 +9,7 @@
 #import "TXHCardFrontView.h"
 #import "UIColor+TicketingHub.h"
 
-@interface TXHCardFrontView ()
+@interface TXHCardFrontView () <UITextFieldDelegate>
 
 @property (strong, nonatomic) UIColor *validColor;
 @property (strong, nonatomic) UIColor *invalidColor;
@@ -82,6 +82,37 @@
     self.currentField = nil;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if ([textField isEqual:self.cardExpiryField])
+    {
+        PKCardExpiry *cardExpiry = [PKCardExpiry cardExpiryWithString:textField.text];
+        if ([cardExpiry isValid])
+        {
+            [self textFieldIsValid:self.cardExpiryField];
+            [[self nextFirstResponder] becomeFirstResponder];
+        } else if ([cardExpiry isValidLength] && ![cardExpiry isValidDate]) {
+            [self textFieldIsInvalid:self.cardExpiryField withErrors:YES];
+        } else if (![cardExpiry isValidLength]) {
+            [self textFieldIsInvalid:self.cardExpiryField withErrors:NO];
+        }
+    }
+    if ([textField isEqual:self.cardNumberField])
+    {
+        PKCardNumber *cardNumber = [PKCardNumber cardNumberWithString:textField.text];
+        if ([cardNumber isValid])
+        {
+            [self textFieldIsValid:self.cardNumberField];
+            [[self nextFirstResponder] becomeFirstResponder];
+        } else if ([cardNumber isValidLength] && ![cardNumber isValidLuhn]) {
+            [self textFieldIsInvalid:self.cardNumberField withErrors:YES];
+        } else if (![cardNumber isValidLength]) {
+            [self textFieldIsInvalid:self.cardNumberField withErrors:NO];
+        }
+    }
+    return NO;
+}
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)replacementString
 {
     if ([textField isEqual:self.cardNumberField])
@@ -105,16 +136,9 @@
         self.cardNumberField.text = [cardNumber formattedStringWithTrail];
     else
         self.cardNumberField.text = [cardNumber formattedString];
+
+    [self textFieldIsInvalid:self.cardNumberField withErrors:NO];
     
-    if ([cardNumber isValid])
-    {
-        [self textFieldIsValid:self.cardNumberField];
-        [[self nextFirstResponder] becomeFirstResponder];
-    }
-    else if ([cardNumber isValidLength] && ![cardNumber isValidLuhn])
-        [self textFieldIsInvalid:self.cardNumberField withErrors:YES];
-    else if (![cardNumber isValidLength])
-        [self textFieldIsInvalid:self.cardNumberField withErrors:NO];
     return NO;
 }
 
@@ -135,15 +159,7 @@
         self.cardExpiryField.text = [cardExpiry formattedString];
     }
     
-    if ([cardExpiry isValid])
-    {
-        [self textFieldIsValid:self.cardExpiryField];
-        [[self nextFirstResponder] becomeFirstResponder];
-    } else if ([cardExpiry isValidLength] && ![cardExpiry isValidDate]) {
-        [self textFieldIsInvalid:self.cardExpiryField withErrors:YES];
-    } else if (![cardExpiry isValidLength]) {
-        [self textFieldIsInvalid:self.cardExpiryField withErrors:NO];
-    }
+    [self textFieldIsInvalid:self.cardExpiryField withErrors:NO];
     
     return NO;
 }
@@ -161,8 +177,7 @@
     } else {
         textField.textColor = self.validColor;
     }
-    
-    [self checkValid];
+
 }
 
 - (void)setValid:(BOOL)valid
