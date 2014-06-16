@@ -377,10 +377,10 @@ static void * ContentValidContext = &ContentValidContext;
 - (void)orderDidChange:(NSNotification *)note
 {
     TXHOrder *order = self.orderManager.order;
-    
+    __weak typeof(self) wself = self;
     if (order && !order.confirmedAt && !self.timer)
     {
-        NSTimer *timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
+        NSTimer *timer = [NSTimer timerWithTimeInterval:1 target:wself selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
         [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
         self.timer = timer;
     }
