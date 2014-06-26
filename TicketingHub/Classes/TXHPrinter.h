@@ -51,7 +51,7 @@ typedef void (^TXHPrinterContinueBlock)(void (^continuePrintingBlock)(BOOL conti
  
  gets called in the main thread
  */
-- (void)printImage:(UIImage *)image completion:(TXHPrinterCompletionBlock)completion;;
+- (void)printImageWithURL:(NSURL *)url completion:(TXHPrinterCompletionBlock)completion;
 
 /*
     sends open drawer command to the printer

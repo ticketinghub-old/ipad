@@ -17,9 +17,9 @@
                     withPrinter:(TXHPrinter *)printer
                 completionBlock:(TXHPrinterCompletionBlock)completionBlock;
 
-- (void)printImage:(UIImage *)image
-       withPrinter:(TXHPrinter *)printer
-   completionBlock:(TXHPrinterCompletionBlock)completion;
+- (void)printImageWithURL:(NSURL *)url
+              withPrinter:(TXHPrinter *)printer
+          completionBlock:(TXHPrinterCompletionBlock)completion;
 
 - (void)openDrawerFromPrinter:(TXHPrinter *)printer
                    completion:(TXHPrinterCompletionBlock)completion;

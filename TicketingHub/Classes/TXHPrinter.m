@@ -43,9 +43,9 @@
                                 completionBlock:completion];
 }
 
-- (void)printImage:(UIImage *)image completion:(TXHPrinterCompletionBlock)completion
+- (void)printImageWithURL:(NSURL *)url completion:(TXHPrinterCompletionBlock)completion
 {
-    [self.printerEngine printImage:image
+    [self.printerEngine printImageWithURL:url
                        withPrinter:self
                    completionBlock:completion];
 }
@@ -63,7 +63,7 @@
 
 - (NSUInteger)dpi
 {
-    return 0;
+    return 200;
 }
 
 - (BOOL)hasCutter

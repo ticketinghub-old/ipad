@@ -156,8 +156,9 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
     }
 }
 
-- (void)printImage:(UIImage *)image withPrinter:(TXHPrinter *)printer completionBlock:(TXHPrinterCompletionBlock)completion
+- (void)printImageWithURL:(NSURL *)url withPrinter:(TXHPrinter *)printer completionBlock:(TXHPrinterCompletionBlock)completion
 {
+    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
     [self printImg:image withPrinter:printer completionBlock:^(NSError *error) {
         if (completion) completion(error,NO);
     }];

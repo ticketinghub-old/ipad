@@ -10,6 +10,7 @@
 
 #import "TXHTicketingHubManager.h"
 #import "TXHPrintersManager.h"
+#import "TXHBocaPrinter.h"
 
 @interface TXHPrintersUtility ()
 
@@ -140,6 +141,13 @@
     }];
 }
 
+- (TXHDocumentFormat)getDocumentFormat
+{
+    if ([self.selectedPrinter isKindOfClass:[TXHBocaPrinter class]])
+        return TXHDocumentFormatBMP;
+    return TXHDocumentFormatPNG;
+}
+
 - (void)printTicketsWithTemplate:(TXHTicketTemplate *)template
 {
     if (!template) return;
@@ -156,10 +164,10 @@
     for (TXHTicket * ticket in self.order.tickets) {
         if (printingError) break;
         [self.delegate txhPrintersUtility:self didStartLoadingType:TXHPrintTypeTemplates];
-        [self.client getTicketImageToPrintForTicket:ticket withTemplet:template format:TXHDocumentFormatPNG completion:^(UIImage *image, NSError *err) {
+        [self.client getTicketImageToPrintForTicket:ticket withTemplet:template dpi:self.selectedPrinter.dpi format:[self getDocumentFormat] completion:^(NSURL *url, NSError *error) {
             [wself.delegate txhPrintersUtility:self didFinishLoadingType:TXHPrintTypeTemplates error:nil];
             [wself.delegate txhPrintersUtility:self didStartPrintingType:wself.printType];
-                [wself.selectedPrinter printImage:image completion:ticketCompletion];
+                [wself.selectedPrinter printImageWithURL:url completion:ticketCompletion];
         }];
     }
 }
@@ -167,8 +175,8 @@
 - (void)printTicketWithTemplate:(TXHTicketTemplate *)template
 {
     __weak typeof(self) wself = self;
-    [self.client getTicketImageToPrintForTicket:self.ticket withTemplet:template format:TXHDocumentFormatPNG completion:^(UIImage *image, NSError *err) {
-        [wself.selectedPrinter printImage:image completion:^(NSError *error, BOOL canceled) {
+    [self.client getTicketImageToPrintForTicket:self.ticket withTemplet:template dpi:self.selectedPrinter.dpi format:[self getDocumentFormat] completion:^(NSURL *url, NSError *error) {
+        [wself.selectedPrinter printImageWithURL:url completion:^(NSError *err, BOOL canceled) {
             [wself.delegate txhPrintersUtility:wself didFinishPrintingType:wself.printType error:error];
         }];
     }];
