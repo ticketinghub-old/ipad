@@ -61,7 +61,6 @@
 		3E87709818D7355600585FFA /* Salesman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E87709A18D7355600585FFA /* Salesman.storyboard */; };
 		3E8D76091917921000EB9588 /* libdtdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8D76081917921000EB9588 /* libdtdev.a */; };
 		3E8FD59318C74CD70066FA50 /* TXHDoorSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8FD59218C74CD70066FA50 /* TXHDoorSearchViewController.m */; };
-		3E938D9E190FE6F900FC29E9 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E938D9D190FE6F900FC29E9 /* Reveal.framework */; };
 		3E938DB1190FED7A00FC29E9 /* DKPOSClientFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E938DA4190FED7A00FC29E9 /* DKPOSClientFactory.m */; };
 		3E938DB2190FED7A00FC29E9 /* DKPOSClientTransactionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E938DA6190FED7A00FC29E9 /* DKPOSClientTransactionInfo.m */; };
 		3E938DB3190FED7A00FC29E9 /* DKPOSClientTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E938DA8190FED7A00FC29E9 /* DKPOSClientTypes.m */; };
@@ -275,7 +274,6 @@
 		3E8D76081917921000EB9588 /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libdtdev.a; path = ../../extLibraries/libdtdev.a; sourceTree = "<group>"; };
 		3E8FD59118C74CD70066FA50 /* TXHDoorSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorSearchViewController.h; sourceTree = "<group>"; };
 		3E8FD59218C74CD70066FA50 /* TXHDoorSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorSearchViewController.m; sourceTree = "<group>"; };
-		3E938D9D190FE6F900FC29E9 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		3E938DA2190FED7A00FC29E9 /* DKPOSClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKPOSClient.h; sourceTree = "<group>"; };
 		3E938DA3190FED7A00FC29E9 /* DKPOSClientFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKPOSClientFactory.h; sourceTree = "<group>"; };
 		3E938DA4190FED7A00FC29E9 /* DKPOSClientFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKPOSClientFactory.m; sourceTree = "<group>"; };
@@ -494,7 +492,6 @@
 				CEA4926CD193447DAE8A8A56 /* libPods.a in Frameworks */,
 				3EB09806191D139D00159749 /* libheft.a in Frameworks */,
 				3E2B085518F5719600F13214 /* StarIO.framework in Frameworks */,
-				3E938D9E190FE6F900FC29E9 /* Reveal.framework in Frameworks */,
 				4D68DAAB178B0A5500743227 /* AVFoundation.framework in Frameworks */,
 				58E4FB591760AE5500E328A0 /* CoreGraphics.framework in Frameworks */,
 				58E4FB571760AE5500E328A0 /* Foundation.framework in Frameworks */,
@@ -1301,7 +1298,6 @@
 				3EC14EE219225C1A00306027 /* CoreMedia.framework */,
 				3EC14EE019225BD400306027 /* libiconv.dylib */,
 				3EC14EDE19225BC500306027 /* libstdc++.dylib */,
-				3E938D9D190FE6F900FC29E9 /* Reveal.framework */,
 				3E2B085418F5719600F13214 /* StarIO.framework */,
 				3EA52BF618E2EFF000FEA0CA /* ExternalAccessory.framework */,
 				4D68DAAA178B0A5400743227 /* AVFoundation.framework */,
@@ -1903,7 +1899,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E97C86DA-9485-4A3C-8748-4213676FAEA4";
+				PROVISIONING_PROFILE = "DEDC96DF-512A-4639-A981-C03358CD8CA4";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
@@ -2015,6 +2011,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "87416067-DBA7-41A0-AC5E-E3FBB40A6EC0";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
@@ -2126,7 +2123,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2CF04C3B-C949-43CB-9647-562C157A657F";
+				PROVISIONING_PROFILE = "01A7F5EF-9375-4B3D-B8C0-8E255D3BD266";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
@@ -2282,7 +2279,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E97C86DA-9485-4A3C-8748-4213676FAEA4";
+				PROVISIONING_PROFILE = "DEDC96DF-512A-4639-A981-C03358CD8CA4";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
@@ -2332,6 +2329,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "87416067-DBA7-41A0-AC5E-E3FBB40A6EC0";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
@@ -2467,7 +2465,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2CF04C3B-C949-43CB-9647-562C157A657F";
+				PROVISIONING_PROFILE = "01A7F5EF-9375-4B3D-B8C0-8E255D3BD266";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
