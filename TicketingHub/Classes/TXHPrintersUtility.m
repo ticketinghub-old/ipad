@@ -10,7 +10,6 @@
 
 #import "TXHTicketingHubManager.h"
 #import "TXHPrintersManager.h"
-#import "TXHBocaPrinter.h"
 
 @interface TXHPrintersUtility ()
 
@@ -143,8 +142,6 @@
 
 - (TXHDocumentFormat)getDocumentFormat
 {
-    if ([self.selectedPrinter isKindOfClass:[TXHBocaPrinter class]])
-        return TXHDocumentFormatBMP;
     return TXHDocumentFormatPNG;
 }
 
