@@ -568,17 +568,20 @@ static NSTimeInterval expiredTicketsTimerInterval = 60.0f;
 
 - (void)lookupTicketWithQRCode:(NSString *)barcode
 {
-    NSDictionary *decodedBarcode = [TXHTicket decodeBarcode:barcode];
-    NSNumber *ticketSeqID = decodedBarcode[kTXHBarcodeTicketSeqIdKey];
+    NSCharacterSet *whitespaces  = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    NSString *trimmedBarcode     = [barcode stringByTrimmingCharactersInSet:whitespaces];
+    NSDictionary *decodedBarcode = [TXHTicket decodeBarcode:trimmedBarcode];
+    NSNumber *ticketSeqID        = decodedBarcode[kTXHBarcodeTicketSeqIdKey];
     
-    self.loadingData = YES;
-
     if (!ticketSeqID)
     {
+        [self hideInfoLabel];
         [self showErrorWithMessage:NSLocalizedString(@"SCANNER_ERROR_INCORRECT_DATA", nil)];
         return;
     }
     
+    self.loadingData = YES;
+
     [self showInfolabelWithText:NSLocalizedString(@"SCANNER_LOADING_TICKET_INFORMATION", "") withIndicator:YES];
     __weak typeof(self) wself = self;
     [self.productManager searchForTicketWithSeqID:ticketSeqID
