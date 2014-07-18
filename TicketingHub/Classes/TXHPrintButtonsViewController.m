@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet TXHBorderedButton *printTicketsButton;
 @property (weak, nonatomic) IBOutlet TXHBorderedButton *printReciptButton;
 @property (weak, nonatomic) IBOutlet TXHBorderedButton *markAllAttendingButton;
-@property (weak, nonatomic) IBOutlet TXHBorderedButton *cancelOrderButton;
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @end
 
@@ -65,7 +64,6 @@
 
 - (void)setButtonsHidden:(BOOL)hidden
 {
-    self.cancelOrderButton.hidden      = hidden;
     self.markAllAttendingButton.hidden = hidden;
     self.printReciptButton.hidden      = hidden;
     self.printTicketsButton.hidden     = hidden;
@@ -110,11 +108,6 @@
 - (IBAction)printReciptAction:(id)sender
 {
     [self.delegate txhPrintButtonsViewControllerPrintReciptAction:sender];
-}
-
-- (IBAction)cancelButtonAction:(id)sender
-{
-    [self.delegate txhPrintButtonsViewControllerCancelButtonAction:sender];
 }
 
 - (IBAction)markAttendingButtonAction:(id)sender

@@ -13,7 +13,6 @@
 
 @protocol TXHPrintButtonsViewControllerDelegate <NSObject>
 
-- (void)txhPrintButtonsViewControllerCancelButtonAction:(TXHBorderedButton *)button;
 - (void)txhPrintButtonsViewControllerMarkAttendingButtonAction:(TXHBorderedButton *)button;
 - (void)txhPrintButtonsViewControllerPrintReciptAction:(TXHBorderedButton *)button;
 - (void)txhPrintButtonsViewControllerPrintTicketsAction:(TXHBorderedButton *)button;

@@ -219,21 +219,6 @@
 
 #pragma mark - TXHPrintButtonsViewControllerDelegate
 
-- (void)txhPrintButtonsViewControllerCancelButtonAction:(TXHBorderedButton *)button
-{
-    __weak typeof(self) wself = self;
-    
-    [self.productManager cancelOrder:self.order
-                          completion:^(TXHOrder *order, NSError *error) {
-                              if (error)
-                                  [wself showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
-                                                    message:error.localizedDescription
-                                                     action:nil];
-                              else if (order)
-                                  wself.order = order;
-                          }];
-}
-
 - (void)txhPrintButtonsViewControllerMarkAttendingButtonAction:(TXHBorderedButton *)button
 {
     __weak typeof(self) wself = self;
