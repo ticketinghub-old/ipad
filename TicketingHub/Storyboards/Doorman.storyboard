@@ -623,55 +623,11 @@
                                                     <action selector="attendedButtonAction:" destination="o2r-d6-8fe" eventType="touchUpInside" id="P60-0W-RTr"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWp-w6-FNQ" customClass="TXHBorderedButton">
-                                                <rect key="frame" x="379" y="31" width="200" height="60"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="TKp-Af-ZhH"/>
-                                                    <constraint firstAttribute="height" constant="60" id="gmt-Y1-MRF"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="19"/>
-                                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                                <state key="normal" title="Print Ticket">
-                                                    <color key="titleColor" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <integer key="value" value="15"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <integer key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.17254901959999999" green="0.49803921569999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBorderColor">
-                                                        <color key="value" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="normalFillColor">
-                                                        <color key="value" red="0.17254901959999999" green="0.49803921569999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedFillColor">
-                                                        <color key="value" red="0.1058823529" green="0.31764705879999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
-                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedTextColor">
-                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="printTicketButton:" destination="o2r-d6-8fe" eventType="touchUpInside" id="MqA-1D-8kK"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.91372549020000005" green="0.93725490199999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="3sa-ZU-aTV" firstAttribute="leading" secondItem="eWp-w6-FNQ" secondAttribute="trailing" constant="30" id="1tQ-mL-zT6"/>
                                             <constraint firstAttribute="trailing" secondItem="3sa-ZU-aTV" secondAttribute="trailing" constant="30" id="C6W-df-0D9"/>
                                             <constraint firstAttribute="centerY" secondItem="vVK-5q-iEw" secondAttribute="centerY" id="Kwk-cN-EE9"/>
-                                            <constraint firstAttribute="centerY" secondItem="eWp-w6-FNQ" secondAttribute="centerY" id="Xod-Gv-M0q"/>
                                             <constraint firstAttribute="centerY" secondItem="3sa-ZU-aTV" secondAttribute="centerY" id="aSv-4T-Xmu"/>
                                             <constraint firstItem="vVK-5q-iEw" firstAttribute="leading" secondItem="8eY-Bc-PRb" secondAttribute="leading" constant="30" id="acP-2l-Jv2"/>
                                             <constraint firstAttribute="height" constant="122" id="yLY-Aq-bcY"/>
@@ -816,7 +772,6 @@
                         <outlet property="errorView" destination="z6R-wx-NFg" id="ilG-t1-MgZ"/>
                         <outlet property="orderButton" destination="vVK-5q-iEw" id="7yD-aj-V2g"/>
                         <outlet property="priceLabel" destination="XtM-3P-YZ0" id="RZ7-D2-phh"/>
-                        <outlet property="printTicketButton" destination="eWp-w6-FNQ" id="yKy-2e-3bS"/>
                         <outlet property="subtitleLabel" destination="MIJ-dw-jeQ" id="JCl-cN-msz"/>
                         <outlet property="titleLabel" destination="agS-3l-Tu5" id="iEJ-PM-aiJ"/>
                         <outlet property="upgradesLabel" destination="Ra8-PU-BGr" id="S5i-Te-Abq"/>
