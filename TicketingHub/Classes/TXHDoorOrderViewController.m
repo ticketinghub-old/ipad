@@ -14,11 +14,7 @@
 #import "TXHDoorOrderDetailsViewController.h"
 #import "TXHDoorOrderTicketsListViewController.h"
 
-#import "TXHPrintButtonsViewController.h"
-
-#import "TXHPrinterSelectionViewController.h"
-#import "TXHPrintersUtility.h"
-#import "TXHPrintersManager.h"
+#import "TXHOrderFooterViewController.h"
 
 #import "TXHActivityLabelPrintersUtilityDelegate.h"
 #import "TXHActivityLabelView.h"
@@ -26,22 +22,17 @@
 #import "UIColor+TicketingHub.h"
 #import <UIAlertView-Blocks/UIAlertView+Blocks.h>
 
-@interface TXHDoorOrderViewController () <TXHPrintButtonsViewControllerDelegate, TXHPrinterSelectionViewControllerDelegate>
+@interface TXHDoorOrderViewController () <TXHOrderFooterViewControllerDelegate>
 
 @property (weak, nonatomic) TXHDoorOrderDetailsViewController     *orderDetailsViewController;
 @property (weak, nonatomic) TXHDoorOrderTicketsListViewController *orderTicketsListViewController;
-@property (weak, nonatomic) TXHPrintButtonsViewController         *printButtonsViewController;
+@property (weak, nonatomic) TXHOrderFooterViewController         *printButtonsViewController;
 
 @property (strong, nonatomic) TXHActivityLabelView *activityView;
 
 @property (strong, nonatomic) TXHOrder *order;
 @property (strong, nonatomic) TXHTicket *ticket;
 @property (strong, nonatomic) TXHProductsManager *productManager;
-
-@property (assign, nonatomic) TXHPrintType selectedPrintType;
-@property (strong, nonatomic) TXHPrintersUtility *printingUtility;
-@property (strong, nonatomic) TXHActivityLabelPrintersUtilityDelegate *printingUtilityDelegate;
-@property (strong, nonatomic) UIPopoverController *printerSelectionPopover;
 
 @end
 
@@ -167,23 +158,6 @@
     return _activityView;
 }
 
-- (TXHPrintersUtility *)printingUtility
-{
-    if (!_printingUtility)
-    {
-        TXHActivityLabelPrintersUtilityDelegate *printingUtilityDelegate =
-        [TXHActivityLabelPrintersUtilityDelegate new];
-        printingUtilityDelegate.activityView = self.activityView;
-        
-        TXHPrintersUtility *printingUtility = [[TXHPrintersUtility alloc] initWithTicketingHubCLient:self.productManager.txhManager.client];
-        printingUtility.delegate = printingUtilityDelegate;
-        
-        _printingUtility = printingUtility;
-        _printingUtilityDelegate = printingUtilityDelegate;
-    }
-    return _printingUtility;
-}
-
 #pragma mark - private methods
 
 - (void)showLoadingIndicator
@@ -234,46 +208,6 @@
                                             }];
 }
 
-- (void)txhPrintButtonsViewControllerPrintReciptAction:(TXHBorderedButton *)button
-{
-    self.selectedPrintType = TXHPrintTypeRecipt;
-    [self showPrinterSelectorFromButton:(UIButton *)button];
-}
-
-- (void)txhPrintButtonsViewControllerPrintTicketsAction:(TXHBorderedButton *)button
-{
-    self.selectedPrintType = TXHPrintTypeTickets;
-    [self showPrinterSelectorFromButton:(UIButton *)button];
-}
-
-- (void)showPrinterSelectorFromButton:(UIButton *)button
-{
-    TXHPrinterSelectionViewController *printerSelector = [[TXHPrinterSelectionViewController alloc] initWithPrintersManager:TXHPRINTERSMANAGER];
-    printerSelector.delegate = self;
-    
-    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:printerSelector];
-    popover.popoverContentSize = CGSizeMake(200, 110);
-    
-    CGRect fromRect = [button.superview convertRect:button.frame toView:self.view];
-    
-    [popover presentPopoverFromRect:fromRect
-                             inView:self.view
-           permittedArrowDirections:UIPopoverArrowDirectionAny
-                           animated:YES];
-    
-    self.printerSelectionPopover = popover;
-}
-
-#pragma mark - TXHPrinterSelectionViewControllerDelegate
-
-- (void)txhPrinterSelectionViewController:(TXHPrinterSelectionViewController *)controller
-                         didSelectPrinter:(TXHPrinter *)printer
-{
-    [self.printerSelectionPopover dismissPopoverAnimated:YES];
-    self.printerSelectionPopover = nil;
-    
-    [self.printingUtility startPrintingWithType:self.selectedPrintType onPrinter:printer withOrder:self.order];
-}
 
 
 @end

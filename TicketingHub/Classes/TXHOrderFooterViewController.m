@@ -6,22 +6,20 @@
 //  Copyright (c) 2014 TicketingHub. All rights reserved.
 //
 
-#import "TXHPrintButtonsViewController.h"
+#import "TXHOrderFooterViewController.h"
 #import "TXHGradientView.h"
 #import "TXHBorderedButton.h"
 
 #import "NSDateFormatter+DisplayFormat.h"
 #import "UIFont+TicketingHub.h"
 
-@interface TXHPrintButtonsViewController ()
+@interface TXHOrderFooterViewController ()
 
-@property (weak, nonatomic) IBOutlet TXHBorderedButton *printTicketsButton;
-@property (weak, nonatomic) IBOutlet TXHBorderedButton *printReciptButton;
 @property (weak, nonatomic) IBOutlet TXHBorderedButton *markAllAttendingButton;
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @end
 
-@implementation TXHPrintButtonsViewController
+@implementation TXHOrderFooterViewController
 
 - (void)viewDidLoad
 {
@@ -65,8 +63,6 @@
 - (void)setButtonsHidden:(BOOL)hidden
 {
     self.markAllAttendingButton.hidden = hidden;
-    self.printReciptButton.hidden      = hidden;
-    self.printTicketsButton.hidden     = hidden;
 }
 
 - (void)setOrder:(TXHOrder *)order
@@ -98,16 +94,6 @@
     }
     self.messageLabel.hidden = NO;
     self.messageLabel.attributedText = errorMessageAttributed;
-}
-
-- (IBAction)printTicketsAction:(id)sender
-{
-    [self.delegate txhPrintButtonsViewControllerPrintTicketsAction:sender];
-}
-
-- (IBAction)printReciptAction:(id)sender
-{
-    [self.delegate txhPrintButtonsViewControllerPrintReciptAction:sender];
 }
 
 - (IBAction)markAttendingButtonAction:(id)sender

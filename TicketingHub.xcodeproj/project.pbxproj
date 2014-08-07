@@ -30,7 +30,7 @@
 		3E44157018AB80EA00C4AE1C /* TXHTicketingHubManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E44156F18AB80EA00C4AE1C /* TXHTicketingHubManager.m */; };
 		3E488BD918BE850600E90BE6 /* RMDisplayLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E488BD618BE850600E90BE6 /* RMDisplayLabel.m */; };
 		3E488BDA18BE850600E90BE6 /* RMDownloadIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E488BD818BE850600E90BE6 /* RMDownloadIndicator.m */; };
-		3E4ADF7318D8C17400D2C508 /* TXHPrintButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4ADF7218D8C17400D2C508 /* TXHPrintButtonsViewController.m */; };
+		3E4ADF7318D8C17400D2C508 /* TXHOrderFooterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4ADF7218D8C17400D2C508 /* TXHOrderFooterViewController.m */; };
 		3E4ADF7618D9ED2800D2C508 /* TXHSignaturePadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4ADF7518D9ED2800D2C508 /* TXHSignaturePadViewController.m */; };
 		3E5039C41924CA1800ACFA91 /* TXHCardBackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5039BE1924CA1800ACFA91 /* TXHCardBackView.m */; };
 		3E5039C51924CA1800ACFA91 /* TXHCardFrontView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5039C01924CA1800ACFA91 /* TXHCardFrontView.m */; };
@@ -215,8 +215,8 @@
 		3E488BD618BE850600E90BE6 /* RMDisplayLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDisplayLabel.m; sourceTree = "<group>"; };
 		3E488BD718BE850600E90BE6 /* RMDownloadIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDownloadIndicator.h; sourceTree = "<group>"; };
 		3E488BD818BE850600E90BE6 /* RMDownloadIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDownloadIndicator.m; sourceTree = "<group>"; };
-		3E4ADF7118D8C17400D2C508 /* TXHPrintButtonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHPrintButtonsViewController.h; sourceTree = "<group>"; };
-		3E4ADF7218D8C17400D2C508 /* TXHPrintButtonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHPrintButtonsViewController.m; sourceTree = "<group>"; };
+		3E4ADF7118D8C17400D2C508 /* TXHOrderFooterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHOrderFooterViewController.h; sourceTree = "<group>"; };
+		3E4ADF7218D8C17400D2C508 /* TXHOrderFooterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOrderFooterViewController.m; sourceTree = "<group>"; };
 		3E4ADF7418D9ED2800D2C508 /* TXHSignaturePadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHSignaturePadViewController.h; path = TicketingHub/Classes/TXHSignaturePadViewController.h; sourceTree = SOURCE_ROOT; };
 		3E4ADF7518D9ED2800D2C508 /* TXHSignaturePadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHSignaturePadViewController.m; path = TicketingHub/Classes/TXHSignaturePadViewController.m; sourceTree = SOURCE_ROOT; };
 		3E5039BD1924CA1800ACFA91 /* TXHCardBackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHCardBackView.h; sourceTree = SOURCE_ROOT; };
@@ -812,8 +812,8 @@
 		3E4ADF7018D8C15000D2C508 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				3E4ADF7118D8C17400D2C508 /* TXHPrintButtonsViewController.h */,
-				3E4ADF7218D8C17400D2C508 /* TXHPrintButtonsViewController.m */,
+				3E4ADF7118D8C17400D2C508 /* TXHOrderFooterViewController.h */,
+				3E4ADF7218D8C17400D2C508 /* TXHOrderFooterViewController.m */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -1716,7 +1716,7 @@
 				EE75D99917D11048009ADCD8 /* TXHSalesPaymentViewController.m in Sources */,
 				3EF72D89192E382600F27B6B /* TXHSalesUpgradeTicketCell.m in Sources */,
 				3E22139B18AA791000DE35A6 /* ArrayDataSource.m in Sources */,
-				3E4ADF7318D8C17400D2C508 /* TXHPrintButtonsViewController.m in Sources */,
+				3E4ADF7318D8C17400D2C508 /* TXHOrderFooterViewController.m in Sources */,
 				3EC8845B18C4984B00CE0597 /* UIResponder+FirstResponder.m in Sources */,
 				EE75D99C17D11048009ADCD8 /* TXHSalesSummaryItemCell.m in Sources */,
 				3E9BA43F19351EDB00780E78 /* TXHDoorTicketsListHeaderView.m in Sources */,
