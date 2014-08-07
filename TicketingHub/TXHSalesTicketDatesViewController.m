@@ -20,9 +20,10 @@
 
 #import "TXHActivityLabelView.h"
 #import <UIAlertView-Blocks/UIAlertView+Blocks.h>
+#import <CoreLocation/CoreLocation.h>
 
 
-@interface TXHSalesTicketDatesViewController () <CALViewDataSource, CALViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface TXHSalesTicketDatesViewController () <CALViewDataSource, CALViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, CLLocationManagerDelegate>
 
 @property (readwrite, assign, nonatomic, getter = isValid) BOOL valid;
 @property (readwrite, assign, nonatomic) BOOL shouldBeSkiped;
@@ -44,6 +45,10 @@
 @property (strong, nonatomic) NSDate *selectedDate;
 @property (strong, nonatomic) TXHAvailability *selectedAvailability;
 
+
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *currentLocation;
+
 @end
 
 @implementation TXHSalesTicketDatesViewController
@@ -57,6 +62,23 @@
     [self loadDates];
     
     [self updateView];
+}
+
+- (void)startUpdatingLocation
+{
+    [self.locationManager startUpdatingLocation];
+}
+
+- (CLLocationManager *)locationManager
+{
+    if (!_locationManager)
+    {
+        CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+        _locationManager = locationManager;
+    }
+    return _locationManager;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -332,6 +354,8 @@
                        indicatorHidden:NO];
 
     [self.orderManager reserveTicketsWithAvailability:self.selectedAvailability
+                                             latitude:self.currentLocation.coordinate.latitude
+                                            longitude:self.currentLocation.coordinate.longitude
                                              completion:^(TXHOrder *order, NSError *error) {
                                                  [wself.activityView hide];
                                                  
@@ -369,5 +393,19 @@
     [alertView show];
 }
 
+#pragma mark CLLocationMangerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation
+{
+    self.currentLocation = newLocation;
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error
+{
+    
+}
 
 @end

@@ -27,6 +27,7 @@
 		3E3D46EA18ACB89A00275ACF /* FetchedResultsControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D46E918ACB89A00275ACF /* FetchedResultsControllerDataSource.m */; };
 		3E3D46EE18ACBB8500275ACF /* UIColor+TicketingHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D46ED18ACBB8500275ACF /* UIColor+TicketingHub.m */; };
 		3E407C091920F7C90002B6FE /* TXHGateway+CNPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E407C081920F7C90002B6FE /* TXHGateway+CNPHelper.m */; };
+		3E4217C21993BB4600E3AFD3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4217C11993BB4600E3AFD3 /* CoreLocation.framework */; };
 		3E44157018AB80EA00C4AE1C /* TXHTicketingHubManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E44156F18AB80EA00C4AE1C /* TXHTicketingHubManager.m */; };
 		3E488BD918BE850600E90BE6 /* RMDisplayLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E488BD618BE850600E90BE6 /* RMDisplayLabel.m */; };
 		3E488BDA18BE850600E90BE6 /* RMDownloadIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E488BD818BE850600E90BE6 /* RMDownloadIndicator.m */; };
@@ -209,6 +210,7 @@
 		3E3D46ED18ACBB8500275ACF /* UIColor+TicketingHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TicketingHub.m"; sourceTree = "<group>"; };
 		3E407C071920F7C90002B6FE /* TXHGateway+CNPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHGateway+CNPHelper.h"; sourceTree = "<group>"; };
 		3E407C081920F7C90002B6FE /* TXHGateway+CNPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHGateway+CNPHelper.m"; sourceTree = "<group>"; };
+		3E4217C11993BB4600E3AFD3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3E44156E18AB80EA00C4AE1C /* TXHTicketingHubManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketingHubManager.h; sourceTree = "<group>"; };
 		3E44156F18AB80EA00C4AE1C /* TXHTicketingHubManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubManager.m; sourceTree = "<group>"; };
 		3E488BD518BE850600E90BE6 /* RMDisplayLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDisplayLabel.h; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E4217C21993BB4600E3AFD3 /* CoreLocation.framework in Frameworks */,
 				3EC14EE719225C3A00306027 /* CoreVideo.framework in Frameworks */,
 				3EC14EE519225C3000306027 /* OpenGLES.framework in Frameworks */,
 				3EC14EE319225C1A00306027 /* CoreMedia.framework in Frameworks */,
@@ -1292,6 +1295,7 @@
 		58E4FB531760AE5500E328A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3E4217C11993BB4600E3AFD3 /* CoreLocation.framework */,
 				08DD7933194746AA00F5FFF9 /* Crashlytics.framework */,
 				3EC14EE619225C3A00306027 /* CoreVideo.framework */,
 				3EC14EE419225C3000306027 /* OpenGLES.framework */,

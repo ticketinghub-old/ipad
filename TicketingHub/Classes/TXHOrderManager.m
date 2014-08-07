@@ -153,12 +153,14 @@ NSString * const TXHOrderDidChangeNotification = @"TXHOrderDidChangeNotification
     return nil;
 }
 
-- (void)reserveTicketsWithAvailability:(TXHAvailability *)availability completion:(TXHOrderCompletion)completion;
+- (void)reserveTicketsWithAvailability:(TXHAvailability *)availability latitude:(CGFloat)latitude longitude:(CGFloat)longitude completion:(TXHOrderCompletion)completion
 {
     __weak typeof(self) wself = self;
     
     [self.txhManager.client reserveTicketsWithTierQuantities:self.tiersQuantities
                                                 availability:availability
+                                                    latitude:latitude
+                                                   longitude:longitude
                                                      isGroup:YES
                                                 shouldNotify:NO
                                                   completion:^(TXHOrder *order, NSError *error) {

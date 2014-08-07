@@ -45,7 +45,7 @@ typedef void (^TXHArrayCompletion)(NSArray *array, NSError *error);
 
 // reserving tickets
 
-- (void)reserveTicketsWithAvailability:(TXHAvailability *)availability completion:(TXHOrderCompletion)completion;
+- (void)reserveTicketsWithAvailability:(TXHAvailability *)availability latitude:(CGFloat)latitude longitude:(CGFloat)longitude completion:(TXHOrderCompletion)completion;
 
 // fields (customers info)
 
