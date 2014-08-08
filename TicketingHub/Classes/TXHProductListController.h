@@ -14,5 +14,6 @@
 
 @property (strong, nonatomic) TXHUser *user;
 @property (strong, nonatomic) TXHProductsManager *productsManager;
+@property (weak, nonatomic) UIView *activityViewTargetView;
 
 @end

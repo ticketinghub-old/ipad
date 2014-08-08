@@ -71,6 +71,7 @@
     {
         TXHProductListController *productList = segue.destinationViewController;
         productList.productsManager = self.productManager;
+        productList.activityViewTargetView = self.view;
         productList.user = [TXHTICKETINHGUBCLIENT currentUser];
     }
     else if ([segue.identifier isEqualToString:@"SalesOrDoormanContainerEmbed"])

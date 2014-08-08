@@ -15,12 +15,15 @@
 #import "TXHPrinterSelectionViewController.h"
 #import "TXHPrintersManager.h"
 #import "TXHPrintersUtility.h"
+#import "TXHActivityLabelView.h"
 
 static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 
 @interface TXHProductListController () <UITableViewDelegate, TXHPrinterSelectionViewControllerDelegate>
 
 @property (strong, nonatomic) FetchedResultsControllerDataSource *tableViewDataSource;
+
+@property (strong, nonatomic) TXHActivityLabelView *activityView;
 
 @property (weak, nonatomic) IBOutlet UIView      *logoutView;
 @property (weak, nonatomic) IBOutlet UIButton    *logoutButton;
@@ -55,6 +58,16 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
     [self unregisterFromCurrentUserFullNameChanges];
     [self unregisterFromProductChangesNotifications];
 }
+
+- (TXHActivityLabelView *)activityView
+{
+    if (!_activityView)
+    {
+        _activityView = [TXHActivityLabelView getInstanceInView:self.activityViewTargetView];
+    }
+    return _activityView;
+}
+
 
 #pragma mark - accessors
 
@@ -210,6 +223,7 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
     self.printerSelectionPopover = popover;
 }
 
+
 #pragma mark - TXHPrinterSelectionViewControllerDelegate
 
 - (TXHPrintersUtility *)printingUtility
@@ -217,6 +231,7 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
     if (!_printingUtility)
     {
         TXHActivityLabelPrintersUtilityDelegate *printingUtilityDelegate = [TXHActivityLabelPrintersUtilityDelegate new];
+        printingUtilityDelegate.activityView = self.activityView;
         
         TXHPrintersUtility *printingUtility = [[TXHPrintersUtility alloc] initWithTicketingHubCLient:self.productsManager.txhManager.client];
         printingUtility.delegate = printingUtilityDelegate;

@@ -66,7 +66,7 @@
 "NO_PRINTERS_TEXT"           = "Not Connected";
 
 /* Barcode scanner errors */
-"SCANNER_ERROR_INCORRECT_DATA" = "Incorrect QR code data";
+"SCANNER_ERROR_INCORRECT_DATA"   = "Incorrect QR code data";
 "SCANNER_ERROR_TICKET_NOT_FOUND" = "Couldn't find ticket data.";
 
 /* Barcode scanner informations*/
@@ -77,9 +77,11 @@
 "LOADING_RECEIPT_LABEL"           = "Preparing Receipt";
 "LOADING_TICKETS_LABEL"           = "Preparing Tickets";
 "LOADING_TICKETS_TEMPLATES_LABEL" = "Preparing Tickets";
+"LOADING_SUMMARY_LABEL"           = "Preparing Summary";
 
 "PRINTING_RECEIPT_LABEL"    = "Printing Receipt";
 "PRINTING_TICKETS_LABEL"    = "Printing Tickets";
+"PRINTING_SUMMARY_LABEL"    = "Printing Summary";
 
 "TICKET_TEMPLATES_SELECTION_TITLE"                  = "Select ticket type";
 "TICKET_TEMPLATES_SELECTION_CANCEL_BUTTON_TITLE"    = "Cancel printing";

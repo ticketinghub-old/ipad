@@ -93,6 +93,8 @@
             return NSLocalizedString(@"LOADING_TICKETS_LABEL", nil);
         case TXHPrintTypeRecipt:
             return NSLocalizedString(@"LOADING_RECEIPT_LABEL", nil);
+        case TXHPrintTypeSummary:
+            return NSLocalizedString(@"LOADING_SUMMARY_LABEL", nil);
     }
     return @"";
 }
@@ -106,6 +108,8 @@
             return NSLocalizedString(@"PRINTING_TICKETS_LABEL", nil);
         case TXHPrintTypeRecipt:
             return NSLocalizedString(@"PRINTING_RECEIPT_LABEL", nil);
+        case TXHPrintTypeSummary:
+            return NSLocalizedString(@"PRINTING_SUMMARY_LABEL", nil);
     }
     return @"";
 }
