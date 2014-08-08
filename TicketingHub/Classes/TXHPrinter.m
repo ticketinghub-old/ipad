@@ -50,6 +50,13 @@
                    completionBlock:completion];
 }
 
+- (void)printImagesWithURLs:(NSArray *)urls completion:(TXHPrinterCompletionBlock)completion
+{
+    [self.printerEngine printImagesWithURLs:urls
+                                withPrinter:self
+                            completionBlock:completion];
+}
+
 - (void)openDrawerWithCompletion:(TXHPrinterCompletionBlock)completion
 {
     [self.printerEngine openDrawerFromPrinter:self

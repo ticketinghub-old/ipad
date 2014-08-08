@@ -21,6 +21,10 @@
               withPrinter:(TXHPrinter *)printer
           completionBlock:(TXHPrinterCompletionBlock)completion;
 
+- (void)printImagesWithURLs:(NSArray *)urls
+                withPrinter:(TXHPrinter *)printer
+            completionBlock:(TXHPrinterCompletionBlock)completion;
+
 - (void)openDrawerFromPrinter:(TXHPrinter *)printer
                    completion:(TXHPrinterCompletionBlock)completion;
 

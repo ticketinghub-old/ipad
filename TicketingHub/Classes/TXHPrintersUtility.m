@@ -186,23 +186,39 @@
     if (!template) return;
     
     __weak typeof(self) wself = self;
+
+    __block NSMutableArray *imagesURLs = [NSMutableArray array];
     
-    __block NSError * printingError = nil;
-    
-    void (^ticketCompletion)(NSError *error, BOOL canceled) = ^(NSError *error, BOOL canceled) {
-        if (error) printingError = error;
-        [wself.delegate txhPrintersUtility:wself didFinishPrintingType:wself.printType error:error];
-    };
-    
-    for (TXHTicket * ticket in self.order.tickets) {
-        if (printingError) break;
-        [self.delegate txhPrintersUtility:self didStartLoadingType:TXHPrintTypeTemplates];
-        [self.client getTicketImageToPrintForTicket:ticket withTemplet:template dpi:self.selectedPrinter.dpi format:[self getDocumentFormat] completion:^(NSURL *url, NSError *error) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [wself.delegate txhPrintersUtility:self didStartLoadingType:TXHPrintTypeTemplates];
+        });
+        
+        dispatch_group_t group = dispatch_group_create();
+        
+        for (TXHTicket * ticket in self.order.tickets) {
+            dispatch_group_enter(group);
+            
+            [wself.client getTicketImageToPrintForTicket:ticket withTemplet:template dpi:self.selectedPrinter.dpi format:[self getDocumentFormat] completion:^(NSURL *url, NSError *error) {
+                [imagesURLs addObject:url];
+                dispatch_group_leave(group);
+            }];
+        }
+        
+        dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+        dispatch_async(dispatch_get_main_queue(), ^{
             [wself.delegate txhPrintersUtility:self didFinishLoadingType:TXHPrintTypeTemplates error:nil];
             [wself.delegate txhPrintersUtility:self didStartPrintingType:wself.printType];
-                [wself.selectedPrinter printImageWithURL:url completion:ticketCompletion];
+        });
+        
+        [wself.selectedPrinter printImagesWithURLs:imagesURLs completion:^(NSError *error, BOOL cancelled) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+
+            [wself.delegate txhPrintersUtility:wself didFinishPrintingType:wself.printType error:error];
+            });
         }];
-    }
+    });
 }
 
 - (void)printTicketWithTemplate:(TXHTicketTemplate *)template

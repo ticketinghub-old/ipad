@@ -156,10 +156,50 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
     }
 }
 
+- (void)printImgs:(NSArray *)images withPrinter:(TXHPrinter *)printer completionBlock:(void(^)(NSError *error))completion
+{
+    TXHStarIOPrinter *starPrinter = (TXHStarIOPrinter *)printer;
+    if (starPrinter.printerType == TXHStarPortablePrinterTypePortable)
+    {
+        [self printBitmapsWithPortName:starPrinter.portInfo.portName
+                         portSettings:kPrinterPortSettingsPortable
+                          images:images
+                         printerWidth:STAR_PRINTER_MAXWIDTH
+                    compressionEnable:YES
+                       pageModeEnable:NO
+                           completion:completion];
+    }
+    else if (starPrinter.printerType == TXHStarPortablePrinterTypePOS)
+    {
+        [self printImagesWithPortname:starPrinter.portInfo.portName
+                        portSettings:kPrinterPortSettingsPOS
+                        imagesToPrint:images
+                            maxWidth:STAR_PRINTER_MAXWIDTH
+                   compressionEnable:YES
+                          completion:completion];
+    }
+}
+
 - (void)printImageWithURL:(NSURL *)url withPrinter:(TXHPrinter *)printer completionBlock:(TXHPrinterCompletionBlock)completion
 {
     UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
     [self printImg:image withPrinter:printer completionBlock:^(NSError *error) {
+        if (completion) completion(error,NO);
+    }];
+}
+
+- (void)printImagesWithURLs:(NSArray *)urls
+                withPrinter:(TXHPrinter *)printer
+            completionBlock:(TXHPrinterCompletionBlock)completion
+{
+    NSMutableArray *images = [NSMutableArray array];
+    for (NSURL *url in urls)
+    {
+        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+        [images addObject:image];
+    }
+    
+    [self printImgs:images withPrinter:printer completionBlock:^(NSError *error) {
         if (completion) completion(error,NO);
     }];
 }
@@ -218,6 +258,41 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
     [self sendCommand:commandsToPrint portName:portName portSettings:portSettings timeoutMillis:10000 completion:completion];
 }
 
+- (void)printImagesWithPortname:(NSString *)portName portSettings:(NSString*)portSettings imagesToPrint:(NSArray*)imagesToPrint maxWidth:(int)maxWidth compressionEnable:(BOOL)compressionEnable completion:(void(^)(NSError *error))completion
+{
+    if (![imagesToPrint count]) return;
+    
+    NSMutableData *commandsToPrint = [[NSMutableData alloc] init];
+
+    RasterDocument *rasterDoc = [[RasterDocument alloc] initWithDefaults:RasSpeed_Medium
+                                                      endOfPageBehaviour:RasPageEndMode_FeedAndFullCut
+                                                  endOfDocumentBahaviour:RasPageEndMode_FeedAndFullCut
+                                                               topMargin:RasTopMargin_Standard
+                                                              pageLength:0
+                                                              leftMargin:0
+                                                             rightMargin:0];
+    
+    NSData *shortcommand = [rasterDoc BeginDocumentCommandData];
+    [commandsToPrint appendData:shortcommand];
+    
+    for (UIImage *image in imagesToPrint)
+    {
+
+        StarBitmap *starbitmap = [[StarBitmap alloc] initWithUIImage:image :maxWidth :false];
+    
+        shortcommand = [starbitmap getImageDataForPrinting:compressionEnable];
+        [commandsToPrint appendData:shortcommand];
+        
+        
+        [commandsToPrint appendData:[rasterDoc PageBreakCommandData]];
+    }
+    
+    shortcommand = [rasterDoc EndDocumentCommandData];
+    [commandsToPrint appendData:shortcommand];
+    
+    [self sendCommand:commandsToPrint portName:portName portSettings:portSettings timeoutMillis:10000 completion:completion];
+}
+
 - (void)openCashDrawerWithPortname:(NSString *)portName portSettings:(NSString *)portSettings drawerNumber:(NSUInteger)drawerNumber completion:(void(^)(NSError *error))completion
 {
     unsigned char opencashdrawer_command = 0x00;
@@ -242,6 +317,20 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
     NSData *commands = [starbitmap getImageMiniDataForPrinting:compressionEnable pageModeEnable:pageModeEnable];
     
     [self sendCommand:commands portName:portName portSettings:portSettings timeoutMillis:10000 completion:completion];
+}
+
+- (void)printBitmapsWithPortName:(NSString*)portName portSettings:(NSString*)portSettings images:(NSArray*)images printerWidth:(int)maxWidth compressionEnable:(BOOL)compressionEnable pageModeEnable:(BOOL)pageModeEnable completion:(void(^)(NSError *error))completion
+{
+    NSMutableData *commandsToPrint = [[NSMutableData alloc] init];
+    for (UIImage *image in images)
+    {
+        StarBitmap *starbitmap = [[StarBitmap alloc] initWithUIImage:image :maxWidth :false];
+        NSData *commands = [starbitmap getImageMiniDataForPrinting:compressionEnable pageModeEnable:pageModeEnable];
+        
+        [commandsToPrint appendData:commands];
+    }
+    
+    [self sendCommand:commandsToPrint portName:portName portSettings:portSettings timeoutMillis:10000 completion:completion];
 }
 
 #pragma mark - Printer Communication

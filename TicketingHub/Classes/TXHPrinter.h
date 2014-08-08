@@ -54,6 +54,15 @@ typedef void (^TXHPrinterContinueBlock)(void (^continuePrintingBlock)(BOOL conti
 - (void)printImageWithURL:(NSURL *)url completion:(TXHPrinterCompletionBlock)completion;
 
 /*
+ printing
+ 
+ gets called in the main thread
+ */
+- (void)printImagesWithURLs:(NSArray *)urls completion:(TXHPrinterCompletionBlock)completion;
+
+
+
+/*
     sends open drawer command to the printer
 */
 - (void)openDrawerWithCompletion:(TXHPrinterCompletionBlock)completion;
