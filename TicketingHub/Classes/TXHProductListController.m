@@ -19,6 +19,7 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 
 @property (weak, nonatomic) IBOutlet UIView      *logoutView;
 @property (weak, nonatomic) IBOutlet UIButton    *logoutButton;
+@property (weak, nonatomic) IBOutlet UIButton    *printSummaryButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel     *headerViewLabel;
 
@@ -179,6 +180,11 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 - (IBAction)logout:(id)sender
 {
     [[UIApplication sharedApplication] sendAction:@selector(logOut:) to:nil from:self forEvent:nil];
+}
+
+- (IBAction)printSummaryAction:(id)sender
+{
+    
 }
 
 #pragma mark - Private methods
