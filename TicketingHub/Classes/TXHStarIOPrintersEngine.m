@@ -381,8 +381,7 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
         
         if (totalAmountWritten < commandSize)
         {
-            if (completion)
-                completion([NSError printerErrorWithCode:kTXHPrinterTimedOutError]);
+            error = [NSError printerErrorWithCode:kTXHPrinterTimedOutError];
             return;
 
         }
@@ -390,15 +389,13 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
         starPort.endCheckedBlockTimeoutMillis = 30000;
         [starPort endCheckedBlock:&status :2];
         if (status.offline == SM_TRUE) {
-            if (completion)
-                completion([NSError printerErrorWithCode:kTXHPrinterOfflineError]);
+            error = [NSError printerErrorWithCode:kTXHPrinterOfflineError];
             return;
         }
     }
     @catch (PortException *exception)
     {
-        if (completion)
-            completion([NSError printerErrorWithCode:kTXHPrinterTimedOutError]);
+        error = [NSError printerErrorWithCode:kTXHPrinterTimedOutError];
         return;
 
     }
@@ -408,7 +405,7 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
         [SMPort releasePort:starPort];
 
         if (completion)
-            completion(nil);
+            completion(error);
         
         return;
     }
