@@ -11,9 +11,14 @@
 #import "TXHProductsManager.h"
 #import "FetchedResultsControllerDataSource.h"
 
+#import "TXHActivityLabelPrintersUtilityDelegate.h"
+#import "TXHPrinterSelectionViewController.h"
+#import "TXHPrintersManager.h"
+#import "TXHPrintersUtility.h"
+
 static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 
-@interface TXHProductListController () <UITableViewDelegate>
+@interface TXHProductListController () <UITableViewDelegate, TXHPrinterSelectionViewControllerDelegate>
 
 @property (strong, nonatomic) FetchedResultsControllerDataSource *tableViewDataSource;
 
@@ -22,6 +27,10 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 @property (weak, nonatomic) IBOutlet UIButton    *printSummaryButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel     *headerViewLabel;
+
+@property (strong, nonatomic) UIPopoverController *printerSelectionPopover;
+@property (strong, nonatomic) TXHPrintersUtility *printingUtility;
+@property (strong, nonatomic) TXHActivityLabelPrintersUtilityDelegate *printingUtilityDelegate;
 
 @end
 
@@ -184,8 +193,53 @@ static void * const kUserFullNameKVOContext = (void*)&kUserFullNameKVOContext;
 
 - (IBAction)printSummaryAction:(id)sender
 {
+    UIButton * button = sender;
+    TXHPrinterSelectionViewController *printerSelector = [[TXHPrinterSelectionViewController alloc] initWithPrintersManager:TXHPRINTERSMANAGER];
+    printerSelector.delegate = self;
     
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:printerSelector];
+    popover.popoverContentSize = CGSizeMake(200, 110);
+    
+    CGRect fromRect = [button.superview convertRect:button.frame toView:self.view];
+    
+    [popover presentPopoverFromRect:fromRect
+                             inView:self.view
+           permittedArrowDirections:UIPopoverArrowDirectionAny
+                           animated:YES];
+    
+    self.printerSelectionPopover = popover;
 }
+
+#pragma mark - TXHPrinterSelectionViewControllerDelegate
+
+- (TXHPrintersUtility *)printingUtility
+{
+    if (!_printingUtility)
+    {
+        TXHActivityLabelPrintersUtilityDelegate *printingUtilityDelegate = [TXHActivityLabelPrintersUtilityDelegate new];
+        
+        TXHPrintersUtility *printingUtility = [[TXHPrintersUtility alloc] initWithTicketingHubCLient:self.productsManager.txhManager.client];
+        printingUtility.delegate = printingUtilityDelegate;
+        
+        _printingUtility = printingUtility;
+        _printingUtilityDelegate = printingUtilityDelegate;
+    }
+    return _printingUtility;
+}
+
+#pragma mark TXHPrinterSelectionViewControllerDelegate
+
+- (void)txhPrinterSelectionViewController:(TXHPrinterSelectionViewController *)controller
+                         didSelectPrinter:(TXHPrinter *)printer
+{
+    [self.printerSelectionPopover dismissPopoverAnimated:YES];
+    self.printerSelectionPopover = nil;
+    
+    TXHUser *user = [self.productsManager.txhManager.client currentUser];
+    [self.printingUtility startPrintingWithType:TXHPrintTypeSummary onPrinter:printer withUser:user];
+}
+
+
 
 #pragma mark - Private methods
 

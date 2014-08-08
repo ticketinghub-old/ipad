@@ -13,7 +13,8 @@ typedef NS_ENUM(NSUInteger, TXHPrintType)
 {
     TXHPrintTypeTemplates,
     TXHPrintTypeTickets,
-    TXHPrintTypeRecipt
+    TXHPrintTypeRecipt,
+    TXHPrintTypeSummary
 };
 
 @class TXHPrintersUtility;
@@ -42,5 +43,6 @@ typedef NS_ENUM(NSUInteger, TXHPrintType)
 
 - (void)startPrintingWithType:(TXHPrintType)type onPrinter:(TXHPrinter *)printer withOrder:(TXHOrder *)order;
 - (void)startPrintingWithType:(TXHPrintType)type onPrinter:(TXHPrinter *)printer withTicket:(TXHTicket *)ticket;
+- (void)startPrintingWithType:(TXHPrintType)type onPrinter:(TXHPrinter *)printer withUser:(TXHUser *)user;
 
 @end

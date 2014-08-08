@@ -19,6 +19,7 @@
 
 @property (strong, nonatomic) TXHOrder              *order;
 @property (strong, nonatomic) TXHTicket             *ticket;
+@property (strong, nonatomic) TXHUser               *user;
 @property (strong, nonatomic) TXHTicketingHubClient *client;
 
 @end
@@ -50,6 +51,7 @@
 {
     self.order           = order;
     self.ticket          = nil;
+    self.user            = nil;
     self.printType       = type;
     self.selectedPrinter = printer;
     
@@ -60,8 +62,20 @@
 {
     self.ticket          = ticket;
     self.order           = nil;
+    self.user            = nil;
     self.printType       = type;
     self.selectedPrinter = printer;
+    [self printSelectedTarget];
+}
+
+- (void)startPrintingWithType:(TXHPrintType)type onPrinter:(TXHPrinter *)printer withUser:(TXHUser *)user
+{
+    self.order           = nil;
+    self.ticket          = nil;
+    self.user            = user;
+    self.printType       = type;
+    self.selectedPrinter = printer;
+    
     [self printSelectedTarget];
 }
 
@@ -74,6 +88,9 @@
             break;
         case TXHPrintTypeTickets:
             [self getAndPrintTickets];
+            break;
+        case TXHPrintTypeSummary:
+            [self getAndPrintSummary];
             break;
         case TXHPrintTypeTemplates:
             break;
@@ -112,6 +129,25 @@
         if (!error)
             [wself selectTemplateFromTemplates:templates];
     }];
+}
+
+- (void)getAndPrintSummary
+{
+    [self.delegate txhPrintersUtility:self didStartLoadingType:TXHPrintTypeSummary];
+    
+    __weak typeof(self) wself = self;
+    
+    [self.client getSummaryForUser:self.user
+                            format:TXHDocumentFormatPDF
+                             width:self.selectedPrinter.paperWidth
+                               dpi:self.selectedPrinter.dpi
+                        completion:^(NSURL *url, NSError *error) {
+                            
+                            [wself.delegate txhPrintersUtility:wself didFinishLoadingType:TXHPrintTypeSummary error:error];
+                            
+                            if (!error)
+                                [wself printPDFDocumentWithURL:url];
+                        }];
 }
 
 - (void)selectTemplateFromTemplates:(NSArray *)templates
