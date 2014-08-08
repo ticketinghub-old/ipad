@@ -342,21 +342,21 @@ static NSString * const kPrinterPortSettingsPOS         = @"";
     [commandsToPrint getBytes:dataToSentToPrinter];
     
     SMPort *starPort = nil;
+    NSError *error = nil;
     @try
     {
         starPort = [SMPort getPort:portName :portSettings :timeoutMillis];
         if (starPort == nil)
         {
-            if (completion)
-                completion([NSError printerErrorWithCode:kTXHPrinterFailToOpenPortError]);
+            
+            error = [NSError printerErrorWithCode:kTXHPrinterFailToOpenPortError];
             return;
         }
         
         StarPrinterStatus_2 status;
         [starPort beginCheckedBlock:&status :2];
         if (status.offline == SM_TRUE) {
-            if (completion)
-                completion([NSError printerErrorWithCode:kTXHPrinterOfflineError]);
+            error = [NSError printerErrorWithCode:kTXHPrinterOfflineError];
             return;
         }
         
