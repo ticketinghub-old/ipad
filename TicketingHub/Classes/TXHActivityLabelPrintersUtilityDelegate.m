@@ -36,6 +36,9 @@
 - (void)txhPrintersUtility:(TXHPrintersUtility *)utility didFinishPrintingType:(TXHPrintType)type error:(NSError *)error
 {
     [self finishPrintingWithError:error];
+    
+    if (self.finishPrintingCallback)
+        self.finishPrintingCallback(utility, type, error);
 }
 
 - (void)finishPrintingWithError:(NSError *)error

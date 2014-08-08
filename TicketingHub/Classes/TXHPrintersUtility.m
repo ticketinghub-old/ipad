@@ -197,7 +197,7 @@
         
         dispatch_group_t group = dispatch_group_create();
         
-        for (TXHTicket * ticket in self.order.tickets) {
+        for (TXHTicket *ticket in self.order.tickets) {
             dispatch_group_enter(group);
             
             [wself.client getTicketImageToPrintForTicket:ticket withTemplet:template dpi:self.selectedPrinter.dpi format:[self getDocumentFormat] completion:^(NSURL *url, NSError *error) {
@@ -214,8 +214,7 @@
         
         [wself.selectedPrinter printImagesWithURLs:imagesURLs completion:^(NSError *error, BOOL cancelled) {
             dispatch_async(dispatch_get_main_queue(), ^{
-
-            [wself.delegate txhPrintersUtility:wself didFinishPrintingType:wself.printType error:error];
+                [wself.delegate txhPrintersUtility:wself didFinishPrintingType:wself.printType error:error];
             });
         }];
     });

@@ -281,10 +281,16 @@ static void * ContentValidContext = &ContentValidContext;
 {
     if (!_printingUtility)
     {
+        __weak typeof(self) wself = self;
+        
         TXHActivityLabelPrintersUtilityDelegate *printingUtilityDelegate =
         [TXHActivityLabelPrintersUtilityDelegate new];
         printingUtilityDelegate.activityView = self.activityView;
-
+        printingUtilityDelegate.finishPrintingCallback = ^(TXHPrintersUtility *utility, TXHPrintType type, NSError * error) {
+            if (type == TXHPrintTypeTickets && !error)
+                [wself.stepCompletionController setMiddleRightButtonDisabled:YES];
+        };
+        
         TXHPrintersUtility *printingUtility = [[TXHPrintersUtility alloc] initWithTicketingHubCLient:self.productManager.txhManager.client];
         printingUtility.delegate = printingUtilityDelegate;
         

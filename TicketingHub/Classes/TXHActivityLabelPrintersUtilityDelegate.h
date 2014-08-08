@@ -14,5 +14,6 @@
 @interface TXHActivityLabelPrintersUtilityDelegate : NSObject <TXHPrintersUtilityDelegate>
 
 @property (nonatomic, weak) TXHActivityLabelView *activityView;
+@property (nonatomic, copy) void (^finishPrintingCallback)(TXHPrintersUtility *utility, TXHPrintType type, NSError * error);
 
 @end
