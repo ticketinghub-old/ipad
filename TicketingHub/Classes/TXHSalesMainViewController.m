@@ -287,7 +287,7 @@ static void * ContentValidContext = &ContentValidContext;
         [TXHActivityLabelPrintersUtilityDelegate new];
         printingUtilityDelegate.activityView = self.activityView;
         printingUtilityDelegate.finishPrintingCallback = ^(TXHPrintersUtility *utility, TXHPrintType type, NSError * error) {
-            if (type == TXHPrintTypeTickets && !error)
+            if (type == TXHPrintTypeTickets)
                 [wself.stepCompletionController setMiddleRightButtonDisabled:YES];
         };
         
@@ -391,7 +391,8 @@ static void * ContentValidContext = &ContentValidContext;
     }
     else if (!order)
     {
-        [self.timer invalidate];
+        if ([self.timer isValid])
+            [self.timer invalidate];
         self.timer = nil;
         
         self.navigationItem.rightBarButtonItem = nil;
