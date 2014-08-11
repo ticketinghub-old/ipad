@@ -73,11 +73,11 @@ static void * ContentValidContext = &ContentValidContext;
     
     [self setupStepsManager];
     [self setupKeyboardAnimations];
-    
+
+    [self resetData];
+
     [self registerForProductChanges];
     [self registerForOrderManagerNotifications];
-    
-    [self resetData];
 }
 
 - (void)setupStepsManager
