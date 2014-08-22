@@ -133,7 +133,7 @@
         if (newQuantity)
             bcell.priceString = [wself.productManager priceStringForPrice:@([tier.price integerValue] * newQuantity)];
         else
-            bcell.priceString = NSLocalizedString(@"SALESMAN_WUANTITIES_SELECT_TICKET_AMOUT_PRICE_LABEL", nil);
+            bcell.priceString = NSLocalizedString(@"SALESMAN_QUANTITIES_SELECT_TICKET_AMOUT_PRICE_LABEL", nil);
     };
     
     cell.selectedQuantity = [self quantityForTicketIdentifier:tier.internalTierId]; // tiggers quantityChangedHandler so updates ticket price too
