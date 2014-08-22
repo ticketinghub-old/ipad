@@ -26,6 +26,8 @@
 @property (weak, nonatomic)   TXHTicket *selectedTicket;
 @property (strong, nonatomic) NSMutableSet *ticketsDisabled;
 
+@property (weak, nonatomic) TXHDoorTicketsListHeaderView *header;
+
 @property (weak, nonatomic) IBOutlet TXHBorderedButton *toogleAttendingButton;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -129,6 +131,8 @@
                                                                                          forIndexPath:indexPath];
         [self configureHeader:header atIndexPath:indexPath];
         
+        self.header = header;
+        
         return header;
     }
     
@@ -210,7 +214,7 @@
                         completion:^(TXHTicket *ticket, NSError *error) {
                             [wself.ticketsDisabled removeObject:cellTicket.ticketId];
                             [cell setAttendedAt:cellTicket.attendedAt animated:YES];
-//                            [wself.header2 setAttendedCount:@(wself.order.attendedTickets)];
+                            [wself.header setAttending:wself.order.attendedTickets];
                         }];
 }
 
