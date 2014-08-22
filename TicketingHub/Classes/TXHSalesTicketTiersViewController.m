@@ -122,7 +122,11 @@
 
     TXHTier *tier = [self tierAtIndexPath:indexPath];
 
-    cell.delegate = self;
+    cell.delegate         = self;
+    cell.title            = tier.name;
+    cell.subtitle         = tier.tierDescription;
+    cell.tierIdentifier   = tier.internalTierId;
+    cell.selectedQuantity = [self quantityForTicketIdentifier:tier.internalTierId];
     
     __weak typeof(self) wself = self;
     __weak TXHSalesTicketTierCell * bcell = cell;
@@ -135,13 +139,6 @@
         else
             bcell.priceString = NSLocalizedString(@"SALESMAN_QUANTITIES_SELECT_TICKET_AMOUT_PRICE_LABEL", nil);
     };
-    
-    cell.selectedQuantity = [self quantityForTicketIdentifier:tier.internalTierId]; // tiggers quantityChangedHandler so updates ticket price too
-    cell.title            = tier.name;
-    cell.subtitle         = tier.tierDescription;
-    cell.tierIdentifier   = tier.internalTierId;
-    
-    
 }
 
 - (void)updateQuantitiesWithDictionary:(NSDictionary *)dic

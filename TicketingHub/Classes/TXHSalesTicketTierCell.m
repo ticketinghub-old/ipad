@@ -69,13 +69,11 @@
     
     _selectedQuantity  = quantity;
     
-    [self quantityDidChange];
+    [self updateView];
 }
 
-- (void)quantityDidChange
-{    
-    [self updateView];
-
+- (void)didChangeQuantity
+{
     if (self.quantityChangedHandler)
         self.quantityChangedHandler(self.tierIdentifier ? @{self.tierIdentifier : [NSNumber numberWithInteger:self.quantity.text.integerValue]} : nil);
 }
@@ -94,6 +92,7 @@
 - (IBAction)quantityChanged:(id)sender
 {
     self.selectedQuantity = [self.quantity.text integerValue];
+    [self didChangeQuantity];
 }
 
 #pragma mark - Stepper Value Changed action
@@ -101,12 +100,14 @@
 - (IBAction)increaseButtonAction:(id)sender
 {
     self.selectedQuantity++;
+    [self didChangeQuantity];
     [[UIResponder currentFirstResponder] resignFirstResponder];
 }
 
 - (IBAction)decreaseButtonAction:(id)sender
 {
     self.selectedQuantity--;
+    [self didChangeQuantity];
     [[UIResponder currentFirstResponder] resignFirstResponder];
 }
 
