@@ -26,7 +26,7 @@
 
 @property (weak, nonatomic) TXHDoorOrderDetailsViewController     *orderDetailsViewController;
 @property (weak, nonatomic) TXHDoorOrderTicketsListViewController *orderTicketsListViewController;
-@property (weak, nonatomic) TXHOrderFooterViewController         *printButtonsViewController;
+@property (weak, nonatomic) TXHOrderFooterViewController          *printButtonsViewController;
 
 @property (strong, nonatomic) TXHActivityLabelView *activityView;
 

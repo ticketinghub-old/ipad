@@ -28,7 +28,25 @@
     [self setupGradient];
     
     [self updateView];
+    
+    [self registerForContextDidChangeNOtification];
 }
+
+- (void)dealloc
+{
+    [self unregisterFromContextDidChangeNOtification];
+}
+
+- (void)registerForContextDidChangeNOtification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateView) name:NSManagedObjectContextDidSaveNotification object:nil];
+}
+
+- (void)unregisterFromContextDidChangeNOtification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSManagedObjectContextDidSaveNotification object:nil];
+}
+
 
 - (void)setupGradient
 {
@@ -55,7 +73,9 @@
     }
     else
     {
-        [self setButtonsHidden:NO];
+        NSUInteger ticketsCount = [self.order.tickets count];
+        NSUInteger attendedCount = [self.order attendedTickets];
+        [self setButtonsHidden:(ticketsCount == attendedCount)];
         self.messageLabel.hidden = YES;
     }
 }
