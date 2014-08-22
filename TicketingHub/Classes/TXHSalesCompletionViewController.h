@@ -25,6 +25,8 @@
 
 @property (weak, nonatomic) id<TXHSalesCompletionViewControllerDelegate> delegate;
 
+@property (readonly) UIButton *printTicketsButton;
+
 - (void)setLeftButtonTitle:(NSString *)buttonTitle;
 - (void)setMiddleLeftButtonTitle:(NSString *)buttonTitle;
 - (void)setMiddleButtonTitle:(NSString *)buttonTitle;

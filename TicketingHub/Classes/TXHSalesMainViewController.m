@@ -24,6 +24,7 @@
 #import "TXHPrintersManager.h"
 
 #import <Block-KVO/MTKObserving.h>
+#import <UIAlertView-Blocks/UIAlertView+Blocks.h>
 
 #import "TXHActivityLabelView.h"
 #import "TXHActivityLabelPrintersUtilityDelegate.h"
@@ -60,6 +61,7 @@ static void * ContentValidContext = &ContentValidContext;
 @property (assign, nonatomic) BOOL contentControllerValid;
 @property (assign, nonatomic) BOOL contentControllerShouldBeSkiped;
 
+@property (assign, nonatomic) BOOL hasPrintedTickets;
 // data
 @property (strong, nonatomic) TXHSalesStepsManager *stepsManager;
 
@@ -223,13 +225,48 @@ static void * ContentValidContext = &ContentValidContext;
     
     self.navigationItem.rightBarButtonItem = nil;
 
+    self.hasPrintedTickets = NO;
+}
+
+- (void)showNoTicketsPrintedAlert
+{
+    [self.activityView showWithMessage:@"" indicatorHidden:YES];
+    
+    __weak typeof(self) wself = self;
+    
+    RIButtonItem *skipButton = [RIButtonItem itemWithLabel:NSLocalizedString(@"SALESMAN_TICKETS_NOT_PRINTED_ALERT_SKIP_BUTTON_TITLE", nil)
+                                                      action:^{
+                                                          [wself.activityView hide];
+                                                          [wself resetData];
+                                                      }];
+    RIButtonItem *printButton = [RIButtonItem itemWithLabel:NSLocalizedString(@"SALESMAN_TICKETS_NOT_PRINTED_ALERT_PRINT_BUTTON_TITLE", nil)
+                                                    action:^{
+                                                        [wself.activityView hide];
+                                                        wself.selectedPrintType = TXHPrintTypeTickets;
+                                                        [wself showPrinterSelectorFromButton:wself.stepCompletionController.printTicketsButton];
+                                                    }];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SALESMAN_TICKETS_NOT_PRINTED_ALERT_TITLE", nil)
+                                                    message:NSLocalizedString(@"SALESMAN_TICKETS_NOT_PRINTED_ALERT_MESSAGE", nil)
+                                           cancelButtonItem:skipButton
+                                           otherButtonItems:printButton, nil];
+    
+    [alert show];
 }
 
 - (void (^)(UIButton *button))resetDataActionBlock
 {
     __weak typeof(self) wself = self;
     return ^(UIButton *button){
-        [wself resetData];
+
+        if (!wself.hasPrintedTickets)
+        {
+            [wself showNoTicketsPrintedAlert];
+        }
+        else
+        {
+            [wself resetData];
+        }
     };
 }
 
@@ -288,7 +325,10 @@ static void * ContentValidContext = &ContentValidContext;
         printingUtilityDelegate.activityView = self.activityView;
         printingUtilityDelegate.finishPrintingCallback = ^(TXHPrintersUtility *utility, TXHPrintType type, NSError * error) {
             if (type == TXHPrintTypeTickets)
+            {
                 [wself.stepCompletionController setMiddleRightButtonDisabled:YES];
+                wself.hasPrintedTickets = YES;
+            }
         };
         
         TXHPrintersUtility *printingUtility = [[TXHPrintersUtility alloc] initWithTicketingHubCLient:self.productManager.txhManager.client];

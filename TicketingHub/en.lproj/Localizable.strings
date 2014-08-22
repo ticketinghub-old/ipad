@@ -269,3 +269,8 @@
 /* Salesman Completion */
 
 "SALESMAN_COMPLETION_UPDATING_CUTOMER_MESSAGE" = "Updating Order Details";
+
+"SALESMAN_TICKETS_NOT_PRINTED_ALERT_TITLE"                  = "Warning";
+"SALESMAN_TICKETS_NOT_PRINTED_ALERT_MESSAGE"                = "You have not printed any tickets, are you sure you want to continue to the next customer?";
+"SALESMAN_TICKETS_NOT_PRINTED_ALERT_PRINT_BUTTON_TITLE"     = "Print Tickets";
+"SALESMAN_TICKETS_NOT_PRINTED_ALERT_SKIP_BUTTON_TITLE"      = "Skip Printing";

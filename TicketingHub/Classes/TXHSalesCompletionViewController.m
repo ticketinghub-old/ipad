@@ -40,6 +40,11 @@
     [(TXHGradientView *)self.view setColors:colors];
 }
 
+- (UIButton *)printTicketsButton
+{
+    return self.middleRightButton;
+}
+
 #pragma mark Buttons Title
 
 - (void)setLeftButtonTitle:(NSString *)buttonTitle
