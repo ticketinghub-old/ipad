@@ -1,0 +1,3 @@
+
+developer.apple.com: 	olly@ticketinghub.com, leszekducker@gmail.com, bartek@untitledkingdom.co
+crashlytics: 		bartekhugo@me.com
