@@ -137,9 +137,7 @@
 {
     CGFloat givenAmount  = [self.givenAmountValueField.amount floatValue];
     CGFloat changeAmount = (givenAmount * 100) - [self.totalAmount floatValue];
-    
-    self.openDrawerButton.enabled = (changeAmount >= 0);
-    
+        
     self.changeValueLabel.text = [self changeStringForChangeAmount:changeAmount];
 }
 
