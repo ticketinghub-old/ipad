@@ -26,6 +26,7 @@ static NSString * const kFirstNameKey = @"first_name";
 static NSString * const kSurnameKey   = @"last_name";
 static NSString * const kEmailKey     = @"email";
 static NSString * const kTelephoneKey = @"telephone";
+static NSString * const kNotesKey     = @"notes";
 
 @interface TXHSalesTicketCompletionViewController () <UITextFieldDelegate, TXHFullScreenKeyboardViewControllerDelegate>
 
@@ -39,17 +40,20 @@ static NSString * const kTelephoneKey = @"telephone";
 @property (weak, nonatomic) IBOutlet UIView *surnameBackgroundView;
 @property (weak, nonatomic) IBOutlet UIView *emailBackgroundView;
 @property (weak, nonatomic) IBOutlet UIView *telephoneBackgroundView;
+@property (weak, nonatomic) IBOutlet UIView *notesBackgroundView;
 
 @property (weak, nonatomic) IBOutlet UITextField *firstNameField;
 @property (weak, nonatomic) IBOutlet UITextField *surnameField;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *telephoneField;
+@property (weak, nonatomic) IBOutlet UITextField *notesField;
 @property (weak, nonatomic) UITextField *currentField;
 
 @property (weak, nonatomic) IBOutlet TXHDataEntryFieldErrorView *firstNameErrorView;
 @property (weak, nonatomic) IBOutlet TXHDataEntryFieldErrorView *surnameErrorView;
 @property (weak, nonatomic) IBOutlet TXHDataEntryFieldErrorView *emailErrorView;
 @property (weak, nonatomic) IBOutlet TXHDataEntryFieldErrorView *telephoneErrorView;
+@property (weak, nonatomic) IBOutlet TXHDataEntryFieldErrorView *notesErrorView;
 
 @property (weak, nonatomic) IBOutlet TXHBorderedButton *updateButton;
 
@@ -94,6 +98,7 @@ static NSString * const kTelephoneKey = @"telephone";
     self.surnameBackgroundView.layer.cornerRadius   = FIELD_CORNER_RADIUS;
     self.emailBackgroundView.layer.cornerRadius     = FIELD_CORNER_RADIUS;
     self.telephoneBackgroundView.layer.cornerRadius = FIELD_CORNER_RADIUS;
+    self.notesBackgroundView.layer.cornerRadius     = FIELD_CORNER_RADIUS;
     
     [self setupErrorViews];
 }
@@ -105,12 +110,14 @@ static NSString * const kTelephoneKey = @"telephone";
     self.surnameErrorView.textFont   = font;
     self.emailErrorView.textFont     = font;
     self.telephoneErrorView.textFont = font;
+    self.notesErrorView.textFont     = font;
 
     UIColor *textColor = [UIColor whiteColor];
     self.firstNameErrorView.messageColor = textColor;
     self.surnameErrorView.messageColor   = textColor;
     self.emailErrorView.messageColor     = textColor;
     self.telephoneErrorView.messageColor = textColor;
+    self.notesErrorView.messageColor     = textColor;
 }
 
 - (void)setOrderManager:(TXHOrderManager *)orderManager
@@ -219,9 +226,10 @@ static NSString * const kTelephoneKey = @"telephone";
 - (void)setFieldsErrorsFromInfo:(NSDictionary *)fieldsErrors
 {
     [self.firstNameErrorView setMessage:[fieldsErrors[kFirstNameKey] firstObject]];
-    [self.surnameErrorView setMessage:[fieldsErrors[kSurnameKey] firstObject]];
-    [self.emailErrorView setMessage:[fieldsErrors[kEmailKey] firstObject]];
+    [self.surnameErrorView   setMessage:[fieldsErrors[kSurnameKey] firstObject]];
+    [self.emailErrorView     setMessage:[fieldsErrors[kEmailKey] firstObject]];
     [self.telephoneErrorView setMessage:[fieldsErrors[kTelephoneKey] firstObject]];
+    [self.notesErrorView     setMessage:[fieldsErrors[kNotesKey] firstObject]];
 }
 
 - (NSDictionary *)customerInfo
@@ -239,6 +247,9 @@ static NSString * const kTelephoneKey = @"telephone";
     
     if ([self.telephoneField.text length])
         customerInfo[kTelephoneKey] = self.telephoneField.text;
+    
+    if ([self.notesField.text length])
+        customerInfo[kNotesKey] = self.notesField.text;
     
     return customerInfo;
 }
@@ -279,6 +290,8 @@ static NSString * const kTelephoneKey = @"telephone";
         return self.emailField;
     else if (self.currentField == self.emailField)
         return self.telephoneField;
+    else if (self.currentField == self.telephoneField)
+        return self.notesField;
     
     return nil;
 }
