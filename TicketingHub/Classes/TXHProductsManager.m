@@ -188,9 +188,14 @@ NSString * const TXHSelectedAvailabilityKey         = @"TXHSelectedProductKey";
                                           completion:completion];
 }
 
-- (void)getTiresCompletion:(void(^)(NSArray *tiers, NSError *error))completion
+- (void)getTiresWithCouponCode:(NSString *)coupon completion:(void(^)(NSArray *tiers, NSError *error))completion
 {
-    [self.txhManager.client tiersForProduct:self.selectedProduct completion:completion];
+    [self.txhManager.client tiersForProduct:self.selectedProduct couponCode:coupon completion:completion];
+}
+
+- (void)getCouponCodesCompletion:(void(^)(NSArray *coupons, NSError *error))completion
+{
+    [self.txhManager.client couponCodesWithCompletion:completion];
 }
 
 - (void)availabilitiesForISODate:(NSString *)isoDate tickets:(NSArray *)tickets completion:(void(^)(NSArray *availabilities, NSError *error))completion

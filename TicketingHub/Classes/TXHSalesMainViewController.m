@@ -31,6 +31,8 @@
 #import "TXHPrinterSelectionViewController.h"
 #import "TXHPrintersUtility.h"
 
+#import "TXHCouponSelectionViewController.h"
+
 #import "UIColor+TicketingHub.h"
 #import "UIFont+TicketingHub.h"
 
@@ -39,7 +41,7 @@
 
 static void * ContentValidContext = &ContentValidContext;
 
-@interface TXHSalesMainViewController ()  <TXHSaleStepsManagerDelegate, TXHSalesCompletionViewControllerDelegate, TXHPrinterSelectionViewControllerDelegate>
+@interface TXHSalesMainViewController ()  <TXHSaleStepsManagerDelegate, TXHSalesCompletionViewControllerDelegate, TXHPrinterSelectionViewControllerDelegate, TXHCouponSelectionViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *contentsContainer;
 
@@ -55,6 +57,8 @@ static void * ContentValidContext = &ContentValidContext;
 @property (strong, nonatomic) TXHPrintersUtility                      *printingUtility;
 @property (assign, nonatomic) TXHPrintType                            selectedPrintType;
 @property (strong, nonatomic) UIPopoverController                     *printerSelectionPopover;
+
+@property (strong, nonatomic) UIPopoverController *couponSelectionPopover;
 
 @property (strong) NSTimer *timer;
 
@@ -84,6 +88,7 @@ static void * ContentValidContext = &ContentValidContext;
 
 - (void)setupStepsManager
 {
+    __weak typeof(self) wself = self;
     
     TXHSalesStep *step1 = [[TXHSalesStep alloc] initWithDictionary:
                            @{kWizardStepTitleKey                : NSLocalizedString(@"SALESMAN_STEPS_TICKET_QUANTITY_TITLE",nil),
@@ -94,7 +99,9 @@ static void * ContentValidContext = &ContentValidContext;
                              kWizardStepHidesLeftButton         : @YES,
                              kWizardStepHidesRightButton        : @YES,
                              kWizardStepHidesMiddleLeftButton   : @YES,
-                             kWizardStepHidesMiddleRightButton  : @YES}];
+                             kWizardStepHidesMiddleRightButton  : @YES,
+                             kWizardStepShowCouponButton        : @YES,
+                             kWizardStepCouponButtonBlock       : [wself couponButtonActionBlock]}];
 
     TXHSalesStep *step2 = [[TXHSalesStep alloc] initWithDictionary:
                            @{kWizardStepTitleKey                : NSLocalizedString(@"SALESMAN_STEPS_TICKET_DATES_TITLE",nil),
@@ -148,12 +155,20 @@ static void * ContentValidContext = &ContentValidContext;
                              kWizardStepHidesMiddleButton       : @YES,
                              kWizardStepHidesLeftButton         : @YES,
                              kWizardStepHidesStepsList          : @YES,
-                             kWizardStepMiddleLeftButtonBlock   : [self printReciptButtonActionBlock],
-                             kWizardStepMiddleRightButtonBlock  : [self printTicketsButtonActionBlock],
-                             kWizardStepRightButtonBlock        : [self resetDataActionBlock]}];
+                             kWizardStepMiddleLeftButtonBlock   : [wself printReciptButtonActionBlock],
+                             kWizardStepMiddleRightButtonBlock  : [wself printTicketsButtonActionBlock],
+                             kWizardStepRightButtonBlock        : [wself resetDataActionBlock]}];
     
     self.stepsManager = [[TXHSalesStepsManager alloc] initWithSteps:@[step1, step2, step3, step4, step5, step6]];
     self.stepsManager.delegate = self;
+}
+
+- (void (^)(UIButton *button))couponButtonActionBlock
+{
+    __weak typeof(self) wself = self;
+    return ^(UIButton *button){
+        [wself showCouponSelectorFromButton:button];
+    };
 }
 
 - (void (^)(UIButton *button))printReciptButtonActionBlock
@@ -190,6 +205,24 @@ static void * ContentValidContext = &ContentValidContext;
                            animated:YES];
     
     self.printerSelectionPopover = popover;
+}
+
+- (void)showCouponSelectorFromButton:(UIButton *)button
+{
+    TXHCouponSelectionViewController *couponSelector = [[TXHCouponSelectionViewController alloc] initWithProductManager:self.productManager];
+    couponSelector.delegate = self;
+    
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:couponSelector];
+    popover.popoverContentSize = CGSizeMake(200, 220);
+    
+    CGRect fromRect = [button.superview convertRect:button.frame toView:self.view];
+
+    [popover presentPopoverFromRect:fromRect
+                             inView:self.view
+           permittedArrowDirections:UIPopoverArrowDirectionAny
+                           animated:YES];
+    
+    self.couponSelectionPopover = popover;
 }
 
 - (void)setupKeyboardAnimations
@@ -485,6 +518,10 @@ static void * ContentValidContext = &ContentValidContext;
         [self.orderManager stopExpirationTimer];
         middleButtonTitle = step.middleButtonTitle;
     }
+    
+    //update wizard
+    [self.wizardSteps setLeftButtonHidden:!step.hasCouponSelectionButton];
+    [self.wizardSteps setLeftButtonAction:step.couponButtonActionBlock];
 
     // update footer
     [self.stepCompletionController setLeftButtonHidden:step.hasLeftButtonHidden];
@@ -618,5 +655,16 @@ static void * ContentValidContext = &ContentValidContext;
     [self.printingUtility startPrintingWithType:self.selectedPrintType onPrinter:printer withOrder:[self.orderManager order]];
 }
 
+
+#pragma mark - TXHCouponSelectionViewControllerDelegate
+
+- (void)txhCouponSelectionViewController:(TXHCouponSelectionViewController *)controller
+                         didSelectCoupon:(TXHCoupon *)coupon
+{
+    [self.couponSelectionPopover dismissPopoverAnimated:YES];
+    self.couponSelectionPopover = nil;
+    
+    [self.wizardSteps setLeftButtonTitle:coupon.code];
+}
 
 @end

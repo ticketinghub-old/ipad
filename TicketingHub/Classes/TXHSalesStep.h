@@ -37,6 +37,8 @@ extern NSString * const kWizardStepHidesMiddleButton;
 extern NSString * const kWizardStepHidesMiddleRightButton;
 extern NSString * const kWizardStepHidesRightButton;
 
+extern NSString * const kWizardStepShowCouponButton;
+extern NSString * const kWizardStepCouponButtonBlock;
 extern NSString * const kWizardStepLeftButtonBlock;
 extern NSString * const kWizardStepMiddleLeftButtonBlock;
 extern NSString * const kWizardStepMiddleButtonBlock;
@@ -72,7 +74,11 @@ extern NSString * const kWizardStepRightButtonBlock;
 @property (readonly, assign, nonatomic, getter = hasMiddleRightButtonHidden) BOOL middleRightButtonHidden;
 @property (readonly, assign, nonatomic, getter = hasRightButtonHidden)  BOOL rightButtonHidden;
 
+@property (readonly, assign, nonatomic) BOOL hasCouponSelectionButton;
+
 @property (readonly, copy, nonatomic) UIColor *leftButtonColor;
+
+@property (readonly, copy, nonatomic) void (^couponButtonActionBlock)(UIButton *button);
 
 @property (readonly, copy, nonatomic) void (^leftButtonActionBlock)(UIButton *button);
 @property (readonly, copy, nonatomic) void (^middleLeftButtonActionBlock)(UIButton *button);

@@ -14,5 +14,8 @@
 @property (weak, nonatomic) id<TXHSalesWizardViewControllerDataSource> dataSource;
 
 - (void)reloadWizard;
+- (void)setLeftButtonHidden:(BOOL)hidden;
+- (void)setLeftButtonAction:(void(^)(UIButton *button))action;
+- (void)setLeftButtonTitle:(NSString *)title;
 
 @end

@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   s.name                  = 'iOS-api'
   
-  s.version               = '0.0.141'
+  s.version               = '0.0.147'
   s.summary               = 'A library for interacting with the TicketingHub Developer API from an iOS device.'
   s.homepage              = 'https: //github.com/ticketinghub/ios-api'
   s.author                = { 'Bartek Hugo' => 'bartekhugo@me.com' }
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   
   s.requires_arc          = true
 
-  s.dependency 'AFNetworking', '~> 2.2.0'
-  s.dependency 'DCTCoreDataStack', '~> 1.1'
+  s.dependency              'AFNetworking', '~> 2.2.0'
+  s.dependency              'DCTCoreDataStack', '~> 1.1'
 
 end

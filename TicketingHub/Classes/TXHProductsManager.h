@@ -49,7 +49,9 @@
 
 - (void)availableDatesFrom:(NSDate *)startDate endDate:(NSDate *)endDate completion:(void (^)(NSArray *availableDates, NSError *error))completion;
 
-- (void)getTiresCompletion:(void(^)(NSArray *tiers, NSError *error))completion;
+- (void)getTiresWithCouponCode:(NSString *)coupon completion:(void(^)(NSArray *tiers, NSError *error))completion;
+
+- (void)getCouponCodesCompletion:(void(^)(NSArray *coupons, NSError *error))completion;
 
 - (void)availabilitiesForISODate:(NSString *)isoDate tickets:(NSArray *)tickets completion:(void(^)(NSArray *availabilities, NSError *error))completion;
 

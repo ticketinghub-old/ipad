@@ -228,6 +228,8 @@
 "SALESMAN_QUANTITIES_LOADING_TICKETS_MESSAGE"         = "Loading available tickets";
 "SALESMAN_QUANTITIES_SELECT_TICKET_AMOUT_PRICE_LABEL" = "Select amount";
 
+"SALESMAN_COUPON_CODE_BUTTON_TITLE" = "Select Coupon";
+
 /* Salesman Dates */
 
 "SALESMAN_DATES_SELCT_DATE_MESSAGE"                 = "Please select date";

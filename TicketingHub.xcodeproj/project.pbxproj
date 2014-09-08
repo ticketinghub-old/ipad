@@ -11,6 +11,7 @@
 		08DD7934194746AA00F5FFF9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08DD7933194746AA00F5FFF9 /* Crashlytics.framework */; };
 		08DD7936194B064B00F5FFF9 /* HALTER__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08DD7935194B064B00F5FFF9 /* HALTER__.ttf */; };
 		3E082DAE190EC909003B60C6 /* TXHConfigurationStaging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E2E2C5A190EB81B006EABA1 /* TXHConfigurationStaging.plist */; };
+		3E08FC8B19BDAB4F0064B2E6 /* TXHCouponSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E08FC8A19BDAB4F0064B2E6 /* TXHCouponSelectionViewController.m */; };
 		3E0FF588191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0FF587191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.m */; };
 		3E15207118FFD4190013F09E /* TXHTicketDetailsErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E15207018FFD4190013F09E /* TXHTicketDetailsErrorView.m */; };
 		3E192D5718FD188C00D727AA /* TXHDoorMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E192D5618FD188C00D727AA /* TXHDoorMainViewController.m */; };
@@ -62,6 +63,7 @@
 		3E87709818D7355600585FFA /* Salesman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E87709A18D7355600585FFA /* Salesman.storyboard */; };
 		3E8D76091917921000EB9588 /* libdtdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8D76081917921000EB9588 /* libdtdev.a */; };
 		3E8FD59318C74CD70066FA50 /* TXHDoorSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8FD59218C74CD70066FA50 /* TXHDoorSearchViewController.m */; };
+		3E92BF7A19BDED9B00999B2F /* TXHCoupon+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E92BF7919BDED9B00999B2F /* TXHCoupon+Helpers.m */; };
 		3E938DB1190FED7A00FC29E9 /* DKPOSClientFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E938DA4190FED7A00FC29E9 /* DKPOSClientFactory.m */; };
 		3E938DB2190FED7A00FC29E9 /* DKPOSClientTransactionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E938DA6190FED7A00FC29E9 /* DKPOSClientTransactionInfo.m */; };
 		3E938DB3190FED7A00FC29E9 /* DKPOSClientTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E938DA8190FED7A00FC29E9 /* DKPOSClientTypes.m */; };
@@ -177,6 +179,8 @@
 		08180DA4194B1FF700D51ADA /* TXHTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTextField.m; sourceTree = "<group>"; };
 		08DD7933194746AA00F5FFF9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		08DD7935194B064B00F5FFF9 /* HALTER__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HALTER__.ttf; sourceTree = "<group>"; };
+		3E08FC8919BDAB4F0064B2E6 /* TXHCouponSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHCouponSelectionViewController.h; path = TicketingHub/Classes/TXHCouponSelectionViewController.h; sourceTree = SOURCE_ROOT; };
+		3E08FC8A19BDAB4F0064B2E6 /* TXHCouponSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHCouponSelectionViewController.m; path = TicketingHub/Classes/TXHCouponSelectionViewController.m; sourceTree = SOURCE_ROOT; };
 		3E0FF586191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHPayment+DKPOSClientTransactionInfo.h"; sourceTree = "<group>"; };
 		3E0FF587191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHPayment+DKPOSClientTransactionInfo.m"; sourceTree = "<group>"; };
 		3E15206F18FFD4190013F09E /* TXHTicketDetailsErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketDetailsErrorView.h; sourceTree = "<group>"; };
@@ -276,6 +280,8 @@
 		3E8D76081917921000EB9588 /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libdtdev.a; path = ../../extLibraries/libdtdev.a; sourceTree = "<group>"; };
 		3E8FD59118C74CD70066FA50 /* TXHDoorSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorSearchViewController.h; sourceTree = "<group>"; };
 		3E8FD59218C74CD70066FA50 /* TXHDoorSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHDoorSearchViewController.m; sourceTree = "<group>"; };
+		3E92BF7819BDED9B00999B2F /* TXHCoupon+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHCoupon+Helpers.h"; sourceTree = "<group>"; };
+		3E92BF7919BDED9B00999B2F /* TXHCoupon+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHCoupon+Helpers.m"; sourceTree = "<group>"; };
 		3E938DA2190FED7A00FC29E9 /* DKPOSClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKPOSClient.h; sourceTree = "<group>"; };
 		3E938DA3190FED7A00FC29E9 /* DKPOSClientFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKPOSClientFactory.h; sourceTree = "<group>"; };
 		3E938DA4190FED7A00FC29E9 /* DKPOSClientFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKPOSClientFactory.m; sourceTree = "<group>"; };
@@ -547,6 +553,8 @@
 				3E407C081920F7C90002B6FE /* TXHGateway+CNPHelper.m */,
 				3E5B2BC6192A6C5600BE4CE6 /* TXHPayment+PKCard.h */,
 				3E5B2BC7192A6C5600BE4CE6 /* TXHPayment+PKCard.m */,
+				3E92BF7819BDED9B00999B2F /* TXHCoupon+Helpers.h */,
+				3E92BF7919BDED9B00999B2F /* TXHCoupon+Helpers.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -762,6 +770,8 @@
 				EE75D97717D11048009ADCD8 /* TXHSalesTicketTierCell.m */,
 				EE75D97817D11048009ADCD8 /* TXHSalesTicketTiersViewController.h */,
 				EE75D97917D11048009ADCD8 /* TXHSalesTicketTiersViewController.m */,
+				3E08FC8919BDAB4F0064B2E6 /* TXHCouponSelectionViewController.h */,
+				3E08FC8A19BDAB4F0064B2E6 /* TXHCouponSelectionViewController.m */,
 			);
 			name = "1 Tickets Quantity";
 			sourceTree = "<group>";
@@ -1666,6 +1676,7 @@
 				EE75D9B417D11311009ADCD8 /* TXHMainViewController.m in Sources */,
 				08180DA5194B1FF700D51ADA /* TXHTextField.m in Sources */,
 				EE75D9B317D11311009ADCD8 /* TXHProductListController.m in Sources */,
+				3E92BF7A19BDED9B00999B2F /* TXHCoupon+Helpers.m in Sources */,
 				EEB1849217D115640025530A /* TXHSalesmanDoormanContainerViewController.m in Sources */,
 				58E4FB671760AE5500E328A0 /* TXHAppDelegate.m in Sources */,
 				3E3D46EE18ACBB8500275ACF /* UIColor+TicketingHub.m in Sources */,
@@ -1745,6 +1756,7 @@
 				EE75D9A617D11048009ADCD8 /* TXHSalesUpgradeDetailsViewController.m in Sources */,
 				3E5039C51924CA1800ACFA91 /* TXHCardFrontView.m in Sources */,
 				3E5FA93A192FCE8900452C30 /* DKPOSClientTransactionInfo+Messages.m in Sources */,
+				3E08FC8B19BDAB4F0064B2E6 /* TXHCouponSelectionViewController.m in Sources */,
 				3E488BD918BE850600E90BE6 /* RMDisplayLabel.m in Sources */,
 				3E5039CD192642D500ACFA91 /* TXHFullScreenKeyboardViewController.m in Sources */,
 				3EE8E21418C890F5006E8F5E /* UIImage+String.m in Sources */,

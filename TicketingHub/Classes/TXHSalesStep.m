@@ -36,6 +36,9 @@ NSString * const kWizardStepHidesMiddleButton         = @"kWizardStepHidesMiddle
 NSString * const kWizardStepHidesMiddleRightButton    = @"kWizardStepHidesMiddleRightButton";
 NSString * const kWizardStepHidesRightButton          = @"kWizardStepHidesRightButton";
 
+NSString * const kWizardStepShowCouponButton          = @"kWizardStepShowCouponButton";
+NSString * const kWizardStepCouponButtonBlock         = @"kWizardStepCouponButtonBlock";
+
 NSString * const kWizardStepLeftButtonBlock           = @"kWizardStepLeftButtonCustomActionBlock";
 NSString * const kWizardStepMiddleLeftButtonBlock     = @"kWizardStepMiddleLeftButtonCustomActionBlock";
 NSString * const kWizardStepMiddleButtonBlock         = @"kWizardStepMiddleButtonCustomActionBlock";
@@ -72,7 +75,11 @@ NSString * const kWizardStepRightButtonBlock          = @"kWizardStepRightButton
 @property (assign, nonatomic, getter = hasMiddleRightButtonHidden) BOOL middleRightButtonHidden;
 @property (assign, nonatomic, getter = hasRightButtonHidden)  BOOL rightButtonHidden;
 
+@property (assign, nonatomic) BOOL hasCouponSelectionButton;
+
 @property (copy, nonatomic) UIColor *leftButtonColor;
+
+@property (copy, nonatomic) void (^couponButtonActionBlock)(UIButton *button);
 
 @property (copy, nonatomic) void (^leftButtonActionBlock)(UIButton *button);
 @property (copy, nonatomic) void (^middleLeftButtonActionBlock)(UIButton *button);
@@ -103,6 +110,7 @@ NSString * const kWizardStepRightButtonBlock          = @"kWizardStepRightButton
     self.middleButtonActionBlock      = dictionary[kWizardStepMiddleButtonBlock];
     self.middleRightButtonActionBlock = dictionary[kWizardStepMiddleRightButtonBlock];
     self.rightButtonActionBlock       = dictionary[kWizardStepRightButtonBlock];
+    self.couponButtonActionBlock      = dictionary[kWizardStepCouponButtonBlock];
     self.shouldHideStepsList          = [dictionary[kWizardStepHidesStepsList] boolValue];
     self.leftButtonDisabled           = [dictionary[kWizardStepLeftButtonDisabled] boolValue];
     self.middleLeftButtonDisabled     = [dictionary[kWizardStepMiddleLeftButtonDisabled] boolValue];
@@ -114,7 +122,7 @@ NSString * const kWizardStepRightButtonBlock          = @"kWizardStepRightButton
     self.middleButtonHidden           = [dictionary[kWizardStepHidesMiddleButton] boolValue];
     self.middleRightButtonHidden      = [dictionary[kWizardStepHidesMiddleRightButton] boolValue];
     self.rightButtonHidden            = [dictionary[kWizardStepHidesRightButton] boolValue];
-
+    self.hasCouponSelectionButton     = [dictionary[kWizardStepShowCouponButton] boolValue];
     
     return self;
 }

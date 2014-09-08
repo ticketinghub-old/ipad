@@ -18,6 +18,9 @@
 @interface TXHSalesWizardViewController () <AKPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet AKPickerView *pickerView;
+@property (weak, nonatomic) IBOutlet UIButton *couponsButton;
+
+@property (copy, nonatomic) void (^leftButtonAction) (UIButton *);
 
 @end
 
@@ -41,6 +44,17 @@
     self.pickerView.userInteractionEnabled = NO;
 }
 
+- (IBAction)leftButtonAction:(id)sender
+{
+    if (self.leftButtonAction)
+        self.leftButtonAction(self.couponsButton);
+}
+
+- (void)setLeftButtonTitle:(NSString *)title
+{
+    [self.couponsButton setTitle:title forState:UIControlStateNormal];
+}
+
 #pragma mark - Public methods
 
 - (void)reloadWizard
@@ -49,6 +63,17 @@
     
     [self.pickerView reloadData];
     [self.pickerView selectItem:currentIndex animated:YES];
+}
+
+- (void)setLeftButtonHidden:(BOOL)hidden
+{
+    self.couponsButton.hidden = hidden;
+    [self setLeftButtonTitle:NSLocalizedString(@"SALESMAN_COUPON_CODE_BUTTON_TITLE", nil)];
+}
+
+- (void)setLeftButtonAction:(void(^)(UIButton *button))action
+{
+    _leftButtonAction = action;
 }
 
 #pragma mark - AKPickerViewDelegate

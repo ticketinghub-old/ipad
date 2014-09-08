@@ -17,6 +17,7 @@
 #import "TXHActivityLabelView.h"
 #import <UIAlertView-Blocks/UIAlertView+Blocks.h>
 
+#import "TXHCouponSelectionViewController.h"
 
 
 @interface TXHSalesTicketTiersViewController () <UICollectionViewDelegate, UICollectionViewDataSource ,UITextFieldDelegate, TXHSalesTicketTierCellDelegate>
@@ -35,6 +36,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalValueLabel;
 
+@property (strong, nonatomic) TXHCoupon *selectedCoupon;
+
 @property (strong, nonatomic) TXHActivityLabelView *activityView;
 
 @end
@@ -46,8 +49,9 @@
     [super viewDidLoad];
  
     [self loadTiers];
+    
+    [self registerForCouponSelectionNotification];
 }
-
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -57,11 +61,46 @@
     [self updateGradientMask];
 }
 
+- (void)dealloc
+{
+    [self unregisterFronCouponSelectionNotification];
+}
+
+- (void)registerForCouponSelectionNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(selectedCuponCodeChanged:)
+                                                 name:TXHCouponCodeSelectedNotification
+                                               object:nil];
+}
+
+- (void)unregisterFronCouponSelectionNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHCouponCodeSelectedNotification object:nil];
+}
+
+- (void)selectedCuponCodeChanged:(NSNotification *)note
+{
+    TXHCoupon *coupon = note.userInfo[TXHSelectedCouponCodeKey];
+
+    self.selectedCoupon = coupon;
+}
+
+- (void)setSelectedCoupon:(TXHCoupon *)selectedCoupon
+{
+    if (![self.selectedCoupon.code isEqualToString:selectedCoupon.code])
+    {
+        _selectedCoupon = selectedCoupon;
+        
+        [self loadTiers];
+    }
+}
 
 - (void)setTiers:(NSArray *)tiers
 {
     _tiers = tiers;
     
+    [self updateView];
     [self.collectionView reloadData];
 }
 
@@ -191,12 +230,19 @@
 
 - (void)loadTiers
 {
+    self.quantities = nil;
+    
     __block typeof(self) wself = self;
 
     [self.activityView showWithMessage:NSLocalizedString(@"SALESMAN_QUANTITIES_LOADING_TICKETS_MESSAGE", nil)
                        indicatorHidden:NO];
     
-    [self.productManager getTiresCompletion:^(NSArray *tiers, NSError *error) {
+    NSString *callCouponCode = self.selectedCoupon.code;
+    [self.productManager getTiresWithCouponCode:self.selectedCoupon.code completion:^(NSArray *tiers, NSError *error) {
+        
+        if ((wself.selectedCoupon.code || callCouponCode) && ![wself.selectedCoupon.code isEqualToString:callCouponCode])
+            return;
+        
         [wself.activityView hide];
         wself.tiers = tiers;
         
@@ -214,9 +260,15 @@
 {
     BOOL atLeastOneTicketSelected = NO;
     
-    for (NSNumber *quantity in [self.quantities allValues])
-        if ([quantity integerValue] > 0)
-            atLeastOneTicketSelected = YES;
+    for (NSString *tireInternalId in self.quantities)
+    {
+        TXHTier *tier = [self tierWithInternalTierId:tireInternalId];
+        if (tier) {
+            NSNumber *quantity = self.quantities[tireInternalId];
+            if ([quantity integerValue] > 0)
+                atLeastOneTicketSelected = YES;
+        }
+    }
     
     return atLeastOneTicketSelected;
 }
@@ -251,6 +303,7 @@
 - (void)finishStepWithCompletion:(void (^)(NSError *error))blockName
 {
     self.orderManager.tiersQuantities = self.quantities;
+    self.orderManager.coupon          = self.selectedCoupon;
     
     if (blockName)
         blockName(nil);

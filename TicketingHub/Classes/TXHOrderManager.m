@@ -128,7 +128,8 @@ NSString * const TXHOrderDidChangeNotification = @"TXHOrderDidChangeNotification
 
 - (void)resetOrder
 {
-    self.order = nil;
+    self.coupon = nil;
+    self.order  = nil;
 }
 
 - (TXHTicket *)ticketFromOrderWithID:(NSString *)ticketID
@@ -159,6 +160,7 @@ NSString * const TXHOrderDidChangeNotification = @"TXHOrderDidChangeNotification
     
     [self.txhManager.client reserveTicketsWithTierQuantities:self.tiersQuantities
                                                 availability:availability
+                                                      coupon:self.coupon
                                                     latitude:latitude
                                                    longitude:longitude
                                                      isGroup:YES
@@ -172,8 +174,7 @@ NSString * const TXHOrderDidChangeNotification = @"TXHOrderDidChangeNotification
                                                       
                                                       if (completion)
                                                           completion(order,error);
-                                                  }];
-    
+                                                  }];    
 }
 
 - (void)userInfoFieldsForCurrentOrderTicketsWithCompletion:(void(^)(NSDictionary *fields, NSError *error))completion
