@@ -14,6 +14,7 @@
 
 #import "UIColor+TicketingHub.h"
 #import "UIFont+TicketingHub.h"
+#import "TXHActivityLabelView.h"
 
 NSString * const TXHCouponCodeSelectedNotification = @"TXHCouponCodeSelectedNotification";
 NSString * const TXHSelectedCouponCodeKey          = @"TXHSelectedCouponCodeKey";
@@ -23,6 +24,7 @@ NSString * const TXHSelectedCouponCodeKey          = @"TXHSelectedCouponCodeKey"
 @property (nonatomic, strong) NSArray *coupons;
 @property (nonatomic, strong) ArrayDataSource *datasource;
 @property (nonatomic, strong) TXHProductsManager *productsManager;
+@property (nonatomic, weak)   TXHActivityLabelView *activityView;
 
 @end
 
@@ -49,11 +51,21 @@ NSString * const TXHSelectedCouponCodeKey          = @"TXHSelectedCouponCodeKey"
     [self loadCoupons];
 }
 
+- (TXHActivityLabelView *)activityView
+{
+    if (!_activityView)
+        _activityView = [TXHActivityLabelView getInstanceInView:self.view];
+    
+    return _activityView;
+}
+
 - (void)loadCoupons
 {
     __weak typeof(self) wself = self;
+    [self.activityView showWithMessage:nil indicatorHidden:NO];
     [self.productsManager getCouponCodesCompletion:^(NSArray *coupons, NSError *error) {
         wself.coupons = coupons;
+        [wself.activityView hide];
     }];
 }
 
