@@ -129,15 +129,8 @@
     cell.selectedQuantity = [self quantityForTicketIdentifier:tier.internalTierId];
     
     __weak typeof(self) wself = self;
-    __weak TXHSalesTicketTierCell * bcell = cell;
     cell.quantityChangedHandler = ^(NSDictionary *quantity) {
         [wself updateQuantitiesWithDictionary:quantity];
-        
-        NSInteger newQuantity = [wself quantityForTicketIdentifier:tier.internalTierId];
-        if (newQuantity)
-            bcell.priceString = [wself.productManager priceStringForPrice:@([tier.price integerValue] * newQuantity)];
-        else
-            bcell.priceString = NSLocalizedString(@"SALESMAN_QUANTITIES_SELECT_TICKET_AMOUT_PRICE_LABEL", nil);
     };
 }
 
@@ -236,6 +229,21 @@
     TXHTier *tier = [self tierAtIndexPath:cellIndexPath];
     
     return tier.limitValue;
+}
+
+- (NSString *)priceStringForCell:(TXHSalesTicketTierCell *)cell quantity:(NSUInteger)quantity;
+{
+    NSString *priceString;
+    
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    TXHTier *tier          = [self tierAtIndexPath:indexPath];
+
+    if (quantity)
+        priceString = [self.productManager priceStringForPrice:@([tier.price integerValue] * quantity)];
+    else
+        priceString = NSLocalizedString(@"SALESMAN_QUANTITIES_SELECT_TICKET_AMOUT_PRICE_LABEL", nil);
+    
+    return priceString;
 }
 
 #pragma mark - TXHSalesContentsViewControllerProtocol

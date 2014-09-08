@@ -13,6 +13,7 @@
 @protocol TXHSalesTicketTierCellDelegate <NSObject>
 
 - (NSInteger)maximumQuantityForCell:(TXHSalesTicketTierCell *)cell;
+- (NSString *)priceStringForCell:(TXHSalesTicketTierCell *)cell quantity:(NSUInteger)quantity;
 
 @end
 
@@ -20,7 +21,6 @@
 
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *subtitle;
-@property (copy, nonatomic) NSString *priceString;
 
 @property (copy, nonatomic) NSString *tierIdentifier;
 

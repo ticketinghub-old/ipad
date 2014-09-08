@@ -51,12 +51,6 @@
     self.tierDescription.text = subtitle;
 }
 
-- (void)setPriceString:(NSString *)priceString
-{
-    _priceString    = priceString;
-    self.price.text = priceString;
-}
-
 - (void)setSelectedQuantity:(NSInteger)selectedQuantity
 {
     NSInteger maxValue = [self.delegate maximumQuantityForCell:self];
@@ -72,6 +66,12 @@
     [self updateView];
 }
 
+- (void)setDelegate:(id<TXHSalesTicketTierCellDelegate>)delegate
+{
+    _delegate = delegate;
+    [self updateView];
+}
+
 - (void)didChangeQuantity
 {
     if (self.quantityChangedHandler)
@@ -81,8 +81,10 @@
 - (void)updateView
 {
     self.quantity.text = [NSString stringWithFormat:@"%ld",(long)self.selectedQuantity];
+    self.price.text    = [self.delegate priceStringForCell:self quantity:self.selectedQuantity];
     
     CGFloat borderAlpha = self.selectedQuantity > 0 ? 0.8 : 0.1;
+
     self.layer.borderColor = [[UIColor txhBlueColor] colorWithAlphaComponent:borderAlpha].CGColor;
     self.layer.borderWidth = self.selectedQuantity > 0 ? 2 : 1;
 }
@@ -91,8 +93,9 @@
 
 - (IBAction)quantityChanged:(id)sender
 {
-    self.selectedQuantity = [self.quantity.text integerValue];
     [self didChangeQuantity];
+    
+    self.selectedQuantity = [self.quantity.text integerValue];
 }
 
 #pragma mark - Stepper Value Changed action
