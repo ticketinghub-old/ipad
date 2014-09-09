@@ -227,6 +227,7 @@
     
     [self.productManager availabilitiesForISODate:[date isoDateString]
                                           tickets:[self selectedTicketQuantities]
+                                       couponCode:self.orderManager.coupon.code
                                        completion:^(NSArray *availabilities, NSError *error) {
                                            [wself.dayTimesActivityView hide];
                                            wself.availabilities = availabilities;

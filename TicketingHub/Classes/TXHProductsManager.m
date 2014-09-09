@@ -198,11 +198,12 @@ NSString * const TXHSelectedAvailabilityKey         = @"TXHSelectedProductKey";
     [self.txhManager.client couponCodesWithCompletion:completion];
 }
 
-- (void)availabilitiesForISODate:(NSString *)isoDate tickets:(NSArray *)tickets completion:(void(^)(NSArray *availabilities, NSError *error))completion
+- (void)availabilitiesForISODate:(NSString *)isoDate tickets:(NSArray *)tickets couponCode:(NSString *)coupon completion:(void(^)(NSArray *availabilities, NSError *error))completion
 {
     [self.txhManager.client availabilitiesForProduct:self.selectedProduct
                                           dateString:isoDate
                                              tickets:tickets
+                                          couponCode:coupon
                                           completion:completion];
 }
 

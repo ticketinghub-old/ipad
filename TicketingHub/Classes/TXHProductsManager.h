@@ -53,6 +53,6 @@
 
 - (void)getCouponCodesCompletion:(void(^)(NSArray *coupons, NSError *error))completion;
 
-- (void)availabilitiesForISODate:(NSString *)isoDate tickets:(NSArray *)tickets completion:(void(^)(NSArray *availabilities, NSError *error))completion;
+- (void)availabilitiesForISODate:(NSString *)isoDate tickets:(NSArray *)tickets couponCode:(NSString *)coupon completion:(void(^)(NSArray *availabilities, NSError *error))completion;
 
 @end
