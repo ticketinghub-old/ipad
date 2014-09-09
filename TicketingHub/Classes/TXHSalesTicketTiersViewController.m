@@ -277,18 +277,14 @@
 
 - (NSInteger)maximumQuantityForCell:(TXHSalesTicketTierCell *)cell
 {
-    NSIndexPath *cellIndexPath = [self.collectionView indexPathForCell:cell];
-    TXHTier *tier = [self tierAtIndexPath:cellIndexPath];
-    
+    TXHTier *tier = [self tierWithInternalTierId:cell.tierIdentifier];    
     return tier.limitValue;
 }
 
 - (NSString *)priceStringForCell:(TXHSalesTicketTierCell *)cell quantity:(NSUInteger)quantity;
 {
     NSString *priceString;
-    
-    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
-    TXHTier *tier          = [self tierAtIndexPath:indexPath];
+    TXHTier *tier = [self tierWithInternalTierId:cell.tierIdentifier];
 
     if (quantity)
         priceString = [self.productManager priceStringForPrice:@([tier.price integerValue] * quantity)];
