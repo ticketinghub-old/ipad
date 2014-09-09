@@ -100,8 +100,32 @@
 {
     _tiers = tiers;
     
+    [self updateQuantitiesWithTiers];
+    
     [self updateView];
+    
     [self.collectionView reloadData];
+}
+
+- (void)updateQuantitiesWithTiers
+{
+    //This is kinda supid to have thoose internal ids in general...
+    NSMutableDictionary *updatedQuantities = [NSMutableDictionary dictionary];
+    
+    for (NSString *tierId in self.quantities)
+    {
+        for (TXHTier *tier in self.tiers)
+        {
+            if ([tierId hasPrefix:tier.tierId])
+            {
+                NSNumber *quantity = self.quantities[tierId];
+                updatedQuantities[tier.internalTierId] = quantity;
+                break;
+            }
+        }
+    }
+
+    self.quantities = updatedQuantities;
 }
 
 - (NSMutableDictionary *)quantities
@@ -230,8 +254,6 @@
 
 - (void)loadTiers
 {
-    self.quantities = nil;
-    
     __block typeof(self) wself = self;
 
     [self.activityView showWithMessage:NSLocalizedString(@"SALESMAN_QUANTITIES_LOADING_TICKETS_MESSAGE", nil)
