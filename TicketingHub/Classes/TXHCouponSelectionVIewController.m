@@ -16,6 +16,8 @@
 #import "UIFont+TicketingHub.h"
 #import "TXHActivityLabelView.h"
 
+#import "TXHCoupon+Empty.h"
+
 NSString * const TXHCouponCodeSelectedNotification = @"TXHCouponCodeSelectedNotification";
 NSString * const TXHSelectedCouponCodeKey          = @"TXHSelectedCouponCodeKey";
 
@@ -64,7 +66,11 @@ NSString * const TXHSelectedCouponCodeKey          = @"TXHSelectedCouponCodeKey"
     __weak typeof(self) wself = self;
     [self.activityView showWithMessage:nil indicatorHidden:NO];
     [self.productsManager getCouponCodesCompletion:^(NSArray *coupons, NSError *error) {
-        wself.coupons = coupons;
+        
+        NSMutableArray *array = coupons.mutableCopy;
+        [array insertObject:[TXHCoupon emptyCoupon] atIndex:0];
+        
+        wself.coupons = array.copy;
         [wself.activityView hide];
     }];
 }
@@ -106,6 +112,9 @@ NSString * const TXHSelectedCouponCodeKey          = @"TXHSelectedCouponCodeKey"
     
     if ([coupon disabled])
         return;
+    
+    if ([coupon isEmpty])
+        coupon = nil;
     
     NSDictionary *userInfo;
     if (coupon)

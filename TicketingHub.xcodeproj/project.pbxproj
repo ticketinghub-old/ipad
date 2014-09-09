@@ -105,6 +105,7 @@
 		3ECE137418B63A6900E7148F /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE137318B63A6900E7148F /* NSDate+Additions.m */; };
 		3ECE137718B689CE00E7148F /* NSDate+CupertinoYankee.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE137618B689CE00E7148F /* NSDate+CupertinoYankee.m */; };
 		3ECE452C18C0B57F00DD1F7B /* AFNetworkActivityLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE452B18C0B57F00DD1F7B /* AFNetworkActivityLogger.m */; };
+		3ED3421919BF2321009B1662 /* TXHCoupon+Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3421819BF2321009B1662 /* TXHCoupon+Empty.m */; };
 		3ED7561818BDD96500D8F60B /* TXHOrderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7561718BDD96500D8F60B /* TXHOrderManager.m */; };
 		3EDA71D319235C830018DAEB /* TXHScanersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDA71D219235C830018DAEB /* TXHScanersManager.m */; };
 		3EE8E21118C8799D006E8F5E /* TXHDoorTicketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8E21018C8799C006E8F5E /* TXHDoorTicketCell.m */; };
@@ -381,6 +382,8 @@
 		3ECE137618B689CE00E7148F /* NSDate+CupertinoYankee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CupertinoYankee.m"; sourceTree = "<group>"; };
 		3ECE452A18C0B57F00DD1F7B /* AFNetworkActivityLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityLogger.h; sourceTree = "<group>"; };
 		3ECE452B18C0B57F00DD1F7B /* AFNetworkActivityLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityLogger.m; sourceTree = "<group>"; };
+		3ED3421719BF2321009B1662 /* TXHCoupon+Empty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHCoupon+Empty.h"; sourceTree = "<group>"; };
+		3ED3421819BF2321009B1662 /* TXHCoupon+Empty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHCoupon+Empty.m"; sourceTree = "<group>"; };
 		3ED7561618BDD96500D8F60B /* TXHOrderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHOrderManager.h; path = TicketingHub/Classes/TXHOrderManager.h; sourceTree = SOURCE_ROOT; };
 		3ED7561718BDD96500D8F60B /* TXHOrderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHOrderManager.m; path = TicketingHub/Classes/TXHOrderManager.m; sourceTree = SOURCE_ROOT; };
 		3EDA71D119235C830018DAEB /* TXHScanersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHScanersManager.h; sourceTree = "<group>"; };
@@ -555,6 +558,8 @@
 				3E5B2BC7192A6C5600BE4CE6 /* TXHPayment+PKCard.m */,
 				3E92BF7819BDED9B00999B2F /* TXHCoupon+Helpers.h */,
 				3E92BF7919BDED9B00999B2F /* TXHCoupon+Helpers.m */,
+				3ED3421719BF2321009B1662 /* TXHCoupon+Empty.h */,
+				3ED3421819BF2321009B1662 /* TXHCoupon+Empty.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1735,6 +1740,7 @@
 				3EC8845B18C4984B00CE0597 /* UIResponder+FirstResponder.m in Sources */,
 				EE75D99C17D11048009ADCD8 /* TXHSalesSummaryItemCell.m in Sources */,
 				3E9BA43F19351EDB00780E78 /* TXHDoorTicketsListHeaderView.m in Sources */,
+				3ED3421919BF2321009B1662 /* TXHCoupon+Empty.m in Sources */,
 				3E65781E193622F8009008CD /* TXHOrderCell.m in Sources */,
 				3E22139E18AA794C00DE35A6 /* DictionaryDataSource.m in Sources */,
 				3E5B2BC8192A6C5600BE4CE6 /* TXHPayment+PKCard.m in Sources */,

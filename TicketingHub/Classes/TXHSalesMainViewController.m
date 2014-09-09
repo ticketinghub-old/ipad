@@ -664,7 +664,7 @@ static void * ContentValidContext = &ContentValidContext;
     [self.couponSelectionPopover dismissPopoverAnimated:YES];
     self.couponSelectionPopover = nil;
     
-    [self.wizardSteps setLeftButtonTitle:coupon.code];
+    [self.wizardSteps setLeftButtonTitle:coupon.code ? coupon.code : NSLocalizedString(@"SALESMAN_COUPON_CODE_BUTTON_TITLE", nil)];
 }
 
 @end
