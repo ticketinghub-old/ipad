@@ -199,9 +199,10 @@
     
     [self.fullScreenController hideAniamted:YES
                                  completion:^{
-                                     wself.fullScreenController = nil;
-                                     //[wself disableCardAnimated:YES];
+                                     [wself.activityView.superview bringSubviewToFront:wself.activityView];
                                  }];
+    self.fullScreenController = nil;
+
 }
 
 - (void)disableCardAnimated:(BOOL)aniamted
@@ -249,8 +250,14 @@
 {
     [self.cardView reset];
     
-    [self.fullScreenController hideAniamted:YES completion:nil];
+    __weak typeof(self) wself = self;
+    
+    [self.fullScreenController hideAniamted:YES
+                                 completion:^{
+                                     [wself.activityView.superview bringSubviewToFront:wself.activityView];
+                                 }];
     self.fullScreenController = nil;
+
 }
 
 #pragma mark - TXHSalesPaymentContentViewControllerProtocol

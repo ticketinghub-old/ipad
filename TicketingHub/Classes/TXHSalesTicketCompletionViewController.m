@@ -174,8 +174,12 @@ static NSString * const kNotesKey     = @"notes";
 {
     [self.currentField resignFirstResponder];
     
+    __weak typeof(self) wself = self;
+    
     [self.fullScreenController hideAniamted:YES
-                                 completion:nil];
+                                 completion:^{
+                                     [wself.activityView.superview bringSubviewToFront:wself.activityView];
+                                 }];
     self.fullScreenController = nil;
 }
 
