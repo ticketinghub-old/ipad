@@ -23,7 +23,7 @@ PODS:
   - DCTCoreDataStack (1.1)
   - Expecta (0.2.4)
   - FontAwesome+iOS (0.1.3)
-  - iOS-api (0.0.149):
+  - iOS-api (0.0.150):
     - AFNetworking (~> 2.2.0)
     - DCTCoreDataStack (~> 1.1)
   - OCMock (2.2.4)
@@ -93,7 +93,7 @@ SPEC CHECKSUMS:
   DCTCoreDataStack: eb0d05f4e27f92ff29fe559f66946baa939cafa7
   Expecta: 112bcafa2304ee0f3c5e586505f24555a47b25d5
   FontAwesome+iOS: 37727e113ee5f670dd4bf7b2d14a9c9feb2bbf8a
-  iOS-api: 18a796e8c1c057ca80ae1c37ab2c23648951f302
+  iOS-api: 6c03b25cc5fa8539b10a1f50ca7628219e43b313
   OCMock: 6db79185520e24f9f299548f2b8b07e41d881bd5
   PaymentKit: 14b54835f57ae9e2bf5628140fcd67001740cba2
   PPiAwesomeButton: efcaafab6c0207427a3216f34933c89c2bc93a70

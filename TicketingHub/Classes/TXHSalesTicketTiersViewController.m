@@ -254,6 +254,9 @@
 
 - (void)loadTiers
 {
+    if (!self.productManager.selectedProduct)
+        return;
+    
     __block typeof(self) wself = self;
 
     [self.activityView showWithMessage:NSLocalizedString(@"SALESMAN_QUANTITIES_LOADING_TICKETS_MESSAGE", nil)
