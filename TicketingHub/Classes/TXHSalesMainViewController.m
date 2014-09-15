@@ -433,9 +433,15 @@ static void * ContentValidContext = &ContentValidContext;
 
 - (void)unregisterFromOrderManagerNotifications
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHOrderDidExpireNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHOrderDidChangeNotification object:nil];
-
+    @try
+    {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHOrderDidExpireNotification object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:TXHOrderDidChangeNotification object:nil];
+    }
+    @finally
+    {
+        // hope this helps
+    }
 }
 
 #pragma mark product notifications
