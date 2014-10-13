@@ -28,8 +28,8 @@
 + (instancetype)getInstanceInView:(UIView *)targetView
 {
     TXHActivityLabelView *activityView = [self getInstanceFromNibNamed:@"TXHActivityLabelView"];
-    [activityView hide];
-
+    activityView.alpha = 0.0;
+    
     if (targetView)
     {
         activityView.frame = targetView.bounds;

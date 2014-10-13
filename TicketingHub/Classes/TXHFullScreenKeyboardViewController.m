@@ -11,6 +11,7 @@
 #import "UIApplication+TopViewController.h"
 #import <UIViewController+BHTKeyboardAnimationBlocks/UIViewController+BHTKeyboardNotifications.h>
 #import <UIView-Autolayout/UIView+AutoLayout.h>
+#import <UIView+AutoLayout/UIView+AutoLayout.h>
 
 #define ANIMATION_DURATION 0.2
 
@@ -21,7 +22,9 @@
 @property (nonatomic, strong) UIView  *customView;
 @property (nonatomic, strong) UIView  *customViewInitSuperview;
 
-@property (nonatomic, strong) UIView *containerView;
+@property (nonatomic, strong) IBOutlet UIView *containerView;
+
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *containerBottomConstraint;
 
 @end
 
@@ -42,12 +45,12 @@
     __weak typeof(self) wself = self;
     
     [self setKeyboardWillShowAnimationBlock:^(CGRect keyboardFrame) {
-        wself.containerView.height = wself.view.height - keyboardFrame.size.width;
+        wself.containerBottomConstraint.constant = keyboardFrame.size.height;
         [wself.view layoutIfNeeded];
     }];
     
     [self setKeyboardWillHideAnimationBlock:^(CGRect keyboardFrame) {
-        wself.containerView.frame = wself.view.bounds;
+        wself.containerBottomConstraint.constant = 0;
         [wself.view layoutIfNeeded];
     }];
     
@@ -71,19 +74,6 @@
 }
 
 #pragma mark - Accessors
-
-- (UIView *)containerView
-{
-    if (!_containerView)
-    {
-        UIView *containerView = [[UIView alloc] initWithFrame:self.view.bounds];
-        containerView.translatesAutoresizingMaskIntoConstraints = YES;
-        containerView.backgroundColor = [UIColor clearColor];
-        [self.view addSubview:containerView];
-        _containerView = containerView;
-    }
-    return _containerView;
-}
 
 - (void)setCustomView:(UIView *)customView
 {
@@ -118,20 +108,29 @@
     
     if (aniamted)
     {
-    [UIView animateWithDuration:ANIMATION_DURATION
-                          delay:0.0
-                        options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^{
-                         [self setBeginEndBackgroundColor];
-                         [self moveCustomViewToInitConvertedFrame];
-                     }
-                     completion:^(BOOL finished) {
-                         [self addCustomViewToInitSuperview];
-                         [self removeSelfFromViewHierarchy];
-                         
-                         if (completion)
-                             completion();
-                     }];
+        [UIView animateWithDuration:ANIMATION_DURATION
+                              delay:0.0
+                            options:UIViewAnimationOptionBeginFromCurrentState
+                         animations:^{
+                             [self moveCustomViewToInitConvertedFrame];
+                         }
+                         completion:^(BOOL finished) {
+                             [UIView animateWithDuration:ANIMATION_DURATION
+                                                   delay:0.0
+                                                 options:UIViewAnimationOptionBeginFromCurrentState
+                                              animations:^{
+                                                  [self setBeginEndBackgroundColor];
+                                              }
+                                              completion:^(BOOL finished2) {
+                                                  
+                                                  [self addCustomViewToInitSuperview];
+                                                  [self removeSelfFromViewHierarchy];
+                                                  
+                                                  if (completion)
+                                                      completion();
+                                                  
+                                              }];
+                         }];
     }
     else
     {
@@ -145,8 +144,9 @@
 
 - (void)moveCustomViewToContainterCenter
 {
-    [self.customView removeConstraints:self.customView.constraints];
-
+    [self.customView removeFromSuperview];
+    [self.containerView addSubview:self.customView];
+    
     [self.customView constrainToSize:self.customViewInitFrame.size];
     [self.customView centerInView:self.containerView];
     
@@ -155,13 +155,25 @@
 
 - (void)moveCustomViewToInitFrame
 {
-    self.customView.frame = self.customViewInitFrame;
+    [self.customView constrainToSize:self.customViewInitFrame.size];
+    [self.customView pinToSuperviewEdges:JRTViewPinTopEdge inset:self.customViewInitFrame.origin.y];
+    [self.customView pinToSuperviewEdges:JRTViewPinLeftEdge inset:self.customViewInitFrame.origin.x];
+
     [self.customViewInitSuperview layoutIfNeeded];
 }
 
 - (void)moveCustomViewToInitConvertedFrame
 {
-    self.customView.frame = [self customViewConvertedInitFrameFromSuperview];
+    CGRect targetFrame = [self customViewConvertedInitFrameFromSuperview];
+
+    [self.customView removeFromSuperview];
+    [self.containerView addSubview:self.customView];
+    
+    [self.customView constrainToSize:targetFrame.size];
+    
+    [self.customView pinToSuperviewEdges:JRTViewPinTopEdge inset:targetFrame.origin.y];
+    [self.customView pinToSuperviewEdges:JRTViewPinLeftEdge inset:targetFrame.origin.x];
+    
     [self.view layoutIfNeeded];
 }
 
@@ -191,12 +203,13 @@
 - (void)addSelfToViewHierarchy
 {
     UIViewController *topController = [[UIApplication sharedApplication] topViewController];
-    self.view.frame = topController.view.bounds;
     
     [topController addChildViewController:self];
     
     [self viewWillAppear:NO];
     [topController.view addSubview:self.view];
+    [self.view autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
+    [self.view layoutIfNeeded];
     [self viewDidAppear:NO];
 
     [self didMoveToParentViewController:topController];
@@ -217,7 +230,7 @@
     
     [UIView animateWithDuration:ANIMATION_DURATION
                           delay:0.0
-                        options:UIViewAnimationOptionLayoutSubviews | UIViewAnimationCurveEaseIn
+                        options:UIViewAnimationOptionLayoutSubviews | UIViewAnimationCurveEaseIn | UIViewAnimationOptionBeginFromCurrentState
                      animations:^{
                          [self moveCustomViewToContainterCenter];
                          [self setDestinationBackgroundColor];

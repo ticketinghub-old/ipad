@@ -232,7 +232,7 @@ static void * ContentValidContext = &ContentValidContext;
     [self setKeyboardWillShowAnimationBlock:^(CGRect keyboardFrame) {
         if ([wself.stepContentController respondsToSelector:@selector(setOffsetBottomBy:)])
         {
-            CGFloat height = keyboardFrame.size.width - wself.stepCompletionController.view.height;
+            CGFloat height = keyboardFrame.size.height - wself.stepCompletionController.view.height;
             [wself.stepContentController setOffsetBottomBy:height];
         }
     }];

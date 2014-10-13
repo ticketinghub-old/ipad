@@ -246,7 +246,7 @@ static NSTimeInterval expiredTicketsTimerInterval = 60.0f;
     __weak typeof(self) wself = self;
     
     [self setKeyboardWillShowAnimationBlock:^(CGRect keyboardFrame) {
-        CGFloat height = keyboardFrame.size.width;
+        CGFloat height = keyboardFrame.size.height;
         wself.collectionView.contentInset = UIEdgeInsetsMake(0, 0, height, 0);
         wself.activityView.height = wself.view.height - height;
     }];

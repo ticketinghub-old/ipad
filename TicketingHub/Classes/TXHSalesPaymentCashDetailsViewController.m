@@ -280,7 +280,7 @@
     if (self.fullScreenController)
         return;
     
-    TXHFullScreenKeyboardViewController *full = [[TXHFullScreenKeyboardViewController alloc] init];
+    TXHFullScreenKeyboardViewController *full = [[TXHFullScreenKeyboardViewController alloc] initWithNibName:nil bundle:nil];
     full.destinationBackgroundColor = [UIColor whiteColor];
     full.delegate = self;
     

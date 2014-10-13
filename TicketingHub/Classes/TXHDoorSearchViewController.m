@@ -162,7 +162,7 @@ NSString *const TXHDidSelectOrderNotification   = @"TXHDidSelectOrderNotificatio
         [wself hideCameraPreviewAnimated:NO];
         
         wself.bottomLabelConstraint.constant = 30;
-        wself.bottomConstraint.constant = keyboardFrame.size.width;
+        wself.bottomConstraint.constant = keyboardFrame.size.height;
 
         [wself.view layoutIfNeeded];
     }];
