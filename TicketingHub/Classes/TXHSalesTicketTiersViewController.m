@@ -273,7 +273,7 @@
         
         if (error)
             [wself showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
-                              message:error.localizedDescription
+                              message:error.errorDescription
                                action:nil];
         
     }];

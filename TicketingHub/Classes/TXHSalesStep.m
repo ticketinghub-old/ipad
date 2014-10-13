@@ -50,7 +50,7 @@ NSString * const kWizardStepRightButtonBlock          = @"kWizardStepRightButton
 @interface TXHSalesStep ()
 
 @property (copy, nonatomic) NSString *title;
-@property (copy, nonatomic) NSString *description;
+@property (copy, nonatomic) NSString *stepDescription;
 @property (copy, nonatomic) NSString *continueTitle;
 
 @property (copy, nonatomic) NSString *segueID;
@@ -97,7 +97,7 @@ NSString * const kWizardStepRightButtonBlock          = @"kWizardStepRightButton
         return nil;
     
     self.title                        = dictionary[kWizardStepTitleKey];
-    self.description                  = dictionary[kWizardStepDescriptionKey];
+    self.stepDescription              = dictionary[kWizardStepDescriptionKey];
     self.continueTitle                = dictionary[kWizardStepContinueTitleKey];
     self.segueID                      = dictionary[kWizardStepControllerSegueID];
     self.leftButtonTitle              = dictionary[kWizardStepLeftButtonTitle];

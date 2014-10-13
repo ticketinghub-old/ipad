@@ -49,7 +49,7 @@ extern NSString * const kWizardStepRightButtonBlock;
 @interface TXHSalesStep : NSObject
 
 @property (readonly, copy, nonatomic) NSString *title;
-@property (readonly, copy, nonatomic) NSString *description;
+@property (readonly, copy, nonatomic) NSString *stepDescription;
 @property (readonly, copy, nonatomic) NSString *continueTitle;
 
 @property (readonly, copy, nonatomic) NSString *segueID;

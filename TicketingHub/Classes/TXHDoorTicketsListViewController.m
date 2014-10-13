@@ -558,7 +558,7 @@ static NSTimeInterval expiredTicketsTimerInterval = 60.0f;
 - (void)showAlertForError:(NSError *)error
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
-                                                    message:error.localizedDescription
+                                                    message:error.errorDescription
                                                    delegate:nil
                                           cancelButtonTitle:NSLocalizedString(@"ERROR_DISMISS_BUTTON_TITLE", nil)
                                           otherButtonTitles:nil];
@@ -784,7 +784,6 @@ static NSTimeInterval expiredTicketsTimerInterval = 60.0f;
     [self.productManager setTicket:cellTicket
                           attended:cell.switchValue
                         completion:^(TXHTicket *ticket, NSError *error) {
-                            if (error) DLog(@"Error: %@", error.localizedDescription);
                             cell.userInteractionEnabled = YES;
                             [wself.ticketsDisabled removeObject:cellTicket.ticketId];
                             [cell setAttendedAt:cellTicket.attendedAt animated:YES];

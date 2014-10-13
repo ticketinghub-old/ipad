@@ -48,7 +48,7 @@
     if (error)
     {
         [[[UIAlertView alloc] initWithTitle:[self titleForError:error]
-                                   message:error.localizedDescription
+                                   message:error.errorDescription
                                   delegate:nil
                          cancelButtonTitle:NSLocalizedString(@"ERROR_DISMISS_BUTTON_TITLE", nil)
                          otherButtonTitles:nil] show];

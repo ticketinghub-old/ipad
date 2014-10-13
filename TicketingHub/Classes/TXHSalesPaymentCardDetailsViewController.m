@@ -188,7 +188,7 @@
                                        if (error)
                                        {
                                            [self showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
-                                                            message:error.localizedDescription
+                                                            message:error.errorDescription
                                                              action:^{
                                                                  if (self.completion)
                                                                      self.completion(error);
@@ -218,7 +218,7 @@
     [self updateView];
     
     [self showErrorWithTitle:NSLocalizedString(@"TRANSACTION_FAILED_TITLE", nil)
-                     message:error.localizedDescription
+                     message:error.errorDescription
                       action:^{
                           if (self.completion)
                               self.completion(error);
@@ -241,7 +241,7 @@
     [self updateView];
 
     [self showErrorWithTitle:NSLocalizedString(@"DEVICE_CONNECTION_ERROR_TITLE", nil)
-                     message:error.localizedDescription
+                     message:error.errorDescription
                       action:^{
                           if (self.completion)
                               self.completion(error);
@@ -287,7 +287,7 @@
     if (error)
     {
         [self showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
-                         message:error.localizedDescription
+                         message:error.errorDescription
                           action:^{
                               if (completion)
                                   completion(error);

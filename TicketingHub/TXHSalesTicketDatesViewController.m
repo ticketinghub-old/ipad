@@ -363,7 +363,7 @@
                                                  if (error)
                                                  {
                                                      [self showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
-                                                                      message:error.localizedDescription
+                                                                      message:error.errorDescription
                                                                        action:^{
                                                                            if (blockName)
                                                                                blockName(error);

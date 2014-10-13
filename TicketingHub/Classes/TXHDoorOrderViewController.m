@@ -144,7 +144,7 @@
                                                      }];
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
-                                                    message:error.localizedDescription
+                                                    message:error.errorDescription
                                            cancelButtonItem:confirmItem
                                            otherButtonItems:nil];
     [alert show];
@@ -201,7 +201,7 @@
                                             completion:^(TXHOrder *order, NSError *error) {
                                                 if (error)
                                                     [wself showErrorWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
-                                                                      message:error.localizedDescription
+                                                                      message:error.errorDescription
                                                                        action:nil];
                                                 else if (order)
                                                     wself.order = order;

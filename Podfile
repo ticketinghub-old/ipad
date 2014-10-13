@@ -1,11 +1,13 @@
 platform :ios, '7.0'
 
+source 'https://github.com/CocoaPods/Specs.git'
+
 inhibit_all_warnings!
 
 pod 'iOS-api', :podspec => '.'
 
 pod 'TapkuLibrary',     :git => 'https://github.com/bartekhugo/tapkulibrary.git',       :branch => 'ios7'
-pod 'PPSSignatureView', :git => 'https://github.com/bartekhugo/PPSSignatureView.git',   :branch => 'svg'
+pod 'PPSSignatureView', :git => 'https://github.com/bartekhugo/PPSSignatureView.git',   :branch => 'master'
 pod 'AKPickerView',     :git => 'https://github.com/bartekhugo/AKPickerView.git',       :branch => 'tickethub'
 pod 'thcal',            :git => 'https://github.com/ticketinghub/ical.git',             :branch => 'tickethub'
 
