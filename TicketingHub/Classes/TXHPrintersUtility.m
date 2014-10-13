@@ -201,7 +201,7 @@
             dispatch_group_enter(group);
             
             [wself.client getTicketImageToPrintForTicket:ticket withTemplet:template dpi:self.selectedPrinter.dpi format:[self getDocumentFormat] completion:^(NSURL *url, NSError *error) {
-                [imagesURLs addObject:url];
+                if (url) [imagesURLs addObject:url];
                 dispatch_group_leave(group);
             }];
         }
