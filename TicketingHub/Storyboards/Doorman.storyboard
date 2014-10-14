@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="kLH-fG-yaD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="kLH-fG-yaD">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6243"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--Door Main View Controller-->
@@ -260,7 +259,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iN5-Aw-Y0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-82" y="-164"/>
+            <point key="canvasLocation" x="654" y="-164"/>
         </scene>
         <!--Door Tickets List View Controller-->
         <scene sceneID="MBy-BQ-OxK">
@@ -474,10 +473,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="iod-yU-vwu" firstAttribute="top" secondItem="e1a-MQ-mcm" secondAttribute="bottom" id="0v1-UF-aHL"/>
                             <constraint firstItem="xZ4-Kf-EnD" firstAttribute="top" secondItem="RM1-Ai-NRW" secondAttribute="top" constant="70" id="3be-hr-TZu"/>
                             <constraint firstItem="e1a-MQ-mcm" firstAttribute="top" secondItem="446-Aa-im6" secondAttribute="bottom" constant="70" id="CKh-1U-hgS"/>
                             <constraint firstItem="e1a-MQ-mcm" firstAttribute="leading" secondItem="RM1-Ai-NRW" secondAttribute="leading" id="IJX-Jy-pjN"/>
+                            <constraint firstAttribute="bottom" secondItem="e1a-MQ-mcm" secondAttribute="bottom" id="Lkq-pD-bwn"/>
                             <constraint firstItem="xZ4-Kf-EnD" firstAttribute="leading" secondItem="RM1-Ai-NRW" secondAttribute="leading" id="zQj-ty-voG"/>
                             <constraint firstItem="iod-yU-vwu" firstAttribute="top" secondItem="xZ4-Kf-EnD" secondAttribute="bottom" id="zUI-wX-He7"/>
                         </constraints>
@@ -492,7 +491,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eVv-RU-i6u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="328" y="-164"/>
+            <point key="canvasLocation" x="1230" y="-164"/>
         </scene>
         <!--Ticket Details View Controller-->
         <scene sceneID="08Y-eQ-5eT">

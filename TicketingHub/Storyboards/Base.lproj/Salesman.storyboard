@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="yRh-Nh-MFw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="yRh-Nh-MFw">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6243"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -1367,13 +1366,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gM7-R1-L4A">
-                                                <rect key="frame" x="450" y="-7" width="23" height="48"/>
+                                                <rect key="frame" x="429" y="-7" width="23" height="48"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
                                                 <color key="textColor" red="0.17254901959999999" green="0.49803921569999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewR-q4-axR">
-                                                <rect key="frame" x="450" y="232" width="23" height="48"/>
+                                                <rect key="frame" x="429" y="232" width="23" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
                                                 <color key="textColor" red="0.17254901959999999" green="0.49803921569999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1410,14 +1409,14 @@
                                             <constraint firstItem="GrL-4Y-xvP" firstAttribute="leading" secondItem="q7z-hr-mRG" secondAttribute="leading" id="DWA-Fh-orq"/>
                                             <constraint firstItem="Pde-4l-dh6" firstAttribute="centerY" secondItem="gM7-R1-L4A" secondAttribute="centerY" id="FbD-hk-UzF"/>
                                             <constraint firstItem="aB2-hQ-7pE" firstAttribute="top" secondItem="Pde-4l-dh6" secondAttribute="bottom" constant="63" id="UmD-nh-edT"/>
-                                            <constraint firstAttribute="trailing" secondItem="gM7-R1-L4A" secondAttribute="trailing" constant="7" id="Vnd-ss-huN"/>
+                                            <constraint firstAttribute="trailing" secondItem="gM7-R1-L4A" secondAttribute="trailing" constant="28" id="Vnd-ss-huN"/>
                                             <constraint firstItem="aB2-hQ-7pE" firstAttribute="leading" secondItem="q7z-hr-mRG" secondAttribute="leading" id="Wb8-D1-O6g"/>
                                             <constraint firstAttribute="width" constant="480" id="dv9-NX-JsG"/>
                                             <constraint firstItem="6Qr-Eu-19O" firstAttribute="centerY" secondItem="aB2-hQ-7pE" secondAttribute="centerY" id="e8H-iV-7YA"/>
                                             <constraint firstItem="GrL-4Y-xvP" firstAttribute="top" secondItem="aB2-hQ-7pE" secondAttribute="bottom" constant="108" id="g1H-Cb-D5t"/>
                                             <constraint firstAttribute="height" constant="300" id="js5-Il-KYI"/>
                                             <constraint firstItem="ewR-q4-axR" firstAttribute="centerY" secondItem="GrL-4Y-xvP" secondAttribute="centerY" id="phl-bX-EaV"/>
-                                            <constraint firstAttribute="trailing" secondItem="ewR-q4-axR" secondAttribute="trailing" constant="7" id="qU0-6M-FGv"/>
+                                            <constraint firstAttribute="trailing" secondItem="ewR-q4-axR" secondAttribute="trailing" constant="28" id="qU0-6M-FGv"/>
                                             <constraint firstAttribute="trailing" secondItem="6Qr-Eu-19O" secondAttribute="trailing" constant="8" id="rdp-SG-Zi8"/>
                                             <constraint firstItem="Pde-4l-dh6" firstAttribute="top" secondItem="q7z-hr-mRG" secondAttribute="top" id="tky-mK-nAR"/>
                                             <constraint firstItem="Pde-4l-dh6" firstAttribute="leading" secondItem="q7z-hr-mRG" secondAttribute="leading" id="xm1-HQ-d0Q"/>

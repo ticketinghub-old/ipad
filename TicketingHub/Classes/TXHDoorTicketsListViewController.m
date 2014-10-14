@@ -26,6 +26,8 @@
 #import "TXHOrder+Helpers.h"
 
 #import "UIColor+TicketingHub.h"
+#import "TXHCGRectHelpers.h"
+
 
 #import <UIViewController+BHTKeyboardAnimationBlocks/UIViewController+BHTKeyboardNotifications.h>
 
@@ -246,14 +248,19 @@ static NSTimeInterval expiredTicketsTimerInterval = 60.0f;
     __weak typeof(self) wself = self;
     
     [self setKeyboardWillShowAnimationBlock:^(CGRect keyboardFrame) {
-        CGFloat height = keyboardFrame.size.height;
-        wself.collectionView.contentInset = UIEdgeInsetsMake(0, 0, height, 0);
+        CGFloat height = NormalizeKeyboardFrameRect(keyboardFrame).size.height;
+        UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, height, 0);
+        wself.collectionView.contentInset          = insets;
+        wself.collectionView.scrollIndicatorInsets = insets;
+ 
         wself.activityView.height = wself.view.height - height;
     }];
     
     
     [self setKeyboardWillHideAnimationBlock:^(CGRect keyboardFrame) {
-        wself.collectionView.contentInset = UIEdgeInsetsZero;
+        UIEdgeInsets insets = UIEdgeInsetsZero;
+        wself.collectionView.contentInset          = insets;
+        wself.collectionView.scrollIndicatorInsets = insets;
         wself.activityView.height = wself.view.height;
     }];
 }

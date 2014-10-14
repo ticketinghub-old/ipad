@@ -13,6 +13,7 @@
 #import "TXHBarcodeScanner.h"
 #import "TXHProductsManager.h"
 
+#import "TXHCGRectHelpers.h"
 #import "TXHOrderCell.h"
 #import <iOS-api/TXHPartialResponsInfo.h>
 
@@ -162,7 +163,7 @@ NSString *const TXHDidSelectOrderNotification   = @"TXHDidSelectOrderNotificatio
         [wself hideCameraPreviewAnimated:NO];
         
         wself.bottomLabelConstraint.constant = 30;
-        wself.bottomConstraint.constant = keyboardFrame.size.height;
+        wself.bottomConstraint.constant = NormalizeKeyboardFrameRect(keyboardFrame).size.height;
 
         [wself.view layoutIfNeeded];
     }];

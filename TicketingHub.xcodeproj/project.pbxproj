@@ -13,6 +13,7 @@
 		3E082DAE190EC909003B60C6 /* TXHConfigurationStaging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E2E2C5A190EB81B006EABA1 /* TXHConfigurationStaging.plist */; };
 		3E08FC8B19BDAB4F0064B2E6 /* TXHCouponSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E08FC8A19BDAB4F0064B2E6 /* TXHCouponSelectionViewController.m */; };
 		3E0FF588191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0FF587191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.m */; };
+		3E13755719ED31A700A57BEC /* TXHCGRectHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E13755619ED31A700A57BEC /* TXHCGRectHelpers.m */; };
 		3E15207118FFD4190013F09E /* TXHTicketDetailsErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E15207018FFD4190013F09E /* TXHTicketDetailsErrorView.m */; };
 		3E192D5718FD188C00D727AA /* TXHDoorMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E192D5618FD188C00D727AA /* TXHDoorMainViewController.m */; };
 		3E192D5A18FD308200D727AA /* TXHTicket+Title.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E192D5918FD308200D727AA /* TXHTicket+Title.m */; };
@@ -188,6 +189,8 @@
 		3E08FC8A19BDAB4F0064B2E6 /* TXHCouponSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHCouponSelectionViewController.m; path = TicketingHub/Classes/TXHCouponSelectionViewController.m; sourceTree = SOURCE_ROOT; };
 		3E0FF586191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHPayment+DKPOSClientTransactionInfo.h"; sourceTree = "<group>"; };
 		3E0FF587191A2FA70067F9F2 /* TXHPayment+DKPOSClientTransactionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHPayment+DKPOSClientTransactionInfo.m"; sourceTree = "<group>"; };
+		3E13755519ED31A700A57BEC /* TXHCGRectHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHCGRectHelpers.h; sourceTree = "<group>"; };
+		3E13755619ED31A700A57BEC /* TXHCGRectHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCGRectHelpers.m; sourceTree = "<group>"; };
 		3E15206F18FFD4190013F09E /* TXHTicketDetailsErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketDetailsErrorView.h; sourceTree = "<group>"; };
 		3E15207018FFD4190013F09E /* TXHTicketDetailsErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketDetailsErrorView.m; sourceTree = "<group>"; };
 		3E192D5518FD188C00D727AA /* TXHDoorMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHDoorMainViewController.h; sourceTree = "<group>"; };
@@ -1468,6 +1471,8 @@
 			isa = PBXGroup;
 			children = (
 				EEB1845717D114390025530A /* TXHUserDefaultsKeys.h */,
+				3E13755519ED31A700A57BEC /* TXHCGRectHelpers.h */,
+				3E13755619ED31A700A57BEC /* TXHCGRectHelpers.m */,
 				3EF72D75192CCDA700F27B6B /* Controllers */,
 				3EB60EE518C66F9000B56182 /* Managers */,
 				3E3D46EB18ACBB6E00275ACF /* Categories */,
@@ -1719,6 +1724,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E13755719ED31A700A57BEC /* TXHCGRectHelpers.m in Sources */,
 				3EF09F93191BB4CB00C85109 /* TXHPaymentOption.m in Sources */,
 				EEF6BA4717D1192B005B1B20 /* TXHBarcodeScanner.m in Sources */,
 				3E15207118FFD4190013F09E /* TXHTicketDetailsErrorView.m in Sources */,
@@ -1968,7 +1974,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "DEDC96DF-512A-4639-A981-C03358CD8CA4";
+				PROVISIONING_PROFILE = "41093973-3587-499a-9fed-4252026e3a48";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",
@@ -2351,7 +2357,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "DEDC96DF-512A-4639-A981-C03358CD8CA4";
+				PROVISIONING_PROFILE = "41093973-3587-499a-9fed-4252026e3a48";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WARNING_CFLAGS = (
 					"-Wno-auto-import",

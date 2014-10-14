@@ -12,6 +12,8 @@
 #import <UIViewController+BHTKeyboardAnimationBlocks/UIViewController+BHTKeyboardNotifications.h>
 #import <UIView-Autolayout/UIView+AutoLayout.h>
 #import <UIView+AutoLayout/UIView+AutoLayout.h>
+#import "TXHCGRectHelpers.h"
+
 
 #define ANIMATION_DURATION 0.2
 
@@ -23,7 +25,6 @@
 @property (nonatomic, strong) UIView  *customViewInitSuperview;
 
 @property (nonatomic, strong) IBOutlet UIView *containerView;
-
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint *containerBottomConstraint;
 
 @end
@@ -45,7 +46,7 @@
     __weak typeof(self) wself = self;
     
     [self setKeyboardWillShowAnimationBlock:^(CGRect keyboardFrame) {
-        wself.containerBottomConstraint.constant = keyboardFrame.size.height;
+        wself.containerBottomConstraint.constant = NormalizeKeyboardFrameRect(keyboardFrame).size.height;
         [wself.view layoutIfNeeded];
     }];
     
@@ -144,7 +145,7 @@
 
 - (void)moveCustomViewToContainterCenter
 {
-    [self.customView removeFromSuperview];
+    [self.customView removeFromSuperview]; // removing constraints
     [self.containerView addSubview:self.customView];
     
     [self.customView constrainToSize:self.customViewInitFrame.size];
@@ -165,9 +166,6 @@
 - (void)moveCustomViewToInitConvertedFrame
 {
     CGRect targetFrame = [self customViewConvertedInitFrameFromSuperview];
-
-    [self.customView removeFromSuperview];
-    [self.containerView addSubview:self.customView];
     
     [self.customView constrainToSize:targetFrame.size];
     
@@ -205,7 +203,6 @@
     UIViewController *topController = [[UIApplication sharedApplication] topViewController];
     
     [topController addChildViewController:self];
-    
     [self viewWillAppear:NO];
     [topController.view addSubview:self.view];
     [self.view autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];

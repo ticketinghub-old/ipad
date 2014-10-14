@@ -36,6 +36,8 @@
 #import "UIColor+TicketingHub.h"
 #import "UIFont+TicketingHub.h"
 
+#import "TXHCGRectHelpers.h"
+
 // defines
 #import "TXHProductsManagerNotifications.h"
 
@@ -232,7 +234,7 @@ static void * ContentValidContext = &ContentValidContext;
     [self setKeyboardWillShowAnimationBlock:^(CGRect keyboardFrame) {
         if ([wself.stepContentController respondsToSelector:@selector(setOffsetBottomBy:)])
         {
-            CGFloat height = keyboardFrame.size.height - wself.stepCompletionController.view.height;
+            CGFloat height = NormalizeKeyboardFrameRect(keyboardFrame).size.height - wself.stepCompletionController.view.height;
             [wself.stepContentController setOffsetBottomBy:height];
         }
     }];
