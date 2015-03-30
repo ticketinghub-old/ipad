@@ -11,8 +11,8 @@ pod 'PPSSignatureView', :git => 'https://github.com/bartekhugo/PPSSignatureView.
 pod 'AKPickerView',     :git => 'https://github.com/bartekhugo/AKPickerView.git',       :branch => 'tickethub'
 pod 'thcal',            :git => 'https://github.com/ticketinghub/ical.git',             :branch => 'tickethub'
 pod 'PPiAwesomeButton', :git => 'https://github.com/pepibumur/PPiAwesomeButton.git',    :commit => '44a73c8' #explicit bug fix for PPiFlatSegmentedControl without release tag
+pod 'Block-KVO',        :git => 'https://github.com/iMartinKiss/Block-KVO.git'
 
-pod 'Block-KVO',                                    '~> 2.2.1'
 pod 'PPiFlatSegmentedControl',                      '~> 1.3.8'
 pod 'RMPickerViewController',                       '~> 1.1.0'
 pod 'SevenSwitch',                                  '~> 1.3.0'

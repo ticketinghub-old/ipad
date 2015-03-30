@@ -1557,7 +1557,7 @@
 			attributes = {
 				CLASSPREFIX = TXH;
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = TicketingHub;
 				TargetAttributes = {
 					58E4FB501760AE5500E328A0 = {
@@ -1938,7 +1938,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B9713662F617464C97177BD6 /* Pods.debug-staging.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1959,6 +1958,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(CONFIGURATION_BUILD_DIR)/**",
+					"$(PROJECT_DIR)/extLibraries",
 				);
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Staging-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1989,7 +1989,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 61CF8C8ED841B02727BF386F /* Pods-test.debug-staging.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TicketingHub.app/TicketingHub";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2051,7 +2050,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 301B8C09EE4A6751C22B962D /* Pods.release-staging.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -2072,6 +2070,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(CONFIGURATION_BUILD_DIR)/**",
+					"$(PROJECT_DIR)/extLibraries",
 				);
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Staging-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2102,7 +2101,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71BE9EFF39A2126B2363FD1F /* Pods-test.release-staging.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TicketingHub.app/TicketingHub";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2164,7 +2162,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 03F7C1728F2EEE551E2556C2 /* Pods.adhoc-staging.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -2185,6 +2182,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(CONFIGURATION_BUILD_DIR)/**",
+					"$(PROJECT_DIR)/extLibraries",
 				);
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Staging-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2215,7 +2213,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C36AEC884A8FD3CE8CE7D689 /* Pods-test.adhoc-staging.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TicketingHub.app/TicketingHub";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2321,7 +2318,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EBDEEBB7E2994183E4FC8F0B /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -2342,6 +2338,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(CONFIGURATION_BUILD_DIR)/**",
+					"$(PROJECT_DIR)/extLibraries",
 				);
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Production-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2372,7 +2369,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 141B67C08CBFDC0E6E88DBA1 /* Pods.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -2393,6 +2389,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(CONFIGURATION_BUILD_DIR)/**",
+					"$(PROJECT_DIR)/extLibraries",
 				);
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Production-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2423,7 +2420,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 61A28A9C16EE0FF145310B76 /* Pods-test.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TicketingHub.app/TicketingHub";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2447,7 +2443,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B8C90BDDF669F8D3DA42F9C3 /* Pods-test.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TicketingHub.app/TicketingHub";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2509,7 +2504,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A1D3BF0F6009C1337227B161 /* Pods.adhoc.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -2530,6 +2524,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(CONFIGURATION_BUILD_DIR)/**",
+					"$(PROJECT_DIR)/extLibraries",
 				);
 				INFOPLIST_FILE = "TicketingHub/TicketingHub-Production-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2560,7 +2555,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F4F7A4FBC5B952CCA6E1A855 /* Pods-test.adhoc.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TicketingHub.app/TicketingHub";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (

@@ -1,11 +1,11 @@
 PODS:
   - AFNetworking (2.2.4):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-    - AFNetworking/UIKit
+    - AFNetworking/NSURLConnection (= 2.2.4)
+    - AFNetworking/NSURLSession (= 2.2.4)
+    - AFNetworking/Reachability (= 2.2.4)
+    - AFNetworking/Security (= 2.2.4)
+    - AFNetworking/Serialization (= 2.2.4)
+    - AFNetworking/UIKit (= 2.2.4)
   - AFNetworking/NSURLConnection (2.2.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -19,7 +19,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - AKPickerView (0.0.3)
-  - Block-KVO (2.2.1)
+  - Block-KVO (2.2.2)
   - DCTCoreDataStack (1.1)
   - Expecta (0.2.4)
   - FontAwesome+iOS (0.1.4)
@@ -42,7 +42,7 @@ PODS:
   - TapkuLibrary (0.2.4)
   - thcal (0.0.1)
   - TSCurrencyTextField (0.1.0):
-    - TSCurrencyTextField/Core
+    - TSCurrencyTextField/Core (= 0.1.0)
   - TSCurrencyTextField/Core (0.1.0)
   - UIAlertView-Blocks (1.0)
   - UIImage+PDF (1.1.3)
@@ -53,7 +53,7 @@ PODS:
 
 DEPENDENCIES:
   - AKPickerView (from `https://github.com/bartekhugo/AKPickerView.git`, branch `tickethub`)
-  - Block-KVO (~> 2.2.1)
+  - Block-KVO (from `https://github.com/iMartinKiss/Block-KVO.git`)
   - Expecta (~> 0.2.3)
   - iOS-api (from `.`)
   - OCMock (~> 2.2.3)
@@ -77,6 +77,8 @@ EXTERNAL SOURCES:
   AKPickerView:
     :branch: tickethub
     :git: https://github.com/bartekhugo/AKPickerView.git
+  Block-KVO:
+    :git: https://github.com/iMartinKiss/Block-KVO.git
   iOS-api:
     :podspec: .
   PPiAwesomeButton:
@@ -92,31 +94,39 @@ EXTERNAL SOURCES:
     :branch: tickethub
     :git: https://github.com/ticketinghub/ical.git
 
+CHECKOUT OPTIONS:
+  Block-KVO:
+    :commit: 8c05f6544cc416fe0a7e797f1558d86193a85767
+    :git: https://github.com/iMartinKiss/Block-KVO.git
+  PPiAwesomeButton:
+    :commit: 44a73c8
+    :git: https://github.com/pepibumur/PPiAwesomeButton.git
+
 SPEC CHECKSUMS:
-  AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
+  AFNetworking: caca0799b310f0c3bf1fc1af45145fc96972bcab
   AKPickerView: aaf81682fcced6f8011501b35e1f3cb6fd9c2296
-  Block-KVO: dc4bf1bb23007380901e047da884c130776007e9
-  DCTCoreDataStack: eb0d05f4e27f92ff29fe559f66946baa939cafa7
-  Expecta: 112bcafa2304ee0f3c5e586505f24555a47b25d5
-  FontAwesome+iOS: 816c20304edef4ca92835de669577005cbaaf261
+  Block-KVO: 094a3fb38f161468d7c406031af7d3daacc48ab0
+  DCTCoreDataStack: 144e38db45572763fcc458faafb7da3af6d5ab77
+  Expecta: cfaf1d3e2e194ca704a25e997093d30a1ce70b61
+  FontAwesome+iOS: 9070b682a9255ca0fdc34bcfb129ad0ba2b73b87
   iOS-api: 9a22a2c1b8cf67f52147721e587a7b3ccbd1aeaa
-  OCMock: 6db79185520e24f9f299548f2b8b07e41d881bd5
-  PaymentKit: 14b54835f57ae9e2bf5628140fcd67001740cba2
+  OCMock: a6a7dc0e3997fb9f35d99f72528698ebf60d64f2
+  PaymentKit: 1348e9bf1643830a2dcf6ec0e20046f39d1c115d
   PPiAwesomeButton: 51feba2feacb0dacfee732ad76b3e4a77d4bd72f
-  PPiFlatSegmentedControl: 978ac3a6de615a734c5988b24101b1c14983ce13
+  PPiFlatSegmentedControl: 7c60444d0761769b15fbb344c35c6622f22ef9ad
   PPSSignatureView: 83ffa630306afc93ad595e5a6e98a0dba1c8a49b
-  RMPickerViewController: 67e8e6f5d81a4f01a6dcccd88a6d2643647fba00
-  SevenSwitch: 70af67d75bc2e477d45a984cf1f3123564b04eee
-  Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
-  Stripe: a0ed1c0675a3c36f6e8d575820cfec1dc9335f53
+  RMPickerViewController: 2c00b17e50837f362cbc14e9085ff48d49dfb3be
+  SevenSwitch: 4faf7584ea9fcfa053ab0375353531c402ed2bf0
+  Specta: 15a276a6343867b426d5ed135d5aa4d04123a573
+  Stripe: de02b8afcbb1447c699acfc31fc91bea423f404a
   TapkuLibrary: 9429b4702b3fb1c58669490e2d301cf37f76a766
   thcal: 621435dc971945a90b1bbe0f8c9e9fdbefc13291
-  TSCurrencyTextField: d63c385890f2d41200ecdd2268f01fd5968405cc
-  UIAlertView-Blocks: f3271e84372beb97aea115cd1fb26ae66457f12f
-  UIImage+PDF: e2670143b9a404ce7def93cd4f7fd2c532aeba89
-  UIView+AutoLayout: d876c583c3dec28b5c3916175ea4b6ad70a8be34
-  UIView+Shake: 443c0ea01b80a2117ec27380dfe39e0f0fc05ea2
-  UIView-Autolayout: 7c05eb666738eba682f686c2da236578177e2ebb
-  UIViewController+BHTKeyboardAnimationBlocks: fa8f86b798147159ddc1b2aba3f8c49247f1c814
+  TSCurrencyTextField: 03f9d4d263d617d1f0e034e4ace12febcfa6fe48
+  UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
+  UIImage+PDF: b8352e731529d8704b8b1bb1c086884ab61cd550
+  UIView+AutoLayout: 9eb76d5e72974e5b96c0350624d8f17ddb405ee0
+  UIView+Shake: e56b60813d32dd44bf87b48f97ff1deaf10a9b19
+  UIView-Autolayout: d1554895e3a39037ef2b588df34e713fed4933dc
+  UIViewController+BHTKeyboardAnimationBlocks: 4996f7909cb141f19e9544720e5bb79de20e4db9
 
-COCOAPODS: 0.34.2
+COCOAPODS: 0.35.0
